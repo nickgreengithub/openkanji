@@ -494,10 +494,10 @@ a:hover{color:var(--text-accent-hover)}
           </sc-if>
           <sc-if value="{{ showSave }}" hint-placeholder-val="{{ false }}">
           <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
-            <span sc-camel-on-click="{{ saveNow }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M5 12.5 L9.5 17 L19 6.5" fill="none" stroke="var(--surface-page)" stroke-width="2.6"></path></svg></span>
+            <span sc-camel-on-click="{{ saveNow }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};box-shadow:{{ saveGlow }};transition:background 140ms ease,border-color 140ms ease,box-shadow 260ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M5 12.5 L9.5 17 L19 6.5" fill="none" stroke="var(--surface-page)" stroke-width="2.6"></path></svg></span>
           </sc-if>
           <sc-if value="{{ notSaved }}" hint-placeholder-val="{{ true }}">
-            <span sc-camel-on-click="{{ saveNow }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M3 3 H17.5 L21 6.5 V21 H3 Z" fill="var(--surface-page)"></path><rect x="8" y="3" width="8" height="6.6" fill="var(--accent)"></rect><rect x="13.1" y="4.2" width="1.9" height="4.2" fill="var(--surface-page)"></rect><rect x="6.4" y="13.2" width="11.2" height="7.8" fill="var(--accent)"></rect></svg></span>
+            <span sc-camel-on-click="{{ saveNow }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};box-shadow:{{ saveGlow }};transition:background 140ms ease,border-color 140ms ease,box-shadow 260ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M3 3 H17.5 L21 6.5 V21 H3 Z" fill="var(--surface-page)"></path><rect x="8" y="3" width="8" height="6.6" fill="var(--accent)"></rect><rect x="13.1" y="4.2" width="1.9" height="4.2" fill="var(--surface-page)"></rect><rect x="6.4" y="13.2" width="11.2" height="7.8" fill="var(--accent)"></rect></svg></span>
           </sc-if>
           </sc-if>
           <sc-if value="{{ showLoad }}" hint-placeholder-val="{{ true }}">
@@ -2157,7 +2157,7 @@ class Component extends DCLogic {
     delete m[key];
     this.persistMastered(m);
     this.flash("quiz");
-    if (st.mastered[key]) this.flashMastery();
+    if (st.mastered[key]) { this.flashMastery(); this.flashSave(); }
     this.setState({ quiz: st.quiz.concat([key]), mastered: m });
   }
 
@@ -2251,6 +2251,14 @@ class Component extends DCLogic {
         return { typed: n };
       });
     }, 55);
+  }
+
+  // Momentary glow on the save badge whenever the mastered set changes, so a
+  // tick registers in the nav without the user having to look for it.
+  flashSave() {
+    if (this._saveFlashT) clearTimeout(this._saveFlashT);
+    this.setState({ saveFlash: true });
+    this._saveFlashT = setTimeout(() => this.setState({ saveFlash: false }), 700);
   }
 
   flashMastery() {
@@ -2647,6 +2655,7 @@ class Component extends DCLogic {
     if (next) m[key] = true; else delete m[key];
     this.persistMastered(m);
     this.flashMastery();
+    this.flashSave();
     const kanjiDone = kk => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every(x => m[x]); };
     const before = DATA.filter(kk => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every(x => st.mastered[x]); }).length;
     if (DATA.filter(kanjiDone).length !== before) {
@@ -3578,6 +3587,7 @@ class Component extends DCLogic {
       loadNow: () => { if (okSyncReady() && st.userEmail) this.pullMastered(); else this.importProgress(); },
       saveDirty: this.isDirty(st),
       saveBtnClass: (this.isDirty(st) || this.hasProgress(st)) ? "ok-navbtn" : "",
+      saveGlow: st.saveFlash ? "0 0 0 1px rgba(8,145,178,.30), 0 0 10px rgba(8,145,178,.40)" : "none",
       saveCursor: (this.isDirty(st) || this.hasProgress(st)) ? "pointer" : "default",
       saveFill: (this.isDirty(st) || this.hasProgress(st)) ? "var(--accent)" : "#9aabb6",
       saveTipBody: (okSyncReady() && st.userEmail) ? "Save your progress to your account" : "Download your progress as a file",
