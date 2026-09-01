@@ -1246,28 +1246,6 @@ const PITCH = {
   "音楽":0,"楽":1,"気楽":0,"楽しい":3,"楽しむ":3,"明日":3,"説明":0,"発明":0,"明るい":3,"意味":1,"世界":1,"運動":0,"動物":1,"荷物":1,"注意":1,"使用":0,"用意":1
 };
 
-const PARTS = {
-  "楽":{p:[["白","white"],["幺","threads"],["木","tree · rad"]],sounds:null},
-  "明":{p:[["日","sun · rad"],["月","moon"]],sounds:null},
-  "音":{p:[["立","stand"],["日","sun"]],sounds:"音 → オン · アン"},
-  "発":{p:[["癶","two feet · rad"]],sounds:null},
-  "表":{p:[["𠂉","worn on top"],["衣","clothes · rad"]],sounds:null},
-  "使":{p:[["亻","person · rad"],["吏","official"]],sounds:"史 → シ"},
-  "用":{p:[["用","use · rad"]],sounds:null},
-  "意":{p:[["音","sound"],["心","heart · rad"]],sounds:null},
-  "味":{p:[["口","mouth · rad"],["未","not yet"]],sounds:"未 → ミ · 妹 味"},
-  "注":{p:[["氵","water · rad"],["主","master"]],sounds:"主 → チュウ · 柱 住"},
-  "主":{p:[["丶","lamp flame"],["王","king · rad"]],sounds:"主 → シュ チュウ ジュウ"},
-  "重":{p:[["千","thousand"],["里","village · rad"]],sounds:"重 → ジュウ ドウ"},
-  "世":{p:[["一","one · rad"]],sounds:null},
-  "界":{p:[["田","field · rad"],["介","go between"]],sounds:"介 → カイ"},
-  "開":{p:[["門","gate · rad"],["开","lifting hands"]],sounds:null},
-  "始":{p:[["女","woman · rad"],["台","platform"]],sounds:null},
-  "転":{p:[["車","vehicle · rad"],["云","say, cloud"]],sounds:null},
-  "運":{p:[["⻌","road · rad"],["軍","army"]],sounds:"軍 → ウン グン"},
-  "動":{p:[["重","heavy"],["力","power · rad"]],sounds:"重 → ドウ"},
-  "物":{p:[["牛","cow · rad"],["勿","must not"]],sounds:"勿 → ブツ モツ"}
-};
 
 // MVP: extra detail for a handful of high-frequency words
 const EXTRA = {
@@ -3782,9 +3760,7 @@ class Component extends DCLogic {
           showRule: ki > 0,
           firstRule: ki === 0,
           open: () => this.openChat(bi, ki),
-          parts: (PARTS[kk.c] || { p: [] }).p.map(pp => ({ glyph: pp[0], gloss: pp[1] })),
           popOpen: st.kHover === bi + ":" + ki && !!st.kRect,
-          hasParts: (PARTS[kk.c] || { p: [] }).p.length > 0,
           cellClass: (() => { const ks = this.allKeys([kk]); return "ok-kcell" + ((ks.length > 0 && ks.every(x => st.mastered[x])) ? " ok-kdone" : ""); })(),
           meanMax: st.conceal ? (st.hoverKanji === kk.c ? "4.4rem" : "0rem") : "4.4rem",
           meanGap: st.conceal ? (st.hoverKanji === kk.c ? ".25rem" : "0rem") : ".25rem",
@@ -4146,26 +4122,6 @@ class Component extends DCLogic {
         return this.allKeys(SET).filter(kx => !st.mastered[kx]).length;
       })(),
       k: { c: k.c, meaning: k.meaning, sentence: k.sentence },
-      parts: (() => {
-        const all = (PARTS[k.c] || {p:[]}).p;
-        const off = Math.min(st.partsPage || 0, Math.max(0, all.length - 3));
-        const rows = all.slice(off, off + 3).map(p => ({ glyph: p[0], gloss: p[1] }));
-        while (rows.length < 3) rows.push({ glyph: "", gloss: "" });
-        return rows;
-      })(),
-      partsPaged: ((PARTS[k.c] || {p:[]}).p.length > 3),
-      partsRange: (() => {
-        const n = (PARTS[k.c] || {p:[]}).p.length;
-        const off = Math.min(st.partsPage || 0, Math.max(0, n - 3));
-        return (off + 1) + "–" + Math.min(off + 3, n) + " / " + n;
-      })(),
-      partsUp: () => this.setState(s => ({ partsPage: Math.max(0, (s.partsPage || 0) - 1) })),
-      partsDown: () => this.setState(s => {
-        const n = (PARTS[DATA[s.sel].c] || {p:[]}).p.length;
-        return { partsPage: Math.min(Math.max(0, n - 3), (s.partsPage || 0) + 1) };
-      }),
-      hasSounds: !!(PARTS[k.c] || {}).sounds,
-      sounds: (PARTS[k.c] || {}).sounds || "—",
       clusters,
       glyphW: (st.glyphW || 0) + "px",
       glyphHalf: ((st.glyphW || 0) / 2) + "px",
@@ -4187,10 +4143,6 @@ class Component extends DCLogic {
       nextFg: "#ffffff",
       quizQuietBg: st.flash === "quiz" ? "rgba(22,78,99,.28)" : "rgba(22,78,99,.09)",
       quizHotBg: st.flash === "quiz" ? "#0e7490" : "#164e63",
-      kanjiPop: st.kpop && ((PARTS[k.c] || { p: [] }).p.length > 0),
-      enterKanji: () => this.setState({ kpop: true }),
-      leaveKanji: () => this.setState({ kpop: false }),
-      kparts: (PARTS[k.c] || { p: [] }).p.map(p => ({ glyph: p[0], gloss: p[1] })),
       dlgOpen: st.dlg,
       openDlg: () => this.setState({ dlg: true }),
       closeDlg: () => this.setState({ dlg: false }),
