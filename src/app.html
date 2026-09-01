@@ -1525,13 +1525,21 @@ class Component extends DCLogic {
   get furiDefault() { return this.props.startFurigana ?? true; }
 
   componentDidMount() {
-    try {
-      const s = JSON.parse(localStorage.getItem("openkanji.seen") || "{}");
-      const m = JSON.parse(localStorage.getItem("openkanji.mastered") || "{}");
-      this.bindKeys();
-      this._savedSig = this.masterSig(m);
-      this.setState({ seen: s, mastered: m, allFuri: this.furiDefault });
-    } catch (e) { this.bindKeys(); this._savedSig = ""; this.setState({ allFuri: this.furiDefault }); }
+    // Each key is parsed on its own: a corrupt `seen` must not take `mastered`
+    // down with it. Returns null (not {}) on failure so a read error is
+    // distinguishable from genuinely-empty progress.
+    const read = (key) => {
+      try { return JSON.parse(localStorage.getItem(key) || "{}") || {}; }
+      catch (e) { return null; }
+    };
+    const s = read("openkanji.seen");
+    const m = read("openkanji.mastered");
+    this.bindKeys();
+    // Leaving _savedSig null when mastered could not be read keeps isDirty()
+    // false, which disables save. Refusing to write is the safe failure: the
+    // alternative overwrites unreadable-but-present progress with {}.
+    this._savedSig = m ? this.masterSig(m) : null;
+    this.setState({ seen: s || {}, mastered: m || {}, allFuri: this.furiDefault });
     this.measureList();
     this.restoreSession();
     this._onResize = () => this.scheduleMeasure();
@@ -3156,8 +3164,6 @@ class Component extends DCLogic {
       setPct: (this.allKeys(DATA).length ? Math.round(this.allKeys(DATA).filter(kx => st.mastered[kx]).length / this.allKeys(DATA).length * 100) : 0) + "%",
       setDone: this.allKeys(DATA).filter(kx => st.mastered[kx]).length,
       setTotal: this.allKeys(DATA).length,
-      kanjiDone: this.allKeys([k]).filter(kx => st.mastered[kx]).length,
-      kanjiTotal: this.allKeys([k]).length,
       masteryFg: st.masteryFlash ? "var(--text-accent)" : "var(--text-muted)",
       masteryFlash: st.masteryFlash, masteryCalm: !st.masteryFlash,
       masteryGlow: st.masteryFlash ? "0 0 0 2px rgba(8,145,178,.35), 0 0 14px rgba(8,145,178,.5)" : "none",
@@ -3175,8 +3181,8 @@ class Component extends DCLogic {
         enter: (e) => { const b = e.currentTarget.getBoundingClientRect(); this.setState({ hint: "kprog", progRect: { left: b.left, right: b.right, top: b.top, bottom: b.bottom } }); },
         leave: () => this.setState({ hint: null, progRect: null })
       },
-      kanjiDone: DATA.filter(kk => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every(x => st.mastered[x]); }).length,
-      kanjiTotal: DATA.length,
+      kanjiDone: this.deckDone(st.deck, st.mastered),
+      kanjiTotal: deckData(st.deck).length,
       kanjiBarGlow: st.kanjiFlash ? "0 0 0 2px rgba(8,145,178,.32), 0 0 14px rgba(8,145,178,.55)" : "none",
       kanjiFg: st.kanjiFlash ? "var(--text-accent-hover)" : "var(--text-accent)",
       kanjiMuted: st.kanjiFlash ? "var(--text-accent)" : "var(--text-muted)",
@@ -3516,13 +3522,17 @@ class Component extends DCLogic {
       saved: st.saved, notSaved: !st.saved,
       saveLabel: st.saved ? "Saved" : "Save",
       saveNow: () => {
+        // Read live state, not the captured `st` snapshot: what gets written to
+        // disk, uploaded, and recorded in _savedSig must be the same map, and
+        // must be the current one.
+        const cur = this.state;
         // Signed out with an email typed in: this button sends the magic link.
-        if (okSyncReady() && !(st.userEmail || this.props.userEmail)) { this.sendMagicLink(st.emailDraft); return; }
-        if (!this.isDirty(st)) return;
-        this.pushMastered(st.mastered);
-        this.persistMastered(st.mastered);
-        this.persist(st.seen);
-        this._savedSig = this.masterSig(st.mastered);
+        if (okSyncReady() && !(cur.userEmail || this.props.userEmail)) { this.sendMagicLink(cur.emailDraft); return; }
+        if (!this.isDirty(cur)) return;
+        this.pushMastered(cur.mastered);
+        this.persistMastered(cur.mastered);
+        this.persist(cur.seen);
+        this._savedSig = this.masterSig(cur.mastered);
         if (this._saveT) clearTimeout(this._saveT);
         this.setState({ saved: true });
         this._saveT = setTimeout(() => this.setState({ saved: false }), 1600);
