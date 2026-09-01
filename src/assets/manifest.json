@@ -1,0 +1,37 @@
+{
+  "63f2ac1d-2a1d-4cc6-a809-2a4dd7d88a84": {
+    "mime": "application/javascript",
+    "compressed": true,
+    "file": "63f2ac1d-2a1d-4cc6-a809-2a4dd7d88a84.js"
+  },
+  "16cd733a-bdca-4fef-89fe-ef51a54bd1f9": {
+    "mime": "text/javascript",
+    "compressed": true,
+    "file": "16cd733a-bdca-4fef-89fe-ef51a54bd1f9.js"
+  },
+  "775b4ed7-6799-4bfa-b74f-8bf3ef0a76d0": {
+    "mime": "text/javascript",
+    "compressed": true,
+    "file": "775b4ed7-6799-4bfa-b74f-8bf3ef0a76d0.js"
+  },
+  "0deda8ba-4442-4fa4-84dc-a758f36e13de": {
+    "mime": "text/javascript",
+    "compressed": true,
+    "file": "0deda8ba-4442-4fa4-84dc-a758f36e13de.js"
+  },
+  "02ef1bc3-cb1e-4784-8c2c-3b0c15ff0e52": {
+    "mime": "font/woff2",
+    "compressed": false,
+    "file": "02ef1bc3-cb1e-4784-8c2c-3b0c15ff0e52.woff2"
+  },
+  "83828325-9348-4106-b74c-8fb6e12a46e2": {
+    "mime": "font/woff2",
+    "compressed": false,
+    "file": "83828325-9348-4106-b74c-8fb6e12a46e2.woff2"
+  },
+  "90f12af8-e5c4-4881-9640-411f1e86ea0e": {
+    "mime": "font/woff2",
+    "compressed": false,
+    "file": "90f12af8-e5c4-4881-9640-411f1e86ea0e.woff2"
+  }
+}
