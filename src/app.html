@@ -485,20 +485,24 @@ a:hover{color:var(--text-accent-hover)}
           </sc-if>
         </div>
 
-        <div class="{{ saveBtnClass }}" sc-camel-on-mouse-enter="{{ tipSaveEnter }}" sc-camel-on-mouse-leave="{{ tipLeave }}" style="position:relative;user-select:none;flex:0 0 15.35rem;height:3.75rem;display:flex;align-items:center;gap:0;padding:0 1rem;border-left:{{ ruleH }} solid var(--cyan-a45);cursor:default">
+        <div class="{{ saveBtnClass }}" sc-camel-on-mouse-enter="{{ tipSaveEnter }}" sc-camel-on-mouse-leave="{{ tipLeave }}" style="position:relative;user-select:none;flex:0 0 13rem;height:3.75rem;display:flex;align-items:center;gap:0;padding:0 1rem;border-left:{{ ruleH }} solid var(--cyan-a45);cursor:default">
           <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ true }}">
             <span style="flex:1 1 auto;min-width:0;height:2.35rem;display:flex;align-items:center;border:1px solid {{ saveFill }};border-right:0;padding:0 .7rem;font-family:var(--font-2);font-size:1rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ userId }}</span>
           </sc-if>
           <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ false }}">
             <input type="email" placeholder="Save Progress" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onEmailKey }}" style="flex:1 1 auto;min-width:0;width:100%;height:2.35rem;box-sizing:border-box;background:transparent;border:1px solid {{ saveFill }};border-right:0;border-radius:0;outline:none;padding:0 .7rem;font-family:var(--font-2);font-size:1rem;color:var(--text-body)"/>
           </sc-if>
+          <sc-if value="{{ showSave }}" hint-placeholder-val="{{ false }}">
           <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
             <span sc-camel-on-click="{{ saveNow }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M5 12.5 L9.5 17 L19 6.5" fill="none" stroke="var(--surface-page)" stroke-width="2.6"></path></svg></span>
           </sc-if>
           <sc-if value="{{ notSaved }}" hint-placeholder-val="{{ true }}">
             <span sc-camel-on-click="{{ saveNow }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M3 3 H17.5 L21 6.5 V21 H3 Z" fill="var(--surface-page)"></path><rect x="8" y="3" width="8" height="6.6" fill="var(--accent)"></rect><rect x="13.1" y="4.2" width="1.9" height="4.2" fill="var(--surface-page)"></rect><rect x="6.4" y="13.2" width="11.2" height="7.8" fill="var(--accent)"></rect></svg></span>
           </sc-if>
+          </sc-if>
+          <sc-if value="{{ showLoad }}" hint-placeholder-val="{{ true }}">
           <span sc-camel-on-click="{{ loadNow }}" title="Load saved progress" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ loadFill }};border-left:0;background:{{ loadFill }};cursor:{{ loadCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M2.5 4.5 H9.2 L11.4 7.2 H19.5 V10.5 H2.5 Z" fill="var(--surface-page)"></path><path d="M2.5 11.6 H22 L19 20.5 H2.5 Z" fill="var(--surface-page)"></path></svg></span>
+          </sc-if>
           <sc-if value="{{ tipSaveOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute;top:100%;right:0;padding-top:.4rem;z-index:70;cursor:default">
               <div style="min-width:17rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column;gap:.4rem;padding:.75rem .9rem">
@@ -3560,8 +3564,10 @@ class Component extends DCLogic {
       userId: (() => {
         if (st.authMsg) return st.authMsg;
         const em = st.userEmail || this.props.userEmail;
-        return em ? String(em).split("@")[0] : "Save Progress";
+        return em ? String(em).split("@")[0] : (st.screen === "home" ? "Load Progress" : "Save Progress");
       })(),
+      showLoad: st.screen === "home",
+      showSave: st.screen !== "home",
       signedOut: okSyncReady() && !(st.userEmail || this.props.userEmail) && !st.authMsg,
       signedIn: !(okSyncReady() && !(st.userEmail || this.props.userEmail) && !st.authMsg),
       emailDraft: st.emailDraft,
