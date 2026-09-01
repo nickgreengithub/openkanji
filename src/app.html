@@ -2,6 +2,8 @@
 <html><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenKanji — JLPT kanji and vocabulary</title>
+<meta name="description" content="Study JLPT kanji and vocabulary by reading group, with example sentences and progress tracking.">
 <script src="16cd733a-bdca-4fef-89fe-ef51a54bd1f9"></script>
 </head>
 <body>
@@ -1809,6 +1811,12 @@ class Component extends DCLogic {
     this.setState({ authBusy: false });
   }
 
+  // True when mastered has changed since the last save. Recomputed from a
+  // signature rather than a flag so it stays correct however state was reached.
+  isDirty(st) {
+    return this._savedSig != null && this.masterSig(st.mastered) !== this._savedSig;
+  }
+
   masterSig(m) {
     const o = m || {};
     return Object.keys(o).filter(k => o[k]).sort().join("|");
@@ -3466,17 +3474,17 @@ class Component extends DCLogic {
       loadFill: (okSyncReady() && (st.userEmail || this.props.userEmail)) ? "var(--accent)" : "#9aabb6",
       loadCursor: (okSyncReady() && (st.userEmail || this.props.userEmail)) ? "pointer" : "default",
       loadNow: () => this.pullMastered(),
-      saveDirty: this._savedSig != null && this.masterSig(st.mastered) !== this._savedSig,
-      saveBtnClass: (this._savedSig != null && this.masterSig(st.mastered) !== this._savedSig) ? "ok-navbtn" : "",
-      saveCursor: (this._savedSig != null && this.masterSig(st.mastered) !== this._savedSig) ? "pointer" : "default",
-      saveFill: (this._savedSig != null && this.masterSig(st.mastered) !== this._savedSig) ? "var(--accent)" : "#9aabb6",
-      saveTipBody: (this._savedSig != null && this.masterSig(st.mastered) !== this._savedSig) ? "Email-only required" : "No changes have been made to mastered words",
+      saveDirty: this.isDirty(st),
+      saveBtnClass: this.isDirty(st) ? "ok-navbtn" : "",
+      saveCursor: this.isDirty(st) ? "pointer" : "default",
+      saveFill: this.isDirty(st) ? "var(--accent)" : "#9aabb6",
+      saveTipBody: this.isDirty(st) ? "Email-only required" : "No changes have been made to mastered words",
       saved: st.saved, notSaved: !st.saved,
       saveLabel: st.saved ? "Saved" : "Save",
       saveNow: () => {
         // Signed out with an email typed in: this button sends the magic link.
         if (okSyncReady() && !(st.userEmail || this.props.userEmail)) { this.sendMagicLink(st.emailDraft); return; }
-        if (!(this._savedSig != null && this.masterSig(st.mastered) !== this._savedSig)) return;
+        if (!this.isDirty(st)) return;
         this.pushMastered(st.mastered);
         this.persistMastered(st.mastered);
         this.persist(st.seen);
