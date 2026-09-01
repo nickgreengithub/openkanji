@@ -498,7 +498,7 @@ a:hover{color:var(--text-accent-hover)}
           <sc-if value="{{ notSaved }}" hint-placeholder-val="{{ true }}">
             <span sc-camel-on-click="{{ saveNow }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M3 3 H17.5 L21 6.5 V21 H3 Z" fill="var(--surface-page)"></path><rect x="8" y="3" width="8" height="6.6" fill="var(--accent)"></rect><rect x="13.1" y="4.2" width="1.9" height="4.2" fill="var(--surface-page)"></rect><rect x="6.4" y="13.2" width="11.2" height="7.8" fill="var(--accent)"></rect></svg></span>
           </sc-if>
-          <span sc-camel-on-click="{{ loadNow }}" title="Load saved progress" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ loadFill }};border-left:0;background:{{ loadFill }};cursor:{{ loadCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--surface-page)" stroke-width="2.4"><path d="M12 3.5 V14.5"></path><path d="M7 10 L12 15 L17 10"></path><path d="M4.5 20 H19.5"></path></svg></span>
+          <span sc-camel-on-click="{{ loadNow }}" title="Load saved progress" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ loadFill }};border-left:0;background:{{ loadFill }};cursor:{{ loadCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M2.5 4.5 H9.2 L11.4 7.2 H19.5 V10.5 H2.5 Z" fill="var(--surface-page)"></path><path d="M2.5 11.6 H22 L19 20.5 H2.5 Z" fill="var(--surface-page)"></path></svg></span>
           <sc-if value="{{ tipSaveOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute;top:100%;right:0;padding-top:.4rem;z-index:70;cursor:default">
               <div style="min-width:17rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column;gap:.4rem;padding:.75rem .9rem">
@@ -1853,6 +1853,62 @@ class Component extends DCLogic {
       }).length;
     }
     return this._doneCache[deck];
+  }
+
+  // Save/Load fall back to a progress file when there is no account to sync
+  // with, so both buttons do something real with no backend configured.
+  exportProgress() {
+    try {
+      const payload = {
+        app: "openkanji", version: 1, exported: new Date().toISOString(),
+        mastered: this.state.mastered || {}, seen: this.state.seen || {}
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "openkanji-progress.json";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      this.flashMsg("Downloaded");
+    } catch (e) { this.flashMsg("Download failed"); }
+  }
+
+  importProgress() {
+    const inp = document.createElement("input");
+    inp.type = "file";
+    inp.accept = "application/json,.json";
+    inp.onchange = () => {
+      const f = inp.files && inp.files[0];
+      if (!f) return;
+      const rd = new FileReader();
+      rd.onload = () => {
+        try {
+          const d = JSON.parse(rd.result);
+          if (!d || typeof d !== "object" || !d.mastered) { this.flashMsg("Not a progress file"); return; }
+          // Union, never replace: importing can only ever add progress.
+          const mastered = okMerge(this.state.mastered, d.mastered);
+          const seen = okMerge(this.state.seen, d.seen);
+          const added = Object.keys(mastered).length - Object.keys(this.state.mastered || {}).length;
+          this.persistMastered(mastered);
+          this.persist(seen);
+          this._savedSig = this.masterSig(mastered);
+          this.setState({ mastered: mastered, seen: seen });
+          this.flashMsg(added > 0 ? "Loaded +" + added : "Already up to date");
+        } catch (e) { this.flashMsg("Not a progress file"); }
+      };
+      rd.readAsText(f);
+    };
+    inp.click();
+  }
+
+  // True once there is any progress worth exporting.
+  hasProgress(st) {
+    const m = st.mastered || {};
+    for (const k in m) if (m[k]) return true;
+    return false;
   }
 
   isDirty(st) {
@@ -3511,14 +3567,14 @@ class Component extends DCLogic {
       emailDraft: st.emailDraft,
       onEmail: (e) => this.setState({ emailDraft: e && e.target ? e.target.value : "" }),
       onEmailKey: (e) => { if (e && e.key === "Enter") this.sendMagicLink(this.state.emailDraft); },
-      loadFill: (okSyncReady() && (st.userEmail || this.props.userEmail)) ? "var(--accent)" : "#9aabb6",
-      loadCursor: (okSyncReady() && (st.userEmail || this.props.userEmail)) ? "pointer" : "default",
-      loadNow: () => this.pullMastered(),
+      loadFill: "var(--accent)",
+      loadCursor: "pointer",
+      loadNow: () => { if (okSyncReady() && st.userEmail) this.pullMastered(); else this.importProgress(); },
       saveDirty: this.isDirty(st),
-      saveBtnClass: this.isDirty(st) ? "ok-navbtn" : "",
-      saveCursor: this.isDirty(st) ? "pointer" : "default",
-      saveFill: this.isDirty(st) ? "var(--accent)" : "#9aabb6",
-      saveTipBody: this.isDirty(st) ? "Email-only required" : "No changes have been made to mastered words",
+      saveBtnClass: (this.isDirty(st) || this.hasProgress(st)) ? "ok-navbtn" : "",
+      saveCursor: (this.isDirty(st) || this.hasProgress(st)) ? "pointer" : "default",
+      saveFill: (this.isDirty(st) || this.hasProgress(st)) ? "var(--accent)" : "#9aabb6",
+      saveTipBody: (okSyncReady() && st.userEmail) ? "Save your progress to your account" : "Download your progress as a file",
       saved: st.saved, notSaved: !st.saved,
       saveLabel: st.saved ? "Saved" : "Save",
       saveNow: () => {
@@ -3528,6 +3584,15 @@ class Component extends DCLogic {
         const cur = this.state;
         // Signed out with an email typed in: this button sends the magic link.
         if (okSyncReady() && !(cur.userEmail || this.props.userEmail)) { this.sendMagicLink(cur.emailDraft); return; }
+        // No account configured: Save exports a progress file instead.
+        if (!okSyncReady() || !cur.userEmail) {
+          if (!this.hasProgress(cur)) { this.flashMsg("Nothing to save yet"); return; }
+          this.persistMastered(cur.mastered);
+          this.persist(cur.seen);
+          this._savedSig = this.masterSig(cur.mastered);
+          this.exportProgress();
+          return;
+        }
         if (!this.isDirty(cur)) return;
         this.pushMastered(cur.mastered);
         this.persistMastered(cur.mastered);
