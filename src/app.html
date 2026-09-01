@@ -1283,8 +1283,28 @@ const EXTRA = {
 // Per-kanji glosses used to break a word down character by character
 // One study set at a time: ten kanji, then the quiz
 const SETN = 10;
-const BATCHES = Math.ceil(DATA.length / SETN);
-const setOf = (b) => DATA.slice(b * SETN, b * SETN + SETN);
+const DEFAULT_DECK = "JLPT N4";
+
+// DATA is the full corpus across every deck. Records predate decks, so one
+// without an explicit `deck` belongs to the default deck.
+const deckNameOf = (k) => k.deck || DEFAULT_DECK;
+
+// Bucketed once at load rather than filtering per render -- the study screens
+// call setOf()/batchCount() on every frame.
+const DECK_INDEX = (() => {
+  const m = {};
+  for (const k of DATA) (m[deckNameOf(k)] = m[deckNameOf(k)] || []).push(k);
+  return m;
+})();
+
+// Kanji in one deck, in corpus order. Unknown deck -> empty, so an unpopulated
+// deck renders as empty rather than throwing.
+const deckData = (deck) => DECK_INDEX[deck || DEFAULT_DECK] || [];
+
+// Display order for the deck rail. A deck with no kanji renders as "coming soon".
+const DECKS = ["JLPT N1", "JLPT N2", "JLPT N3", "JLPT N4", "JLPT N5", "Core 1-1000"];
+const batchCount = (deck) => Math.ceil(deckData(deck).length / SETN);
+const setOf = (b, deck) => deckData(deck).slice(b * SETN, b * SETN + SETN);
 
 
 // Common-vocabulary dictionary for the input method (N5/N4 core, beyond the study set)
@@ -1813,6 +1833,20 @@ class Component extends DCLogic {
 
   // True when mastered has changed since the last save. Recomputed from a
   // signature rather than a flag so it stays correct however state was reached.
+  // Kanji in `deck` with every word mastered. Memoised on the mastered
+  // signature: the deck rail asks once per deck on every render.
+  deckDone(deck, mastered) {
+    const sig = this.masterSig(mastered);
+    if (this._doneSig !== sig) { this._doneSig = sig; this._doneCache = {}; }
+    if (this._doneCache[deck] === undefined) {
+      this._doneCache[deck] = deckData(deck).filter(kk => {
+        const ks = this.allKeys([kk]);
+        return ks.length > 0 && ks.every(x => mastered[x]);
+      }).length;
+    }
+    return this._doneCache[deck];
+  }
+
   isDirty(st) {
     return this._savedSig != null && this.masterSig(st.mastered) !== this._savedSig;
   }
@@ -1829,7 +1863,7 @@ class Component extends DCLogic {
   async ask() {
     if (this.state.lang === "en") return this.askQuestion();
 
-    const k = setOf(this.state.batch)[this.state.sel];
+    const k = setOf(this.state.batch, this.state.deck)[this.state.sel];
     const answer = this.state.draft.trim();
     if (!answer || this.state.loading) return;
     this._typeLen = 0;
@@ -1871,7 +1905,7 @@ class Component extends DCLogic {
   }
 
   async askQuestion() {
-    const k = setOf(this.state.batch)[this.state.sel];
+    const k = setOf(this.state.batch, this.state.deck)[this.state.sel];
     const q = this.state.draft.trim();
     if (!q || this.state.loading) return;
     this._typeLen = 0;
@@ -2067,7 +2101,7 @@ class Component extends DCLogic {
 
   // every route into the chat goes through here so the intro always types
   openChat(bi, ki) {
-    const kk = setOf(bi)[ki];
+    const kk = setOf(bi, this.state.deck)[ki];
     this.setState({ batch: bi, sel: ki, write: true, writeClosing: false, draft: "", sent: "", result: null, history: [], kHover: null, introEgs: null });
     this.makeIntroExamples(kk);
   }
@@ -2744,7 +2778,7 @@ class Component extends DCLogic {
     const CQ = this.cardQueue();
     const gAns = this._gAnswer && this._gAnswer.idx === (this._gIdx !== undefined ? this._gIdx : st.gIdx) ? this._gAnswer.picked : -1;
     const gIdxEff = this._gIdx !== undefined ? this._gIdx : (st.gIdx || 0);
-    const SET = setOf(st.batch);
+    const SET = setOf(st.batch, st.deck);
     const k = SET[st.sel] || SET[0];
     const seenN = Object.keys(st.seen).filter(c => st.seen[c]).length;
 
@@ -3001,8 +3035,8 @@ class Component extends DCLogic {
       batchOpen: st.batchOpen,
       openBatch: () => this.setState({ batchOpen: true }),
       closeBatch: () => this.setState({ batchOpen: false }),
-      batches: Array.from({ length: BATCHES }, (_, b) => {
-        const keys = this.allKeys(setOf(b));
+      batches: Array.from({ length: batchCount(st.deck) }, (_, b) => {
+        const keys = this.allKeys(setOf(b, st.deck));
         const done = keys.filter(kx => st.mastered[kx]).length;
         return {
           label: (b * SETN + 1) + "-" + Math.min((b + 1) * SETN, DATA.length),
@@ -3025,7 +3059,7 @@ class Component extends DCLogic {
       printDeck: () => this.printDeckPdf(),
       openDeck: () => this.setState({ screen: "detail" }),
       homeDeck: st.deck || "JLPT N4",
-      deckTabs: [["JLPT N1", true], ["JLPT N2", true], ["JLPT N3", true], ["JLPT N4", false], ["JLPT N5", true], ["Core 1-1000", true]].map((d, i) => ({
+      deckTabs: DECKS.map((name) => [name, deckData(name).length === 0]).map((d, i) => ({
         name: d[0], soon: d[1],
         tipOpen: st.deckTip === d[0],
         tipEnter: () => { if (this._dtT) clearTimeout(this._dtT); this.setState({ deckTip: d[0] }); },
@@ -3040,11 +3074,11 @@ class Component extends DCLogic {
         })[d[0]],
         barH: (st.deck || "JLPT N4") === d[0] ? "3px" : "0",
         barBg: d[1] ? "var(--cyan-a45)" : "var(--accent)",
-        frac: d[1] ? "—" : DATA.filter(kk => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every(x => st.mastered[x]); }).length + " / " + DATA.length,
-        pct: d[1] ? "0%" : (DATA.length ? Math.round(DATA.filter(kk => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every(x => st.mastered[x]); }).length / DATA.length * 100) : 0) + "%",
+        frac: d[1] ? "—" : this.deckDone(d[0], st.mastered) + " / " + deckData(d[0]).length,
+        pct: d[1] ? "0%" : (deckData(d[0]).length ? Math.round(this.deckDone(d[0], st.mastered) / deckData(d[0]).length * 100) : 0) + "%",
         fg: (st.deck || "JLPT N4") === d[0] ? "var(--text-accent)" : "var(--text-muted)",
         pick: () => { if (d[1]) return; this.setState({ deck: d[0] }); },
-        studyOpacity: d[1] ? .3 : (DATA.length > 0 && DATA.every(kk => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every(x => st.mastered[x]); }) ? .3 : 1),
+        studyOpacity: d[1] ? .3 : (deckData(d[0]).length > 0 && this.deckDone(d[0], st.mastered) === deckData(d[0]).length ? .3 : 1),
         studyPointer: d[1] ? "none" : "auto",
         study: (e) => {
           e.stopPropagation();
@@ -3620,8 +3654,8 @@ class Component extends DCLogic {
         });
       })(),
       listGroups: [],
-      listBatches: Array.from({ length: BATCHES }, (_, bi) => bi).map(bi => {
-        const batchSet = setOf(bi);
+      listBatches: Array.from({ length: batchCount(st.deck) }, (_, bi) => bi).map(bi => {
+        const batchSet = setOf(bi, st.deck);
         const bKeys = this.allKeys(batchSet);
         return {
           label: (bi * SETN + 1) + "-" + Math.min((bi + 1) * SETN, DATA.length) + " 漢字",
