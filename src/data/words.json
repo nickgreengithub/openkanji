@@ -4,7 +4,8 @@
   "w": "生活",
   "reading": "せいかつ",
   "gloss": {
-   "en": "daily life"
+   "en": "daily life",
+   "es": "vida diaria"
   }
  },
  "w0002": {
@@ -12,7 +13,8 @@
   "w": "学生",
   "reading": "がくせい",
   "gloss": {
-   "en": "student"
+   "en": "student",
+   "es": "estudiante"
   }
  },
  "w0003": {
@@ -20,7 +22,8 @@
   "w": "先生",
   "reading": "せんせい",
   "gloss": {
-   "en": "teacher"
+   "en": "teacher",
+   "es": "profesor"
   }
  },
  "w0004": {
@@ -28,7 +31,8 @@
   "w": "生まれる",
   "reading": "うまれる",
   "gloss": {
-   "en": "to be born"
+   "en": "to be born",
+   "es": "nacer"
   }
  },
  "w0005": {
@@ -36,7 +40,8 @@
   "w": "生きる",
   "reading": "いきる",
   "gloss": {
-   "en": "to live"
+   "en": "to live",
+   "es": "vivir"
   }
  },
  "w0006": {
@@ -44,7 +49,8 @@
   "w": "会社",
   "reading": "かいしゃ",
   "gloss": {
-   "en": "company"
+   "en": "company",
+   "es": "empresa"
   }
  },
  "w0007": {
@@ -52,7 +58,8 @@
   "w": "社会",
   "reading": "しゃかい",
   "gloss": {
-   "en": "society"
+   "en": "society",
+   "es": "sociedad"
   }
  },
  "w0008": {
@@ -60,7 +67,8 @@
   "w": "社員",
   "reading": "しゃいん",
   "gloss": {
-   "en": "company employee"
+   "en": "company employee",
+   "es": "empleado de empresa"
   }
  },
  "w0009": {
@@ -68,7 +76,8 @@
   "w": "神社",
   "reading": "じんじゃ",
   "gloss": {
-   "en": "shrine"
+   "en": "shrine",
+   "es": "santuario"
   }
  },
  "w0010": {
@@ -76,7 +85,8 @@
   "w": "開店",
   "reading": "かいてん",
   "gloss": {
-   "en": "store opening"
+   "en": "store opening",
+   "es": "apertura de tienda"
   }
  },
  "w0011": {
@@ -84,7 +94,8 @@
   "w": "店員",
   "reading": "てんいん",
   "gloss": {
-   "en": "shop assistant"
+   "en": "shop assistant",
+   "es": "dependiente"
   }
  },
  "w0012": {
@@ -92,7 +103,8 @@
   "w": "売店",
   "reading": "ばいてん",
   "gloss": {
-   "en": "kiosk"
+   "en": "kiosk",
+   "es": "quiosco"
   }
  },
  "w0013": {
@@ -100,7 +112,8 @@
   "w": "店",
   "reading": "みせ",
   "gloss": {
-   "en": "shop"
+   "en": "shop",
+   "es": "tienda"
   }
  },
  "w0014": {
@@ -108,7 +121,8 @@
   "w": "売買",
   "reading": "ばいばい",
   "gloss": {
-   "en": "trade"
+   "en": "trade",
+   "es": "comercio"
   }
  },
  "w0015": {
@@ -116,7 +130,8 @@
   "w": "売る",
   "reading": "うる",
   "gloss": {
-   "en": "to sell"
+   "en": "to sell",
+   "es": "vender"
   }
  },
  "w0016": {
@@ -124,7 +139,8 @@
   "w": "売り切れ",
   "reading": "うりきれ",
   "gloss": {
-   "en": "sold out"
+   "en": "sold out",
+   "es": "agotado"
   }
  },
  "w0017": {
@@ -132,7 +148,8 @@
   "w": "購買",
   "reading": "こうばい",
   "gloss": {
-   "en": "purchase"
+   "en": "purchase",
+   "es": "compra"
   }
  },
  "w0018": {
@@ -140,7 +157,8 @@
   "w": "買う",
   "reading": "かう",
   "gloss": {
-   "en": "to buy"
+   "en": "to buy",
+   "es": "comprar"
   }
  },
  "w0019": {
@@ -148,7 +166,8 @@
   "w": "買い物",
   "reading": "かいもの",
   "gloss": {
-   "en": "shopping"
+   "en": "shopping",
+   "es": "compras"
   }
  },
  "w0020": {
@@ -156,7 +175,8 @@
   "w": "五分",
   "reading": "ごふん",
   "gloss": {
-   "en": "five minutes"
+   "en": "five minutes",
+   "es": "cinco minutos"
   }
  },
  "w0021": {
@@ -164,7 +184,8 @@
   "w": "何分",
   "reading": "なんぷん",
   "gloss": {
-   "en": "how many minutes"
+   "en": "how many minutes",
+   "es": "cuántos minutos"
   }
  },
  "w0022": {
@@ -172,7 +193,8 @@
   "w": "自分",
   "reading": "じぶん",
   "gloss": {
-   "en": "oneself"
+   "en": "oneself",
+   "es": "uno mismo"
   }
  },
  "w0023": {
@@ -180,7 +202,8 @@
   "w": "半分",
   "reading": "はんぶん",
   "gloss": {
-   "en": "half"
+   "en": "half",
+   "es": "mitad"
   }
  },
  "w0024": {
@@ -188,7 +211,8 @@
   "w": "分かる",
   "reading": "わかる",
   "gloss": {
-   "en": "to understand"
+   "en": "to understand",
+   "es": "entender"
   }
  },
  "w0025": {
@@ -196,7 +220,8 @@
   "w": "分ける",
   "reading": "わける",
   "gloss": {
-   "en": "to divide"
+   "en": "to divide",
+   "es": "dividir"
   }
  },
  "w0026": {
@@ -204,7 +229,8 @@
   "w": "時間",
   "reading": "じかん",
   "gloss": {
-   "en": "time"
+   "en": "time",
+   "es": "tiempo"
   }
  },
  "w0027": {
@@ -212,7 +238,8 @@
   "w": "時計",
   "reading": "とけい",
   "gloss": {
-   "en": "clock"
+   "en": "clock",
+   "es": "reloj"
   }
  },
  "w0028": {
@@ -220,7 +247,8 @@
   "w": "同時",
   "reading": "どうじ",
   "gloss": {
-   "en": "at the same time"
+   "en": "at the same time",
+   "es": "al mismo tiempo"
   }
  },
  "w0029": {
@@ -228,7 +256,8 @@
   "w": "時",
   "reading": "とき",
   "gloss": {
-   "en": "time, when"
+   "en": "time, when",
+   "es": "momento, cuando"
   }
  },
  "w0030": {
@@ -236,7 +265,8 @@
   "w": "人間",
   "reading": "にんげん",
   "gloss": {
-   "en": "human being"
+   "en": "human being",
+   "es": "ser humano"
   }
  },
  "w0031": {
@@ -244,7 +274,8 @@
   "w": "空間",
   "reading": "くうかん",
   "gloss": {
-   "en": "space"
+   "en": "space",
+   "es": "espacio"
   }
  },
  "w0032": {
@@ -252,7 +283,8 @@
   "w": "間",
   "reading": "あいだ",
   "gloss": {
-   "en": "interval, between"
+   "en": "interval, between",
+   "es": "intervalo, entre"
   }
  },
  "w0033": {
@@ -260,7 +292,8 @@
   "w": "間違い",
   "reading": "まちがい",
   "gloss": {
-   "en": "mistake"
+   "en": "mistake",
+   "es": "error"
   }
  },
  "w0034": {
@@ -268,7 +301,8 @@
   "w": "一",
   "reading": "いち",
   "gloss": {
-   "en": "one"
+   "en": "one",
+   "es": "uno"
   }
  },
  "w0035": {
@@ -276,7 +310,8 @@
   "w": "一つ",
   "reading": "ひとつ",
   "gloss": {
-   "en": "one thing"
+   "en": "one thing",
+   "es": "una cosa"
   }
  },
  "w0036": {
@@ -284,7 +319,8 @@
   "w": "一人",
   "reading": "ひとり",
   "gloss": {
-   "en": "one person, alone"
+   "en": "one person, alone",
+   "es": "una persona, solo"
   }
  },
  "w0037": {
@@ -292,7 +328,8 @@
   "w": "二",
   "reading": "に",
   "gloss": {
-   "en": "two"
+   "en": "two",
+   "es": "dos"
   }
  },
  "w0038": {
@@ -300,7 +337,8 @@
   "w": "二つ",
   "reading": "ふたつ",
   "gloss": {
-   "en": "two things"
+   "en": "two things",
+   "es": "dos cosas"
   }
  },
  "w0039": {
@@ -308,7 +346,8 @@
   "w": "二人",
   "reading": "ふたり",
   "gloss": {
-   "en": "two people"
+   "en": "two people",
+   "es": "dos personas"
   }
  },
  "w0040": {
@@ -316,7 +355,8 @@
   "w": "三",
   "reading": "さん",
   "gloss": {
-   "en": "three"
+   "en": "three",
+   "es": "tres"
   }
  },
  "w0041": {
@@ -324,7 +364,8 @@
   "w": "三人",
   "reading": "さんにん",
   "gloss": {
-   "en": "three people"
+   "en": "three people",
+   "es": "tres personas"
   }
  },
  "w0042": {
@@ -332,7 +373,8 @@
   "w": "三つ",
   "reading": "みっつ",
   "gloss": {
-   "en": "three things"
+   "en": "three things",
+   "es": "tres cosas"
   }
  },
  "w0043": {
@@ -340,7 +382,8 @@
   "w": "四",
   "reading": "し",
   "gloss": {
-   "en": "four"
+   "en": "four",
+   "es": "cuatro"
   }
  },
  "w0044": {
@@ -348,7 +391,8 @@
   "w": "四月",
   "reading": "しがつ",
   "gloss": {
-   "en": "April"
+   "en": "April",
+   "es": "abril"
   }
  },
  "w0045": {
@@ -356,7 +400,8 @@
   "w": "四つ",
   "reading": "よっつ",
   "gloss": {
-   "en": "four things"
+   "en": "four things",
+   "es": "cuatro cosas"
   }
  },
  "w0046": {
@@ -364,7 +409,8 @@
   "w": "五",
   "reading": "ご",
   "gloss": {
-   "en": "five"
+   "en": "five",
+   "es": "cinco"
   }
  },
  "w0047": {
@@ -372,7 +418,8 @@
   "w": "五月",
   "reading": "ごがつ",
   "gloss": {
-   "en": "May"
+   "en": "May",
+   "es": "mayo"
   }
  },
  "w0048": {
@@ -380,7 +427,8 @@
   "w": "五つ",
   "reading": "いつつ",
   "gloss": {
-   "en": "five things"
+   "en": "five things",
+   "es": "cinco cosas"
   }
  },
  "w0049": {
@@ -388,7 +436,8 @@
   "w": "六",
   "reading": "ろく",
   "gloss": {
-   "en": "six"
+   "en": "six",
+   "es": "seis"
   }
  },
  "w0050": {
@@ -396,7 +445,8 @@
   "w": "六月",
   "reading": "ろくがつ",
   "gloss": {
-   "en": "June"
+   "en": "June",
+   "es": "junio"
   }
  },
  "w0051": {
@@ -404,7 +454,8 @@
   "w": "六つ",
   "reading": "むっつ",
   "gloss": {
-   "en": "six things"
+   "en": "six things",
+   "es": "seis cosas"
   }
  },
  "w0052": {
@@ -412,7 +463,8 @@
   "w": "七月",
   "reading": "しちがつ",
   "gloss": {
-   "en": "July"
+   "en": "July",
+   "es": "julio"
   }
  },
  "w0053": {
@@ -420,7 +472,8 @@
   "w": "七",
   "reading": "なな",
   "gloss": {
-   "en": "seven"
+   "en": "seven",
+   "es": "siete"
   }
  },
  "w0054": {
@@ -428,7 +481,8 @@
   "w": "七つ",
   "reading": "ななつ",
   "gloss": {
-   "en": "seven things"
+   "en": "seven things",
+   "es": "siete cosas"
   }
  },
  "w0055": {
@@ -436,7 +490,8 @@
   "w": "八",
   "reading": "はち",
   "gloss": {
-   "en": "eight"
+   "en": "eight",
+   "es": "ocho"
   }
  },
  "w0056": {
@@ -444,7 +499,8 @@
   "w": "八月",
   "reading": "はちがつ",
   "gloss": {
-   "en": "August"
+   "en": "August",
+   "es": "agosto"
   }
  },
  "w0057": {
@@ -452,7 +508,8 @@
   "w": "八つ",
   "reading": "やっつ",
   "gloss": {
-   "en": "eight things"
+   "en": "eight things",
+   "es": "ocho cosas"
   }
  },
  "w0058": {
@@ -460,7 +517,8 @@
   "w": "九",
   "reading": "きゅう",
   "gloss": {
-   "en": "nine"
+   "en": "nine",
+   "es": "nueve"
   }
  },
  "w0059": {
@@ -468,7 +526,8 @@
   "w": "九月",
   "reading": "くがつ",
   "gloss": {
-   "en": "September"
+   "en": "September",
+   "es": "septiembre"
   }
  },
  "w0060": {
@@ -476,7 +535,8 @@
   "w": "九つ",
   "reading": "ここのつ",
   "gloss": {
-   "en": "nine things"
+   "en": "nine things",
+   "es": "nueve cosas"
   }
  },
  "w0061": {
@@ -484,7 +544,8 @@
   "w": "十",
   "reading": "じゅう",
   "gloss": {
-   "en": "ten"
+   "en": "ten",
+   "es": "diez"
   }
  },
  "w0062": {
@@ -492,7 +553,8 @@
   "w": "十月",
   "reading": "じゅうがつ",
   "gloss": {
-   "en": "October"
+   "en": "October",
+   "es": "octubre"
   }
  },
  "w0063": {
@@ -500,7 +562,8 @@
   "w": "十日",
   "reading": "とおか",
   "gloss": {
-   "en": "tenth day"
+   "en": "tenth day",
+   "es": "décimo día"
   }
  },
  "w0064": {
@@ -508,7 +571,8 @@
   "w": "百",
   "reading": "ひゃく",
   "gloss": {
-   "en": "hundred"
+   "en": "hundred",
+   "es": "cien"
   }
  },
  "w0065": {
@@ -516,7 +580,8 @@
   "w": "百円",
   "reading": "ひゃくえん",
   "gloss": {
-   "en": "hundred yen"
+   "en": "hundred yen",
+   "es": "cien yenes"
   }
  },
  "w0066": {
@@ -524,7 +589,8 @@
   "w": "千",
   "reading": "せん",
   "gloss": {
-   "en": "thousand"
+   "en": "thousand",
+   "es": "mil"
   }
  },
  "w0067": {
@@ -532,7 +598,8 @@
   "w": "千円",
   "reading": "せんえん",
   "gloss": {
-   "en": "thousand yen"
+   "en": "thousand yen",
+   "es": "mil yenes"
   }
  },
  "w0068": {
@@ -540,7 +607,8 @@
   "w": "万",
   "reading": "まん",
   "gloss": {
-   "en": "ten thousand"
+   "en": "ten thousand",
+   "es": "diez mil"
   }
  },
  "w0069": {
@@ -548,7 +616,8 @@
   "w": "一万円",
   "reading": "いちまんえん",
   "gloss": {
-   "en": "ten thousand yen"
+   "en": "ten thousand yen",
+   "es": "diez mil yenes"
   }
  },
  "w0070": {
@@ -556,7 +625,8 @@
   "w": "円",
   "reading": "えん",
   "gloss": {
-   "en": "yen, circle"
+   "en": "yen, circle",
+   "es": "yen, círculo"
   }
  },
  "w0071": {
@@ -564,7 +634,8 @@
   "w": "毎日",
   "reading": "まいにち",
   "gloss": {
-   "en": "every day"
+   "en": "every day",
+   "es": "todos los días"
   }
  },
  "w0072": {
@@ -572,7 +643,8 @@
   "w": "日曜日",
   "reading": "にちようび",
   "gloss": {
-   "en": "Sunday"
+   "en": "Sunday",
+   "es": "domingo"
   }
  },
  "w0073": {
@@ -580,7 +652,8 @@
   "w": "日本",
   "reading": "にほん",
   "gloss": {
-   "en": "Japan"
+   "en": "Japan",
+   "es": "Japón"
   }
  },
  "w0074": {
@@ -588,7 +661,8 @@
   "w": "日",
   "reading": "ひ",
   "gloss": {
-   "en": "sun, day"
+   "en": "sun, day",
+   "es": "sol, día"
   }
  },
  "w0075": {
@@ -596,7 +670,8 @@
   "w": "月曜日",
   "reading": "げつようび",
   "gloss": {
-   "en": "Monday"
+   "en": "Monday",
+   "es": "lunes"
   }
  },
  "w0076": {
@@ -604,7 +679,8 @@
   "w": "一月",
   "reading": "いちがつ",
   "gloss": {
-   "en": "January"
+   "en": "January",
+   "es": "enero"
   }
  },
  "w0077": {
@@ -612,7 +688,8 @@
   "w": "月",
   "reading": "つき",
   "gloss": {
-   "en": "moon, month"
+   "en": "moon, month",
+   "es": "luna, mes"
   }
  },
  "w0078": {
@@ -620,7 +697,8 @@
   "w": "火曜日",
   "reading": "かようび",
   "gloss": {
-   "en": "Tuesday"
+   "en": "Tuesday",
+   "es": "martes"
   }
  },
  "w0079": {
@@ -628,7 +706,8 @@
   "w": "火",
   "reading": "ひ",
   "gloss": {
-   "en": "fire"
+   "en": "fire",
+   "es": "fuego"
   }
  },
  "w0080": {
@@ -636,7 +715,8 @@
   "w": "水曜日",
   "reading": "すいようび",
   "gloss": {
-   "en": "Wednesday"
+   "en": "Wednesday",
+   "es": "miércoles"
   }
  },
  "w0081": {
@@ -644,7 +724,8 @@
   "w": "水",
   "reading": "みず",
   "gloss": {
-   "en": "water"
+   "en": "water",
+   "es": "agua"
   }
  },
  "w0082": {
@@ -652,7 +733,8 @@
   "w": "木曜日",
   "reading": "もくようび",
   "gloss": {
-   "en": "Thursday"
+   "en": "Thursday",
+   "es": "jueves"
   }
  },
  "w0083": {
@@ -660,7 +742,8 @@
   "w": "木",
   "reading": "き",
   "gloss": {
-   "en": "tree, wood"
+   "en": "tree, wood",
+   "es": "árbol, madera"
   }
  },
  "w0084": {
@@ -668,7 +751,8 @@
   "w": "金曜日",
   "reading": "きんようび",
   "gloss": {
-   "en": "Friday"
+   "en": "Friday",
+   "es": "viernes"
   }
  },
  "w0085": {
@@ -676,7 +760,8 @@
   "w": "金",
   "reading": "きん",
   "gloss": {
-   "en": "gold"
+   "en": "gold",
+   "es": "oro"
   }
  },
  "w0086": {
@@ -684,7 +769,8 @@
   "w": "お金",
   "reading": "おかね",
   "gloss": {
-   "en": "money"
+   "en": "money",
+   "es": "dinero"
   }
  },
  "w0087": {
@@ -692,7 +778,8 @@
   "w": "土曜日",
   "reading": "どようび",
   "gloss": {
-   "en": "Saturday"
+   "en": "Saturday",
+   "es": "sábado"
   }
  },
  "w0088": {
@@ -700,7 +787,8 @@
   "w": "土",
   "reading": "つち",
   "gloss": {
-   "en": "earth, soil"
+   "en": "earth, soil",
+   "es": "tierra"
   }
  },
  "w0089": {
@@ -708,7 +796,8 @@
   "w": "曜日",
   "reading": "ようび",
   "gloss": {
-   "en": "day of the week"
+   "en": "day of the week",
+   "es": "día de la semana"
   }
  },
  "w0090": {
@@ -716,7 +805,8 @@
   "w": "何曜日",
   "reading": "なんようび",
   "gloss": {
-   "en": "what day of the week"
+   "en": "what day of the week",
+   "es": "qué día de la semana"
   }
  },
  "w0091": {
@@ -724,7 +814,8 @@
   "w": "去年",
   "reading": "きょねん",
   "gloss": {
-   "en": "last year"
+   "en": "last year",
+   "es": "el año pasado"
   }
  },
  "w0092": {
@@ -732,7 +823,8 @@
   "w": "来年",
   "reading": "らいねん",
   "gloss": {
-   "en": "next year"
+   "en": "next year",
+   "es": "el próximo año"
   }
  },
  "w0093": {
@@ -740,7 +832,8 @@
   "w": "年",
   "reading": "とし",
   "gloss": {
-   "en": "year"
+   "en": "year",
+   "es": "año"
   }
  },
  "w0094": {
@@ -748,7 +841,8 @@
   "w": "半",
   "reading": "はん",
   "gloss": {
-   "en": "half"
+   "en": "half",
+   "es": "mitad"
   }
  },
  "w0095": {
@@ -756,7 +850,8 @@
   "w": "今",
   "reading": "いま",
   "gloss": {
-   "en": "now"
+   "en": "now",
+   "es": "ahora"
   }
  },
  "w0096": {
@@ -764,7 +859,8 @@
   "w": "今日",
   "reading": "きょう",
   "gloss": {
-   "en": "today"
+   "en": "today",
+   "es": "hoy"
   }
  },
  "w0097": {
@@ -772,7 +868,8 @@
   "w": "今年",
   "reading": "ことし",
   "gloss": {
-   "en": "this year"
+   "en": "this year",
+   "es": "este año"
   }
  },
  "w0098": {
@@ -780,7 +877,8 @@
   "w": "上手",
   "reading": "じょうず",
   "gloss": {
-   "en": "skillful"
+   "en": "skillful",
+   "es": "hábil"
   }
  },
  "w0099": {
@@ -788,7 +886,8 @@
   "w": "上",
   "reading": "うえ",
   "gloss": {
-   "en": "up, above"
+   "en": "up, above",
+   "es": "arriba"
   }
  },
  "w0100": {
@@ -796,7 +895,8 @@
   "w": "下",
   "reading": "した",
   "gloss": {
-   "en": "down, below"
+   "en": "down, below",
+   "es": "abajo"
   }
  },
  "w0101": {
@@ -804,7 +904,8 @@
   "w": "下手",
   "reading": "へた",
   "gloss": {
-   "en": "unskillful"
+   "en": "unskillful",
+   "es": "torpe"
   }
  },
  "w0102": {
@@ -812,7 +913,8 @@
   "w": "中国",
   "reading": "ちゅうごく",
   "gloss": {
-   "en": "China"
+   "en": "China",
+   "es": "China"
   }
  },
  "w0103": {
@@ -820,7 +922,8 @@
   "w": "中",
   "reading": "なか",
   "gloss": {
-   "en": "middle, inside"
+   "en": "middle, inside",
+   "es": "medio, dentro"
   }
  },
  "w0104": {
@@ -828,7 +931,8 @@
   "w": "外国人",
   "reading": "がいこくじん",
   "gloss": {
-   "en": "foreigner"
+   "en": "foreigner",
+   "es": "extranjero"
   }
  },
  "w0105": {
@@ -836,7 +940,8 @@
   "w": "人気",
   "reading": "にんき",
   "gloss": {
-   "en": "popularity"
+   "en": "popularity",
+   "es": "popularidad"
   }
  },
  "w0106": {
@@ -844,7 +949,8 @@
   "w": "人",
   "reading": "ひと",
   "gloss": {
-   "en": "person"
+   "en": "person",
+   "es": "persona"
   }
  },
  "w0107": {
@@ -852,7 +958,8 @@
   "w": "男性",
   "reading": "だんせい",
   "gloss": {
-   "en": "male"
+   "en": "male",
+   "es": "masculino"
   }
  },
  "w0108": {
@@ -860,7 +967,8 @@
   "w": "男",
   "reading": "おとこ",
   "gloss": {
-   "en": "man"
+   "en": "man",
+   "es": "hombre"
   }
  },
  "w0109": {
@@ -868,7 +976,8 @@
   "w": "男の子",
   "reading": "おとこのこ",
   "gloss": {
-   "en": "boy"
+   "en": "boy",
+   "es": "niño"
   }
  },
  "w0110": {
@@ -876,7 +985,8 @@
   "w": "女性",
   "reading": "じょせい",
   "gloss": {
-   "en": "female"
+   "en": "female",
+   "es": "femenino"
   }
  },
  "w0111": {
@@ -884,7 +994,8 @@
   "w": "女",
   "reading": "おんな",
   "gloss": {
-   "en": "woman"
+   "en": "woman",
+   "es": "mujer"
   }
  },
  "w0112": {
@@ -892,7 +1003,8 @@
   "w": "女の子",
   "reading": "おんなのこ",
   "gloss": {
-   "en": "girl"
+   "en": "girl",
+   "es": "niña"
   }
  },
  "w0113": {
@@ -900,7 +1012,8 @@
   "w": "椅子",
   "reading": "いす",
   "gloss": {
-   "en": "chair"
+   "en": "chair",
+   "es": "silla"
   }
  },
  "w0114": {
@@ -908,7 +1021,8 @@
   "w": "子",
   "reading": "こ",
   "gloss": {
-   "en": "child"
+   "en": "child",
+   "es": "niño"
   }
  },
  "w0115": {
@@ -916,7 +1030,8 @@
   "w": "子ども",
   "reading": "こども",
   "gloss": {
-   "en": "child, kids"
+   "en": "child, kids",
+   "es": "niño, hijos"
   }
  },
  "w0116": {
@@ -924,7 +1039,8 @@
   "w": "父母",
   "reading": "ふぼ",
   "gloss": {
-   "en": "parents"
+   "en": "parents",
+   "es": "padres"
   }
  },
  "w0117": {
@@ -932,7 +1048,8 @@
   "w": "父",
   "reading": "ちち",
   "gloss": {
-   "en": "father"
+   "en": "father",
+   "es": "padre"
   }
  },
  "w0118": {
@@ -940,7 +1057,8 @@
   "w": "お父さん",
   "reading": "おとうさん",
   "gloss": {
-   "en": "father (polite)"
+   "en": "father (polite)",
+   "es": "padre (cortés)"
   }
  },
  "w0119": {
@@ -948,7 +1066,8 @@
   "w": "母",
   "reading": "はは",
   "gloss": {
-   "en": "mother"
+   "en": "mother",
+   "es": "madre"
   }
  },
  "w0120": {
@@ -956,7 +1075,8 @@
   "w": "お母さん",
   "reading": "おかあさん",
   "gloss": {
-   "en": "mother (polite)"
+   "en": "mother (polite)",
+   "es": "madre (cortés)"
   }
  },
  "w0121": {
@@ -964,7 +1084,8 @@
   "w": "友人",
   "reading": "ゆうじん",
   "gloss": {
-   "en": "friend (formal)"
+   "en": "friend (formal)",
+   "es": "amigo (formal)"
   }
  },
  "w0122": {
@@ -972,7 +1093,8 @@
   "w": "友だち",
   "reading": "ともだち",
   "gloss": {
-   "en": "friend"
+   "en": "friend",
+   "es": "amigo"
   }
  },
  "w0123": {
@@ -980,7 +1102,8 @@
   "w": "先週",
   "reading": "せんしゅう",
   "gloss": {
-   "en": "last week"
+   "en": "last week",
+   "es": "la semana pasada"
   }
  },
  "w0124": {
@@ -988,7 +1111,8 @@
   "w": "先",
   "reading": "さき",
   "gloss": {
-   "en": "ahead, previous"
+   "en": "ahead, previous",
+   "es": "delante, anterior"
   }
  },
  "w0125": {
@@ -996,7 +1120,8 @@
   "w": "大学",
   "reading": "だいがく",
   "gloss": {
-   "en": "university"
+   "en": "university",
+   "es": "universidad"
   }
  },
  "w0126": {
@@ -1004,7 +1129,8 @@
   "w": "学ぶ",
   "reading": "まなぶ",
   "gloss": {
-   "en": "to study, to learn"
+   "en": "to study, to learn",
+   "es": "estudiar, aprender"
   }
  },
  "w0127": {
@@ -1012,7 +1138,8 @@
   "w": "学校",
   "reading": "がっこう",
   "gloss": {
-   "en": "school"
+   "en": "school",
+   "es": "escuela"
   }
  },
  "w0128": {
@@ -1020,7 +1147,8 @@
   "w": "高校",
   "reading": "こうこう",
   "gloss": {
-   "en": "high school"
+   "en": "high school",
+   "es": "instituto"
   }
  },
  "w0129": {
@@ -1028,7 +1156,8 @@
   "w": "高い",
   "reading": "たかい",
   "gloss": {
-   "en": "high, expensive"
+   "en": "high, expensive",
+   "es": "alto, caro"
   }
  },
  "w0130": {
@@ -1036,7 +1165,8 @@
   "w": "大切",
   "reading": "たいせつ",
   "gloss": {
-   "en": "important"
+   "en": "important",
+   "es": "importante"
   }
  },
  "w0131": {
@@ -1044,7 +1174,8 @@
   "w": "大きい",
   "reading": "おおきい",
   "gloss": {
-   "en": "big, large"
+   "en": "big, large",
+   "es": "grande"
   }
  },
  "w0132": {
@@ -1052,7 +1183,8 @@
   "w": "小学校",
   "reading": "しょうがっこう",
   "gloss": {
-   "en": "primary school"
+   "en": "primary school",
+   "es": "escuela primaria"
   }
  },
  "w0133": {
@@ -1060,7 +1192,8 @@
   "w": "小さい",
   "reading": "ちいさい",
   "gloss": {
-   "en": "small, little"
+   "en": "small, little",
+   "es": "pequeño"
   }
  },
  "w0134": {
@@ -1068,7 +1201,8 @@
   "w": "社長",
   "reading": "しゃちょう",
   "gloss": {
-   "en": "company president"
+   "en": "company president",
+   "es": "presidente de la empresa"
   }
  },
  "w0135": {
@@ -1076,7 +1210,8 @@
   "w": "長い",
   "reading": "ながい",
   "gloss": {
-   "en": "long"
+   "en": "long",
+   "es": "largo"
   }
  },
  "w0136": {
@@ -1084,7 +1219,8 @@
   "w": "白紙",
   "reading": "はくし",
   "gloss": {
-   "en": "blank paper"
+   "en": "blank paper",
+   "es": "papel en blanco"
   }
  },
  "w0137": {
@@ -1092,7 +1228,8 @@
   "w": "白",
   "reading": "しろ",
   "gloss": {
-   "en": "white"
+   "en": "white",
+   "es": "blanco"
   }
  },
  "w0138": {
@@ -1100,7 +1237,8 @@
   "w": "白い",
   "reading": "しろい",
   "gloss": {
-   "en": "white"
+   "en": "white",
+   "es": "blanco"
   }
  },
  "w0139": {
@@ -1108,7 +1246,8 @@
   "w": "富士山",
   "reading": "ふじさん",
   "gloss": {
-   "en": "Mount Fuji"
+   "en": "Mount Fuji",
+   "es": "monte Fuji"
   }
  },
  "w0140": {
@@ -1116,7 +1255,8 @@
   "w": "山",
   "reading": "やま",
   "gloss": {
-   "en": "mountain"
+   "en": "mountain",
+   "es": "montaña"
   }
  },
  "w0141": {
@@ -1124,7 +1264,8 @@
   "w": "川",
   "reading": "かわ",
   "gloss": {
-   "en": "river"
+   "en": "river",
+   "es": "río"
   }
  },
  "w0142": {
@@ -1132,7 +1273,8 @@
   "w": "天気",
   "reading": "てんき",
   "gloss": {
-   "en": "weather"
+   "en": "weather",
+   "es": "tiempo"
   }
  },
  "w0143": {
@@ -1140,7 +1282,8 @@
   "w": "天",
   "reading": "てん",
   "gloss": {
-   "en": "heaven, sky"
+   "en": "heaven, sky",
+   "es": "cielo"
   }
  },
  "w0144": {
@@ -1148,7 +1291,8 @@
   "w": "元気",
   "reading": "げんき",
   "gloss": {
-   "en": "healthy, energetic"
+   "en": "healthy, energetic",
+   "es": "sano, enérgico"
   }
  },
  "w0145": {
@@ -1156,7 +1300,8 @@
   "w": "雨天",
   "reading": "うてん",
   "gloss": {
-   "en": "rainy weather"
+   "en": "rainy weather",
+   "es": "tiempo lluvioso"
   }
  },
  "w0146": {
@@ -1164,7 +1309,8 @@
   "w": "雨",
   "reading": "あめ",
   "gloss": {
-   "en": "rain"
+   "en": "rain",
+   "es": "lluvia"
   }
  },
  "w0147": {
@@ -1172,7 +1318,8 @@
   "w": "電車",
   "reading": "でんしゃ",
   "gloss": {
-   "en": "train"
+   "en": "train",
+   "es": "tren"
   }
  },
  "w0148": {
@@ -1180,7 +1327,8 @@
   "w": "電話",
   "reading": "でんわ",
   "gloss": {
-   "en": "telephone"
+   "en": "telephone",
+   "es": "teléfono"
   }
  },
  "w0149": {
@@ -1188,7 +1336,8 @@
   "w": "自転車",
   "reading": "じてんしゃ",
   "gloss": {
-   "en": "bicycle"
+   "en": "bicycle",
+   "es": "bicicleta"
   }
  },
  "w0150": {
@@ -1196,7 +1345,8 @@
   "w": "車",
   "reading": "くるま",
   "gloss": {
-   "en": "car"
+   "en": "car",
+   "es": "coche"
   }
  },
  "w0151": {
@@ -1204,7 +1354,8 @@
   "w": "駅",
   "reading": "えき",
   "gloss": {
-   "en": "station"
+   "en": "station",
+   "es": "estación"
   }
  },
  "w0152": {
@@ -1212,7 +1363,8 @@
   "w": "駅員",
   "reading": "えきいん",
   "gloss": {
-   "en": "station attendant"
+   "en": "station attendant",
+   "es": "empleado de estación"
   }
  },
  "w0153": {
@@ -1220,7 +1372,8 @@
   "w": "外国",
   "reading": "がいこく",
   "gloss": {
-   "en": "foreign country"
+   "en": "foreign country",
+   "es": "país extranjero"
   }
  },
  "w0154": {
@@ -1228,7 +1381,8 @@
   "w": "国",
   "reading": "くに",
   "gloss": {
-   "en": "country"
+   "en": "country",
+   "es": "país"
   }
  },
  "w0155": {
@@ -1236,7 +1390,8 @@
   "w": "日本語",
   "reading": "にほんご",
   "gloss": {
-   "en": "Japanese language"
+   "en": "Japanese language",
+   "es": "idioma japonés"
   }
  },
  "w0156": {
@@ -1244,7 +1399,8 @@
   "w": "単語",
   "reading": "たんご",
   "gloss": {
-   "en": "word"
+   "en": "word",
+   "es": "palabra"
   }
  },
  "w0157": {
@@ -1252,7 +1408,8 @@
   "w": "会話",
   "reading": "かいわ",
   "gloss": {
-   "en": "conversation"
+   "en": "conversation",
+   "es": "conversación"
   }
  },
  "w0158": {
@@ -1260,7 +1417,8 @@
   "w": "話す",
   "reading": "はなす",
   "gloss": {
-   "en": "to talk, to speak"
+   "en": "to talk, to speak",
+   "es": "hablar"
   }
  },
  "w0159": {
@@ -1268,7 +1426,8 @@
   "w": "読書",
   "reading": "どくしょ",
   "gloss": {
-   "en": "reading"
+   "en": "reading",
+   "es": "lectura"
   }
  },
  "w0160": {
@@ -1276,7 +1435,8 @@
   "w": "読む",
   "reading": "よむ",
   "gloss": {
-   "en": "to read"
+   "en": "to read",
+   "es": "leer"
   }
  },
  "w0161": {
@@ -1284,7 +1444,8 @@
   "w": "図書館",
   "reading": "としょかん",
   "gloss": {
-   "en": "library"
+   "en": "library",
+   "es": "biblioteca"
   }
  },
  "w0162": {
@@ -1292,7 +1453,8 @@
   "w": "書く",
   "reading": "かく",
   "gloss": {
-   "en": "to write"
+   "en": "to write",
+   "es": "escribir"
   }
  },
  "w0163": {
@@ -1300,7 +1462,8 @@
   "w": "見学",
   "reading": "けんがく",
   "gloss": {
-   "en": "study visit"
+   "en": "study visit",
+   "es": "visita de estudio"
   }
  },
  "w0164": {
@@ -1308,7 +1471,8 @@
   "w": "見る",
   "reading": "みる",
   "gloss": {
-   "en": "to see, to look"
+   "en": "to see, to look",
+   "es": "ver, mirar"
   }
  },
  "w0165": {
@@ -1316,7 +1480,8 @@
   "w": "見せる",
   "reading": "みせる",
   "gloss": {
-   "en": "to show"
+   "en": "to show",
+   "es": "mostrar"
   }
  },
  "w0166": {
@@ -1324,7 +1489,8 @@
   "w": "新聞",
   "reading": "しんぶん",
   "gloss": {
-   "en": "newspaper"
+   "en": "newspaper",
+   "es": "periódico"
   }
  },
  "w0167": {
@@ -1332,7 +1498,8 @@
   "w": "聞く",
   "reading": "きく",
   "gloss": {
-   "en": "to hear, to listen"
+   "en": "to hear, to listen",
+   "es": "oír, escuchar"
   }
  },
  "w0168": {
@@ -1340,7 +1507,8 @@
   "w": "旅行",
   "reading": "りょこう",
   "gloss": {
-   "en": "travel"
+   "en": "travel",
+   "es": "viaje"
   }
  },
  "w0169": {
@@ -1348,7 +1516,8 @@
   "w": "銀行",
   "reading": "ぎんこう",
   "gloss": {
-   "en": "bank"
+   "en": "bank",
+   "es": "banco"
   }
  },
  "w0170": {
@@ -1356,7 +1525,8 @@
   "w": "行く",
   "reading": "いく",
   "gloss": {
-   "en": "to go"
+   "en": "to go",
+   "es": "ir"
   }
  },
  "w0171": {
@@ -1364,7 +1534,8 @@
   "w": "来週",
   "reading": "らいしゅう",
   "gloss": {
-   "en": "next week"
+   "en": "next week",
+   "es": "la próxima semana"
   }
  },
  "w0172": {
@@ -1372,7 +1543,8 @@
   "w": "来る",
   "reading": "くる",
   "gloss": {
-   "en": "to come"
+   "en": "to come",
+   "es": "venir"
   }
  },
  "w0173": {
@@ -1380,7 +1552,8 @@
   "w": "出発",
   "reading": "しゅっぱつ",
   "gloss": {
-   "en": "departure"
+   "en": "departure",
+   "es": "salida"
   }
  },
  "w0174": {
@@ -1388,7 +1561,8 @@
   "w": "出る",
   "reading": "でる",
   "gloss": {
-   "en": "to go out, to leave"
+   "en": "to go out, to leave",
+   "es": "salir"
   }
  },
  "w0175": {
@@ -1396,7 +1570,8 @@
   "w": "出口",
   "reading": "でぐち",
   "gloss": {
-   "en": "exit"
+   "en": "exit",
+   "es": "salida"
   }
  },
  "w0176": {
@@ -1404,7 +1579,8 @@
   "w": "入学",
   "reading": "にゅうがく",
   "gloss": {
-   "en": "entering school"
+   "en": "entering school",
+   "es": "ingreso escolar"
   }
  },
  "w0177": {
@@ -1412,7 +1588,8 @@
   "w": "入る",
   "reading": "はいる",
   "gloss": {
-   "en": "to enter, to go in"
+   "en": "to enter, to go in",
+   "es": "entrar"
   }
  },
  "w0178": {
@@ -1420,7 +1597,8 @@
   "w": "入口",
   "reading": "いりぐち",
   "gloss": {
-   "en": "entrance"
+   "en": "entrance",
+   "es": "entrada"
   }
  },
  "w0179": {
@@ -1428,7 +1606,8 @@
   "w": "国立",
   "reading": "こくりつ",
   "gloss": {
-   "en": "national"
+   "en": "national",
+   "es": "nacional"
   }
  },
  "w0180": {
@@ -1436,7 +1615,8 @@
   "w": "立つ",
   "reading": "たつ",
   "gloss": {
-   "en": "to stand"
+   "en": "to stand",
+   "es": "estar de pie"
   }
  },
  "w0181": {
@@ -1444,7 +1624,8 @@
   "w": "休日",
   "reading": "きゅうじつ",
   "gloss": {
-   "en": "holiday"
+   "en": "holiday",
+   "es": "día festivo"
   }
  },
  "w0182": {
@@ -1452,7 +1633,8 @@
   "w": "休む",
   "reading": "やすむ",
   "gloss": {
-   "en": "to rest"
+   "en": "to rest",
+   "es": "descansar"
   }
  },
  "w0183": {
@@ -1460,7 +1642,8 @@
   "w": "休み",
   "reading": "やすみ",
   "gloss": {
-   "en": "day off, break"
+   "en": "day off, break",
+   "es": "día libre, descanso"
   }
  },
  "w0184": {
@@ -1468,7 +1651,8 @@
   "w": "食事",
   "reading": "しょくじ",
   "gloss": {
-   "en": "meal"
+   "en": "meal",
+   "es": "comida"
   }
  },
  "w0185": {
@@ -1476,7 +1660,8 @@
   "w": "食堂",
   "reading": "しょくどう",
   "gloss": {
-   "en": "dining hall"
+   "en": "dining hall",
+   "es": "comedor"
   }
  },
  "w0186": {
@@ -1484,7 +1669,8 @@
   "w": "食べる",
   "reading": "たべる",
   "gloss": {
-   "en": "to eat"
+   "en": "to eat",
+   "es": "comer"
   }
  },
  "w0187": {
@@ -1492,7 +1678,8 @@
   "w": "飲食",
   "reading": "いんしょく",
   "gloss": {
-   "en": "food and drink"
+   "en": "food and drink",
+   "es": "comida y bebida"
   }
  },
  "w0188": {
@@ -1500,7 +1687,8 @@
   "w": "飲む",
   "reading": "のむ",
   "gloss": {
-   "en": "to drink"
+   "en": "to drink",
+   "es": "beber"
   }
  },
  "w0189": {
@@ -1508,7 +1696,8 @@
   "w": "飲み物",
   "reading": "のみもの",
   "gloss": {
-   "en": "a drink"
+   "en": "a drink",
+   "es": "una bebida"
   }
  },
  "w0190": {
@@ -1516,7 +1705,8 @@
   "w": "有名",
   "reading": "ゆうめい",
   "gloss": {
-   "en": "famous"
+   "en": "famous",
+   "es": "famoso"
   }
  },
  "w0191": {
@@ -1524,7 +1714,8 @@
   "w": "名前",
   "reading": "なまえ",
   "gloss": {
-   "en": "name"
+   "en": "name",
+   "es": "nombre"
   }
  },
  "w0192": {
@@ -1532,7 +1723,8 @@
   "w": "人口",
   "reading": "じんこう",
   "gloss": {
-   "en": "population"
+   "en": "population",
+   "es": "población"
   }
  },
  "w0193": {
@@ -1540,7 +1732,8 @@
   "w": "口",
   "reading": "くち",
   "gloss": {
-   "en": "mouth"
+   "en": "mouth",
+   "es": "boca"
   }
  },
  "w0194": {
@@ -1548,7 +1741,8 @@
   "w": "目的",
   "reading": "もくてき",
   "gloss": {
-   "en": "purpose"
+   "en": "purpose",
+   "es": "propósito"
   }
  },
  "w0195": {
@@ -1556,7 +1750,8 @@
   "w": "目",
   "reading": "め",
   "gloss": {
-   "en": "eye"
+   "en": "eye",
+   "es": "ojo"
   }
  },
  "w0196": {
@@ -1564,7 +1759,8 @@
   "w": "耳",
   "reading": "みみ",
   "gloss": {
-   "en": "ear"
+   "en": "ear",
+   "es": "oreja"
   }
  },
  "w0197": {
@@ -1572,7 +1768,8 @@
   "w": "手段",
   "reading": "しゅだん",
   "gloss": {
-   "en": "means, method"
+   "en": "means, method",
+   "es": "medio, método"
   }
  },
  "w0198": {
@@ -1580,7 +1777,8 @@
   "w": "手",
   "reading": "て",
   "gloss": {
-   "en": "hand"
+   "en": "hand",
+   "es": "mano"
   }
  },
  "w0199": {
@@ -1588,7 +1786,8 @@
   "w": "手紙",
   "reading": "てがみ",
   "gloss": {
-   "en": "letter"
+   "en": "letter",
+   "es": "carta"
   }
  },
  "w0200": {
@@ -1596,7 +1795,8 @@
   "w": "不足",
   "reading": "ふそく",
   "gloss": {
-   "en": "shortage"
+   "en": "shortage",
+   "es": "escasez"
   }
  },
  "w0201": {
@@ -1604,7 +1804,8 @@
   "w": "足",
   "reading": "あし",
   "gloss": {
-   "en": "foot, leg"
+   "en": "foot, leg",
+   "es": "pie, pierna"
   }
  },
  "w0202": {
@@ -1612,7 +1813,8 @@
   "w": "空港",
   "reading": "くうこう",
   "gloss": {
-   "en": "airport"
+   "en": "airport",
+   "es": "aeropuerto"
   }
  },
  "w0203": {
@@ -1620,7 +1822,8 @@
   "w": "空気",
   "reading": "くうき",
   "gloss": {
-   "en": "air"
+   "en": "air",
+   "es": "aire"
   }
  },
  "w0204": {
@@ -1628,7 +1831,8 @@
   "w": "空",
   "reading": "そら",
   "gloss": {
-   "en": "sky"
+   "en": "sky",
+   "es": "cielo"
   }
  },
  "w0205": {
@@ -1636,7 +1840,8 @@
   "w": "花火",
   "reading": "はなび",
   "gloss": {
-   "en": "fireworks"
+   "en": "fireworks",
+   "es": "fuegos artificiales"
   }
  },
  "w0206": {
@@ -1644,7 +1849,8 @@
   "w": "花",
   "reading": "はな",
   "gloss": {
-   "en": "flower"
+   "en": "flower",
+   "es": "flor"
   }
  },
  "w0207": {
@@ -1652,7 +1858,8 @@
   "w": "金魚",
   "reading": "きんぎょ",
   "gloss": {
-   "en": "goldfish"
+   "en": "goldfish",
+   "es": "pez dorado"
   }
  },
  "w0208": {
@@ -1660,7 +1867,8 @@
   "w": "魚",
   "reading": "さかな",
   "gloss": {
-   "en": "fish"
+   "en": "fish",
+   "es": "pez"
   }
  },
  "w0209": {
@@ -1668,7 +1876,8 @@
   "w": "犬",
   "reading": "いぬ",
   "gloss": {
-   "en": "dog"
+   "en": "dog",
+   "es": "perro"
   }
  },
  "w0210": {
@@ -1676,7 +1885,8 @@
   "w": "少年",
   "reading": "しょうねん",
   "gloss": {
-   "en": "boy"
+   "en": "boy",
+   "es": "niño"
   }
  },
  "w0211": {
@@ -1684,7 +1894,8 @@
   "w": "少し",
   "reading": "すこし",
   "gloss": {
-   "en": "a little"
+   "en": "a little",
+   "es": "un poco"
   }
  },
  "w0212": {
@@ -1692,7 +1903,8 @@
   "w": "少ない",
   "reading": "すくない",
   "gloss": {
-   "en": "few, not much"
+   "en": "few, not much",
+   "es": "poco"
   }
  },
  "w0213": {
@@ -1700,7 +1912,8 @@
   "w": "多分",
   "reading": "たぶん",
   "gloss": {
-   "en": "probably"
+   "en": "probably",
+   "es": "probablemente"
   }
  },
  "w0214": {
@@ -1708,7 +1921,8 @@
   "w": "多い",
   "reading": "おおい",
   "gloss": {
-   "en": "many, much"
+   "en": "many, much",
+   "es": "mucho"
   }
  },
  "w0215": {
@@ -1716,7 +1930,8 @@
   "w": "安全",
   "reading": "あんぜん",
   "gloss": {
-   "en": "safety"
+   "en": "safety",
+   "es": "seguridad"
   }
  },
  "w0216": {
@@ -1724,7 +1939,8 @@
   "w": "安心",
   "reading": "あんしん",
   "gloss": {
-   "en": "relief"
+   "en": "relief",
+   "es": "alivio"
   }
  },
  "w0217": {
@@ -1732,7 +1948,8 @@
   "w": "安い",
   "reading": "やすい",
   "gloss": {
-   "en": "cheap"
+   "en": "cheap",
+   "es": "barato"
   }
  },
  "w0218": {
@@ -1740,7 +1957,8 @@
   "w": "新しい",
   "reading": "あたらしい",
   "gloss": {
-   "en": "new"
+   "en": "new",
+   "es": "nuevo"
   }
  },
  "w0219": {
@@ -1748,7 +1966,8 @@
   "w": "中古",
   "reading": "ちゅうこ",
   "gloss": {
-   "en": "secondhand"
+   "en": "secondhand",
+   "es": "de segunda mano"
   }
  },
  "w0220": {
@@ -1756,7 +1975,8 @@
   "w": "古い",
   "reading": "ふるい",
   "gloss": {
-   "en": "old"
+   "en": "old",
+   "es": "viejo"
   }
  },
  "w0221": {
@@ -1764,7 +1984,8 @@
   "w": "早々",
   "reading": "そうそう",
   "gloss": {
-   "en": "promptly"
+   "en": "promptly",
+   "es": "puntualmente"
   }
  },
  "w0222": {
@@ -1772,7 +1993,8 @@
   "w": "早い",
   "reading": "はやい",
   "gloss": {
-   "en": "early, fast"
+   "en": "early, fast",
+   "es": "temprano, rápido"
   }
  },
  "w0223": {
@@ -1780,7 +2002,8 @@
   "w": "努力",
   "reading": "どりょく",
   "gloss": {
-   "en": "effort"
+   "en": "effort",
+   "es": "esfuerzo"
   }
  },
  "w0224": {
@@ -1788,7 +2011,8 @@
   "w": "力",
   "reading": "ちから",
   "gloss": {
-   "en": "power, strength"
+   "en": "power, strength",
+   "es": "poder, fuerza"
   }
  },
  "w0225": {
@@ -1796,7 +2020,8 @@
   "w": "会う",
   "reading": "あう",
   "gloss": {
-   "en": "to meet"
+   "en": "to meet",
+   "es": "encontrarse"
   }
  },
  "w0226": {
@@ -1804,19 +2029,22 @@
   "w": "音楽",
   "reading": "おんがく",
   "gloss": {
-   "en": "music"
+   "en": "music",
+   "es": "música"
   },
   "sentences": [
    {
     "ja": "音楽を聞くのが好きです。",
     "t": {
-     "en": "I like listening to music."
+     "en": "I like listening to music.",
+     "es": "Me gusta escuchar música."
     }
    },
    {
     "ja": "この音楽は明るいですね。",
     "t": {
-     "en": "This music is cheerful, isn't it."
+     "en": "This music is cheerful, isn't it.",
+     "es": "Esta música es alegre, ¿verdad?"
     }
    }
   ],
@@ -1825,14 +2053,16 @@
     "w": "歌",
     "reading": "うた",
     "gloss": {
-     "en": "song"
+     "en": "song",
+     "es": "canción"
     }
    },
    {
     "w": "曲",
     "reading": "きょく",
     "gloss": {
-     "en": "tune, track"
+     "en": "tune, track",
+     "es": "melodía, pista"
     }
    }
   ],
@@ -1841,7 +2071,8 @@
     "w": "ミュージック",
     "reading": "みゅーじっく",
     "gloss": {
-     "en": "music"
+     "en": "music",
+     "es": "música"
     }
    }
   ]
@@ -1851,19 +2082,22 @@
   "w": "楽",
   "reading": "らく",
   "gloss": {
-   "en": "ease, comfort"
+   "en": "ease, comfort",
+   "es": "comodidad"
   },
   "sentences": [
    {
     "ja": "この仕事は楽です。",
     "t": {
-     "en": "This job is easy."
+     "en": "This job is easy.",
+     "es": "Este trabajo es fácil."
     }
    },
    {
     "ja": "楽な服が好きです。",
     "t": {
-     "en": "I like comfortable clothes."
+     "en": "I like comfortable clothes.",
+     "es": "Me gusta la ropa cómoda."
     }
    }
   ],
@@ -1872,14 +2106,16 @@
     "w": "簡単",
     "reading": "かんたん",
     "gloss": {
-     "en": "simple, easy"
+     "en": "simple, easy",
+     "es": "simple, fácil"
     }
    },
    {
     "w": "気楽",
     "reading": "きらく",
     "gloss": {
-     "en": "easygoing"
+     "en": "easygoing",
+     "es": "despreocupado"
     }
    }
   ],
@@ -1888,7 +2124,8 @@
     "w": "イージー",
     "reading": "いーじー",
     "gloss": {
-     "en": "easy"
+     "en": "easy",
+     "es": "fácil"
     }
    }
   ]
@@ -1898,19 +2135,22 @@
   "w": "気楽",
   "reading": "きらく",
   "gloss": {
-   "en": "at ease"
+   "en": "at ease",
+   "es": "a gusto"
   },
   "sentences": [
    {
     "ja": "気楽に話しましょう。",
     "t": {
-     "en": "Let's talk casually."
+     "en": "Let's talk casually.",
+     "es": "Hablemos con confianza."
     }
    },
    {
     "ja": "気楽な生活がしたい。",
     "t": {
-     "en": "I want an easygoing life."
+     "en": "I want an easygoing life.",
+     "es": "Quiero una vida tranquila."
     }
    }
   ],
@@ -1919,14 +2159,16 @@
     "w": "のんびり",
     "reading": "のんびり",
     "gloss": {
-     "en": "at a relaxed pace"
+     "en": "at a relaxed pace",
+     "es": "a un ritmo relajado"
     }
    },
    {
     "w": "楽",
     "reading": "らく",
     "gloss": {
-     "en": "ease, comfort"
+     "en": "ease, comfort",
+     "es": "comodidad"
     }
    }
   ],
@@ -1935,7 +2177,8 @@
     "w": "リラックス",
     "reading": "りらっくす",
     "gloss": {
-     "en": "relax"
+     "en": "relax",
+     "es": "relajarse"
     }
    }
   ]
@@ -1945,19 +2188,22 @@
   "w": "楽しい",
   "reading": "たのしい",
   "gloss": {
-   "en": "fun, enjoyable"
+   "en": "fun, enjoyable",
+   "es": "divertido"
   },
   "sentences": [
    {
     "ja": "旅行は楽しいです。",
     "t": {
-     "en": "Travelling is fun."
+     "en": "Travelling is fun.",
+     "es": "Viajar es divertido."
     }
    },
    {
     "ja": "楽しい一日でした。",
     "t": {
-     "en": "It was an enjoyable day."
+     "en": "It was an enjoyable day.",
+     "es": "Fue un día agradable."
     }
    }
   ],
@@ -1966,14 +2212,16 @@
     "w": "面白い",
     "reading": "おもしろい",
     "gloss": {
-     "en": "interesting, amusing"
+     "en": "interesting, amusing",
+     "es": "interesante, divertido"
     }
    },
    {
     "w": "うれしい",
     "reading": "うれしい",
     "gloss": {
-     "en": "glad, happy"
+     "en": "glad, happy",
+     "es": "contento, feliz"
     }
    }
   ],
@@ -1982,7 +2230,8 @@
     "w": "ハッピー",
     "reading": "はっぴー",
     "gloss": {
-     "en": "happy"
+     "en": "happy",
+     "es": "feliz"
     }
    }
   ]
@@ -1992,19 +2241,22 @@
   "w": "楽しむ",
   "reading": "たのしむ",
   "gloss": {
-   "en": "to enjoy"
+   "en": "to enjoy",
+   "es": "disfrutar"
   },
   "sentences": [
    {
     "ja": "旅行を楽しみました。",
     "t": {
-     "en": "I enjoyed the trip."
+     "en": "I enjoyed the trip.",
+     "es": "Disfruté del viaje."
     }
    },
    {
     "ja": "音楽を楽しむ。",
     "t": {
-     "en": "To enjoy music."
+     "en": "To enjoy music.",
+     "es": "Disfrutar de la música."
     }
    }
   ],
@@ -2013,14 +2265,16 @@
     "w": "味わう",
     "reading": "あじわう",
     "gloss": {
-     "en": "to savour"
+     "en": "to savour",
+     "es": "saborear"
     }
    },
    {
     "w": "遊ぶ",
     "reading": "あそぶ",
     "gloss": {
-     "en": "to play, have fun"
+     "en": "to play, have fun",
+     "es": "jugar, divertirse"
     }
    }
   ],
@@ -2029,7 +2283,8 @@
     "w": "エンジョイ",
     "reading": "えんじょい",
     "gloss": {
-     "en": "enjoy"
+     "en": "enjoy",
+     "es": "disfrutar"
     }
    }
   ]
@@ -2039,7 +2294,8 @@
   "w": "説明",
   "reading": "せつめい",
   "gloss": {
-   "en": "explanation"
+   "en": "explanation",
+   "es": "explicación"
   }
  },
  "w0232": {
@@ -2047,7 +2303,8 @@
   "w": "発明",
   "reading": "はつめい",
   "gloss": {
-   "en": "invention"
+   "en": "invention",
+   "es": "invento"
   }
  },
  "w0233": {
@@ -2055,7 +2312,8 @@
   "w": "明るい",
   "reading": "あかるい",
   "gloss": {
-   "en": "bright"
+   "en": "bright",
+   "es": "brillante"
   }
  },
  "w0234": {
@@ -2063,7 +2321,8 @@
   "w": "明かり",
   "reading": "あかり",
   "gloss": {
-   "en": "a light"
+   "en": "a light",
+   "es": "una luz"
   }
  },
  "w0235": {
@@ -2071,7 +2330,8 @@
   "w": "明ける",
   "reading": "あける",
   "gloss": {
-   "en": "to dawn, end"
+   "en": "to dawn, end",
+   "es": "amanecer, terminar"
   }
  },
  "w0236": {
@@ -2079,7 +2339,8 @@
   "w": "明日",
   "reading": "あした",
   "gloss": {
-   "en": "tomorrow"
+   "en": "tomorrow",
+   "es": "mañana"
   }
  },
  "w0237": {
@@ -2087,7 +2348,8 @@
   "w": "明日",
   "reading": "あす",
   "gloss": {
-   "en": "tomorrow"
+   "en": "tomorrow",
+   "es": "mañana"
   }
  },
  "w0238": {
@@ -2095,19 +2357,22 @@
   "w": "発音",
   "reading": "はつおん",
   "gloss": {
-   "en": "pronunciation"
+   "en": "pronunciation",
+   "es": "pronunciación"
   },
   "sentences": [
    {
     "ja": "発音が難しいです。",
     "t": {
-     "en": "The pronunciation is difficult."
+     "en": "The pronunciation is difficult.",
+     "es": "La pronunciación es difícil."
     }
    },
    {
     "ja": "先生が発音を直してくれた。",
     "t": {
-     "en": "The teacher corrected my pronunciation."
+     "en": "The teacher corrected my pronunciation.",
+     "es": "El profesor corrigió mi pronunciación."
     }
    }
   ],
@@ -2116,7 +2381,8 @@
     "w": "読み方",
     "reading": "よみかた",
     "gloss": {
-     "en": "reading, how to read"
+     "en": "reading, how to read",
+     "es": "lectura, cómo leer"
     }
    }
   ],
@@ -2125,7 +2391,8 @@
     "w": "アクセント",
     "reading": "あくせんと",
     "gloss": {
-     "en": "accent, stress"
+     "en": "accent, stress",
+     "es": "acento"
     }
    }
   ]
@@ -2135,7 +2402,8 @@
   "w": "音",
   "reading": "おと",
   "gloss": {
-   "en": "a sound"
+   "en": "a sound",
+   "es": "un sonido"
   }
  },
  "w0240": {
@@ -2143,7 +2411,8 @@
   "w": "足音",
   "reading": "あしおと",
   "gloss": {
-   "en": "footsteps"
+   "en": "footsteps",
+   "es": "pasos"
   }
  },
  "w0241": {
@@ -2151,7 +2420,8 @@
   "w": "音色",
   "reading": "ねいろ",
   "gloss": {
-   "en": "tone colour"
+   "en": "tone colour",
+   "es": "timbre"
   }
  },
  "w0242": {
@@ -2159,7 +2429,8 @@
   "w": "始発",
   "reading": "しはつ",
   "gloss": {
-   "en": "first train"
+   "en": "first train",
+   "es": "primer tren"
   }
  },
  "w0243": {
@@ -2167,7 +2438,8 @@
   "w": "発表",
   "reading": "はっぴょう",
   "gloss": {
-   "en": "presentation"
+   "en": "presentation",
+   "es": "presentación"
   }
  },
  "w0244": {
@@ -2175,7 +2447,8 @@
   "w": "表",
   "reading": "ひょう",
   "gloss": {
-   "en": "front, surface"
+   "en": "front, surface",
+   "es": "frente, superficie"
   }
  },
  "w0245": {
@@ -2183,7 +2456,8 @@
   "w": "表",
   "reading": "おもて",
   "gloss": {
-   "en": "front, surface"
+   "en": "front, surface",
+   "es": "frente, superficie"
   }
  },
  "w0246": {
@@ -2191,7 +2465,8 @@
   "w": "表す",
   "reading": "あらわす",
   "gloss": {
-   "en": "to express"
+   "en": "to express",
+   "es": "expresar"
   }
  },
  "w0247": {
@@ -2199,7 +2474,8 @@
   "w": "使用",
   "reading": "しよう",
   "gloss": {
-   "en": "use"
+   "en": "use",
+   "es": "uso"
   }
  },
  "w0248": {
@@ -2207,7 +2483,8 @@
   "w": "大使館",
   "reading": "たいしかん",
   "gloss": {
-   "en": "embassy"
+   "en": "embassy",
+   "es": "embajada"
   }
  },
  "w0249": {
@@ -2215,7 +2492,8 @@
   "w": "使う",
   "reading": "つかう",
   "gloss": {
-   "en": "to use"
+   "en": "to use",
+   "es": "usar"
   }
  },
  "w0250": {
@@ -2223,7 +2501,8 @@
   "w": "使い方",
   "reading": "つかいかた",
   "gloss": {
-   "en": "how to use"
+   "en": "how to use",
+   "es": "cómo usar"
   }
  },
  "w0251": {
@@ -2231,7 +2510,8 @@
   "w": "用事",
   "reading": "ようじ",
   "gloss": {
-   "en": "errand"
+   "en": "errand",
+   "es": "recado"
   }
  },
  "w0252": {
@@ -2239,7 +2519,8 @@
   "w": "用意",
   "reading": "ようい",
   "gloss": {
-   "en": "preparation"
+   "en": "preparation",
+   "es": "preparación"
   }
  },
  "w0253": {
@@ -2247,7 +2528,8 @@
   "w": "用いる",
   "reading": "もちいる",
   "gloss": {
-   "en": "to use (formal)"
+   "en": "to use (formal)",
+   "es": "usar (formal)"
   }
  },
  "w0254": {
@@ -2255,7 +2537,8 @@
   "w": "意見",
   "reading": "いけん",
   "gloss": {
-   "en": "opinion"
+   "en": "opinion",
+   "es": "opinión"
   }
  },
  "w0255": {
@@ -2263,19 +2546,22 @@
   "w": "意味",
   "reading": "いみ",
   "gloss": {
-   "en": "meaning"
+   "en": "meaning",
+   "es": "significado"
   },
   "sentences": [
    {
     "ja": "この言葉の意味は何ですか。",
     "t": {
-     "en": "What does this word mean?"
+     "en": "What does this word mean?",
+     "es": "¿Qué significa esta palabra?"
     }
    },
    {
     "ja": "意味が分かりません。",
     "t": {
-     "en": "I don't understand the meaning."
+     "en": "I don't understand the meaning.",
+     "es": "No entiendo el significado."
     }
    }
   ],
@@ -2284,14 +2570,16 @@
     "w": "訳",
     "reading": "やく",
     "gloss": {
-     "en": "translation, sense"
+     "en": "translation, sense",
+     "es": "traducción, sentido"
     }
    },
    {
     "w": "内容",
     "reading": "ないよう",
     "gloss": {
-     "en": "content"
+     "en": "content",
+     "es": "contenido"
     }
    }
   ],
@@ -2302,7 +2590,8 @@
   "w": "注意",
   "reading": "ちゅうい",
   "gloss": {
-   "en": "caution"
+   "en": "caution",
+   "es": "precaución"
   }
  },
  "w0257": {
@@ -2310,7 +2599,8 @@
   "w": "趣味",
   "reading": "しゅみ",
   "gloss": {
-   "en": "hobby"
+   "en": "hobby",
+   "es": "afición"
   }
  },
  "w0258": {
@@ -2318,7 +2608,8 @@
   "w": "味",
   "reading": "あじ",
   "gloss": {
-   "en": "taste"
+   "en": "taste",
+   "es": "sabor"
   }
  },
  "w0259": {
@@ -2326,7 +2617,8 @@
   "w": "味見",
   "reading": "あじみ",
   "gloss": {
-   "en": "tasting"
+   "en": "tasting",
+   "es": "cata"
   }
  },
  "w0260": {
@@ -2334,7 +2626,8 @@
   "w": "注文",
   "reading": "ちゅうもん",
   "gloss": {
-   "en": "an order"
+   "en": "an order",
+   "es": "un pedido"
   }
  },
  "w0261": {
@@ -2342,7 +2635,8 @@
   "w": "注射",
   "reading": "ちゅうしゃ",
   "gloss": {
-   "en": "injection"
+   "en": "injection",
+   "es": "inyección"
   }
  },
  "w0262": {
@@ -2350,7 +2644,8 @@
   "w": "注ぐ",
   "reading": "そそぐ",
   "gloss": {
-   "en": "to pour"
+   "en": "to pour",
+   "es": "verter"
   }
  },
  "w0263": {
@@ -2358,7 +2653,8 @@
   "w": "主人",
   "reading": "しゅじん",
   "gloss": {
-   "en": "husband, owner"
+   "en": "husband, owner",
+   "es": "marido, dueño"
   }
  },
  "w0264": {
@@ -2366,7 +2662,8 @@
   "w": "主語",
   "reading": "しゅご",
   "gloss": {
-   "en": "grammatical subject"
+   "en": "grammatical subject",
+   "es": "sujeto gramatical"
   }
  },
  "w0265": {
@@ -2374,7 +2671,8 @@
   "w": "主に",
   "reading": "おもに",
   "gloss": {
-   "en": "mainly"
+   "en": "mainly",
+   "es": "principalmente"
   }
  },
  "w0266": {
@@ -2382,7 +2680,8 @@
   "w": "持ち主",
   "reading": "もちぬし",
   "gloss": {
-   "en": "owner"
+   "en": "owner",
+   "es": "dueño"
   }
  },
  "w0267": {
@@ -2390,7 +2689,8 @@
   "w": "体重",
   "reading": "たいじゅう",
   "gloss": {
-   "en": "body weight"
+   "en": "body weight",
+   "es": "peso corporal"
   }
  },
  "w0268": {
@@ -2398,7 +2698,8 @@
   "w": "重要",
   "reading": "じゅうよう",
   "gloss": {
-   "en": "important"
+   "en": "important",
+   "es": "importante"
   }
  },
  "w0269": {
@@ -2406,7 +2707,8 @@
   "w": "重い",
   "reading": "おもい",
   "gloss": {
-   "en": "heavy"
+   "en": "heavy",
+   "es": "pesado"
   }
  },
  "w0270": {
@@ -2414,7 +2716,8 @@
   "w": "重さ",
   "reading": "おもさ",
   "gloss": {
-   "en": "weight"
+   "en": "weight",
+   "es": "peso"
   }
  },
  "w0271": {
@@ -2422,7 +2725,8 @@
   "w": "重ねる",
   "reading": "かさねる",
   "gloss": {
-   "en": "to pile up"
+   "en": "to pile up",
+   "es": "apilar"
   }
  },
  "w0272": {
@@ -2430,7 +2734,8 @@
   "w": "世紀",
   "reading": "せいき",
   "gloss": {
-   "en": "century"
+   "en": "century",
+   "es": "siglo"
   }
  },
  "w0273": {
@@ -2438,19 +2743,22 @@
   "w": "世界",
   "reading": "せかい",
   "gloss": {
-   "en": "world"
+   "en": "world",
+   "es": "mundo"
   },
   "sentences": [
    {
     "ja": "世界は広いです。",
     "t": {
-     "en": "The world is wide."
+     "en": "The world is wide.",
+     "es": "El mundo es ancho."
     }
    },
    {
     "ja": "世界中に友達がいます。",
     "t": {
-     "en": "I have friends all over the world."
+     "en": "I have friends all over the world.",
+     "es": "Tengo amigos por todo el mundo."
     }
    }
   ],
@@ -2459,14 +2767,16 @@
     "w": "地球",
     "reading": "ちきゅう",
     "gloss": {
-     "en": "the earth"
+     "en": "the earth",
+     "es": "la Tierra"
     }
    },
    {
     "w": "世の中",
     "reading": "よのなか",
     "gloss": {
-     "en": "society, the world"
+     "en": "society, the world",
+     "es": "sociedad, el mundo"
     }
    }
   ],
@@ -2475,7 +2785,8 @@
     "w": "ワールド",
     "reading": "わーるど",
     "gloss": {
-     "en": "world"
+     "en": "world",
+     "es": "mundo"
     }
    }
   ]
@@ -2485,7 +2796,8 @@
   "w": "世話",
   "reading": "せわ",
   "gloss": {
-   "en": "care, help"
+   "en": "care, help",
+   "es": "cuidado, ayuda"
   }
  },
  "w0275": {
@@ -2493,7 +2805,8 @@
   "w": "世の中",
   "reading": "よのなか",
   "gloss": {
-   "en": "society"
+   "en": "society",
+   "es": "sociedad"
   }
  },
  "w0276": {
@@ -2501,7 +2814,8 @@
   "w": "世界中",
   "reading": "せかいじゅう",
   "gloss": {
-   "en": "all over the world"
+   "en": "all over the world",
+   "es": "por todo el mundo"
   }
  },
  "w0277": {
@@ -2509,7 +2823,8 @@
   "w": "業界",
   "reading": "ぎょうかい",
   "gloss": {
-   "en": "industry"
+   "en": "industry",
+   "es": "industria"
   }
  },
  "w0278": {
@@ -2517,7 +2832,8 @@
   "w": "開始",
   "reading": "かいし",
   "gloss": {
-   "en": "start"
+   "en": "start",
+   "es": "inicio"
   }
  },
  "w0279": {
@@ -2525,7 +2841,8 @@
   "w": "開く",
   "reading": "あく",
   "gloss": {
-   "en": "to open, unfold"
+   "en": "to open, unfold",
+   "es": "abrir, desplegar"
   }
  },
  "w0280": {
@@ -2533,7 +2850,8 @@
   "w": "開ける",
   "reading": "あける",
   "gloss": {
-   "en": "to open (tr.)"
+   "en": "to open (tr.)",
+   "es": "abrir (tr.)"
   }
  },
  "w0281": {
@@ -2541,7 +2859,8 @@
   "w": "開く",
   "reading": "ひらく",
   "gloss": {
-   "en": "to open, unfold"
+   "en": "to open, unfold",
+   "es": "abrir, desplegar"
   }
  },
  "w0282": {
@@ -2549,7 +2868,8 @@
   "w": "始まる",
   "reading": "はじまる",
   "gloss": {
-   "en": "to begin (intr.)"
+   "en": "to begin (intr.)",
+   "es": "comenzar (intr.)"
   }
  },
  "w0283": {
@@ -2557,7 +2877,8 @@
   "w": "始める",
   "reading": "はじめる",
   "gloss": {
-   "en": "to begin (tr.)"
+   "en": "to begin (tr.)",
+   "es": "comenzar (tr.)"
   }
  },
  "w0284": {
@@ -2565,7 +2886,8 @@
   "w": "運転",
   "reading": "うんてん",
   "gloss": {
-   "en": "driving"
+   "en": "driving",
+   "es": "conducción"
   }
  },
  "w0285": {
@@ -2573,7 +2895,8 @@
   "w": "転校",
   "reading": "てんこう",
   "gloss": {
-   "en": "changing schools"
+   "en": "changing schools",
+   "es": "cambio de escuela"
   }
  },
  "w0286": {
@@ -2581,7 +2904,8 @@
   "w": "転ぶ",
   "reading": "ころぶ",
   "gloss": {
-   "en": "to fall over"
+   "en": "to fall over",
+   "es": "caerse"
   }
  },
  "w0287": {
@@ -2589,19 +2913,22 @@
   "w": "運動",
   "reading": "うんどう",
   "gloss": {
-   "en": "exercise"
+   "en": "exercise",
+   "es": "ejercicio"
   },
   "sentences": [
    {
     "ja": "毎朝運動します。",
     "t": {
-     "en": "I exercise every morning."
+     "en": "I exercise every morning.",
+     "es": "Hago ejercicio todas las mañanas."
     }
    },
    {
     "ja": "運動が足りません。",
     "t": {
-     "en": "I don't get enough exercise."
+     "en": "I don't get enough exercise.",
+     "es": "No hago suficiente ejercicio."
     }
    }
   ],
@@ -2610,7 +2937,8 @@
     "w": "体操",
     "reading": "たいそう",
     "gloss": {
-     "en": "gymnastics, exercises"
+     "en": "gymnastics, exercises",
+     "es": "gimnasia, ejercicios"
     }
    }
   ],
@@ -2619,14 +2947,16 @@
     "w": "スポーツ",
     "reading": "すぽーつ",
     "gloss": {
-     "en": "sport"
+     "en": "sport",
+     "es": "deporte"
     }
    },
    {
     "w": "トレーニング",
     "reading": "とれーにんぐ",
     "gloss": {
-     "en": "training"
+     "en": "training",
+     "es": "entrenamiento"
     }
    }
   ]
@@ -2636,7 +2966,8 @@
   "w": "幸運",
   "reading": "こううん",
   "gloss": {
-   "en": "good luck"
+   "en": "good luck",
+   "es": "buena suerte"
   }
  },
  "w0289": {
@@ -2644,7 +2975,8 @@
   "w": "運ぶ",
   "reading": "はこぶ",
   "gloss": {
-   "en": "to carry"
+   "en": "to carry",
+   "es": "llevar"
   }
  },
  "w0290": {
@@ -2652,7 +2984,8 @@
   "w": "自動車",
   "reading": "じどうしゃ",
   "gloss": {
-   "en": "car"
+   "en": "car",
+   "es": "coche"
   }
  },
  "w0291": {
@@ -2660,19 +2993,22 @@
   "w": "動物",
   "reading": "どうぶつ",
   "gloss": {
-   "en": "animal"
+   "en": "animal",
+   "es": "animal"
   },
   "sentences": [
    {
     "ja": "動物園に行きたい。",
     "t": {
-     "en": "I want to go to the zoo."
+     "en": "I want to go to the zoo.",
+     "es": "Quiero ir al zoológico."
     }
    },
    {
     "ja": "この動物は速く動く。",
     "t": {
-     "en": "This animal moves fast."
+     "en": "This animal moves fast.",
+     "es": "Este animal se mueve rápido."
     }
    }
   ],
@@ -2681,7 +3017,8 @@
     "w": "生き物",
     "reading": "いきもの",
     "gloss": {
-     "en": "living creature"
+     "en": "living creature",
+     "es": "ser vivo"
     }
    }
   ],
@@ -2690,7 +3027,8 @@
     "w": "ペット",
     "reading": "ぺっと",
     "gloss": {
-     "en": "pet"
+     "en": "pet",
+     "es": "mascota"
     }
    }
   ]
@@ -2700,7 +3038,8 @@
   "w": "動く",
   "reading": "うごく",
   "gloss": {
-   "en": "to move"
+   "en": "to move",
+   "es": "moverse"
   }
  },
  "w0293": {
@@ -2708,7 +3047,8 @@
   "w": "動かす",
   "reading": "うごかす",
   "gloss": {
-   "en": "to move (tr.)"
+   "en": "to move (tr.)",
+   "es": "mover (tr.)"
   }
  },
  "w0294": {
@@ -2716,7 +3056,8 @@
   "w": "見物",
   "reading": "けんぶつ",
   "gloss": {
-   "en": "sightseeing"
+   "en": "sightseeing",
+   "es": "turismo"
   }
  },
  "w0295": {
@@ -2724,19 +3065,22 @@
   "w": "荷物",
   "reading": "にもつ",
   "gloss": {
-   "en": "luggage"
+   "en": "luggage",
+   "es": "equipaje"
   },
   "sentences": [
    {
     "ja": "荷物を運びます。",
     "t": {
-     "en": "I'll carry the luggage."
+     "en": "I'll carry the luggage.",
+     "es": "Llevaré el equipaje."
     }
    },
    {
     "ja": "荷物が重いです。",
     "t": {
-     "en": "The luggage is heavy."
+     "en": "The luggage is heavy.",
+     "es": "El equipaje es pesado."
     }
    }
   ],
@@ -2745,14 +3089,16 @@
     "w": "手荷物",
     "reading": "てにもつ",
     "gloss": {
-     "en": "hand luggage"
+     "en": "hand luggage",
+     "es": "equipaje de mano"
     }
    },
    {
     "w": "かばん",
     "reading": "かばん",
     "gloss": {
-     "en": "bag"
+     "en": "bag",
+     "es": "bolsa"
     }
    }
   ],
@@ -2761,14 +3107,16 @@
     "w": "バッグ",
     "reading": "ばっぐ",
     "gloss": {
-     "en": "bag"
+     "en": "bag",
+     "es": "bolsa"
     }
    },
    {
     "w": "スーツケース",
     "reading": "すーつけーす",
     "gloss": {
-     "en": "suitcase"
+     "en": "suitcase",
+     "es": "maleta"
     }
    }
   ]
@@ -2778,7 +3126,8 @@
   "w": "建物",
   "reading": "たてもの",
   "gloss": {
-   "en": "building"
+   "en": "building",
+   "es": "edificio"
   }
  },
  "w0297": {
@@ -2786,7 +3135,8 @@
   "w": "品物",
   "reading": "しなもの",
   "gloss": {
-   "en": "goods"
+   "en": "goods",
+   "es": "mercancía"
   }
  },
  "w0298": {
@@ -2794,7 +3144,8 @@
   "w": "忘れ物",
   "reading": "わすれもの",
   "gloss": {
-   "en": "lost item"
+   "en": "lost item",
+   "es": "objeto perdido"
   }
  },
  "w0299": {
@@ -2802,7 +3153,8 @@
   "w": "活動",
   "reading": "かつどう",
   "gloss": {
-   "en": "activity"
+   "en": "activity",
+   "es": "actividad"
   }
  },
  "w0300": {
@@ -2810,7 +3162,8 @@
   "w": "活用",
   "reading": "かつよう",
   "gloss": {
-   "en": "practical use"
+   "en": "practical use",
+   "es": "uso práctico"
   }
  },
  "w0301": {
@@ -2818,7 +3171,8 @@
   "w": "漢字",
   "reading": "かんじ",
   "gloss": {
-   "en": "kanji"
+   "en": "kanji",
+   "es": "kanji"
   }
  },
  "w0302": {
@@ -2826,7 +3180,8 @@
   "w": "漢語",
   "reading": "かんご",
   "gloss": {
-   "en": "Sino-Japanese word"
+   "en": "Sino-Japanese word",
+   "es": "palabra sino-japonesa"
   }
  },
  "w0303": {
@@ -2834,7 +3189,8 @@
   "w": "数字",
   "reading": "すうじ",
   "gloss": {
-   "en": "numeral"
+   "en": "numeral",
+   "es": "numeral"
   }
  },
  "w0304": {
@@ -2842,7 +3198,8 @@
   "w": "字",
   "reading": "じ",
   "gloss": {
-   "en": "character"
+   "en": "character",
+   "es": "carácter"
   }
  },
  "w0305": {
@@ -2850,7 +3207,8 @@
   "w": "習字",
   "reading": "しゅうじ",
   "gloss": {
-   "en": "calligraphy"
+   "en": "calligraphy",
+   "es": "caligrafía"
   }
  },
  "w0306": {
@@ -2858,7 +3216,8 @@
   "w": "練習",
   "reading": "れんしゅう",
   "gloss": {
-   "en": "practice"
+   "en": "practice",
+   "es": "práctica"
   }
  },
  "w0307": {
@@ -2866,7 +3225,8 @@
   "w": "習う",
   "reading": "ならう",
   "gloss": {
-   "en": "to learn"
+   "en": "to learn",
+   "es": "aprender"
   }
  },
  "w0308": {
@@ -2874,7 +3234,8 @@
   "w": "研究",
   "reading": "けんきゅう",
   "gloss": {
-   "en": "research"
+   "en": "research",
+   "es": "investigación"
   }
  },
  "w0309": {
@@ -2882,7 +3243,8 @@
   "w": "研究室",
   "reading": "けんきゅうしつ",
   "gloss": {
-   "en": "laboratory"
+   "en": "laboratory",
+   "es": "laboratorio"
   }
  },
  "w0310": {
@@ -2890,7 +3252,8 @@
   "w": "研究者",
   "reading": "けんきゅうしゃ",
   "gloss": {
-   "en": "researcher"
+   "en": "researcher",
+   "es": "investigador"
   }
  },
  "w0311": {
@@ -2898,7 +3261,8 @@
   "w": "教室",
   "reading": "きょうしつ",
   "gloss": {
-   "en": "classroom"
+   "en": "classroom",
+   "es": "aula"
   }
  },
  "w0312": {
@@ -2906,7 +3270,8 @@
   "w": "教科書",
   "reading": "きょうかしょ",
   "gloss": {
-   "en": "textbook"
+   "en": "textbook",
+   "es": "libro de texto"
   }
  },
  "w0313": {
@@ -2914,7 +3279,8 @@
   "w": "宗教",
   "reading": "しゅうきょう",
   "gloss": {
-   "en": "religion"
+   "en": "religion",
+   "es": "religión"
   }
  },
  "w0314": {
@@ -2922,7 +3288,8 @@
   "w": "教える",
   "reading": "おしえる",
   "gloss": {
-   "en": "to teach"
+   "en": "to teach",
+   "es": "enseñar"
   }
  },
  "w0315": {
@@ -2930,7 +3297,8 @@
   "w": "室内",
   "reading": "しつない",
   "gloss": {
-   "en": "indoors"
+   "en": "indoors",
+   "es": "interior"
   }
  },
  "w0316": {
@@ -2938,7 +3306,8 @@
   "w": "和室",
   "reading": "わしつ",
   "gloss": {
-   "en": "Japanese-style room"
+   "en": "Japanese-style room",
+   "es": "habitación de estilo japonés"
   }
  },
  "w0317": {
@@ -2946,7 +3315,8 @@
   "w": "質問",
   "reading": "しつもん",
   "gloss": {
-   "en": "question"
+   "en": "question",
+   "es": "pregunta"
   }
  },
  "w0318": {
@@ -2954,7 +3324,8 @@
   "w": "品質",
   "reading": "ひんしつ",
   "gloss": {
-   "en": "quality"
+   "en": "quality",
+   "es": "calidad"
   }
  },
  "w0319": {
@@ -2962,7 +3333,8 @@
   "w": "問題",
   "reading": "もんだい",
   "gloss": {
-   "en": "problem"
+   "en": "problem",
+   "es": "problema"
   }
  },
  "w0320": {
@@ -2970,7 +3342,8 @@
   "w": "問う",
   "reading": "とう",
   "gloss": {
-   "en": "to ask"
+   "en": "to ask",
+   "es": "preguntar"
   }
  },
  "w0321": {
@@ -2978,7 +3351,8 @@
   "w": "宿題",
   "reading": "しゅくだい",
   "gloss": {
-   "en": "homework"
+   "en": "homework",
+   "es": "deberes"
   }
  },
  "w0322": {
@@ -2986,7 +3360,8 @@
   "w": "話題",
   "reading": "わだい",
   "gloss": {
-   "en": "topic"
+   "en": "topic",
+   "es": "tema"
   }
  },
  "w0323": {
@@ -2994,7 +3369,8 @@
   "w": "答案",
   "reading": "とうあん",
   "gloss": {
-   "en": "answer sheet"
+   "en": "answer sheet",
+   "es": "hoja de respuestas"
   }
  },
  "w0324": {
@@ -3002,7 +3378,8 @@
   "w": "回答",
   "reading": "かいとう",
   "gloss": {
-   "en": "reply"
+   "en": "reply",
+   "es": "respuesta"
   }
  },
  "w0325": {
@@ -3010,7 +3387,8 @@
   "w": "答える",
   "reading": "こたえる",
   "gloss": {
-   "en": "to answer"
+   "en": "to answer",
+   "es": "responder"
   }
  },
  "w0326": {
@@ -3018,7 +3396,8 @@
   "w": "答え",
   "reading": "こたえ",
   "gloss": {
-   "en": "an answer"
+   "en": "an answer",
+   "es": "una respuesta"
   }
  },
  "w0327": {
@@ -3026,7 +3405,8 @@
   "w": "参考",
   "reading": "さんこう",
   "gloss": {
-   "en": "reference"
+   "en": "reference",
+   "es": "referencia"
   }
  },
  "w0328": {
@@ -3034,7 +3414,8 @@
   "w": "考古学",
   "reading": "こうこがく",
   "gloss": {
-   "en": "archaeology"
+   "en": "archaeology",
+   "es": "arqueología"
   }
  },
  "w0329": {
@@ -3042,7 +3423,8 @@
   "w": "考える",
   "reading": "かんがえる",
   "gloss": {
-   "en": "to think"
+   "en": "to think",
+   "es": "pensar"
   }
  },
  "w0330": {
@@ -3050,7 +3432,8 @@
   "w": "考え",
   "reading": "かんがえ",
   "gloss": {
-   "en": "an idea"
+   "en": "an idea",
+   "es": "una idea"
   }
  },
  "w0331": {
@@ -3058,7 +3441,8 @@
   "w": "試験",
   "reading": "しけん",
   "gloss": {
-   "en": "examination"
+   "en": "examination",
+   "es": "examen"
   }
  },
  "w0332": {
@@ -3066,7 +3450,8 @@
   "w": "経験",
   "reading": "けいけん",
   "gloss": {
-   "en": "experience"
+   "en": "experience",
+   "es": "experiencia"
   }
  },
  "w0333": {
@@ -3074,7 +3459,8 @@
   "w": "実験",
   "reading": "じっけん",
   "gloss": {
-   "en": "experiment"
+   "en": "experiment",
+   "es": "experimento"
   }
  },
  "w0334": {
@@ -3082,7 +3468,8 @@
   "w": "試合",
   "reading": "しあい",
   "gloss": {
-   "en": "match, game"
+   "en": "match, game",
+   "es": "partido"
   }
  },
  "w0335": {
@@ -3090,7 +3477,8 @@
   "w": "試す",
   "reading": "ためす",
   "gloss": {
-   "en": "to try"
+   "en": "to try",
+   "es": "intentar"
   }
  },
  "w0336": {
@@ -3098,7 +3486,8 @@
   "w": "作品",
   "reading": "さくひん",
   "gloss": {
-   "en": "a work, piece"
+   "en": "a work, piece",
+   "es": "una obra"
   }
  },
  "w0337": {
@@ -3106,7 +3495,8 @@
   "w": "食品",
   "reading": "しょくひん",
   "gloss": {
-   "en": "foodstuff"
+   "en": "foodstuff",
+   "es": "alimento"
   }
  },
  "w0338": {
@@ -3114,7 +3504,8 @@
   "w": "作文",
   "reading": "さくぶん",
   "gloss": {
-   "en": "composition"
+   "en": "composition",
+   "es": "redacción"
   }
  },
  "w0339": {
@@ -3122,7 +3513,8 @@
   "w": "作業",
   "reading": "さぎょう",
   "gloss": {
-   "en": "work, operation"
+   "en": "work, operation",
+   "es": "trabajo, operación"
   }
  },
  "w0340": {
@@ -3130,7 +3522,8 @@
   "w": "作る",
   "reading": "つくる",
   "gloss": {
-   "en": "to make"
+   "en": "to make",
+   "es": "hacer"
   }
  },
  "w0341": {
@@ -3138,7 +3531,8 @@
   "w": "授業",
   "reading": "じゅぎょう",
   "gloss": {
-   "en": "class, lesson"
+   "en": "class, lesson",
+   "es": "clase, lección"
   }
  },
  "w0342": {
@@ -3146,7 +3540,8 @@
   "w": "工業",
   "reading": "こうぎょう",
   "gloss": {
-   "en": "industry"
+   "en": "industry",
+   "es": "industria"
   }
  },
  "w0343": {
@@ -3154,7 +3549,8 @@
   "w": "卒業",
   "reading": "そつぎょう",
   "gloss": {
-   "en": "graduation"
+   "en": "graduation",
+   "es": "graduación"
   }
  },
  "w0344": {
@@ -3162,7 +3558,8 @@
   "w": "生産",
   "reading": "せいさん",
   "gloss": {
-   "en": "production"
+   "en": "production",
+   "es": "producción"
   }
  },
  "w0345": {
@@ -3170,7 +3567,8 @@
   "w": "産業",
   "reading": "さんぎょう",
   "gloss": {
-   "en": "industry"
+   "en": "industry",
+   "es": "industria"
   }
  },
  "w0346": {
@@ -3178,7 +3576,8 @@
   "w": "お土産",
   "reading": "おみやげ",
   "gloss": {
-   "en": "souvenir"
+   "en": "souvenir",
+   "es": "recuerdo"
   }
  },
  "w0347": {
@@ -3186,7 +3585,8 @@
   "w": "産む",
   "reading": "うむ",
   "gloss": {
-   "en": "to give birth"
+   "en": "to give birth",
+   "es": "dar a luz"
   }
  },
  "w0348": {
@@ -3194,7 +3594,8 @@
   "w": "会員",
   "reading": "かいいん",
   "gloss": {
-   "en": "member"
+   "en": "member",
+   "es": "miembro"
   }
  },
  "w0349": {
@@ -3202,7 +3603,8 @@
   "w": "料理",
   "reading": "りょうり",
   "gloss": {
-   "en": "cooking"
+   "en": "cooking",
+   "es": "cocina"
   }
  },
  "w0350": {
@@ -3210,7 +3612,8 @@
   "w": "料金",
   "reading": "りょうきん",
   "gloss": {
-   "en": "fee"
+   "en": "fee",
+   "es": "tarifa"
   }
  },
  "w0351": {
@@ -3218,7 +3621,8 @@
   "w": "材料",
   "reading": "ざいりょう",
   "gloss": {
-   "en": "ingredients"
+   "en": "ingredients",
+   "es": "ingredientes"
   }
  },
  "w0352": {
@@ -3226,7 +3630,8 @@
   "w": "理由",
   "reading": "りゆう",
   "gloss": {
-   "en": "reason"
+   "en": "reason",
+   "es": "razón"
   }
  },
  "w0353": {
@@ -3234,7 +3639,8 @@
   "w": "物理",
   "reading": "ぶつり",
   "gloss": {
-   "en": "physics"
+   "en": "physics",
+   "es": "física"
   }
  },
  "w0354": {
@@ -3242,7 +3648,8 @@
   "w": "自由",
   "reading": "じゆう",
   "gloss": {
-   "en": "freedom"
+   "en": "freedom",
+   "es": "libertad"
   }
  },
  "w0355": {
@@ -3250,7 +3657,8 @@
   "w": "自ら",
   "reading": "みずから",
   "gloss": {
-   "en": "personally"
+   "en": "personally",
+   "es": "personalmente"
   }
  },
  "w0356": {
@@ -3258,7 +3666,8 @@
   "w": "別々",
   "reading": "べつべつ",
   "gloss": {
-   "en": "separately"
+   "en": "separately",
+   "es": "por separado"
   }
  },
  "w0357": {
@@ -3266,7 +3675,8 @@
   "w": "特別",
   "reading": "とくべつ",
   "gloss": {
-   "en": "special"
+   "en": "special",
+   "es": "especial"
   }
  },
  "w0358": {
@@ -3274,7 +3684,8 @@
   "w": "区別",
   "reading": "くべつ",
   "gloss": {
-   "en": "distinction"
+   "en": "distinction",
+   "es": "distinción"
   }
  },
  "w0359": {
@@ -3282,7 +3693,8 @@
   "w": "別れる",
   "reading": "わかれる",
   "gloss": {
-   "en": "to part"
+   "en": "to part",
+   "es": "separarse"
   }
  },
  "w0360": {
@@ -3290,7 +3702,8 @@
   "w": "特急",
   "reading": "とっきゅう",
   "gloss": {
-   "en": "express train"
+   "en": "express train",
+   "es": "tren expreso"
   }
  },
  "w0361": {
@@ -3298,7 +3711,8 @@
   "w": "特徴",
   "reading": "とくちょう",
   "gloss": {
-   "en": "feature"
+   "en": "feature",
+   "es": "característica"
   }
  },
  "w0362": {
@@ -3306,7 +3720,8 @@
   "w": "急行",
   "reading": "きゅうこう",
   "gloss": {
-   "en": "express"
+   "en": "express",
+   "es": "expresar"
   }
  },
  "w0363": {
@@ -3314,7 +3729,8 @@
   "w": "救急車",
   "reading": "きゅうきゅうしゃ",
   "gloss": {
-   "en": "ambulance"
+   "en": "ambulance",
+   "es": "ambulancia"
   }
  },
  "w0364": {
@@ -3322,7 +3738,8 @@
   "w": "急ぐ",
   "reading": "いそぐ",
   "gloss": {
-   "en": "to hurry"
+   "en": "to hurry",
+   "es": "apresurarse"
   }
  },
  "w0365": {
@@ -3330,7 +3747,8 @@
   "w": "急に",
   "reading": "きゅうに",
   "gloss": {
-   "en": "suddenly"
+   "en": "suddenly",
+   "es": "de repente"
   }
  },
  "w0366": {
@@ -3338,7 +3756,8 @@
   "w": "放送",
   "reading": "ほうそう",
   "gloss": {
-   "en": "broadcast"
+   "en": "broadcast",
+   "es": "transmisión"
   }
  },
  "w0367": {
@@ -3346,7 +3765,8 @@
   "w": "送料",
   "reading": "そうりょう",
   "gloss": {
-   "en": "postage"
+   "en": "postage",
+   "es": "franqueo"
   }
  },
  "w0368": {
@@ -3354,7 +3774,8 @@
   "w": "送る",
   "reading": "おくる",
   "gloss": {
-   "en": "to send"
+   "en": "to send",
+   "es": "enviar"
   }
  },
  "w0369": {
@@ -3362,7 +3783,8 @@
   "w": "見送る",
   "reading": "みおくる",
   "gloss": {
-   "en": "to see off"
+   "en": "to see off",
+   "es": "despedir"
   }
  },
  "w0370": {
@@ -3370,7 +3792,8 @@
   "w": "待合室",
   "reading": "まちあいしつ",
   "gloss": {
-   "en": "waiting room"
+   "en": "waiting room",
+   "es": "sala de espera"
   }
  },
  "w0371": {
@@ -3378,7 +3801,8 @@
   "w": "期待",
   "reading": "きたい",
   "gloss": {
-   "en": "expectation"
+   "en": "expectation",
+   "es": "expectativa"
   }
  },
  "w0372": {
@@ -3386,7 +3810,8 @@
   "w": "待つ",
   "reading": "まつ",
   "gloss": {
-   "en": "to wait"
+   "en": "to wait",
+   "es": "esperar"
   }
  },
  "w0373": {
@@ -3394,7 +3819,8 @@
   "w": "持参",
   "reading": "じさん",
   "gloss": {
-   "en": "bringing along"
+   "en": "bringing along",
+   "es": "traer consigo"
   }
  },
  "w0374": {
@@ -3402,7 +3828,8 @@
   "w": "所持",
   "reading": "しょじ",
   "gloss": {
-   "en": "possession"
+   "en": "possession",
+   "es": "posesión"
   }
  },
  "w0375": {
@@ -3410,7 +3837,8 @@
   "w": "持つ",
   "reading": "もつ",
   "gloss": {
-   "en": "to hold"
+   "en": "to hold",
+   "es": "sostener"
   }
  },
  "w0376": {
@@ -3418,7 +3846,8 @@
   "w": "持ち物",
   "reading": "もちもの",
   "gloss": {
-   "en": "belongings"
+   "en": "belongings",
+   "es": "pertenencias"
   }
  }
 }

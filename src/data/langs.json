@@ -2,49 +2,41 @@
   {
     "code": "EN",
     "name": "English",
-    "ja": "英",
-    "dir": "en"
+    "ja": "英"
   },
   {
     "code": "ES",
     "name": "Espanol",
-    "ja": "西",
-    "dir": "es"
+    "ja": "西"
   },
   {
     "code": "PT",
     "name": "Portugues",
-    "ja": "葡",
-    "dir": "pt"
+    "ja": "葡"
   },
   {
     "code": "ID",
     "name": "Bahasa Indonesia",
-    "ja": "尼",
-    "dir": "id"
+    "ja": "尼"
   },
   {
     "code": "VI",
     "name": "Tieng Viet",
-    "ja": "越",
-    "dir": "vi"
+    "ja": "越"
   },
   {
     "code": "TH",
     "name": "Thai",
-    "ja": "泰",
-    "dir": "th"
+    "ja": "泰"
   },
   {
     "code": "TR",
     "name": "Turkce",
-    "ja": "土",
-    "dir": "tr"
+    "ja": "土"
   },
   {
     "code": "PL",
     "name": "Polski",
-    "ja": "波",
-    "dir": "pl"
+    "ja": "波"
   }
 ]

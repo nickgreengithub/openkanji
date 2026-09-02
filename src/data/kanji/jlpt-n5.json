@@ -3,10 +3,12 @@
   "id": "k0001",
   "c": "生",
   "meaning": {
-   "en": "life, birth"
+   "en": "life, birth",
+   "es": "vida, nacimiento"
   },
   "mnemonic": {
-   "en": "The student was born, lives a life, and grows."
+   "en": "The student was born, lives a life, and grows.",
+   "es": "El estudiante nació, vive una vida y crece."
   },
   "g": [
    {
@@ -35,10 +37,12 @@
   "id": "k0002",
   "c": "社",
   "meaning": {
-   "en": "company, shrine"
+   "en": "company, shrine",
+   "es": "empresa, santuario"
   },
   "mnemonic": {
-   "en": "The company employee visited the shrine with society in mind."
+   "en": "The company employee visited the shrine with society in mind.",
+   "es": "El empleado de empresa visitó el santuario pensando en la sociedad."
   },
   "g": [
    {
@@ -61,10 +65,12 @@
   "id": "k0003",
   "c": "店",
   "meaning": {
-   "en": "shop"
+   "en": "shop",
+   "es": "tienda"
   },
   "mnemonic": {
-   "en": "At the store opening the shop assistant stood in the department store."
+   "en": "At the store opening the shop assistant stood in the department store.",
+   "es": "En la apertura de tienda el dependiente estaba en los grandes almacenes."
   },
   "g": [
    {
@@ -87,10 +93,12 @@
   "id": "k0004",
   "c": "売",
   "meaning": {
-   "en": "sell"
+   "en": "sell",
+   "es": "vender"
   },
   "mnemonic": {
-   "en": "Sales are good at the kiosk, so it sells out and I sell more."
+   "en": "Sales are good at the kiosk, so it sells out and I sell more.",
+   "es": "Las ventas van bien en el quiosco, así que se agota y vendo más."
   },
   "g": [
    {
@@ -113,10 +121,12 @@
   "id": "k0005",
   "c": "買",
   "meaning": {
-   "en": "buy"
+   "en": "buy",
+   "es": "comprar"
   },
   "mnemonic": {
-   "en": "I go shopping and buy things in trade."
+   "en": "I go shopping and buy things in trade.",
+   "es": "Voy de compras y compro cosas en el comercio."
   },
   "g": [
    {
@@ -139,10 +149,12 @@
   "id": "k0006",
   "c": "分",
   "meaning": {
-   "en": "minute, part"
+   "en": "minute, part",
+   "es": "minuto, parte"
   },
   "mnemonic": {
-   "en": "For five minutes I understood myself and divided it up."
+   "en": "For five minutes I understood myself and divided it up.",
+   "es": "Durante cinco minutos me entendí y lo dividí."
   },
   "g": [
    {
@@ -172,10 +184,12 @@
   "id": "k0007",
   "c": "時",
   "meaning": {
-   "en": "time, hour"
+   "en": "time, hour",
+   "es": "tiempo, hora"
   },
   "mnemonic": {
-   "en": "At times, the clock shows the hour of the era."
+   "en": "At times, the clock shows the hour of the era.",
+   "es": "A veces, el reloj marca la hora de la época."
   },
   "g": [
    {
@@ -198,10 +212,12 @@
   "id": "k0008",
   "c": "間",
   "meaning": {
-   "en": "interval, between"
+   "en": "interval, between",
+   "es": "intervalo, entre"
   },
   "mnemonic": {
-   "en": "For a while, in the time between, the person made a mistake."
+   "en": "For a while, in the time between, the person made a mistake.",
+   "es": "Durante un rato, en el tiempo entre medias, la persona cometió un error."
   },
   "g": [
    {
@@ -230,10 +246,12 @@
   "id": "k0009",
   "c": "一",
   "meaning": {
-   "en": "one"
+   "en": "one",
+   "es": "uno"
   },
   "mnemonic": {
-   "en": "One person alone took one thing and called it number one."
+   "en": "One person alone took one thing and called it number one.",
+   "es": "Una persona sola tomó una cosa y la llamó número uno."
   },
   "g": [
    {
@@ -255,10 +273,12 @@
   "id": "k0010",
   "c": "二",
   "meaning": {
-   "en": "two"
+   "en": "two",
+   "es": "dos"
   },
   "mnemonic": {
-   "en": "Two people carried two things, two apiece."
+   "en": "Two people carried two things, two apiece.",
+   "es": "Dos personas llevaron dos cosas, dos cada una."
   },
   "g": [
    {
@@ -280,10 +300,12 @@
   "id": "k0011",
   "c": "三",
   "meaning": {
-   "en": "three"
+   "en": "three",
+   "es": "tres"
   },
   "mnemonic": {
-   "en": "Three people shared three things between the three of them."
+   "en": "Three people shared three things between the three of them.",
+   "es": "Tres personas repartieron tres cosas entre las tres."
   },
   "g": [
    {
@@ -305,10 +327,12 @@
   "id": "k0012",
   "c": "四",
   "meaning": {
-   "en": "four"
+   "en": "four",
+   "es": "cuatro"
   },
   "mnemonic": {
-   "en": "In April four things arrived, one for each of the four."
+   "en": "In April four things arrived, one for each of the four.",
+   "es": "En abril llegaron cuatro cosas, una para cada uno de los cuatro."
   },
   "g": [
    {
@@ -330,10 +354,12 @@
   "id": "k0013",
   "c": "五",
   "meaning": {
-   "en": "five"
+   "en": "five",
+   "es": "cinco"
   },
   "mnemonic": {
-   "en": "By May I had five things, all five in a row."
+   "en": "By May I had five things, all five in a row.",
+   "es": "Para mayo tenía cinco cosas, las cinco en fila."
   },
   "g": [
    {
@@ -355,10 +381,12 @@
   "id": "k0014",
   "c": "六",
   "meaning": {
-   "en": "six"
+   "en": "six",
+   "es": "seis"
   },
   "mnemonic": {
-   "en": "In June I counted six things, six in all."
+   "en": "In June I counted six things, six in all.",
+   "es": "En junio conté seis cosas, seis en total."
   },
   "g": [
    {
@@ -380,10 +408,12 @@
   "id": "k0015",
   "c": "七",
   "meaning": {
-   "en": "seven"
+   "en": "seven",
+   "es": "siete"
   },
   "mnemonic": {
-   "en": "July brought seven things, seven days apart."
+   "en": "July brought seven things, seven days apart.",
+   "es": "Julio trajo siete cosas, con siete días de diferencia."
   },
   "g": [
    {
@@ -405,10 +435,12 @@
   "id": "k0016",
   "c": "八",
   "meaning": {
-   "en": "eight"
+   "en": "eight",
+   "es": "ocho"
   },
   "mnemonic": {
-   "en": "August held eight things, eight of them exactly."
+   "en": "August held eight things, eight of them exactly.",
+   "es": "Agosto guardó ocho cosas, ocho exactamente."
   },
   "g": [
    {
@@ -430,10 +462,12 @@
   "id": "k0017",
   "c": "九",
   "meaning": {
-   "en": "nine"
+   "en": "nine",
+   "es": "nueve"
   },
   "mnemonic": {
-   "en": "September ended with nine things, nine and no more."
+   "en": "September ended with nine things, nine and no more.",
+   "es": "Septiembre terminó con nueve cosas, nueve y no más."
   },
   "g": [
    {
@@ -460,10 +494,12 @@
   "id": "k0018",
   "c": "十",
   "meaning": {
-   "en": "ten"
+   "en": "ten",
+   "es": "diez"
   },
   "mnemonic": {
-   "en": "On the tenth day of October I had counted ten."
+   "en": "On the tenth day of October I had counted ten.",
+   "es": "El décimo día de octubre ya había contado diez."
   },
   "g": [
    {
@@ -485,10 +521,12 @@
   "id": "k0019",
   "c": "百",
   "meaning": {
-   "en": "hundred"
+   "en": "hundred",
+   "es": "cien"
   },
   "mnemonic": {
-   "en": "A hundred yen buys a hundred of them."
+   "en": "A hundred yen buys a hundred of them.",
+   "es": "Cien yenes compran cien de ellos."
   },
   "g": [
    {
@@ -504,10 +542,12 @@
   "id": "k0020",
   "c": "千",
   "meaning": {
-   "en": "thousand"
+   "en": "thousand",
+   "es": "mil"
   },
   "mnemonic": {
-   "en": "A thousand yen note is worth one thousand."
+   "en": "A thousand yen note is worth one thousand.",
+   "es": "Un billete de mil yenes vale mil."
   },
   "g": [
    {
@@ -523,10 +563,12 @@
   "id": "k0021",
   "c": "万",
   "meaning": {
-   "en": "ten thousand"
+   "en": "ten thousand",
+   "es": "diez mil"
   },
   "mnemonic": {
-   "en": "Ten thousand yen is a single note worth ten thousand."
+   "en": "Ten thousand yen is a single note worth ten thousand.",
+   "es": "Diez mil yenes es un solo billete que vale diez mil."
   },
   "g": [
    {
@@ -542,10 +584,12 @@
   "id": "k0022",
   "c": "円",
   "meaning": {
-   "en": "yen, circle"
+   "en": "yen, circle",
+   "es": "yen, círculo"
   },
   "mnemonic": {
-   "en": "The yen coin is a circle worth a hundred yen."
+   "en": "The yen coin is a circle worth a hundred yen.",
+   "es": "La moneda de yen es un círculo que vale cien yenes."
   },
   "g": [
    {
@@ -561,10 +605,12 @@
   "id": "k0023",
   "c": "日",
   "meaning": {
-   "en": "sun, day"
+   "en": "sun, day",
+   "es": "sol, día"
   },
   "mnemonic": {
-   "en": "Every day the sun rises over Japan, Sunday included."
+   "en": "Every day the sun rises over Japan, Sunday included.",
+   "es": "Todos los días el sol sale sobre Japón, incluido el domingo."
   },
   "g": [
    {
@@ -592,10 +638,12 @@
   "id": "k0024",
   "c": "月",
   "meaning": {
-   "en": "moon, month"
+   "en": "moon, month",
+   "es": "luna, mes"
   },
   "mnemonic": {
-   "en": "On Monday in January I watched the moon for a month."
+   "en": "On Monday in January I watched the moon for a month.",
+   "es": "El lunes de enero miré la luna durante un mes."
   },
   "g": [
    {
@@ -622,10 +670,12 @@
   "id": "k0025",
   "c": "火",
   "meaning": {
-   "en": "fire"
+   "en": "fire",
+   "es": "fuego"
   },
   "mnemonic": {
-   "en": "On Tuesday we lit a fire."
+   "en": "On Tuesday we lit a fire.",
+   "es": "El martes encendimos un fuego."
   },
   "g": [
    {
@@ -646,10 +696,12 @@
   "id": "k0026",
   "c": "水",
   "meaning": {
-   "en": "water"
+   "en": "water",
+   "es": "agua"
   },
   "mnemonic": {
-   "en": "On Wednesday I drank the water."
+   "en": "On Wednesday I drank the water.",
+   "es": "El miércoles bebí el agua."
   },
   "g": [
    {
@@ -670,10 +722,12 @@
   "id": "k0027",
   "c": "木",
   "meaning": {
-   "en": "tree, wood"
+   "en": "tree, wood",
+   "es": "árbol, madera"
   },
   "mnemonic": {
-   "en": "On Thursday I sat under a tree and carved the wood."
+   "en": "On Thursday I sat under a tree and carved the wood.",
+   "es": "El jueves me senté bajo un árbol y tallé la madera."
   },
   "g": [
    {
@@ -694,10 +748,12 @@
   "id": "k0028",
   "c": "金",
   "meaning": {
-   "en": "gold, money"
+   "en": "gold, money",
+   "es": "oro, dinero"
   },
   "mnemonic": {
-   "en": "On Friday I spent my money and kept the gold."
+   "en": "On Friday I spent my money and kept the gold.",
+   "es": "El viernes gasté mi dinero y guardé el oro."
   },
   "g": [
    {
@@ -719,10 +775,12 @@
   "id": "k0029",
   "c": "土",
   "meaning": {
-   "en": "earth, soil"
+   "en": "earth, soil",
+   "es": "tierra"
   },
   "mnemonic": {
-   "en": "On Saturday I turned the soil and worked the earth."
+   "en": "On Saturday I turned the soil and worked the earth.",
+   "es": "El sábado removí la tierra y trabajé el suelo."
   },
   "g": [
    {
@@ -743,10 +801,12 @@
   "id": "k0030",
   "c": "曜",
   "meaning": {
-   "en": "weekday"
+   "en": "weekday",
+   "es": "día de la semana"
   },
   "mnemonic": {
-   "en": "What day of the week falls on this weekday?"
+   "en": "What day of the week falls on this weekday?",
+   "es": "¿Qué día de la semana cae en esta jornada?"
   },
   "g": [
    {
@@ -762,10 +822,12 @@
   "id": "k0031",
   "c": "年",
   "meaning": {
-   "en": "year"
+   "en": "year",
+   "es": "año"
   },
   "mnemonic": {
-   "en": "Last year and this year each lasted a year."
+   "en": "Last year and this year each lasted a year.",
+   "es": "El año pasado y este año duraron cada uno un año."
   },
   "g": [
    {
@@ -787,10 +849,12 @@
   "id": "k0032",
   "c": "半",
   "meaning": {
-   "en": "half"
+   "en": "half",
+   "es": "mitad"
   },
   "mnemonic": {
-   "en": "Half past, and half of it already gone."
+   "en": "Half past, and half of it already gone.",
+   "es": "Y media, y la mitad ya se ha ido."
   },
   "g": [
    {
@@ -806,10 +870,12 @@
   "id": "k0033",
   "c": "今",
   "meaning": {
-   "en": "now"
+   "en": "now",
+   "es": "ahora"
   },
   "mnemonic": {
-   "en": "Right now, today, in this year."
+   "en": "Right now, today, in this year.",
+   "es": "Ahora mismo, hoy, en este año."
   },
   "g": [
    {
@@ -836,10 +902,12 @@
   "id": "k0034",
   "c": "上",
   "meaning": {
-   "en": "up, above"
+   "en": "up, above",
+   "es": "arriba"
   },
   "mnemonic": {
-   "en": "Above all else, she is skillful."
+   "en": "Above all else, she is skillful.",
+   "es": "Por encima de todo, ella es hábil."
   },
   "g": [
    {
@@ -860,10 +928,12 @@
   "id": "k0035",
   "c": "下",
   "meaning": {
-   "en": "down, below"
+   "en": "down, below",
+   "es": "abajo"
   },
   "mnemonic": {
-   "en": "Below that line, he is unskillful."
+   "en": "Below that line, he is unskillful.",
+   "es": "Por debajo de esa línea, él es torpe."
   },
   "g": [
    {
@@ -884,10 +954,12 @@
   "id": "k0036",
   "c": "中",
   "meaning": {
-   "en": "middle, inside"
+   "en": "middle, inside",
+   "es": "medio, dentro"
   },
   "mnemonic": {
-   "en": "Inside China, right in the middle."
+   "en": "Inside China, right in the middle.",
+   "es": "Dentro de China, justo en el medio."
   },
   "g": [
    {
@@ -908,10 +980,12 @@
   "id": "k0037",
   "c": "人",
   "meaning": {
-   "en": "person"
+   "en": "person",
+   "es": "persona"
   },
   "mnemonic": {
-   "en": "One person, then two people, then everyone."
+   "en": "One person, then two people, then everyone.",
+   "es": "Una persona, luego dos personas, luego todo el mundo."
   },
   "g": [
    {
@@ -938,10 +1012,12 @@
   "id": "k0038",
   "c": "男",
   "meaning": {
-   "en": "man, male"
+   "en": "man, male",
+   "es": "hombre, masculino"
   },
   "mnemonic": {
-   "en": "The man is a male student, a boy no longer."
+   "en": "The man is a male student, a boy no longer.",
+   "es": "El hombre es un estudiante masculino, ya no un niño."
   },
   "g": [
    {
@@ -963,10 +1039,12 @@
   "id": "k0039",
   "c": "女",
   "meaning": {
-   "en": "woman, female"
+   "en": "woman, female",
+   "es": "mujer, femenino"
   },
   "mnemonic": {
-   "en": "The woman is a female student, a girl no longer."
+   "en": "The woman is a female student, a girl no longer.",
+   "es": "La mujer es una estudiante femenina, ya no una niña."
   },
   "g": [
    {
@@ -988,10 +1066,12 @@
   "id": "k0040",
   "c": "子",
   "meaning": {
-   "en": "child"
+   "en": "child",
+   "es": "niño"
   },
   "mnemonic": {
-   "en": "The child is a boy, and that child is a girl."
+   "en": "The child is a boy, and that child is a girl.",
+   "es": "El niño es un chico, y esa niña es una chica."
   },
   "g": [
    {
@@ -1013,10 +1093,12 @@
   "id": "k0041",
   "c": "父",
   "meaning": {
-   "en": "father"
+   "en": "father",
+   "es": "padre"
   },
   "mnemonic": {
-   "en": "My father, your father, everyone's dad."
+   "en": "My father, your father, everyone's dad.",
+   "es": "Mi padre, tu padre, el papá de todos."
   },
   "g": [
    {
@@ -1043,10 +1125,12 @@
   "id": "k0042",
   "c": "母",
   "meaning": {
-   "en": "mother"
+   "en": "mother",
+   "es": "madre"
   },
   "mnemonic": {
-   "en": "My mother, your mother, everyone's mum."
+   "en": "My mother, your mother, everyone's mum.",
+   "es": "Mi madre, tu madre, la mamá de todos."
   },
   "g": [
    {
@@ -1073,10 +1157,12 @@
   "id": "k0043",
   "c": "友",
   "meaning": {
-   "en": "friend"
+   "en": "friend",
+   "es": "amigo"
   },
   "mnemonic": {
-   "en": "A friend is a friend, in any language."
+   "en": "A friend is a friend, in any language.",
+   "es": "Un amigo es un amigo, en cualquier idioma."
   },
   "g": [
    {
@@ -1097,10 +1183,12 @@
   "id": "k0044",
   "c": "先",
   "meaning": {
-   "en": "ahead, previous"
+   "en": "ahead, previous",
+   "es": "delante, anterior"
   },
   "mnemonic": {
-   "en": "The teacher went ahead of us last week."
+   "en": "The teacher went ahead of us last week.",
+   "es": "El profesor fue delante de nosotros la semana pasada."
   },
   "g": [
    {
@@ -1122,10 +1210,12 @@
   "id": "k0045",
   "c": "学",
   "meaning": {
-   "en": "study, learning"
+   "en": "study, learning",
+   "es": "estudio, aprendizaje"
   },
   "mnemonic": {
-   "en": "A student studies at the university."
+   "en": "A student studies at the university.",
+   "es": "Un estudiante estudia en la universidad."
   },
   "g": [
    {
@@ -1147,10 +1237,12 @@
   "id": "k0046",
   "c": "校",
   "meaning": {
-   "en": "school"
+   "en": "school",
+   "es": "escuela"
   },
   "mnemonic": {
-   "en": "At school, the high school students gathered."
+   "en": "At school, the high school students gathered.",
+   "es": "En la escuela se reunieron los alumnos del instituto."
   },
   "g": [
    {
@@ -1166,10 +1258,12 @@
   "id": "k0047",
   "c": "高",
   "meaning": {
-   "en": "high, expensive"
+   "en": "high, expensive",
+   "es": "alto, caro"
   },
   "mnemonic": {
-   "en": "The high school on the hill is expensive."
+   "en": "The high school on the hill is expensive.",
+   "es": "El instituto de la colina es caro."
   },
   "g": [
    {
@@ -1190,10 +1284,12 @@
   "id": "k0048",
   "c": "大",
   "meaning": {
-   "en": "big, large"
+   "en": "big, large",
+   "es": "grande"
   },
   "mnemonic": {
-   "en": "A big university is a large place."
+   "en": "A big university is a large place.",
+   "es": "Una universidad grande es un lugar amplio."
   },
   "g": [
    {
@@ -1220,10 +1316,12 @@
   "id": "k0049",
   "c": "小",
   "meaning": {
-   "en": "small, little"
+   "en": "small, little",
+   "es": "pequeño"
   },
   "mnemonic": {
-   "en": "A small primary school for little ones."
+   "en": "A small primary school for little ones.",
+   "es": "Una escuela primaria pequeña para los pequeños."
   },
   "g": [
    {
@@ -1244,10 +1342,12 @@
   "id": "k0050",
   "c": "長",
   "meaning": {
-   "en": "long, chief"
+   "en": "long, chief",
+   "es": "largo, jefe"
   },
   "mnemonic": {
-   "en": "The company chief gave a long speech."
+   "en": "The company chief gave a long speech.",
+   "es": "El presidente de la empresa dio un discurso largo."
   },
   "g": [
    {
@@ -1268,10 +1368,12 @@
   "id": "k0051",
   "c": "白",
   "meaning": {
-   "en": "white"
+   "en": "white",
+   "es": "blanco"
   },
   "mnemonic": {
-   "en": "White paper, white walls, all white."
+   "en": "White paper, white walls, all white.",
+   "es": "Papel blanco, paredes blancas, todo blanco."
   },
   "g": [
    {
@@ -1293,10 +1395,12 @@
   "id": "k0052",
   "c": "山",
   "meaning": {
-   "en": "mountain"
+   "en": "mountain",
+   "es": "montaña"
   },
   "mnemonic": {
-   "en": "Mount Fuji is the mountain everyone climbs."
+   "en": "Mount Fuji is the mountain everyone climbs.",
+   "es": "El monte Fuji es la montaña que todos escalan."
   },
   "g": [
    {
@@ -1317,10 +1421,12 @@
   "id": "k0053",
   "c": "川",
   "meaning": {
-   "en": "river"
+   "en": "river",
+   "es": "río"
   },
   "mnemonic": {
-   "en": "The river runs down beside the mountain."
+   "en": "The river runs down beside the mountain.",
+   "es": "El río baja junto a la montaña."
   },
   "g": [
    {
@@ -1335,10 +1441,12 @@
   "id": "k0054",
   "c": "天",
   "meaning": {
-   "en": "heaven, sky"
+   "en": "heaven, sky",
+   "es": "cielo"
   },
   "mnemonic": {
-   "en": "The weather in the sky turned fine."
+   "en": "The weather in the sky turned fine.",
+   "es": "El tiempo en el cielo se puso bueno."
   },
   "g": [
    {
@@ -1354,10 +1462,12 @@
   "id": "k0055",
   "c": "気",
   "meaning": {
-   "en": "spirit, energy"
+   "en": "spirit, energy",
+   "es": "espíritu, energía"
   },
   "mnemonic": {
-   "en": "In good weather my spirit is healthy and full of energy."
+   "en": "In good weather my spirit is healthy and full of energy.",
+   "es": "Con buen tiempo mi espíritu está sano y lleno de energía."
   },
   "g": [
    {
@@ -1373,10 +1483,12 @@
   "id": "k0056",
   "c": "雨",
   "meaning": {
-   "en": "rain"
+   "en": "rain",
+   "es": "lluvia"
   },
   "mnemonic": {
-   "en": "Rain fell, and the rainy season began."
+   "en": "Rain fell, and the rainy season began.",
+   "es": "Cayó la lluvia y empezó la temporada lluviosa."
   },
   "g": [
    {
@@ -1397,10 +1509,12 @@
   "id": "k0057",
   "c": "電",
   "meaning": {
-   "en": "electricity"
+   "en": "electricity",
+   "es": "electricidad"
   },
   "mnemonic": {
-   "en": "The electric train runs on electricity, and so does the phone."
+   "en": "The electric train runs on electricity, and so does the phone.",
+   "es": "El tren eléctrico funciona con electricidad, y el teléfono también."
   },
   "g": [
    {
@@ -1416,10 +1530,12 @@
   "id": "k0058",
   "c": "車",
   "meaning": {
-   "en": "car, vehicle"
+   "en": "car, vehicle",
+   "es": "coche, vehículo"
   },
   "mnemonic": {
-   "en": "The car waited while the train passed."
+   "en": "The car waited while the train passed.",
+   "es": "El coche esperó mientras pasaba el tren."
   },
   "g": [
    {
@@ -1441,10 +1557,12 @@
   "id": "k0059",
   "c": "駅",
   "meaning": {
-   "en": "station"
+   "en": "station",
+   "es": "estación"
   },
   "mnemonic": {
-   "en": "I met the station attendant at the station."
+   "en": "I met the station attendant at the station.",
+   "es": "Me encontré con el empleado de estación en la estación."
   },
   "g": [
    {
@@ -1460,10 +1578,12 @@
   "id": "k0060",
   "c": "国",
   "meaning": {
-   "en": "country"
+   "en": "country",
+   "es": "país"
   },
   "mnemonic": {
-   "en": "A foreigner comes from another country."
+   "en": "A foreigner comes from another country.",
+   "es": "Un extranjero viene de otro país."
   },
   "g": [
    {
@@ -1484,10 +1604,12 @@
   "id": "k0061",
   "c": "語",
   "meaning": {
-   "en": "language, word"
+   "en": "language, word",
+   "es": "idioma, palabra"
   },
   "mnemonic": {
-   "en": "The Japanese language has a word for it."
+   "en": "The Japanese language has a word for it.",
+   "es": "El idioma japonés tiene una palabra para eso."
   },
   "g": [
    {
@@ -1503,10 +1625,12 @@
   "id": "k0062",
   "c": "話",
   "meaning": {
-   "en": "talk, story"
+   "en": "talk, story",
+   "es": "hablar, historia"
   },
   "mnemonic": {
-   "en": "We talk on the telephone and tell a story."
+   "en": "We talk on the telephone and tell a story.",
+   "es": "Hablamos por teléfono y contamos una historia."
   },
   "g": [
    {
@@ -1528,10 +1652,12 @@
   "id": "k0063",
   "c": "読",
   "meaning": {
-   "en": "read"
+   "en": "read",
+   "es": "leer"
   },
   "mnemonic": {
-   "en": "I read the book and read it aloud."
+   "en": "I read the book and read it aloud.",
+   "es": "Leí el libro y lo leí en voz alta."
   },
   "g": [
    {
@@ -1552,10 +1678,12 @@
   "id": "k0064",
   "c": "書",
   "meaning": {
-   "en": "write"
+   "en": "write",
+   "es": "escribir"
   },
   "mnemonic": {
-   "en": "I write in the library and read what I wrote."
+   "en": "I write in the library and read what I wrote.",
+   "es": "Escribo en la biblioteca y leo lo que escribí."
   },
   "g": [
    {
@@ -1577,10 +1705,12 @@
   "id": "k0065",
   "c": "見",
   "meaning": {
-   "en": "see, look"
+   "en": "see, look",
+   "es": "ver, mirar"
   },
   "mnemonic": {
-   "en": "Look and see what can be seen."
+   "en": "Look and see what can be seen.",
+   "es": "Mira y ve lo que se puede ver."
   },
   "g": [
    {
@@ -1602,10 +1732,12 @@
   "id": "k0066",
   "c": "聞",
   "meaning": {
-   "en": "hear, listen"
+   "en": "hear, listen",
+   "es": "oír, escuchar"
   },
   "mnemonic": {
-   "en": "Listen to the news and hear the story."
+   "en": "Listen to the news and hear the story.",
+   "es": "Escucha las noticias y oye la historia."
   },
   "g": [
    {
@@ -1626,10 +1758,12 @@
   "id": "k0067",
   "c": "行",
   "meaning": {
-   "en": "go"
+   "en": "go",
+   "es": "ir"
   },
   "mnemonic": {
-   "en": "I go to the bank and go home again."
+   "en": "I go to the bank and go home again.",
+   "es": "Voy al banco y vuelvo a casa."
   },
   "g": [
    {
@@ -1651,10 +1785,12 @@
   "id": "k0068",
   "c": "来",
   "meaning": {
-   "en": "come"
+   "en": "come",
+   "es": "venir"
   },
   "mnemonic": {
-   "en": "Come next week, come again next year."
+   "en": "Come next week, come again next year.",
+   "es": "Ven la próxima semana, ven otra vez el próximo año."
   },
   "g": [
    {
@@ -1676,10 +1812,12 @@
   "id": "k0069",
   "c": "出",
   "meaning": {
-   "en": "exit, go out"
+   "en": "exit, go out",
+   "es": "salida, salir"
   },
   "mnemonic": {
-   "en": "Go out through the exit and leave."
+   "en": "Go out through the exit and leave.",
+   "es": "Sal por la salida y márchate."
   },
   "g": [
    {
@@ -1701,10 +1839,12 @@
   "id": "k0070",
   "c": "入",
   "meaning": {
-   "en": "enter, go in"
+   "en": "enter, go in",
+   "es": "entrar"
   },
   "mnemonic": {
-   "en": "Enter by the entrance and go in."
+   "en": "Enter by the entrance and go in.",
+   "es": "Entra por la entrada y pasa dentro."
   },
   "g": [
    {
@@ -1731,10 +1871,12 @@
   "id": "k0071",
   "c": "立",
   "meaning": {
-   "en": "stand"
+   "en": "stand",
+   "es": "estar de pie"
   },
   "mnemonic": {
-   "en": "Stand up and stand still."
+   "en": "Stand up and stand still.",
+   "es": "Ponte de pie y quédate quieto."
   },
   "g": [
    {
@@ -1755,10 +1897,12 @@
   "id": "k0072",
   "c": "休",
   "meaning": {
-   "en": "rest"
+   "en": "rest",
+   "es": "descansar"
   },
   "mnemonic": {
-   "en": "On a day off I rest and take a holiday."
+   "en": "On a day off I rest and take a holiday.",
+   "es": "En un día libre descanso y me tomo vacaciones."
   },
   "g": [
    {
@@ -1780,10 +1924,12 @@
   "id": "k0073",
   "c": "食",
   "meaning": {
-   "en": "eat, food"
+   "en": "eat, food",
+   "es": "comer, comida"
   },
   "mnemonic": {
-   "en": "I eat my meal in the dining room."
+   "en": "I eat my meal in the dining room.",
+   "es": "Como mi comida en el comedor."
   },
   "g": [
    {
@@ -1805,10 +1951,12 @@
   "id": "k0074",
   "c": "飲",
   "meaning": {
-   "en": "drink"
+   "en": "drink",
+   "es": "beber"
   },
   "mnemonic": {
-   "en": "I drink a drink with my meal."
+   "en": "I drink a drink with my meal.",
+   "es": "Bebo una bebida con mi comida."
   },
   "g": [
    {
@@ -1830,10 +1978,12 @@
   "id": "k0075",
   "c": "名",
   "meaning": {
-   "en": "name"
+   "en": "name",
+   "es": "nombre"
   },
   "mnemonic": {
-   "en": "Write your name; it is a famous name."
+   "en": "Write your name; it is a famous name.",
+   "es": "Escribe tu nombre; es un nombre famoso."
   },
   "g": [
    {
@@ -1854,10 +2004,12 @@
   "id": "k0076",
   "c": "口",
   "meaning": {
-   "en": "mouth"
+   "en": "mouth",
+   "es": "boca"
   },
   "mnemonic": {
-   "en": "The mouth of the exit, the mouth on your face."
+   "en": "The mouth of the exit, the mouth on your face.",
+   "es": "La boca de la salida, la boca de tu cara."
   },
   "g": [
    {
@@ -1878,10 +2030,12 @@
   "id": "k0077",
   "c": "目",
   "meaning": {
-   "en": "eye"
+   "en": "eye",
+   "es": "ojo"
   },
   "mnemonic": {
-   "en": "My eyes woke and the eye opened."
+   "en": "My eyes woke and the eye opened.",
+   "es": "Mis ojos despertaron y el ojo se abrió."
   },
   "g": [
    {
@@ -1902,10 +2056,12 @@
   "id": "k0078",
   "c": "耳",
   "meaning": {
-   "en": "ear"
+   "en": "ear",
+   "es": "oreja"
   },
   "mnemonic": {
-   "en": "The ear hears what the eye cannot see."
+   "en": "The ear hears what the eye cannot see.",
+   "es": "La oreja oye lo que el ojo no puede ver."
   },
   "g": [
    {
@@ -1920,10 +2076,12 @@
   "id": "k0079",
   "c": "手",
   "meaning": {
-   "en": "hand"
+   "en": "hand",
+   "es": "mano"
   },
   "mnemonic": {
-   "en": "A letter written by hand, held in the hand."
+   "en": "A letter written by hand, held in the hand.",
+   "es": "Una carta escrita a mano, sostenida en la mano."
   },
   "g": [
    {
@@ -1945,10 +2103,12 @@
   "id": "k0080",
   "c": "足",
   "meaning": {
-   "en": "foot, leg"
+   "en": "foot, leg",
+   "es": "pie, pierna"
   },
   "mnemonic": {
-   "en": "My legs are tired, so my feet stopped."
+   "en": "My legs are tired, so my feet stopped.",
+   "es": "Mis piernas están cansadas, así que mis pies se pararon."
   },
   "g": [
    {
@@ -1969,10 +2129,12 @@
   "id": "k0081",
   "c": "空",
   "meaning": {
-   "en": "sky, empty"
+   "en": "sky, empty",
+   "es": "cielo, vacío"
   },
   "mnemonic": {
-   "en": "The sky is empty above the airport."
+   "en": "The sky is empty above the airport.",
+   "es": "El cielo está vacío sobre el aeropuerto."
   },
   "g": [
    {
@@ -1994,10 +2156,12 @@
   "id": "k0082",
   "c": "花",
   "meaning": {
-   "en": "flower"
+   "en": "flower",
+   "es": "flor"
   },
   "mnemonic": {
-   "en": "The flower opened, a fireworks flower in the sky."
+   "en": "The flower opened, a fireworks flower in the sky.",
+   "es": "La flor se abrió, una flor de fuegos artificiales en el cielo."
   },
   "g": [
    {
@@ -2018,10 +2182,12 @@
   "id": "k0083",
   "c": "魚",
   "meaning": {
-   "en": "fish"
+   "en": "fish",
+   "es": "pez"
   },
   "mnemonic": {
-   "en": "The fish in the fish shop came from the river."
+   "en": "The fish in the fish shop came from the river.",
+   "es": "El pez de la pescadería vino del río."
   },
   "g": [
    {
@@ -2042,10 +2208,12 @@
   "id": "k0084",
   "c": "犬",
   "meaning": {
-   "en": "dog"
+   "en": "dog",
+   "es": "perro"
   },
   "mnemonic": {
-   "en": "The dog barked; it was a big dog."
+   "en": "The dog barked; it was a big dog.",
+   "es": "El perro ladró; era un perro grande."
   },
   "g": [
    {
@@ -2060,10 +2228,12 @@
   "id": "k0085",
   "c": "少",
   "meaning": {
-   "en": "few, little"
+   "en": "few, little",
+   "es": "poco"
   },
   "mnemonic": {
-   "en": "A little water, and only a few drops."
+   "en": "A little water, and only a few drops.",
+   "es": "Un poco de agua, y solo unas pocas gotas."
   },
   "g": [
    {
@@ -2090,10 +2260,12 @@
   "id": "k0086",
   "c": "多",
   "meaning": {
-   "en": "many, much"
+   "en": "many, much",
+   "es": "mucho"
   },
   "mnemonic": {
-   "en": "Many people, much noise, too many."
+   "en": "Many people, much noise, too many.",
+   "es": "Mucha gente, mucho ruido, demasiados."
   },
   "g": [
    {
@@ -2114,10 +2286,12 @@
   "id": "k0087",
   "c": "安",
   "meaning": {
-   "en": "cheap, safe"
+   "en": "cheap, safe",
+   "es": "barato, seguro"
   },
   "mnemonic": {
-   "en": "It is cheap here, and safe too."
+   "en": "It is cheap here, and safe too.",
+   "es": "Aquí es barato, y seguro también."
   },
   "g": [
    {
@@ -2139,10 +2313,12 @@
   "id": "k0088",
   "c": "新",
   "meaning": {
-   "en": "new"
+   "en": "new",
+   "es": "nuevo"
   },
   "mnemonic": {
-   "en": "A new newspaper arrived, brand new."
+   "en": "A new newspaper arrived, brand new.",
+   "es": "Llegó un periódico nuevo, recién salido."
   },
   "g": [
    {
@@ -2163,10 +2339,12 @@
   "id": "k0089",
   "c": "古",
   "meaning": {
-   "en": "old"
+   "en": "old",
+   "es": "viejo"
   },
   "mnemonic": {
-   "en": "The old bookshop sells old books."
+   "en": "The old bookshop sells old books.",
+   "es": "La librería vieja vende libros viejos."
   },
   "g": [
    {
@@ -2187,10 +2365,12 @@
   "id": "k0090",
   "c": "早",
   "meaning": {
-   "en": "early, fast"
+   "en": "early, fast",
+   "es": "temprano, rápido"
   },
   "mnemonic": {
-   "en": "An early start, a fast finish."
+   "en": "An early start, a fast finish.",
+   "es": "Un comienzo temprano, un final rápido."
   },
   "g": [
    {
@@ -2211,10 +2391,12 @@
   "id": "k0091",
   "c": "力",
   "meaning": {
-   "en": "power, strength"
+   "en": "power, strength",
+   "es": "poder, fuerza"
   },
   "mnemonic": {
-   "en": "With effort comes the strength and power to finish."
+   "en": "With effort comes the strength and power to finish.",
+   "es": "Con esfuerzo llegan la fuerza y el poder para terminar."
   },
   "g": [
    {
@@ -2235,10 +2417,12 @@
   "id": "k0092",
   "c": "会",
   "meaning": {
-   "en": "meet, meeting"
+   "en": "meet, meeting",
+   "es": "encontrarse, reunión"
   },
   "mnemonic": {
-   "en": "We meet at the company for a conversation."
+   "en": "We meet at the company for a conversation.",
+   "es": "Nos encontramos en la empresa para una conversación."
   },
   "g": [
    {

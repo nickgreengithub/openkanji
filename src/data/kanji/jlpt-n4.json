@@ -3,10 +3,12 @@
   "id": "k0093",
   "c": "楽",
   "meaning": {
-   "en": "comfort, music"
+   "en": "comfort, music",
+   "es": "comodidad, música"
   },
   "mnemonic": {
-   "en": "Music is fun, so I relax at ease and enjoy it."
+   "en": "Music is fun, so I relax at ease and enjoy it.",
+   "es": "La música es divertida, así que me relajo a gusto y disfruto."
   },
   "g": [
    {
@@ -35,10 +37,12 @@
   "id": "k0094",
   "c": "明",
   "meaning": {
-   "en": "bright, clear"
+   "en": "bright, clear",
+   "es": "brillante, claro"
   },
   "mnemonic": {
-   "en": "Tomorrow, before dawn, I will give a bright explanation of the invention under one light."
+   "en": "Tomorrow, before dawn, I will give a bright explanation of the invention under one light.",
+   "es": "Mañana, antes del amanecer, daré una explicación clara del invento bajo una luz."
   },
   "g": [
    {
@@ -79,10 +83,12 @@
   "id": "k0095",
   "c": "音",
   "meaning": {
-   "en": "sound, noise"
+   "en": "sound, noise",
+   "es": "sonido, ruido"
   },
   "mnemonic": {
-   "en": "The sound of footsteps and the tone colour of the music taught me the pronunciation."
+   "en": "The sound of footsteps and the tone colour of the music taught me the pronunciation.",
+   "es": "El sonido de los pasos y el timbre de la música me enseñaron la pronunciación."
   },
   "g": [
    {
@@ -111,10 +117,12 @@
   "id": "k0096",
   "c": "発",
   "meaning": {
-   "en": "depart, emit"
+   "en": "depart, emit",
+   "es": "partir, emitir"
   },
   "mnemonic": {
-   "en": "Before the departure of the first train, the presentation about the invention explained the pronunciation."
+   "en": "Before the departure of the first train, the presentation about the invention explained the pronunciation.",
+   "es": "Antes de la salida del primer tren, la presentación sobre el invento explicó la pronunciación."
   },
   "g": [
    {
@@ -143,10 +151,12 @@
   "id": "k0097",
   "c": "表",
   "meaning": {
-   "en": "surface, express"
+   "en": "surface, express",
+   "es": "superficie, expresar"
   },
   "mnemonic": {
-   "en": "The presentation used a chart to express what was on the surface."
+   "en": "The presentation used a chart to express what was on the surface.",
+   "es": "La presentación usó un cuadro para expresar lo que había en la superficie."
   },
   "g": [
    {
@@ -174,10 +184,12 @@
   "id": "k0098",
   "c": "使",
   "meaning": {
-   "en": "use, envoy"
+   "en": "use, envoy",
+   "es": "usar, enviado"
   },
   "mnemonic": {
-   "en": "At the embassy they explained the use and how to use it, so I used it."
+   "en": "At the embassy they explained the use and how to use it, so I used it.",
+   "es": "En la embajada explicaron el uso y cómo usarlo, así que lo usé."
   },
   "g": [
    {
@@ -200,10 +212,12 @@
   "id": "k0099",
   "c": "用",
   "meaning": {
-   "en": "use, task"
+   "en": "use, task",
+   "es": "uso, tarea"
   },
   "mnemonic": {
-   "en": "I have an errand, so the preparation and the use of the tool I employ must be ready."
+   "en": "I have an errand, so the preparation and the use of the tool I employ must be ready.",
+   "es": "Tengo un recado, así que la preparación y el uso de la herramienta deben estar listos."
   },
   "g": [
    {
@@ -226,10 +240,12 @@
   "id": "k0100",
   "c": "意",
   "meaning": {
-   "en": "mind, intent"
+   "en": "mind, intent",
+   "es": "mente, intención"
   },
   "mnemonic": {
-   "en": "With caution, prepare your opinion and explain its meaning."
+   "en": "With caution, prepare your opinion and explain its meaning.",
+   "es": "Con precaución, prepara tu opinión y explica su significado."
   },
   "g": [
    {
@@ -247,10 +263,12 @@
   "id": "k0101",
   "c": "味",
   "meaning": {
-   "en": "taste, flavour"
+   "en": "taste, flavour",
+   "es": "sabor"
   },
   "mnemonic": {
-   "en": "The meaning of my hobby is the taste, so I always do a tasting."
+   "en": "The meaning of my hobby is the taste, so I always do a tasting.",
+   "es": "El significado de mi afición es el sabor, por eso siempre hago una cata."
   },
   "g": [
    {
@@ -273,10 +291,12 @@
   "id": "k0102",
   "c": "注",
   "meaning": {
-   "en": "pour, note"
+   "en": "pour, note",
+   "es": "verter, nota"
   },
   "mnemonic": {
-   "en": "With caution I placed an order, poured the water, and then had an injection."
+   "en": "With caution I placed an order, poured the water, and then had an injection.",
+   "es": "Con precaución hice un pedido, vertí el agua y luego me pusieron una inyección."
   },
   "g": [
    {
@@ -299,10 +319,12 @@
   "id": "k0103",
   "c": "主",
   "meaning": {
-   "en": "main, master"
+   "en": "main, master",
+   "es": "principal, dueño"
   },
   "mnemonic": {
-   "en": "The owner is mainly the husband, and he is the subject of the sentence."
+   "en": "The owner is mainly the husband, and he is the subject of the sentence.",
+   "es": "El dueño es principalmente el marido, y él es el sujeto de la frase."
   },
   "g": [
    {
@@ -330,10 +352,12 @@
   "id": "k0104",
   "c": "重",
   "meaning": {
-   "en": "heavy, pile"
+   "en": "heavy, pile",
+   "es": "pesado, apilar"
   },
   "mnemonic": {
-   "en": "My body weight is important, because the heavy weight piles up."
+   "en": "My body weight is important, because the heavy weight piles up.",
+   "es": "Mi peso corporal es importante, porque el peso pesado se apila."
   },
   "g": [
    {
@@ -362,10 +386,12 @@
   "id": "k0105",
   "c": "世",
   "meaning": {
-   "en": "world, generation"
+   "en": "world, generation",
+   "es": "mundo, generación"
   },
   "mnemonic": {
-   "en": "In this century, society takes care of the world."
+   "en": "In this century, society takes care of the world.",
+   "es": "En este siglo, la sociedad cuida del mundo."
   },
   "g": [
    {
@@ -393,10 +419,12 @@
   "id": "k0106",
   "c": "界",
   "meaning": {
-   "en": "boundary, world"
+   "en": "boundary, world",
+   "es": "frontera, mundo"
   },
   "mnemonic": {
-   "en": "All over the world, this industry is the biggest in the world."
+   "en": "All over the world, this industry is the biggest in the world.",
+   "es": "Por todo el mundo, esta industria es la mayor del mundo."
   },
   "g": [
    {
@@ -413,10 +441,12 @@
   "id": "k0107",
   "c": "開",
   "meaning": {
-   "en": "open"
+   "en": "open",
+   "es": "abrir"
   },
   "mnemonic": {
-   "en": "At the store opening the doors open at the start, so I opened them and unfolded the map."
+   "en": "At the store opening the doors open at the start, so I opened them and unfolded the map.",
+   "es": "En la apertura de tienda las puertas se abren al inicio, así que las abrí y desplegué el mapa."
   },
   "g": [
    {
@@ -445,10 +475,12 @@
   "id": "k0108",
   "c": "始",
   "meaning": {
-   "en": "begin"
+   "en": "begin",
+   "es": "comenzar"
   },
   "mnemonic": {
-   "en": "The start is when the first train begins, so I will begin too."
+   "en": "The start is when the first train begins, so I will begin too.",
+   "es": "El inicio es cuando el primer tren comienza, así que yo también comenzaré."
   },
   "g": [
    {
@@ -471,10 +503,12 @@
   "id": "k0109",
   "c": "転",
   "meaning": {
-   "en": "revolve, turn"
+   "en": "revolve, turn",
+   "es": "girar, volcar"
   },
   "mnemonic": {
-   "en": "After changing schools I fell over while driving my bicycle."
+   "en": "After changing schools I fell over while driving my bicycle.",
+   "es": "Tras el cambio de escuela me caí conduciendo mi bicicleta."
   },
   "g": [
    {
@@ -497,10 +531,12 @@
   "id": "k0110",
   "c": "運",
   "meaning": {
-   "en": "carry, luck"
+   "en": "carry, luck",
+   "es": "llevar, suerte"
   },
   "mnemonic": {
-   "en": "With good luck, driving and exercise let me carry it."
+   "en": "With good luck, driving and exercise let me carry it.",
+   "es": "Con buena suerte, conducir y hacer ejercicio me permiten llevarlo."
   },
   "g": [
    {
@@ -523,10 +559,12 @@
   "id": "k0111",
   "c": "動",
   "meaning": {
-   "en": "move"
+   "en": "move",
+   "es": "mover"
   },
   "mnemonic": {
-   "en": "The animal moved the car, and exercise moves my body too."
+   "en": "The animal moved the car, and exercise moves my body too.",
+   "es": "El animal movió el coche, y el ejercicio también mueve mi cuerpo."
   },
   "g": [
    {
@@ -550,10 +588,12 @@
   "id": "k0112",
   "c": "物",
   "meaning": {
-   "en": "thing, object"
+   "en": "thing, object",
+   "es": "cosa, objeto"
   },
   "mnemonic": {
-   "en": "While sightseeing I left my luggage and goods in the building, so they became lost items next to an animal."
+   "en": "While sightseeing I left my luggage and goods in the building, so they became lost items next to an animal.",
+   "es": "Haciendo turismo dejé mi equipaje y mercancía en el edificio, y se volvieron objetos perdidos junto a un animal."
   },
   "g": [
    {
@@ -583,10 +623,12 @@
   "id": "k0113",
   "c": "活",
   "meaning": {
-   "en": "life, activity"
+   "en": "life, activity",
+   "es": "vida, actividad"
   },
   "mnemonic": {
-   "en": "Daily life and club activities both make use of my energy."
+   "en": "Daily life and club activities both make use of my energy.",
+   "es": "La vida diaria y las actividades del club aprovechan mi energía."
   },
   "g": [
    {
@@ -603,10 +645,12 @@
   "id": "k0114",
   "c": "漢",
   "meaning": {
-   "en": "China, Han"
+   "en": "China, Han",
+   "es": "China, Han"
   },
   "mnemonic": {
-   "en": "Chinese characters are called kanji."
+   "en": "Chinese characters are called kanji.",
+   "es": "Los caracteres chinos se llaman kanji."
   },
   "g": [
    {
@@ -622,10 +666,12 @@
   "id": "k0115",
   "c": "字",
   "meaning": {
-   "en": "character, letter"
+   "en": "character, letter",
+   "es": "carácter, letra"
   },
   "mnemonic": {
-   "en": "My handwriting shapes each character and number."
+   "en": "My handwriting shapes each character and number.",
+   "es": "Mi caligrafía forma cada carácter y número."
   },
   "g": [
    {
@@ -642,10 +688,12 @@
   "id": "k0116",
   "c": "習",
   "meaning": {
-   "en": "learn"
+   "en": "learn",
+   "es": "aprender"
   },
   "mnemonic": {
-   "en": "I learn in class, revise what I studied, and practise it."
+   "en": "I learn in class, revise what I studied, and practise it.",
+   "es": "Aprendo en clase, repaso lo estudiado y lo practico."
   },
   "g": [
    {
@@ -667,10 +715,12 @@
   "id": "k0117",
   "c": "研",
   "meaning": {
-   "en": "polish, research"
+   "en": "polish, research",
+   "es": "pulir, investigar"
   },
   "mnemonic": {
-   "en": "At the laboratory the researcher polishes the study."
+   "en": "At the laboratory the researcher polishes the study.",
+   "es": "En el laboratorio el investigador pule el estudio."
   },
   "g": [
    {
@@ -686,10 +736,12 @@
   "id": "k0118",
   "c": "究",
   "meaning": {
-   "en": "investigate"
+   "en": "investigate",
+   "es": "indagar"
   },
   "mnemonic": {
-   "en": "The research investigates it thoroughly."
+   "en": "The research investigates it thoroughly.",
+   "es": "La investigación lo indaga a fondo."
   },
   "g": [
    {
@@ -705,10 +757,12 @@
   "id": "k0119",
   "c": "教",
   "meaning": {
-   "en": "teach"
+   "en": "teach",
+   "es": "enseñar"
   },
   "mnemonic": {
-   "en": "The teacher teaches in the classroom and shares religion."
+   "en": "The teacher teaches in the classroom and shares religion.",
+   "es": "El profesor enseña en el aula y comparte la religión."
   },
   "g": [
    {
@@ -731,10 +785,12 @@
   "id": "k0120",
   "c": "室",
   "meaning": {
-   "en": "room"
+   "en": "room",
+   "es": "habitación"
   },
   "mnemonic": {
-   "en": "The classroom and the laboratory are both rooms indoors."
+   "en": "The classroom and the laboratory are both rooms indoors.",
+   "es": "El aula y el laboratorio son ambos habitaciones interiores."
   },
   "g": [
    {
@@ -751,10 +807,12 @@
   "id": "k0121",
   "c": "質",
   "meaning": {
-   "en": "quality, question"
+   "en": "quality, question",
+   "es": "calidad, pregunta"
   },
   "mnemonic": {
-   "en": "The question was about quality, so I asked politely."
+   "en": "The question was about quality, so I asked politely.",
+   "es": "La pregunta era sobre la calidad, así que pregunté con cortesía."
   },
   "g": [
    {
@@ -770,10 +828,12 @@
   "id": "k0122",
   "c": "問",
   "meaning": {
-   "en": "question, ask"
+   "en": "question, ask",
+   "es": "pregunta, preguntar"
   },
   "mnemonic": {
-   "en": "There is no question or problem, so I inquired."
+   "en": "There is no question or problem, so I inquired.",
+   "es": "No hay pregunta ni problema, así que indagué."
   },
   "g": [
    {
@@ -795,10 +855,12 @@
   "id": "k0123",
   "c": "題",
   "meaning": {
-   "en": "topic, title"
+   "en": "topic, title",
+   "es": "tema, título"
   },
   "mnemonic": {
-   "en": "The homework problem had a difficult title."
+   "en": "The homework problem had a difficult title.",
+   "es": "El problema de los deberes tenía un título difícil."
   },
   "g": [
    {
@@ -815,10 +877,12 @@
   "id": "k0124",
   "c": "答",
   "meaning": {
-   "en": "answer"
+   "en": "answer",
+   "es": "respuesta"
   },
   "mnemonic": {
-   "en": "The answer sheet holds my reply, and I answered."
+   "en": "The answer sheet holds my reply, and I answered.",
+   "es": "La hoja de respuestas contiene mi respuesta, y respondí."
   },
   "g": [
    {
@@ -841,10 +905,12 @@
   "id": "k0125",
   "c": "考",
   "meaning": {
-   "en": "think, consider"
+   "en": "think, consider",
+   "es": "pensar, considerar"
   },
   "mnemonic": {
-   "en": "My idea is that thinking things over is a way of considering."
+   "en": "My idea is that thinking things over is a way of considering.",
+   "es": "Mi idea es que pensar las cosas es una forma de considerar."
   },
   "g": [
    {
@@ -867,10 +933,12 @@
   "id": "k0126",
   "c": "験",
   "meaning": {
-   "en": "test, verify"
+   "en": "test, verify",
+   "es": "examen, verificar"
   },
   "mnemonic": {
-   "en": "The examination is an experiment in experience."
+   "en": "The examination is an experiment in experience.",
+   "es": "El examen es un experimento de experiencia."
   },
   "g": [
    {
@@ -887,10 +955,12 @@
   "id": "k0127",
   "c": "試",
   "meaning": {
-   "en": "try, test"
+   "en": "try, test",
+   "es": "intentar, probar"
   },
   "mnemonic": {
-   "en": "For the exam I did a trial and tried it out."
+   "en": "For the exam I did a trial and tried it out.",
+   "es": "Para el examen hice una prueba y lo intenté."
   },
   "g": [
    {
@@ -912,10 +982,12 @@
   "id": "k0128",
   "c": "品",
   "meaning": {
-   "en": "goods, article"
+   "en": "goods, article",
+   "es": "mercancía, artículo"
   },
   "mnemonic": {
-   "en": "The product on display is a fine article of goods."
+   "en": "The product on display is a fine article of goods.",
+   "es": "El producto expuesto es un buen artículo de mercancía."
   },
   "g": [
    {
@@ -938,10 +1010,12 @@
   "id": "k0129",
   "c": "作",
   "meaning": {
-   "en": "make, produce"
+   "en": "make, produce",
+   "es": "hacer, producir"
   },
   "mnemonic": {
-   "en": "The farmer makes a work of art and produces a crop."
+   "en": "The farmer makes a work of art and produces a crop.",
+   "es": "El agricultor hace una obra de arte y produce una cosecha."
   },
   "g": [
    {
@@ -969,10 +1043,12 @@
   "id": "k0130",
   "c": "業",
   "meaning": {
-   "en": "business, work"
+   "en": "business, work",
+   "es": "negocio, trabajo"
   },
   "mnemonic": {
-   "en": "The class is over, so the industry gets on with its business."
+   "en": "The class is over, so the industry gets on with its business.",
+   "es": "La clase ha terminado, así que la industria sigue con su negocio."
   },
   "g": [
    {
@@ -995,10 +1071,12 @@
   "id": "k0131",
   "c": "産",
   "meaning": {
-   "en": "produce, give birth"
+   "en": "produce, give birth",
+   "es": "producir, dar a luz"
   },
   "mnemonic": {
-   "en": "Local produce comes from an industry that gives birth to goods."
+   "en": "Local produce comes from an industry that gives birth to goods.",
+   "es": "El producto local viene de una industria que da a luz mercancía."
   },
   "g": [
    {
@@ -1021,10 +1099,12 @@
   "id": "k0132",
   "c": "員",
   "meaning": {
-   "en": "member, staff"
+   "en": "member, staff",
+   "es": "miembro, personal"
   },
   "mnemonic": {
-   "en": "The staff member is a shop worker and a company employee."
+   "en": "The staff member is a shop worker and a company employee.",
+   "es": "El miembro del personal es dependiente y empleado de empresa."
   },
   "g": [
    {
@@ -1041,10 +1121,12 @@
   "id": "k0133",
   "c": "料",
   "meaning": {
-   "en": "fee, material"
+   "en": "fee, material",
+   "es": "tarifa, material"
   },
   "mnemonic": {
-   "en": "The cooking fee covers the ingredients."
+   "en": "The cooking fee covers the ingredients.",
+   "es": "La tarifa de la cocina cubre los ingredientes."
   },
   "g": [
    {
@@ -1061,10 +1143,12 @@
   "id": "k0134",
   "c": "理",
   "meaning": {
-   "en": "reason, logic"
+   "en": "reason, logic",
+   "es": "razón, lógica"
   },
   "mnemonic": {
-   "en": "The cooking has its reason, and physics is logical."
+   "en": "The cooking has its reason, and physics is logical.",
+   "es": "La cocina tiene su razón, y la física es lógica."
   },
   "g": [
    {
@@ -1081,10 +1165,12 @@
   "id": "k0135",
   "c": "由",
   "meaning": {
-   "en": "reason, cause"
+   "en": "reason, cause",
+   "es": "razón, causa"
   },
   "mnemonic": {
-   "en": "There is a reason: it is a matter of freedom."
+   "en": "There is a reason: it is a matter of freedom.",
+   "es": "Hay una razón: es cuestión de libertad."
   },
   "g": [
    {
@@ -1100,10 +1186,12 @@
   "id": "k0136",
   "c": "自",
   "meaning": {
-   "en": "self, oneself"
+   "en": "self, oneself",
+   "es": "uno mismo"
   },
   "mnemonic": {
-   "en": "The car and the bicycle are self-propelled, and I introduce myself."
+   "en": "The car and the bicycle are self-propelled, and I introduce myself.",
+   "es": "El coche y la bicicleta son autopropulsados, y yo me presento."
   },
   "g": [
    {
@@ -1127,10 +1215,12 @@
   "id": "k0137",
   "c": "別",
   "meaning": {
-   "en": "separate, another"
+   "en": "separate, another",
+   "es": "separado, otro"
   },
   "mnemonic": {
-   "en": "On another occasion we said goodbye and went our separate ways."
+   "en": "On another occasion we said goodbye and went our separate ways.",
+   "es": "En otra ocasión nos despedimos y seguimos caminos separados."
   },
   "g": [
    {
@@ -1153,10 +1243,12 @@
   "id": "k0138",
   "c": "特",
   "meaning": {
-   "en": "special"
+   "en": "special",
+   "es": "especial"
   },
   "mnemonic": {
-   "en": "The express train is a special feature."
+   "en": "The express train is a special feature.",
+   "es": "El tren expreso es una característica especial."
   },
   "g": [
    {
@@ -1173,10 +1265,12 @@
   "id": "k0139",
   "c": "急",
   "meaning": {
-   "en": "hurry, urgent"
+   "en": "hurry, urgent",
+   "es": "prisa, urgente"
   },
   "mnemonic": {
-   "en": "It is urgent, so on the express train I hurried suddenly."
+   "en": "It is urgent, so on the express train I hurried suddenly.",
+   "es": "Es urgente, así que en el tren expreso me apresuré de repente."
   },
   "g": [
    {
@@ -1205,10 +1299,12 @@
   "id": "k0140",
   "c": "送",
   "meaning": {
-   "en": "send"
+   "en": "send",
+   "es": "enviar"
   },
   "mnemonic": {
-   "en": "I sent the delivery and saw my friend off."
+   "en": "I sent the delivery and saw my friend off.",
+   "es": "Envié el paquete y despedí a mi amigo."
   },
   "g": [
    {
@@ -1231,10 +1327,12 @@
   "id": "k0141",
   "c": "待",
   "meaning": {
-   "en": "wait"
+   "en": "wait",
+   "es": "esperar"
   },
   "mnemonic": {
-   "en": "In the waiting room I wait with anticipation."
+   "en": "In the waiting room I wait with anticipation.",
+   "es": "En la sala de espera espero con expectación."
   },
   "g": [
    {
@@ -1256,10 +1354,12 @@
   "id": "k0142",
   "c": "持",
   "meaning": {
-   "en": "hold, have"
+   "en": "hold, have",
+   "es": "sostener, tener"
   },
   "mnemonic": {
-   "en": "The owner holds his belongings and carries them."
+   "en": "The owner holds his belongings and carries them.",
+   "es": "El dueño sostiene sus pertenencias y las lleva."
   },
   "g": [
    {

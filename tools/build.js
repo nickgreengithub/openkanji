@@ -160,7 +160,17 @@ function loadKanjiAndLangs() {
     i18n[l.code] = t;
   }
 
-  return { data: flatten(kanji, words, DEFAULT_LANG), i18n, langs, available, partial, coverage, fields };
+  // Example-sentence translations by word id: { id: { LANG: [t1, t2] } }.
+  // The Japanese text itself stays in EXTRA, which holds the furigana tokens.
+  const exT = {};
+  for (const [id, w] of Object.entries(words)) {
+    if (!w.sentences || !w.sentences.length) continue;
+    const per = {};
+    for (const c of complete) per[c.toUpperCase()] = w.sentences.map((s) => pick(s.t, c));
+    exT[id] = per;
+  }
+
+  return { data: flatten(kanji, words, DEFAULT_LANG), exT, i18n, langs, available, partial, coverage, fields };
 }
 
 function build() {
@@ -177,7 +187,7 @@ function build() {
     };
   }
 
-  const { data, i18n, langs, available, partial, coverage, fields } = loadKanjiAndLangs();
+  const { data, exT, i18n, langs, available, partial, coverage, fields } = loadKanjiAndLangs();
 
   let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
   const tokens = {
@@ -185,6 +195,7 @@ function build() {
     // Complete non-default languages ride along so the picker can switch
     // without a refetch. Incomplete ones are omitted entirely.
     __KANJI_I18N__: JSON.stringify(i18n),
+    __EX_TRANSLATIONS__: JSON.stringify(exT),
     // code, display name, kanji label, and whether the language is complete.
     __LANGS__: JSON.stringify(
       langs.map((l) => [l.code, l.name, l.ja, available.includes(l.code) ? "" : "soon"])
