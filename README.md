@@ -83,8 +83,38 @@ No dependencies -- `build.js` is plain Node.
 
 ## Deploying
 
-GitHub Pages serves `index.html` from `main`. Commit the rebuilt `index.html`
-alongside the `src/` change; `npm run check` catches a forgotten rebuild.
+Cloudflare Worker `openkanji`, serving both the site and the API at
+openkanji.org. Static assets come from `dist/`; `/api/*` is handled by
+`worker/src/index.js`.
+
+Pushes to `main` build automatically:
+
+```
+Build command   npm run build
+Deploy command  npx wrangler deploy
+```
+
+`npx wrangler deploy` is the Workers command -- `wrangler pages deploy` is for
+Pages projects and will fail here.
+
+To deploy by hand:
+
+```sh
+npm run build && npx wrangler deploy
+```
+
+Secrets live on the Worker, never in the repo:
+
+```sh
+npx wrangler secret put RESEND_API_KEY --name openkanji
+openssl rand -base64 32 | npx wrangler secret put SESSION_SECRET --name openkanji
+```
+
+Worker tests:
+
+```sh
+node --experimental-sqlite --no-warnings worker/test/worker.test.mjs
+```
 
 ## Progress sync
 
