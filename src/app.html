@@ -347,8 +347,16 @@ a:hover{color:var(--text-accent-hover)}
   .ok-cellbtn:hover > span[style*="height: 2rem"],.ok-cellbtn:hover > span[style*="height:2rem"]{background:var(--text-accent-hover)!important;border-color:var(--text-accent-hover)!important;color:#ffffff!important}
 </style>
 
+<style>
+#ok-boot{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#faf9f5;z-index:9999;animation:ok-boot-giveup 6s step-end forwards}
+#ok-boot i{width:88px;height:88px;display:flex;align-items:center;justify-content:center;font-style:normal;background:#0891b2;color:#fff;font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:50px;animation:ok-boot 1.5s ease-in-out infinite}
+@keyframes ok-boot{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes ok-boot-giveup{to{visibility:hidden}}
+html[data-ok-ready] #ok-boot{display:none}
+</style>
 </helmet>
 
+<div id="ok-boot"><i>開</i></div>
 <div style="height:100vh;display:flex;flex-direction:column;background:var(--surface-page);color:var(--text-body);font-family:var(--font-1);font-weight:300">
 
 
@@ -1467,6 +1475,8 @@ class Component extends DCLogic {
     this._savedSig = m ? this.saveSig(m, deck0, lang0) : null;
     this.setState({ seen: s || {}, mastered: m || {}, deck: deck0, uiLang: lang0 || undefined, allFuri: this.furiDefault });
     this.measureList();
+    // Real content exists now, so the boot cover can go.
+    try { document.documentElement.setAttribute("data-ok-ready", "1"); } catch (e) {}
     this.restoreSession();
     this._onResize = () => this.scheduleMeasure();
     window.addEventListener("resize", this._onResize);
