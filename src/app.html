@@ -715,9 +715,9 @@ a:hover{color:var(--text-accent-hover)}
       </div>
 
       <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;padding:1.25rem 0 0 1.5rem;margin-right:-1.25rem">
-      <div class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow:auto">
-        <div style="min-width:max-content;border-top:{{ ruleH }} solid var(--cyan-a45);border-left:{{ ruleH }} solid var(--cyan-a45);border-right:{{ ruleH }} solid var(--cyan-a45)">
-        <div style="display:grid;grid-template-columns:repeat(10,minmax(4.5rem,1fr));">
+      <div class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden">
+        <div style="min-width:0;border-top:{{ ruleH }} solid var(--cyan-a45);border-left:{{ ruleH }} solid var(--cyan-a45);border-right:{{ ruleH }} solid var(--cyan-a45)">
+        <div style="display:grid;grid-template-columns:repeat(10,minmax(0,1fr));">
           <sc-for list="{{ homeRows }}" as="hr" hint-placeholder-count="2">
             <sc-for list="{{ hr.tiles }}" as="ht" hint-placeholder-count="10">
             <div sc-camel-on-click="{{ ht.open }}" sc-camel-on-mouse-enter="{{ ht.enter }}" sc-camel-on-mouse-leave="{{ ht.leave }}" style="position:relative;user-select:none;min-width:0;height:8.5rem;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:.4rem;border-right:{{ ruleH }} solid var(--cyan-a45);border-bottom:{{ ruleH }} solid var(--cyan-a45);background:{{ ht.bg }};color:{{ ht.fg }};cursor:pointer;transition:background 140ms ease,color 200ms ease">
@@ -1344,6 +1344,9 @@ const KDICT = (() => {
   return m;
 })();
 
+// Shared empty result: the common "no other kanji teaches this word" case is
+// asked seven times per row, and should not allocate.
+const EMPTY = [];
 const SENT_GLOSS = {
   "楽|たの":"enjoy","楽|らく":"ease","明|あか":"bright","明|あ":"dawn","表|あらわ":"express","発|はつ":"emit",
   "仕事":"job","旅行":"trip","言葉":"word","一日":"a day","毎朝":"every morning","動物園":"zoo","自転車":"bicycle",
@@ -1363,6 +1366,23 @@ const KMEAN = {
   "分":"divide","広":"wide","先":"ahead","直":"fix","難":"difficult","聞":"hear","好":"like",
   "毎":"every","朝":"morning","足":"foot","一":"one","時":"hour"
 };
+
+// glossFor() used to walk the whole corpus -- twice -- on every call, and the
+// detail view calls it once per character of every example sentence. These two
+// maps answer the same questions by lookup. Built from DATA, which is constant,
+// so this happens once.
+//   byWord[surface] -> [[hiragana reading, gloss], ...] in corpus order
+//   byReading[kana] -> the first gloss carrying that reading
+const GLOSS_INDEX = (() => {
+  const hira = (x) => String(x).replace(/[\u30a1-\u30f6]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
+  const byWord = {}, byReading = {};
+  DATA.forEach(kk => kk.g.forEach(g => g.w.forEach(w => {
+    const r = hira(w[1]);
+    (byWord[w[0]] = byWord[w[0]] || []).push([r, w[2]]);
+    if (byReading[r] === undefined) byReading[r] = w[2];
+  })));
+  return { byWord, byReading };
+})();
 
 const READING_INDEX = (() => {
   const m = {};
@@ -1508,6 +1528,35 @@ class Component extends DCLogic {
       if (b.getBoundingClientRect().top - top <= 8) seen = parseInt(b.getAttribute("data-row").slice(1), 10);
     });
     if (seen !== this.state.viewBatch) this.setState({ viewBatch: seen });
+
+    // Extend the rendered window as either end comes into reach. Growing
+    // upwards prepends content, so record where the reader was: componentDidUpdate
+    // puts them back once the new batch has been laid out.
+    const st = this.state;
+    const nb = batchCount(st.deck);
+    const g = st.listGrow && st.listGrow.batch === st.batch ? st.listGrow : { up: 0, down: 0 };
+    const STEP = 2; // batches per extension -- one at a time feels like dragging
+    if (el.scrollTop + el.clientHeight > el.scrollHeight - 600 && st.batch + 2 + g.down < nb) {
+      this.setState({ listGrow: { batch: st.batch, up: g.up, down: g.down + STEP } });
+    } else if (el.scrollTop < 300 && st.batch - 1 - g.up > 0) {
+      this._growAnchor = { h: el.scrollHeight, top: el.scrollTop };
+      this.setState({ listGrow: { batch: st.batch, up: g.up + STEP, down: g.down } });
+    }
+  }
+
+  // The kanji-word list is one continuous scroll of the entire deck. At N1 and
+  // Core scale that is tens of thousands of nodes and ~40,000px of content for
+  // an 800px viewport, which is what made opening a kanji take seconds. Render
+  // a window around the batch being read; trackSection() extends it as the
+  // reader approaches either end, so the scroll still feels continuous.
+  listWindow(st) {
+    const nb = batchCount(st.deck);
+    const g = st.listGrow && st.listGrow.batch === st.batch ? st.listGrow : null;
+    const from = Math.max(0, st.batch - 1 - (g ? g.up : 0));
+    const to = Math.min(nb, st.batch + 2 + (g ? g.down : 0));
+    const out = [];
+    for (let bi = from; bi < to; bi++) out.push(bi);
+    return out;
   }
 
   scheduleMeasure() {
@@ -1519,6 +1568,13 @@ class Component extends DCLogic {
   }
 
   componentDidUpdate() {
+    // A prepended batch pushes everything down by its height; cancel that out.
+    if (this._growAnchor && this._listBox) {
+      const a = this._growAnchor;
+      this._growAnchor = null;
+      const delta = this._listBox.scrollHeight - a.h;
+      if (delta > 0) this._listBox.scrollTop = a.top + delta;
+    }
     if (this.state.scrollTo && this._listBox) {
       const target = this._listBox.querySelector('[data-row="' + this.state.scrollTo + '"]');
       if (target) {
@@ -1597,42 +1653,60 @@ class Component extends DCLogic {
   // best available English for a word in an example sentence
   glossFor(word, reading) {
     if (word.length === 1 && KMEAN[word]) return KMEAN[word];
-    // the reading disambiguates 楽 (らく "ease") from 楽 (たの "fun")
-    let exact = "", loose = "";
-    DATA.forEach(kk => kk.g.forEach(g => g.w.forEach(w => {
-      if (w[0] !== word) return;
-      if (!exact && reading && this.kata2hira(w[1]).indexOf(this.kata2hira(reading)) === 0) exact = w[2];
-      if (!loose) loose = w[2];
-    })));
-    const hit = SENT_GLOSS[word + "|" + this.kata2hira(reading || "")] || exact || SENT_GLOSS[word] || loose;
+    const entries = GLOSS_INDEX.byWord[word] || EMPTY;
+    const rq = this.kata2hira(reading || "");
+    // the reading disambiguates 楽 (らく "ease") from 楽 (たの "fun"). A prefix match,
+    // because the listed reading carries okurigana the sentence does not.
+    let exact = "";
+    if (reading) {
+      const pick = entries.find(e => e[0].indexOf(rq) === 0);
+      if (pick) exact = pick[1];
+    }
+    const loose = entries.length ? entries[0][1] : "";
+    const hit = SENT_GLOSS[word + "|" + rq] || exact || SENT_GLOSS[word] || loose;
     if (hit) return hit.split(",")[0].trim();
     if (reading) {
-      let byRead = "";
-      DATA.forEach(kk => kk.g.forEach(g => g.w.forEach(w => {
-        if (!byRead && this.kata2hira(w[1]) === this.kata2hira(reading)) byRead = w[2];
-      })));
+      const byRead = GLOSS_INDEX.byReading[rq] || "";
       if (byRead) return byRead.split(",")[0].trim();
     }
     const parts = word.split("").map(ch => KMEAN[ch]).filter(Boolean);
     return parts.length ? parts[0] : "—";
   }
 
-  // every kanji in the batch that also teaches this word
-  sharedWith(word, kanji) {
-    const out = [];
+  // word -> the deck entries that also teach it. Rebuilt only when the deck or
+  // the language changes. The render asks this seven times per word row, and
+  // each ask used to walk the whole deck.
+  sharedIndex() {
+    const key = CURRENT_LANG + "|" + (this.state.deck || DEFAULT_DECK);
+    if (this._sharedKey === key) return this._sharedIdx;
     const pool = deckData(this.state.deck);
+    const idx = {};
     pool.forEach((kk, i) => {
-      if (kk.c === kanji) return;
-      if (!kk.g.some(g => g.w.some(w => w[0] === word))) return;
       const b = Math.floor(i / SETN);
-      out.push({
+      const entry = {
         c: kk.c,
         batch: b,
         sel: i - b * SETN,
         label: (b * SETN + 1) + "-" + Math.min((b + 1) * SETN, pool.length)
-      });
+      };
+      const seen = {};
+      kk.g.forEach(g => g.w.forEach(w => {
+        if (seen[w[0]]) return;
+        seen[w[0]] = 1;
+        (idx[w[0]] = idx[w[0]] || []).push(entry);
+      }));
     });
-    return out;
+    this._sharedKey = key;
+    this._sharedIdx = idx;
+    return idx;
+  }
+
+  // every kanji in the deck that also teaches this word
+  sharedWith(word, kanji) {
+    const list = this.sharedIndex()[word];
+    if (!list) return EMPTY;
+    if (list.length === 1) return list[0].c === kanji ? EMPTY : list;
+    return list.filter(x => x.c !== kanji);
   }
 
   // every listed word slot — a word shared by two kanji counts twice, and both
@@ -3081,7 +3155,11 @@ class Component extends DCLogic {
           this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: null, gKanji: null, gDeckAll: true });
         }
       })),
-      homeRows: (() => {
+      // Only the screen that renders a list pays for building it. homeRows is
+      // one tile per kanji in the deck; listBatches is every word of every
+      // kanji. Building both on every render is what made opening a kanji, or
+      // switching to a big deck, take seconds.
+      homeRows: st.screen !== "home" ? EMPTY : (() => {
         const tiles = DECK.map((kk, i) => {
         const keys = this.allKeys([kk]);
         const done = keys.filter(x => st.mastered[x]).length;
@@ -3647,7 +3725,7 @@ class Component extends DCLogic {
         });
       })(),
       listGroups: [],
-      listBatches: Array.from({ length: batchCount(st.deck) }, (_, bi) => bi).map(bi => {
+      listBatches: st.screen !== "detail" ? EMPTY : this.listWindow(st).map(bi => {
         const batchSet = setOf(bi, st.deck);
         const bKeys = this.allKeys(batchSet);
         return {
@@ -3758,6 +3836,8 @@ class Component extends DCLogic {
               const key = w[3];
               const at = w[0].indexOf(kk.c);
               const id = "L" + ki + ":" + key;
+              // Asked seven times below; look it up once.
+              const shared = this.sharedWith(w[0], kk.c);
               return {
                 notFirst: wi > 0,
                 pre: at < 0 ? w[0] : w[0].slice(0, at),
@@ -3807,8 +3887,8 @@ class Component extends DCLogic {
                 })(),
                 rowId: kk.c + "|" + w[0],
                 showWord: !g.alt,
-                cbOpen: st.cbHover === id && !!st.cbRect && this.sharedWith(w[0], kk.c).length > 0,
-                cbPlainOpen: st.cbHover === id && !!st.cbRect && this.sharedWith(w[0], kk.c).length === 0,
+                cbOpen: st.cbHover === id && !!st.cbRect && shared.length > 0,
+                cbPlainOpen: st.cbHover === id && !!st.cbRect && shared.length === 0,
                 doneJa: st.mastered[key] ? "完了" : "未完了",
                 doneEn: st.mastered[key] ? T("completed") : T("not_completed"),
                 adjacent: false,
@@ -3846,14 +3926,14 @@ class Component extends DCLogic {
                   });
                   return out;
                 })(),
-                sharedRaw: this.sharedWith(w[0], kk.c),
+                sharedRaw: shared,
                 sharedList: [],
-                markSharedDone: this.sharedWith(w[0], kk.c).length > 0 && !!st.mastered[key],
-                markSharedOpen: this.sharedWith(w[0], kk.c).length > 0 && !st.mastered[key],
+                markSharedDone: shared.length > 0 && !!st.mastered[key],
+                markSharedOpen: shared.length > 0 && !st.mastered[key],
                 markPairDone: false,
                 markPairOpen: false,
-                markDone: this.sharedWith(w[0], kk.c).length === 0 && !!st.mastered[key],
-                markOpen: this.sharedWith(w[0], kk.c).length === 0 && !st.mastered[key],
+                markDone: shared.length === 0 && !!st.mastered[key],
+                markOpen: shared.length === 0 && !st.mastered[key],
                 exParts: (() => {
                   const x = EXTRA[w[0]];
                   if (!x) return [{ text: "—", plain: true, hit: false }];
