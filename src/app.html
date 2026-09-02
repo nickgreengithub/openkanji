@@ -1153,7 +1153,7 @@ const setLang = (code) => { CURRENT_LANG = _CORPUS[code] || I18N[code] ? code : 
 const deckData = (deck) => corpusFor(CURRENT_LANG).index[deck || DEFAULT_DECK] || [];
 
 // Display order for the deck rail. A deck with no kanji renders as "coming soon".
-const DECKS = ["JLPT N1", "JLPT N2", "JLPT N3", "JLPT N4", "JLPT N5", "Core 1-1000"];
+const DECKS = ["JLPT N1", "JLPT N2", "JLPT N3", "JLPT N4", "JLPT N5", "Core 10000"];
 const batchCount = (deck) => Math.ceil(deckData(deck).length / SETN);
 const setOf = (b, deck) => deckData(deck).slice(b * SETN, b * SETN + SETN);
 
@@ -3028,7 +3028,7 @@ class Component extends DCLogic {
           "JLPT N3": "Intermediate. ~650 kanji, everyday conversation and articles.",
           "JLPT N4": "Basic. ~300 kanji, simple daily-life Japanese.",
           "JLPT N5": "Beginner. ~100 kanji, first phrases and greetings.",
-          "Core 1-1000": "The 1000 most frequent words, level-agnostic."
+          "Core 10000": "Every JLPT kanji in frequency order, level-agnostic. Progress is shared with the level decks."
         })[d[0]],
         barH: (st.deck || "JLPT N4") === d[0] ? "3px" : "0",
         barBg: d[1] ? "var(--cyan-a45)" : "var(--accent)",

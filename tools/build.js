@@ -24,6 +24,7 @@ const encodeTemplate = (s) => JSON.stringify(s).replace(/<\//g, "<\\u002F");
 // Data model (see README):
 //   src/data/words.json         every word once, by stable id
 //   src/data/kanji/<deck>.json  kanji, referencing words by id
+//   src/data/<view>.json        a view deck: existing kanji ids in display order
 //   src/data/decks.json         deck order      src/data/langs.json  languages
 //
 // IDs are stable and never reused: user progress is stored as ids, so the
@@ -79,7 +80,9 @@ function loadData() {
   const seenChar = new Map();
   const seenId = new Map();
   const used = new Set();
+  const byId = {};
   for (const { deck, file } of decks) {
+    if (!file) continue; // view decks are resolved below, once every record exists
     const recs = readJson("data/kanji/" + file);
     if (!Array.isArray(recs)) throw new Error(file + ": expected an array");
     recs.forEach((k, i) => {
@@ -102,7 +105,24 @@ function loadData() {
           used.add(id);
         });
       });
+      byId[k.id] = k;
       kanji.push(Object.assign({}, k, { deck }));
+    });
+  }
+
+  // View decks: an ordered list of existing kanji ids in data/<order>, no
+  // records of their own. A kanji is still defined exactly once; the view
+  // re-uses its words, so progress is shared and nothing can drift.
+  for (const { deck, order } of decks) {
+    if (!order) continue;
+    const ids = readJson("data/" + order);
+    if (!Array.isArray(ids) || !ids.length) throw new Error(order + ": expected a non-empty array of kanji ids");
+    const seen = new Set();
+    ids.forEach((id, i) => {
+      if (!byId[id]) throw new Error(order + "[" + i + "]: unknown kanji id " + id);
+      if (seen.has(id)) throw new Error(order + "[" + i + "]: id " + id + " listed twice");
+      seen.add(id);
+      kanji.push(Object.assign({}, byId[id], { deck }));
     });
   }
 

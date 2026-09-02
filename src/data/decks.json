@@ -18,5 +18,9 @@
   {
     "deck": "JLPT N1",
     "file": "jlpt-n1.json"
+  },
+  {
+    "deck": "Core 10000",
+    "order": "core-10000.json"
   }
 ]
