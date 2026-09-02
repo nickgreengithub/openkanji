@@ -1034,6 +1034,24 @@ a:hover{color:var(--text-accent-hover)}
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;startFurigana&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;showTileMeanings&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;model&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;claude-haiku-4-5&quot;,&quot;claude-sonnet-4-5&quot;],&quot;default&quot;:&quot;claude-haiku-4-5&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;userEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Account&quot;}}">
 // Injected by tools/build.js from src/data/*.json -- edit those, not this.
 const DATA = __KANJI_DATA__;
+// Non-default languages, keyed by code: { "ES": { "楽": {meaning, sentence, words} } }.
+// Empty until a src/data/lang/<dir>/ folder exists.
+const I18N = __KANJI_I18N__;
+// [code, name, kanji label, "soon" when the language has no data yet]
+const LANGS = __LANGS__;
+
+// Re-glosses the corpus into `code`. Falls back to the built-in English when a
+// language has no data, so a missing translation degrades rather than blanks.
+const localizeData = (code) => {
+  const t = I18N[code];
+  if (!t) return DATA;
+  return DATA.map(k => {
+    const e = t[k.c];
+    if (!e) return k;
+    return { c: k.c, deck: k.deck, meaning: e.meaning || k.meaning, sentence: e.sentence || k.sentence,
+      g: k.g.map(g => ({ r: g.r, w: g.w.map(w => [w[0], w[1], (e.words && e.words[w[0]]) || w[2]]) })) };
+  });
+};
 
 // Components: [radical, ...other parts] as [glyph, gloss]; `sounds` = phonetic-component regularity
 const KANA_D = { "きゃ":"kya","きゅ":"kyu","きょ":"kyo","しゃ":"sha","しゅ":"shu","しょ":"sho","ちゃ":"cha","ちゅ":"chu","ちょ":"cho","にゃ":"nya","にゅ":"nyu","にょ":"nyo","ひゃ":"hya","ひゅ":"hyu","ひょ":"hyo","みゃ":"mya","みゅ":"myu","みょ":"myo","りゃ":"rya","りゅ":"ryu","りょ":"ryo","ぎゃ":"gya","ぎゅ":"gyu","ぎょ":"gyo","じゃ":"ja","じゅ":"ju","じょ":"jo","びゃ":"bya","びゅ":"byu","びょ":"byo","ぴゃ":"pya","ぴゅ":"pyu","ぴょ":"pyo" };
@@ -1106,7 +1124,23 @@ const DECK_INDEX = (() => {
 
 // Kanji in one deck, in corpus order. Unknown deck -> empty, so an unpopulated
 // deck renders as empty rather than throwing.
-const deckData = (deck) => DECK_INDEX[deck || DEFAULT_DECK] || [];
+// Localised corpora are built once per language and cached. CURRENT_LANG is
+// set from state at the top of each render so deckData()/setOf() stay
+// single-argument at their ~30 call sites.
+let CURRENT_LANG = "EN";
+const _CORPUS = { EN: { data: DATA, index: DECK_INDEX } };
+const corpusFor = (code) => {
+  if (!_CORPUS[code]) {
+    const data = localizeData(code);
+    const index = {};
+    for (const k of data) (index[deckNameOf(k)] = index[deckNameOf(k)] || []).push(k);
+    _CORPUS[code] = { data, index };
+  }
+  return _CORPUS[code];
+};
+const setLang = (code) => { CURRENT_LANG = _CORPUS[code] || I18N[code] ? code : "EN"; };
+
+const deckData = (deck) => corpusFor(CURRENT_LANG).index[deck || DEFAULT_DECK] || [];
 
 // Display order for the deck rail. A deck with no kanji renders as "coming soon".
 const DECKS = ["JLPT N1", "JLPT N2", "JLPT N3", "JLPT N4", "JLPT N5", "Core 1-1000"];
@@ -2660,6 +2694,7 @@ class Component extends DCLogic {
     const gIdxEff = this._gIdx !== undefined ? this._gIdx : (st.gIdx || 0);
     // Everything the study screens count or list is scoped to the selected
     // deck. Corpus-wide lookups (input method, chat) keep using DATA.
+    setLang(st.uiLang || "EN");
     const DECK = deckData(st.deck);
     const SET = setOf(st.batch, st.deck);
     const k = SET[st.sel] || SET[0];
@@ -3076,23 +3111,14 @@ class Component extends DCLogic {
       revealed: !st.conceal, concealed: !!st.conceal,
       toggleReveal: () => this.setState(s => ({ conceal: !s.conceal })),
       langCode: st.uiLang || "EN",
-      langJa: ({ EN: "英", ES: "西", PT: "葡", ID: "尼", VI: "越", TH: "泰", TR: "土", PL: "波" })[st.uiLang || "EN"] || "英",
+      langJa: (LANGS.find(l => l[0] === (st.uiLang || "EN")) || [,,"英"])[2],
       langMenuOn: !!st.langMenu,
       langChevron: st.langMenu ? "rotate(180deg)" : "none",
       tipLangOpen: false,
       langEnter: () => { if (this._lmT) clearTimeout(this._lmT); this.setState({ langMenu: true, tip: null }); },
       langLeave: () => { if (this._lmT) clearTimeout(this._lmT); this._lmT = setTimeout(() => this.setState({ langMenu: false }), 220); },
       toggleLangMenu: () => {},
-      langs: [
-        ["EN", "English", ""],
-        ["ES", "Español", "soon"],
-        ["PT", "Português", "soon"],
-        ["ID", "Bahasa Indonesia", "soon"],
-        ["VI", "Tiếng Việt", "soon"],
-        ["TH", "ไทย", "soon"],
-        ["TR", "Türkçe", "soon"],
-        ["PL", "Polski", "soon"]
-      ].map(l => {
+      langs: LANGS.map(l => [l[0], l[1], l[3]]).map(l => {
         const active = (st.uiLang || "EN") === l[0];
         const soon = !!l[2];
         return {

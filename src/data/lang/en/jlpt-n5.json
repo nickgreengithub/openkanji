@@ -1,0 +1,797 @@
+{
+ "生": {
+  "meaning": "life, birth",
+  "sentence": "The student was born, lives a life, and grows.",
+  "words": {
+   "生活": "daily life",
+   "学生": "student",
+   "先生": "teacher",
+   "生まれる": "to be born",
+   "生きる": "to live"
+  }
+ },
+ "社": {
+  "meaning": "company, shrine",
+  "sentence": "The company employee visited the shrine with society in mind.",
+  "words": {
+   "会社": "company",
+   "社会": "society",
+   "社員": "company employee",
+   "神社": "shrine"
+  }
+ },
+ "店": {
+  "meaning": "shop",
+  "sentence": "At the store opening the shop assistant stood in the department store.",
+  "words": {
+   "開店": "store opening",
+   "店員": "shop assistant",
+   "売店": "kiosk",
+   "店": "shop"
+  }
+ },
+ "売": {
+  "meaning": "sell",
+  "sentence": "Sales are good at the kiosk, so it sells out and I sell more.",
+  "words": {
+   "売店": "kiosk",
+   "売買": "trade",
+   "売る": "to sell",
+   "売り切れ": "sold out"
+  }
+ },
+ "買": {
+  "meaning": "buy",
+  "sentence": "I go shopping and buy things in trade.",
+  "words": {
+   "売買": "trade",
+   "購買": "purchase",
+   "買う": "to buy",
+   "買い物": "shopping"
+  }
+ },
+ "分": {
+  "meaning": "minute, part",
+  "sentence": "For five minutes I understood myself and divided it up.",
+  "words": {
+   "五分": "five minutes",
+   "何分": "how many minutes",
+   "自分": "oneself",
+   "半分": "half",
+   "分かる": "to understand",
+   "分ける": "to divide"
+  }
+ },
+ "時": {
+  "meaning": "time, hour",
+  "sentence": "At times, the clock shows the hour of the era.",
+  "words": {
+   "時間": "time",
+   "時計": "clock",
+   "同時": "at the same time",
+   "時": "time, when"
+  }
+ },
+ "間": {
+  "meaning": "interval, between",
+  "sentence": "For a while, in the time between, the person made a mistake.",
+  "words": {
+   "時間": "time",
+   "人間": "human being",
+   "空間": "space",
+   "間": "interval, between",
+   "間違い": "mistake"
+  }
+ },
+ "一": {
+  "meaning": "one",
+  "sentence": "One person alone took one thing and called it number one.",
+  "words": {
+   "一": "one",
+   "一つ": "one thing",
+   "一人": "one person, alone"
+  }
+ },
+ "二": {
+  "meaning": "two",
+  "sentence": "Two people carried two things, two apiece.",
+  "words": {
+   "二": "two",
+   "二つ": "two things",
+   "二人": "two people"
+  }
+ },
+ "三": {
+  "meaning": "three",
+  "sentence": "Three people shared three things between the three of them.",
+  "words": {
+   "三": "three",
+   "三人": "three people",
+   "三つ": "three things"
+  }
+ },
+ "四": {
+  "meaning": "four",
+  "sentence": "In April four things arrived, one for each of the four.",
+  "words": {
+   "四": "four",
+   "四月": "April",
+   "四つ": "four things"
+  }
+ },
+ "五": {
+  "meaning": "five",
+  "sentence": "By May I had five things, all five in a row.",
+  "words": {
+   "五": "five",
+   "五月": "May",
+   "五つ": "five things"
+  }
+ },
+ "六": {
+  "meaning": "six",
+  "sentence": "In June I counted six things, six in all.",
+  "words": {
+   "六": "six",
+   "六月": "June",
+   "六つ": "six things"
+  }
+ },
+ "七": {
+  "meaning": "seven",
+  "sentence": "July brought seven things, seven days apart.",
+  "words": {
+   "七月": "July",
+   "七": "seven",
+   "七つ": "seven things"
+  }
+ },
+ "八": {
+  "meaning": "eight",
+  "sentence": "August held eight things, eight of them exactly.",
+  "words": {
+   "八": "eight",
+   "八月": "August",
+   "八つ": "eight things"
+  }
+ },
+ "九": {
+  "meaning": "nine",
+  "sentence": "September ended with nine things, nine and no more.",
+  "words": {
+   "九": "nine",
+   "九月": "September",
+   "九つ": "nine things"
+  }
+ },
+ "十": {
+  "meaning": "ten",
+  "sentence": "On the tenth day of October I had counted ten.",
+  "words": {
+   "十": "ten",
+   "十月": "October",
+   "十日": "tenth day"
+  }
+ },
+ "百": {
+  "meaning": "hundred",
+  "sentence": "A hundred yen buys a hundred of them.",
+  "words": {
+   "百": "hundred",
+   "百円": "hundred yen"
+  }
+ },
+ "千": {
+  "meaning": "thousand",
+  "sentence": "A thousand yen note is worth one thousand.",
+  "words": {
+   "千": "thousand",
+   "千円": "thousand yen"
+  }
+ },
+ "万": {
+  "meaning": "ten thousand",
+  "sentence": "Ten thousand yen is a single note worth ten thousand.",
+  "words": {
+   "万": "ten thousand",
+   "一万円": "ten thousand yen"
+  }
+ },
+ "円": {
+  "meaning": "yen, circle",
+  "sentence": "The yen coin is a circle worth a hundred yen.",
+  "words": {
+   "円": "yen, circle",
+   "百円": "hundred yen"
+  }
+ },
+ "日": {
+  "meaning": "sun, day",
+  "sentence": "Every day the sun rises over Japan, Sunday included.",
+  "words": {
+   "毎日": "every day",
+   "日曜日": "Sunday",
+   "日本": "Japan",
+   "日": "sun, day"
+  }
+ },
+ "月": {
+  "meaning": "moon, month",
+  "sentence": "On Monday in January I watched the moon for a month.",
+  "words": {
+   "月曜日": "Monday",
+   "一月": "January",
+   "月": "moon, month"
+  }
+ },
+ "火": {
+  "meaning": "fire",
+  "sentence": "On Tuesday we lit a fire.",
+  "words": {
+   "火曜日": "Tuesday",
+   "火": "fire"
+  }
+ },
+ "水": {
+  "meaning": "water",
+  "sentence": "On Wednesday I drank the water.",
+  "words": {
+   "水曜日": "Wednesday",
+   "水": "water"
+  }
+ },
+ "木": {
+  "meaning": "tree, wood",
+  "sentence": "On Thursday I sat under a tree and carved the wood.",
+  "words": {
+   "木曜日": "Thursday",
+   "木": "tree, wood"
+  }
+ },
+ "金": {
+  "meaning": "gold, money",
+  "sentence": "On Friday I spent my money and kept the gold.",
+  "words": {
+   "金曜日": "Friday",
+   "金": "gold",
+   "お金": "money"
+  }
+ },
+ "土": {
+  "meaning": "earth, soil",
+  "sentence": "On Saturday I turned the soil and worked the earth.",
+  "words": {
+   "土曜日": "Saturday",
+   "土": "earth, soil"
+  }
+ },
+ "曜": {
+  "meaning": "weekday",
+  "sentence": "What day of the week falls on this weekday?",
+  "words": {
+   "曜日": "day of the week",
+   "何曜日": "what day of the week"
+  }
+ },
+ "年": {
+  "meaning": "year",
+  "sentence": "Last year and this year each lasted a year.",
+  "words": {
+   "去年": "last year",
+   "来年": "next year",
+   "年": "year"
+  }
+ },
+ "半": {
+  "meaning": "half",
+  "sentence": "Half past, and half of it already gone.",
+  "words": {
+   "半": "half",
+   "半分": "half"
+  }
+ },
+ "今": {
+  "meaning": "now",
+  "sentence": "Right now, today, in this year.",
+  "words": {
+   "今": "now",
+   "今日": "today",
+   "今年": "this year"
+  }
+ },
+ "上": {
+  "meaning": "up, above",
+  "sentence": "Above all else, she is skillful.",
+  "words": {
+   "上手": "skillful",
+   "上": "up, above"
+  }
+ },
+ "下": {
+  "meaning": "down, below",
+  "sentence": "Below that line, he is unskillful.",
+  "words": {
+   "下": "down, below",
+   "下手": "unskillful"
+  }
+ },
+ "中": {
+  "meaning": "middle, inside",
+  "sentence": "Inside China, right in the middle.",
+  "words": {
+   "中国": "China",
+   "中": "middle, inside"
+  }
+ },
+ "人": {
+  "meaning": "person",
+  "sentence": "One person, then two people, then everyone.",
+  "words": {
+   "外国人": "foreigner",
+   "人気": "popularity",
+   "人": "person"
+  }
+ },
+ "男": {
+  "meaning": "man, male",
+  "sentence": "The man is a male student, a boy no longer.",
+  "words": {
+   "男性": "male",
+   "男": "man",
+   "男の子": "boy"
+  }
+ },
+ "女": {
+  "meaning": "woman, female",
+  "sentence": "The woman is a female student, a girl no longer.",
+  "words": {
+   "女性": "female",
+   "女": "woman",
+   "女の子": "girl"
+  }
+ },
+ "子": {
+  "meaning": "child",
+  "sentence": "The child is a boy, and that child is a girl.",
+  "words": {
+   "椅子": "chair",
+   "子": "child",
+   "子ども": "child, kids"
+  }
+ },
+ "父": {
+  "meaning": "father",
+  "sentence": "My father, your father, everyone's dad.",
+  "words": {
+   "父母": "parents",
+   "父": "father",
+   "お父さん": "father (polite)"
+  }
+ },
+ "母": {
+  "meaning": "mother",
+  "sentence": "My mother, your mother, everyone's mum.",
+  "words": {
+   "父母": "parents",
+   "母": "mother",
+   "お母さん": "mother (polite)"
+  }
+ },
+ "友": {
+  "meaning": "friend",
+  "sentence": "A friend is a friend, in any language.",
+  "words": {
+   "友人": "friend (formal)",
+   "友だち": "friend"
+  }
+ },
+ "先": {
+  "meaning": "ahead, previous",
+  "sentence": "The teacher went ahead of us last week.",
+  "words": {
+   "先生": "teacher",
+   "先週": "last week",
+   "先": "ahead, previous"
+  }
+ },
+ "学": {
+  "meaning": "study, learning",
+  "sentence": "A student studies at the university.",
+  "words": {
+   "学生": "student",
+   "大学": "university",
+   "学ぶ": "to study, to learn"
+  }
+ },
+ "校": {
+  "meaning": "school",
+  "sentence": "At school, the high school students gathered.",
+  "words": {
+   "学校": "school",
+   "高校": "high school"
+  }
+ },
+ "高": {
+  "meaning": "high, expensive",
+  "sentence": "The high school on the hill is expensive.",
+  "words": {
+   "高校": "high school",
+   "高い": "high, expensive"
+  }
+ },
+ "大": {
+  "meaning": "big, large",
+  "sentence": "A big university is a large place.",
+  "words": {
+   "大学": "university",
+   "大切": "important",
+   "大きい": "big, large"
+  }
+ },
+ "小": {
+  "meaning": "small, little",
+  "sentence": "A small primary school for little ones.",
+  "words": {
+   "小学校": "primary school",
+   "小さい": "small, little"
+  }
+ },
+ "長": {
+  "meaning": "long, chief",
+  "sentence": "The company chief gave a long speech.",
+  "words": {
+   "社長": "company president",
+   "長い": "long"
+  }
+ },
+ "白": {
+  "meaning": "white",
+  "sentence": "White paper, white walls, all white.",
+  "words": {
+   "白紙": "blank paper",
+   "白": "white",
+   "白い": "white"
+  }
+ },
+ "山": {
+  "meaning": "mountain",
+  "sentence": "Mount Fuji is the mountain everyone climbs.",
+  "words": {
+   "富士山": "Mount Fuji",
+   "山": "mountain"
+  }
+ },
+ "川": {
+  "meaning": "river",
+  "sentence": "The river runs down beside the mountain.",
+  "words": {
+   "川": "river"
+  }
+ },
+ "天": {
+  "meaning": "heaven, sky",
+  "sentence": "The weather in the sky turned fine.",
+  "words": {
+   "天気": "weather",
+   "天": "heaven, sky"
+  }
+ },
+ "気": {
+  "meaning": "spirit, energy",
+  "sentence": "In good weather my spirit is healthy and full of energy.",
+  "words": {
+   "天気": "weather",
+   "元気": "healthy, energetic"
+  }
+ },
+ "雨": {
+  "meaning": "rain",
+  "sentence": "Rain fell, and the rainy season began.",
+  "words": {
+   "雨天": "rainy weather",
+   "雨": "rain"
+  }
+ },
+ "電": {
+  "meaning": "electricity",
+  "sentence": "The electric train runs on electricity, and so does the phone.",
+  "words": {
+   "電車": "train",
+   "電話": "telephone"
+  }
+ },
+ "車": {
+  "meaning": "car, vehicle",
+  "sentence": "The car waited while the train passed.",
+  "words": {
+   "電車": "train",
+   "自転車": "bicycle",
+   "車": "car"
+  }
+ },
+ "駅": {
+  "meaning": "station",
+  "sentence": "I met the station attendant at the station.",
+  "words": {
+   "駅": "station",
+   "駅員": "station attendant"
+  }
+ },
+ "国": {
+  "meaning": "country",
+  "sentence": "A foreigner comes from another country.",
+  "words": {
+   "外国": "foreign country",
+   "国": "country"
+  }
+ },
+ "語": {
+  "meaning": "language, word",
+  "sentence": "The Japanese language has a word for it.",
+  "words": {
+   "日本語": "Japanese language",
+   "単語": "word"
+  }
+ },
+ "話": {
+  "meaning": "talk, story",
+  "sentence": "We talk on the telephone and tell a story.",
+  "words": {
+   "会話": "conversation",
+   "電話": "telephone",
+   "話す": "to talk, to speak"
+  }
+ },
+ "読": {
+  "meaning": "read",
+  "sentence": "I read the book and read it aloud.",
+  "words": {
+   "読書": "reading",
+   "読む": "to read"
+  }
+ },
+ "書": {
+  "meaning": "write",
+  "sentence": "I write in the library and read what I wrote.",
+  "words": {
+   "図書館": "library",
+   "読書": "reading",
+   "書く": "to write"
+  }
+ },
+ "見": {
+  "meaning": "see, look",
+  "sentence": "Look and see what can be seen.",
+  "words": {
+   "見学": "study visit",
+   "見る": "to see, to look",
+   "見せる": "to show"
+  }
+ },
+ "聞": {
+  "meaning": "hear, listen",
+  "sentence": "Listen to the news and hear the story.",
+  "words": {
+   "新聞": "newspaper",
+   "聞く": "to hear, to listen"
+  }
+ },
+ "行": {
+  "meaning": "go",
+  "sentence": "I go to the bank and go home again.",
+  "words": {
+   "旅行": "travel",
+   "銀行": "bank",
+   "行く": "to go"
+  }
+ },
+ "来": {
+  "meaning": "come",
+  "sentence": "Come next week, come again next year.",
+  "words": {
+   "来週": "next week",
+   "来年": "next year",
+   "来る": "to come"
+  }
+ },
+ "出": {
+  "meaning": "exit, go out",
+  "sentence": "Go out through the exit and leave.",
+  "words": {
+   "出発": "departure",
+   "出る": "to go out, to leave",
+   "出口": "exit"
+  }
+ },
+ "入": {
+  "meaning": "enter, go in",
+  "sentence": "Enter by the entrance and go in.",
+  "words": {
+   "入学": "entering school",
+   "入る": "to enter, to go in",
+   "入口": "entrance"
+  }
+ },
+ "立": {
+  "meaning": "stand",
+  "sentence": "Stand up and stand still.",
+  "words": {
+   "国立": "national",
+   "立つ": "to stand"
+  }
+ },
+ "休": {
+  "meaning": "rest",
+  "sentence": "On a day off I rest and take a holiday.",
+  "words": {
+   "休日": "holiday",
+   "休む": "to rest",
+   "休み": "day off, break"
+  }
+ },
+ "食": {
+  "meaning": "eat, food",
+  "sentence": "I eat my meal in the dining room.",
+  "words": {
+   "食事": "meal",
+   "食堂": "dining hall",
+   "食べる": "to eat"
+  }
+ },
+ "飲": {
+  "meaning": "drink",
+  "sentence": "I drink a drink with my meal.",
+  "words": {
+   "飲食": "food and drink",
+   "飲む": "to drink",
+   "飲み物": "a drink"
+  }
+ },
+ "名": {
+  "meaning": "name",
+  "sentence": "Write your name; it is a famous name.",
+  "words": {
+   "有名": "famous",
+   "名前": "name"
+  }
+ },
+ "口": {
+  "meaning": "mouth",
+  "sentence": "The mouth of the exit, the mouth on your face.",
+  "words": {
+   "人口": "population",
+   "口": "mouth"
+  }
+ },
+ "目": {
+  "meaning": "eye",
+  "sentence": "My eyes woke and the eye opened.",
+  "words": {
+   "目的": "purpose",
+   "目": "eye"
+  }
+ },
+ "耳": {
+  "meaning": "ear",
+  "sentence": "The ear hears what the eye cannot see.",
+  "words": {
+   "耳": "ear"
+  }
+ },
+ "手": {
+  "meaning": "hand",
+  "sentence": "A letter written by hand, held in the hand.",
+  "words": {
+   "手段": "means, method",
+   "手": "hand",
+   "手紙": "letter"
+  }
+ },
+ "足": {
+  "meaning": "foot, leg",
+  "sentence": "My legs are tired, so my feet stopped.",
+  "words": {
+   "不足": "shortage",
+   "足": "foot, leg"
+  }
+ },
+ "空": {
+  "meaning": "sky, empty",
+  "sentence": "The sky is empty above the airport.",
+  "words": {
+   "空港": "airport",
+   "空気": "air",
+   "空": "sky"
+  }
+ },
+ "花": {
+  "meaning": "flower",
+  "sentence": "The flower opened, a fireworks flower in the sky.",
+  "words": {
+   "花火": "fireworks",
+   "花": "flower"
+  }
+ },
+ "魚": {
+  "meaning": "fish",
+  "sentence": "The fish in the fish shop came from the river.",
+  "words": {
+   "金魚": "goldfish",
+   "魚": "fish"
+  }
+ },
+ "犬": {
+  "meaning": "dog",
+  "sentence": "The dog barked; it was a big dog.",
+  "words": {
+   "犬": "dog"
+  }
+ },
+ "少": {
+  "meaning": "few, little",
+  "sentence": "A little water, and only a few drops.",
+  "words": {
+   "少年": "boy",
+   "少し": "a little",
+   "少ない": "few, not much"
+  }
+ },
+ "多": {
+  "meaning": "many, much",
+  "sentence": "Many people, much noise, too many.",
+  "words": {
+   "多分": "probably",
+   "多い": "many, much"
+  }
+ },
+ "安": {
+  "meaning": "cheap, safe",
+  "sentence": "It is cheap here, and safe too.",
+  "words": {
+   "安全": "safety",
+   "安心": "relief",
+   "安い": "cheap"
+  }
+ },
+ "新": {
+  "meaning": "new",
+  "sentence": "A new newspaper arrived, brand new.",
+  "words": {
+   "新聞": "newspaper",
+   "新しい": "new"
+  }
+ },
+ "古": {
+  "meaning": "old",
+  "sentence": "The old bookshop sells old books.",
+  "words": {
+   "中古": "secondhand",
+   "古い": "old"
+  }
+ },
+ "早": {
+  "meaning": "early, fast",
+  "sentence": "An early start, a fast finish.",
+  "words": {
+   "早々": "promptly",
+   "早い": "early, fast"
+  }
+ },
+ "力": {
+  "meaning": "power, strength",
+  "sentence": "With effort comes the strength and power to finish.",
+  "words": {
+   "努力": "effort",
+   "力": "power, strength"
+  }
+ },
+ "会": {
+  "meaning": "meet, meeting",
+  "sentence": "We meet at the company for a conversation.",
+  "words": {
+   "会社": "company",
+   "会話": "conversation",
+   "会う": "to meet"
+  }
+ }
+}

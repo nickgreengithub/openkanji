@@ -1,0 +1,489 @@
+{
+ "楽": {
+  "meaning": "comfort, music",
+  "sentence": "Music is fun, so I relax at ease and enjoy it.",
+  "words": {
+   "音楽": "music",
+   "楽": "ease, comfort",
+   "気楽": "at ease",
+   "楽しい": "fun, enjoyable",
+   "楽しむ": "to enjoy"
+  }
+ },
+ "明": {
+  "meaning": "bright, clear",
+  "sentence": "Tomorrow, before dawn, I will give a bright explanation of the invention under one light.",
+  "words": {
+   "説明": "explanation",
+   "発明": "invention",
+   "明るい": "bright",
+   "明かり": "a light",
+   "明ける": "to dawn, end",
+   "明日": "tomorrow"
+  }
+ },
+ "音": {
+  "meaning": "sound, noise",
+  "sentence": "The sound of footsteps and the tone colour of the music taught me the pronunciation.",
+  "words": {
+   "音楽": "music",
+   "発音": "pronunciation",
+   "音": "a sound",
+   "足音": "footsteps",
+   "音色": "tone colour"
+  }
+ },
+ "発": {
+  "meaning": "depart, emit",
+  "sentence": "Before the departure of the first train, the presentation about the invention explained the pronunciation.",
+  "words": {
+   "発音": "pronunciation",
+   "発明": "invention",
+   "始発": "first train",
+   "出発": "departure",
+   "発表": "presentation"
+  }
+ },
+ "表": {
+  "meaning": "surface, express",
+  "sentence": "The presentation used a chart to express what was on the surface.",
+  "words": {
+   "発表": "presentation",
+   "表": "front, surface",
+   "表す": "to express"
+  }
+ },
+ "使": {
+  "meaning": "use, envoy",
+  "sentence": "At the embassy they explained the use and how to use it, so I used it.",
+  "words": {
+   "使用": "use",
+   "大使館": "embassy",
+   "使う": "to use",
+   "使い方": "how to use"
+  }
+ },
+ "用": {
+  "meaning": "use, task",
+  "sentence": "I have an errand, so the preparation and the use of the tool I employ must be ready.",
+  "words": {
+   "使用": "use",
+   "用事": "errand",
+   "用意": "preparation",
+   "用いる": "to use (formal)"
+  }
+ },
+ "意": {
+  "meaning": "mind, intent",
+  "sentence": "With caution, prepare your opinion and explain its meaning.",
+  "words": {
+   "用意": "preparation",
+   "意見": "opinion",
+   "意味": "meaning",
+   "注意": "caution"
+  }
+ },
+ "味": {
+  "meaning": "taste, flavour",
+  "sentence": "The meaning of my hobby is the taste, so I always do a tasting.",
+  "words": {
+   "意味": "meaning",
+   "趣味": "hobby",
+   "味": "taste",
+   "味見": "tasting"
+  }
+ },
+ "注": {
+  "meaning": "pour, note",
+  "sentence": "With caution I placed an order, poured the water, and then had an injection.",
+  "words": {
+   "注意": "caution",
+   "注文": "an order",
+   "注射": "injection",
+   "注ぐ": "to pour"
+  }
+ },
+ "主": {
+  "meaning": "main, master",
+  "sentence": "The owner is mainly the husband, and he is the subject of the sentence.",
+  "words": {
+   "主人": "husband, owner",
+   "主語": "grammatical subject",
+   "主に": "mainly",
+   "持ち主": "owner"
+  }
+ },
+ "重": {
+  "meaning": "heavy, pile",
+  "sentence": "My body weight is important, because the heavy weight piles up.",
+  "words": {
+   "体重": "body weight",
+   "重要": "important",
+   "重い": "heavy",
+   "重さ": "weight",
+   "重ねる": "to pile up"
+  }
+ },
+ "世": {
+  "meaning": "world, generation",
+  "sentence": "In this century, society takes care of the world.",
+  "words": {
+   "世紀": "century",
+   "世界": "world",
+   "世話": "care, help",
+   "世の中": "society"
+  }
+ },
+ "界": {
+  "meaning": "boundary, world",
+  "sentence": "All over the world, this industry is the biggest in the world.",
+  "words": {
+   "世界": "world",
+   "世界中": "all over the world",
+   "業界": "industry"
+  }
+ },
+ "開": {
+  "meaning": "open",
+  "sentence": "At the store opening the doors open at the start, so I opened them and unfolded the map.",
+  "words": {
+   "開始": "start",
+   "開店": "store opening",
+   "開く": "to open, unfold",
+   "開ける": "to open (tr.)"
+  }
+ },
+ "始": {
+  "meaning": "begin",
+  "sentence": "The start is when the first train begins, so I will begin too.",
+  "words": {
+   "開始": "start",
+   "始発": "first train",
+   "始まる": "to begin (intr.)",
+   "始める": "to begin (tr.)"
+  }
+ },
+ "転": {
+  "meaning": "revolve, turn",
+  "sentence": "After changing schools I fell over while driving my bicycle.",
+  "words": {
+   "自転車": "bicycle",
+   "運転": "driving",
+   "転校": "changing schools",
+   "転ぶ": "to fall over"
+  }
+ },
+ "運": {
+  "meaning": "carry, luck",
+  "sentence": "With good luck, driving and exercise let me carry it.",
+  "words": {
+   "運転": "driving",
+   "運動": "exercise",
+   "幸運": "good luck",
+   "運ぶ": "to carry"
+  }
+ },
+ "動": {
+  "meaning": "move",
+  "sentence": "The animal moved the car, and exercise moves my body too.",
+  "words": {
+   "運動": "exercise",
+   "自動車": "car",
+   "動物": "animal",
+   "動く": "to move",
+   "動かす": "to move (tr.)"
+  }
+ },
+ "物": {
+  "meaning": "thing, object",
+  "sentence": "While sightseeing I left my luggage and goods in the building, so they became lost items next to an animal.",
+  "words": {
+   "動物": "animal",
+   "見物": "sightseeing",
+   "荷物": "luggage",
+   "建物": "building",
+   "品物": "goods",
+   "忘れ物": "lost item"
+  }
+ },
+ "活": {
+  "meaning": "life, activity",
+  "sentence": "Daily life and club activities both make use of my energy.",
+  "words": {
+   "生活": "daily life",
+   "活動": "activity",
+   "活用": "practical use"
+  }
+ },
+ "漢": {
+  "meaning": "China, Han",
+  "sentence": "Chinese characters are called kanji.",
+  "words": {
+   "漢字": "kanji",
+   "漢語": "Sino-Japanese word"
+  }
+ },
+ "字": {
+  "meaning": "character, letter",
+  "sentence": "My handwriting shapes each character and number.",
+  "words": {
+   "漢字": "kanji",
+   "数字": "numeral",
+   "字": "character"
+  }
+ },
+ "習": {
+  "meaning": "learn",
+  "sentence": "I learn in class, revise what I studied, and practise it.",
+  "words": {
+   "習字": "calligraphy",
+   "練習": "practice",
+   "習う": "to learn"
+  }
+ },
+ "研": {
+  "meaning": "polish, research",
+  "sentence": "At the laboratory the researcher polishes the study.",
+  "words": {
+   "研究": "research",
+   "研究室": "laboratory"
+  }
+ },
+ "究": {
+  "meaning": "investigate",
+  "sentence": "The research investigates it thoroughly.",
+  "words": {
+   "研究": "research",
+   "研究者": "researcher"
+  }
+ },
+ "教": {
+  "meaning": "teach",
+  "sentence": "The teacher teaches in the classroom and shares religion.",
+  "words": {
+   "教室": "classroom",
+   "教科書": "textbook",
+   "宗教": "religion",
+   "教える": "to teach"
+  }
+ },
+ "室": {
+  "meaning": "room",
+  "sentence": "The classroom and the laboratory are both rooms indoors.",
+  "words": {
+   "教室": "classroom",
+   "室内": "indoors",
+   "和室": "Japanese-style room"
+  }
+ },
+ "質": {
+  "meaning": "quality, question",
+  "sentence": "The question was about quality, so I asked politely.",
+  "words": {
+   "質問": "question",
+   "品質": "quality"
+  }
+ },
+ "問": {
+  "meaning": "question, ask",
+  "sentence": "There is no question or problem, so I inquired.",
+  "words": {
+   "質問": "question",
+   "問題": "problem",
+   "問う": "to ask"
+  }
+ },
+ "題": {
+  "meaning": "topic, title",
+  "sentence": "The homework problem had a difficult title.",
+  "words": {
+   "問題": "problem",
+   "宿題": "homework",
+   "話題": "topic"
+  }
+ },
+ "答": {
+  "meaning": "answer",
+  "sentence": "The answer sheet holds my reply, and I answered.",
+  "words": {
+   "答案": "answer sheet",
+   "回答": "reply",
+   "答える": "to answer",
+   "答え": "an answer"
+  }
+ },
+ "考": {
+  "meaning": "think, consider",
+  "sentence": "My idea is that thinking things over is a way of considering.",
+  "words": {
+   "参考": "reference",
+   "考古学": "archaeology",
+   "考える": "to think",
+   "考え": "an idea"
+  }
+ },
+ "験": {
+  "meaning": "test, verify",
+  "sentence": "The examination is an experiment in experience.",
+  "words": {
+   "試験": "examination",
+   "経験": "experience",
+   "実験": "experiment"
+  }
+ },
+ "試": {
+  "meaning": "try, test",
+  "sentence": "For the exam I did a trial and tried it out.",
+  "words": {
+   "試験": "examination",
+   "試合": "match, game",
+   "試す": "to try"
+  }
+ },
+ "品": {
+  "meaning": "goods, article",
+  "sentence": "The product on display is a fine article of goods.",
+  "words": {
+   "作品": "a work, piece",
+   "食品": "foodstuff",
+   "品質": "quality",
+   "品物": "goods"
+  }
+ },
+ "作": {
+  "meaning": "make, produce",
+  "sentence": "The farmer makes a work of art and produces a crop.",
+  "words": {
+   "作品": "a work, piece",
+   "作文": "composition",
+   "作業": "work, operation",
+   "作る": "to make"
+  }
+ },
+ "業": {
+  "meaning": "business, work",
+  "sentence": "The class is over, so the industry gets on with its business.",
+  "words": {
+   "授業": "class, lesson",
+   "業界": "industry",
+   "工業": "industry",
+   "卒業": "graduation"
+  }
+ },
+ "産": {
+  "meaning": "produce, give birth",
+  "sentence": "Local produce comes from an industry that gives birth to goods.",
+  "words": {
+   "生産": "production",
+   "産業": "industry",
+   "お土産": "souvenir",
+   "産む": "to give birth"
+  }
+ },
+ "員": {
+  "meaning": "member, staff",
+  "sentence": "The staff member is a shop worker and a company employee.",
+  "words": {
+   "社員": "company employee",
+   "店員": "shop assistant",
+   "会員": "member"
+  }
+ },
+ "料": {
+  "meaning": "fee, material",
+  "sentence": "The cooking fee covers the ingredients.",
+  "words": {
+   "料理": "cooking",
+   "料金": "fee",
+   "材料": "ingredients"
+  }
+ },
+ "理": {
+  "meaning": "reason, logic",
+  "sentence": "The cooking has its reason, and physics is logical.",
+  "words": {
+   "料理": "cooking",
+   "理由": "reason",
+   "物理": "physics"
+  }
+ },
+ "由": {
+  "meaning": "reason, cause",
+  "sentence": "There is a reason: it is a matter of freedom.",
+  "words": {
+   "理由": "reason",
+   "自由": "freedom"
+  }
+ },
+ "自": {
+  "meaning": "self, oneself",
+  "sentence": "The car and the bicycle are self-propelled, and I introduce myself.",
+  "words": {
+   "自転車": "bicycle",
+   "自動車": "car",
+   "自分": "oneself",
+   "自由": "freedom",
+   "自ら": "personally"
+  }
+ },
+ "別": {
+  "meaning": "separate, another",
+  "sentence": "On another occasion we said goodbye and went our separate ways.",
+  "words": {
+   "別々": "separately",
+   "特別": "special",
+   "区別": "distinction",
+   "別れる": "to part"
+  }
+ },
+ "特": {
+  "meaning": "special",
+  "sentence": "The express train is a special feature.",
+  "words": {
+   "特別": "special",
+   "特急": "express train",
+   "特徴": "feature"
+  }
+ },
+ "急": {
+  "meaning": "hurry, urgent",
+  "sentence": "It is urgent, so on the express train I hurried suddenly.",
+  "words": {
+   "特急": "express train",
+   "急行": "express",
+   "救急車": "ambulance",
+   "急ぐ": "to hurry",
+   "急に": "suddenly"
+  }
+ },
+ "送": {
+  "meaning": "send",
+  "sentence": "I sent the delivery and saw my friend off.",
+  "words": {
+   "放送": "broadcast",
+   "送料": "postage",
+   "送る": "to send",
+   "見送る": "to see off"
+  }
+ },
+ "待": {
+  "meaning": "wait",
+  "sentence": "In the waiting room I wait with anticipation.",
+  "words": {
+   "待合室": "waiting room",
+   "期待": "expectation",
+   "待つ": "to wait"
+  }
+ },
+ "持": {
+  "meaning": "hold, have",
+  "sentence": "The owner holds his belongings and carries them.",
+  "words": {
+   "持参": "bringing along",
+   "所持": "possession",
+   "持つ": "to hold",
+   "持ち主": "owner",
+   "持ち物": "belongings"
+  }
+ }
+}

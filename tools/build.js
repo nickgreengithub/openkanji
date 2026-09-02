@@ -21,46 +21,111 @@ const OUT = path.join(ROOT, "index.html");
 // early and blank the page. Escaping every "</" is valid JSON and safe.
 const encodeTemplate = (s) => JSON.stringify(s).replace(/<\//g, "<\\u002F");
 
-// Kanji data lives in src/data/*.json, one file per deck, assembled here.
-// Validated on every build so a malformed record fails loudly instead of
-// shipping a blank page.
-function loadKanji() {
-  const decks = JSON.parse(fs.readFileSync(path.join(SRC, "data/decks.json"), "utf8"));
+// Kanji data is split so translations can be added without touching structure:
+//   src/data/kanji/<deck>.json      language-neutral: character, readings, word surfaces
+//   src/data/lang/<lang>/<deck>.json  meaning, mnemonic sentence, gloss per word
+//   src/data/decks.json / langs.json  load order and language registry
+//
+// Adding a deck is a JSON file plus a line in decks.json. Adding a language is
+// a src/data/lang/<dir>/ folder covering the same decks. Everything is
+// validated here so a bad record or a half-finished translation fails the
+// build instead of shipping.
+const DEFAULT_LANG = "EN";
+
+function readJson(rel) {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(SRC, rel), "utf8"));
+  } catch (e) {
+    throw new Error(rel + ": " + e.message);
+  }
+}
+
+function loadBase(decks) {
   const out = [];
   const seen = new Map();
-
   for (const { deck, file } of decks) {
-    let records;
-    try {
-      records = JSON.parse(fs.readFileSync(path.join(SRC, "data", file), "utf8"));
-    } catch (e) {
-      throw new Error(file + ": " + e.message);
-    }
+    const records = readJson("data/kanji/" + file);
     if (!Array.isArray(records)) throw new Error(file + ": expected an array");
-
     records.forEach((k, i) => {
-      const at = file + "[" + i + "]" + (k && k.c ? " (" + k.c + ")" : "");
+      const at = "kanji/" + file + "[" + i + "]" + (k && k.c ? " (" + k.c + ")" : "");
       if (!k || typeof k.c !== "string" || [...k.c].length !== 1) throw new Error(at + ": `c` must be a single character");
-      if (!k.meaning) throw new Error(at + ": missing `meaning`");
-      if (!k.sentence) throw new Error(at + ": missing `sentence`");
       if (!Array.isArray(k.g) || !k.g.length) throw new Error(at + ": needs at least one reading group");
-      k.g.forEach((g, gi) => {
-        if (!g.r) throw new Error(at + " group " + gi + ": missing reading `r`");
-        if (!Array.isArray(g.w) || !g.w.length) throw new Error(at + " group " + gi + " (" + g.r + "): needs at least one word");
+      k.g.forEach((g) => {
+        if (!g.r) throw new Error(at + ": a reading group is missing `r`");
+        if (!Array.isArray(g.w) || !g.w.length) throw new Error(at + " group " + g.r + ": needs at least one word");
         g.w.forEach((w) => {
-          if (!Array.isArray(w) || w.length !== 3 || w.some((x) => typeof x !== "string" || !x))
-            throw new Error(at + " group " + g.r + ": each word must be [surface, reading, gloss]");
+          if (!Array.isArray(w) || w.length !== 2 || w.some((x) => typeof x !== "string" || !x))
+            throw new Error(at + " group " + g.r + ": each word must be [surface, reading]");
         });
       });
-      // A kanji belongs to exactly one deck -- duplicates would double-count
-      // progress and show the character in two places.
+      // One deck per kanji: duplicates would double-count progress.
       if (seen.has(k.c)) throw new Error(at + ": already defined in " + seen.get(k.c));
-      seen.set(k.c, file);
-
+      seen.set(k.c, "kanji/" + file);
       out.push(Object.assign({}, k, { deck }));
     });
   }
   return out;
+}
+
+// Returns null when the language has no folder yet -- that is how a language
+// stays "coming soon" rather than being an error.
+function loadLang(lang, decks, base) {
+  if (!fs.existsSync(path.join(SRC, "data/lang", lang.dir))) return null;
+  const strings = {};
+  for (const { file } of decks) {
+    const rel = "data/lang/" + lang.dir + "/" + file;
+    if (!fs.existsSync(path.join(SRC, rel))) {
+      throw new Error(lang.code + ": missing " + rel + " (a language must cover every deck)");
+    }
+    Object.assign(strings, readJson(rel));
+  }
+  // A partial translation is a build error, not a page with blank glosses.
+  for (const k of base) {
+    const t = strings[k.c];
+    const at = lang.code + " " + k.c;
+    if (!t) throw new Error(at + ": no translation entry");
+    if (!t.meaning) throw new Error(at + ": missing `meaning`");
+    if (!t.sentence) throw new Error(at + ": missing `sentence`");
+    for (const g of k.g) {
+      for (const [surface] of g.w) {
+        if (!t.words || !t.words[surface]) throw new Error(at + ": missing gloss for \"" + surface + "\"");
+      }
+    }
+  }
+  return strings;
+}
+
+// Merge into the shape the app consumes: w = [surface, reading, gloss].
+function localize(base, strings) {
+  return base.map((k) => {
+    const t = strings[k.c];
+    return {
+      c: k.c,
+      deck: k.deck,
+      meaning: t.meaning,
+      sentence: t.sentence,
+      g: k.g.map((g) => ({ r: g.r, w: g.w.map(([s, r]) => [s, r, t.words[s]]) })),
+    };
+  });
+}
+
+function loadKanjiAndLangs() {
+  const decks = readJson("data/decks.json");
+  const langs = readJson("data/langs.json");
+  const base = loadBase(decks);
+
+  const available = [];
+  const i18n = {};
+  for (const lang of langs) {
+    const strings = loadLang(lang, decks, base);
+    if (!strings) continue;
+    available.push(lang.code);
+    if (lang.code !== DEFAULT_LANG) i18n[lang.code] = strings;
+  }
+  if (!available.includes(DEFAULT_LANG)) throw new Error("the default language " + DEFAULT_LANG + " has no data");
+
+  const def = loadLang(langs.find((l) => l.code === DEFAULT_LANG), decks, base);
+  return { data: localize(base, def), i18n, langs, available };
 }
 
 function build() {
@@ -77,10 +142,28 @@ function build() {
     };
   }
 
-  const kanji = loadKanji();
+  const { data, i18n, langs, available } = loadKanjiAndLangs();
+
   let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
-  if (!template.includes("__KANJI_DATA__")) throw new Error("app.html is missing __KANJI_DATA__");
-  template = template.replace("__KANJI_DATA__", () => JSON.stringify(kanji));
+  const tokens = {
+    __KANJI_DATA__: JSON.stringify(data),
+    // Non-default languages ride along so the picker can switch without a
+    // refetch. Empty until a src/data/lang/<dir>/ folder exists.
+    __KANJI_I18N__: JSON.stringify(i18n),
+    // code, display name, kanji label, and whether data exists yet.
+    __LANGS__: JSON.stringify(
+      langs.map((l) => [l.code, l.name, l.ja, available.includes(l.code) ? "" : "soon"])
+    ),
+  };
+  for (const [token, value] of Object.entries(tokens)) {
+    if (!template.includes(token)) throw new Error("app.html is missing " + token);
+    template = template.replace(token, () => value);
+  }
+  console.log(
+    "  data: " + data.length + " kanji across " + new Set(data.map((k) => k.deck)).size +
+    " decks | languages: " + available.join(", ") +
+    (available.length < langs.length ? " (" + (langs.length - available.length) + " pending)" : "")
+  );
 
   const shell = fs.readFileSync(path.join(SRC, "shell.html"), "utf8");
 

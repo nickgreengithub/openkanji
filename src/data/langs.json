@@ -1,0 +1,50 @@
+[
+  {
+    "code": "EN",
+    "name": "English",
+    "ja": "英",
+    "dir": "en"
+  },
+  {
+    "code": "ES",
+    "name": "Espanol",
+    "ja": "西",
+    "dir": "es"
+  },
+  {
+    "code": "PT",
+    "name": "Portugues",
+    "ja": "葡",
+    "dir": "pt"
+  },
+  {
+    "code": "ID",
+    "name": "Bahasa Indonesia",
+    "ja": "尼",
+    "dir": "id"
+  },
+  {
+    "code": "VI",
+    "name": "Tieng Viet",
+    "ja": "越",
+    "dir": "vi"
+  },
+  {
+    "code": "TH",
+    "name": "Thai",
+    "ja": "泰",
+    "dir": "th"
+  },
+  {
+    "code": "TR",
+    "name": "Turkce",
+    "ja": "土",
+    "dir": "tr"
+  },
+  {
+    "code": "PL",
+    "name": "Polski",
+    "ja": "波",
+    "dir": "pl"
+  }
+]
