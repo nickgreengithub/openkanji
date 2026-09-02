@@ -1,8 +1,18 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "openkanji",
-  "pages_build_output_dir": "dist",
+  "main": "worker/index.js",
   "compatibility_date": "2026-09-02",
+
+  // Static assets are matched before the Worker runs, so "/" is served
+  // straight from dist without invoking any code. Unmatched paths fall
+  // through to worker/index.js, which handles /api/* and otherwise returns
+  // the app shell.
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+
   "d1_databases": [
     {
       "binding": "DB",
@@ -10,9 +20,10 @@
       "database_id": "fc1b3683-bb40-41f0-8b76-eae69f58b0d4"
     }
   ],
+
+  // Sending address. Secrets (RESEND_API_KEY, SESSION_SECRET) are set with
+  // `wrangler secret put` and never live in this file.
   "vars": {
-    // Sending address. Secrets (RESEND_API_KEY, SESSION_SECRET) are set with
-    // `wrangler pages secret put` and never live in this file.
     "MAIL_FROM": "OpenKanji <nick@openkanji.org>"
   }
 }
