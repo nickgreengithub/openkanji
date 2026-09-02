@@ -1,21 +1,36 @@
 [
  {
   "c": "生",
+  "meaning": {
+   "en": "life, birth"
+  },
+  "sentence": {
+   "en": "The student was born, lives a life, and grows."
+  },
   "g": [
    {
     "r": "セイ",
     "w": [
      [
       "生活",
-      "せいかつ"
+      "せいかつ",
+      {
+       "en": "daily life"
+      }
      ],
      [
       "学生",
-      "がくせい"
+      "がくせい",
+      {
+       "en": "student"
+      }
      ],
      [
       "先生",
-      "せんせい"
+      "せんせい",
+      {
+       "en": "teacher"
+      }
      ]
     ]
    },
@@ -24,7 +39,10 @@
     "w": [
      [
       "生まれる",
-      "うまれる"
+      "うまれる",
+      {
+       "en": "to be born"
+      }
      ]
     ]
    },
@@ -33,7 +51,10 @@
     "w": [
      [
       "生きる",
-      "いきる"
+      "いきる",
+      {
+       "en": "to live"
+      }
      ]
     ]
    }
@@ -41,21 +62,36 @@
  },
  {
   "c": "社",
+  "meaning": {
+   "en": "company, shrine"
+  },
+  "sentence": {
+   "en": "The company employee visited the shrine with society in mind."
+  },
   "g": [
    {
     "r": "シャ",
     "w": [
      [
       "会社",
-      "かいしゃ"
+      "かいしゃ",
+      {
+       "en": "company"
+      }
      ],
      [
       "社会",
-      "しゃかい"
+      "しゃかい",
+      {
+       "en": "society"
+      }
      ],
      [
       "社員",
-      "しゃいん"
+      "しゃいん",
+      {
+       "en": "company employee"
+      }
      ]
     ]
    },
@@ -64,7 +100,10 @@
     "w": [
      [
       "神社",
-      "じんじゃ"
+      "じんじゃ",
+      {
+       "en": "shrine"
+      }
      ]
     ]
    }
@@ -72,21 +111,36 @@
  },
  {
   "c": "店",
+  "meaning": {
+   "en": "shop"
+  },
+  "sentence": {
+   "en": "At the store opening the shop assistant stood in the department store."
+  },
   "g": [
    {
     "r": "テン",
     "w": [
      [
       "開店",
-      "かいてん"
+      "かいてん",
+      {
+       "en": "store opening"
+      }
      ],
      [
       "店員",
-      "てんいん"
+      "てんいん",
+      {
+       "en": "shop assistant"
+      }
      ],
      [
       "売店",
-      "ばいてん"
+      "ばいてん",
+      {
+       "en": "kiosk"
+      }
      ]
     ]
    },
@@ -95,7 +149,10 @@
     "w": [
      [
       "店",
-      "みせ"
+      "みせ",
+      {
+       "en": "shop"
+      }
      ]
     ]
    }
@@ -103,17 +160,29 @@
  },
  {
   "c": "売",
+  "meaning": {
+   "en": "sell"
+  },
+  "sentence": {
+   "en": "Sales are good at the kiosk, so it sells out and I sell more."
+  },
   "g": [
    {
     "r": "バイ",
     "w": [
      [
       "売店",
-      "ばいてん"
+      "ばいてん",
+      {
+       "en": "kiosk"
+      }
      ],
      [
       "売買",
-      "ばいばい"
+      "ばいばい",
+      {
+       "en": "trade"
+      }
      ]
     ]
    },
@@ -122,11 +191,17 @@
     "w": [
      [
       "売る",
-      "うる"
+      "うる",
+      {
+       "en": "to sell"
+      }
      ],
      [
       "売り切れ",
-      "うりきれ"
+      "うりきれ",
+      {
+       "en": "sold out"
+      }
      ]
     ]
    }
@@ -134,17 +209,29 @@
  },
  {
   "c": "買",
+  "meaning": {
+   "en": "buy"
+  },
+  "sentence": {
+   "en": "I go shopping and buy things in trade."
+  },
   "g": [
    {
     "r": "バイ",
     "w": [
      [
       "売買",
-      "ばいばい"
+      "ばいばい",
+      {
+       "en": "trade"
+      }
      ],
      [
       "購買",
-      "こうばい"
+      "こうばい",
+      {
+       "en": "purchase"
+      }
      ]
     ]
    },
@@ -153,11 +240,17 @@
     "w": [
      [
       "買う",
-      "かう"
+      "かう",
+      {
+       "en": "to buy"
+      }
      ],
      [
       "買い物",
-      "かいもの"
+      "かいもの",
+      {
+       "en": "shopping"
+      }
      ]
     ]
    }
@@ -165,17 +258,29 @@
  },
  {
   "c": "分",
+  "meaning": {
+   "en": "minute, part"
+  },
+  "sentence": {
+   "en": "For five minutes I understood myself and divided it up."
+  },
   "g": [
    {
     "r": "フン",
     "w": [
      [
       "五分",
-      "ごふん"
+      "ごふん",
+      {
+       "en": "five minutes"
+      }
      ],
      [
       "何分",
-      "なんぷん"
+      "なんぷん",
+      {
+       "en": "how many minutes"
+      }
      ]
     ]
    },
@@ -184,11 +289,17 @@
     "w": [
      [
       "自分",
-      "じぶん"
+      "じぶん",
+      {
+       "en": "oneself"
+      }
      ],
      [
       "半分",
-      "はんぶん"
+      "はんぶん",
+      {
+       "en": "half"
+      }
      ]
     ]
    },
@@ -197,11 +308,17 @@
     "w": [
      [
       "分かる",
-      "わかる"
+      "わかる",
+      {
+       "en": "to understand"
+      }
      ],
      [
       "分ける",
-      "わける"
+      "わける",
+      {
+       "en": "to divide"
+      }
      ]
     ]
    }
@@ -209,21 +326,36 @@
  },
  {
   "c": "時",
+  "meaning": {
+   "en": "time, hour"
+  },
+  "sentence": {
+   "en": "At times, the clock shows the hour of the era."
+  },
   "g": [
    {
     "r": "ジ",
     "w": [
      [
       "時間",
-      "じかん"
+      "じかん",
+      {
+       "en": "time"
+      }
      ],
      [
       "時計",
-      "とけい"
+      "とけい",
+      {
+       "en": "clock"
+      }
      ],
      [
       "同時",
-      "どうじ"
+      "どうじ",
+      {
+       "en": "at the same time"
+      }
      ]
     ]
    },
@@ -232,7 +364,10 @@
     "w": [
      [
       "時",
-      "とき"
+      "とき",
+      {
+       "en": "time, when"
+      }
      ]
     ]
    }
@@ -240,21 +375,36 @@
  },
  {
   "c": "間",
+  "meaning": {
+   "en": "interval, between"
+  },
+  "sentence": {
+   "en": "For a while, in the time between, the person made a mistake."
+  },
   "g": [
    {
     "r": "カン",
     "w": [
      [
       "時間",
-      "じかん"
+      "じかん",
+      {
+       "en": "time"
+      }
      ],
      [
       "人間",
-      "にんげん"
+      "にんげん",
+      {
+       "en": "human being"
+      }
      ],
      [
       "空間",
-      "くうかん"
+      "くうかん",
+      {
+       "en": "space"
+      }
      ]
     ]
    },
@@ -263,7 +413,10 @@
     "w": [
      [
       "間",
-      "あいだ"
+      "あいだ",
+      {
+       "en": "interval, between"
+      }
      ]
     ]
    },
@@ -272,7 +425,10 @@
     "w": [
      [
       "間違い",
-      "まちがい"
+      "まちがい",
+      {
+       "en": "mistake"
+      }
      ]
     ]
    }
@@ -280,13 +436,22 @@
  },
  {
   "c": "一",
+  "meaning": {
+   "en": "one"
+  },
+  "sentence": {
+   "en": "One person alone took one thing and called it number one."
+  },
   "g": [
    {
     "r": "イチ",
     "w": [
      [
       "一",
-      "いち"
+      "いち",
+      {
+       "en": "one"
+      }
      ]
     ]
    },
@@ -295,11 +460,17 @@
     "w": [
      [
       "一つ",
-      "ひとつ"
+      "ひとつ",
+      {
+       "en": "one thing"
+      }
      ],
      [
       "一人",
-      "ひとり"
+      "ひとり",
+      {
+       "en": "one person, alone"
+      }
      ]
     ]
    }
@@ -307,13 +478,22 @@
  },
  {
   "c": "二",
+  "meaning": {
+   "en": "two"
+  },
+  "sentence": {
+   "en": "Two people carried two things, two apiece."
+  },
   "g": [
    {
     "r": "ニ",
     "w": [
      [
       "二",
-      "に"
+      "に",
+      {
+       "en": "two"
+      }
      ]
     ]
    },
@@ -322,11 +502,17 @@
     "w": [
      [
       "二つ",
-      "ふたつ"
+      "ふたつ",
+      {
+       "en": "two things"
+      }
      ],
      [
       "二人",
-      "ふたり"
+      "ふたり",
+      {
+       "en": "two people"
+      }
      ]
     ]
    }
@@ -334,17 +520,29 @@
  },
  {
   "c": "三",
+  "meaning": {
+   "en": "three"
+  },
+  "sentence": {
+   "en": "Three people shared three things between the three of them."
+  },
   "g": [
    {
     "r": "サン",
     "w": [
      [
       "三",
-      "さん"
+      "さん",
+      {
+       "en": "three"
+      }
      ],
      [
       "三人",
-      "さんにん"
+      "さんにん",
+      {
+       "en": "three people"
+      }
      ]
     ]
    },
@@ -353,7 +551,10 @@
     "w": [
      [
       "三つ",
-      "みっつ"
+      "みっつ",
+      {
+       "en": "three things"
+      }
      ]
     ]
    }
@@ -361,17 +562,29 @@
  },
  {
   "c": "四",
+  "meaning": {
+   "en": "four"
+  },
+  "sentence": {
+   "en": "In April four things arrived, one for each of the four."
+  },
   "g": [
    {
     "r": "シ",
     "w": [
      [
       "四",
-      "し"
+      "し",
+      {
+       "en": "four"
+      }
      ],
      [
       "四月",
-      "しがつ"
+      "しがつ",
+      {
+       "en": "April"
+      }
      ]
     ]
    },
@@ -380,7 +593,10 @@
     "w": [
      [
       "四つ",
-      "よっつ"
+      "よっつ",
+      {
+       "en": "four things"
+      }
      ]
     ]
    }
@@ -388,17 +604,29 @@
  },
  {
   "c": "五",
+  "meaning": {
+   "en": "five"
+  },
+  "sentence": {
+   "en": "By May I had five things, all five in a row."
+  },
   "g": [
    {
     "r": "ゴ",
     "w": [
      [
       "五",
-      "ご"
+      "ご",
+      {
+       "en": "five"
+      }
      ],
      [
       "五月",
-      "ごがつ"
+      "ごがつ",
+      {
+       "en": "May"
+      }
      ]
     ]
    },
@@ -407,7 +635,10 @@
     "w": [
      [
       "五つ",
-      "いつつ"
+      "いつつ",
+      {
+       "en": "five things"
+      }
      ]
     ]
    }
@@ -415,17 +646,29 @@
  },
  {
   "c": "六",
+  "meaning": {
+   "en": "six"
+  },
+  "sentence": {
+   "en": "In June I counted six things, six in all."
+  },
   "g": [
    {
     "r": "ロク",
     "w": [
      [
       "六",
-      "ろく"
+      "ろく",
+      {
+       "en": "six"
+      }
      ],
      [
       "六月",
-      "ろくがつ"
+      "ろくがつ",
+      {
+       "en": "June"
+      }
      ]
     ]
    },
@@ -434,7 +677,10 @@
     "w": [
      [
       "六つ",
-      "むっつ"
+      "むっつ",
+      {
+       "en": "six things"
+      }
      ]
     ]
    }
@@ -442,13 +688,22 @@
  },
  {
   "c": "七",
+  "meaning": {
+   "en": "seven"
+  },
+  "sentence": {
+   "en": "July brought seven things, seven days apart."
+  },
   "g": [
    {
     "r": "シチ",
     "w": [
      [
       "七月",
-      "しちがつ"
+      "しちがつ",
+      {
+       "en": "July"
+      }
      ]
     ]
    },
@@ -457,11 +712,17 @@
     "w": [
      [
       "七",
-      "なな"
+      "なな",
+      {
+       "en": "seven"
+      }
      ],
      [
       "七つ",
-      "ななつ"
+      "ななつ",
+      {
+       "en": "seven things"
+      }
      ]
     ]
    }
@@ -469,17 +730,29 @@
  },
  {
   "c": "八",
+  "meaning": {
+   "en": "eight"
+  },
+  "sentence": {
+   "en": "August held eight things, eight of them exactly."
+  },
   "g": [
    {
     "r": "ハチ",
     "w": [
      [
       "八",
-      "はち"
+      "はち",
+      {
+       "en": "eight"
+      }
      ],
      [
       "八月",
-      "はちがつ"
+      "はちがつ",
+      {
+       "en": "August"
+      }
      ]
     ]
    },
@@ -488,7 +761,10 @@
     "w": [
      [
       "八つ",
-      "やっつ"
+      "やっつ",
+      {
+       "en": "eight things"
+      }
      ]
     ]
    }
@@ -496,13 +772,22 @@
  },
  {
   "c": "九",
+  "meaning": {
+   "en": "nine"
+  },
+  "sentence": {
+   "en": "September ended with nine things, nine and no more."
+  },
   "g": [
    {
     "r": "キュウ",
     "w": [
      [
       "九",
-      "きゅう"
+      "きゅう",
+      {
+       "en": "nine"
+      }
      ]
     ]
    },
@@ -511,7 +796,10 @@
     "w": [
      [
       "九月",
-      "くがつ"
+      "くがつ",
+      {
+       "en": "September"
+      }
      ]
     ]
    },
@@ -520,7 +808,10 @@
     "w": [
      [
       "九つ",
-      "ここのつ"
+      "ここのつ",
+      {
+       "en": "nine things"
+      }
      ]
     ]
    }
@@ -528,17 +819,29 @@
  },
  {
   "c": "十",
+  "meaning": {
+   "en": "ten"
+  },
+  "sentence": {
+   "en": "On the tenth day of October I had counted ten."
+  },
   "g": [
    {
     "r": "ジュウ",
     "w": [
      [
       "十",
-      "じゅう"
+      "じゅう",
+      {
+       "en": "ten"
+      }
      ],
      [
       "十月",
-      "じゅうがつ"
+      "じゅうがつ",
+      {
+       "en": "October"
+      }
      ]
     ]
    },
@@ -547,7 +850,10 @@
     "w": [
      [
       "十日",
-      "とおか"
+      "とおか",
+      {
+       "en": "tenth day"
+      }
      ]
     ]
    }
@@ -555,17 +861,29 @@
  },
  {
   "c": "百",
+  "meaning": {
+   "en": "hundred"
+  },
+  "sentence": {
+   "en": "A hundred yen buys a hundred of them."
+  },
   "g": [
    {
     "r": "ヒャク",
     "w": [
      [
       "百",
-      "ひゃく"
+      "ひゃく",
+      {
+       "en": "hundred"
+      }
      ],
      [
       "百円",
-      "ひゃくえん"
+      "ひゃくえん",
+      {
+       "en": "hundred yen"
+      }
      ]
     ]
    }
@@ -573,17 +891,29 @@
  },
  {
   "c": "千",
+  "meaning": {
+   "en": "thousand"
+  },
+  "sentence": {
+   "en": "A thousand yen note is worth one thousand."
+  },
   "g": [
    {
     "r": "セン",
     "w": [
      [
       "千",
-      "せん"
+      "せん",
+      {
+       "en": "thousand"
+      }
      ],
      [
       "千円",
-      "せんえん"
+      "せんえん",
+      {
+       "en": "thousand yen"
+      }
      ]
     ]
    }
@@ -591,17 +921,29 @@
  },
  {
   "c": "万",
+  "meaning": {
+   "en": "ten thousand"
+  },
+  "sentence": {
+   "en": "Ten thousand yen is a single note worth ten thousand."
+  },
   "g": [
    {
     "r": "マン",
     "w": [
      [
       "万",
-      "まん"
+      "まん",
+      {
+       "en": "ten thousand"
+      }
      ],
      [
       "一万円",
-      "いちまんえん"
+      "いちまんえん",
+      {
+       "en": "ten thousand yen"
+      }
      ]
     ]
    }
@@ -609,17 +951,29 @@
  },
  {
   "c": "円",
+  "meaning": {
+   "en": "yen, circle"
+  },
+  "sentence": {
+   "en": "The yen coin is a circle worth a hundred yen."
+  },
   "g": [
    {
     "r": "エン",
     "w": [
      [
       "円",
-      "えん"
+      "えん",
+      {
+       "en": "yen, circle"
+      }
      ],
      [
       "百円",
-      "ひゃくえん"
+      "ひゃくえん",
+      {
+       "en": "hundred yen"
+      }
      ]
     ]
    }
@@ -627,17 +981,29 @@
  },
  {
   "c": "日",
+  "meaning": {
+   "en": "sun, day"
+  },
+  "sentence": {
+   "en": "Every day the sun rises over Japan, Sunday included."
+  },
   "g": [
    {
     "r": "ニチ",
     "w": [
      [
       "毎日",
-      "まいにち"
+      "まいにち",
+      {
+       "en": "every day"
+      }
      ],
      [
       "日曜日",
-      "にちようび"
+      "にちようび",
+      {
+       "en": "Sunday"
+      }
      ]
     ]
    },
@@ -646,7 +1012,10 @@
     "w": [
      [
       "日本",
-      "にほん"
+      "にほん",
+      {
+       "en": "Japan"
+      }
      ]
     ]
    },
@@ -655,7 +1024,10 @@
     "w": [
      [
       "日",
-      "ひ"
+      "ひ",
+      {
+       "en": "sun, day"
+      }
      ]
     ]
    }
@@ -663,13 +1035,22 @@
  },
  {
   "c": "月",
+  "meaning": {
+   "en": "moon, month"
+  },
+  "sentence": {
+   "en": "On Monday in January I watched the moon for a month."
+  },
   "g": [
    {
     "r": "ゲツ",
     "w": [
      [
       "月曜日",
-      "げつようび"
+      "げつようび",
+      {
+       "en": "Monday"
+      }
      ]
     ]
    },
@@ -678,7 +1059,10 @@
     "w": [
      [
       "一月",
-      "いちがつ"
+      "いちがつ",
+      {
+       "en": "January"
+      }
      ]
     ]
    },
@@ -687,7 +1071,10 @@
     "w": [
      [
       "月",
-      "つき"
+      "つき",
+      {
+       "en": "moon, month"
+      }
      ]
     ]
    }
@@ -695,13 +1082,22 @@
  },
  {
   "c": "火",
+  "meaning": {
+   "en": "fire"
+  },
+  "sentence": {
+   "en": "On Tuesday we lit a fire."
+  },
   "g": [
    {
     "r": "カ",
     "w": [
      [
       "火曜日",
-      "かようび"
+      "かようび",
+      {
+       "en": "Tuesday"
+      }
      ]
     ]
    },
@@ -710,7 +1106,10 @@
     "w": [
      [
       "火",
-      "ひ"
+      "ひ",
+      {
+       "en": "fire"
+      }
      ]
     ]
    }
@@ -718,13 +1117,22 @@
  },
  {
   "c": "水",
+  "meaning": {
+   "en": "water"
+  },
+  "sentence": {
+   "en": "On Wednesday I drank the water."
+  },
   "g": [
    {
     "r": "スイ",
     "w": [
      [
       "水曜日",
-      "すいようび"
+      "すいようび",
+      {
+       "en": "Wednesday"
+      }
      ]
     ]
    },
@@ -733,7 +1141,10 @@
     "w": [
      [
       "水",
-      "みず"
+      "みず",
+      {
+       "en": "water"
+      }
      ]
     ]
    }
@@ -741,13 +1152,22 @@
  },
  {
   "c": "木",
+  "meaning": {
+   "en": "tree, wood"
+  },
+  "sentence": {
+   "en": "On Thursday I sat under a tree and carved the wood."
+  },
   "g": [
    {
     "r": "モク",
     "w": [
      [
       "木曜日",
-      "もくようび"
+      "もくようび",
+      {
+       "en": "Thursday"
+      }
      ]
     ]
    },
@@ -756,7 +1176,10 @@
     "w": [
      [
       "木",
-      "き"
+      "き",
+      {
+       "en": "tree, wood"
+      }
      ]
     ]
    }
@@ -764,17 +1187,29 @@
  },
  {
   "c": "金",
+  "meaning": {
+   "en": "gold, money"
+  },
+  "sentence": {
+   "en": "On Friday I spent my money and kept the gold."
+  },
   "g": [
    {
     "r": "キン",
     "w": [
      [
       "金曜日",
-      "きんようび"
+      "きんようび",
+      {
+       "en": "Friday"
+      }
      ],
      [
       "金",
-      "きん"
+      "きん",
+      {
+       "en": "gold"
+      }
      ]
     ]
    },
@@ -783,7 +1218,10 @@
     "w": [
      [
       "お金",
-      "おかね"
+      "おかね",
+      {
+       "en": "money"
+      }
      ]
     ]
    }
@@ -791,13 +1229,22 @@
  },
  {
   "c": "土",
+  "meaning": {
+   "en": "earth, soil"
+  },
+  "sentence": {
+   "en": "On Saturday I turned the soil and worked the earth."
+  },
   "g": [
    {
     "r": "ド",
     "w": [
      [
       "土曜日",
-      "どようび"
+      "どようび",
+      {
+       "en": "Saturday"
+      }
      ]
     ]
    },
@@ -806,7 +1253,10 @@
     "w": [
      [
       "土",
-      "つち"
+      "つち",
+      {
+       "en": "earth, soil"
+      }
      ]
     ]
    }
@@ -814,17 +1264,29 @@
  },
  {
   "c": "曜",
+  "meaning": {
+   "en": "weekday"
+  },
+  "sentence": {
+   "en": "What day of the week falls on this weekday?"
+  },
   "g": [
    {
     "r": "ヨウ",
     "w": [
      [
       "曜日",
-      "ようび"
+      "ようび",
+      {
+       "en": "day of the week"
+      }
      ],
      [
       "何曜日",
-      "なんようび"
+      "なんようび",
+      {
+       "en": "what day of the week"
+      }
      ]
     ]
    }
@@ -832,17 +1294,29 @@
  },
  {
   "c": "年",
+  "meaning": {
+   "en": "year"
+  },
+  "sentence": {
+   "en": "Last year and this year each lasted a year."
+  },
   "g": [
    {
     "r": "ネン",
     "w": [
      [
       "去年",
-      "きょねん"
+      "きょねん",
+      {
+       "en": "last year"
+      }
      ],
      [
       "来年",
-      "らいねん"
+      "らいねん",
+      {
+       "en": "next year"
+      }
      ]
     ]
    },
@@ -851,7 +1325,10 @@
     "w": [
      [
       "年",
-      "とし"
+      "とし",
+      {
+       "en": "year"
+      }
      ]
     ]
    }
@@ -859,17 +1336,29 @@
  },
  {
   "c": "半",
+  "meaning": {
+   "en": "half"
+  },
+  "sentence": {
+   "en": "Half past, and half of it already gone."
+  },
   "g": [
    {
     "r": "ハン",
     "w": [
      [
       "半",
-      "はん"
+      "はん",
+      {
+       "en": "half"
+      }
      ],
      [
       "半分",
-      "はんぶん"
+      "はんぶん",
+      {
+       "en": "half"
+      }
      ]
     ]
    }
@@ -877,13 +1366,22 @@
  },
  {
   "c": "今",
+  "meaning": {
+   "en": "now"
+  },
+  "sentence": {
+   "en": "Right now, today, in this year."
+  },
   "g": [
    {
     "r": "いま",
     "w": [
      [
       "今",
-      "いま"
+      "いま",
+      {
+       "en": "now"
+      }
      ]
     ]
    },
@@ -892,7 +1390,10 @@
     "w": [
      [
       "今日",
-      "きょう"
+      "きょう",
+      {
+       "en": "today"
+      }
      ]
     ]
    },
@@ -901,7 +1402,10 @@
     "w": [
      [
       "今年",
-      "ことし"
+      "ことし",
+      {
+       "en": "this year"
+      }
      ]
     ]
    }
@@ -909,13 +1413,22 @@
  },
  {
   "c": "上",
+  "meaning": {
+   "en": "up, above"
+  },
+  "sentence": {
+   "en": "Above all else, she is skillful."
+  },
   "g": [
    {
     "r": "ジョウ",
     "w": [
      [
       "上手",
-      "じょうず"
+      "じょうず",
+      {
+       "en": "skillful"
+      }
      ]
     ]
    },
@@ -924,7 +1437,10 @@
     "w": [
      [
       "上",
-      "うえ"
+      "うえ",
+      {
+       "en": "up, above"
+      }
      ]
     ]
    }
@@ -932,13 +1448,22 @@
  },
  {
   "c": "下",
+  "meaning": {
+   "en": "down, below"
+  },
+  "sentence": {
+   "en": "Below that line, he is unskillful."
+  },
   "g": [
    {
     "r": "した",
     "w": [
      [
       "下",
-      "した"
+      "した",
+      {
+       "en": "down, below"
+      }
      ]
     ]
    },
@@ -947,7 +1472,10 @@
     "w": [
      [
       "下手",
-      "へた"
+      "へた",
+      {
+       "en": "unskillful"
+      }
      ]
     ]
    }
@@ -955,13 +1483,22 @@
  },
  {
   "c": "中",
+  "meaning": {
+   "en": "middle, inside"
+  },
+  "sentence": {
+   "en": "Inside China, right in the middle."
+  },
   "g": [
    {
     "r": "チュウ",
     "w": [
      [
       "中国",
-      "ちゅうごく"
+      "ちゅうごく",
+      {
+       "en": "China"
+      }
      ]
     ]
    },
@@ -970,7 +1507,10 @@
     "w": [
      [
       "中",
-      "なか"
+      "なか",
+      {
+       "en": "middle, inside"
+      }
      ]
     ]
    }
@@ -978,13 +1518,22 @@
  },
  {
   "c": "人",
+  "meaning": {
+   "en": "person"
+  },
+  "sentence": {
+   "en": "One person, then two people, then everyone."
+  },
   "g": [
    {
     "r": "ジン",
     "w": [
      [
       "外国人",
-      "がいこくじん"
+      "がいこくじん",
+      {
+       "en": "foreigner"
+      }
      ]
     ]
    },
@@ -993,7 +1542,10 @@
     "w": [
      [
       "人気",
-      "にんき"
+      "にんき",
+      {
+       "en": "popularity"
+      }
      ]
     ]
    },
@@ -1002,7 +1554,10 @@
     "w": [
      [
       "人",
-      "ひと"
+      "ひと",
+      {
+       "en": "person"
+      }
      ]
     ]
    }
@@ -1010,13 +1565,22 @@
  },
  {
   "c": "男",
+  "meaning": {
+   "en": "man, male"
+  },
+  "sentence": {
+   "en": "The man is a male student, a boy no longer."
+  },
   "g": [
    {
     "r": "ダン",
     "w": [
      [
       "男性",
-      "だんせい"
+      "だんせい",
+      {
+       "en": "male"
+      }
      ]
     ]
    },
@@ -1025,11 +1589,17 @@
     "w": [
      [
       "男",
-      "おとこ"
+      "おとこ",
+      {
+       "en": "man"
+      }
      ],
      [
       "男の子",
-      "おとこのこ"
+      "おとこのこ",
+      {
+       "en": "boy"
+      }
      ]
     ]
    }
@@ -1037,13 +1607,22 @@
  },
  {
   "c": "女",
+  "meaning": {
+   "en": "woman, female"
+  },
+  "sentence": {
+   "en": "The woman is a female student, a girl no longer."
+  },
   "g": [
    {
     "r": "ジョ",
     "w": [
      [
       "女性",
-      "じょせい"
+      "じょせい",
+      {
+       "en": "female"
+      }
      ]
     ]
    },
@@ -1052,11 +1631,17 @@
     "w": [
      [
       "女",
-      "おんな"
+      "おんな",
+      {
+       "en": "woman"
+      }
      ],
      [
       "女の子",
-      "おんなのこ"
+      "おんなのこ",
+      {
+       "en": "girl"
+      }
      ]
     ]
    }
@@ -1064,13 +1649,22 @@
  },
  {
   "c": "子",
+  "meaning": {
+   "en": "child"
+  },
+  "sentence": {
+   "en": "The child is a boy, and that child is a girl."
+  },
   "g": [
    {
     "r": "シ",
     "w": [
      [
       "椅子",
-      "いす"
+      "いす",
+      {
+       "en": "chair"
+      }
      ]
     ]
    },
@@ -1079,11 +1673,17 @@
     "w": [
      [
       "子",
-      "こ"
+      "こ",
+      {
+       "en": "child"
+      }
      ],
      [
       "子ども",
-      "こども"
+      "こども",
+      {
+       "en": "child, kids"
+      }
      ]
     ]
    }
@@ -1091,13 +1691,22 @@
  },
  {
   "c": "父",
+  "meaning": {
+   "en": "father"
+  },
+  "sentence": {
+   "en": "My father, your father, everyone's dad."
+  },
   "g": [
    {
     "r": "フ",
     "w": [
      [
       "父母",
-      "ふぼ"
+      "ふぼ",
+      {
+       "en": "parents"
+      }
      ]
     ]
    },
@@ -1106,7 +1715,10 @@
     "w": [
      [
       "父",
-      "ちち"
+      "ちち",
+      {
+       "en": "father"
+      }
      ]
     ]
    },
@@ -1115,7 +1727,10 @@
     "w": [
      [
       "お父さん",
-      "おとうさん"
+      "おとうさん",
+      {
+       "en": "father (polite)"
+      }
      ]
     ]
    }
@@ -1123,13 +1738,22 @@
  },
  {
   "c": "母",
+  "meaning": {
+   "en": "mother"
+  },
+  "sentence": {
+   "en": "My mother, your mother, everyone's mum."
+  },
   "g": [
    {
     "r": "ボ",
     "w": [
      [
       "父母",
-      "ふぼ"
+      "ふぼ",
+      {
+       "en": "parents"
+      }
      ]
     ]
    },
@@ -1138,7 +1762,10 @@
     "w": [
      [
       "母",
-      "はは"
+      "はは",
+      {
+       "en": "mother"
+      }
      ]
     ]
    },
@@ -1147,7 +1774,10 @@
     "w": [
      [
       "お母さん",
-      "おかあさん"
+      "おかあさん",
+      {
+       "en": "mother (polite)"
+      }
      ]
     ]
    }
@@ -1155,13 +1785,22 @@
  },
  {
   "c": "友",
+  "meaning": {
+   "en": "friend"
+  },
+  "sentence": {
+   "en": "A friend is a friend, in any language."
+  },
   "g": [
    {
     "r": "ユウ",
     "w": [
      [
       "友人",
-      "ゆうじん"
+      "ゆうじん",
+      {
+       "en": "friend (formal)"
+      }
      ]
     ]
    },
@@ -1170,7 +1809,10 @@
     "w": [
      [
       "友だち",
-      "ともだち"
+      "ともだち",
+      {
+       "en": "friend"
+      }
      ]
     ]
    }
@@ -1178,17 +1820,29 @@
  },
  {
   "c": "先",
+  "meaning": {
+   "en": "ahead, previous"
+  },
+  "sentence": {
+   "en": "The teacher went ahead of us last week."
+  },
   "g": [
    {
     "r": "セン",
     "w": [
      [
       "先生",
-      "せんせい"
+      "せんせい",
+      {
+       "en": "teacher"
+      }
      ],
      [
       "先週",
-      "せんしゅう"
+      "せんしゅう",
+      {
+       "en": "last week"
+      }
      ]
     ]
    },
@@ -1197,7 +1851,10 @@
     "w": [
      [
       "先",
-      "さき"
+      "さき",
+      {
+       "en": "ahead, previous"
+      }
      ]
     ]
    }
@@ -1205,17 +1862,29 @@
  },
  {
   "c": "学",
+  "meaning": {
+   "en": "study, learning"
+  },
+  "sentence": {
+   "en": "A student studies at the university."
+  },
   "g": [
    {
     "r": "ガク",
     "w": [
      [
       "学生",
-      "がくせい"
+      "がくせい",
+      {
+       "en": "student"
+      }
      ],
      [
       "大学",
-      "だいがく"
+      "だいがく",
+      {
+       "en": "university"
+      }
      ]
     ]
    },
@@ -1224,7 +1893,10 @@
     "w": [
      [
       "学ぶ",
-      "まなぶ"
+      "まなぶ",
+      {
+       "en": "to study, to learn"
+      }
      ]
     ]
    }
@@ -1232,17 +1904,29 @@
  },
  {
   "c": "校",
+  "meaning": {
+   "en": "school"
+  },
+  "sentence": {
+   "en": "At school, the high school students gathered."
+  },
   "g": [
    {
     "r": "コウ",
     "w": [
      [
       "学校",
-      "がっこう"
+      "がっこう",
+      {
+       "en": "school"
+      }
      ],
      [
       "高校",
-      "こうこう"
+      "こうこう",
+      {
+       "en": "high school"
+      }
      ]
     ]
    }
@@ -1250,13 +1934,22 @@
  },
  {
   "c": "高",
+  "meaning": {
+   "en": "high, expensive"
+  },
+  "sentence": {
+   "en": "The high school on the hill is expensive."
+  },
   "g": [
    {
     "r": "コウ",
     "w": [
      [
       "高校",
-      "こうこう"
+      "こうこう",
+      {
+       "en": "high school"
+      }
      ]
     ]
    },
@@ -1265,7 +1958,10 @@
     "w": [
      [
       "高い",
-      "たかい"
+      "たかい",
+      {
+       "en": "high, expensive"
+      }
      ]
     ]
    }
@@ -1273,13 +1969,22 @@
  },
  {
   "c": "大",
+  "meaning": {
+   "en": "big, large"
+  },
+  "sentence": {
+   "en": "A big university is a large place."
+  },
   "g": [
    {
     "r": "ダイ",
     "w": [
      [
       "大学",
-      "だいがく"
+      "だいがく",
+      {
+       "en": "university"
+      }
      ]
     ]
    },
@@ -1288,7 +1993,10 @@
     "w": [
      [
       "大切",
-      "たいせつ"
+      "たいせつ",
+      {
+       "en": "important"
+      }
      ]
     ]
    },
@@ -1297,7 +2005,10 @@
     "w": [
      [
       "大きい",
-      "おおきい"
+      "おおきい",
+      {
+       "en": "big, large"
+      }
      ]
     ]
    }
@@ -1305,13 +2016,22 @@
  },
  {
   "c": "小",
+  "meaning": {
+   "en": "small, little"
+  },
+  "sentence": {
+   "en": "A small primary school for little ones."
+  },
   "g": [
    {
     "r": "ショウ",
     "w": [
      [
       "小学校",
-      "しょうがっこう"
+      "しょうがっこう",
+      {
+       "en": "primary school"
+      }
      ]
     ]
    },
@@ -1320,7 +2040,10 @@
     "w": [
      [
       "小さい",
-      "ちいさい"
+      "ちいさい",
+      {
+       "en": "small, little"
+      }
      ]
     ]
    }
@@ -1328,13 +2051,22 @@
  },
  {
   "c": "長",
+  "meaning": {
+   "en": "long, chief"
+  },
+  "sentence": {
+   "en": "The company chief gave a long speech."
+  },
   "g": [
    {
     "r": "チョウ",
     "w": [
      [
       "社長",
-      "しゃちょう"
+      "しゃちょう",
+      {
+       "en": "company president"
+      }
      ]
     ]
    },
@@ -1343,7 +2075,10 @@
     "w": [
      [
       "長い",
-      "ながい"
+      "ながい",
+      {
+       "en": "long"
+      }
      ]
     ]
    }
@@ -1351,13 +2086,22 @@
  },
  {
   "c": "白",
+  "meaning": {
+   "en": "white"
+  },
+  "sentence": {
+   "en": "White paper, white walls, all white."
+  },
   "g": [
    {
     "r": "ハク",
     "w": [
      [
       "白紙",
-      "はくし"
+      "はくし",
+      {
+       "en": "blank paper"
+      }
      ]
     ]
    },
@@ -1366,11 +2110,17 @@
     "w": [
      [
       "白",
-      "しろ"
+      "しろ",
+      {
+       "en": "white"
+      }
      ],
      [
       "白い",
-      "しろい"
+      "しろい",
+      {
+       "en": "white"
+      }
      ]
     ]
    }
@@ -1378,13 +2128,22 @@
  },
  {
   "c": "山",
+  "meaning": {
+   "en": "mountain"
+  },
+  "sentence": {
+   "en": "Mount Fuji is the mountain everyone climbs."
+  },
   "g": [
    {
     "r": "サン",
     "w": [
      [
       "富士山",
-      "ふじさん"
+      "ふじさん",
+      {
+       "en": "Mount Fuji"
+      }
      ]
     ]
    },
@@ -1393,7 +2152,10 @@
     "w": [
      [
       "山",
-      "やま"
+      "やま",
+      {
+       "en": "mountain"
+      }
      ]
     ]
    }
@@ -1401,13 +2163,22 @@
  },
  {
   "c": "川",
+  "meaning": {
+   "en": "river"
+  },
+  "sentence": {
+   "en": "The river runs down beside the mountain."
+  },
   "g": [
    {
     "r": "かわ",
     "w": [
      [
       "川",
-      "かわ"
+      "かわ",
+      {
+       "en": "river"
+      }
      ]
     ]
    }
@@ -1415,17 +2186,29 @@
  },
  {
   "c": "天",
+  "meaning": {
+   "en": "heaven, sky"
+  },
+  "sentence": {
+   "en": "The weather in the sky turned fine."
+  },
   "g": [
    {
     "r": "テン",
     "w": [
      [
       "天気",
-      "てんき"
+      "てんき",
+      {
+       "en": "weather"
+      }
      ],
      [
       "天",
-      "てん"
+      "てん",
+      {
+       "en": "heaven, sky"
+      }
      ]
     ]
    }
@@ -1433,17 +2216,29 @@
  },
  {
   "c": "気",
+  "meaning": {
+   "en": "spirit, energy"
+  },
+  "sentence": {
+   "en": "In good weather my spirit is healthy and full of energy."
+  },
   "g": [
    {
     "r": "キ",
     "w": [
      [
       "天気",
-      "てんき"
+      "てんき",
+      {
+       "en": "weather"
+      }
      ],
      [
       "元気",
-      "げんき"
+      "げんき",
+      {
+       "en": "healthy, energetic"
+      }
      ]
     ]
    }
@@ -1451,13 +2246,22 @@
  },
  {
   "c": "雨",
+  "meaning": {
+   "en": "rain"
+  },
+  "sentence": {
+   "en": "Rain fell, and the rainy season began."
+  },
   "g": [
    {
     "r": "ウ",
     "w": [
      [
       "雨天",
-      "うてん"
+      "うてん",
+      {
+       "en": "rainy weather"
+      }
      ]
     ]
    },
@@ -1466,7 +2270,10 @@
     "w": [
      [
       "雨",
-      "あめ"
+      "あめ",
+      {
+       "en": "rain"
+      }
      ]
     ]
    }
@@ -1474,17 +2281,29 @@
  },
  {
   "c": "電",
+  "meaning": {
+   "en": "electricity"
+  },
+  "sentence": {
+   "en": "The electric train runs on electricity, and so does the phone."
+  },
   "g": [
    {
     "r": "デン",
     "w": [
      [
       "電車",
-      "でんしゃ"
+      "でんしゃ",
+      {
+       "en": "train"
+      }
      ],
      [
       "電話",
-      "でんわ"
+      "でんわ",
+      {
+       "en": "telephone"
+      }
      ]
     ]
    }
@@ -1492,17 +2311,29 @@
  },
  {
   "c": "車",
+  "meaning": {
+   "en": "car, vehicle"
+  },
+  "sentence": {
+   "en": "The car waited while the train passed."
+  },
   "g": [
    {
     "r": "シャ",
     "w": [
      [
       "電車",
-      "でんしゃ"
+      "でんしゃ",
+      {
+       "en": "train"
+      }
      ],
      [
       "自転車",
-      "じてんしゃ"
+      "じてんしゃ",
+      {
+       "en": "bicycle"
+      }
      ]
     ]
    },
@@ -1511,7 +2342,10 @@
     "w": [
      [
       "車",
-      "くるま"
+      "くるま",
+      {
+       "en": "car"
+      }
      ]
     ]
    }
@@ -1519,17 +2353,29 @@
  },
  {
   "c": "駅",
+  "meaning": {
+   "en": "station"
+  },
+  "sentence": {
+   "en": "I met the station attendant at the station."
+  },
   "g": [
    {
     "r": "エキ",
     "w": [
      [
       "駅",
-      "えき"
+      "えき",
+      {
+       "en": "station"
+      }
      ],
      [
       "駅員",
-      "えきいん"
+      "えきいん",
+      {
+       "en": "station attendant"
+      }
      ]
     ]
    }
@@ -1537,13 +2383,22 @@
  },
  {
   "c": "国",
+  "meaning": {
+   "en": "country"
+  },
+  "sentence": {
+   "en": "A foreigner comes from another country."
+  },
   "g": [
    {
     "r": "コク",
     "w": [
      [
       "外国",
-      "がいこく"
+      "がいこく",
+      {
+       "en": "foreign country"
+      }
      ]
     ]
    },
@@ -1552,7 +2407,10 @@
     "w": [
      [
       "国",
-      "くに"
+      "くに",
+      {
+       "en": "country"
+      }
      ]
     ]
    }
@@ -1560,17 +2418,29 @@
  },
  {
   "c": "語",
+  "meaning": {
+   "en": "language, word"
+  },
+  "sentence": {
+   "en": "The Japanese language has a word for it."
+  },
   "g": [
    {
     "r": "ゴ",
     "w": [
      [
       "日本語",
-      "にほんご"
+      "にほんご",
+      {
+       "en": "Japanese language"
+      }
      ],
      [
       "単語",
-      "たんご"
+      "たんご",
+      {
+       "en": "word"
+      }
      ]
     ]
    }
@@ -1578,17 +2448,29 @@
  },
  {
   "c": "話",
+  "meaning": {
+   "en": "talk, story"
+  },
+  "sentence": {
+   "en": "We talk on the telephone and tell a story."
+  },
   "g": [
    {
     "r": "ワ",
     "w": [
      [
       "会話",
-      "かいわ"
+      "かいわ",
+      {
+       "en": "conversation"
+      }
      ],
      [
       "電話",
-      "でんわ"
+      "でんわ",
+      {
+       "en": "telephone"
+      }
      ]
     ]
    },
@@ -1597,7 +2479,10 @@
     "w": [
      [
       "話す",
-      "はなす"
+      "はなす",
+      {
+       "en": "to talk, to speak"
+      }
      ]
     ]
    }
@@ -1605,13 +2490,22 @@
  },
  {
   "c": "読",
+  "meaning": {
+   "en": "read"
+  },
+  "sentence": {
+   "en": "I read the book and read it aloud."
+  },
   "g": [
    {
     "r": "ドク",
     "w": [
      [
       "読書",
-      "どくしょ"
+      "どくしょ",
+      {
+       "en": "reading"
+      }
      ]
     ]
    },
@@ -1620,7 +2514,10 @@
     "w": [
      [
       "読む",
-      "よむ"
+      "よむ",
+      {
+       "en": "to read"
+      }
      ]
     ]
    }
@@ -1628,17 +2525,29 @@
  },
  {
   "c": "書",
+  "meaning": {
+   "en": "write"
+  },
+  "sentence": {
+   "en": "I write in the library and read what I wrote."
+  },
   "g": [
    {
     "r": "ショ",
     "w": [
      [
       "図書館",
-      "としょかん"
+      "としょかん",
+      {
+       "en": "library"
+      }
      ],
      [
       "読書",
-      "どくしょ"
+      "どくしょ",
+      {
+       "en": "reading"
+      }
      ]
     ]
    },
@@ -1647,7 +2556,10 @@
     "w": [
      [
       "書く",
-      "かく"
+      "かく",
+      {
+       "en": "to write"
+      }
      ]
     ]
    }
@@ -1655,13 +2567,22 @@
  },
  {
   "c": "見",
+  "meaning": {
+   "en": "see, look"
+  },
+  "sentence": {
+   "en": "Look and see what can be seen."
+  },
   "g": [
    {
     "r": "ケン",
     "w": [
      [
       "見学",
-      "けんがく"
+      "けんがく",
+      {
+       "en": "study visit"
+      }
      ]
     ]
    },
@@ -1670,11 +2591,17 @@
     "w": [
      [
       "見る",
-      "みる"
+      "みる",
+      {
+       "en": "to see, to look"
+      }
      ],
      [
       "見せる",
-      "みせる"
+      "みせる",
+      {
+       "en": "to show"
+      }
      ]
     ]
    }
@@ -1682,13 +2609,22 @@
  },
  {
   "c": "聞",
+  "meaning": {
+   "en": "hear, listen"
+  },
+  "sentence": {
+   "en": "Listen to the news and hear the story."
+  },
   "g": [
    {
     "r": "ブン",
     "w": [
      [
       "新聞",
-      "しんぶん"
+      "しんぶん",
+      {
+       "en": "newspaper"
+      }
      ]
     ]
    },
@@ -1697,7 +2633,10 @@
     "w": [
      [
       "聞く",
-      "きく"
+      "きく",
+      {
+       "en": "to hear, to listen"
+      }
      ]
     ]
    }
@@ -1705,17 +2644,29 @@
  },
  {
   "c": "行",
+  "meaning": {
+   "en": "go"
+  },
+  "sentence": {
+   "en": "I go to the bank and go home again."
+  },
   "g": [
    {
     "r": "コウ",
     "w": [
      [
       "旅行",
-      "りょこう"
+      "りょこう",
+      {
+       "en": "travel"
+      }
      ],
      [
       "銀行",
-      "ぎんこう"
+      "ぎんこう",
+      {
+       "en": "bank"
+      }
      ]
     ]
    },
@@ -1724,7 +2675,10 @@
     "w": [
      [
       "行く",
-      "いく"
+      "いく",
+      {
+       "en": "to go"
+      }
      ]
     ]
    }
@@ -1732,17 +2686,29 @@
  },
  {
   "c": "来",
+  "meaning": {
+   "en": "come"
+  },
+  "sentence": {
+   "en": "Come next week, come again next year."
+  },
   "g": [
    {
     "r": "ライ",
     "w": [
      [
       "来週",
-      "らいしゅう"
+      "らいしゅう",
+      {
+       "en": "next week"
+      }
      ],
      [
       "来年",
-      "らいねん"
+      "らいねん",
+      {
+       "en": "next year"
+      }
      ]
     ]
    },
@@ -1751,7 +2717,10 @@
     "w": [
      [
       "来る",
-      "くる"
+      "くる",
+      {
+       "en": "to come"
+      }
      ]
     ]
    }
@@ -1759,13 +2728,22 @@
  },
  {
   "c": "出",
+  "meaning": {
+   "en": "exit, go out"
+  },
+  "sentence": {
+   "en": "Go out through the exit and leave."
+  },
   "g": [
    {
     "r": "シュツ",
     "w": [
      [
       "出発",
-      "しゅっぱつ"
+      "しゅっぱつ",
+      {
+       "en": "departure"
+      }
      ]
     ]
    },
@@ -1774,11 +2752,17 @@
     "w": [
      [
       "出る",
-      "でる"
+      "でる",
+      {
+       "en": "to go out, to leave"
+      }
      ],
      [
       "出口",
-      "でぐち"
+      "でぐち",
+      {
+       "en": "exit"
+      }
      ]
     ]
    }
@@ -1786,13 +2770,22 @@
  },
  {
   "c": "入",
+  "meaning": {
+   "en": "enter, go in"
+  },
+  "sentence": {
+   "en": "Enter by the entrance and go in."
+  },
   "g": [
    {
     "r": "ニュウ",
     "w": [
      [
       "入学",
-      "にゅうがく"
+      "にゅうがく",
+      {
+       "en": "entering school"
+      }
      ]
     ]
    },
@@ -1801,7 +2794,10 @@
     "w": [
      [
       "入る",
-      "はいる"
+      "はいる",
+      {
+       "en": "to enter, to go in"
+      }
      ]
     ]
    },
@@ -1810,7 +2806,10 @@
     "w": [
      [
       "入口",
-      "いりぐち"
+      "いりぐち",
+      {
+       "en": "entrance"
+      }
      ]
     ]
    }
@@ -1818,13 +2817,22 @@
  },
  {
   "c": "立",
+  "meaning": {
+   "en": "stand"
+  },
+  "sentence": {
+   "en": "Stand up and stand still."
+  },
   "g": [
    {
     "r": "リツ",
     "w": [
      [
       "国立",
-      "こくりつ"
+      "こくりつ",
+      {
+       "en": "national"
+      }
      ]
     ]
    },
@@ -1833,7 +2841,10 @@
     "w": [
      [
       "立つ",
-      "たつ"
+      "たつ",
+      {
+       "en": "to stand"
+      }
      ]
     ]
    }
@@ -1841,13 +2852,22 @@
  },
  {
   "c": "休",
+  "meaning": {
+   "en": "rest"
+  },
+  "sentence": {
+   "en": "On a day off I rest and take a holiday."
+  },
   "g": [
    {
     "r": "キュウ",
     "w": [
      [
       "休日",
-      "きゅうじつ"
+      "きゅうじつ",
+      {
+       "en": "holiday"
+      }
      ]
     ]
    },
@@ -1856,11 +2876,17 @@
     "w": [
      [
       "休む",
-      "やすむ"
+      "やすむ",
+      {
+       "en": "to rest"
+      }
      ],
      [
       "休み",
-      "やすみ"
+      "やすみ",
+      {
+       "en": "day off, break"
+      }
      ]
     ]
    }
@@ -1868,17 +2894,29 @@
  },
  {
   "c": "食",
+  "meaning": {
+   "en": "eat, food"
+  },
+  "sentence": {
+   "en": "I eat my meal in the dining room."
+  },
   "g": [
    {
     "r": "ショク",
     "w": [
      [
       "食事",
-      "しょくじ"
+      "しょくじ",
+      {
+       "en": "meal"
+      }
      ],
      [
       "食堂",
-      "しょくどう"
+      "しょくどう",
+      {
+       "en": "dining hall"
+      }
      ]
     ]
    },
@@ -1887,7 +2925,10 @@
     "w": [
      [
       "食べる",
-      "たべる"
+      "たべる",
+      {
+       "en": "to eat"
+      }
      ]
     ]
    }
@@ -1895,13 +2936,22 @@
  },
  {
   "c": "飲",
+  "meaning": {
+   "en": "drink"
+  },
+  "sentence": {
+   "en": "I drink a drink with my meal."
+  },
   "g": [
    {
     "r": "イン",
     "w": [
      [
       "飲食",
-      "いんしょく"
+      "いんしょく",
+      {
+       "en": "food and drink"
+      }
      ]
     ]
    },
@@ -1910,11 +2960,17 @@
     "w": [
      [
       "飲む",
-      "のむ"
+      "のむ",
+      {
+       "en": "to drink"
+      }
      ],
      [
       "飲み物",
-      "のみもの"
+      "のみもの",
+      {
+       "en": "a drink"
+      }
      ]
     ]
    }
@@ -1922,13 +2978,22 @@
  },
  {
   "c": "名",
+  "meaning": {
+   "en": "name"
+  },
+  "sentence": {
+   "en": "Write your name; it is a famous name."
+  },
   "g": [
    {
     "r": "メイ",
     "w": [
      [
       "有名",
-      "ゆうめい"
+      "ゆうめい",
+      {
+       "en": "famous"
+      }
      ]
     ]
    },
@@ -1937,7 +3002,10 @@
     "w": [
      [
       "名前",
-      "なまえ"
+      "なまえ",
+      {
+       "en": "name"
+      }
      ]
     ]
    }
@@ -1945,13 +3013,22 @@
  },
  {
   "c": "口",
+  "meaning": {
+   "en": "mouth"
+  },
+  "sentence": {
+   "en": "The mouth of the exit, the mouth on your face."
+  },
   "g": [
    {
     "r": "コウ",
     "w": [
      [
       "人口",
-      "じんこう"
+      "じんこう",
+      {
+       "en": "population"
+      }
      ]
     ]
    },
@@ -1960,7 +3037,10 @@
     "w": [
      [
       "口",
-      "くち"
+      "くち",
+      {
+       "en": "mouth"
+      }
      ]
     ]
    }
@@ -1968,13 +3048,22 @@
  },
  {
   "c": "目",
+  "meaning": {
+   "en": "eye"
+  },
+  "sentence": {
+   "en": "My eyes woke and the eye opened."
+  },
   "g": [
    {
     "r": "モク",
     "w": [
      [
       "目的",
-      "もくてき"
+      "もくてき",
+      {
+       "en": "purpose"
+      }
      ]
     ]
    },
@@ -1983,7 +3072,10 @@
     "w": [
      [
       "目",
-      "め"
+      "め",
+      {
+       "en": "eye"
+      }
      ]
     ]
    }
@@ -1991,13 +3083,22 @@
  },
  {
   "c": "耳",
+  "meaning": {
+   "en": "ear"
+  },
+  "sentence": {
+   "en": "The ear hears what the eye cannot see."
+  },
   "g": [
    {
     "r": "みみ",
     "w": [
      [
       "耳",
-      "みみ"
+      "みみ",
+      {
+       "en": "ear"
+      }
      ]
     ]
    }
@@ -2005,13 +3106,22 @@
  },
  {
   "c": "手",
+  "meaning": {
+   "en": "hand"
+  },
+  "sentence": {
+   "en": "A letter written by hand, held in the hand."
+  },
   "g": [
    {
     "r": "シュ",
     "w": [
      [
       "手段",
-      "しゅだん"
+      "しゅだん",
+      {
+       "en": "means, method"
+      }
      ]
     ]
    },
@@ -2020,11 +3130,17 @@
     "w": [
      [
       "手",
-      "て"
+      "て",
+      {
+       "en": "hand"
+      }
      ],
      [
       "手紙",
-      "てがみ"
+      "てがみ",
+      {
+       "en": "letter"
+      }
      ]
     ]
    }
@@ -2032,13 +3148,22 @@
  },
  {
   "c": "足",
+  "meaning": {
+   "en": "foot, leg"
+  },
+  "sentence": {
+   "en": "My legs are tired, so my feet stopped."
+  },
   "g": [
    {
     "r": "ソク",
     "w": [
      [
       "不足",
-      "ふそく"
+      "ふそく",
+      {
+       "en": "shortage"
+      }
      ]
     ]
    },
@@ -2047,7 +3172,10 @@
     "w": [
      [
       "足",
-      "あし"
+      "あし",
+      {
+       "en": "foot, leg"
+      }
      ]
     ]
    }
@@ -2055,17 +3183,29 @@
  },
  {
   "c": "空",
+  "meaning": {
+   "en": "sky, empty"
+  },
+  "sentence": {
+   "en": "The sky is empty above the airport."
+  },
   "g": [
    {
     "r": "クウ",
     "w": [
      [
       "空港",
-      "くうこう"
+      "くうこう",
+      {
+       "en": "airport"
+      }
      ],
      [
       "空気",
-      "くうき"
+      "くうき",
+      {
+       "en": "air"
+      }
      ]
     ]
    },
@@ -2074,7 +3214,10 @@
     "w": [
      [
       "空",
-      "そら"
+      "そら",
+      {
+       "en": "sky"
+      }
      ]
     ]
    }
@@ -2082,13 +3225,22 @@
  },
  {
   "c": "花",
+  "meaning": {
+   "en": "flower"
+  },
+  "sentence": {
+   "en": "The flower opened, a fireworks flower in the sky."
+  },
   "g": [
    {
     "r": "カ",
     "w": [
      [
       "花火",
-      "はなび"
+      "はなび",
+      {
+       "en": "fireworks"
+      }
      ]
     ]
    },
@@ -2097,7 +3249,10 @@
     "w": [
      [
       "花",
-      "はな"
+      "はな",
+      {
+       "en": "flower"
+      }
      ]
     ]
    }
@@ -2105,13 +3260,22 @@
  },
  {
   "c": "魚",
+  "meaning": {
+   "en": "fish"
+  },
+  "sentence": {
+   "en": "The fish in the fish shop came from the river."
+  },
   "g": [
    {
     "r": "ギョ",
     "w": [
      [
       "金魚",
-      "きんぎょ"
+      "きんぎょ",
+      {
+       "en": "goldfish"
+      }
      ]
     ]
    },
@@ -2120,7 +3284,10 @@
     "w": [
      [
       "魚",
-      "さかな"
+      "さかな",
+      {
+       "en": "fish"
+      }
      ]
     ]
    }
@@ -2128,13 +3295,22 @@
  },
  {
   "c": "犬",
+  "meaning": {
+   "en": "dog"
+  },
+  "sentence": {
+   "en": "The dog barked; it was a big dog."
+  },
   "g": [
    {
     "r": "いぬ",
     "w": [
      [
       "犬",
-      "いぬ"
+      "いぬ",
+      {
+       "en": "dog"
+      }
      ]
     ]
    }
@@ -2142,13 +3318,22 @@
  },
  {
   "c": "少",
+  "meaning": {
+   "en": "few, little"
+  },
+  "sentence": {
+   "en": "A little water, and only a few drops."
+  },
   "g": [
    {
     "r": "ショウ",
     "w": [
      [
       "少年",
-      "しょうねん"
+      "しょうねん",
+      {
+       "en": "boy"
+      }
      ]
     ]
    },
@@ -2157,7 +3342,10 @@
     "w": [
      [
       "少し",
-      "すこし"
+      "すこし",
+      {
+       "en": "a little"
+      }
      ]
     ]
    },
@@ -2166,7 +3354,10 @@
     "w": [
      [
       "少ない",
-      "すくない"
+      "すくない",
+      {
+       "en": "few, not much"
+      }
      ]
     ]
    }
@@ -2174,13 +3365,22 @@
  },
  {
   "c": "多",
+  "meaning": {
+   "en": "many, much"
+  },
+  "sentence": {
+   "en": "Many people, much noise, too many."
+  },
   "g": [
    {
     "r": "タ",
     "w": [
      [
       "多分",
-      "たぶん"
+      "たぶん",
+      {
+       "en": "probably"
+      }
      ]
     ]
    },
@@ -2189,7 +3389,10 @@
     "w": [
      [
       "多い",
-      "おおい"
+      "おおい",
+      {
+       "en": "many, much"
+      }
      ]
     ]
    }
@@ -2197,17 +3400,29 @@
  },
  {
   "c": "安",
+  "meaning": {
+   "en": "cheap, safe"
+  },
+  "sentence": {
+   "en": "It is cheap here, and safe too."
+  },
   "g": [
    {
     "r": "アン",
     "w": [
      [
       "安全",
-      "あんぜん"
+      "あんぜん",
+      {
+       "en": "safety"
+      }
      ],
      [
       "安心",
-      "あんしん"
+      "あんしん",
+      {
+       "en": "relief"
+      }
      ]
     ]
    },
@@ -2216,7 +3431,10 @@
     "w": [
      [
       "安い",
-      "やすい"
+      "やすい",
+      {
+       "en": "cheap"
+      }
      ]
     ]
    }
@@ -2224,13 +3442,22 @@
  },
  {
   "c": "新",
+  "meaning": {
+   "en": "new"
+  },
+  "sentence": {
+   "en": "A new newspaper arrived, brand new."
+  },
   "g": [
    {
     "r": "シン",
     "w": [
      [
       "新聞",
-      "しんぶん"
+      "しんぶん",
+      {
+       "en": "newspaper"
+      }
      ]
     ]
    },
@@ -2239,7 +3466,10 @@
     "w": [
      [
       "新しい",
-      "あたらしい"
+      "あたらしい",
+      {
+       "en": "new"
+      }
      ]
     ]
    }
@@ -2247,13 +3477,22 @@
  },
  {
   "c": "古",
+  "meaning": {
+   "en": "old"
+  },
+  "sentence": {
+   "en": "The old bookshop sells old books."
+  },
   "g": [
    {
     "r": "コ",
     "w": [
      [
       "中古",
-      "ちゅうこ"
+      "ちゅうこ",
+      {
+       "en": "secondhand"
+      }
      ]
     ]
    },
@@ -2262,7 +3501,10 @@
     "w": [
      [
       "古い",
-      "ふるい"
+      "ふるい",
+      {
+       "en": "old"
+      }
      ]
     ]
    }
@@ -2270,13 +3512,22 @@
  },
  {
   "c": "早",
+  "meaning": {
+   "en": "early, fast"
+  },
+  "sentence": {
+   "en": "An early start, a fast finish."
+  },
   "g": [
    {
     "r": "ソウ",
     "w": [
      [
       "早々",
-      "そうそう"
+      "そうそう",
+      {
+       "en": "promptly"
+      }
      ]
     ]
    },
@@ -2285,7 +3536,10 @@
     "w": [
      [
       "早い",
-      "はやい"
+      "はやい",
+      {
+       "en": "early, fast"
+      }
      ]
     ]
    }
@@ -2293,13 +3547,22 @@
  },
  {
   "c": "力",
+  "meaning": {
+   "en": "power, strength"
+  },
+  "sentence": {
+   "en": "With effort comes the strength and power to finish."
+  },
   "g": [
    {
     "r": "リョク",
     "w": [
      [
       "努力",
-      "どりょく"
+      "どりょく",
+      {
+       "en": "effort"
+      }
      ]
     ]
    },
@@ -2308,7 +3571,10 @@
     "w": [
      [
       "力",
-      "ちから"
+      "ちから",
+      {
+       "en": "power, strength"
+      }
      ]
     ]
    }
@@ -2316,17 +3582,29 @@
  },
  {
   "c": "会",
+  "meaning": {
+   "en": "meet, meeting"
+  },
+  "sentence": {
+   "en": "We meet at the company for a conversation."
+  },
   "g": [
    {
     "r": "カイ",
     "w": [
      [
       "会社",
-      "かいしゃ"
+      "かいしゃ",
+      {
+       "en": "company"
+      }
      ],
      [
       "会話",
-      "かいわ"
+      "かいわ",
+      {
+       "en": "conversation"
+      }
      ]
     ]
    },
@@ -2335,7 +3613,10 @@
     "w": [
      [
       "会う",
-      "あう"
+      "あう",
+      {
+       "en": "to meet"
+      }
      ]
     ]
    }

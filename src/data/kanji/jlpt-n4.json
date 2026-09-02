@@ -1,13 +1,22 @@
 [
  {
   "c": "楽",
+  "meaning": {
+   "en": "comfort, music"
+  },
+  "sentence": {
+   "en": "Music is fun, so I relax at ease and enjoy it."
+  },
   "g": [
    {
     "r": "ガク",
     "w": [
      [
       "音楽",
-      "おんがく"
+      "おんがく",
+      {
+       "en": "music"
+      }
      ]
     ]
    },
@@ -16,11 +25,17 @@
     "w": [
      [
       "楽",
-      "らく"
+      "らく",
+      {
+       "en": "ease, comfort"
+      }
      ],
      [
       "気楽",
-      "きらく"
+      "きらく",
+      {
+       "en": "at ease"
+      }
      ]
     ]
    },
@@ -29,11 +44,17 @@
     "w": [
      [
       "楽しい",
-      "たのしい"
+      "たのしい",
+      {
+       "en": "fun, enjoyable"
+      }
      ],
      [
       "楽しむ",
-      "たのしむ"
+      "たのしむ",
+      {
+       "en": "to enjoy"
+      }
      ]
     ]
    }
@@ -41,17 +62,29 @@
  },
  {
   "c": "明",
+  "meaning": {
+   "en": "bright, clear"
+  },
+  "sentence": {
+   "en": "Tomorrow, before dawn, I will give a bright explanation of the invention under one light."
+  },
   "g": [
    {
     "r": "メイ",
     "w": [
      [
       "説明",
-      "せつめい"
+      "せつめい",
+      {
+       "en": "explanation"
+      }
      ],
      [
       "発明",
-      "はつめい"
+      "はつめい",
+      {
+       "en": "invention"
+      }
      ]
     ]
    },
@@ -60,11 +93,17 @@
     "w": [
      [
       "明るい",
-      "あかるい"
+      "あかるい",
+      {
+       "en": "bright"
+      }
      ],
      [
       "明かり",
-      "あかり"
+      "あかり",
+      {
+       "en": "a light"
+      }
      ]
     ]
    },
@@ -73,7 +112,10 @@
     "w": [
      [
       "明ける",
-      "あける"
+      "あける",
+      {
+       "en": "to dawn, end"
+      }
      ]
     ]
    },
@@ -82,7 +124,10 @@
     "w": [
      [
       "明日",
-      "あした"
+      "あした",
+      {
+       "en": "tomorrow"
+      }
      ]
     ]
    },
@@ -91,7 +136,10 @@
     "w": [
      [
       "明日",
-      "あす"
+      "あす",
+      {
+       "en": "tomorrow"
+      }
      ]
     ]
    }
@@ -99,17 +147,29 @@
  },
  {
   "c": "音",
+  "meaning": {
+   "en": "sound, noise"
+  },
+  "sentence": {
+   "en": "The sound of footsteps and the tone colour of the music taught me the pronunciation."
+  },
   "g": [
    {
     "r": "オン",
     "w": [
      [
       "音楽",
-      "おんがく"
+      "おんがく",
+      {
+       "en": "music"
+      }
      ],
      [
       "発音",
-      "はつおん"
+      "はつおん",
+      {
+       "en": "pronunciation"
+      }
      ]
     ]
    },
@@ -118,11 +178,17 @@
     "w": [
      [
       "音",
-      "おと"
+      "おと",
+      {
+       "en": "a sound"
+      }
      ],
      [
       "足音",
-      "あしおと"
+      "あしおと",
+      {
+       "en": "footsteps"
+      }
      ]
     ]
    },
@@ -131,7 +197,10 @@
     "w": [
      [
       "音色",
-      "ねいろ"
+      "ねいろ",
+      {
+       "en": "tone colour"
+      }
      ]
     ]
    }
@@ -139,21 +208,36 @@
  },
  {
   "c": "発",
+  "meaning": {
+   "en": "depart, emit"
+  },
+  "sentence": {
+   "en": "Before the departure of the first train, the presentation about the invention explained the pronunciation."
+  },
   "g": [
    {
     "r": "ハツ",
     "w": [
      [
       "発音",
-      "はつおん"
+      "はつおん",
+      {
+       "en": "pronunciation"
+      }
      ],
      [
       "発明",
-      "はつめい"
+      "はつめい",
+      {
+       "en": "invention"
+      }
      ],
      [
       "始発",
-      "しはつ"
+      "しはつ",
+      {
+       "en": "first train"
+      }
      ]
     ]
    },
@@ -162,7 +246,10 @@
     "w": [
      [
       "出発",
-      "しゅっぱつ"
+      "しゅっぱつ",
+      {
+       "en": "departure"
+      }
      ]
     ]
    },
@@ -171,7 +258,10 @@
     "w": [
      [
       "発表",
-      "はっぴょう"
+      "はっぴょう",
+      {
+       "en": "presentation"
+      }
      ]
     ]
    }
@@ -179,17 +269,29 @@
  },
  {
   "c": "表",
+  "meaning": {
+   "en": "surface, express"
+  },
+  "sentence": {
+   "en": "The presentation used a chart to express what was on the surface."
+  },
   "g": [
    {
     "r": "ヒョウ",
     "w": [
      [
       "発表",
-      "はっぴょう"
+      "はっぴょう",
+      {
+       "en": "presentation"
+      }
      ],
      [
       "表",
-      "ひょう"
+      "ひょう",
+      {
+       "en": "front, surface"
+      }
      ]
     ]
    },
@@ -198,7 +300,10 @@
     "w": [
      [
       "表",
-      "おもて"
+      "おもて",
+      {
+       "en": "front, surface"
+      }
      ]
     ]
    },
@@ -207,7 +312,10 @@
     "w": [
      [
       "表す",
-      "あらわす"
+      "あらわす",
+      {
+       "en": "to express"
+      }
      ]
     ]
    }
@@ -215,17 +323,29 @@
  },
  {
   "c": "使",
+  "meaning": {
+   "en": "use, envoy"
+  },
+  "sentence": {
+   "en": "At the embassy they explained the use and how to use it, so I used it."
+  },
   "g": [
    {
     "r": "シ",
     "w": [
      [
       "使用",
-      "しよう"
+      "しよう",
+      {
+       "en": "use"
+      }
      ],
      [
       "大使館",
-      "たいしかん"
+      "たいしかん",
+      {
+       "en": "embassy"
+      }
      ]
     ]
    },
@@ -234,11 +354,17 @@
     "w": [
      [
       "使う",
-      "つかう"
+      "つかう",
+      {
+       "en": "to use"
+      }
      ],
      [
       "使い方",
-      "つかいかた"
+      "つかいかた",
+      {
+       "en": "how to use"
+      }
      ]
     ]
    }
@@ -246,21 +372,36 @@
  },
  {
   "c": "用",
+  "meaning": {
+   "en": "use, task"
+  },
+  "sentence": {
+   "en": "I have an errand, so the preparation and the use of the tool I employ must be ready."
+  },
   "g": [
    {
     "r": "ヨウ",
     "w": [
      [
       "使用",
-      "しよう"
+      "しよう",
+      {
+       "en": "use"
+      }
      ],
      [
       "用事",
-      "ようじ"
+      "ようじ",
+      {
+       "en": "errand"
+      }
      ],
      [
       "用意",
-      "ようい"
+      "ようい",
+      {
+       "en": "preparation"
+      }
      ]
     ]
    },
@@ -269,7 +410,10 @@
     "w": [
      [
       "用いる",
-      "もちいる"
+      "もちいる",
+      {
+       "en": "to use (formal)"
+      }
      ]
     ]
    }
@@ -277,25 +421,43 @@
  },
  {
   "c": "意",
+  "meaning": {
+   "en": "mind, intent"
+  },
+  "sentence": {
+   "en": "With caution, prepare your opinion and explain its meaning."
+  },
   "g": [
    {
     "r": "イ",
     "w": [
      [
       "用意",
-      "ようい"
+      "ようい",
+      {
+       "en": "preparation"
+      }
      ],
      [
       "意見",
-      "いけん"
+      "いけん",
+      {
+       "en": "opinion"
+      }
      ],
      [
       "意味",
-      "いみ"
+      "いみ",
+      {
+       "en": "meaning"
+      }
      ],
      [
       "注意",
-      "ちゅうい"
+      "ちゅうい",
+      {
+       "en": "caution"
+      }
      ]
     ]
    }
@@ -303,17 +465,29 @@
  },
  {
   "c": "味",
+  "meaning": {
+   "en": "taste, flavour"
+  },
+  "sentence": {
+   "en": "The meaning of my hobby is the taste, so I always do a tasting."
+  },
   "g": [
    {
     "r": "ミ",
     "w": [
      [
       "意味",
-      "いみ"
+      "いみ",
+      {
+       "en": "meaning"
+      }
      ],
      [
       "趣味",
-      "しゅみ"
+      "しゅみ",
+      {
+       "en": "hobby"
+      }
      ]
     ]
    },
@@ -322,11 +496,17 @@
     "w": [
      [
       "味",
-      "あじ"
+      "あじ",
+      {
+       "en": "taste"
+      }
      ],
      [
       "味見",
-      "あじみ"
+      "あじみ",
+      {
+       "en": "tasting"
+      }
      ]
     ]
    }
@@ -334,21 +514,36 @@
  },
  {
   "c": "注",
+  "meaning": {
+   "en": "pour, note"
+  },
+  "sentence": {
+   "en": "With caution I placed an order, poured the water, and then had an injection."
+  },
   "g": [
    {
     "r": "チュウ",
     "w": [
      [
       "注意",
-      "ちゅうい"
+      "ちゅうい",
+      {
+       "en": "caution"
+      }
      ],
      [
       "注文",
-      "ちゅうもん"
+      "ちゅうもん",
+      {
+       "en": "an order"
+      }
      ],
      [
       "注射",
-      "ちゅうしゃ"
+      "ちゅうしゃ",
+      {
+       "en": "injection"
+      }
      ]
     ]
    },
@@ -357,7 +552,10 @@
     "w": [
      [
       "注ぐ",
-      "そそぐ"
+      "そそぐ",
+      {
+       "en": "to pour"
+      }
      ]
     ]
    }
@@ -365,17 +563,29 @@
  },
  {
   "c": "主",
+  "meaning": {
+   "en": "main, master"
+  },
+  "sentence": {
+   "en": "The owner is mainly the husband, and he is the subject of the sentence."
+  },
   "g": [
    {
     "r": "シュ",
     "w": [
      [
       "主人",
-      "しゅじん"
+      "しゅじん",
+      {
+       "en": "husband, owner"
+      }
      ],
      [
       "主語",
-      "しゅご"
+      "しゅご",
+      {
+       "en": "grammatical subject"
+      }
      ]
     ]
    },
@@ -384,7 +594,10 @@
     "w": [
      [
       "主に",
-      "おもに"
+      "おもに",
+      {
+       "en": "mainly"
+      }
      ]
     ]
    },
@@ -393,7 +606,10 @@
     "w": [
      [
       "持ち主",
-      "もちぬし"
+      "もちぬし",
+      {
+       "en": "owner"
+      }
      ]
     ]
    }
@@ -401,17 +617,29 @@
  },
  {
   "c": "重",
+  "meaning": {
+   "en": "heavy, pile"
+  },
+  "sentence": {
+   "en": "My body weight is important, because the heavy weight piles up."
+  },
   "g": [
    {
     "r": "ジュウ",
     "w": [
      [
       "体重",
-      "たいじゅう"
+      "たいじゅう",
+      {
+       "en": "body weight"
+      }
      ],
      [
       "重要",
-      "じゅうよう"
+      "じゅうよう",
+      {
+       "en": "important"
+      }
      ]
     ]
    },
@@ -420,11 +648,17 @@
     "w": [
      [
       "重い",
-      "おもい"
+      "おもい",
+      {
+       "en": "heavy"
+      }
      ],
      [
       "重さ",
-      "おもさ"
+      "おもさ",
+      {
+       "en": "weight"
+      }
      ]
     ]
    },
@@ -433,7 +667,10 @@
     "w": [
      [
       "重ねる",
-      "かさねる"
+      "かさねる",
+      {
+       "en": "to pile up"
+      }
      ]
     ]
    }
@@ -441,13 +678,22 @@
  },
  {
   "c": "世",
+  "meaning": {
+   "en": "world, generation"
+  },
+  "sentence": {
+   "en": "In this century, society takes care of the world."
+  },
   "g": [
    {
     "r": "セイ",
     "w": [
      [
       "世紀",
-      "せいき"
+      "せいき",
+      {
+       "en": "century"
+      }
      ]
     ]
    },
@@ -456,11 +702,17 @@
     "w": [
      [
       "世界",
-      "せかい"
+      "せかい",
+      {
+       "en": "world"
+      }
      ],
      [
       "世話",
-      "せわ"
+      "せわ",
+      {
+       "en": "care, help"
+      }
      ]
     ]
    },
@@ -469,7 +721,10 @@
     "w": [
      [
       "世の中",
-      "よのなか"
+      "よのなか",
+      {
+       "en": "society"
+      }
      ]
     ]
    }
@@ -477,21 +732,36 @@
  },
  {
   "c": "界",
+  "meaning": {
+   "en": "boundary, world"
+  },
+  "sentence": {
+   "en": "All over the world, this industry is the biggest in the world."
+  },
   "g": [
    {
     "r": "カイ",
     "w": [
      [
       "世界",
-      "せかい"
+      "せかい",
+      {
+       "en": "world"
+      }
      ],
      [
       "世界中",
-      "せかいじゅう"
+      "せかいじゅう",
+      {
+       "en": "all over the world"
+      }
      ],
      [
       "業界",
-      "ぎょうかい"
+      "ぎょうかい",
+      {
+       "en": "industry"
+      }
      ]
     ]
    }
@@ -499,17 +769,29 @@
  },
  {
   "c": "開",
+  "meaning": {
+   "en": "open"
+  },
+  "sentence": {
+   "en": "At the store opening the doors open at the start, so I opened them and unfolded the map."
+  },
   "g": [
    {
     "r": "カイ",
     "w": [
      [
       "開始",
-      "かいし"
+      "かいし",
+      {
+       "en": "start"
+      }
      ],
      [
       "開店",
-      "かいてん"
+      "かいてん",
+      {
+       "en": "store opening"
+      }
      ]
     ]
    },
@@ -518,11 +800,17 @@
     "w": [
      [
       "開く",
-      "あく"
+      "あく",
+      {
+       "en": "to open, unfold"
+      }
      ],
      [
       "開ける",
-      "あける"
+      "あける",
+      {
+       "en": "to open (tr.)"
+      }
      ]
     ]
    },
@@ -531,7 +819,10 @@
     "w": [
      [
       "開く",
-      "ひらく"
+      "ひらく",
+      {
+       "en": "to open, unfold"
+      }
      ]
     ]
    }
@@ -539,17 +830,29 @@
  },
  {
   "c": "始",
+  "meaning": {
+   "en": "begin"
+  },
+  "sentence": {
+   "en": "The start is when the first train begins, so I will begin too."
+  },
   "g": [
    {
     "r": "シ",
     "w": [
      [
       "開始",
-      "かいし"
+      "かいし",
+      {
+       "en": "start"
+      }
      ],
      [
       "始発",
-      "しはつ"
+      "しはつ",
+      {
+       "en": "first train"
+      }
      ]
     ]
    },
@@ -558,11 +861,17 @@
     "w": [
      [
       "始まる",
-      "はじまる"
+      "はじまる",
+      {
+       "en": "to begin (intr.)"
+      }
      ],
      [
       "始める",
-      "はじめる"
+      "はじめる",
+      {
+       "en": "to begin (tr.)"
+      }
      ]
     ]
    }
@@ -570,21 +879,36 @@
  },
  {
   "c": "転",
+  "meaning": {
+   "en": "revolve, turn"
+  },
+  "sentence": {
+   "en": "After changing schools I fell over while driving my bicycle."
+  },
   "g": [
    {
     "r": "テン",
     "w": [
      [
       "自転車",
-      "じてんしゃ"
+      "じてんしゃ",
+      {
+       "en": "bicycle"
+      }
      ],
      [
       "運転",
-      "うんてん"
+      "うんてん",
+      {
+       "en": "driving"
+      }
      ],
      [
       "転校",
-      "てんこう"
+      "てんこう",
+      {
+       "en": "changing schools"
+      }
      ]
     ]
    },
@@ -593,7 +917,10 @@
     "w": [
      [
       "転ぶ",
-      "ころぶ"
+      "ころぶ",
+      {
+       "en": "to fall over"
+      }
      ]
     ]
    }
@@ -601,21 +928,36 @@
  },
  {
   "c": "運",
+  "meaning": {
+   "en": "carry, luck"
+  },
+  "sentence": {
+   "en": "With good luck, driving and exercise let me carry it."
+  },
   "g": [
    {
     "r": "ウン",
     "w": [
      [
       "運転",
-      "うんてん"
+      "うんてん",
+      {
+       "en": "driving"
+      }
      ],
      [
       "運動",
-      "うんどう"
+      "うんどう",
+      {
+       "en": "exercise"
+      }
      ],
      [
       "幸運",
-      "こううん"
+      "こううん",
+      {
+       "en": "good luck"
+      }
      ]
     ]
    },
@@ -624,7 +966,10 @@
     "w": [
      [
       "運ぶ",
-      "はこぶ"
+      "はこぶ",
+      {
+       "en": "to carry"
+      }
      ]
     ]
    }
@@ -632,21 +977,36 @@
  },
  {
   "c": "動",
+  "meaning": {
+   "en": "move"
+  },
+  "sentence": {
+   "en": "The animal moved the car, and exercise moves my body too."
+  },
   "g": [
    {
     "r": "ドウ",
     "w": [
      [
       "運動",
-      "うんどう"
+      "うんどう",
+      {
+       "en": "exercise"
+      }
      ],
      [
       "自動車",
-      "じどうしゃ"
+      "じどうしゃ",
+      {
+       "en": "car"
+      }
      ],
      [
       "動物",
-      "どうぶつ"
+      "どうぶつ",
+      {
+       "en": "animal"
+      }
      ]
     ]
    },
@@ -655,11 +1015,17 @@
     "w": [
      [
       "動く",
-      "うごく"
+      "うごく",
+      {
+       "en": "to move"
+      }
      ],
      [
       "動かす",
-      "うごかす"
+      "うごかす",
+      {
+       "en": "to move (tr.)"
+      }
      ]
     ]
    }
@@ -667,17 +1033,29 @@
  },
  {
   "c": "物",
+  "meaning": {
+   "en": "thing, object"
+  },
+  "sentence": {
+   "en": "While sightseeing I left my luggage and goods in the building, so they became lost items next to an animal."
+  },
   "g": [
    {
     "r": "ブツ",
     "w": [
      [
       "動物",
-      "どうぶつ"
+      "どうぶつ",
+      {
+       "en": "animal"
+      }
      ],
      [
       "見物",
-      "けんぶつ"
+      "けんぶつ",
+      {
+       "en": "sightseeing"
+      }
      ]
     ]
    },
@@ -686,7 +1064,10 @@
     "w": [
      [
       "荷物",
-      "にもつ"
+      "にもつ",
+      {
+       "en": "luggage"
+      }
      ]
     ]
    },
@@ -695,15 +1076,24 @@
     "w": [
      [
       "建物",
-      "たてもの"
+      "たてもの",
+      {
+       "en": "building"
+      }
      ],
      [
       "品物",
-      "しなもの"
+      "しなもの",
+      {
+       "en": "goods"
+      }
      ],
      [
       "忘れ物",
-      "わすれもの"
+      "わすれもの",
+      {
+       "en": "lost item"
+      }
      ]
     ]
    }
@@ -711,21 +1101,36 @@
  },
  {
   "c": "活",
+  "meaning": {
+   "en": "life, activity"
+  },
+  "sentence": {
+   "en": "Daily life and club activities both make use of my energy."
+  },
   "g": [
    {
     "r": "カツ",
     "w": [
      [
       "生活",
-      "せいかつ"
+      "せいかつ",
+      {
+       "en": "daily life"
+      }
      ],
      [
       "活動",
-      "かつどう"
+      "かつどう",
+      {
+       "en": "activity"
+      }
      ],
      [
       "活用",
-      "かつよう"
+      "かつよう",
+      {
+       "en": "practical use"
+      }
      ]
     ]
    }
@@ -733,17 +1138,29 @@
  },
  {
   "c": "漢",
+  "meaning": {
+   "en": "China, Han"
+  },
+  "sentence": {
+   "en": "Chinese characters are called kanji."
+  },
   "g": [
    {
     "r": "カン",
     "w": [
      [
       "漢字",
-      "かんじ"
+      "かんじ",
+      {
+       "en": "kanji"
+      }
      ],
      [
       "漢語",
-      "かんご"
+      "かんご",
+      {
+       "en": "Sino-Japanese word"
+      }
      ]
     ]
    }
@@ -751,21 +1168,36 @@
  },
  {
   "c": "字",
+  "meaning": {
+   "en": "character, letter"
+  },
+  "sentence": {
+   "en": "My handwriting shapes each character and number."
+  },
   "g": [
    {
     "r": "ジ",
     "w": [
      [
       "漢字",
-      "かんじ"
+      "かんじ",
+      {
+       "en": "kanji"
+      }
      ],
      [
       "数字",
-      "すうじ"
+      "すうじ",
+      {
+       "en": "numeral"
+      }
      ],
      [
       "字",
-      "じ"
+      "じ",
+      {
+       "en": "character"
+      }
      ]
     ]
    }
@@ -773,17 +1205,29 @@
  },
  {
   "c": "習",
+  "meaning": {
+   "en": "learn"
+  },
+  "sentence": {
+   "en": "I learn in class, revise what I studied, and practise it."
+  },
   "g": [
    {
     "r": "シュウ",
     "w": [
      [
       "習字",
-      "しゅうじ"
+      "しゅうじ",
+      {
+       "en": "calligraphy"
+      }
      ],
      [
       "練習",
-      "れんしゅう"
+      "れんしゅう",
+      {
+       "en": "practice"
+      }
      ]
     ]
    },
@@ -792,7 +1236,10 @@
     "w": [
      [
       "習う",
-      "ならう"
+      "ならう",
+      {
+       "en": "to learn"
+      }
      ]
     ]
    }
@@ -800,17 +1247,29 @@
  },
  {
   "c": "研",
+  "meaning": {
+   "en": "polish, research"
+  },
+  "sentence": {
+   "en": "At the laboratory the researcher polishes the study."
+  },
   "g": [
    {
     "r": "ケン",
     "w": [
      [
       "研究",
-      "けんきゅう"
+      "けんきゅう",
+      {
+       "en": "research"
+      }
      ],
      [
       "研究室",
-      "けんきゅうしつ"
+      "けんきゅうしつ",
+      {
+       "en": "laboratory"
+      }
      ]
     ]
    }
@@ -818,17 +1277,29 @@
  },
  {
   "c": "究",
+  "meaning": {
+   "en": "investigate"
+  },
+  "sentence": {
+   "en": "The research investigates it thoroughly."
+  },
   "g": [
    {
     "r": "キュウ",
     "w": [
      [
       "研究",
-      "けんきゅう"
+      "けんきゅう",
+      {
+       "en": "research"
+      }
      ],
      [
       "研究者",
-      "けんきゅうしゃ"
+      "けんきゅうしゃ",
+      {
+       "en": "researcher"
+      }
      ]
     ]
    }
@@ -836,21 +1307,36 @@
  },
  {
   "c": "教",
+  "meaning": {
+   "en": "teach"
+  },
+  "sentence": {
+   "en": "The teacher teaches in the classroom and shares religion."
+  },
   "g": [
    {
     "r": "キョウ",
     "w": [
      [
       "教室",
-      "きょうしつ"
+      "きょうしつ",
+      {
+       "en": "classroom"
+      }
      ],
      [
       "教科書",
-      "きょうかしょ"
+      "きょうかしょ",
+      {
+       "en": "textbook"
+      }
      ],
      [
       "宗教",
-      "しゅうきょう"
+      "しゅうきょう",
+      {
+       "en": "religion"
+      }
      ]
     ]
    },
@@ -859,7 +1345,10 @@
     "w": [
      [
       "教える",
-      "おしえる"
+      "おしえる",
+      {
+       "en": "to teach"
+      }
      ]
     ]
    }
@@ -867,21 +1356,36 @@
  },
  {
   "c": "室",
+  "meaning": {
+   "en": "room"
+  },
+  "sentence": {
+   "en": "The classroom and the laboratory are both rooms indoors."
+  },
   "g": [
    {
     "r": "シツ",
     "w": [
      [
       "教室",
-      "きょうしつ"
+      "きょうしつ",
+      {
+       "en": "classroom"
+      }
      ],
      [
       "室内",
-      "しつない"
+      "しつない",
+      {
+       "en": "indoors"
+      }
      ],
      [
       "和室",
-      "わしつ"
+      "わしつ",
+      {
+       "en": "Japanese-style room"
+      }
      ]
     ]
    }
@@ -889,17 +1393,29 @@
  },
  {
   "c": "質",
+  "meaning": {
+   "en": "quality, question"
+  },
+  "sentence": {
+   "en": "The question was about quality, so I asked politely."
+  },
   "g": [
    {
     "r": "シツ",
     "w": [
      [
       "質問",
-      "しつもん"
+      "しつもん",
+      {
+       "en": "question"
+      }
      ],
      [
       "品質",
-      "ひんしつ"
+      "ひんしつ",
+      {
+       "en": "quality"
+      }
      ]
     ]
    }
@@ -907,17 +1423,29 @@
  },
  {
   "c": "問",
+  "meaning": {
+   "en": "question, ask"
+  },
+  "sentence": {
+   "en": "There is no question or problem, so I inquired."
+  },
   "g": [
    {
     "r": "モン",
     "w": [
      [
       "質問",
-      "しつもん"
+      "しつもん",
+      {
+       "en": "question"
+      }
      ],
      [
       "問題",
-      "もんだい"
+      "もんだい",
+      {
+       "en": "problem"
+      }
      ]
     ]
    },
@@ -926,7 +1454,10 @@
     "w": [
      [
       "問う",
-      "とう"
+      "とう",
+      {
+       "en": "to ask"
+      }
      ]
     ]
    }
@@ -934,21 +1465,36 @@
  },
  {
   "c": "題",
+  "meaning": {
+   "en": "topic, title"
+  },
+  "sentence": {
+   "en": "The homework problem had a difficult title."
+  },
   "g": [
    {
     "r": "ダイ",
     "w": [
      [
       "問題",
-      "もんだい"
+      "もんだい",
+      {
+       "en": "problem"
+      }
      ],
      [
       "宿題",
-      "しゅくだい"
+      "しゅくだい",
+      {
+       "en": "homework"
+      }
      ],
      [
       "話題",
-      "わだい"
+      "わだい",
+      {
+       "en": "topic"
+      }
      ]
     ]
    }
@@ -956,17 +1502,29 @@
  },
  {
   "c": "答",
+  "meaning": {
+   "en": "answer"
+  },
+  "sentence": {
+   "en": "The answer sheet holds my reply, and I answered."
+  },
   "g": [
    {
     "r": "トウ",
     "w": [
      [
       "答案",
-      "とうあん"
+      "とうあん",
+      {
+       "en": "answer sheet"
+      }
      ],
      [
       "回答",
-      "かいとう"
+      "かいとう",
+      {
+       "en": "reply"
+      }
      ]
     ]
    },
@@ -975,11 +1533,17 @@
     "w": [
      [
       "答える",
-      "こたえる"
+      "こたえる",
+      {
+       "en": "to answer"
+      }
      ],
      [
       "答え",
-      "こたえ"
+      "こたえ",
+      {
+       "en": "an answer"
+      }
      ]
     ]
    }
@@ -987,17 +1551,29 @@
  },
  {
   "c": "考",
+  "meaning": {
+   "en": "think, consider"
+  },
+  "sentence": {
+   "en": "My idea is that thinking things over is a way of considering."
+  },
   "g": [
    {
     "r": "コウ",
     "w": [
      [
       "参考",
-      "さんこう"
+      "さんこう",
+      {
+       "en": "reference"
+      }
      ],
      [
       "考古学",
-      "こうこがく"
+      "こうこがく",
+      {
+       "en": "archaeology"
+      }
      ]
     ]
    },
@@ -1006,11 +1582,17 @@
     "w": [
      [
       "考える",
-      "かんがえる"
+      "かんがえる",
+      {
+       "en": "to think"
+      }
      ],
      [
       "考え",
-      "かんがえ"
+      "かんがえ",
+      {
+       "en": "an idea"
+      }
      ]
     ]
    }
@@ -1018,21 +1600,36 @@
  },
  {
   "c": "験",
+  "meaning": {
+   "en": "test, verify"
+  },
+  "sentence": {
+   "en": "The examination is an experiment in experience."
+  },
   "g": [
    {
     "r": "ケン",
     "w": [
      [
       "試験",
-      "しけん"
+      "しけん",
+      {
+       "en": "examination"
+      }
      ],
      [
       "経験",
-      "けいけん"
+      "けいけん",
+      {
+       "en": "experience"
+      }
      ],
      [
       "実験",
-      "じっけん"
+      "じっけん",
+      {
+       "en": "experiment"
+      }
      ]
     ]
    }
@@ -1040,17 +1637,29 @@
  },
  {
   "c": "試",
+  "meaning": {
+   "en": "try, test"
+  },
+  "sentence": {
+   "en": "For the exam I did a trial and tried it out."
+  },
   "g": [
    {
     "r": "シ",
     "w": [
      [
       "試験",
-      "しけん"
+      "しけん",
+      {
+       "en": "examination"
+      }
      ],
      [
       "試合",
-      "しあい"
+      "しあい",
+      {
+       "en": "match, game"
+      }
      ]
     ]
    },
@@ -1059,7 +1668,10 @@
     "w": [
      [
       "試す",
-      "ためす"
+      "ためす",
+      {
+       "en": "to try"
+      }
      ]
     ]
    }
@@ -1067,21 +1679,36 @@
  },
  {
   "c": "品",
+  "meaning": {
+   "en": "goods, article"
+  },
+  "sentence": {
+   "en": "The product on display is a fine article of goods."
+  },
   "g": [
    {
     "r": "ヒン",
     "w": [
      [
       "作品",
-      "さくひん"
+      "さくひん",
+      {
+       "en": "a work, piece"
+      }
      ],
      [
       "食品",
-      "しょくひん"
+      "しょくひん",
+      {
+       "en": "foodstuff"
+      }
      ],
      [
       "品質",
-      "ひんしつ"
+      "ひんしつ",
+      {
+       "en": "quality"
+      }
      ]
     ]
    },
@@ -1090,7 +1717,10 @@
     "w": [
      [
       "品物",
-      "しなもの"
+      "しなもの",
+      {
+       "en": "goods"
+      }
      ]
     ]
    }
@@ -1098,17 +1728,29 @@
  },
  {
   "c": "作",
+  "meaning": {
+   "en": "make, produce"
+  },
+  "sentence": {
+   "en": "The farmer makes a work of art and produces a crop."
+  },
   "g": [
    {
     "r": "サク",
     "w": [
      [
       "作品",
-      "さくひん"
+      "さくひん",
+      {
+       "en": "a work, piece"
+      }
      ],
      [
       "作文",
-      "さくぶん"
+      "さくぶん",
+      {
+       "en": "composition"
+      }
      ]
     ]
    },
@@ -1117,7 +1759,10 @@
     "w": [
      [
       "作業",
-      "さぎょう"
+      "さぎょう",
+      {
+       "en": "work, operation"
+      }
      ]
     ]
    },
@@ -1126,7 +1771,10 @@
     "w": [
      [
       "作る",
-      "つくる"
+      "つくる",
+      {
+       "en": "to make"
+      }
      ]
     ]
    }
@@ -1134,21 +1782,36 @@
  },
  {
   "c": "業",
+  "meaning": {
+   "en": "business, work"
+  },
+  "sentence": {
+   "en": "The class is over, so the industry gets on with its business."
+  },
   "g": [
    {
     "r": "ギョウ",
     "w": [
      [
       "授業",
-      "じゅぎょう"
+      "じゅぎょう",
+      {
+       "en": "class, lesson"
+      }
      ],
      [
       "業界",
-      "ぎょうかい"
+      "ぎょうかい",
+      {
+       "en": "industry"
+      }
      ],
      [
       "工業",
-      "こうぎょう"
+      "こうぎょう",
+      {
+       "en": "industry"
+      }
      ]
     ]
    },
@@ -1157,7 +1820,10 @@
     "w": [
      [
       "卒業",
-      "そつぎょう"
+      "そつぎょう",
+      {
+       "en": "graduation"
+      }
      ]
     ]
    }
@@ -1165,21 +1831,36 @@
  },
  {
   "c": "産",
+  "meaning": {
+   "en": "produce, give birth"
+  },
+  "sentence": {
+   "en": "Local produce comes from an industry that gives birth to goods."
+  },
   "g": [
    {
     "r": "サン",
     "w": [
      [
       "生産",
-      "せいさん"
+      "せいさん",
+      {
+       "en": "production"
+      }
      ],
      [
       "産業",
-      "さんぎょう"
+      "さんぎょう",
+      {
+       "en": "industry"
+      }
      ],
      [
       "お土産",
-      "おみやげ"
+      "おみやげ",
+      {
+       "en": "souvenir"
+      }
      ]
     ]
    },
@@ -1188,7 +1869,10 @@
     "w": [
      [
       "産む",
-      "うむ"
+      "うむ",
+      {
+       "en": "to give birth"
+      }
      ]
     ]
    }
@@ -1196,21 +1880,36 @@
  },
  {
   "c": "員",
+  "meaning": {
+   "en": "member, staff"
+  },
+  "sentence": {
+   "en": "The staff member is a shop worker and a company employee."
+  },
   "g": [
    {
     "r": "イン",
     "w": [
      [
       "社員",
-      "しゃいん"
+      "しゃいん",
+      {
+       "en": "company employee"
+      }
      ],
      [
       "店員",
-      "てんいん"
+      "てんいん",
+      {
+       "en": "shop assistant"
+      }
      ],
      [
       "会員",
-      "かいいん"
+      "かいいん",
+      {
+       "en": "member"
+      }
      ]
     ]
    }
@@ -1218,21 +1917,36 @@
  },
  {
   "c": "料",
+  "meaning": {
+   "en": "fee, material"
+  },
+  "sentence": {
+   "en": "The cooking fee covers the ingredients."
+  },
   "g": [
    {
     "r": "リョウ",
     "w": [
      [
       "料理",
-      "りょうり"
+      "りょうり",
+      {
+       "en": "cooking"
+      }
      ],
      [
       "料金",
-      "りょうきん"
+      "りょうきん",
+      {
+       "en": "fee"
+      }
      ],
      [
       "材料",
-      "ざいりょう"
+      "ざいりょう",
+      {
+       "en": "ingredients"
+      }
      ]
     ]
    }
@@ -1240,21 +1954,36 @@
  },
  {
   "c": "理",
+  "meaning": {
+   "en": "reason, logic"
+  },
+  "sentence": {
+   "en": "The cooking has its reason, and physics is logical."
+  },
   "g": [
    {
     "r": "リ",
     "w": [
      [
       "料理",
-      "りょうり"
+      "りょうり",
+      {
+       "en": "cooking"
+      }
      ],
      [
       "理由",
-      "りゆう"
+      "りゆう",
+      {
+       "en": "reason"
+      }
      ],
      [
       "物理",
-      "ぶつり"
+      "ぶつり",
+      {
+       "en": "physics"
+      }
      ]
     ]
    }
@@ -1262,17 +1991,29 @@
  },
  {
   "c": "由",
+  "meaning": {
+   "en": "reason, cause"
+  },
+  "sentence": {
+   "en": "There is a reason: it is a matter of freedom."
+  },
   "g": [
    {
     "r": "ユ",
     "w": [
      [
       "理由",
-      "りゆう"
+      "りゆう",
+      {
+       "en": "reason"
+      }
      ],
      [
       "自由",
-      "じゆう"
+      "じゆう",
+      {
+       "en": "freedom"
+      }
      ]
     ]
    }
@@ -1280,25 +2021,43 @@
  },
  {
   "c": "自",
+  "meaning": {
+   "en": "self, oneself"
+  },
+  "sentence": {
+   "en": "The car and the bicycle are self-propelled, and I introduce myself."
+  },
   "g": [
    {
     "r": "ジ",
     "w": [
      [
       "自転車",
-      "じてんしゃ"
+      "じてんしゃ",
+      {
+       "en": "bicycle"
+      }
      ],
      [
       "自動車",
-      "じどうしゃ"
+      "じどうしゃ",
+      {
+       "en": "car"
+      }
      ],
      [
       "自分",
-      "じぶん"
+      "じぶん",
+      {
+       "en": "oneself"
+      }
      ],
      [
       "自由",
-      "じゆう"
+      "じゆう",
+      {
+       "en": "freedom"
+      }
      ]
     ]
    },
@@ -1307,7 +2066,10 @@
     "w": [
      [
       "自ら",
-      "みずから"
+      "みずから",
+      {
+       "en": "personally"
+      }
      ]
     ]
    }
@@ -1315,21 +2077,36 @@
  },
  {
   "c": "別",
+  "meaning": {
+   "en": "separate, another"
+  },
+  "sentence": {
+   "en": "On another occasion we said goodbye and went our separate ways."
+  },
   "g": [
    {
     "r": "ベツ",
     "w": [
      [
       "別々",
-      "べつべつ"
+      "べつべつ",
+      {
+       "en": "separately"
+      }
      ],
      [
       "特別",
-      "とくべつ"
+      "とくべつ",
+      {
+       "en": "special"
+      }
      ],
      [
       "区別",
-      "くべつ"
+      "くべつ",
+      {
+       "en": "distinction"
+      }
      ]
     ]
    },
@@ -1338,7 +2115,10 @@
     "w": [
      [
       "別れる",
-      "わかれる"
+      "わかれる",
+      {
+       "en": "to part"
+      }
      ]
     ]
    }
@@ -1346,21 +2126,36 @@
  },
  {
   "c": "特",
+  "meaning": {
+   "en": "special"
+  },
+  "sentence": {
+   "en": "The express train is a special feature."
+  },
   "g": [
    {
     "r": "トク",
     "w": [
      [
       "特別",
-      "とくべつ"
+      "とくべつ",
+      {
+       "en": "special"
+      }
      ],
      [
       "特急",
-      "とっきゅう"
+      "とっきゅう",
+      {
+       "en": "express train"
+      }
      ],
      [
       "特徴",
-      "とくちょう"
+      "とくちょう",
+      {
+       "en": "feature"
+      }
      ]
     ]
    }
@@ -1368,21 +2163,36 @@
  },
  {
   "c": "急",
+  "meaning": {
+   "en": "hurry, urgent"
+  },
+  "sentence": {
+   "en": "It is urgent, so on the express train I hurried suddenly."
+  },
   "g": [
    {
     "r": "キュウ",
     "w": [
      [
       "特急",
-      "とっきゅう"
+      "とっきゅう",
+      {
+       "en": "express train"
+      }
      ],
      [
       "急行",
-      "きゅうこう"
+      "きゅうこう",
+      {
+       "en": "express"
+      }
      ],
      [
       "救急車",
-      "きゅうきゅうしゃ"
+      "きゅうきゅうしゃ",
+      {
+       "en": "ambulance"
+      }
      ]
     ]
    },
@@ -1391,7 +2201,10 @@
     "w": [
      [
       "急ぐ",
-      "いそぐ"
+      "いそぐ",
+      {
+       "en": "to hurry"
+      }
      ]
     ]
    },
@@ -1400,7 +2213,10 @@
     "w": [
      [
       "急に",
-      "きゅうに"
+      "きゅうに",
+      {
+       "en": "suddenly"
+      }
      ]
     ]
    }
@@ -1408,17 +2224,29 @@
  },
  {
   "c": "送",
+  "meaning": {
+   "en": "send"
+  },
+  "sentence": {
+   "en": "I sent the delivery and saw my friend off."
+  },
   "g": [
    {
     "r": "ソウ",
     "w": [
      [
       "放送",
-      "ほうそう"
+      "ほうそう",
+      {
+       "en": "broadcast"
+      }
      ],
      [
       "送料",
-      "そうりょう"
+      "そうりょう",
+      {
+       "en": "postage"
+      }
      ]
     ]
    },
@@ -1427,11 +2255,17 @@
     "w": [
      [
       "送る",
-      "おくる"
+      "おくる",
+      {
+       "en": "to send"
+      }
      ],
      [
       "見送る",
-      "みおくる"
+      "みおくる",
+      {
+       "en": "to see off"
+      }
      ]
     ]
    }
@@ -1439,17 +2273,29 @@
  },
  {
   "c": "待",
+  "meaning": {
+   "en": "wait"
+  },
+  "sentence": {
+   "en": "In the waiting room I wait with anticipation."
+  },
   "g": [
    {
     "r": "タイ",
     "w": [
      [
       "待合室",
-      "まちあいしつ"
+      "まちあいしつ",
+      {
+       "en": "waiting room"
+      }
      ],
      [
       "期待",
-      "きたい"
+      "きたい",
+      {
+       "en": "expectation"
+      }
      ]
     ]
    },
@@ -1458,7 +2304,10 @@
     "w": [
      [
       "待つ",
-      "まつ"
+      "まつ",
+      {
+       "en": "to wait"
+      }
      ]
     ]
    }
@@ -1466,17 +2315,29 @@
  },
  {
   "c": "持",
+  "meaning": {
+   "en": "hold, have"
+  },
+  "sentence": {
+   "en": "The owner holds his belongings and carries them."
+  },
   "g": [
    {
     "r": "ジ",
     "w": [
      [
       "持参",
-      "じさん"
+      "じさん",
+      {
+       "en": "bringing along"
+      }
      ],
      [
       "所持",
-      "しょじ"
+      "しょじ",
+      {
+       "en": "possession"
+      }
      ]
     ]
    },
@@ -1485,15 +2346,24 @@
     "w": [
      [
       "持つ",
-      "もつ"
+      "もつ",
+      {
+       "en": "to hold"
+      }
      ],
      [
       "持ち主",
-      "もちぬし"
+      "もちぬし",
+      {
+       "en": "owner"
+      }
      ],
      [
       "持ち物",
-      "もちもの"
+      "もちもの",
+      {
+       "en": "belongings"
+      }
      ]
     ]
    }

@@ -23,33 +23,38 @@ impractical and every diff reads as "1 line changed".
 ## Kanji data
 
 ```
-src/data/decks.json              deck load order
-src/data/langs.json              language registry
-src/data/kanji/<deck>.json       language-neutral: character, readings, word surfaces
-src/data/lang/<lang>/<deck>.json meaning, mnemonic sentence, gloss per word
+src/data/decks.json          deck load order
+src/data/langs.json          language registry
+src/data/kanji/<deck>.json   the kanji, with every translation inline
 ```
 
-Structure and translation are separate files, so adding a language never
-touches the kanji themselves and two translators never conflict.
+Each record holds everything about one kanji, translations included:
 
-**Add a deck**: write `src/data/kanji/<deck>.json`, add the matching
-`src/data/lang/en/<deck>.json`, add a line to `decks.json`. The deck stops
-showing "coming soon" on its own once it has kanji.
-
-**Add a language**: create `src/data/lang/<dir>/` with one file per deck, using
-the same shape as `en/`. The language stops showing "soon" once its folder
-covers every deck.
-
-`build.js` validates on every build and fails with the file, index and kanji:
-
-```
-Error: kanji/jlpt-n5.json[92] (生): already defined in kanji/jlpt-n5.json
-Error: ES 一: missing gloss for "一人"
-Error: ES: missing data/lang/es/jlpt-n4.json (a language must cover every deck)
+```json
+{ "c": "一",
+  "meaning":  { "en": "one", "es": "uno" },
+  "sentence": { "en": "One person alone took one thing." },
+  "g": [{ "r": "イチ", "w": [["一", "いち", { "en": "one", "es": "uno" }]] }] }
 ```
 
-A half-finished translation is a build failure, not a page with blank glosses.
-Untranslated languages simply don't ship.
+Translated fields are `{lang: text}`. There are no keys to match between files,
+so nothing can drift out of sync.
+
+**Add a deck**: write `src/data/kanji/<deck>.json`, add a line to `decks.json`.
+It stops showing "coming soon" on its own once it has kanji.
+
+**Add a language**: add its code to every translated field, and to
+`langs.json`. A language ships only when it is *complete* -- a partial one is
+reported and omitted, so the picker never offers half-translated content.
+
+`build.js` validates every build and names the file, index and kanji:
+
+```
+Error: jlpt-n5.json[92] (生): already defined in jlpt-n5.json
+Error: jlpt-n5.json[8] (一): `meaning.es` is empty
+Error: unknown language code 'klingon' -- add it to data/langs.json
+  note: 'es' is incomplete and will not ship
+```
 
 ## Build
 
