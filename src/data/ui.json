@@ -191,10 +191,6 @@
     "en": "Beginner. ~100 kanji, first phrases and greetings.",
     "es": "Principiante. ~100 kanji, primeras frases y saludos."
   },
-  "tip_core": {
-    "en": "The 1000 most frequent kanji, level-agnostic. Progress is shared with the level decks.",
-    "es": "Los 1000 kanji más frecuentes, sin importar el nivel. El progreso se comparte con los mazos por nivel."
-  },
   "enter_valid_email": {
     "en": "Enter a valid email",
     "es": "Escribe un correo válido"
@@ -446,5 +442,9 @@
   "delete_failed": {
     "en": "Could not delete the account",
     "es": "No se pudo eliminar la cuenta"
+  },
+  "tip_core_1000": {
+    "en": "The 1000 most frequent kanji, level-agnostic. Progress is shared with the level decks.",
+    "es": "Los 1000 kanji más frecuentes, sin importar el nivel. El progreso se comparte con los mazos por nivel."
   }
 }

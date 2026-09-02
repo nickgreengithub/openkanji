@@ -44,28 +44,10 @@ function readJson(rel) {
 function loadData() {
   const decks = readJson("data/decks.json");
 
-  // A deck of 1031 kanji is not a deck, it is a syllabus. `split: 200` cuts one
-  // into chunks of at most that many, which become decks in their own right --
-  // "JLPT N1-A", "JLPT N1-B" -- without touching the data files. Chunk names
-  // are letters by default; `splitLabel: "range"` numbers them instead, for a
-  // deck with no level letter to hang off ("Core 001-200").
-  const chunker = (spec, total) => {
-    const size = spec.split;
-    if (!size || total <= size) return { name: () => spec.deck, chunks: [[spec.deck, 1, total]] };
-    const chunks = [];
-    for (let from = 0; from < total; from += size) {
-      const to = Math.min(from + size, total);
-      const pad = (n) => String(n).padStart(3, "0");
-      const name = spec.splitLabel === "range"
-        ? spec.deck + " " + pad(from + 1) + "-" + pad(to)
-        : spec.deck + "-" + String.fromCharCode(65 + chunks.length);
-      chunks.push([name, from + 1, to]);
-    }
-    return { name: (i) => chunks[Math.floor(i / size)][0], chunks };
-  };
-
   // Rail order, and what each tab needs to describe itself. Filled in as the
-  // decks are read so it always matches what actually shipped.
+  // decks are read so it always matches what actually shipped. A deck is whole
+  // here; the app slices it into sections of 100 for navigation, which keeps
+  // one level ("JLPT N1") from turning into six tabs pretending to be decks.
   const deckOrder = [];
   const tipKey = (deck) => "tip_" + deck.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/_+$/, "");
   const words = readJson("data/words.json");
@@ -112,8 +94,7 @@ function loadData() {
     if (!file) continue; // view decks are resolved below, once every record exists
     const recs = readJson("data/kanji/" + file);
     if (!Array.isArray(recs)) throw new Error(file + ": expected an array");
-    const cut = chunker(spec, recs.length);
-    cut.chunks.forEach(([name, from, to]) => deckOrder.push([name, tipKey(deck), from + "-" + to]));
+    deckOrder.push([deck, tipKey(deck), recs.length]);
     recs.forEach((k, i) => {
       const at = file + "[" + i + "]" + (k && k.c ? " (" + k.c + ")" : "");
       if (!k || !k.id) throw new Error(at + ": missing `id`");
@@ -135,7 +116,7 @@ function loadData() {
         });
       });
       byId[k.id] = k;
-      kanji.push(Object.assign({}, k, { deck: cut.name(i) }));
+      kanji.push(Object.assign({}, k, { deck }));
     });
   }
 
@@ -147,8 +128,7 @@ function loadData() {
     if (!order) continue;
     const ids = readJson("data/" + order);
     if (!Array.isArray(ids) || !ids.length) throw new Error(order + ": expected a non-empty array of kanji ids");
-    const cut = chunker(spec, Math.min(limit || ids.length, ids.length));
-    cut.chunks.forEach(([name, from, to]) => deckOrder.push([name, tipKey(deck), from + "-" + to]));
+    deckOrder.push([deck, tipKey(deck), Math.min(limit || ids.length, ids.length)]);
     const seen = new Set();
     ids.forEach((id, i) => {
       if (!byId[id]) throw new Error(order + "[" + i + "]: unknown kanji id " + id);
@@ -156,7 +136,7 @@ function loadData() {
       seen.add(id);
       // `limit` shows only the head of the list; the file keeps the full order.
       if (limit && i >= limit) return;
-      kanji.push(Object.assign({}, byId[id], { deck: cut.name(i) }));
+      kanji.push(Object.assign({}, byId[id], { deck }));
     });
   }
 
@@ -259,8 +239,8 @@ function build() {
   let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
   const tokens = {
     __KANJI_DATA__: JSON.stringify(data),
-    // [name, ui.json tip key, "from-to"] in rail order, so adding or splitting
-    // a deck is a decks.json edit and nothing else.
+    // [name, ui.json tip key, kanji count] in rail order, so adding a deck or
+    // reordering the rail is a decks.json edit and nothing else.
     __DECKS__: JSON.stringify(deckOrder),
     // Complete non-default languages ride along so the picker can switch
     // without a refetch. Incomplete ones are omitted entirely.

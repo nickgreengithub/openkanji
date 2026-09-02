@@ -692,20 +692,22 @@ html[data-ok-ready] #ok-boot{display:none}
       <div style="box-sizing:border-box;flex:0 0 calc(21rem + {{ ruleH }});min-width:0;display:flex;flex-direction:column;margin-left:-1.25rem;padding:1.25rem 1.5rem 0 1.25rem;border-right:{{ ruleH }} solid var(--cyan-a45)">
         <div class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;margin-right:-1.5rem;padding-right:1.5rem">
         <sc-for list="{{ deckTabs }}" as="dt" hint-placeholder-count="7">
-          <div sc-camel-on-click="{{ dt.pick }}" sc-camel-on-mouse-enter="{{ dt.tipEnter }}" sc-camel-on-mouse-leave="{{ dt.tipLeave }}" style="position:relative;user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:1.1rem;height:4.5rem;box-sizing:border-box;padding:0 1rem 0 1.25rem;border-bottom:1px solid var(--cyan-a15);cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
+          <div sc-camel-on-click="{{ dt.pick }}" sc-camel-on-mouse-enter="{{ dt.tipEnter }}" sc-camel-on-mouse-leave="{{ dt.tipLeave }}" style="position:relative;user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:1.1rem;height:{{ dt.h }};box-sizing:border-box;padding:0 1rem 0 {{ dt.pad }};border-bottom:1px solid var(--cyan-a15);cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
             <div style="position:absolute;left:0;top:0;bottom:0;width:{{ dt.barH }};background:{{ dt.barBg }}"></div>
             <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.6rem">
               <div style="display:flex;align-items:baseline;justify-content:space-between;gap:.7rem">
-                <span style="min-width:0;font-family:var(--font-2);font-size:1rem;letter-spacing:.03em;text-transform:uppercase;color:{{ dt.fg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ dt.name }}</span>
+                <span style="min-width:0;font-family:var(--font-2);font-size:{{ dt.size }};letter-spacing:.03em;text-transform:uppercase;color:{{ dt.fg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ dt.name }}</span>
                 <span style="flex:0 0 auto;font-family:var(--font-2);font-size:1rem;color:var(--text-muted)">{{ dt.frac }}</span>
               </div>
               <span style="height:.4rem;background:var(--cyan-a15);display:block">
                 <span style="display:block;width:{{ dt.pct }};height:100%;background:{{ dt.barBg }}"></span>
               </span>
             </div>
+            <sc-if value="{{ dt.hasStudy }}" hint-placeholder-val="{{ true }}">
             <span sc-camel-on-click="{{ dt.study }}" title="{{ t_study }}" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ dt.studyOpacity }};pointer-events:{{ dt.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
               <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
             </span>
+            </sc-if>
             <sc-if value="{{ dt.tipOpen }}" hint-placeholder-val="{{ false }}">
               <div style="position:absolute;top:50%;left:100%;transform:translateY(-50%);padding-left:.5rem;z-index:70;cursor:default">
                 <div style="width:16rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column;gap:.4rem;padding:.75rem .9rem">
@@ -726,7 +728,7 @@ html[data-ok-ready] #ok-boot{display:none}
       <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;padding:1.25rem 0 0 1.5rem;margin-right:-1.25rem">
       <div class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden">
         <div style="min-width:0;border-top:{{ ruleH }} solid var(--cyan-a45);border-left:{{ ruleH }} solid var(--cyan-a45);border-right:{{ ruleH }} solid var(--cyan-a45)">
-        <div style="display:grid;grid-template-columns:repeat(10,minmax(0,1fr));">
+        <div style="display:grid;grid-template-columns:repeat(10,minmax(0,1fr)) auto;">
           <sc-for list="{{ homeRows }}" as="hr" hint-placeholder-count="2">
             <sc-for list="{{ hr.tiles }}" as="ht" hint-placeholder-count="10">
             <div sc-camel-on-click="{{ ht.open }}" sc-camel-on-mouse-enter="{{ ht.enter }}" sc-camel-on-mouse-leave="{{ ht.leave }}" style="position:relative;user-select:none;min-width:0;height:8.5rem;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:.4rem;border-right:{{ ruleH }} solid var(--cyan-a45);border-bottom:{{ ruleH }} solid var(--cyan-a45);background:{{ ht.bg }};color:{{ ht.fg }};cursor:pointer;transition:background 140ms ease,color 200ms ease">
@@ -740,7 +742,14 @@ html[data-ok-ready] #ok-boot{display:none}
               </span>
             </div>
             </sc-for>
-
+            <sc-for list="{{ hr.blanks }}" as="bl" hint-placeholder-count="0">
+              <div style="border-right:1px solid var(--cyan-a15);border-bottom:1px solid var(--cyan-a15)"></div>
+            </sc-for>
+            <div sc-camel-on-click="{{ hr.open }}" sc-camel-on-mouse-enter="{{ hr.enter }}" sc-camel-on-mouse-leave="{{ hr.leave }}" title="{{ hr.range }}" style="user-select:none;display:flex;align-items:center;justify-content:center;width:3.25rem;padding:0 .5rem;background:{{ hr.bg }};border-right:1px solid var(--cyan-a15);border-bottom:1px solid var(--cyan-a15);cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
+              <span style="width:2.1rem;height:2.1rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
+                <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
+              </span>
+            </div>
           </sc-for>
         </div>
         </div>
@@ -778,8 +787,16 @@ html[data-ok-ready] #ok-boot{display:none}
             <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.16em;color:var(--text-body)">{{ lb.range }}</span>
             <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.16em;color:var(--cyan-a55)">漢字</span>
           </span>
+          <span style="flex:0 0 auto;display:flex;align-items:center">
+          <span sc-camel-on-click="{{ lb.prev }}" style="user-select:none;flex:0 0 auto;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--cyan-a45);color:var(--text-accent);opacity:{{ lb.prevOpacity }};pointer-events:{{ lb.prevPointer }};cursor:pointer;margin-right:.4rem" style-hover="background:var(--accent-soft)">
+            <svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 4 L7 12 L15 20"></path></svg>
+          </span>
+          <span sc-camel-on-click="{{ lb.next }}" style="user-select:none;flex:0 0 auto;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--cyan-a45);color:var(--text-accent);opacity:{{ lb.nextOpacity }};pointer-events:{{ lb.nextPointer }};cursor:pointer;margin-right:.8rem" style-hover="background:var(--accent-soft)">
+            <svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 4 L17 12 L9 20"></path></svg>
+          </span>
           <span sc-camel-on-click="{{ lb.study }}" title="{{ t_study }}" style="flex:0 0 auto;width:2rem;height:2rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ lb.studyOpacity }};pointer-events:{{ lb.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
             <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
+          </span>
           </span>
         </div>
         <sc-for list="{{ lb.groups }}" as="kg" hint-placeholder-count="6">
@@ -1185,6 +1202,15 @@ const deckData = (deck) => corpusFor(CURRENT_LANG).index[deck || DEFAULT_DECK] |
 // a deck or reordering the rail is a data edit, not a code edit.
 const DECK_LIST = __DECKS__;
 const DECKS = DECK_LIST.map((d) => d[0]);
+// A deck is a level; a section is the hundred you are working through. Levels
+// stay whole in the rail -- splitting N1 into six tabs made six things look
+// like six decks -- and the active level opens into its sections instead.
+const SECTION = 100;
+const sectionCount = (deck) => Math.max(1, Math.ceil(deckData(deck).length / SECTION));
+const sectionOf = (deck, sec) => deckData(deck).slice(sec * SECTION, sec * SECTION + SECTION);
+const pad3 = (n) => String(n).padStart(3, "0");
+const sectionLabel = (deck, sec) =>
+  pad3(sec * SECTION + 1) + "-" + pad3(Math.min((sec + 1) * SECTION, deckData(deck).length));
 const DECK_META = (() => {
   const m = {};
   DECK_LIST.forEach((d) => { m[d[0]] = { tip: d[1], range: d[2] }; });
@@ -1431,8 +1457,10 @@ const lsSet = (k, v) => { try { if (v == null) localStorage.removeItem(k); else 
 const okDeck = (d) => {
   if (!d) return null;
   if (DECKS.includes(d) && deckData(d).length) return d;
-  const base = String(d).replace(/ \d+$/, "");
-  const hit = DECKS.find((n) => n === d + "-A" || n === base + "-A" || n.indexOf(base + " 0") === 0);
+  // "JLPT N3-A" and "Core 001-200" were shipped briefly while levels were split
+  // into separate decks; fold them back onto the level they came from.
+  const base = String(d).replace(/-[A-Z]$/, "").replace(/ \d{3}-\d{3,4}$/, "");
+  const hit = DECKS.find((n) => n === base) || DECKS.find((n) => n.indexOf(base + " ") === 0);
   return hit && deckData(hit).length ? hit : null;
 };
 const okLang = (c) => (c && LANGS.some(l => l[0] === c && !l[3]) ? c : null);
@@ -1447,7 +1475,7 @@ const okMerge = (a, b) => {
 
 class Component extends DCLogic {
   state = {
-    screen: "home", batch: 0, batchOpen: false, decks: false, deck: null, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
+    screen: "home", batch: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
     draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, menuOpen: false, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
@@ -1557,34 +1585,14 @@ class Component extends DCLogic {
     });
     if (seen !== this.state.viewBatch) this.setState({ viewBatch: seen });
 
-    // Extend the rendered window as either end comes into reach. Growing
-    // upwards prepends content, so record where the reader was: componentDidUpdate
-    // puts them back once the new batch has been laid out.
-    const st = this.state;
-    const nb = batchCount(st.deck);
-    const g = st.listGrow && st.listGrow.batch === st.batch ? st.listGrow : { up: 0, down: 0 };
-    const STEP = 2; // batches per extension -- one at a time feels like dragging
-    if (el.scrollTop + el.clientHeight > el.scrollHeight - 600 && st.batch + 2 + g.down < nb) {
-      this.setState({ listGrow: { batch: st.batch, up: g.up, down: g.down + STEP } });
-    } else if (el.scrollTop < 300 && st.batch - 1 - g.up > 0) {
-      this._growAnchor = { h: el.scrollHeight, top: el.scrollTop };
-      this.setState({ listGrow: { batch: st.batch, up: g.up + STEP, down: g.down } });
-    }
   }
 
-  // The kanji-word list is one continuous scroll of the entire deck. At N1 and
-  // Core scale that is tens of thousands of nodes and ~40,000px of content for
-  // an 800px viewport, which is what made opening a kanji take seconds. Render
-  // a window around the batch being read; trackSection() extends it as the
-  // reader approaches either end, so the scroll still feels continuous.
+  // The word list is the ten kanji you opened, and nothing else. Ten kanji is
+  // 30-50 words, which is a session; the whole deck was 40,000px of scroll and
+  // no way to tell where a set ended. Move between sets with the arrows in the
+  // header rather than by scrolling past them.
   listWindow(st) {
-    const nb = batchCount(st.deck);
-    const g = st.listGrow && st.listGrow.batch === st.batch ? st.listGrow : null;
-    const from = Math.max(0, st.batch - 1 - (g ? g.up : 0));
-    const to = Math.min(nb, st.batch + 2 + (g ? g.down : 0));
-    const out = [];
-    for (let bi = from; bi < to; bi++) out.push(bi);
-    return out;
+    return [Math.min(Math.max(0, st.batch || 0), Math.max(0, batchCount(st.deck) - 1))];
   }
 
   scheduleMeasure() {
@@ -1596,13 +1604,6 @@ class Component extends DCLogic {
   }
 
   componentDidUpdate() {
-    // A prepended batch pushes everything down by its height; cancel that out.
-    if (this._growAnchor && this._listBox) {
-      const a = this._growAnchor;
-      this._growAnchor = null;
-      const delta = this._listBox.scrollHeight - a.h;
-      if (delta > 0) this._listBox.scrollTop = a.top + delta;
-    }
     if (this.state.scrollTo && this._listBox) {
       const target = this._listBox.querySelector('[data-row="' + this.state.scrollTo + '"]');
       if (target) {
@@ -2873,6 +2874,12 @@ class Component extends DCLogic {
     // deck. Corpus-wide lookups (input method, chat) keep using DATA.
     setLang(st.uiLang || "EN");
     const DECK = deckData(st.deck);
+    // The grid shows one section; DECK stays whole for deck-level progress,
+    // games and labels. Batch indices remain deck-absolute so the word list,
+    // the games and saved progress all keep meaning the same thing.
+    const SEC_I = Math.min(st.section || 0, sectionCount(st.deck) - 1);
+    const SEC = sectionOf(st.deck, SEC_I);
+    const SEC_BASE = SEC_I * (SECTION / SETN);
     const SET = setOf(st.batch, st.deck);
     const k = SET[st.sel] || SET[0];
     const seenN = Object.keys(st.seen).filter(c => st.seen[c]).length;
@@ -3155,38 +3162,66 @@ class Component extends DCLogic {
       printDeck: () => this.printDeckPdf(),
       openDeck: () => this.setState({ screen: "detail" }),
       homeDeck: st.deck || "JLPT N4",
-      deckTabs: DECKS.map((name) => [name, deckData(name).length === 0]).map((d, i) => ({
-        name: d[0], soon: d[1],
-        tipOpen: st.deckTip === d[0],
-        tipEnter: () => { if (this._dtT) clearTimeout(this._dtT); this.setState({ deckTip: d[0] }); },
-        tipLeave: () => { if (this._dtT) clearTimeout(this._dtT); this._dtT = setTimeout(() => this.setState({ deckTip: null }), 160); },
-        tipBody: (() => {
-          const meta = DECK_META[d[0]] || {};
-          const body = T(meta.tip || "tip_core");
-          // A split deck says which slice of the level it is.
-          return meta.range && meta.range !== "1-" + deckData(d[0]).length ? meta.range + " \u00b7 " + body : body;
-        })(),
-        barH: (st.deck || "JLPT N4") === d[0] ? "3px" : "0",
-        barBg: d[1] ? "var(--cyan-a45)" : "var(--accent)",
-        frac: d[1] ? "—" : this.deckDone(d[0], st.mastered) + " / " + deckData(d[0]).length,
-        pct: d[1] ? "0%" : (deckData(d[0]).length ? Math.round(this.deckDone(d[0], st.mastered) / deckData(d[0]).length * 100) : 0) + "%",
-        fg: (st.deck || "JLPT N4") === d[0] ? "var(--text-accent)" : "var(--text-muted)",
-        pick: () => { if (d[1]) return; this.rememberPrefs(d[0], undefined); this.setState({ deck: d[0] }); },
-        studyOpacity: d[1] ? .3 : (deckData(d[0]).length > 0 && this.deckDone(d[0], st.mastered) === deckData(d[0]).length ? .3 : 1),
-        studyPointer: d[1] ? "none" : "auto",
-        study: (e) => {
-          e.stopPropagation();
-          if (d[1]) return;
-          this._gAnswer = null; this._gIdx = undefined;
-          this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: null, gKanji: null, gDeckAll: true });
-        }
-      })),
+      deckTabs: (() => {
+        const cur = st.deck || DEFAULT_DECK;
+        const rows = [];
+        DECKS.forEach((name) => {
+          const total = deckData(name).length;
+          const soon = total === 0;
+          const active = cur === name;
+          const done = soon ? 0 : this.deckDone(name, st.mastered);
+          rows.push({
+            name: name, soon: soon,
+            pad: "1.25rem", h: "4.5rem", size: "1rem", hasStudy: true,
+            tipOpen: st.deckTip === name,
+            tipEnter: () => { if (this._dtT) clearTimeout(this._dtT); this.setState({ deckTip: name }); },
+            tipLeave: () => { if (this._dtT) clearTimeout(this._dtT); this._dtT = setTimeout(() => this.setState({ deckTip: null }), 160); },
+            tipBody: T((DECK_META[name] || {}).tip || "tip_core"),
+            barH: active ? "3px" : "0",
+            barBg: soon ? "var(--cyan-a45)" : "var(--accent)",
+            frac: soon ? "—" : done + " / " + total,
+            pct: soon ? "0%" : (total ? Math.round(done / total * 100) : 0) + "%",
+            fg: active ? "var(--text-accent)" : "var(--text-muted)",
+            pick: () => { if (soon) return; this.rememberPrefs(name, undefined); this.setState({ deck: name, section: 0, batch: 0 }); },
+            studyOpacity: soon ? .3 : (total > 0 && done === total ? .3 : 1),
+            studyPointer: soon ? "none" : "auto",
+            study: (e) => {
+              e.stopPropagation();
+              if (soon) return;
+              this._gAnswer = null; this._gIdx = undefined;
+              this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: null, gKanji: null, gDeckAll: true });
+            }
+          });
+          // The level opens into the hundreds it is made of. Only the active
+          // level expands, so the rail never shows more than one deck's worth.
+          if (!active || soon || sectionCount(name) < 2) return;
+          for (let sec = 0; sec < sectionCount(name); sec++) {
+            const list = sectionOf(name, sec);
+            const keys = this.allKeys(list);
+            const sDone = keys.filter((x) => st.mastered[x]).length;
+            const on = SEC_I === sec;
+            rows.push({
+              name: sectionLabel(name, sec), soon: false,
+              pad: "2.6rem", h: "3.5rem", size: ".9375rem", hasStudy: false,
+              tipOpen: false, tipEnter: () => {}, tipLeave: () => {}, tipBody: "",
+              barH: on ? "3px" : "0",
+              barBg: "var(--accent)",
+              frac: list.filter((kk) => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every((x) => st.mastered[x]); }).length + " / " + list.length,
+              pct: (keys.length ? Math.round(sDone / keys.length * 100) : 0) + "%",
+              fg: on ? "var(--text-accent)" : "var(--text-muted)",
+              pick: () => this.setState({ section: sec, batch: sec * (SECTION / SETN) }),
+              studyOpacity: 1, studyPointer: "none", study: () => {}
+            });
+          }
+        });
+        return rows;
+      })(),
       // Only the screen that renders a list pays for building it. homeRows is
       // one tile per kanji in the deck; listBatches is every word of every
       // kanji. Building both on every render is what made opening a kanji, or
       // switching to a big deck, take seconds.
       homeRows: st.screen !== "home" ? EMPTY : (() => {
-        const tiles = DECK.map((kk, i) => {
+        const tiles = SEC.map((kk, i) => {
         const keys = this.allKeys([kk]);
         const done = keys.filter(x => st.mastered[x]).length;
         const complete = keys.length > 0 && done === keys.length;
@@ -3202,14 +3237,14 @@ class Component extends DCLogic {
           metaFg: complete ? "var(--text-accent)" : "var(--text-muted)",
           ringOpacity: complete ? 1 : 0,
           ringInset: complete ? ".4rem" : "1.4rem",
-          open: () => this.setState({ screen: "detail", batch: Math.floor(i / SETN), scrollTo: kk.c + "|" + (kk.g[0].w[0][0]) })
+          open: () => this.setState({ screen: "detail", batch: SEC_BASE + Math.floor(i / SETN), scrollTo: kk.c + "|" + (kk.g[0].w[0][0]) })
         };
         });
         const rows = [];
         for (let i = 0; i < tiles.length; i += 10) {
-          const bi = Math.floor(i / 10), first = DECK[i];
+          const bi = SEC_BASE + Math.floor(i / 10), first = SEC[i];
           rows.push({
-            range: (i + 1) + "-" + Math.min(i + 10, tiles.length),
+            range: (SEC_I * SECTION + i + 1) + "-" + (SEC_I * SECTION + Math.min(i + 10, tiles.length)),
             tiles: tiles.slice(i, i + 10),
             blanks: Array.from({ length: Math.max(0, 10 - tiles.slice(i, i + 10).length) }, (_, n) => n),
             bg: st.hoverRange === bi ? "rgba(8,145,178,.10)" : "transparent",
@@ -3222,11 +3257,11 @@ class Component extends DCLogic {
             diceBg: (st.gameSets || {})[bi] ? "var(--accent)" : "transparent",
             diceFg: (st.gameSets || {})[bi] ? "#ffffff" : "var(--text-accent)",
             diceBorder: (st.gameSets || {})[bi] ? "var(--accent)" : "var(--cyan-a45)",
-            actOpacity: (() => { const ks = this.allKeys(DECK.slice(i, i + 10)).filter(x => !st.mastered[x]); return ks.length ? 1 : .3; })(),
-            actPointer: (() => { const ks = this.allKeys(DECK.slice(i, i + 10)).filter(x => !st.mastered[x]); return ks.length ? "auto" : "none"; })(),
+            actOpacity: (() => { const ks = this.allKeys(SEC.slice(i, i + 10)).filter(x => !st.mastered[x]); return ks.length ? 1 : .3; })(),
+            actPointer: (() => { const ks = this.allKeys(SEC.slice(i, i + 10)).filter(x => !st.mastered[x]); return ks.length ? "auto" : "none"; })(),
             studyBatch: (e) => {
               e.stopPropagation();
-              const ks = this.allKeys(DECK.slice(i, i + 10)).filter(x => !this.state.mastered[x]);
+              const ks = this.allKeys(SEC.slice(i, i + 10)).filter(x => !this.state.mastered[x]);
               if (!ks.length) return;
               const sel = {}; ks.forEach(x => { sel[x] = true; });
               this.setState({ chatSel: sel, screen: "detail", viewBatch: bi });
@@ -3234,7 +3269,7 @@ class Component extends DCLogic {
             },
             cardsBatch: (e) => {
               e.stopPropagation();
-              const q = this.shuffleA(this.allKeys(DECK.slice(i, i + 10)).filter(x => !this.state.mastered[x]));
+              const q = this.shuffleA(this.allKeys(SEC.slice(i, i + 10)).filter(x => !this.state.mastered[x]));
               if (!q.length) return;
               this.setState({ cardsOn: true, cardsClosing: false, cQueue: this.cardsFromKeys(q), cIdx: 0, cShown: false, cDone: 0, cMastered: [], cFlip: false, cMove: "next" });
             },
@@ -3756,6 +3791,12 @@ class Component extends DCLogic {
         const bKeys = this.allKeys(batchSet);
         return {
           label: (bi * SETN + 1) + "-" + Math.min((bi + 1) * SETN, DECK.length) + " 漢字",
+          prevOpacity: bi > 0 ? 1 : .25,
+          prevPointer: bi > 0 ? "auto" : "none",
+          nextOpacity: bi < batchCount(st.deck) - 1 ? 1 : .25,
+          nextPointer: bi < batchCount(st.deck) - 1 ? "auto" : "none",
+          prev: (e) => { e.stopPropagation(); const b = Math.max(0, bi - 1); this.setState({ batch: b, section: Math.floor(b / (SECTION / SETN)) }); },
+          next: (e) => { e.stopPropagation(); const b = Math.min(batchCount(st.deck) - 1, bi + 1); this.setState({ batch: b, section: Math.floor(b / (SECTION / SETN)) }); },
           range: (bi * SETN + 1) + "-" + Math.min((bi + 1) * SETN, DECK.length),
           frac: bKeys.filter(x => st.mastered[x]).length + " / " + bKeys.length,
           studyOpacity: bKeys.length > 0 && bKeys.every(x => st.mastered[x]) ? .3 : 1,
