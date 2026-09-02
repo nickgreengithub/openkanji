@@ -1,0 +1,11 @@
+{
+  "name": "openkanji-api",
+  "private": true,
+  "type": "module",
+  "description": "OpenKanji progress sync -- Cloudflare Worker",
+  "scripts": {
+    "test": "node --experimental-sqlite --no-warnings test/worker.test.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  }
+}

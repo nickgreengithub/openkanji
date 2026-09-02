@@ -1,150 +1,156 @@
-# Email-only accounts + progress sync — Cloudflare
+# Email-only accounts + progress sync — design
 
-Status: **design agreed, not implemented.** Supersedes the earlier Supabase plan.
+Status: **implemented and tested, not yet deployed.** The API lives in
+`worker/`; the client half is in `src/app.html`. Sync is inert until
+`API_BASE` is filled in (see *Deploying* below).
+
+Everything runs on Cloudflare: Pages for the site, a Worker for the API, D1 for
+the data, Email Service for the sign-in mail. One vendor, one dashboard, and
+the auth is reusable by the next app on the same account.
 
 ## Decisions
 
 | Decision | Choice |
 |---|---|
-| What syncs | mastered word ids only — not `seen`, not `gamewins` |
-| Progress key | stable word id (`w0142`), never surface text |
-| Timestamps | none, booleans only |
-| Sync trigger | explicit **Save** / **Load** — no background sync |
-| Load semantics | merge (union): local OR server ⇒ mastered |
-| Auth | magic link, built in a Worker (no auth vendor) |
-| Hosting | Cloudflare Pages |
-| Database | D1 |
-| Email | third party (Resend or MailChannels) — Cloudflare sends no mail |
+| What syncs | `mastered`, plus the last `deck` and `lang` — not `seen`, not `gamewins` |
+| Timestamps | None per word. Booleans only; `updated_at` on the row is informational |
+| Sync trigger | Explicit **Save** / **Load**, plus one automatic Load on return from a sign-in link |
+| Load semantics | `mastered`: **merge** (union). `deck`/`lang`: server wins |
+| Save semantics | `mastered`: union, **server-side too**. `deck`/`lang`: last writer wins |
+| Auth | Magic link by email. No password, no third-party identity |
+| Session | HttpOnly cookie, HMAC-signed, 180 days |
+| Progress files | None. Signed out, progress stays in `localStorage` |
 
-Consequence of no timestamps: **un-mastering doesn't propagate.** Un-check on the
-laptop, Load on the phone, it returns. Accepted.
+Known consequence of dropping timestamps: **un-mastering doesn't propagate.**
+Un-check a word on the laptop, Load on the phone, it comes back. Accepted — and
+now enforced on the server as well, which is what makes a save from a device
+that never loaded unable to erase another device's progress.
 
-## What changed since the Supabase draft
-
-- **Progress is keyed on stable word ids, not text.** The old draft said
-  `{"word|reading": true}`. It is now `{"w0142": true}`. This matters much more
-  with a server: a gloss or reading can be corrected without invalidating anyone's
-  stored progress.
-- **Save/Load are built** and currently export/import a JSON file. That stays as
-  the signed-out path.
-- Save lives on the study screen, Load on home.
-
-## Architecture
+## Shape
 
 ```
-Cloudflare Pages   static site (replaces GitHub Pages)
-  └── Worker       /api/*  auth + progress
-        └── D1     users, login_tokens, progress
-        └── Resend outbound magic-link email
+openkanji.org/*        Pages    the static site (index.html)
+openkanji.org/api/*    Worker   this API
+                       D1       users, progress, login_tokens
+                       Email    the sign-in mail
 ```
 
-Same origin, so no CORS and no preflight. Cookies are first-party.
+The Worker is routed on **the site's own origin**, which is the load-bearing
+choice: the session cookie is then first-party, there is no CORS, and no token
+is ever handed to JavaScript. Putting the API on `api.openkanji.org` would work
+but costs a CORS preflight on every call and a `SameSite=None` cookie.
 
-Moving hosting to Pages also fixes the deploy-visibility problem: GitHub Pages
-sends `cache-control: max-age=600`, so changes take up to ten minutes to appear
-and a hard refresh often isn't enough. Cloudflare lets us set that and purge on
-deploy.
+## API
 
-## Schema (D1 is SQLite)
+| | |
+|---|---|
+| `POST /api/login` | `{email, lang}` → sends a sign-in link. Uniform reply: never reveals whether an address has an account |
+| `GET /api/callback?token=` | verifies, sets the cookie, redirects to `/#signed-in` (or `/#sign-in-failed`) |
+| `GET /api/me` | `{email}` — **`{email: null}` with a 200 when signed out**, because the app asks on every page load and an error there is console noise |
+| `GET /api/progress` | `{mastered, deck, lang}` |
+| `PUT /api/progress` | `{mastered, deck, lang}` — unions `mastered` into the stored set |
+| `POST /api/logout` | clears the cookie |
+| `DELETE /api/account` | erases the account, its progress and its sign-in rows |
+
+## Schema
 
 ```sql
 create table users (
-  id         integer primary key autoincrement,
-  email      text    not null unique,
+  id integer primary key autoincrement,
+  email text not null unique,
   created_at integer not null
 );
-
--- Only the hash is stored: a leaked database must not yield usable login links.
-create table login_tokens (
-  token_hash text    primary key,
-  user_id    integer not null references users(id) on delete cascade,
-  expires_at integer not null
-);
-
--- One row per user. `mastered` is a JSON array of word ids.
 create table progress (
-  user_id    integer primary key references users(id) on delete cascade,
-  mastered   text    not null default '[]',
+  user_id integer primary key references users(id) on delete cascade,
+  mastered text not null default '{}',   -- JSON { "w0226": true }
+  deck text, lang text,
   updated_at integer not null
 );
-
-create index login_tokens_expiry on login_tokens(expires_at);
+create table login_tokens (
+  hash text primary key,                 -- SHA-256 of the token, never the token
+  email text not null, ip text,
+  created_at integer not null, expires_at integer not null, used_at integer
+);
 ```
 
-**Why one JSON row and not a `progress(user_id, word_id)` table.** D1's free tier
-meters *rows read* (5M/day). Normalised, one Load reads up to N rows per user and
-scales with the corpus — 658 words today, thousands later. As a blob it is exactly
-**one row read per Load and one write per Save**, regardless of corpus size. The
-data is always read and written whole, so normalising buys nothing here and costs
-the cheaper pricing dimension. Revisit only if per-word timestamps are ever wanted.
+`mastered` is keyed by **stable word id**, so correcting a reading or a gloss
+never invalidates anyone's progress. The full schema, with indexes, is
+`worker/schema.sql`.
 
-`on delete cascade` means account deletion is one `delete from users`.
+## Security
 
-## Auth: magic link in ~120 lines
+Nothing here is sensitive — the worst a stolen session buys is somebody else's
+list of mastered words. The care goes somewhere else: **an endpoint that sends
+email on demand is an abuse target**, and a magic link is easy to get subtly
+wrong. So:
 
-Cloudflare has no consumer auth product (Access is zero-trust for teams), so this
-is hand-rolled. It is small because the requirements are small.
+- **Tokens are stored as SHA-256, never in the clear.** A dump of the database
+  cannot be replayed to sign in as anyone.
+- **Single use, 15 minutes.** Claiming a token and marking it used are one
+  `UPDATE ... WHERE used_at IS NULL ... RETURNING`, so two clicks cannot both win.
+- **Rate limited in two dimensions**: 5 links per address per hour, 20 per IP
+  per hour. `login_tokens` doubles as the ledger, so this needs no extra table
+  and no extra write.
+- **Sessions are HMAC-signed** (`payload.signature`, verified with WebCrypto)
+  and the account is **re-resolved on every request**. A stateless cookie alone
+  would keep verifying after the account was deleted; resolving the user is
+  what makes deletion final.
+- **Cookie is `HttpOnly; Secure; SameSite=Lax`.** `Lax` is also the CSRF
+  defence: it withholds the cookie from cross-site `PUT`/`DELETE`.
+- **Writes are validated, not just stored.** Keys must look like `w1234`, the
+  set is capped at 20,000 entries and the body at 512 KB, and deck/language
+  labels are length-capped. Otherwise the row is a free object store.
+- **The callback only ever redirects to `SITE_URL`**, so it cannot be turned
+  into an open redirect.
 
-| Endpoint | Does |
-|---|---|
-| `POST /api/login` | body `{email}` → mint token, store **hash**, email the link |
-| `GET /api/verify?t=` | validate + consume token, set signed session cookie, redirect home |
-| `GET /api/progress` | session → return `{mastered: [...]}` |
-| `PUT /api/progress` | session → replace the row |
-| `POST /api/logout` | clear cookie |
-| `DELETE /api/account` | delete the user, cascading progress |
+Tests for all of the above: `worker/test/worker.test.mjs`, run with `npm test`
+in `worker/`. They exercise the real SQL against an in-memory SQLite.
 
-- Token: 32 random bytes, base64url. Store only `SHA-256(token)`; single use;
-  15 minute expiry.
-- Session: signed cookie (HMAC-SHA256 via Web Crypto, secret in Workers Secrets),
-  `HttpOnly; Secure; SameSite=Lax`. No JWT library needed.
-- Rate limit `/api/login` per email and per IP — it sends mail, so it is the abuse
-  surface.
+## Deploying
 
-**Email is the one external dependency.** Cloudflare sends none. MailChannels'
-free Workers API ended in 2024; its replacement free plan is 100 emails/day, and
-Cloudflare's docs now point at Resend. Either works from a Worker over `fetch`, so
-the choice is reversible — one function.
+1. **D1**
 
-Deliverability improves a lot once mail comes from openkanji.org with SPF/DKIM,
-which is another argument for settling the domain first.
+   ```sh
+   npx wrangler d1 create openkanji            # put the id in wrangler.toml
+   npx wrangler d1 execute openkanji --remote --file=worker/schema.sql
+   ```
 
-## Client changes
+2. **Secret and vars** — `SESSION_SECRET` signs the cookie; rotating it signs
+   everyone out, which is the intended panic button.
 
-Small, because the shape already fits:
+   ```sh
+   npx wrangler secret put SESSION_SECRET      # 32+ random bytes
+   ```
 
-- `SUPABASE_URL` / `SUPABASE_ANON_KEY` → a single `API` base (same origin, so `""`).
-- `sendMagicLink` → `POST /api/login`.
-- `pushMastered` / `pullMastered` → `PUT` / `GET /api/progress`, sending the id
-  array that `allKeys()` already produces.
-- Session is a cookie, so `restoreSession()` becomes `GET /api/me`; the
-  `openkanji.token` localStorage entry goes away.
-- Signed out, Save/Load keep exporting and importing the JSON file.
+   Set `MAIL_FROM` and `SITE_URL` in `wrangler.toml`.
 
-The union merge is unchanged and still conflict-free.
+3. **Email Service** — verify the sending domain in the dashboard. Sending to
+   arbitrary recipients needs the **Workers Paid plan** ($5/month, 3,000 emails
+   included); without it only addresses verified in your own account receive
+   mail, which is enough to test but not to ship.
 
-## DNS
+4. **Route** — uncomment the `routes` line in `wrangler.toml` so the Worker
+   serves `openkanji.org/api/*`, then `npx wrangler deploy`.
 
-This replaces the earlier GitHub Pages instructions. Cloudflare Pages wants the
-zone on Cloudflare, so at Namecheap you change **nameservers** to the pair
-Cloudflare gives you — not A records. Cloudflare then manages the DNS, the
-certificate and the cache.
+5. **Site** — deploy `index.html` to Cloudflare Pages on the same domain.
 
-## Cost
-
-Free tier covers this comfortably: Workers 100k requests/day, D1 5M row reads and
-100k row writes/day with 5GB storage. One Save is one row write, so 100k writes/day
-is ~100k saves. Email is the first thing to hit a ceiling, at 100/day free.
+6. **Switch it on** — set `API_BASE = "/api"` in `src/app.html`, rebuild,
+   commit. Until then the app runs exactly as it does today, with progress in
+   `localStorage`.
 
 ## Privacy
 
-Stored: an email address and a list of word ids. The email is still personal data
-under GDPR, so the site needs a short note on what is stored and a delete path —
-`DELETE /api/account` above.
+Stored: an email address, a set of mastered word ids, a deck name and a
+language code. Nothing else — no timestamps per word, no analytics, no IP
+beyond the hour-long rate-limit window in `login_tokens`.
+
+The email is still personal data under GDPR, so the site needs a short note
+saying what is stored and offering deletion. `DELETE /api/account` is the
+mechanism and it is complete (account, progress and sign-in rows), but **it has
+no UI affordance yet** — that is the one piece of this design still to place.
 
 ## Open
 
-- Resend vs MailChannels.
-- Copy for the sign-in prompt and the "check your email" state.
-- Whether to keep the file export once accounts exist (recommend yes — it is the
-  offline and no-account path).
+- Where the delete-account control lives in the nav, and its confirm step.
+- Un-mastering does not propagate. If it should, add an `unmastered` tombstone
+  set alongside `mastered`; still no timestamps.

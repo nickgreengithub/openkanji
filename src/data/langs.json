@@ -2,41 +2,41 @@
   {
     "code": "EN",
     "name": "English",
-    "ja": "英"
+    "ja": "英語"
   },
   {
     "code": "ES",
     "name": "Espanol",
-    "ja": "西"
+    "ja": "スペイン語"
   },
   {
     "code": "PT",
     "name": "Portugues",
-    "ja": "葡"
+    "ja": "ポルトガル語"
   },
   {
     "code": "ID",
     "name": "Bahasa Indonesia",
-    "ja": "尼"
+    "ja": "インドネシア語"
   },
   {
     "code": "VI",
     "name": "Tieng Viet",
-    "ja": "越"
+    "ja": "ベトナム語"
   },
   {
     "code": "TH",
     "name": "Thai",
-    "ja": "泰"
+    "ja": "タイ語"
   },
   {
     "code": "TR",
     "name": "Turkce",
-    "ja": "土"
+    "ja": "トルコ語"
   },
   {
     "code": "PL",
     "name": "Polski",
-    "ja": "波"
+    "ja": "ポーランド語"
   }
 ]
