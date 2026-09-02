@@ -490,7 +490,7 @@ a:hover{color:var(--text-accent-hover)}
             <span style="flex:1 1 auto;min-width:0;height:2.35rem;display:flex;align-items:center;border:1px solid {{ saveFill }};border-right:0;padding:0 .7rem;font-family:var(--font-2);font-size:1rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ userId }}</span>
           </sc-if>
           <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ false }}">
-            <input type="email" placeholder="Save Progress" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onEmailKey }}" style="flex:1 1 auto;min-width:0;width:100%;height:2.35rem;box-sizing:border-box;background:transparent;border:1px solid {{ saveFill }};border-right:0;border-radius:0;outline:none;padding:0 .7rem;font-family:var(--font-2);font-size:1rem;color:var(--text-body)"/>
+            <input type="email" placeholder="{{ userId }}" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onEmailKey }}" style="flex:1 1 auto;min-width:0;width:100%;height:2.35rem;box-sizing:border-box;background:transparent;border:1px solid {{ saveFill }};border-right:0;border-radius:0;outline:none;padding:0 .7rem;font-family:var(--font-2);font-size:1rem;color:var(--text-body)"/>
           </sc-if>
           <sc-if value="{{ showSave }}" hint-placeholder-val="{{ false }}">
           <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
@@ -1354,10 +1354,13 @@ const READING_INDEX = (() => {
 // --- email-only progress sync (Supabase REST, no SDK) ---
 // Fill these in from Supabase -> Settings -> API. The anon key is public by
 // design; RLS is what protects the data. Never put the service_role key here.
-const SUPABASE_URL = "";
-const SUPABASE_ANON_KEY = "";
-const OK_TOKEN_KEY = "openkanji.token";
-const okSyncReady = () => !!(SUPABASE_URL && SUPABASE_ANON_KEY);
+// The API is same-origin Cloudflare Pages Functions: no base URL, no keys, no
+// CORS. The session is an HttpOnly cookie the browser sends for us -- there is
+// deliberately no token in localStorage for a script to steal.
+const API = "";
+// file:// has no origin to call, and a static mirror has no API. Either way
+// /api/me fails, the app stays signed out, and Save/Load use the progress file.
+const okSyncReady = () => location.protocol === "http:" || location.protocol === "https:";
 const okIsEmail = (s) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(s || "").trim());
 // mastered is a { "word|reading": true } map. Union merge: local OR server wins.
 const okMerge = (a, b) => {
@@ -1637,33 +1640,34 @@ class Component extends DCLogic {
 
   // Reads the magic-link token out of the URL fragment on return, or resumes a
   // stored one. Silent on failure: signed-out is a valid state, not an error.
+  // The magic link lands on /?signin=ok with the cookie already set, so there
+  // is no token to parse -- report the outcome and ask who we are.
   restoreSession() {
     if (!okSyncReady()) return;
     try {
-      const h = window.location.hash || "";
-      if (h.indexOf("access_token=") >= 0) {
-        const tok = new URLSearchParams(h.replace(/^#/, "")).get("access_token");
-        if (tok) {
-          localStorage.setItem(OK_TOKEN_KEY, tok);
-          history.replaceState(null, "", window.location.pathname + window.location.search);
-        }
+      const signin = new URLSearchParams(window.location.search).get("signin");
+      if (signin) {
+        history.replaceState(null, "", window.location.pathname);
+        if (signin === "expired") this.flashMsg("Link expired");
+        else if (signin !== "ok") this.flashMsg("Sign-in failed");
       }
-      const tok = localStorage.getItem(OK_TOKEN_KEY);
-      if (tok) this.fetchUser(tok);
+      this.fetchUser();
     } catch (e) {}
   }
 
-  okHeaders(tok) {
-    return { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + tok, "Content-Type": "application/json" };
-  }
-
-  async fetchUser(tok) {
+  async fetchUser() {
     try {
-      const r = await fetch(SUPABASE_URL + "/auth/v1/user", { headers: this.okHeaders(tok) });
-      if (!r.ok) { localStorage.removeItem(OK_TOKEN_KEY); return; }
+      const r = await fetch(API + "/api/me", { credentials: "same-origin" });
+      if (!r.ok) return;                       // 401 just means signed out
       const u = await r.json();
-      if (u && u.email) this.setState({ userEmail: u.email, authMsg: "" });
+      if (u && u.email) this.setState({ userEmail: u.email });
     } catch (e) {}
+  }
+
+  async signOut() {
+    try { await fetch(API + "/api/logout", { method: "POST", credentials: "same-origin" }); } catch (e) {}
+    this.setState({ userEmail: null, emailDraft: "" });
+    this.flashMsg("Signed out");
   }
 
   flashMsg(msg) {
@@ -1677,40 +1681,47 @@ class Component extends DCLogic {
     if (!okIsEmail(email)) { this.flashMsg("Enter a valid email"); return; }
     this.setState({ authBusy: true });
     try {
-      const r = await fetch(SUPABASE_URL + "/auth/v1/otp", {
+      const r = await fetch(API + "/api/login", {
         method: "POST",
-        headers: { apikey: SUPABASE_ANON_KEY, "Content-Type": "application/json" },
-        body: JSON.stringify({ email: String(email).trim(), create_user: true })
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ email: String(email).trim() })
       });
-      this.flashMsg(r.ok ? "Check your email" : "Could not send link");
+      const d = await r.json().catch(() => ({}));
+      this.flashMsg(r.ok ? "Check your email" : (d.error || "Could not send link"));
     } catch (e) { this.flashMsg("Could not send link"); }
     this.setState({ authBusy: false });
   }
 
+  // The server stores a sorted array of word ids; the app holds a {id: true}
+  // map. Convert at the boundary rather than changing either side.
   async pushMastered(m) {
-    const tok = okSyncReady() ? localStorage.getItem(OK_TOKEN_KEY) : null;
-    if (!tok || !this.state.userEmail) return;
+    if (!okSyncReady() || !this.state.userEmail) return;
+    const ids = Object.keys(m || {}).filter(k => m[k]);
     try {
-      const r = await fetch(SUPABASE_URL + "/rest/v1/progress?on_conflict=user_id", {
-        method: "POST",
-        headers: Object.assign(this.okHeaders(tok), { Prefer: "resolution=merge-duplicates" }),
-        body: JSON.stringify({ mastered: m || {} })
+      const r = await fetch(API + "/api/progress", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ mastered: ids })
       });
-      if (!r.ok) this.flashMsg("Save failed");
+      if (!r.ok) { this.flashMsg(r.status === 401 ? "Signed out" : "Save failed"); return; }
+      this.flashMsg("Saved " + ids.length);
     } catch (e) { this.flashMsg("Save failed"); }
   }
 
   // Explicit user action, long after mount, so it can just setState and let the
   // normal render path persist to localStorage.
   async pullMastered() {
-    const tok = okSyncReady() ? localStorage.getItem(OK_TOKEN_KEY) : null;
-    if (!tok || !this.state.userEmail || this.state.authBusy) return;
+    if (!okSyncReady() || !this.state.userEmail || this.state.authBusy) return;
     this.setState({ authBusy: true });
     try {
-      const r = await fetch(SUPABASE_URL + "/rest/v1/progress?select=mastered", { headers: this.okHeaders(tok) });
-      if (!r.ok) { this.flashMsg("Load failed"); this.setState({ authBusy: false }); return; }
-      const rows = await r.json();
-      const remote = (rows && rows[0] && rows[0].mastered) || {};
+      const r = await fetch(API + "/api/progress", { credentials: "same-origin" });
+      if (!r.ok) { this.flashMsg(r.status === 401 ? "Signed out" : "Load failed"); this.setState({ authBusy: false }); return; }
+      const d = await r.json();
+      // Array of ids from the server -> the {id: true} map the app uses.
+      const remote = {};
+      for (const id of (d && d.mastered) || []) remote[id] = true;
       const merged = okMerge(this.state.mastered, remote);
       this.persistMastered(merged);
       this._savedSig = this.masterSig(merged);
@@ -3470,10 +3481,11 @@ class Component extends DCLogic {
         // disk, uploaded, and recorded in _savedSig must be the same map, and
         // must be the current one.
         const cur = this.state;
-        // Signed out with an email typed in: this button sends the magic link.
-        if (okSyncReady() && !(cur.userEmail || this.props.userEmail)) { this.sendMagicLink(cur.emailDraft); return; }
-        // No account configured: Save exports a progress file instead.
-        if (!okSyncReady() || !cur.userEmail) {
+        const signedIn = !!(cur.userEmail || this.props.userEmail);
+        // Signed out: an email in the field means "send me a link"; an empty
+        // field means the user wants the progress file, not an account.
+        if (!signedIn && okSyncReady() && okIsEmail(cur.emailDraft)) { this.sendMagicLink(cur.emailDraft); return; }
+        if (!signedIn) {
           if (!this.hasProgress(cur)) { this.flashMsg("Nothing to save yet"); return; }
           this.persistMastered(cur.mastered);
           this.persist(cur.seen);
@@ -3481,7 +3493,10 @@ class Component extends DCLogic {
           this.exportProgress();
           return;
         }
-        if (!this.isDirty(cur)) return;
+        // Signed in, Save always pushes. isDirty() only tracks divergence from
+        // what was last written locally, which says nothing about what the
+        // server holds -- a fresh account starts empty while local progress
+        // looks "clean", and that is precisely when a save is wanted.
         this.pushMastered(cur.mastered);
         this.persistMastered(cur.mastered);
         this.persist(cur.seen);
