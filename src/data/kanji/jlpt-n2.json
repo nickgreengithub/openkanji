@@ -1,0 +1,9658 @@
+[
+ {
+  "id": "k0601",
+  "c": "党",
+  "meaning": {
+   "en": "party, faction",
+   "es": "partido, facción"
+  },
+  "mnemonic": {
+   "en": "The political party argued with the opposition party until the whole party split into factions.",
+   "es": "El partido político discutió con el partido de oposición hasta que el partido entero se dividió en facciones."
+  },
+  "g": [
+   {
+    "r": "トウ",
+    "w": [
+     "w0661",
+     "w2078",
+     "w2079"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0602",
+  "c": "協",
+  "meaning": {
+   "en": "cooperation, co-",
+   "es": "cooperación, co-"
+  },
+  "mnemonic": {
+   "en": "After a long conference, cooperation and conciliation replaced the arguments, and true collaboration began.",
+   "es": "Tras una larga deliberación, la cooperación y la armonía reemplazaron las peleas, y empezó la verdadera colaboración."
+  },
+  "g": [
+   {
+    "r": "キョウ",
+    "w": [
+     "w2080",
+     "w2081",
+     "w0746"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0603",
+  "c": "総",
+  "meaning": {
+   "en": "general, whole",
+   "es": "general, total"
+  },
+  "mnemonic": {
+   "en": "At the general meeting we made a synthesis of every report and reviewed the whole total.",
+   "es": "En la asamblea general hicimos una síntesis de cada informe y revisamos el total."
+  },
+  "g": [
+   {
+    "r": "ソウ",
+    "w": [
+     "w2082",
+     "w2083",
+     "w2084"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0604",
+  "c": "領",
+  "meaning": {
+   "en": "territory, dominion",
+   "es": "territorio, dominio"
+  },
+  "mnemonic": {
+   "en": "The consul stamped the receipt and explained the gist of the rules for his territory.",
+   "es": "El cónsul selló el recibo y explicó la esencia de las normas de su territorio."
+  },
+  "g": [
+   {
+    "r": "リョウ",
+    "w": [
+     "w2085",
+     "w2086",
+     "w2087"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0605",
+  "c": "設",
+  "meaning": {
+   "en": "establish, set up",
+   "es": "establecer, instalar"
+  },
+  "mnemonic": {
+   "en": "During construction of the facility, the design called for new equipment, and the establishment chose to establish clear rules.",
+   "es": "Durante la construcción del establecimiento, el diseño exigía nuevo equipo, y decidimos establecer y crear una instalación moderna."
+  },
+  "g": [
+   {
+    "r": "セツ",
+    "w": [
+     "w0448",
+     "w1182",
+     "w2088"
+    ]
+   },
+   {
+    "r": "セッ",
+    "w": [
+     "w2089",
+     "w2090"
+    ]
+   },
+   {
+    "r": "もう",
+    "w": [
+     "w2091"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0606",
+  "c": "改",
+  "meaning": {
+   "en": "reform, change",
+   "es": "reforma, cambiar"
+  },
+  "mnemonic": {
+   "en": "After the remodeling of the ticket gate, they made a revision of the rules and decided again to change everything.",
+   "es": "Tras la remodelación del control de billetes, hicieron una revisión de las normas y decidieron de nuevo cambiar todo."
+  },
+  "g": [
+   {
+    "r": "カイ",
+    "w": [
+     "w2092",
+     "w2093",
+     "w2094"
+    ]
+   },
+   {
+    "r": "あらた",
+    "w": [
+     "w2095",
+     "w2096"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0607",
+  "c": "府",
+  "meaning": {
+   "en": "prefecture, government",
+   "es": "prefectura, gobierno"
+  },
+  "mnemonic": {
+   "en": "The government asked the prefectures to report, so each prefectural office sent its papers.",
+   "es": "El gobierno pidió informes a las prefecturas, y cada oficina prefectural envió sus papeles."
+  },
+  "g": [
+   {
+    "r": "フ",
+    "w": [
+     "w0659",
+     "w2097",
+     "w2098"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0608",
+  "c": "査",
+  "meaning": {
+   "en": "investigate",
+   "es": "investigar"
+  },
+  "mnemonic": {
+   "en": "The policeman began an inspection, then a full investigation and survey of the scene.",
+   "es": "El policía inició una inspección y luego una investigación completa con una encuesta a los vecinos."
+  },
+  "g": [
+   {
+    "r": "サ",
+    "w": [
+     "w2099",
+     "w2100",
+     "w2101"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0609",
+  "c": "委",
+  "meaning": {
+   "en": "committee, entrust",
+   "es": "comité, confiar"
+  },
+  "mnemonic": {
+   "en": "The committee member accepted the entrustment of the funds, taking charge because we chose to entrust everything to her.",
+   "es": "El miembro del comité aceptó el encargo y la delegación de fondos, porque decidimos confiarle todo."
+  },
+  "g": [
+   {
+    "r": "イ",
+    "w": [
+     "w2102",
+     "w2103",
+     "w2104"
+    ]
+   },
+   {
+    "r": "ゆだ",
+    "w": [
+     "w2105"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0610",
+  "c": "軍",
+  "meaning": {
+   "en": "army, force",
+   "es": "ejército, fuerza"
+  },
+  "mnemonic": {
+   "en": "The army sent its troops aboard a warship, showing the full force of the military.",
+   "es": "El ejército embarcó a sus tropas en un buque de guerra, mostrando toda su fuerza."
+  },
+  "g": [
+   {
+    "r": "グン",
+    "w": [
+     "w2106",
+     "w2107",
+     "w2108"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0611",
+  "c": "団",
+  "meaning": {
+   "en": "group, association",
+   "es": "grupo, asociación"
+  },
+  "mnemonic": {
+   "en": "In the housing complex, a group from the residents' association sat on a cushion and a futon to chat.",
+   "es": "En la urbanización, un grupo de la asociación de vecinos se sentó en un cojín y un futón para charlar."
+  },
+  "g": [
+   {
+    "r": "ダン",
+    "w": [
+     "w2109",
+     "w2110",
+     "w2111"
+    ]
+   },
+   {
+    "r": "トン",
+    "w": [
+     "w1486",
+     "w2112"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0612",
+  "c": "各",
+  "meaning": {
+   "en": "each, every",
+   "es": "cada, cada uno"
+  },
+  "mnemonic": {
+   "en": "Each individual traveled to various parts of the country, tasting all sorts of dishes from each country.",
+   "es": "Cada uno viajó a diversos lugares, probando todo tipo de platos de cada país."
+  },
+  "g": [
+   {
+    "r": "カク",
+    "w": [
+     "w2113",
+     "w2114",
+     "w2115"
+    ]
+   },
+   {
+    "r": "カッ",
+    "w": [
+     "w2116"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0613",
+  "c": "革",
+  "meaning": {
+   "en": "leather, reform",
+   "es": "cuero, reforma"
+  },
+  "mnemonic": {
+   "en": "Holding the strap on the train in my leather shoes, I read about the reform and innovation in leather craft.",
+   "es": "Agarrado a la correa del tren con mis zapatos de cuero, leí sobre la reforma y la innovación del cuero."
+  },
+  "g": [
+   {
+    "r": "かわ",
+    "w": [
+     "w2117",
+     "w2118",
+     "w2119"
+    ]
+   },
+   {
+    "r": "カク",
+    "w": [
+     "w2120",
+     "w2121"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0614",
+  "c": "村",
+  "meaning": {
+   "en": "village, town",
+   "es": "pueblo, aldea"
+  },
+  "mnemonic": {
+   "en": "Every villager in the poor village knew the fishing village and the agricultural community down the road.",
+   "es": "Cada aldeano del pueblo pobre conocía el pueblo pesquero y la comunidad agrícola del otro lado del valle."
+  },
+  "g": [
+   {
+    "r": "ソン",
+    "w": [
+     "w2122",
+     "w2123",
+     "w2124"
+    ]
+   },
+   {
+    "r": "むら",
+    "w": [
+     "w2125",
+     "w2126"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0615",
+  "c": "勢",
+  "meaning": {
+   "en": "force, momentum",
+   "es": "fuerza, ímpetu"
+  },
+  "mnemonic": {
+   "en": "In that condition and situation, the contingent kept a firm posture, and a great number of people surged forward with force.",
+   "es": "Ante esa situación, el contingente mantuvo la postura firme y muchas personas avanzaron con fuerza."
+  },
+  "g": [
+   {
+    "r": "セイ",
+    "w": [
+     "w2127",
+     "w2128",
+     "w2129"
+    ]
+   },
+   {
+    "r": "いきお",
+    "w": [
+     "w2130"
+    ]
+   },
+   {
+    "r": "ゼイ",
+    "w": [
+     "w2131",
+     "w2132"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0616",
+  "c": "減",
+  "meaning": {
+   "en": "decrease, reduce",
+   "es": "disminuir, reducir"
+  },
+  "mnemonic": {
+   "en": "With each adjustment, the increase and decrease in prices settled, and the reduction helped costs decrease and reduce waste.",
+   "es": "Con cada ajuste, el aumento y disminución de precios se calmó, y la reducción ayudó a disminuir gastos y reducir residuos."
+  },
+  "g": [
+   {
+    "r": "ゲン",
+    "w": [
+     "w0980",
+     "w0808",
+     "w2133"
+    ]
+   },
+   {
+    "r": "へ",
+    "w": [
+     "w2134",
+     "w2135"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0617",
+  "c": "再",
+  "meaning": {
+   "en": "again, twice",
+   "es": "de nuevo, dos veces"
+  },
+  "mnemonic": {
+   "en": "Again and again we moved the reunion, from the week after next to the month after next, awaiting the rebuilding.",
+   "es": "Aplazamos repetidamente el reencuentro, primero dentro de dos semanas, luego dentro de dos meses, otra vez por la reconstrucción."
+  },
+  "g": [
+   {
+    "r": "サイ",
+    "w": [
+     "w2136",
+     "w2137",
+     "w2138"
+    ]
+   },
+   {
+    "r": "ふたた",
+    "w": [
+     "w2139"
+    ]
+   },
+   {
+    "r": "サ",
+    "w": [
+     "w2140",
+     "w2141"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0618",
+  "c": "税",
+  "meaning": {
+   "en": "tax, duty",
+   "es": "impuesto, arancel"
+  },
+  "mnemonic": {
+   "en": "At customs I asked about taxation and learned my gift qualified for a tax exemption.",
+   "es": "En la aduana pregunté por los impuestos y supe que mi regalo tenía exención de impuestos."
+  },
+  "g": [
+   {
+    "r": "ゼイ",
+    "w": [
+     "w2142",
+     "w2143",
+     "w2144"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0619",
+  "c": "営",
+  "meaning": {
+   "en": "business, manage",
+   "es": "negocio, gestionar"
+  },
+  "mnemonic": {
+   "en": "Running the family business is a daily activity, and good management keeps the trade alive.",
+   "es": "Dirigir el negocio familiar es una actividad diaria, y una buena gestión mantiene vivo el comercio."
+  },
+  "g": [
+   {
+    "r": "エイ",
+    "w": [
+     "w2145",
+     "w0736",
+     "w2146"
+    ]
+   },
+   {
+    "r": "いとな",
+    "w": [
+     "w2147",
+     "w2148"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0620",
+  "c": "比",
+  "meaning": {
+   "en": "compare, ratio",
+   "es": "comparar, proporción"
+  },
+  "mnemonic": {
+   "en": "In comparison the two paintings are comparatively similar, but if you compare them with the eye the contrast appears.",
+   "es": "En comparación los dos cuadros son relativamente parecidos, pero al compararlos visualmente aparece el contraste."
+  },
+  "g": [
+   {
+    "r": "ヒ",
+    "w": [
+     "w2149",
+     "w2150",
+     "w2151"
+    ]
+   },
+   {
+    "r": "くら",
+    "w": [
+     "w2152",
+     "w2153"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0621",
+  "c": "防",
+  "meaning": {
+   "en": "defend, prevent",
+   "es": "defender, prevenir"
+  },
+  "mnemonic": {
+   "en": "The fire station teaches prevention, and the police work on prevention of crime, to defend and protect us all.",
+   "es": "La estación de bomberos enseña prevención, y la policía trabaja en la prevención del delito para defender y proteger a todos."
+  },
+  "g": [
+   {
+    "r": "ボウ",
+    "w": [
+     "w2154",
+     "w1790",
+     "w2155"
+    ]
+   },
+   {
+    "r": "ふせ",
+    "w": [
+     "w2156"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0622",
+  "c": "補",
+  "meaning": {
+   "en": "supplement, compensate",
+   "es": "suplir, compensar"
+  },
+  "mnemonic": {
+   "en": "To compensate for the lost votes, the candidacy promised compensation to the workers.",
+   "es": "Para compensar los votos perdidos, la candidatura prometió una compensación a los trabajadores."
+  },
+  "g": [
+   {
+    "r": "おぎな",
+    "w": [
+     "w2157"
+    ]
+   },
+   {
+    "r": "ホ",
+    "w": [
+     "w1396",
+     "w2158"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0623",
+  "c": "境",
+  "meaning": {
+   "en": "boundary, border",
+   "es": "frontera, límite"
+  },
+  "mnemonic": {
+   "en": "At the national border, the boundary line ran through the temple grounds, and the environment changed at the borderline.",
+   "es": "En la frontera, el límite cruzaba el recinto del templo, y el medio ambiente cambiaba de un lado a otro."
+  },
+  "g": [
+   {
+    "r": "キョウ",
+    "w": [
+     "w2159",
+     "w2160",
+     "w2161"
+    ]
+   },
+   {
+    "r": "さかい",
+    "w": [
+     "w2162",
+     "w2163"
+    ]
+   },
+   {
+    "r": "ケイ",
+    "w": [
+     "w0692"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0624",
+  "c": "導",
+  "meaning": {
+   "en": "guidance, lead",
+   "es": "guía, guiar"
+  },
+  "mnemonic": {
+   "en": "Under the coach's guidance and leadership, the introduction of new drills let each player be guided to victory.",
+   "es": "Bajo la guía y el liderazgo principal del entrenador, la introducción de nuevos ejercicios permitió a cada jugador ser guiado."
+  },
+  "g": [
+   {
+    "r": "ドウ",
+    "w": [
+     "w0829",
+     "w2164",
+     "w2165"
+    ]
+   },
+   {
+    "r": "みちび",
+    "w": [
+     "w2166"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0625",
+  "c": "副",
+  "meaning": {
+   "en": "vice-, assistant",
+   "es": "vice-, adjunto"
+  },
+  "mnemonic": {
+   "en": "The assistant manager writes an adverb dictionary as a side job in the evenings.",
+   "es": "El director adjunto escribe un diccionario de adverbios como trabajo secundario por las noches."
+  },
+  "g": [
+   {
+    "r": "フク",
+    "w": [
+     "w2167",
+     "w2168",
+     "w2169"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0626",
+  "c": "算",
+  "meaning": {
+   "en": "calculate, count",
+   "es": "calcular, contar"
+  },
+  "mnemonic": {
+   "en": "In arithmetic class, each calculation of the budget used multiplication and division.",
+   "es": "En clase de aritmética, cada cálculo del presupuesto usaba multiplicación y división."
+  },
+  "g": [
+   {
+    "r": "サン",
+    "w": [
+     "w2170",
+     "w2171",
+     "w0885"
+    ]
+   },
+   {
+    "r": "ザン",
+    "w": [
+     "w1922",
+     "w2172"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0627",
+  "c": "輸",
+  "meaning": {
+   "en": "transport, send",
+   "es": "transportar, enviar"
+  },
+  "mnemonic": {
+   "en": "They import blood and transport it quickly to the hospital for a blood transfusion.",
+   "es": "La importación de sangre llegó en transporte urgente al hospital para una transfusión de sangre."
+  },
+  "g": [
+   {
+    "r": "ユ",
+    "w": [
+     "w2173",
+     "w2174",
+     "w2175"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0628",
+  "c": "述",
+  "meaning": {
+   "en": "state, mention",
+   "es": "declarar, mencionar"
+  },
+  "mnemonic": {
+   "en": "In her verbal statement she gave a description of the event and used a clear predicate to state her point.",
+   "es": "En su declaración oral dio una descripción del hecho y usó un predicado claro para declarar su postura."
+  },
+  "g": [
+   {
+    "r": "ジュツ",
+    "w": [
+     "w2176",
+     "w2177",
+     "w2178"
+    ]
+   },
+   {
+    "r": "の",
+    "w": [
+     "w2179"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0629",
+  "c": "農",
+  "meaning": {
+   "en": "agriculture, farmers",
+   "es": "agricultura, campesinos"
+  },
+  "mnemonic": {
+   "en": "The agricultural community stopped using agricultural chemicals so its agricultural produce would be healthier.",
+   "es": "La comunidad agrícola dejó de usar pesticidas para que su producto agrícola fuera más sano."
+  },
+  "g": [
+   {
+    "r": "ノウ",
+    "w": [
+     "w2122",
+     "w2180",
+     "w2181"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0630",
+  "c": "州",
+  "meaning": {
+   "en": "state, province",
+   "es": "estado, provincia"
+  },
+  "mnemonic": {
+   "en": "Every state and province in Europe felt far away when we moved to Kyushu.",
+   "es": "Cada estado y provincia de Europa parecía lejano cuando nos mudamos a Kyushu."
+  },
+  "g": [
+   {
+    "r": "シュウ",
+    "w": [
+     "w2182",
+     "w2183",
+     "w2184"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0631",
+  "c": "武",
+  "meaning": {
+   "en": "warrior, military",
+   "es": "guerrero, militar"
+  },
+  "mnemonic": {
+   "en": "The samurai warrior polished his weapon and arms, proud of the armament of a true warrior.",
+   "es": "El samurái guerrero pulió su arma, orgulloso del armamento de un verdadero guerrero."
+  },
+  "g": [
+   {
+    "r": "ブ",
+    "w": [
+     "w2185",
+     "w2186",
+     "w2187"
+    ]
+   },
+   {
+    "r": "ム",
+    "w": [
+     "w2188"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0632",
+  "c": "象",
+  "meaning": {
+   "en": "elephant, image",
+   "es": "elefante, imagen"
+  },
+  "mnemonic": {
+   "en": "An elephant of ivory made an abstract impression, a phenomenon we now pattern our sculptures after.",
+   "es": "El elefante de marfil dejó una impresión abstracta, un fenómeno que ahora imitamos en las esculturas."
+  },
+  "g": [
+   {
+    "r": "ショウ",
+    "w": [
+     "w2189",
+     "w2190",
+     "w2191"
+    ]
+   },
+   {
+    "r": "ゾウ",
+    "w": [
+     "w2192",
+     "w2193"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0633",
+  "c": "域",
+  "meaning": {
+   "en": "region, zone",
+   "es": "región, zona"
+  },
+  "mnemonic": {
+   "en": "The river basin marks the range of this region, from the city zone to the farming area.",
+   "es": "La cuenca fluvial marca los límites de esta región, desde la zona urbana hasta el área de cultivo."
+  },
+  "g": [
+   {
+    "r": "イキ",
+    "w": [
+     "w2194",
+     "w2195",
+     "w2196"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0634",
+  "c": "額",
+  "meaning": {
+   "en": "forehead, amount",
+   "es": "frente, cantidad"
+  },
+  "mnemonic": {
+   "en": "He tapped his forehead, checking the amount of money in the frame and the difference in the balance.",
+   "es": "Se tocó la frente al comprobar la cantidad de dinero del marco y la diferencia del saldo."
+  },
+  "g": [
+   {
+    "r": "ガク",
+    "w": [
+     "w2197",
+     "w2198",
+     "w2199"
+    ]
+   },
+   {
+    "r": "ひたい",
+    "w": [
+     "w2200"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0635",
+  "c": "欧",
+  "meaning": {
+   "en": "Europe",
+   "es": "Europa"
+  },
+  "mnemonic": {
+   "en": "Europe and America together form the West, and Western Europe is the heart of Europe.",
+   "es": "Occidente abarca Europa y América, y Europa occidental es el corazón de Europa."
+  },
+  "g": [
+   {
+    "r": "オウ",
+    "w": [
+     "w0706",
+     "w2183",
+     "w2201"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0636",
+  "c": "担",
+  "meaning": {
+   "en": "shoulder, carry",
+   "es": "cargar, llevar"
+  },
+  "mnemonic": {
+   "en": "The carrier in charge shouldered the stretcher and carried it, a bearer who bore the whole weight.",
+   "es": "El cargador encargado cargó al hombro la camilla y la llevó, un portador responsable que asumió todo el peso."
+  },
+  "g": [
+   {
+    "r": "かつ",
+    "w": [
+     "w2202",
+     "w2203"
+    ]
+   },
+   {
+    "r": "タン",
+    "w": [
+     "w0750",
+     "w2204"
+    ]
+   },
+   {
+    "r": "にな",
+    "w": [
+     "w2205",
+     "w2206"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0637",
+  "c": "準",
+  "meaning": {
+   "en": "standard, semi-",
+   "es": "norma, semi-"
+  },
+  "mnemonic": {
+   "en": "A semi-professional must follow the standard and conform to the level that is the basis for the rules.",
+   "es": "Un jugador semiprofesional debe seguir la norma y conformarse al nivel que es la base del estándar."
+  },
+  "g": [
+   {
+    "r": "ジュン",
+    "w": [
+     "w2207",
+     "w2208",
+     "w2209"
+    ]
+   },
+   {
+    "r": "じゅん",
+    "w": [
+     "w2210",
+     "w2211"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0638",
+  "c": "賞",
+  "meaning": {
+   "en": "prize, award",
+   "es": "premio, galardón"
+  },
+  "mnemonic": {
+   "en": "She won the prize with a monetary award, and her appreciation for the reward showed in her smile.",
+   "es": "Ganó el premio en dinero y su apreciación por el galardón se notó en su disfrute."
+  },
+  "g": [
+   {
+    "r": "ショウ",
+    "w": [
+     "w2212",
+     "w2213",
+     "w2214"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0639",
+  "c": "辺",
+  "meaning": {
+   "en": "vicinity, edge",
+   "es": "cercanías, borde"
+  },
+  "mnemonic": {
+   "en": "In the vicinity of the beach, the peripheral area near the seashore feels like a remote region on the boundary.",
+   "es": "En las cercanías de la orilla de la playa, la periferia del área parece una región remota a la orilla del mar."
+  },
+  "g": [
+   {
+    "r": "ヘン",
+    "w": [
+     "w2215",
+     "w2216",
+     "w2217"
+    ]
+   },
+   {
+    "r": "あた",
+    "w": [
+     "w2218"
+    ]
+   },
+   {
+    "r": "べ",
+    "w": [
+     "w2219",
+     "w2220"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0640",
+  "c": "造",
+  "meaning": {
+   "en": "make, build",
+   "es": "fabricar, construir"
+  },
+  "mnemonic": {
+   "en": "After the remodeling, the shipbuilding yard could make a man-made structure and produce packing for it.",
+   "es": "Tras la remodelación, el astillero de construcción naval pudo fabricar una estructura artificial y producir su embalaje."
+  },
+  "g": [
+   {
+    "r": "ゾウ",
+    "w": [
+     "w2221",
+     "w1635",
+     "w2094"
+    ]
+   },
+   {
+    "r": "つく",
+    "w": [
+     "w2222",
+     "w2223"
+    ]
+   },
+   {
+    "r": "づく",
+    "w": [
+     "w2224"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0641",
+  "c": "被",
+  "meaning": {
+   "en": "suffer, cover",
+   "es": "sufrir, cubrir"
+  },
+  "mnemonic": {
+   "en": "The defendant was accused of the damage, but he was the one suffering after being hit.",
+   "es": "El acusado fue demandado por el daño, pero el damnificado sufría más que nadie."
+  },
+  "g": [
+   {
+    "r": "ヒ",
+    "w": [
+     "w2225",
+     "w2226",
+     "w2227"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0642",
+  "c": "技",
+  "meaning": {
+   "en": "skill, technique",
+   "es": "habilidad, técnica"
+  },
+  "mnemonic": {
+   "en": "The engineer showed real art and technique in the match, and his acting after the game was a performance.",
+   "es": "El ingeniero mostró técnica y arte en el partido, y su actuación tras el juego fue todo un espectáculo."
+  },
+  "g": [
+   {
+    "r": "ギ",
+    "w": [
+     "w1036",
+     "w1451",
+     "w2228"
+    ]
+   },
+   {
+    "r": "わざ",
+    "w": [
+     "w2229"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0643",
+  "c": "低",
+  "meaning": {
+   "en": "low, lower",
+   "es": "bajo, bajar"
+  },
+  "mnemonic": {
+   "en": "The fall in sales left the lowest shelf low and short, so after the rise and fall we lower prices.",
+   "es": "El descenso dejó el precio mínimo tan bajo que, tras los altibajos, tuvimos que bajar aún más el estante."
+  },
+  "g": [
+   {
+    "r": "テイ",
+    "w": [
+     "w2230",
+     "w2231",
+     "w2232"
+    ]
+   },
+   {
+    "r": "ひく",
+    "w": [
+     "w2233",
+     "w2234"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0644",
+  "c": "復",
+  "meaning": {
+   "en": "restore, return",
+   "es": "restaurar, regresar"
+  },
+  "mnemonic": {
+   "en": "After the round trip, his recovery felt like a revival, and a review of the restoration showed everything restored.",
+   "es": "Tras el viaje de ida y vuelta, su recuperación fue un renacer, y el repaso de la restauración mostró todo restaurado."
+  },
+  "g": [
+   {
+    "r": "フク",
+    "w": [
+     "w2235",
+     "w2236",
+     "w2237"
+    ]
+   },
+   {
+    "r": "フッ",
+    "w": [
+     "w2238",
+     "w2239"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0645",
+  "c": "移",
+  "meaning": {
+   "en": "move, shift",
+   "es": "mover, trasladar"
+  },
+  "mnemonic": {
+   "en": "The immigrant's moving day was a small migration, as he moved his boxes and transferred his life to a new city.",
+   "es": "La mudanza del inmigrante fue un pequeño desplazamiento, pues se mudó, trasladó sus cajas y transfirió su vida a otra ciudad."
+  },
+  "g": [
+   {
+    "r": "イ",
+    "w": [
+     "w2240",
+     "w2241",
+     "w2242"
+    ]
+   },
+   {
+    "r": "うつ",
+    "w": [
+     "w2243",
+     "w2244"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0646",
+  "c": "個",
+  "meaning": {
+   "en": "individual, piece",
+   "es": "individuo, unidad"
+  },
+  "mnemonic": {
+   "en": "Each individual is a private person, so we count them one by one at every place and point.",
+   "es": "Cada individuo es un particular, así que los contamos uno a uno en cada lugar y punto."
+  },
+  "g": [
+   {
+    "r": "コ",
+    "w": [
+     "w2245",
+     "w2246",
+     "w2247"
+    ]
+   },
+   {
+    "r": "カ",
+    "w": [
+     "w2248"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0647",
+  "c": "門",
+  "meaning": {
+   "en": "gate",
+   "es": "puerta, portón"
+  },
+  "mnemonic": {
+   "en": "At the main gate of the university, a New Year's pine decoration marks the gate to my major and speciality.",
+   "es": "En la puerta principal de la universidad, una decoración de Año Nuevo adorna el portón de mi especialidad."
+  },
+  "g": [
+   {
+    "r": "モン",
+    "w": [
+     "w2249",
+     "w2250",
+     "w2251"
+    ]
+   },
+   {
+    "r": "かど",
+    "w": [
+     "w2252"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0648",
+  "c": "課",
+  "meaning": {
+   "en": "lesson, section",
+   "es": "lección, sección"
+  },
+  "mnemonic": {
+   "en": "Each lesson of my daily routine is a chapter of daily work in the taxation department.",
+   "es": "Cada lección de mi rutina diaria es un capítulo de trabajo en la sección de impuestos de la división."
+  },
+  "g": [
+   {
+    "r": "カ",
+    "w": [
+     "w2143",
+     "w2253",
+     "w2254"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0649",
+  "c": "脳",
+  "meaning": {
+   "en": "brain",
+   "es": "cerebro"
+  },
+  "mnemonic": {
+   "en": "The leader used her head and brains, storing every memory in her brain.",
+   "es": "La líder usó la mente y el cerebro, y como dirigente guardó cada recuerdo en su cerebro."
+  },
+  "g": [
+   {
+    "r": "ノウ",
+    "w": [
+     "w1283",
+     "w2255",
+     "w2256"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0650",
+  "c": "極",
+  "meaning": {
+   "en": "pole, extreme",
+   "es": "polo, extremo"
+  },
+  "mnemonic": {
+   "en": "From the South Pole to the North Pole the cold is extremely harsh, and passive travellers never reach the height of paradise.",
+   "es": "Del polo sur al polo norte el frío es extremadamente duro, y los viajeros pasivos nunca alcanzan la cúspide del paraíso."
+  },
+  "g": [
+   {
+    "r": "キョク",
+    "w": [
+     "w2257",
+     "w2258",
+     "w2259"
+    ]
+   },
+   {
+    "r": "きわ",
+    "w": [
+     "w2260",
+     "w2261"
+    ]
+   },
+   {
+    "r": "ゴク",
+    "w": [
+     "w2262"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0651",
+  "c": "含",
+  "meaning": {
+   "en": "contain, include",
+   "es": "contener, incluir"
+  },
+  "mnemonic": {
+   "en": "The letter contains an implication, including a hidden meaning of real significance, so read what it is containing.",
+   "es": "La carta contiene una implicación e incluye un trasfondo de gran significado, así que lee todo su contenido."
+  },
+  "g": [
+   {
+    "r": "ふく",
+    "w": [
+     "w2263",
+     "w2264",
+     "w2265"
+    ]
+   },
+   {
+    "r": "ガン",
+    "w": [
+     "w2266",
+     "w2267"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0652",
+  "c": "蔵",
+  "meaning": {
+   "en": "storehouse, store",
+   "es": "almacén, guardar"
+  },
+  "mnemonic": {
+   "en": "The Ministry of Finance keeps a warehouse for storage, with a built-in refrigerator in the cellar.",
+   "es": "El ministerio de finanzas tiene un almacén para almacenamiento, con un refrigerador incorporado en la bodega."
+  },
+  "g": [
+   {
+    "r": "ゾウ",
+    "w": [
+     "w2268",
+     "w1573",
+     "w2269"
+    ]
+   },
+   {
+    "r": "くら",
+    "w": [
+     "w2270",
+     "w2271"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0653",
+  "c": "量",
+  "meaning": {
+   "en": "quantity, measure",
+   "es": "cantidad, medir"
+  },
+  "mnemonic": {
+   "en": "The surveying team took a measurement of the weight and the amount, measuring the quantity carefully.",
+   "es": "El equipo de topografía hizo una medición del peso y la cantidad, midiendo cada cosa con cuidado."
+  },
+  "g": [
+   {
+    "r": "リョウ",
+    "w": [
+     "w2272",
+     "w2273",
+     "w2274"
+    ]
+   },
+   {
+    "r": "はか",
+    "w": [
+     "w2275"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0654",
+  "c": "型",
+  "meaning": {
+   "en": "mould, type",
+   "es": "molde, tipo"
+  },
+  "mnemonic": {
+   "en": "The prototype set the pattern, and from that mold we built a model of every type.",
+   "es": "El prototipo fijó el tipo, y de ese molde hicimos una maqueta que sirve de modelo."
+  },
+  "g": [
+   {
+    "r": "ケイ",
+    "w": [
+     "w2276",
+     "w2277",
+     "w2278"
+    ]
+   },
+   {
+    "r": "かた",
+    "w": [
+     "w2279",
+     "w2280"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0655",
+  "c": "況",
+  "meaning": {
+   "en": "condition, situation",
+   "es": "condición, situación"
+  },
+  "mnemonic": {
+   "en": "The situation changed from prosperous conditions to recession, and the state of affairs became a depression.",
+   "es": "La situación pasó de la prosperidad económica a la recesión, y esa condición preocupó a todos."
+  },
+  "g": [
+   {
+    "r": "キョウ",
+    "w": [
+     "w1093",
+     "w2281",
+     "w2282"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0656",
+  "c": "針",
+  "meaning": {
+   "en": "needle, pin",
+   "es": "aguja, alfiler"
+  },
+  "mnemonic": {
+   "en": "The needle of the compass pointed the course, an indicator of the policy, while a wire held the clock's hand.",
+   "es": "La aguja de la brújula marcó el rumbo, un indicador de la política, mientras un alambre sujetaba la manecilla del reloj."
+  },
+  "g": [
+   {
+    "r": "シン",
+    "w": [
+     "w2283",
+     "w2284",
+     "w2285"
+    ]
+   },
+   {
+    "r": "はり",
+    "w": [
+     "w2286",
+     "w2287"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0657",
+  "c": "専",
+  "meaning": {
+   "en": "specialty, exclusive",
+   "es": "especialidad, exclusivo"
+  },
+  "mnemonic": {
+   "en": "Her major subject was despotism, a speciality she made her exclusive special study.",
+   "es": "Su especialidad en la carrera era el despotismo, y estudió esa autocracia de forma exclusiva."
+  },
+  "g": [
+   {
+    "r": "セン",
+    "w": [
+     "w2288",
+     "w2289",
+     "w2250"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0658",
+  "c": "谷",
+  "meaning": {
+   "en": "valley",
+   "es": "valle"
+  },
+  "mnemonic": {
+   "en": "A mountain stream runs through the valley, cutting a ravine and then a deep gorge.",
+   "es": "Un arroyo de montaña cruza el valle, abre un barranco y luego un cañón de garganta profunda."
+  },
+  "g": [
+   {
+    "r": "たに",
+    "w": [
+     "w2290",
+     "w2291",
+     "w2292"
+    ]
+   },
+   {
+    "r": "コク",
+    "w": [
+     "w2293",
+     "w2294"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0659",
+  "c": "史",
+  "meaning": {
+   "en": "history",
+   "es": "historia"
+  },
+  "mnemonic": {
+   "en": "Ms is what the history teacher prefers, and her chronicle of history fills the shelf.",
+   "es": "La señora que enseña historia guarda cada crónica de historia en su estantería."
+  },
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     "w2295",
+     "w2296",
+     "w2297"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0660",
+  "c": "階",
+  "meaning": {
+   "en": "storey, stairs",
+   "es": "piso, escalera"
+  },
+  "mnemonic": {
+   "en": "Each stage on the stairs is a grade, and every class and rank climbs its own storey.",
+   "es": "Cada etapa de la escalera es un nivel, y cada clase y rango sube a su propio piso."
+  },
+  "g": [
+   {
+    "r": "カイ",
+    "w": [
+     "w2298",
+     "w2299",
+     "w2300"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0661",
+  "c": "管",
+  "meaning": {
+   "en": "pipe, control",
+   "es": "tubo, control"
+  },
+  "mnemonic": {
+   "en": "The management has control over every pipe and tube, like a blood vessel carrying water.",
+   "es": "La gestión tiene el control de cada tubo, que lleva el agua como un vaso sanguíneo."
+  },
+  "g": [
+   {
+    "r": "カン",
+    "w": [
+     "w2301",
+     "w2302",
+     "w2303"
+    ]
+   },
+   {
+    "r": "くだ",
+    "w": [
+     "w2304"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0662",
+  "c": "兵",
+  "meaning": {
+   "en": "soldier, troops",
+   "es": "soldado, tropas"
+  },
+  "mnemonic": {
+   "en": "The soldier carried his weapons as the armed forces marched, one private among many troops.",
+   "es": "El soldado llevaba sus armas mientras marchaban las fuerzas armadas, un simple soldado entre las tropas."
+  },
+  "g": [
+   {
+    "r": "ヘイ",
+    "w": [
+     "w2305",
+     "w2306",
+     "w2307"
+    ]
+   },
+   {
+    "r": "ピョウ",
+    "w": [
+     "w2308"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0663",
+  "c": "接",
+  "meaning": {
+   "en": "touch, contact",
+   "es": "tocar, contacto"
+  },
+  "mnemonic": {
+   "en": "At the reception she made an indirect approach, touched his hand, and joined the connection between them.",
+   "es": "En la recepción hizo un acercamiento indirecto, tocó su mano y unió la conexión entre ambos."
+  },
+  "g": [
+   {
+    "r": "セツ",
+    "w": [
+     "w0812",
+     "w2309",
+     "w2310"
+    ]
+   },
+   {
+    "r": "セッ",
+    "w": [
+     "w2311",
+     "w2312"
+    ]
+   },
+   {
+    "r": "つ",
+    "w": [
+     "w2313"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0664",
+  "c": "細",
+  "meaning": {
+   "en": "thin, fine",
+   "es": "delgado, fino"
+  },
+  "mnemonic": {
+   "en": "A thin, slender scientist examined the small bacterium minutely, on a modest and poor salary.",
+   "es": "Un científico delgado examinó minuciosamente la pequeña bacteria con un sueldo modesto y pobre."
+  },
+  "g": [
+   {
+    "r": "こま",
+    "w": [
+     "w2314",
+     "w2315",
+     "w2316"
+    ]
+   },
+   {
+    "r": "ほそ",
+    "w": [
+     "w2317",
+     "w2318"
+    ]
+   },
+   {
+    "r": "サイ",
+    "w": [
+     "w2319"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0665",
+  "c": "効",
+  "meaning": {
+   "en": "effect, efficacy",
+   "es": "efecto, eficacia"
+  },
+  "mnemonic": {
+   "en": "The medicine is valid and effective, so its efficacy shows a clear effect and result.",
+   "es": "La medicina es válida y hace efecto, así que su eficacia muestra un resultado claro."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w2320",
+     "w1023",
+     "w2321"
+    ]
+   },
+   {
+    "r": "き",
+    "w": [
+     "w2322",
+     "w2323"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0666",
+  "c": "丸",
+  "meaning": {
+   "en": "round, circle",
+   "es": "redondo, círculo"
+  },
+  "mnemonic": {
+   "en": "Roll the clay completely into a circle, round it off into one lump, and it looks like a bullet.",
+   "es": "Redondea completamente la arcilla en un círculo, un solo cuerpo redondo como una bala."
+  },
+  "g": [
+   {
+    "r": "まる",
+    "w": [
+     "w2324",
+     "w2325",
+     "w2326"
+    ]
+   },
+   {
+    "r": "ガン",
+    "w": [
+     "w2327",
+     "w2328"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0667",
+  "c": "湾",
+  "meaning": {
+   "en": "bay, gulf",
+   "es": "bahía, golfo"
+  },
+  "mnemonic": {
+   "en": "Ships from Taiwan sail across the gulf into the bay and rest in the harbor.",
+   "es": "Los barcos de Taiwán cruzan el golfo, entran en la bahía y descansan en el puerto."
+  },
+  "g": [
+   {
+    "r": "ワン",
+    "w": [
+     "w2329",
+     "w2330",
+     "w2331"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0668",
+  "c": "録",
+  "meaning": {
+   "en": "record",
+   "es": "registrar, grabar"
+  },
+  "mnemonic": {
+   "en": "After registration, she made a recording of the meeting and kept the record in the minutes.",
+   "es": "Tras el registro, hizo una grabación de la reunión y guardó el acta en el registro."
+  },
+  "g": [
+   {
+    "r": "ロク",
+    "w": [
+     "w2332",
+     "w2333",
+     "w1457"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0669",
+  "c": "省",
+  "meaning": {
+   "en": "reflect, ministry",
+   "es": "reflexionar, ministerio"
+  },
+  "mnemonic": {
+   "en": "After returning home, frequent reflection made him omit the omission in the report for the ministries and agencies.",
+   "es": "Tras su regreso a casa, la reflexión frecuente le hizo omitir la omisión del informe para los ministerios y agencias."
+  },
+  "g": [
+   {
+    "r": "セイ",
+    "w": [
+     "w0913",
+     "w2334",
+     "w2335"
+    ]
+   },
+   {
+    "r": "ショウ",
+    "w": [
+     "w2336",
+     "w2337"
+    ]
+   },
+   {
+    "r": "はぶ",
+    "w": [
+     "w2338"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0670",
+  "c": "旧",
+  "meaning": {
+   "en": "old, former",
+   "es": "antiguo, ex"
+  },
+  "mnemonic": {
+   "en": "My ex-colleague, an old friend from old times, helped with the restoration of the house.",
+   "es": "Mi antiguo compañero, un amigo de toda la vida, ayudó con la restauración de la casa."
+  },
+  "g": [
+   {
+    "r": "キュウ",
+    "w": [
+     "w2339",
+     "w2239",
+     "w2340"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0671",
+  "c": "橋",
+  "meaning": {
+   "en": "bridge",
+   "es": "puente"
+  },
+  "mnemonic": {
+   "en": "From the wharf, the iron bridge on its pier reaches the overpass, a bridge built through patient mediation.",
+   "es": "Desde el muelle, el puente de hierro sobre su pilar llega al paso elevado, un puente hecho de mediación y enlace."
+  },
+  "g": [
+   {
+    "r": "キョウ",
+    "w": [
+     "w2341",
+     "w2342",
+     "w2343"
+    ]
+   },
+   {
+    "r": "はし",
+    "w": [
+     "w2344",
+     "w2345"
+    ]
+   },
+   {
+    "r": "ばし",
+    "w": [
+     "w2346"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0672",
+  "c": "岸",
+  "meaning": {
+   "en": "shore, coast",
+   "es": "orilla, costa"
+  },
+  "mnemonic": {
+   "en": "From the river bank we walked along the shore to the coast and the seashore.",
+   "es": "Desde la orilla del río caminamos por la costa hasta el litoral."
+  },
+  "g": [
+   {
+    "r": "きし",
+    "w": [
+     "w2347",
+     "w2348"
+    ]
+   },
+   {
+    "r": "ガン",
+    "w": [
+     "w2349",
+     "w2350"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0673",
+  "c": "周",
+  "meaning": {
+   "en": "circumference, around",
+   "es": "circunferencia, alrededor"
+  },
+  "mnemonic": {
+   "en": "Walking the circumference of the park, I noticed the peripheral surroundings on every lap of the circuit.",
+   "es": "Al recorrer la circunferencia del parque, observé la periferia y los alrededores en cada vuelta del entorno."
+  },
+  "g": [
+   {
+    "r": "シュウ",
+    "w": [
+     "w2215",
+     "w2351",
+     "w2352"
+    ]
+   },
+   {
+    "r": "まわ",
+    "w": [
+     "w2353"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0674",
+  "c": "材",
+  "meaning": {
+   "en": "lumber, material",
+   "es": "madera, material"
+  },
+  "mnemonic": {
+   "en": "The carpenter bought lumber and timber, treating the wood like the ingredients of a recipe.",
+   "es": "El carpintero compró madera y trató cada tabla como los ingredientes de una receta."
+  },
+  "g": [
+   {
+    "r": "ザイ",
+    "w": [
+     "w2354",
+     "w2355",
+     "w0351"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0675",
+  "c": "央",
+  "meaning": {
+   "en": "center, middle",
+   "es": "centro, medio"
+  },
+  "mnemonic": {
+   "en": "The central station stands right in the center of the city, in the middle of everything.",
+   "es": "La estación central está en el centro de la ciudad, en medio de todo."
+  },
+  "g": [
+   {
+    "r": "オウ",
+    "w": [
+     "w2356"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0676",
+  "c": "券",
+  "meaning": {
+   "en": "ticket",
+   "es": "boleto"
+  },
+  "mnemonic": {
+   "en": "With a commuter pass and a book of tickets, I never need another ticket or certificate.",
+   "es": "Con un abono de transporte y una libreta de boletos, nunca necesito otro boleto ni vale."
+  },
+  "g": [
+   {
+    "r": "ケン",
+    "w": [
+     "w2357",
+     "w2358",
+     "w2359"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0677",
+  "c": "編",
+  "meaning": {
+   "en": "compile, knit",
+   "es": "compilar, tejer"
+  },
+  "mnemonic": {
+   "en": "While knitting, she knits a scarf and does the editing of a compilation with one novel and one short story.",
+   "es": "Mientras hace tejido de punto, teje una bufanda y prepara la edición de una compilación con una novela y un cuento corto."
+  },
+  "g": [
+   {
+    "r": "ヘン",
+    "w": [
+     "w2360",
+     "w2361",
+     "w2362"
+    ]
+   },
+   {
+    "r": "あ",
+    "w": [
+     "w2363",
+     "w2364"
+    ]
+   },
+   {
+    "r": "ペン",
+    "w": [
+     "w2365"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0678",
+  "c": "捜",
+  "meaning": {
+   "en": "search, look for",
+   "es": "buscar"
+  },
+  "mnemonic": {
+   "en": "Looking for something, the police searched everywhere, an investigation that turned into a long search.",
+   "es": "En plena búsqueda, la policía buscó por todas partes en una investigación policial que se volvió un rastreo."
+  },
+  "g": [
+   {
+    "r": "さが",
+    "w": [
+     "w2366",
+     "w2367"
+    ]
+   },
+   {
+    "r": "ソウ",
+    "w": [
+     "w2368",
+     "w2369"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0679",
+  "c": "竹",
+  "meaning": {
+   "en": "bamboo",
+   "es": "bambú"
+  },
+  "mnemonic": {
+   "en": "In the bamboo grove a firecracker exploded and shook every stalk of bamboo.",
+   "es": "En el bosque de bambú explotó un petardo y sacudió cada caña de bambú."
+  },
+  "g": [
+   {
+    "r": "たけ",
+    "w": [
+     "w2370"
+    ]
+   },
+   {
+    "r": "チク",
+    "w": [
+     "w2371",
+     "w2372"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0680",
+  "c": "超",
+  "meaning": {
+   "en": "exceed, super-",
+   "es": "superar, súper-"
+  },
+  "mnemonic": {
+   "en": "The super runner crossed the line in excess of the record, exceeding it with pure transcendence.",
+   "es": "El súper corredor cruzó la meta con exceso sobre el récord, superándolo con pura trascendencia."
+  },
+  "g": [
+   {
+    "r": "チョウ",
+    "w": [
+     "w2373",
+     "w2374",
+     "w2375"
+    ]
+   },
+   {
+    "r": "こ",
+    "w": [
+     "w2376",
+     "w2377"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0681",
+  "c": "並",
+  "meaning": {
+   "en": "row, line up",
+   "es": "fila, alinear"
+  },
+  "mnemonic": {
+   "en": "Standing abreast in a row of trees, we line up side by side in a parallel arrangement, each of medium size.",
+   "es": "En coexistencia con la hilera de árboles, hacemos fila en paralelo y simultáneo, cada uno de tamaño mediano."
+  },
+  "g": [
+   {
+    "r": "ヘイ",
+    "w": [
+     "w2378",
+     "w2379",
+     "w2380"
+    ]
+   },
+   {
+    "r": "なみ",
+    "w": [
+     "w2381",
+     "w2382"
+    ]
+   },
+   {
+    "r": "なら",
+    "w": [
+     "w2383"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0682",
+  "c": "療",
+  "meaning": {
+   "en": "heal, cure",
+   "es": "curar, sanar"
+  },
+  "mnemonic": {
+   "en": "Good medical care begins with a diagnosis, then medical treatment to heal the patient.",
+   "es": "Una buena atención médica empieza con un diagnóstico y sigue con un tratamiento médico que cura al paciente."
+  },
+  "g": [
+   {
+    "r": "リョウ",
+    "w": [
+     "w2384",
+     "w0772",
+     "w2385"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0683",
+  "c": "採",
+  "meaning": {
+   "en": "pick, take",
+   "es": "recoger, tomar"
+  },
+  "mnemonic": {
+   "en": "After collecting samples from the mining site, the teacher adopted a new grading and took the best pick.",
+   "es": "Tras la recolección de muestras en la minería, el profesor adoptó una nueva calificación y tomó la mejor."
+  },
+  "g": [
+   {
+    "r": "サイ",
+    "w": [
+     "w2386",
+     "w2387",
+     "w2388"
+    ]
+   },
+   {
+    "r": "と",
+    "w": [
+     "w2389"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0684",
+  "c": "森",
+  "meaning": {
+   "en": "forest, woods",
+   "es": "bosque"
+  },
+  "mnemonic": {
+   "en": "Deep in the forest, the woods grow so thick that the forest feels endless.",
+   "es": "En lo profundo del bosque, la selva crece tan espesa que el bosque parece infinito."
+  },
+  "g": [
+   {
+    "r": "シン",
+    "w": [
+     "w2390"
+    ]
+   },
+   {
+    "r": "もり",
+    "w": [
+     "w2391"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0685",
+  "c": "競",
+  "meaning": {
+   "en": "compete, race",
+   "es": "competir, carrera"
+  },
+  "mnemonic": {
+   "en": "At the racecourse, horse racing and keirin bikes compete in a fierce competition, a match no one wants to lose.",
+   "es": "En el hipódromo, las carreras de caballos y el keirin compiten en una competencia feroz, un partido que nadie quiere perder."
+  },
+  "g": [
+   {
+    "r": "ケイ",
+    "w": [
+     "w1541",
+     "w2392",
+     "w2393"
+    ]
+   },
+   {
+    "r": "キョウ",
+    "w": [
+     "w2228",
+     "w1042"
+    ]
+   },
+   {
+    "r": "せ",
+    "w": [
+     "w2394"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0686",
+  "c": "介",
+  "meaning": {
+   "en": "mediate, in between",
+   "es": "mediar, intermedio"
+  },
+  "mnemonic": {
+   "en": "It was some trouble, but an introduction to nursing care let me mediate for my grandmother.",
+   "es": "Fue una molestia, pero la introducción al cuidado de ancianos me permitió mediar por mi abuela."
+  },
+  "g": [
+   {
+    "r": "カイ",
+    "w": [
+     "w2395",
+     "w2396",
+     "w2397"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0687",
+  "c": "根",
+  "meaning": {
+   "en": "root, basis",
+   "es": "raíz, base"
+  },
+  "mnemonic": {
+   "en": "With patience, the hedge sank its root under the roof, becoming the foundation of the whole house.",
+   "es": "Con paciencia, el seto hundió su raíz bajo el techo y se convirtió en la base y fundamento de la casa."
+  },
+  "g": [
+   {
+    "r": "ね",
+    "w": [
+     "w2398",
+     "w2399",
+     "w2400"
+    ]
+   },
+   {
+    "r": "コン",
+    "w": [
+     "w2401",
+     "w2402"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0688",
+  "c": "販",
+  "meaning": {
+   "en": "sell, market",
+   "es": "vender, comercializar"
+  },
+  "mnemonic": {
+   "en": "After putting the product on the market, the first sale led to a quick resale.",
+   "es": "Tras la comercialización del producto, la primera venta llevó a una rápida reventa."
+  },
+  "g": [
+   {
+    "r": "ハン",
+    "w": [
+     "w2403",
+     "w2404",
+     "w2405"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0689",
+  "c": "歴",
+  "meaning": {
+   "en": "history, career",
+   "es": "historia, trayectoria"
+  },
+  "mnemonic": {
+   "en": "Her academic background, her career, and her personal history read like a curriculum of history.",
+   "es": "Su formación académica, su trayectoria y su historial personal se leen como una historia completa."
+  },
+  "g": [
+   {
+    "r": "レキ",
+    "w": [
+     "w2406",
+     "w2296",
+     "w2407"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0690",
+  "c": "将",
+  "meaning": {
+   "en": "commander, future",
+   "es": "comandante, futuro"
+  },
+  "mnemonic": {
+   "en": "The general who plays Japanese chess is a leader who plans for the future.",
+   "es": "El general que juega ajedrez japonés es un comandante que planea el futuro."
+  },
+  "g": [
+   {
+    "r": "ショウ",
+    "w": [
+     "w2408",
+     "w2409",
+     "w2410"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0691",
+  "c": "幅",
+  "meaning": {
+   "en": "width, breadth",
+   "es": "ancho, anchura"
+  },
+  "mnemonic": {
+   "en": "The width of the scroll is its full breadth, a large-scale amplitude across the wall.",
+   "es": "El ancho del pergamino ocupa toda su anchura, una amplitud a gran escala sobre la pared."
+  },
+  "g": [
+   {
+    "r": "はば",
+    "w": [
+     "w2411",
+     "w2412",
+     "w2413"
+    ]
+   },
+   {
+    "r": "プク",
+    "w": [
+     "w2414"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0692",
+  "c": "般",
+  "meaning": {
+   "en": "general, sort",
+   "es": "general, tipo"
+  },
+  "mnemonic": {
+   "en": "The other day, the general rule for the whole group was the same as the average one.",
+   "es": "Hace poco, la regla general para el conjunto era la misma que para todos en general."
+  },
+  "g": [
+   {
+    "r": "パン",
+    "w": [
+     "w2415",
+     "w2416",
+     "w2417"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0693",
+  "c": "貿",
+  "meaning": {
+   "en": "trade, exchange",
+   "es": "comercio, intercambio"
+  },
+  "mnemonic": {
+   "en": "Trade across the sea is an exchange of goods between merchants.",
+   "es": "El comercio por mar es un intercambio de bienes entre mercaderes."
+  },
+  "g": [
+   {
+    "r": "ボウ",
+    "w": [
+     "w1460"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0694",
+  "c": "講",
+  "meaning": {
+   "en": "lecture",
+   "es": "conferencia"
+  },
+  "mnemonic": {
+   "en": "The lecturer had his lecture canceled, so his talk moved to the club instead.",
+   "es": "El conferenciante tuvo la clase cancelada, así que dio la conferencia y su charla en el club."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w2418",
+     "w1452",
+     "w2419"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0695",
+  "c": "林",
+  "meaning": {
+   "en": "grove, woods",
+   "es": "arboleda, bosque"
+  },
+  "mnemonic": {
+   "en": "In the mountain forest, forestry workers tend the woods and every grove of the forest.",
+   "es": "En el bosque montañoso, la silvicultura cuida la selva y cada arboleda del bosque."
+  },
+  "g": [
+   {
+    "r": "リン",
+    "w": [
+     "w2390",
+     "w2420",
+     "w2421"
+    ]
+   },
+   {
+    "r": "はやし",
+    "w": [
+     "w2422"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0696",
+  "c": "装",
+  "meaning": {
+   "en": "attire, equip",
+   "es": "atuendo, equipar"
+  },
+  "mnemonic": {
+   "en": "She dressed in a costume, chose her attire and outfit, and wrapped the equipment in packing.",
+   "es": "Se vistió con el vestuario, eligió su vestimenta y atuendo, y puso el equipo en su embalaje."
+  },
+  "g": [
+   {
+    "r": "ソウ",
+    "w": [
+     "w1055",
+     "w2423",
+     "w2424"
+    ]
+   },
+   {
+    "r": "ショウ",
+    "w": [
+     "w2425"
+    ]
+   },
+   {
+    "r": "よそお",
+    "w": [
+     "w2426",
+     "w2427"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0697",
+  "c": "諸",
+  "meaning": {
+   "en": "various, many",
+   "es": "varios, muchos"
+  },
+  "mnemonic": {
+   "en": "Ladies and gentlemen, various countries have sent many guests of various kinds tonight.",
+   "es": "Señoras y señores, varios países han enviado muchos invitados de varios tipos esta noche."
+  },
+  "g": [
+   {
+    "r": "ショ",
+    "w": [
+     "w2428",
+     "w2429",
+     "w2430"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0698",
+  "c": "劇",
+  "meaning": {
+   "en": "drama, play",
+   "es": "drama, obra"
+  },
+  "mnemonic": {
+   "en": "At the theater tonight the play is a drama full of tears.",
+   "es": "En el teatro esta noche la obra de teatro es un drama lleno de lágrimas."
+  },
+  "g": [
+   {
+    "r": "ゲキ",
+    "w": [
+     "w2431",
+     "w2432",
+     "w2433"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0699",
+  "c": "河",
+  "meaning": {
+   "en": "river",
+   "es": "río"
+  },
+  "mnemonic": {
+   "en": "From the riverbank, the river flows past a glacier into a canal, while the Milky Way shines over all the rivers.",
+   "es": "Desde la orilla del río, el río baja del glaciar hasta el canal, mientras la Vía Láctea brilla sobre todos los ríos."
+  },
+  "g": [
+   {
+    "r": "ガ",
+    "w": [
+     "w2434",
+     "w2435",
+     "w2436"
+    ]
+   },
+   {
+    "r": "かわ",
+    "w": [
+     "w2437",
+     "w2438"
+    ]
+   },
+   {
+    "r": "カ",
+    "w": [
+     "w2439"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0700",
+  "c": "航",
+  "meaning": {
+   "en": "navigate, sail",
+   "es": "navegar"
+  },
+  "mnemonic": {
+   "en": "In aviation as at sea, every voyage is a sail that depends on smooth operation of the service.",
+   "es": "Tanto en la aviación como en la navegación, cada viaje depende de la buena operación del servicio."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w2440",
+     "w2441",
+     "w2442"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0701",
+  "c": "鉄",
+  "meaning": {
+   "en": "iron",
+   "es": "hierro"
+  },
+  "mnemonic": {
+   "en": "The private railway runs its railway trains of iron across the iron bridge, guarded by a gun.",
+   "es": "El ferrocarril privado lleva sus trenes de hierro por el puente de hierro, vigilado por un arma de fuego."
+  },
+  "g": [
+   {
+    "r": "テツ",
+    "w": [
+     "w2443",
+     "w2444",
+     "w2445"
+    ]
+   },
+   {
+    "r": "テッ",
+    "w": [
+     "w2341",
+     "w2446"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0702",
+  "c": "児",
+  "meaning": {
+   "en": "child, infant",
+   "es": "niño, bebé"
+  },
+  "mnemonic": {
+   "en": "In childcare, the infant and the older children took the young child to pediatrics.",
+   "es": "En la crianza, llevé al niño pequeño y al menor a pediatría con los otros niños."
+  },
+  "g": [
+   {
+    "r": "ジ",
+    "w": [
+     "w2447",
+     "w2448",
+     "w2449"
+    ]
+   },
+   {
+    "r": "ニ",
+    "w": [
+     "w2450",
+     "w2451"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0703",
+  "c": "禁",
+  "meaning": {
+   "en": "prohibition, ban",
+   "es": "prohibición, prohibir"
+  },
+  "mnemonic": {
+   "en": "The no smoking sign is a ban, and breaking that prohibition is taboo here.",
+   "es": "Aquí está prohibido fumar; la prohibición es estricta y encender uno es tabú."
+  },
+  "g": [
+   {
+    "r": "キン",
+    "w": [
+     "w2024",
+     "w2452",
+     "w2453"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0704",
+  "c": "印",
+  "meaning": {
+   "en": "stamp, mark",
+   "es": "sello, marca"
+  },
+  "mnemonic": {
+   "en": "The stamped mark, the arrow and the emblem in the printing made a strong impression as a symbol.",
+   "es": "La marca sellada, la flecha y el emblema en la impresión dejaron un símbolo y una señal claros."
+  },
+  "g": [
+   {
+    "r": "じるし",
+    "w": [
+     "w2454",
+     "w2455",
+     "w2456"
+    ]
+   },
+   {
+    "r": "イン",
+    "w": [
+     "w2457",
+     "w2190"
+    ]
+   },
+   {
+    "r": "しるし",
+    "w": [
+     "w2458"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0705",
+  "c": "逆",
+  "meaning": {
+   "en": "reverse, opposite",
+   "es": "inverso, opuesto"
+  },
+  "mnemonic": {
+   "en": "Hanging upside down, he chose to oppose the reverse order, and that reversal turned adverse circumstances into an opposite outcome.",
+   "es": "Con el mapa invertido y al revés, me opuse al rumbo inverso, y ese vuelco convirtió la adversidad en lo opuesto."
+  },
+  "g": [
+   {
+    "r": "さか",
+    "w": [
+     "w2459",
+     "w2460",
+     "w2461"
+    ]
+   },
+   {
+    "r": "ギャク",
+    "w": [
+     "w2462",
+     "w2463"
+    ]
+   },
+   {
+    "r": "ギャッ",
+    "w": [
+     "w2464"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0706",
+  "c": "換",
+  "meaning": {
+   "en": "exchange, convert",
+   "es": "intercambiar, convertir"
+  },
+  "mnemonic": {
+   "en": "After fixing the ventilation, I swap coins in an exchange, check the conversion rate, and transfer trains.",
+   "es": "Tras arreglar la ventilación, hago un intercambio de monedas, calculo la conversión, cambio de andén y hago transbordo."
+  },
+  "g": [
+   {
+    "r": "カン",
+    "w": [
+     "w2465",
+     "w0876",
+     "w2466"
+    ]
+   },
+   {
+    "r": "か",
+    "w": [
+     "w2467",
+     "w2468"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0707",
+  "c": "久",
+  "meaning": {
+   "en": "long time",
+   "es": "largo tiempo"
+  },
+  "mnemonic": {
+   "en": "It has been a long time, and your long endurance and permanence seem to have lasted an eternity.",
+   "es": "Cuánto tiempo sin verte; tu resistencia y tu permanencia parecen una eternidad de amistad duradera."
+  },
+  "g": [
+   {
+    "r": "キュウ",
+    "w": [
+     "w2469",
+     "w2470",
+     "w2471"
+    ]
+   },
+   {
+    "r": "ひさ",
+    "w": [
+     "w2472",
+     "w2473"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0708",
+  "c": "油",
+  "meaning": {
+   "en": "oil, fat",
+   "es": "aceite, grasa"
+  },
+  "mnemonic": {
+   "en": "Through negligence I spilled kerosene and petroleum on the oil painting, ruining the oil colors.",
+   "es": "Por descuido derramé queroseno, petróleo y aceite sobre la pintura al óleo."
+  },
+  "g": [
+   {
+    "r": "ユ",
+    "w": [
+     "w2474",
+     "w2475",
+     "w1161"
+    ]
+   },
+   {
+    "r": "あぶら",
+    "w": [
+     "w2476",
+     "w2477"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0709",
+  "c": "暴",
+  "meaning": {
+   "en": "violence, outburst",
+   "es": "violencia, arrebato"
+  },
+  "mnemonic": {
+   "en": "The violent riot raged like a storm until the exposure of its leaders ended the violence.",
+   "es": "El motín violento alborotó como una tormenta hasta que la revelación de sus líderes acabó con la violencia."
+  },
+  "g": [
+   {
+    "r": "ボウ",
+    "w": [
+     "w2478",
+     "w2479",
+     "w2480"
+    ]
+   },
+   {
+    "r": "あば",
+    "w": [
+     "w2481"
+    ]
+   },
+   {
+    "r": "バク",
+    "w": [
+     "w2482"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0710",
+  "c": "輪",
+  "meaning": {
+   "en": "wheel, ring",
+   "es": "rueda, anillo"
+  },
+  "mnemonic": {
+   "en": "At the keirin race a wheel rolled through a hoop, past a stump of tree rings, and my ring fell off.",
+   "es": "En el keirin, una rueda cruzó un aro junto a un tronco con anillos de crecimiento, y perdí mi anillo."
+  },
+  "g": [
+   {
+    "r": "リン",
+    "w": [
+     "w2483",
+     "w2484",
+     "w2392"
+    ]
+   },
+   {
+    "r": "わ",
+    "w": [
+     "w2485",
+     "w2486"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0711",
+  "c": "占",
+  "meaning": {
+   "en": "fortune-telling, occupy",
+   "es": "adivinación, ocupar"
+  },
+  "mnemonic": {
+   "en": "Fortune-telling by horoscope, she predicted that buying up all the shops would take up the market and become a monopoly.",
+   "es": "Con la adivinación del horóscopo, adivinó que el acaparamiento de tiendas iba a ocupar el mercado como un monopolio."
+  },
+  "g": [
+   {
+    "r": "うらな",
+    "w": [
+     "w2487",
+     "w2488",
+     "w2489"
+    ]
+   },
+   {
+    "r": "し",
+    "w": [
+     "w2490",
+     "w2491"
+    ]
+   },
+   {
+    "r": "セン",
+    "w": [
+     "w2492"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0712",
+  "c": "植",
+  "meaning": {
+   "en": "plant",
+   "es": "plantar"
+  },
+  "mnemonic": {
+   "en": "After the rice planting, the colony chose to plant garden shrubs and other vegetation.",
+   "es": "Tras la plantación de arroz, la colonia decidió plantar plantas de jardín y más vegetación."
+  },
+  "g": [
+   {
+    "r": "う",
+    "w": [
+     "w2493",
+     "w2494",
+     "w2495"
+    ]
+   },
+   {
+    "r": "ショク",
+    "w": [
+     "w2496",
+     "w2497"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0713",
+  "c": "清",
+  "meaning": {
+   "en": "pure, clean",
+   "es": "puro, limpio"
+  },
+  "mnemonic": {
+   "en": "After the cleaning, the room was clean and pure, so I wrote a clean copy on clear paper.",
+   "es": "Tras la limpieza, el cuarto quedó limpio y puro, y escribí una copia en limpio con tinta límpida."
+  },
+  "g": [
+   {
+    "r": "セイ",
+    "w": [
+     "w2498",
+     "w2499",
+     "w2500"
+    ]
+   },
+   {
+    "r": "きよ",
+    "w": [
+     "w2501",
+     "w2502"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0714",
+  "c": "倍",
+  "meaning": {
+   "en": "double, times",
+   "es": "doble, veces"
+  },
+  "mnemonic": {
+   "en": "Under double magnification the coin looked huge, but multiplying by one leaves the same amount.",
+   "es": "Con el doble de aumento la moneda parecía enorme, pero una vez multiplicada por uno seguía igual."
+  },
+  "g": [
+   {
+    "r": "バイ",
+    "w": [
+     "w2503",
+     "w2504",
+     "w2505"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0715",
+  "c": "均",
+  "meaning": {
+   "en": "level, average",
+   "es": "nivel, promedio"
+  },
+  "mnemonic": {
+   "en": "On average the scales stay in equilibrium, a level balance that shows perfect uniformity.",
+   "es": "En promedio, la balanza se mantiene en equilibrio, con una uniformidad nivelada y perfecta."
+  },
+  "g": [
+   {
+    "r": "キン",
+    "w": [
+     "w0803",
+     "w2506",
+     "w2507"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0716",
+  "c": "億",
+  "meaning": {
+   "en": "hundred million",
+   "es": "cien millones"
+  },
+  "mnemonic": {
+   "en": "A hundred million yen is written 100,000,000, and ten of those make a billion.",
+   "es": "Cien millones de yenes se escribe con ocho ceros, y diez veces eso son mil millones."
+  },
+  "g": [
+   {
+    "r": "オク",
+    "w": [
+     "w2508",
+     "w2509",
+     "w2510"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0717",
+  "c": "圧",
+  "meaning": {
+   "en": "pressure, push",
+   "es": "presión, presionar"
+  },
+  "mnemonic": {
+   "en": "The atmospheric pressure dropped, my blood pressure rose, and the stress and compression began to overwhelm me.",
+   "es": "La presión atmosférica bajó, mi presión arterial subió, y la compresión del estrés empezó a abrumarme."
+  },
+  "g": [
+   {
+    "r": "アツ",
+    "w": [
+     "w2511",
+     "w2512",
+     "w2513"
+    ]
+   },
+   {
+    "r": "アッ",
+    "w": [
+     "w2514",
+     "w1708"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0718",
+  "c": "芸",
+  "meaning": {
+   "en": "art, craft",
+   "es": "arte, oficio"
+  },
+  "mnemonic": {
+   "en": "Her art ranged from public entertainment to industrial arts and even horticulture in the gardening club.",
+   "es": "Su arte iba del entretenimiento público a la artesanía y hasta la horticultura en el club de jardinería."
+  },
+  "g": [
+   {
+    "r": "ゲイ",
+    "w": [
+     "w2515",
+     "w2516",
+     "w1532"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0719",
+  "c": "署",
+  "meaning": {
+   "en": "signature, govt office",
+   "es": "firma, oficina pública"
+  },
+  "mnemonic": {
+   "en": "I left my signature at the fire station and then at the tax office, two government offices.",
+   "es": "Dejé mi firma en la estación de bomberos y luego en la oficina de impuestos, dos oficinas públicas."
+  },
+  "g": [
+   {
+    "r": "ショ",
+    "w": [
+     "w2155",
+     "w2517",
+     "w2518"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0720",
+  "c": "伸",
+  "meaning": {
+   "en": "stretch, extend",
+   "es": "estirar, extender"
+  },
+  "mnemonic": {
+   "en": "Stretching my arms, I extend them and make progress, feeling the expansion and contraction, then add a postscript.",
+   "es": "Con un estiramiento me estiro, extiendo los brazos y progreso en cada expansión y contracción; luego añado una posdata."
+  },
+  "g": [
+   {
+    "r": "の",
+    "w": [
+     "w2519",
+     "w2520",
+     "w2521"
+    ]
+   },
+   {
+    "r": "シン",
+    "w": [
+     "w2522",
+     "w2523"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0721",
+  "c": "停",
+  "meaning": {
+   "en": "halt, stop",
+   "es": "detener, parada"
+  },
+  "mnemonic": {
+   "en": "The failure of electricity caused a suspension of service and the halting of every train.",
+   "es": "El apagón provocó la suspensión del servicio y la detención de todos los trenes en la parada."
+  },
+  "g": [
+   {
+    "r": "テイ",
+    "w": [
+     "w2524",
+     "w2525",
+     "w2526"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0722",
+  "c": "爆",
+  "meaning": {
+   "en": "bomb, burst",
+   "es": "bomba, estallar"
+  },
+  "mnemonic": {
+   "en": "The bomb caused an explosion, but nothing like the burst of an atomic bomb.",
+   "es": "La bomba causó una explosión, pero nada comparable al estallido de una bomba atómica."
+  },
+  "g": [
+   {
+    "r": "バク",
+    "w": [
+     "w2527",
+     "w2528",
+     "w2529"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0723",
+  "c": "陸",
+  "meaning": {
+   "en": "land",
+   "es": "tierra"
+  },
+  "mnemonic": {
+   "en": "From the shore we crossed the land on an overpass, heading inland across the continent.",
+   "es": "Desde tierra firme cruzamos el paso elevado y seguimos tierra adentro hacia el interior del continente."
+  },
+  "g": [
+   {
+    "r": "リク",
+    "w": [
+     "w2530",
+     "w2531",
+     "w2532"
+    ]
+   },
+   {
+    "r": "リッ",
+    "w": [
+     "w2343"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0724",
+  "c": "玉",
+  "meaning": {
+   "en": "jewel, ball",
+   "es": "joya, bola"
+  },
+  "mnemonic": {
+   "en": "A drop of water rolled across the egg like a ball, shining like a gem worth an honorable death.",
+   "es": "Una gota de agua rodó por el huevo como una bola, brillando como una joya digna de una muerte honorable."
+  },
+  "g": [
+   {
+    "r": "たま",
+    "w": [
+     "w2533",
+     "w2534",
+     "w2535"
+    ]
+   },
+   {
+    "r": "ギョク",
+    "w": [
+     "w2536",
+     "w2537"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0725",
+  "c": "波",
+  "meaning": {
+   "en": "wave",
+   "es": "ola"
+  },
+  "mnemonic": {
+   "en": "During the cold wave, a short wave radio caught an electromagnetic wave warning of a tsunami wave.",
+   "es": "En la ola de frío, la radio de onda corta captó una onda electromagnética avisando de la ola del tsunami."
+  },
+  "g": [
+   {
+    "r": "パ",
+    "w": [
+     "w2538",
+     "w2539",
+     "w2540"
+    ]
+   },
+   {
+    "r": "なみ",
+    "w": [
+     "w2541",
+     "w2542"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0726",
+  "c": "帯",
+  "meaning": {
+   "en": "belt, zone",
+   "es": "faja, zona"
+  },
+  "mnemonic": {
+   "en": "In the temperate zone I carry a bandage tied like a sash around my belt across the whole area.",
+   "es": "En la zona templada llevo una venda atada como una faja y una cinta por toda el área."
+  },
+  "g": [
+   {
+    "r": "タイ",
+    "w": [
+     "w2543",
+     "w2544",
+     "w2545"
+    ]
+   },
+   {
+    "r": "おび",
+    "w": [
+     "w2546"
+    ]
+   },
+   {
+    "r": "お",
+    "w": [
+     "w2547"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0727",
+  "c": "延",
+  "meaning": {
+   "en": "prolong, extend",
+   "es": "prolongar, extender"
+  },
+  "mnemonic": {
+   "en": "With the postponement came an extension, and as I extend the overdue payment, the arrears are prolonged.",
+   "es": "Con el aplazamiento vino una prórroga, y al alargar el pago en mora, el atraso se prolonga."
+  },
+  "g": [
+   {
+    "r": "エン",
+    "w": [
+     "w2548",
+     "w0789",
+     "w2549"
+    ]
+   },
+   {
+    "r": "の",
+    "w": [
+     "w2550",
+     "w2551"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0728",
+  "c": "羽",
+  "meaning": {
+   "en": "feather, wing",
+   "es": "pluma, ala"
+  },
+  "mnemonic": {
+   "en": "A feather fell from the angel's raiment onto the haori, and a plume drifted from the bird's wing.",
+   "es": "Una pluma cayó del manto de plumas sobre el haori, y del ala del ave se desprendió más plumaje."
+  },
+  "g": [
+   {
+    "r": "は",
+    "w": [
+     "w2552",
+     "w2553",
+     "w2554"
+    ]
+   },
+   {
+    "r": "はね",
+    "w": [
+     "w2555"
+    ]
+   },
+   {
+    "r": "ウ",
+    "w": [
+     "w2556"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0729",
+  "c": "固",
+  "meaning": {
+   "en": "harden, solid",
+   "es": "endurecer, sólido"
+  },
+  "mnemonic": {
+   "en": "The clay hardens and solidifies as it freezes, becoming hard and solid, a fixing method characteristic of this tradition.",
+   "es": "La arcilla se endurece y se solidifica al helarse, queda dura y sólida, una fijación propia del método tradicional."
+  },
+  "g": [
+   {
+    "r": "かた",
+    "w": [
+     "w2557",
+     "w2558",
+     "w2559"
+    ]
+   },
+   {
+    "r": "コ",
+    "w": [
+     "w2560",
+     "w2561"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0730",
+  "c": "則",
+  "meaning": {
+   "en": "rule, follow",
+   "es": "regla, norma"
+  },
+  "mnemonic": {
+   "en": "Follow the rule and the law; any irregularity breaks the regulation.",
+   "es": "Sigue la regla y la ley, porque una conducta irregular rompe la norma."
+  },
+  "g": [
+   {
+    "r": "ソク",
+    "w": [
+     "w2562",
+     "w2563",
+     "w1177"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0731",
+  "c": "乱",
+  "meaning": {
+   "en": "riot, disorder",
+   "es": "disturbio, desorden"
+  },
+  "mnemonic": {
+   "en": "The violent civil war threw the town out of order, and in the chaos everyone got confused.",
+   "es": "La guerra civil violenta desordenó el pueblo, todo se desordenó y en el caos reinó la confusión."
+  },
+  "g": [
+   {
+    "r": "ラン",
+    "w": [
+     "w2478",
+     "w2564",
+     "w2565"
+    ]
+   },
+   {
+    "r": "みだ",
+    "w": [
+     "w2566",
+     "w2567"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0732",
+  "c": "普",
+  "meaning": {
+   "en": "universal, ordinary",
+   "es": "universal, común"
+  },
+  "mnemonic": {
+   "en": "The spread of the phone was universal, and in everyday situations it is now just ordinary.",
+   "es": "La difusión del teléfono fue universal, y de costumbre ahora nos parece algo normal."
+  },
+  "g": [
+   {
+    "r": "フ",
+    "w": [
+     "w2568",
+     "w1359",
+     "w0604"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0733",
+  "c": "測",
+  "meaning": {
+   "en": "measure, fathom",
+   "es": "medir, medición"
+  },
+  "mnemonic": {
+   "en": "At the weather station, the measurement and the surveying came after careful observation, so we measure everything twice.",
+   "es": "En la estación meteorológica, la medición y la topografía siguen a la observación, así que medimos todo dos veces."
+  },
+  "g": [
+   {
+    "r": "ソク",
+    "w": [
+     "w2569",
+     "w2273",
+     "w2570"
+    ]
+   },
+   {
+    "r": "はか",
+    "w": [
+     "w2571"
+    ]
+   },
+   {
+    "r": "ソッ",
+    "w": [
+     "w2572"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0734",
+  "c": "豊",
+  "meaning": {
+   "en": "bountiful, rich",
+   "es": "abundante, rico"
+  },
+  "mnemonic": {
+   "en": "The abundant harvest and the good catch brought plenty, an abundance that made the village wealthy.",
+   "es": "La buena cosecha y la buena pesca trajeron abundancia, y el pueblo abundante se hizo rico."
+  },
+  "g": [
+   {
+    "r": "ホウ",
+    "w": [
+     "w1547",
+     "w2573",
+     "w2574"
+    ]
+   },
+   {
+    "r": "ゆた",
+    "w": [
+     "w2575"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0735",
+  "c": "厚",
+  "meaning": {
+   "en": "thick, kind",
+   "es": "grueso, amable"
+  },
+  "mnemonic": {
+   "en": "The gentle host showed warm kindness and courtesy, but the shameless guest ate a slice of double thickness.",
+   "es": "El anfitrión afable mostró amabilidad y cortesía cálida, pero el invitado descarado cortó una rebanada de doble grosor."
+  },
+  "g": [
+   {
+    "r": "あつ",
+    "w": [
+     "w2576",
+     "w2577",
+     "w2578"
+    ]
+   },
+   {
+    "r": "コウ",
+    "w": [
+     "w2579",
+     "w2580"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0736",
+  "c": "齢",
+  "meaning": {
+   "en": "age",
+   "es": "edad"
+  },
+  "mnemonic": {
+   "en": "From school age to advanced old age, every year adds to the age we carry.",
+   "es": "Desde la edad escolar hasta la vejez, cada año suma a la edad que llevamos."
+  },
+  "g": [
+   {
+    "r": "レイ",
+    "w": [
+     "w2581",
+     "w2582",
+     "w2583"
+    ]
+   },
+   {
+    "r": "よわい",
+    "w": [
+     "w2584"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0737",
+  "c": "囲",
+  "meaning": {
+   "en": "surround, enclose",
+   "es": "rodear, cercar"
+  },
+  "mnemonic": {
+   "en": "The fence forms an enclosure whose scope is to surround the garden, and the surroundings have a calm atmosphere.",
+   "es": "La cerca es un vallado cuyo alcance es rodear el jardín, y el entorno tiene un ambiente tranquilo."
+  },
+  "g": [
+   {
+    "r": "イ",
+    "w": [
+     "w2352",
+     "w2585",
+     "w2586"
+    ]
+   },
+   {
+    "r": "かこ",
+    "w": [
+     "w2587",
+     "w2588"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0738",
+  "c": "卒",
+  "meaning": {
+   "en": "graduate, soldier",
+   "es": "graduarse, soldado"
+  },
+  "mnemonic": {
+   "en": "To be frank, the college graduate suffered a stroke a week after graduation.",
+   "es": "Para ser franco, el graduado universitario sufrió un ictus una semana después de la graduación."
+  },
+  "g": [
+   {
+    "r": "ソッ",
+    "w": [
+     "w2589",
+     "w2590"
+    ]
+   },
+   {
+    "r": "ソツ",
+    "w": [
+     "w0343",
+     "w2591"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0739",
+  "c": "略",
+  "meaning": {
+   "en": "abbreviation, omission",
+   "es": "abreviatura, omisión"
+  },
+  "mnemonic": {
+   "en": "The summary was an outline with every omission marked, so I abbreviate nothing else.",
+   "es": "El resumen era un esquema con cada omisión marcada, así que no hace falta abreviar más."
+  },
+  "g": [
+   {
+    "r": "リャク",
+    "w": [
+     "w2592",
+     "w2336",
+     "w2593"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0740",
+  "c": "承",
+  "meaning": {
+   "en": "hear, consent",
+   "es": "oír, consentir"
+  },
+  "mnemonic": {
+   "en": "I hear and receive your request, and with formal recognition and approval I give my consent.",
+   "es": "Oigo y recibo tu petición, y con reconocimiento y aprobación te doy mi consentimiento y aceptación."
+  },
+  "g": [
+   {
+    "r": "うけたまわ",
+    "w": [
+     "w2594"
+    ]
+   },
+   {
+    "r": "ショウ",
+    "w": [
+     "w0922",
+     "w2595"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0741",
+  "c": "順",
+  "meaning": {
+   "en": "order, turn",
+   "es": "orden, turno"
+  },
+  "mnemonic": {
+   "en": "Following the itinerary in order, we took each stop in turn, keeping the sequence exact.",
+   "es": "Siguiendo el itinerario en orden, hicimos cada parada por turnos, respetando la secuencia."
+  },
+  "g": [
+   {
+    "r": "ジュン",
+    "w": [
+     "w2596",
+     "w2597",
+     "w2598"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0742",
+  "c": "岩",
+  "meaning": {
+   "en": "rock, boulder",
+   "es": "roca, peñasco"
+  },
+  "mnemonic": {
+   "en": "Inside the cave, the lava had cooled into rock with a crust of rock salt on each boulder.",
+   "es": "Dentro de la cueva, la lava se había enfriado en roca con una costra de sal de roca."
+  },
+  "g": [
+   {
+    "r": "ガン",
+    "w": [
+     "w2599",
+     "w2600",
+     "w2601"
+    ]
+   },
+   {
+    "r": "いわ",
+    "w": [
+     "w2602",
+     "w2603"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0743",
+  "c": "了",
+  "meaning": {
+   "en": "complete, finish",
+   "es": "completar, terminar"
+  },
+  "mnemonic": {
+   "en": "At the end of the meeting the completion of the plan met with comprehension and consent from everyone.",
+   "es": "Al cierre de la reunión, la finalización del plan quedó entendida por todos."
+  },
+  "g": [
+   {
+    "r": "リョウ",
+    "w": [
+     "w2604",
+     "w1501",
+     "w2605"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0744",
+  "c": "庁",
+  "meaning": {
+   "en": "government office",
+   "es": "oficina gubernamental"
+  },
+  "mnemonic": {
+   "en": "The government office sent the file to the prefectural office, then on to another agency.",
+   "es": "La oficina gubernamental envió el expediente a la oficina prefectural y luego a otra agencia gubernamental."
+  },
+  "g": [
+   {
+    "r": "チョウ",
+    "w": [
+     "w2606",
+     "w0446",
+     "w2607"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0745",
+  "c": "城",
+  "meaning": {
+   "en": "castle",
+   "es": "castillo"
+  },
+  "mnemonic": {
+   "en": "The land near the castle fell silent after the surrender of the castle.",
+   "es": "El área del castillo quedó en silencio tras la rendición del castillo."
+  },
+  "g": [
+   {
+    "r": "しろ",
+    "w": [
+     "w2608"
+    ]
+   },
+   {
+    "r": "ジョウ",
+    "w": [
+     "w2609",
+     "w2610"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0746",
+  "c": "患",
+  "meaning": {
+   "en": "afflicted, ill",
+   "es": "enfermo, padecer"
+  },
+  "mnemonic": {
+   "en": "The patient was an emergency case, ill and suffering from pain in the affected part.",
+   "es": "El paciente urgente estaba enfermo y padecía un dolor intenso en la parte afectada."
+  },
+  "g": [
+   {
+    "r": "カン",
+    "w": [
+     "w2611",
+     "w2612",
+     "w2613"
+    ]
+   },
+   {
+    "r": "わずら",
+    "w": [
+     "w2614"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0747",
+  "c": "層",
+  "meaning": {
+   "en": "layer, stratum",
+   "es": "capa, estrato"
+  },
+  "mnemonic": {
+   "en": "In the high rise, each level was a layer, and the upper class paid much more.",
+   "es": "En el edificio de gran altura, cada nivel era una capa, y la clase alta pagaba aún más."
+  },
+  "g": [
+   {
+    "r": "ソウ",
+    "w": [
+     "w2615",
+     "w2616",
+     "w2617"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0748",
+  "c": "版",
+  "meaning": {
+   "en": "edition, printing plate",
+   "es": "edición, plancha"
+  },
+  "mnemonic": {
+   "en": "The first edition of the publication included an art print, but that edition is now out of print.",
+   "es": "La primera edición de la publicación traía un grabado, pero esa edición ya está agotada."
+  },
+  "g": [
+   {
+    "r": "ハン",
+    "w": [
+     "w2618",
+     "w2619",
+     "w2620"
+    ]
+   },
+   {
+    "r": "パン",
+    "w": [
+     "w2621",
+     "w1697"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0749",
+  "c": "令",
+  "meaning": {
+   "en": "order, command",
+   "es": "orden, mandato"
+  },
+  "mnemonic": {
+   "en": "The general gave the order, and his command came with clear instructions.",
+   "es": "El general dio la orden, y su mandato llegó con una instrucción clara."
+  },
+  "g": [
+   {
+    "r": "レイ",
+    "w": [
+     "w1337",
+     "w2622",
+     "w2623"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0750",
+  "c": "角",
+  "meaning": {
+   "en": "angle, corner",
+   "es": "ángulo, esquina"
+  },
+  "mnemonic": {
+   "en": "At the street corner by the crossroads, a triangle sign with a right angle pointed our direction at a sharp angle.",
+   "es": "En la esquina junto al cruce, una señal en triángulo con un ángulo recto marcaba nuestra dirección."
+  },
+  "g": [
+   {
+    "r": "カク",
+    "w": [
+     "w2624",
+     "w2625",
+     "w2626"
+    ]
+   },
+   {
+    "r": "かど",
+    "w": [
+     "w2627",
+     "w2628"
+    ]
+   },
+   {
+    "r": "ガク",
+    "w": [
+     "w2629"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0751",
+  "c": "絡",
+  "meaning": {
+   "en": "entwine, contact",
+   "es": "enredar, contacto"
+  },
+  "mnemonic": {
+   "en": "I lost contact after a short circuit, when the wires began to entangle in a linkage with no logical connection.",
+   "es": "Perdí el contacto tras un cortocircuito, cuando los cables empezaron a enredarse en un enredo sin conexión lógica."
+  },
+  "g": [
+   {
+    "r": "ラク",
+    "w": [
+     "w2630",
+     "w2631",
+     "w2632"
+    ]
+   },
+   {
+    "r": "から",
+    "w": [
+     "w2633",
+     "w2634"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0752",
+  "c": "損",
+  "meaning": {
+   "en": "damage, loss",
+   "es": "daño, pérdida"
+  },
+  "mnemonic": {
+   "en": "Weighing loss and gain, I misjudged the deal, and the damage and disadvantage hurt and harm me still.",
+   "es": "Al pesar pérdidas y ganancias juzgué mal el trato, y el daño y la desventaja me perjudican y dañan todavía."
+  },
+  "g": [
+   {
+    "r": "ソン",
+    "w": [
+     "w0866",
+     "w2635",
+     "w1193"
+    ]
+   },
+   {
+    "r": "そこな",
+    "w": [
+     "w2636"
+    ]
+   },
+   {
+    "r": "そこ",
+    "w": [
+     "w2637",
+     "w2638"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0753",
+  "c": "募",
+  "meaning": {
+   "en": "recruit, campaign",
+   "es": "reclutar, convocar"
+  },
+  "mnemonic": {
+   "en": "The recruitment campaign made a public appeal to invite every application it could solicit.",
+   "es": "La campaña de reclutamiento lanzó una convocatoria pública para reclutar y solicitar cada inscripción posible."
+  },
+  "g": [
+   {
+    "r": "ボ",
+    "w": [
+     "w2639",
+     "w2640",
+     "w2641"
+    ]
+   },
+   {
+    "r": "つの",
+    "w": [
+     "w2642"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0754",
+  "c": "裏",
+  "meaning": {
+   "en": "back, reverse",
+   "es": "reverso, trasero"
+  },
+  "mnemonic": {
+   "en": "In his mind he planned to betray us, turn the sign inside out, front and back, and slip through the back door.",
+   "es": "En su mente planeaba traicionarnos, voltear el cartel por el anverso y el reverso, y escapar por la puerta trasera."
+  },
+  "g": [
+   {
+    "r": "うら",
+    "w": [
+     "w2643",
+     "w1611",
+     "w2644"
+    ]
+   },
+   {
+    "r": "リ",
+    "w": [
+     "w2645",
+     "w2646"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0755",
+  "c": "仏",
+  "meaning": {
+   "en": "Buddha, the dead",
+   "es": "Buda, difuntos"
+  },
+  "mnemonic": {
+   "en": "Beside the stone Buddhist image, a smaller Buddhist image of the Buddha greets the dead.",
+   "es": "Junto al Buda de piedra, una estatua de Buda más pequeña recibe a los difuntos."
+  },
+  "g": [
+   {
+    "r": "ほとけ",
+    "w": [
+     "w2647"
+    ]
+   },
+   {
+    "r": "ブツ",
+    "w": [
+     "w2648",
+     "w2649"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0756",
+  "c": "績",
+  "meaning": {
+   "en": "achievements, exploits",
+   "es": "logros, méritos"
+  },
+  "mnemonic": {
+   "en": "Her achievements and merit produced actual results, and her grade was the highest mark.",
+   "es": "Su mérito y sus logros dieron resultados, y su calificación fue la mejor nota."
+  },
+  "g": [
+   {
+    "r": "セキ",
+    "w": [
+     "w2650",
+     "w2651",
+     "w2652"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0757",
+  "c": "築",
+  "meaning": {
+   "en": "build, construct",
+   "es": "construir, edificar"
+  },
+  "mnemonic": {
+   "en": "The architecture firm chose construction of a new building over renovation, to build and construct something to establish its name.",
+   "es": "El estudio de arquitectura prefirió la construcción de un edificio nuevo a la remodelación, para construir y edificar su nombre."
+  },
+  "g": [
+   {
+    "r": "チク",
+    "w": [
+     "w2653",
+     "w2654",
+     "w2655"
+    ]
+   },
+   {
+    "r": "きず",
+    "w": [
+     "w2656",
+     "w2657"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0758",
+  "c": "貨",
+  "meaning": {
+   "en": "goods, currency",
+   "es": "mercancía, moneda"
+  },
+  "mnemonic": {
+   "en": "The cargo of freight was paid for in coin, since that was the only currency the goods merchant accepted.",
+   "es": "La carga de flete se pagó en moneda, la única moneda que aceptaba el comerciante de mercancías."
+  },
+  "g": [
+   {
+    "r": "カ",
+    "w": [
+     "w2658",
+     "w2659",
+     "w2660"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0759",
+  "c": "混",
+  "meaning": {
+   "en": "mix, blend",
+   "es": "mezclar, mezcla"
+  },
+  "mnemonic": {
+   "en": "In the congestion and chaos of the crowded market, the spices were mixed into a mixture and the crowds mingled in confusion.",
+   "es": "En la congestión y el caos del mercado abarrotado, las especias se mezclaron en una mezcla y la gente se entremezcló confusa."
+  },
+  "g": [
+   {
+    "r": "コン",
+    "w": [
+     "w2661",
+     "w1752",
+     "w2564"
+    ]
+   },
+   {
+    "r": "ま",
+    "w": [
+     "w2662",
+     "w2663"
+    ]
+   },
+   {
+    "r": "こ",
+    "w": [
+     "w2664"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0760",
+  "c": "昇",
+  "meaning": {
+   "en": "rise, ascend",
+   "es": "ascender, subir"
+  },
+  "mnemonic": {
+   "en": "The sun began to ascend, rising over the office where my promotion let me rise up too.",
+   "es": "El sol empezó a ascender y subir sobre la oficina donde mi ascenso me hizo subir también."
+  },
+  "g": [
+   {
+    "r": "のぼ",
+    "w": [
+     "w2665"
+    ]
+   },
+   {
+    "r": "ショウ",
+    "w": [
+     "w2666",
+     "w2667"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0761",
+  "c": "季",
+  "meaning": {
+   "en": "season",
+   "es": "estación"
+  },
+  "mnemonic": {
+   "en": "The quarterly magazine devotes one issue to each season of the four seasons.",
+   "es": "La revista trimestral dedica un número a cada estación de las cuatro estaciones."
+  },
+  "g": [
+   {
+    "r": "キ",
+    "w": [
+     "w2668",
+     "w2669",
+     "w2670"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0762",
+  "c": "星",
+  "meaning": {
+   "en": "star",
+   "es": "estrella"
+  },
+  "mnemonic": {
+   "en": "Under the starry sky, a satellite crossed a constellation near Mars while the morning star, Venus, was the brightest star.",
+   "es": "Bajo el cielo estrellado, un satélite cruzó una constelación cerca de Marte, y Venus, el lucero del alba, era la estrella más brillante."
+  },
+  "g": [
+   {
+    "r": "セイ",
+    "w": [
+     "w2671",
+     "w2672",
+     "w2673"
+    ]
+   },
+   {
+    "r": "ほし",
+    "w": [
+     "w2674",
+     "w2675"
+    ]
+   },
+   {
+    "r": "ジョウ",
+    "w": [
+     "w2676"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0763",
+  "c": "永",
+  "meaning": {
+   "en": "eternity, long",
+   "es": "eternidad, perpetuo"
+  },
+  "mnemonic": {
+   "en": "With permanent residence granted, they planned to stay for an eternity, a perpetuity in their long home.",
+   "es": "Con la residencia permanente concedida, planearon quedarse una eternidad, una perpetuidad en su largo hogar."
+  },
+  "g": [
+   {
+    "r": "エイ",
+    "w": [
+     "w1802",
+     "w2469",
+     "w2677"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0764",
+  "c": "著",
+  "meaning": {
+   "en": "renowned, write",
+   "es": "célebre, escribir"
+  },
+  "mnemonic": {
+   "en": "The well-known author will write and publish a remarkable literary work, a book of considerable renown.",
+   "es": "El autor célebre va a escribir y publicar una obra escrita notable, un libro de considerable fama."
+  },
+  "g": [
+   {
+    "r": "チョ",
+    "w": [
+     "w2678",
+     "w2679",
+     "w2680"
+    ]
+   },
+   {
+    "r": "あらわ",
+    "w": [
+     "w2681"
+    ]
+   },
+   {
+    "r": "いちじる",
+    "w": [
+     "w2682"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0765",
+  "c": "誌",
+  "meaning": {
+   "en": "magazine, record",
+   "es": "revista, registro"
+  },
+  "mnemonic": {
+   "en": "The journal is a magazine, and the record of my document appeared in a magazine.",
+   "es": "La revista es un registro, y mi documento apareció en una revista mensual."
+  },
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     "w1755",
+     "w2683",
+     "w2684"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0766",
+  "c": "庫",
+  "meaning": {
+   "en": "warehouse, storehouse",
+   "es": "almacén, depósito"
+  },
+  "mnemonic": {
+   "en": "Behind the garage stands the warehouse, and inside the storehouse is a safe with a vault.",
+   "es": "Detrás del garaje está el almacén, y dentro del depósito hay una caja fuerte."
+  },
+  "g": [
+   {
+    "r": "コ",
+    "w": [
+     "w2685",
+     "w2686",
+     "w2687"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0767",
+  "c": "刊",
+  "meaning": {
+   "en": "publish, edition",
+   "es": "publicar, edición"
+  },
+  "mnemonic": {
+   "en": "The evening paper announced the publication of a new issue of the quarterly magazine.",
+   "es": "El periódico vespertino anunció la publicación de un nuevo número de la revista trimestral."
+  },
+  "g": [
+   {
+    "r": "カン",
+    "w": [
+     "w2688",
+     "w2689",
+     "w2669"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0768",
+  "c": "像",
+  "meaning": {
+   "en": "statue, image",
+   "es": "estatua, imagen"
+  },
+  "mnemonic": {
+   "en": "The statue was an image from my imagination, sharpened like a photo in developing.",
+   "es": "La estatua era una imagen de mi imaginación, nítida como una foto tras el revelado."
+  },
+  "g": [
+   {
+    "r": "ゾウ",
+    "w": [
+     "w2690",
+     "w2691",
+     "w2692"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0769",
+  "c": "香",
+  "meaning": {
+   "en": "incense, fragrance",
+   "es": "incienso, aroma"
+  },
+  "mnemonic": {
+   "en": "The perfume and the spices smell sweet, filling the room with the fragrance and aroma of incense.",
+   "es": "El perfume y las especias huelen bien, llenando el cuarto con la fragancia y el aroma del incienso."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w2693",
+     "w2694",
+     "w2695"
+    ]
+   },
+   {
+    "r": "かお",
+    "w": [
+     "w2696",
+     "w2697"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0770",
+  "c": "坂",
+  "meaning": {
+   "en": "slope, hill",
+   "es": "cuesta, pendiente"
+  },
+  "mnemonic": {
+   "en": "The hill road climbs the slope so steeply that the hill leaves me breathless.",
+   "es": "El camino en cuesta sube la pendiente tan empinada que la cuesta me deja sin aliento."
+  },
+  "g": [
+   {
+    "r": "さか",
+    "w": [
+     "w2698",
+     "w2699"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0771",
+  "c": "底",
+  "meaning": {
+   "en": "bottom, base",
+   "es": "fondo, base"
+  },
+  "mnemonic": {
+   "en": "With thoroughness we searched the bottom of the ocean for the root of the wreck, later sold at a bottom price.",
+   "es": "Con minuciosidad buscamos en el fondo del mar la base del naufragio, que luego se vendió al precio mínimo."
+  },
+  "g": [
+   {
+    "r": "テイ",
+    "w": [
+     "w2700",
+     "w2701",
+     "w2702"
+    ]
+   },
+   {
+    "r": "そこ",
+    "w": [
+     "w2703",
+     "w2704"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0772",
+  "c": "布",
+  "meaning": {
+   "en": "cloth, spread",
+   "es": "tela, extender"
+  },
+  "mnemonic": {
+   "en": "On the cushion lay silk cloth and kombu, and the distribution of cloth continued with a scattering of samples.",
+   "es": "Sobre el cojín había tela de seda y kombu, y la distribución de tela siguió con una dispersión de muestras."
+  },
+  "g": [
+   {
+    "r": "プ",
+    "w": [
+     "w2705",
+     "w2706",
+     "w2707"
+    ]
+   },
+   {
+    "r": "ブ",
+    "w": [
+     "w1486",
+     "w2708"
+    ]
+   },
+   {
+    "r": "ぬの",
+    "w": [
+     "w2709"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0773",
+  "c": "寺",
+  "meaning": {
+   "en": "buddhist temple",
+   "es": "templo budista"
+  },
+  "mnemonic": {
+   "en": "The old provincial temple is a Buddhist temple, and every temple here is quiet at dawn.",
+   "es": "El antiguo templo provincial es un templo budista, y cada templo aquí está en silencio al amanecer."
+  },
+  "g": [
+   {
+    "r": "ジ",
+    "w": [
+     "w2710",
+     "w2711"
+    ]
+   },
+   {
+    "r": "てら",
+    "w": [
+     "w2712"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0774",
+  "c": "宇",
+  "meaning": {
+   "en": "eaves, universe",
+   "es": "alero, universo"
+  },
+  "mnemonic": {
+   "en": "Under the eaves I look up at the universe and imagine the whole macrocosm above the roof.",
+   "es": "Bajo el alero miro el universo e imagino todo el macrocosmos sobre el tejado."
+  },
+  "g": [
+   {
+    "r": "ウ",
+    "w": [
+     "w2713",
+     "w2714"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0775",
+  "c": "巨",
+  "meaning": {
+   "en": "gigantic, huge",
+   "es": "gigantesco, enorme"
+  },
+  "mnemonic": {
+   "en": "A giant with a huge sum of money built a gigantic castle on the hill.",
+   "es": "Un gigante con una suma enorme de dinero construyó un castillo gigantesco en la colina."
+  },
+  "g": [
+   {
+    "r": "キョ",
+    "w": [
+     "w2715",
+     "w2716",
+     "w2717"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0776",
+  "c": "震",
+  "meaning": {
+   "en": "quake, shake",
+   "es": "temblar, sacudir"
+  },
+  "mnemonic": {
+   "en": "Even in a weak earthquake I shiver, and after a real earthquake my hands are still shaking.",
+   "es": "Incluso en un sismo leve tiemblo, y tras un terremoto de verdad mis manos aún se agitan."
+  },
+  "g": [
+   {
+    "r": "ふる",
+    "w": [
+     "w2718",
+     "w2719"
+    ]
+   },
+   {
+    "r": "シン",
+    "w": [
+     "w0582",
+     "w2720"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0777",
+  "c": "希",
+  "meaning": {
+   "en": "hope, rare",
+   "es": "esperanza, raro"
+  },
+  "mnemonic": {
+   "en": "My hope is rare and scarce, and the thin air makes it feel weak.",
+   "es": "Mi esperanza es escasa y rara, y el aire tenue y diluido la vuelve frágil."
+  },
+  "g": [
+   {
+    "r": "キ",
+    "w": [
+     "w1344",
+     "w2721",
+     "w2722"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0778",
+  "c": "触",
+  "meaning": {
+   "en": "contact, touch",
+   "es": "contacto, tocar"
+  },
+  "mnemonic": {
+   "en": "From time to time I touch the wall, and each time I come into contact with it my sense of touch sharpens.",
+   "es": "De vez en cuando rozo la pared y la toco, y al tener contacto con ella el contacto aviva mi tacto."
+  },
+  "g": [
+   {
+    "r": "ふ",
+    "w": [
+     "w2723",
+     "w2724",
+     "w2725"
+    ]
+   },
+   {
+    "r": "さわ",
+    "w": [
+     "w2726"
+    ]
+   },
+   {
+    "r": "ショク",
+    "w": [
+     "w2727",
+     "w2728"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0779",
+  "c": "依",
+  "meaning": {
+   "en": "depend on, rely",
+   "es": "depender, confiar en"
+  },
+  "mnemonic": {
+   "en": "Still dependent on his request for help, he found his dependence eased only by becoming a devout believer.",
+   "es": "Todavía atado a su solicitud de ayuda, su dependencia solo se alivió con una conversión religiosa."
+  },
+  "g": [
+   {
+    "r": "イ",
+    "w": [
+     "w1625",
+     "w1242",
+     "w2729"
+    ]
+   },
+   {
+    "r": "エ",
+    "w": [
+     "w2730"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0780",
+  "c": "籍",
+  "meaning": {
+   "en": "register, enroll",
+   "es": "registro, inscribir"
+  },
+  "mnemonic": {
+   "en": "The family register lists my nationality, and a book about it was published last year.",
+   "es": "El registro familiar indica mi nacionalidad, y un libro sobre ello se publicó el año pasado."
+  },
+  "g": [
+   {
+    "r": "セキ",
+    "w": [
+     "w2731",
+     "w2732",
+     "w2733"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0781",
+  "c": "汚",
+  "meaning": {
+   "en": "dirty, pollute",
+   "es": "sucio, contaminar"
+  },
+  "mnemonic": {
+   "en": "Corruption let the factory pollute the river with sewage, so the water became dirty and the dirty pollution spread.",
+   "es": "Por corrupción la fábrica contaminó el río con aguas residuales, así que el agua se ensució, quedó sucia y la contaminación creció."
+  },
+  "g": [
+   {
+    "r": "オ",
+    "w": [
+     "w2734",
+     "w2735",
+     "w2736"
+    ]
+   },
+   {
+    "r": "よご",
+    "w": [
+     "w2737",
+     "w2738"
+    ]
+   },
+   {
+    "r": "きたな",
+    "w": [
+     "w2739"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0782",
+  "c": "枚",
+  "meaning": {
+   "en": "sheet, counter",
+   "es": "hoja, contador"
+  },
+  "mnemonic": {
+   "en": "I count the number of flat things with this counter for flat objects, starting with one sheet.",
+   "es": "Cuento el número de piezas con este contador de objetos planos, empezando por una hoja."
+  },
+  "g": [
+   {
+    "r": "マイ",
+    "w": [
+     "w2740",
+     "w2741",
+     "w2742"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0783",
+  "c": "複",
+  "meaning": {
+   "en": "duplicate, multiple",
+   "es": "duplicar, múltiple"
+  },
+  "mnemonic": {
+   "en": "One copy became multiple copies, and the complexity of the duplicate files grew.",
+   "es": "Una copia se volvió múltiples copias, y la complejidad de los duplicados creció."
+  },
+  "g": [
+   {
+    "r": "フク",
+    "w": [
+     "w2743",
+     "w2744",
+     "w1753"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0784",
+  "c": "郵",
+  "meaning": {
+   "en": "mail, post",
+   "es": "correo, postal"
+  },
+  "mnemonic": {
+   "en": "The mailing went through the postal service, so I took the mail to the post office.",
+   "es": "El envío por correo pasó por el correo, así que llevé la carta a la oficina de correos."
+  },
+  "g": [
+   {
+    "r": "ユウ",
+    "w": [
+     "w2745",
+     "w1655",
+     "w1081"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0785",
+  "c": "仲",
+  "meaning": {
+   "en": "relationship, go-between",
+   "es": "relación, intermediario"
+  },
+  "mnemonic": {
+   "en": "After arbitration and a friend's intermediation, the reconciliation restored our relationship as intimate friends.",
+   "es": "Tras el arbitraje y la intermediación de un amigo íntimo, la reconciliación restauró nuestra relación."
+  },
+  "g": [
+   {
+    "r": "なか",
+    "w": [
+     "w2746",
+     "w1390",
+     "w2747"
+    ]
+   },
+   {
+    "r": "チュウ",
+    "w": [
+     "w2748",
+     "w2749"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0786",
+  "c": "栄",
+  "meaning": {
+   "en": "flourish, prosperity",
+   "es": "prosperar, prosperidad"
+  },
+  "mnemonic": {
+   "en": "With good nutrition the town began to flourish, and its prosperity was a crown of victory, not just for show.",
+   "es": "Con buena nutrición el pueblo empezó a prosperar y florecer, y su prosperidad fue una corona de laureles, no un simple alarde."
+  },
+  "g": [
+   {
+    "r": "エイ",
+    "w": [
+     "w2750",
+     "w2751",
+     "w2752"
+    ]
+   },
+   {
+    "r": "さか",
+    "w": [
+     "w2753"
+    ]
+   },
+   {
+    "r": "え",
+    "w": [
+     "w2754"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0787",
+  "c": "札",
+  "meaning": {
+   "en": "tag, paper money",
+   "es": "etiqueta, billete"
+  },
+  "mnemonic": {
+   "en": "At the ticket gate I showed my name tag and a token, then paid a bill from my bundle of banknotes.",
+   "es": "En el control de billetes mostré mi etiqueta con el nombre y una ficha, y saqué un billete del fajo de billetes."
+  },
+  "g": [
+   {
+    "r": "サツ",
+    "w": [
+     "w2092",
+     "w2755",
+     "w2756"
+    ]
+   },
+   {
+    "r": "ふだ",
+    "w": [
+     "w2757",
+     "w2758"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0788",
+  "c": "板",
+  "meaning": {
+   "en": "plank, board",
+   "es": "tabla, plancha"
+  },
+  "mnemonic": {
+   "en": "The signboard was a steel plate, the blackboard a plank, and the chopping board a plain board.",
+   "es": "El letrero era una plancha de acero, la pizarra una tabla, y la tabla de cortar una simple plancha."
+  },
+  "g": [
+   {
+    "r": "バン",
+    "w": [
+     "w2759",
+     "w0470",
+     "w2760"
+    ]
+   },
+   {
+    "r": "いた",
+    "w": [
+     "w2761",
+     "w2762"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0789",
+  "c": "骨",
+  "meaning": {
+   "en": "bone, skeleton",
+   "es": "hueso, esqueleto"
+  },
+  "mnemonic": {
+   "en": "The blunt doctor said the bone fracture in my skeleton looked like deboning, then showed me a curio made of bone.",
+   "es": "El médico franco dijo que la fractura de mi esqueleto parecía un deshuesado, y me mostró una antigüedad hecha de hueso."
+  },
+  "g": [
+   {
+    "r": "コッ",
+    "w": [
+     "w1895",
+     "w2763",
+     "w2764"
+    ]
+   },
+   {
+    "r": "ほね",
+    "w": [
+     "w2765",
+     "w2766"
+    ]
+   },
+   {
+    "r": "コツ",
+    "w": [
+     "w2767"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0790",
+  "c": "傾",
+  "meaning": {
+   "en": "lean, incline",
+   "es": "inclinarse, inclinar"
+  },
+  "mnemonic": {
+   "en": "The tower began to slant, so I tilt my head, lean in, and notice a tendency of the whole slope to incline.",
+   "es": "La torre empezó a inclinarse, así que ladeo la cabeza, la inclino, y noto la tendencia de toda la pendiente a caer."
+  },
+  "g": [
+   {
+    "r": "かたむ",
+    "w": [
+     "w2768",
+     "w2769"
+    ]
+   },
+   {
+    "r": "ケイ",
+    "w": [
+     "w0887",
+     "w2770"
+    ]
+   },
+   {
+    "r": "かし",
+    "w": [
+     "w2771"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0791",
+  "c": "届",
+  "meaning": {
+   "en": "deliver, reach",
+   "es": "entregar, llegar"
+  },
+  "mnemonic": {
+   "en": "The notification will reach you as soon as I deliver it by hand.",
+   "es": "El aviso te llegará en cuanto yo lo entregue en mano."
+  },
+  "g": [
+   {
+    "r": "とど",
+    "w": [
+     "w2772",
+     "w2773",
+     "w2774"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0792",
+  "c": "巻",
+  "meaning": {
+   "en": "scroll, roll up",
+   "es": "rollo, enrollar"
+  },
+  "mnemonic": {
+   "en": "In my pajamas I wind up the roll of the picture scroll, and friends surround me for the highlight.",
+   "es": "En pijama enrollo el rollo ilustrado hasta formar un rollo, y los amigos me rodean para ver el punto culminante."
+  },
+  "g": [
+   {
+    "r": "まき",
+    "w": [
+     "w1930",
+     "w2775",
+     "w2776"
+    ]
+   },
+   {
+    "r": "ま",
+    "w": [
+     "w2777",
+     "w2778"
+    ]
+   },
+   {
+    "r": "カン",
+    "w": [
+     "w2779"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0793",
+  "c": "燃",
+  "meaning": {
+   "en": "burn, blaze",
+   "es": "arder, quemar"
+  },
+  "mnemonic": {
+   "en": "I burn the fuel, the logs burn, the flames flare up, and the combustion warms the room.",
+   "es": "Quemo el combustible, los troncos arden, el fuego estalla en llamas y la combustión calienta la sala."
+  },
+  "g": [
+   {
+    "r": "も",
+    "w": [
+     "w2780",
+     "w2781",
+     "w2782"
+    ]
+   },
+   {
+    "r": "ネン",
+    "w": [
+     "w2783",
+     "w2784"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0794",
+  "c": "跡",
+  "meaning": {
+   "en": "tracks, trace",
+   "es": "huella, rastro"
+  },
+  "mnemonic": {
+   "en": "In pursuit of the heir, we followed each footprint and trace into the historic ruins.",
+   "es": "En persecución del heredero, seguimos cada huella y rastro hasta las ruinas históricas."
+  },
+  "g": [
+   {
+    "r": "あと",
+    "w": [
+     "w2785",
+     "w2786",
+     "w2787"
+    ]
+   },
+   {
+    "r": "セキ",
+    "w": [
+     "w2788",
+     "w2789"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0795",
+  "c": "包",
+  "meaning": {
+   "en": "wrap, pack",
+   "es": "envolver, empaquetar"
+  },
+  "mnemonic": {
+   "en": "I wrap the kitchen knife in a bandage and wrapping paper, then put the package in the mail.",
+   "es": "Envuelvo el cuchillo de cocina con una venda y envoltorio, y luego mando el paquete por correo."
+  },
+  "g": [
+   {
+    "r": "ホウ",
+    "w": [
+     "w2544",
+     "w2790",
+     "w2424"
+    ]
+   },
+   {
+    "r": "つつ",
+    "w": [
+     "w2791",
+     "w2792"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0796",
+  "c": "駐",
+  "meaning": {
+   "en": "stop over, park",
+   "es": "detenerse, aparcar"
+  },
+  "mnemonic": {
+   "en": "Parking is easy in the parking lot beside the base with its permanent stationing of troops.",
+   "es": "El aparcamiento es fácil en el estacionamiento junto a la base con presencia permanente de tropas."
+  },
+  "g": [
+   {
+    "r": "チュウ",
+    "w": [
+     "w2793",
+     "w2794",
+     "w2795"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0797",
+  "c": "紹",
+  "meaning": {
+   "en": "introduce",
+   "es": "presentar"
+  },
+  "mnemonic": {
+   "en": "The introducer read an introductory text before the formal introduction.",
+   "es": "El introductor leyó un texto de presentación antes de la introducción formal."
+  },
+  "g": [
+   {
+    "r": "ショウ",
+    "w": [
+     "w2396",
+     "w2796",
+     "w2797"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0798",
+  "c": "雇",
+  "meaning": {
+   "en": "employ, hire",
+   "es": "emplear, contratar"
+  },
+  "mnemonic": {
+   "en": "The employer decided to hire me, and my employment lasted until a sudden dismissal.",
+   "es": "El empleador decidió contratarme, y mi empleo duró hasta un despido repentino."
+  },
+  "g": [
+   {
+    "r": "やと",
+    "w": [
+     "w2798",
+     "w2799"
+    ]
+   },
+   {
+    "r": "コ",
+    "w": [
+     "w2800",
+     "w2801"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0799",
+  "c": "替",
+  "meaning": {
+   "en": "exchange, replace",
+   "es": "cambiar, reemplazar"
+  },
+  "mnemonic": {
+   "en": "At the shift change I change clothes, and while changing clothes I exchange my shirt and replace my shoes as a substitution.",
+   "es": "En el relevo de turno me cambio de ropa, y con el cambio de ropa cambio la camisa y reemplazo los zapatos como sustitución."
+  },
+  "g": [
+   {
+    "r": "タイ",
+    "w": [
+     "w2802",
+     "w2803"
+    ]
+   },
+   {
+    "r": "が",
+    "w": [
+     "w2804",
+     "w2805"
+    ]
+   },
+   {
+    "r": "か",
+    "w": [
+     "w2806",
+     "w2807"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0800",
+  "c": "預",
+  "meaning": {
+   "en": "deposit, entrust",
+   "es": "depositar, confiar"
+  },
+  "mnemonic": {
+   "en": "I keep the keys for my neighbor in safekeeping, and give her savings into custody by depositing them as a bank deposit.",
+   "es": "Guardo las llaves del vecino en custodia, y le confío sus ahorros al banco como depósito bancario, un depósito seguro."
+  },
+  "g": [
+   {
+    "r": "あず",
+    "w": [
+     "w2808",
+     "w2809",
+     "w2810"
+    ]
+   },
+   {
+    "r": "ヨ",
+    "w": [
+     "w2811",
+     "w2812"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0801",
+  "c": "焼",
+  "meaning": {
+   "en": "bake, burn",
+   "es": "hornear, quemar"
+  },
+  "mnemonic": {
+   "en": "I bake bread and grill fish at sunset, while the bread burns and the incineration plant hums with combustion.",
+   "es": "Horneo pan y aso pescado a la puesta de sol, mientras el pan se quema y la planta de incineración zumba con la combustión."
+  },
+  "g": [
+   {
+    "r": "や",
+    "w": [
+     "w2813",
+     "w2814",
+     "w2815"
+    ]
+   },
+   {
+    "r": "ショウ",
+    "w": [
+     "w2783",
+     "w2816"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0802",
+  "c": "簡",
+  "meaning": {
+   "en": "simple, brief",
+   "es": "sencillo, breve"
+  },
+  "mnemonic": {
+   "en": "The simple plan won for its simplicity and brevity, and everyone praised how concise it was.",
+   "es": "El plan sencillo ganó por ser simple y fácil, breve y conciso, y todos lo elogiaron."
+  },
+  "g": [
+   {
+    "r": "カン",
+    "w": [
+     "w2817",
+     "w1459",
+     "w2818"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0803",
+  "c": "章",
+  "meaning": {
+   "en": "chapter, badge",
+   "es": "capítulo, insignia"
+  },
+  "mnemonic": {
+   "en": "Each chapter of the text reads like a movement in a symphony.",
+   "es": "Cada capítulo del texto se lee como un movimiento de una sinfonía."
+  },
+  "g": [
+   {
+    "r": "ショウ",
+    "w": [
+     "w2819",
+     "w0639",
+     "w2820"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0804",
+  "c": "臓",
+  "meaning": {
+   "en": "entrails, organ",
+   "es": "entrañas, órgano"
+  },
+  "mnemonic": {
+   "en": "The heart and the liver are viscera, organs deep in the belly.",
+   "es": "El corazón y el hígado son vísceras, entrañas que trabajan en lo profundo del cuerpo."
+  },
+  "g": [
+   {
+    "r": "ゾウ",
+    "w": [
+     "w2821",
+     "w2822",
+     "w2823"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0805",
+  "c": "律",
+  "meaning": {
+   "en": "law, rhythm",
+   "es": "ley, ritmo"
+  },
+  "mnemonic": {
+   "en": "The law sets rules and order, so the rhythm of the day is uniform for all.",
+   "es": "La ley impone disciplina y orden, así que el ritmo del día es uniforme para todos."
+  },
+  "g": [
+   {
+    "r": "リツ",
+    "w": [
+     "w2824",
+     "w2825",
+     "w2826"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0806",
+  "c": "贈",
+  "meaning": {
+   "en": "present, give",
+   "es": "regalar, obsequiar"
+  },
+  "mnemonic": {
+   "en": "I present a gift to my teacher, and the present is a donation that ends with a small presentation.",
+   "es": "Regalo un regalo a mi maestro, y ese regalo es una donación que acaba con un obsequio formal."
+  },
+  "g": [
+   {
+    "r": "おく",
+    "w": [
+     "w2827",
+     "w2828",
+     "w2829"
+    ]
+   },
+   {
+    "r": "ゾウ",
+    "w": [
+     "w1583",
+     "w2830"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0807",
+  "c": "照",
+  "meaning": {
+   "en": "illuminate, shine",
+   "es": "iluminar, brillar"
+  },
+  "mnemonic": {
+   "en": "The sun shines, lamps illuminate the hall, mirrors reflect the light, and the illumination makes a sharp contrast with the dark.",
+   "es": "El sol brilla, las lámparas iluminan la sala, los espejos reflejan la luz y la iluminación hace contraste con la sombra."
+  },
+  "g": [
+   {
+    "r": "て",
+    "w": [
+     "w2831",
+     "w2832",
+     "w2833"
+    ]
+   },
+   {
+    "r": "ショウ",
+    "w": [
+     "w2834",
+     "w2835"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0808",
+  "c": "薄",
+  "meaning": {
+   "en": "thin, dilute",
+   "es": "fino, diluir"
+  },
+  "mnemonic": {
+   "en": "In the dim room I dilute the thin tea, a frivolous cure for my weakness.",
+   "es": "En el cuarto tenue diluyo el té fino y débil, un remedio frívolo para mi debilidad."
+  },
+  "g": [
+   {
+    "r": "うす",
+    "w": [
+     "w2836",
+     "w2837",
+     "w2838"
+    ]
+   },
+   {
+    "r": "ハク",
+    "w": [
+     "w2839",
+     "w2840"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0809",
+  "c": "群",
+  "meaning": {
+   "en": "flock, group",
+   "es": "rebaño, grupo"
+  },
+  "mnemonic": {
+   "en": "A flock of birds began to flock together, then a group joined the crowd and started to swarm.",
+   "es": "Un rebaño se agrupa, un grupo se une a la multitud y la muchedumbre se amontona."
+  },
+  "g": [
+   {
+    "r": "む",
+    "w": [
+     "w2841",
+     "w2842"
+    ]
+   },
+   {
+    "r": "グン",
+    "w": [
+     "w2843",
+     "w2844"
+    ]
+   },
+   {
+    "r": "むら",
+    "w": [
+     "w2845"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0810",
+  "c": "秒",
+  "meaning": {
+   "en": "second",
+   "es": "segundo"
+  },
+  "mnemonic": {
+   "en": "The countdown ticks every second, and the rocket's speed per second climbs.",
+   "es": "La cuenta regresiva avanza cada segundo, y la velocidad por segundo del cohete sube."
+  },
+  "g": [
+   {
+    "r": "ビョウ",
+    "w": [
+     "w2846",
+     "w2847",
+     "w2848"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0811",
+  "c": "奥",
+  "meaning": {
+   "en": "interior, depths",
+   "es": "interior, fondo"
+  },
+  "mnemonic": {
+   "en": "My wife walked into the interior of the cave, surprised by its depth.",
+   "es": "Mi esposa caminó hacia el interior de la cueva, sorprendida por su profundidad."
+  },
+  "g": [
+   {
+    "r": "おく",
+    "w": [
+     "w2849",
+     "w2850",
+     "w2851"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0812",
+  "c": "詰",
+  "meaning": {
+   "en": "pack, packed",
+   "es": "empacar, lleno"
+  },
+  "mnemonic": {
+   "en": "During the cross-examination I stare at the lawyer while I pack my bag, and the hallway is packed.",
+   "es": "Durante el interrogatorio miro fijamente al abogado mientras empaco mi bolsa, y el pasillo se atasca de gente."
+  },
+  "g": [
+   {
+    "r": "つ",
+    "w": [
+     "w2852",
+     "w2853",
+     "w2854"
+    ]
+   },
+   {
+    "r": "キツ",
+    "w": [
+     "w2855"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0813",
+  "c": "双",
+  "meaning": {
+   "en": "pair, twin",
+   "es": "par, gemelo"
+  },
+  "mnemonic": {
+   "en": "The twins planted a pair of seeds, and both parties watched the seed leaves sprout.",
+   "es": "Los gemelos plantaron un par de semillas, y ambas partes vieron brotar los cotiledones."
+  },
+  "g": [
+   {
+    "r": "ふた",
+    "w": [
+     "w2856",
+     "w2857"
+    ]
+   },
+   {
+    "r": "ソウ",
+    "w": [
+     "w2858",
+     "w2859"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0814",
+  "c": "刺",
+  "meaning": {
+   "en": "pierce, thorn",
+   "es": "pinchar, espina"
+  },
+  "mnemonic": {
+   "en": "The business card got stuck in the sashimi, and a wasp began to sting me, a sharp stimulus indeed.",
+   "es": "La tarjeta de presentación se clavó en el sashimi, y una avispa empezó a picarme, un estímulo muy agudo."
+  },
+  "g": [
+   {
+    "r": "さし",
+    "w": [
+     "w2860"
+    ]
+   },
+   {
+    "r": "シ",
+    "w": [
+     "w2861",
+     "w2862"
+    ]
+   },
+   {
+    "r": "さ",
+    "w": [
+     "w2863",
+     "w2864"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0815",
+  "c": "純",
+  "meaning": {
+   "en": "pure, genuine",
+   "es": "puro, genuino"
+  },
+  "mnemonic": {
+   "en": "With a pure heart and a genuine smile, she loved the simplicity of the countryside.",
+   "es": "Con un corazón puro e inocente y una sonrisa genuina, amaba la simplicidad del campo."
+  },
+  "g": [
+   {
+    "r": "ジュン",
+    "w": [
+     "w2865",
+     "w2866",
+     "w1484"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0816",
+  "c": "翌",
+  "meaning": {
+   "en": "next, following",
+   "es": "siguiente, próximo"
+  },
+  "mnemonic": {
+   "en": "The next day I felt fine, the following week I felt better, and the following month I forgot it all.",
+   "es": "Al día siguiente me sentí bien, la semana siguiente mejor, y el mes siguiente lo olvidé todo."
+  },
+  "g": [
+   {
+    "r": "ヨク",
+    "w": [
+     "w2867",
+     "w2868",
+     "w2869"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0817",
+  "c": "快",
+  "meaning": {
+   "en": "pleasant, cheerful",
+   "es": "agradable, alegre"
+  },
+  "mnemonic": {
+   "en": "In good weather the walk is pleasant, the air comfortable, and my mood happy and agreeable.",
+   "es": "Con el cielo despejado el paseo es agradable, el aire cómodo, y mi ánimo alegre y agradable."
+  },
+  "g": [
+   {
+    "r": "カイ",
+    "w": [
+     "w1920",
+     "w1577",
+     "w2870"
+    ]
+   },
+   {
+    "r": "こころよ",
+    "w": [
+     "w2871"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0818",
+  "c": "片",
+  "meaning": {
+   "en": "one side, fragment",
+   "es": "un lado, fragmento"
+  },
+  "mnemonic": {
+   "en": "On the one-way road a fragment of glass and a chip of wood lay where the ground was one-sided.",
+   "es": "En la calle de solo ida hallé un fragmento de vidrio y un trozo de madera donde el suelo se inclinaba."
+  },
+  "g": [
+   {
+    "r": "ヘン",
+    "w": [
+     "w1490",
+     "w2872"
+    ]
+   },
+   {
+    "r": "かた",
+    "w": [
+     "w2873",
+     "w2874"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0819",
+  "c": "敬",
+  "meaning": {
+   "en": "respect, awe",
+   "es": "respeto, respetar"
+  },
+  "mnemonic": {
+   "en": "Using honorific language, I show respect and honor to my elders, and my reverence is sincere.",
+   "es": "Con lenguaje honorífico muestro respeto a mis mayores, pues los respeto de corazón."
+  },
+  "g": [
+   {
+    "r": "ケイ",
+    "w": [
+     "w2875",
+     "w2876",
+     "w2877"
+    ]
+   },
+   {
+    "r": "うやま",
+    "w": [
+     "w2878"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0820",
+  "c": "悩",
+  "meaning": {
+   "en": "worry, trouble",
+   "es": "preocupación, angustia"
+  },
+  "mnemonic": {
+   "en": "I agonize over every worry, my worldly desires bother me, and the anguish keeps me awake.",
+   "es": "Me preocupo por cada preocupación, los deseos mundanos me molestan, y la angustia no me deja dormir."
+  },
+  "g": [
+   {
+    "r": "なや",
+    "w": [
+     "w2879",
+     "w2880",
+     "w2881"
+    ]
+   },
+   {
+    "r": "ノウ",
+    "w": [
+     "w2882",
+     "w2883"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0821",
+  "c": "泉",
+  "meaning": {
+   "en": "spring, fountain",
+   "es": "manantial, fuente"
+  },
+  "mnemonic": {
+   "en": "The hot spring is the source of the garden pond, fed by a clear spring below.",
+   "es": "Las aguas termales son la fuente del estanque de jardín, alimentado por un manantial claro."
+  },
+  "g": [
+   {
+    "r": "セン",
+    "w": [
+     "w0397",
+     "w2884",
+     "w2885"
+    ]
+   },
+   {
+    "r": "いずみ",
+    "w": [
+     "w2886"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0822",
+  "c": "皮",
+  "meaning": {
+   "en": "skin, hide",
+   "es": "piel, cuero"
+  },
+  "mnemonic": {
+   "en": "At the beginning of winter, with some sarcasm, he compared my skin to tree bark and wrapped his hide in fur.",
+   "es": "Al comienzo del invierno, con sarcasmo, comparó mi piel con la corteza de un árbol y se envolvió la piel en pelaje."
+  },
+  "g": [
+   {
+    "r": "ヒ",
+    "w": [
+     "w2887",
+     "w2888",
+     "w2889"
+    ]
+   },
+   {
+    "r": "がわ",
+    "w": [
+     "w2890"
+    ]
+   },
+   {
+    "r": "かわ",
+    "w": [
+     "w2891",
+     "w2892"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0823",
+  "c": "漁",
+  "meaning": {
+   "en": "fishing",
+   "es": "pesca"
+  },
+  "mnemonic": {
+   "en": "In the fishing village a fisherman on his fishing boat goes fishing, and the fishing fleet searches for tuna.",
+   "es": "En el pueblo pesquero un pescador sale de pesca en su barco pesquero, y la industria pesquera busca atún por todo el mar."
+  },
+  "g": [
+   {
+    "r": "ギョ",
+    "w": [
+     "w2893",
+     "w2894",
+     "w2123"
+    ]
+   },
+   {
+    "r": "リョウ",
+    "w": [
+     "w2895",
+     "w2896"
+    ]
+   },
+   {
+    "r": "あさ",
+    "w": [
+     "w2897"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0824",
+  "c": "荒",
+  "meaning": {
+   "en": "rough, wild",
+   "es": "áspero, salvaje"
+  },
+  "mnemonic": {
+   "en": "The sea grew stormy, rough and rude waves raged, and the raging waves damaged the pier, leaving it in ruin.",
+   "es": "El mar se alborotó, las olas embravecidas ásperas y toscas dañaron el muelle y lo dejaron en ruina."
+  },
+  "g": [
+   {
+    "r": "あら",
+    "w": [
+     "w2898",
+     "w2899",
+     "w2900"
+    ]
+   },
+   {
+    "r": "あ",
+    "w": [
+     "w2901",
+     "w2902"
+    ]
+   },
+   {
+    "r": "コウ",
+    "w": [
+     "w2903"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0825",
+  "c": "貯",
+  "meaning": {
+   "en": "savings, store",
+   "es": "ahorros, almacenar"
+  },
+  "mnemonic": {
+   "en": "I keep my savings in storage and add to the savings every month.",
+   "es": "Guardo mis ahorros en almacenamiento y sumo al ahorro cada mes."
+  },
+  "g": [
+   {
+    "r": "チョ",
+    "w": [
+     "w2268",
+     "w2904",
+     "w2905"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0826",
+  "c": "硬",
+  "meaning": {
+   "en": "hard, stiff",
+   "es": "duro, rígido"
+  },
+  "mnemonic": {
+   "en": "The coin was hard, and after hardening its hardness stayed firm under a vigorous blow.",
+   "es": "La moneda era dura, y tras el endurecimiento su dureza se mantuvo firme ante un golpe enérgico."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w2659",
+     "w2906",
+     "w2907"
+    ]
+   },
+   {
+    "r": "かた",
+    "w": [
+     "w2908",
+     "w2909"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0827",
+  "c": "埋",
+  "meaning": {
+   "en": "bury, fill up",
+   "es": "enterrar, rellenar"
+  },
+  "mnemonic": {
+   "en": "At the burial we bury the chest, it gets buried, and the buried property stays embedded until someone fills the hole.",
+   "es": "En el entierro enterramos el cofre, se entierra en el yacimiento, queda incrustado, y al final rellenamos el hoyo."
+  },
+  "g": [
+   {
+    "r": "う",
+    "w": [
+     "w2910",
+     "w2911",
+     "w2912"
+    ]
+   },
+   {
+    "r": "マイ",
+    "w": [
+     "w2913",
+     "w2914"
+    ]
+   },
+   {
+    "r": "うず",
+    "w": [
+     "w2915"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0828",
+  "c": "柱",
+  "meaning": {
+   "en": "pillar, post",
+   "es": "pilar, poste"
+  },
+  "mnemonic": {
+   "en": "The telephone pole leans on a prop, while the stone column stands like a pillar.",
+   "es": "El poste eléctrico se apoya en un puntal, mientras la columna de piedra se alza como un pilar."
+  },
+  "g": [
+   {
+    "r": "チュウ",
+    "w": [
+     "w2916",
+     "w2917",
+     "w2918"
+    ]
+   },
+   {
+    "r": "はしら",
+    "w": [
+     "w2919"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0829",
+  "c": "祭",
+  "meaning": {
+   "en": "festival, ritual",
+   "es": "festival, rito"
+  },
+  "mnemonic": {
+   "en": "On the national holiday the festival fills the streets, and at the altar they enshrine the spirit with a feast.",
+   "es": "En el día festivo el festival llena las calles, y en el altar veneran al espíritu con una fiesta."
+  },
+  "g": [
+   {
+    "r": "サイ",
+    "w": [
+     "w2920",
+     "w2921",
+     "w2922"
+    ]
+   },
+   {
+    "r": "まつ",
+    "w": [
+     "w2923",
+     "w2924"
+    ]
+   },
+   {
+    "r": "まつり",
+    "w": [
+     "w2925"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0830",
+  "c": "袋",
+  "meaning": {
+   "en": "bag, sack",
+   "es": "bolsa, saco"
+  },
+  "mnemonic": {
+   "en": "In the blind alley I dropped my glove into the bag, and my stomach growled.",
+   "es": "En el callejón sin salida metí el guante en la bolsa, y mi estómago rugió."
+  },
+  "g": [
+   {
+    "r": "ふくろ",
+    "w": [
+     "w2926",
+     "w1424"
+    ]
+   },
+   {
+    "r": "ぶくろ",
+    "w": [
+     "w2927",
+     "w2928"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0831",
+  "c": "筆",
+  "meaning": {
+   "en": "writing brush, writing",
+   "es": "pincel, escritura"
+  },
+  "mnemonic": {
+   "en": "For my essays I write in my own handwriting, switching from pencil to fountain pen to writing brush.",
+   "es": "Para mi ensayo, la redacción va con letra propia, pasando del lápiz a la pluma estilográfica y al pincel."
+  },
+  "g": [
+   {
+    "r": "ヒツ",
+    "w": [
+     "w2929",
+     "w2930",
+     "w2931"
+    ]
+   },
+   {
+    "r": "ピツ",
+    "w": [
+     "w2932",
+     "w2933"
+    ]
+   },
+   {
+    "r": "ふで",
+    "w": [
+     "w2934"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0832",
+  "c": "訓",
+  "meaning": {
+   "en": "instruction, kun reading",
+   "es": "instrucción, lectura kun"
+  },
+  "mnemonic": {
+   "en": "In training I learned a lesson, that the kanji readings include the native reading, called the kun reading.",
+   "es": "En el entrenamiento aprendí una lección, que las lecturas del kanji incluyen la lectura nativa, llamada lectura kun."
+  },
+  "g": [
+   {
+    "r": "クン",
+    "w": [
+     "w0658",
+     "w2935",
+     "w2936"
+    ]
+   },
+   {
+    "r": "くん",
+    "w": [
+     "w2937",
+     "w2938"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0833",
+  "c": "浴",
+  "meaning": {
+   "en": "bathe",
+   "es": "bañarse"
+  },
+  "mnemonic": {
+   "en": "After sea bathing, more bathing in the bathroom, where I bathe while the shower pours warm water on me.",
+   "es": "Tras el baño en el mar, me baño otra vez en el baño de casa y dejo que el agua se derrame sobre mí."
+  },
+  "g": [
+   {
+    "r": "ヨク",
+    "w": [
+     "w2939",
+     "w2940",
+     "w2941"
+    ]
+   },
+   {
+    "r": "あ",
+    "w": [
+     "w2942",
+     "w2943"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0834",
+  "c": "童",
+  "meaning": {
+   "en": "child, juvenile",
+   "es": "niño, infantil"
+  },
+  "mnemonic": {
+   "en": "The children sang a children's song and then listened to a fairy tale.",
+   "es": "Los niños cantaron una canción infantil y luego escucharon un cuento de hadas."
+  },
+  "g": [
+   {
+    "r": "ドウ",
+    "w": [
+     "w2944",
+     "w2449",
+     "w2945"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0835",
+  "c": "宝",
+  "meaning": {
+   "en": "treasure, wealth",
+   "es": "tesoro, riqueza"
+  },
+  "mnemonic": {
+   "en": "The useful little jewel became a treasure, and that treasured item is now a national treasure.",
+   "es": "La joya útil se volvió un tesoro, y ese tesoro es hoy tesoro nacional."
+  },
+  "g": [
+   {
+    "r": "ホウ",
+    "w": [
+     "w1162",
+     "w2946",
+     "w2947"
+    ]
+   },
+   {
+    "r": "たから",
+    "w": [
+     "w2948",
+     "w2949"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0836",
+  "c": "封",
+  "meaning": {
+   "en": "seal, close",
+   "es": "sello, cerrar"
+  },
+  "mnemonic": {
+   "en": "The envelope carried a wax seal and an enclosure describing feudal lords and their feudalistic rules.",
+   "es": "El sobre llevaba un sello y un adjunto que describía a los señores feudales y sus normas feudales."
+  },
+  "g": [
+   {
+    "r": "フウ",
+    "w": [
+     "w2950",
+     "w2951",
+     "w2952"
+    ]
+   },
+   {
+    "r": "ホウ",
+    "w": [
+     "w2953",
+     "w2954"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0837",
+  "c": "胸",
+  "meaning": {
+   "en": "chest, breast",
+   "es": "pecho"
+  },
+  "mnemonic": {
+   "en": "The sculptor carved a bust with a proud chest, and her heart was in every stroke.",
+   "es": "El escultor talló un busto de pecho orgulloso, con el corazón y sus sentimientos en cada golpe."
+  },
+  "g": [
+   {
+    "r": "むね",
+    "w": [
+     "w2955"
+    ]
+   },
+   {
+    "r": "キョウ",
+    "w": [
+     "w2956",
+     "w2957"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0838",
+  "c": "砂",
+  "meaning": {
+   "en": "sand",
+   "es": "arena"
+  },
+  "mnemonic": {
+   "en": "The sand of the desert piles into a sand dune, while the sandy beach mixes sand, gravel and grains like sugar.",
+   "es": "La arena del desierto forma una duna, mientras la playa de arena mezcla arena, grava y granos como azúcar."
+  },
+  "g": [
+   {
+    "r": "サ",
+    "w": [
+     "w2958",
+     "w2959",
+     "w2960"
+    ]
+   },
+   {
+    "r": "すな",
+    "w": [
+     "w2961",
+     "w2962"
+    ]
+   },
+   {
+    "r": "ジャ",
+    "w": [
+     "w2963"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0839",
+  "c": "塩",
+  "meaning": {
+   "en": "salt",
+   "es": "sal"
+  },
+  "mnemonic": {
+   "en": "Table salt is salty, and in chemistry salt is neither acid nor base but a product of chloridation.",
+   "es": "La sal de mesa es salada, y en química la sal no es ácido ni base sino producto de la cloración."
+  },
+  "g": [
+   {
+    "r": "エン",
+    "w": [
+     "w2964",
+     "w2965",
+     "w2966"
+    ]
+   },
+   {
+    "r": "しお",
+    "w": [
+     "w2967",
+     "w2968"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0840",
+  "c": "賢",
+  "meaning": {
+   "en": "wise, clever",
+   "es": "sabio, listo"
+  },
+  "mnemonic": {
+   "en": "The wise person used her wisdom and stayed clever in every debate.",
+   "es": "El sabio usó su sabiduría y se mantuvo listo en cada debate."
+  },
+  "g": [
+   {
+    "r": "かしこ",
+    "w": [
+     "w2969"
+    ]
+   },
+   {
+    "r": "ケン",
+    "w": [
+     "w2970",
+     "w2971"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0841",
+  "c": "腕",
+  "meaning": {
+   "en": "arm, ability",
+   "es": "brazo, habilidad"
+  },
+  "mnemonic": {
+   "en": "With one arm, my right arm, the skillful cook showed the ability and skill of a capable master.",
+   "es": "Con un brazo, el brazo derecho, el hábil cocinero mostró la habilidad y destreza de un maestro competente."
+  },
+  "g": [
+   {
+    "r": "うで",
+    "w": [
+     "w2972",
+     "w2973",
+     "w2974"
+    ]
+   },
+   {
+    "r": "ワン",
+    "w": [
+     "w2975",
+     "w2976"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0842",
+  "c": "兆",
+  "meaning": {
+   "en": "omen, trillion",
+   "es": "presagio, billón"
+  },
+  "mnemonic": {
+   "en": "A trillion stars were a lucky omen, a good omen, and every sign and portent pointed to fortune.",
+   "es": "Un billón de estrellas fue un buen augurio, un presagio y una señal clara de buena suerte."
+  },
+  "g": [
+   {
+    "r": "チョウ",
+    "w": [
+     "w2977",
+     "w2978",
+     "w2979"
+    ]
+   },
+   {
+    "r": "きざ",
+    "w": [
+     "w2980"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0843",
+  "c": "床",
+  "meaning": {
+   "en": "bed, floor",
+   "es": "cama, suelo"
+  },
+  "mnemonic": {
+   "en": "After rising from the sickbed, I crossed the floor past the alcove to the barber's, escaping that hotbed of germs.",
+   "es": "Al levantarse de la cama de enfermo, cruzó el suelo y la alcoba hacia la barbería, ese caldo de cultivo de chismes."
+  },
+  "g": [
+   {
+    "r": "ショウ",
+    "w": [
+     "w2981",
+     "w2982",
+     "w2983"
+    ]
+   },
+   {
+    "r": "とこ",
+    "w": [
+     "w2984",
+     "w2985"
+    ]
+   },
+   {
+    "r": "ゆか",
+    "w": [
+     "w2986"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0844",
+  "c": "毛",
+  "meaning": {
+   "en": "fur, hair",
+   "es": "pelo, pelaje"
+  },
+  "mnemonic": {
+   "en": "Under a wool blanket stuffed with feathers, I knit with knitting wool beside the cat's soft fur.",
+   "es": "Bajo una manta de lana llena de plumas, tejo con lana junto al pelaje suave del gato."
+  },
+  "g": [
+   {
+    "r": "モウ",
+    "w": [
+     "w2987",
+     "w2988",
+     "w2556"
+    ]
+   },
+   {
+    "r": "け",
+    "w": [
+     "w2989",
+     "w2890"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0845",
+  "c": "緑",
+  "meaning": {
+   "en": "green",
+   "es": "verde"
+  },
+  "mnemonic": {
+   "en": "The fresh greenery of the green tract of land shone in a green color brighter than verdigris on old bronze.",
+   "es": "El verdor nuevo de la zona verde brillaba con un verde más vivo que el cardenillo del bronce viejo."
+  },
+  "g": [
+   {
+    "r": "みどり",
+    "w": [
+     "w2990",
+     "w2991"
+    ]
+   },
+   {
+    "r": "リョク",
+    "w": [
+     "w2992",
+     "w2993"
+    ]
+   },
+   {
+    "r": "ロク",
+    "w": [
+     "w2994"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0846",
+  "c": "尊",
+  "meaning": {
+   "en": "revered, precious",
+   "es": "venerado, precioso"
+  },
+  "mnemonic": {
+   "en": "With respect and esteem for her self-respect, I value the precious, valuable lesson she taught me.",
+   "es": "Con respeto y consideración por su autoestima, valoro y aprecio la lección preciosa y valiosa que me dio."
+  },
+  "g": [
+   {
+    "r": "ソン",
+    "w": [
+     "w2877",
+     "w2995",
+     "w2996"
+    ]
+   },
+   {
+    "r": "とうと",
+    "w": [
+     "w2997",
+     "w2998"
+    ]
+   },
+   {
+    "r": "たっと",
+    "w": [
+     "w2999"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0847",
+  "c": "祝",
+  "meaning": {
+   "en": "celebrate, congratulate",
+   "es": "celebrar, felicitar"
+  },
+  "mnemonic": {
+   "en": "On the national holiday we held a celebration and festival, and I went to congratulate the couple with warm congratulations.",
+   "es": "En el día festivo hubo una gran celebración y fui a felicitar a la pareja con una felicitación sincera."
+  },
+  "g": [
+   {
+    "r": "シュク",
+    "w": [
+     "w3000",
+     "w3001",
+     "w3002"
+    ]
+   },
+   {
+    "r": "いわ",
+    "w": [
+     "w3003",
+     "w3004"
+    ]
+   },
+   {
+    "r": "シュウ",
+    "w": [
+     "w3005"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0848",
+  "c": "柔",
+  "meaning": {
+   "en": "soft, gentle",
+   "es": "blando, suave"
+  },
+  "mnemonic": {
+   "en": "In judo the flexible fighter stays soft and tender, gentle and mild, winning over rivals through placation instead of force.",
+   "es": "En judo, el luchador flexible se mantiene blando y tierno, suave y dócil, y gana rivales con persuasión y halago."
+  },
+  "g": [
+   {
+    "r": "ジュウ",
+    "w": [
+     "w0622",
+     "w3006",
+     "w3007"
+    ]
+   },
+   {
+    "r": "やわ",
+    "w": [
+     "w3008",
+     "w3009"
+    ]
+   },
+   {
+    "r": "ニュウ",
+    "w": [
+     "w3010"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0849",
+  "c": "殿",
+  "meaning": {
+   "en": "lord, palace",
+   "es": "señor, palacio"
+  },
+  "mnemonic": {
+   "en": "Yes, sir, the feudal lord left his palace to pray at the temple this morning.",
+   "es": "Sí, señor, el señor feudal salió del palacio para rezar en el templo esta mañana."
+  },
+  "g": [
+   {
+    "r": "どの",
+    "w": [
+     "w3011"
+    ]
+   },
+   {
+    "r": "デン",
+    "w": [
+     "w3012",
+     "w3013"
+    ]
+   },
+   {
+    "r": "との",
+    "w": [
+     "w3014"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0850",
+  "c": "濃",
+  "meaning": {
+   "en": "thick, dark",
+   "es": "espeso, oscuro"
+  },
+  "mnemonic": {
+   "en": "The concentration of the dark blue dye was so rich and strong that the thick liquid stained everything.",
+   "es": "La concentración del tinte azul oscuro era tan densa y fuerte que el líquido espeso lo manchó todo."
+  },
+  "g": [
+   {
+    "r": "ノウ",
+    "w": [
+     "w3015",
+     "w3016",
+     "w3017"
+    ]
+   },
+   {
+    "r": "こ",
+    "w": [
+     "w3018"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0851",
+  "c": "液",
+  "meaning": {
+   "en": "liquid, fluid",
+   "es": "líquido, fluido"
+  },
+  "mnemonic": {
+   "en": "The nurse checked that the liquid in the bag was blood and not some other fluid.",
+   "es": "La enfermera comprobó que el líquido de la bolsa era sangre y no otro fluido."
+  },
+  "g": [
+   {
+    "r": "エキ",
+    "w": [
+     "w3019",
+     "w0444",
+     "w3020"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0852",
+  "c": "衣",
+  "meaning": {
+   "en": "garment, clothes",
+   "es": "prenda, ropa"
+  },
+  "mnemonic": {
+   "en": "Food, clothing and shelter come first, so at the seasonal change of clothing I sort my clothes and mend each garment.",
+   "es": "Comida, ropa y vivienda son lo primero, así que en el cambio estacional de ropa reviso cada prenda."
+  },
+  "g": [
+   {
+    "r": "イ",
+    "w": [
+     "w3021",
+     "w3022",
+     "w3023"
+    ]
+   },
+   {
+    "r": "ころも",
+    "w": [
+     "w3024",
+     "w3025"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0853",
+  "c": "肩",
+  "meaning": {
+   "en": "shoulder",
+   "es": "hombro"
+  },
+  "mnemonic": {
+   "en": "My job title looks grand, but I carry it on one shoulder and end up with stiff shoulders.",
+   "es": "Mi cargo suena importante, pero lo llevo sobre un hombro y termino con rigidez de hombros."
+  },
+  "g": [
+   {
+    "r": "かた",
+    "w": [
+     "w3026",
+     "w3027",
+     "w3028"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0854",
+  "c": "零",
+  "meaning": {
+   "en": "zero, spill",
+   "es": "cero, derramar"
+  },
+  "mnemonic": {
+   "en": "I got zero marks on the test, a plain zero, on a morning that was below zero outside.",
+   "es": "Saqué cero puntos en el examen, un cero redondo, una mañana en que hacía bajo cero afuera."
+  },
+  "g": [
+   {
+    "r": "レイ",
+    "w": [
+     "w3029",
+     "w3030",
+     "w3031"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0855",
+  "c": "幼",
+  "meaning": {
+   "en": "infancy, childhood",
+   "es": "infancia, niñez"
+  },
+  "mnemonic": {
+   "en": "The infant at the kindergarten was very young, and the childish games suited a baby in its infancy.",
+   "es": "El niño pequeño del jardín de infancia era muy joven, y los juegos infantiles le iban bien."
+  },
+  "g": [
+   {
+    "r": "ヨウ",
+    "w": [
+     "w2448",
+     "w3032",
+     "w3033"
+    ]
+   },
+   {
+    "r": "おさな",
+    "w": [
+     "w3034",
+     "w3035"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0856",
+  "c": "泊",
+  "meaning": {
+   "en": "stay overnight, lodge",
+   "es": "pernoctar, alojarse"
+  },
+  "mnemonic": {
+   "en": "The boat found anchorage in the harbor, so I found lodging and had a friend stay while I stayed too.",
+   "es": "Tras el anclaje del barco en el puerto, busqué alojamiento, quise alojar a un amigo y me hospedé con él."
+  },
+  "g": [
+   {
+    "r": "ハク",
+    "w": [
+     "w0514",
+     "w3036"
+    ]
+   },
+   {
+    "r": "と",
+    "w": [
+     "w3037",
+     "w3038"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0857",
+  "c": "黄",
+  "meaning": {
+   "en": "yellow",
+   "es": "amarillo"
+  },
+  "mnemonic": {
+   "en": "The egg yolk was yellow, a yellow as bright as gold, though it smelled faintly of sulfur.",
+   "es": "La yema era amarilla, de un amarillo dorado como el oro, aunque olía un poco a azufre."
+  },
+  "g": [
+   {
+    "r": "き",
+    "w": [
+     "w3039",
+     "w3040",
+     "w3041"
+    ]
+   },
+   {
+    "r": "オウ",
+    "w": [
+     "w3042",
+     "w3043"
+    ]
+   },
+   {
+    "r": "こ",
+    "w": [
+     "w3044"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0858",
+  "c": "甘",
+  "meaning": {
+   "en": "sweet, pamper",
+   "es": "dulce, mimar"
+  },
+  "mnemonic": {
+   "en": "Grandma pampers the boy with sweet, luscious cake and sweet words, so he acts spoiled and presumes on her generous heart.",
+   "es": "La abuela mima al niño con pastel dulce y delicioso y palabras dulces, así que él se aprovecha de su indulgente corazón."
+  },
+  "g": [
+   {
+    "r": "あま",
+    "w": [
+     "w3045",
+     "w3046",
+     "w3047"
+    ]
+   },
+   {
+    "r": "カン",
+    "w": [
+     "w3048",
+     "w3049"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0859",
+  "c": "臣",
+  "meaning": {
+   "en": "retainer, subject",
+   "es": "vasallo, súbdito"
+  },
+  "mnemonic": {
+   "en": "The loyal subject rose from humble retainer to cabinet minister.",
+   "es": "El súbdito leal pasó de vasallo humilde a ministro del gabinete."
+  },
+  "g": [
+   {
+    "r": "ジン",
+    "w": [
+     "w3050"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0860",
+  "c": "浅",
+  "meaning": {
+   "en": "shallow, superficial",
+   "es": "superficial, poco profundo"
+  },
+  "mnemonic": {
+   "en": "On the wide shallow beach by the shoal, his shallow view sounded superficial and his mean words shameful.",
+   "es": "En la playa poco profunda, su opinión superficial sonó vergonzosa y mezquina, tan superficial como el agua."
+  },
+  "g": [
+   {
+    "r": "あさ",
+    "w": [
+     "w3051",
+     "w3052",
+     "w3053"
+    ]
+   },
+   {
+    "r": "セン",
+    "w": [
+     "w3054"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0861",
+  "c": "掃",
+  "meaning": {
+   "en": "sweep, brush",
+   "es": "barrer, cepillar"
+  },
+  "mnemonic": {
+   "en": "Cleaning day means sweeping every room, and I sweep and brush until the dust gets a clean sweep.",
+   "es": "El día de limpieza barro cada cuarto, y sigo barriendo hasta dar una barrida completa al polvo."
+  },
+  "g": [
+   {
+    "r": "ソウ",
+    "w": [
+     "w2499",
+     "w3055",
+     "w3056"
+    ]
+   },
+   {
+    "r": "は",
+    "w": [
+     "w3057"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0862",
+  "c": "雲",
+  "meaning": {
+   "en": "cloud",
+   "es": "nube"
+  },
+  "mnemonic": {
+   "en": "One cloud became dark clouds, the look of the sky changed, and winds and clouds took over the weather.",
+   "es": "Una nube se volvió nubes oscuras, el aspecto del cielo cambió y los vientos y nubes dominaron la tarde."
+  },
+  "g": [
+   {
+    "r": "くも",
+    "w": [
+     "w3058",
+     "w3059"
+    ]
+   },
+   {
+    "r": "ウン",
+    "w": [
+     "w3060",
+     "w3061"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0863",
+  "c": "掘",
+  "meaning": {
+   "en": "dig, excavate",
+   "es": "cavar, excavar"
+  },
+  "mnemonic": {
+   "en": "The mining crew began to dig, and the excavation uncovered an ancient wall.",
+   "es": "El equipo de minería empezó a cavar y la excavación descubrió una muralla antigua."
+  },
+  "g": [
+   {
+    "r": "ほ",
+    "w": [
+     "w3062"
+    ]
+   },
+   {
+    "r": "クツ",
+    "w": [
+     "w2388",
+     "w3063"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0864",
+  "c": "捨",
+  "meaning": {
+   "en": "discard, throw away",
+   "es": "desechar, tirar"
+  },
+  "mnemonic": {
+   "en": "Faced with adoption or rejection of the foundling, I could not abandon the abandoned child or throw her away.",
+   "es": "Entre selección y descarte, no pude abandonar al niño abandonado ni tirarlo ni desecharlo como basura."
+  },
+  "g": [
+   {
+    "r": "す",
+    "w": [
+     "w3064",
+     "w3065",
+     "w3066"
+    ]
+   },
+   {
+    "r": "シャ",
+    "w": [
+     "w3067"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0865",
+  "c": "軟",
+  "meaning": {
+   "en": "soft",
+   "es": "blando"
+  },
+  "mnemonic": {
+   "en": "The soft, tender clay went through a softening and became flexible in my hands.",
+   "es": "La arcilla blanda y tierna pasó por un ablandamiento y se volvió flexible en mis manos."
+  },
+  "g": [
+   {
+    "r": "やわ",
+    "w": [
+     "w3068",
+     "w3069"
+    ]
+   },
+   {
+    "r": "ナン",
+    "w": [
+     "w3006",
+     "w3070"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0866",
+  "c": "沈",
+  "meaning": {
+   "en": "sink, submerge",
+   "es": "hundirse, sumergir"
+  },
+  "mnemonic": {
+   "en": "As the ship began to sink, I watched the sinking in silence and felt depressed as the sea submerged it.",
+   "es": "El barco empezó a hundirse, miré el hundimiento en silencio y me deprimí mientras el mar lo sumergía."
+  },
+  "g": [
+   {
+    "r": "しず",
+    "w": [
+     "w3071",
+     "w3072"
+    ]
+   },
+   {
+    "r": "チン",
+    "w": [
+     "w3073",
+     "w3074"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0867",
+  "c": "凍",
+  "meaning": {
+   "en": "frozen, freeze",
+   "es": "congelado, congelar"
+  },
+  "mnemonic": {
+   "en": "In the cold storage the freezing air made the pond freeze over, and I was so chilled I feared death from cold.",
+   "es": "Con la congelación del estanque, el agua empezó a congelarse y yo a helarme de frío hasta temer la muerte por frío."
+  },
+  "g": [
+   {
+    "r": "トウ",
+    "w": [
+     "w3075",
+     "w3076",
+     "w3077"
+    ]
+   },
+   {
+    "r": "こご",
+    "w": [
+     "w3078"
+    ]
+   },
+   {
+    "r": "こお",
+    "w": [
+     "w3079"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0868",
+  "c": "乳",
+  "meaning": {
+   "en": "milk, breast",
+   "es": "leche, pecho"
+  },
+  "mnemonic": {
+   "en": "After milking the cow's udder, the calf sucked the teat for milk, while I poured soy milk into my cup.",
+   "es": "Tras el ordeño, el ternero buscó el pezón en la ubre para tomar leche, y yo me serví leche de soja."
+  },
+  "g": [
+   {
+    "r": "ニュウ",
+    "w": [
+     "w3080",
+     "w3081",
+     "w3082"
+    ]
+   },
+   {
+    "r": "ちち",
+    "w": [
+     "w3083"
+    ]
+   },
+   {
+    "r": "ち",
+    "w": [
+     "w3084",
+     "w3085"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0869",
+  "c": "恋",
+  "meaning": {
+   "en": "romance, love",
+   "es": "romance, amor"
+  },
+  "mnemonic": {
+   "en": "Love and romance began as tender passion for my beloved, but blighted love left me a broken heart.",
+   "es": "El amor y el romance por mi querido empezaron con pasión, pero un amor desdichado terminó en desamor."
+  },
+  "g": [
+   {
+    "r": "レン",
+    "w": [
+     "w3086",
+     "w3087",
+     "w3088"
+    ]
+   },
+   {
+    "r": "こい",
+    "w": [
+     "w3089",
+     "w3090"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0870",
+  "c": "紅",
+  "meaning": {
+   "en": "crimson, deep red",
+   "es": "carmesí, rojo intenso"
+  },
+  "mnemonic": {
+   "en": "Sipping black tea under the red-blossomed plum tree, she wore lipstick of deep red, a crimson like the fall colors.",
+   "es": "Tomando té negro bajo el ciruelo rojo, ella llevaba lápiz labial carmesí, un rojo intenso como los colores de otoño."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w1257",
+     "w3091",
+     "w3092"
+    ]
+   },
+   {
+    "r": "べに",
+    "w": [
+     "w3093",
+     "w3094"
+    ]
+   },
+   {
+    "r": "くれない",
+    "w": [
+     "w3095"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0871",
+  "c": "郊",
+  "meaning": {
+   "en": "outskirts, suburbs",
+   "es": "afueras, suburbios"
+  },
+  "mnemonic": {
+   "en": "We moved from the noisy center to a quiet suburb on the outskirts of town.",
+   "es": "Nos mudamos del centro ruidoso a un suburbio tranquilo en las afueras de la ciudad."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w3096",
+     "w3097"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0872",
+  "c": "腰",
+  "meaning": {
+   "en": "hips, waist",
+   "es": "cadera, cintura"
+  },
+  "mnemonic": {
+   "en": "I sit on the bench and rest my hip and waist, because lumbago in my loins gives me lower back pain.",
+   "es": "Me siento en el banco para descansar la cadera y la cintura, porque el lumbago me da dolor lumbar en las caderas."
+  },
+  "g": [
+   {
+    "r": "こし",
+    "w": [
+     "w1923",
+     "w3098",
+     "w3099"
+    ]
+   },
+   {
+    "r": "ヨウ",
+    "w": [
+     "w3100",
+     "w3101"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0873",
+  "c": "炭",
+  "meaning": {
+   "en": "charcoal, coal",
+   "es": "carbón"
+  },
+  "mnemonic": {
+   "en": "The coal mine yields coal that is mostly carbon, and the kiln turns wood into charcoal.",
+   "es": "La mina de carbón da carbón que es casi puro carbono, y el horno convierte la leña en carbón."
+  },
+  "g": [
+   {
+    "r": "タン",
+    "w": [
+     "w3102",
+     "w1160",
+     "w3103"
+    ]
+   },
+   {
+    "r": "すみ",
+    "w": [
+     "w3104"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0874",
+  "c": "踊",
+  "meaning": {
+   "en": "dance, leap",
+   "es": "bailar, saltar"
+  },
+  "mnemonic": {
+   "en": "At the Bon Festival dance everyone began to dance, and the dancing lasted all night with one dance after another.",
+   "es": "En la danza del Obon todos empezaron a bailar, y el baile y la danza duraron toda la noche."
+  },
+  "g": [
+   {
+    "r": "おど",
+    "w": [
+     "w3105",
+     "w3106",
+     "w3107"
+    ]
+   },
+   {
+    "r": "ヨウ",
+    "w": [
+     "w3108"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0875",
+  "c": "冊",
+  "meaning": {
+   "en": "tome, counter for books",
+   "es": "tomo, contador de libros"
+  },
+  "mnemonic": {
+   "en": "Using the counter for books, I ordered one volume, then a separate volume, and pressed a tanzaku poem strip inside.",
+   "es": "Con el contador de libros pedí un ejemplar y un tomo separado, y guardé dentro una tira de papel con un poema."
+  },
+  "g": [
+   {
+    "r": "サツ",
+    "w": [
+     "w3109",
+     "w3110",
+     "w3111"
+    ]
+   },
+   {
+    "r": "ザク",
+    "w": [
+     "w3112"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0876",
+  "c": "勇",
+  "meaning": {
+   "en": "courage, bravery",
+   "es": "valor, valentía"
+  },
+  "mnemonic": {
+   "en": "The brave soldier, in high spirits, showed courage and heroism, but his overeagerness turned bravery into rashness.",
+   "es": "El soldado valiente se envalentonó y mostró valor, valentía y heroísmo, pero dio un paso en falso."
+  },
+  "g": [
+   {
+    "r": "いさ",
+    "w": [
+     "w3113",
+     "w3114",
+     "w3115"
+    ]
+   },
+   {
+    "r": "ユウ",
+    "w": [
+     "w3116",
+     "w3117"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0877",
+  "c": "械",
+  "meaning": {
+   "en": "machine, contraption",
+   "es": "máquina, artefacto"
+  },
+  "mnemonic": {
+   "en": "Mechanization brought a new machine to the farm, and each instrument on the machinery hummed all day.",
+   "es": "La mecanización trajo una máquina nueva a la granja, y cada instrumento de la maquinaria zumbaba todo el día."
+  },
+  "g": [
+   {
+    "r": "カイ",
+    "w": [
+     "w0799",
+     "w3118",
+     "w3119"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0878",
+  "c": "珍",
+  "meaning": {
+   "en": "rare, curious",
+   "es": "raro, curioso"
+  },
+  "mnemonic": {
+   "en": "This unusual stone is rare, so rare that collectors keep prizing it and valuing it highly.",
+   "es": "Esta piedra inusual es rara, tan rara que los coleccionistas la tienen en gran aprecio y estima."
+  },
+  "g": [
+   {
+    "r": "めずら",
+    "w": [
+     "w3120"
+    ]
+   },
+   {
+    "r": "チン",
+    "w": [
+     "w3121",
+     "w3122"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0879",
+  "c": "卵",
+  "meaning": {
+   "en": "egg, ovum",
+   "es": "huevo, óvulo"
+  },
+  "mnemonic": {
+   "en": "After the egg-laying, each hen's egg had a perfect oval shape, and I picked one egg to fry.",
+   "es": "Tras la puesta de huevos, cada huevo de gallina tenía forma ovalada perfecta, y freí un huevo."
+  },
+  "g": [
+   {
+    "r": "たまご",
+    "w": [
+     "w3123",
+     "w3124"
+    ]
+   },
+   {
+    "r": "ラン",
+    "w": [
+     "w3125",
+     "w3126"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0880",
+  "c": "湖",
+  "meaning": {
+   "en": "lake",
+   "es": "lago"
+  },
+  "mnemonic": {
+   "en": "The lake water was so clear that the marsh beside the lake looked like another lake.",
+   "es": "El agua de lago era tan clara que el pantano junto al lago parecía otro lago."
+  },
+  "g": [
+   {
+    "r": "みずうみ",
+    "w": [
+     "w3127"
+    ]
+   },
+   {
+    "r": "コ",
+    "w": [
+     "w3128",
+     "w3129"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0881",
+  "c": "喫",
+  "meaning": {
+   "en": "consume, eat",
+   "es": "consumir, comer"
+  },
+  "mnemonic": {
+   "en": "In the coffee shop, tea drinking is an art, and we eat and drink slowly until evening.",
+   "es": "En la cafetería, tomar té es un arte, y allí comemos y bebemos despacio hasta la tarde."
+  },
+  "g": [
+   {
+    "r": "キッ",
+    "w": [
+     "w0589",
+     "w3130",
+     "w3131"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0882",
+  "c": "干",
+  "meaning": {
+   "en": "dry, parch",
+   "es": "secar, tender"
+  },
+  "mnemonic": {
+   "en": "The dried washing hangs to dry on the frame for drying clothes beside a dried plum, with some interference from the wind.",
+   "es": "Tiendo la ropa tendida en el tendedero a secar, con un poco de ciruela seca al lado y sin interferencia del viento."
+  },
+  "g": [
+   {
+    "r": "ほ",
+    "w": [
+     "w3132",
+     "w3133",
+     "w3134"
+    ]
+   },
+   {
+    "r": "カン",
+    "w": [
+     "w3135",
+     "w1324"
+    ]
+   },
+   {
+    "r": "ぼ",
+    "w": [
+     "w3136"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0883",
+  "c": "虫",
+  "meaning": {
+   "en": "insect, bug",
+   "es": "insecto, bicho"
+  },
+  "mnemonic": {
+   "en": "That coward fears every insect, even a harmful insect or tiny bug, yet ignores the cavity in his tooth.",
+   "es": "Ese cobarde teme a cada insecto, hasta al insecto dañino más pequeño, pero ignora la caries de su muela."
+  },
+  "g": [
+   {
+    "r": "むし",
+    "w": [
+     "w1944",
+     "w3137",
+     "w3138"
+    ]
+   },
+   {
+    "r": "チュウ",
+    "w": [
+     "w3139",
+     "w3140"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0884",
+  "c": "刷",
+  "meaning": {
+   "en": "print, printing",
+   "es": "imprimir, impresión"
+  },
+  "mnemonic": {
+   "en": "The first printing sold out, so we print again and order an additional printing.",
+   "es": "La primera impresión se agotó, así que volvemos a imprimir y pedimos una reimpresión."
+  },
+  "g": [
+   {
+    "r": "サツ",
+    "w": [
+     "w2457",
+     "w3141"
+    ]
+   },
+   {
+    "r": "す",
+    "w": [
+     "w3142"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0885",
+  "c": "湯",
+  "meaning": {
+   "en": "hot water, bath",
+   "es": "agua caliente, baño"
+  },
+  "mnemonic": {
+   "en": "Steam rose from the teacup as I poured hot water, then boiling water, before heading to the public bath.",
+   "es": "El vapor subía de la taza de té al echar agua caliente, casi agua hirviendo, antes de ir al baño público."
+  },
+  "g": [
+   {
+    "r": "ゆ",
+    "w": [
+     "w3143",
+     "w3144",
+     "w3145"
+    ]
+   },
+   {
+    "r": "トウ",
+    "w": [
+     "w3146",
+     "w3147"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0886",
+  "c": "溶",
+  "meaning": {
+   "en": "melt, dissolve",
+   "es": "derretir, disolver"
+  },
+  "mnemonic": {
+   "en": "Lava can melt rock, while the dissolution of salt in a solution lets it melt into the water completely.",
+   "es": "La lava puede derretir piedras, y la disolución de la sal en una solución la hace fundirse e integrarse en el agua."
+  },
+  "g": [
+   {
+    "r": "ヨウ",
+    "w": [
+     "w2599",
+     "w3148",
+     "w3149"
+    ]
+   },
+   {
+    "r": "と",
+    "w": [
+     "w3150",
+     "w3151"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0887",
+  "c": "鉱",
+  "meaning": {
+   "en": "mineral, ore",
+   "es": "mineral, mena"
+  },
+  "mnemonic": {
+   "en": "The mining industry pulls every mineral and ore from the coal mine.",
+   "es": "La industria minera saca cada mineral y mena de la mina de carbón."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w3152",
+     "w3102",
+     "w3153"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0888",
+  "c": "涙",
+  "meaning": {
+   "en": "tears",
+   "es": "lágrimas"
+  },
+  "mnemonic": {
+   "en": "Her touching speech in a tearful voice was tear-inducing, and one tear became tears of gratitude.",
+   "es": "Su discurso conmovedor, con voz llorosa, fue casi lacrimógeno, y una lágrima se volvió lágrimas de gratitud."
+  },
+  "g": [
+   {
+    "r": "なみだ",
+    "w": [
+     "w3154",
+     "w3155",
+     "w3156"
+    ]
+   },
+   {
+    "r": "ルイ",
+    "w": [
+     "w3157",
+     "w3158"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0889",
+  "c": "匹",
+  "meaning": {
+   "en": "equal, animal counter",
+   "es": "igual, contador de animales"
+  },
+  "mnemonic": {
+   "en": "Using the counter for small animals, I found no rival comparing with my three kittens.",
+   "es": "Con el contador de animales conté tres gatitos, y nadie puede rivalizar ni equivaler a ellos."
+  },
+  "g": [
+   {
+    "r": "ヒッ",
+    "w": [
+     "w3159"
+    ]
+   },
+   {
+    "r": "ひき",
+    "w": [
+     "w3160"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0890",
+  "c": "孫",
+  "meaning": {
+   "en": "grandchild, descendants",
+   "es": "nieto, descendientes"
+  },
+  "mnemonic": {
+   "en": "Every descendant gathered, and the oldest grandchild held hands with the youngest granddaughter.",
+   "es": "Cada descendiente se reunió, y el nieto mayor tomó de la mano a la nieta más pequeña."
+  },
+  "g": [
+   {
+    "r": "ソン",
+    "w": [
+     "w3161"
+    ]
+   },
+   {
+    "r": "まご",
+    "w": [
+     "w3162",
+     "w1964"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0891",
+  "c": "鋭",
+  "meaning": {
+   "en": "sharp, pointed",
+   "es": "afilado, agudo"
+  },
+  "mnemonic": {
+   "en": "The pointed blade was sharp, cut at an acute angle, and the smith's keen eye missed nothing.",
+   "es": "La hoja afilada y aguda cortaba en ángulo agudo, y el ojo perspicaz del herrero no perdía nada."
+  },
+  "g": [
+   {
+    "r": "するど",
+    "w": [
+     "w3163"
+    ]
+   },
+   {
+    "r": "エイ",
+    "w": [
+     "w3164",
+     "w3165"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0892",
+  "c": "枝",
+  "meaning": {
+   "en": "branch, bough",
+   "es": "rama, ramita"
+  },
+  "mnemonic": {
+   "en": "I snapped a twig from the branch, whittled a toothpick, and ate edamame under the tree.",
+   "es": "Arranqué una ramita de la rama, tallé un palillo de dientes y comí edamame bajo el árbol."
+  },
+  "g": [
+   {
+    "r": "えだ",
+    "w": [
+     "w3166",
+     "w3167",
+     "w3168"
+    ]
+   },
+   {
+    "r": "ジ",
+    "w": [
+     "w3169"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0893",
+  "c": "塗",
+  "meaning": {
+   "en": "paint, plaster",
+   "es": "pintar, aplicar"
+  },
+  "mnemonic": {
+   "en": "First I paint the wall, then repaint it, and after the lacquering the coating needs one more application.",
+   "es": "Primero pinto la pared, luego la repinto, y tras el laqueado la pintura necesita una aplicación más."
+  },
+  "g": [
+   {
+    "r": "ぬ",
+    "w": [
+     "w3170",
+     "w3171",
+     "w3172"
+    ]
+   },
+   {
+    "r": "ト",
+    "w": [
+     "w3173",
+     "w3174"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0894",
+  "c": "軒",
+  "meaning": {
+   "en": "eaves, counter for houses",
+   "es": "alero, contador de casas"
+  },
+  "mnemonic": {
+   "en": "Along the row of houses the eaves hang uniformly, and rain drips from the edge of the eaves of one house.",
+   "es": "Las casas en fila tienen el alero uniformemente igual, y la lluvia gotea del borde del alero de una casa."
+  },
+  "g": [
+   {
+    "r": "のき",
+    "w": [
+     "w3175",
+     "w3176",
+     "w3177"
+    ]
+   },
+   {
+    "r": "ケン",
+    "w": [
+     "w3178"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0895",
+  "c": "毒",
+  "meaning": {
+   "en": "poison, venom",
+   "es": "veneno, tóxico"
+  },
+  "mnemonic": {
+   "en": "I'm sorry to hear that the poison spread, since disinfection should have removed the toxicant.",
+   "es": "Lo siento mucho por el veneno que se extendió, pues la desinfección debía haber eliminado el tóxico."
+  },
+  "g": [
+   {
+    "r": "ドク",
+    "w": [
+     "w3179",
+     "w3180",
+     "w3181"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0896",
+  "c": "叫",
+  "meaning": {
+   "en": "shout, yell",
+   "es": "gritar, exclamar"
+  },
+  "mnemonic": {
+   "en": "I heard a shout, then a scream, then a yell, and I began to shout back with a shriek.",
+   "es": "Oí un grito, luego otro grito y un chillido, y empecé a gritar también."
+  },
+  "g": [
+   {
+    "r": "さけ",
+    "w": [
+     "w3182",
+     "w3183",
+     "w3184"
+    ]
+   },
+   {
+    "r": "キョウ",
+    "w": [
+     "w3185"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0897",
+  "c": "拝",
+  "meaning": {
+   "en": "worship, adore",
+   "es": "adorar, rezar"
+  },
+  "mnemonic": {
+   "en": "Dear sir or madam, I humbly look at your letter and worship the shrine where I pray each day.",
+   "es": "Estimados señores, con humildad veo su carta y rezo al santuario que adoro cada día."
+  },
+  "g": [
+   {
+    "r": "おが",
+    "w": [
+     "w3186"
+    ]
+   },
+   {
+    "r": "ハイ",
+    "w": [
+     "w3187",
+     "w3188"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0898",
+  "c": "氷",
+  "meaning": {
+   "en": "ice, icicle",
+   "es": "hielo, carámbano"
+  },
+  "mnemonic": {
+   "en": "Hail rattled on the ice as the glacier calved a new iceberg into the sea.",
+   "es": "El granizo repicaba sobre el hielo mientras el glaciar soltaba un nuevo iceberg, un témpano, al mar."
+  },
+  "g": [
+   {
+    "r": "こおり",
+    "w": [
+     "w3189"
+    ]
+   },
+   {
+    "r": "ヒョウ",
+    "w": [
+     "w2436",
+     "w3190"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0899",
+  "c": "乾",
+  "meaning": {
+   "en": "dry, drought",
+   "es": "seco, sequía"
+  },
+  "mnemonic": {
+   "en": "We shouted cheers over dry, arid land, waiting for the clothes to dry and get dry, while the dry cell battery died.",
+   "es": "Gritamos salud en la tierra seca y árida, esperando secar la ropa y que se secara, mientras moría la pila seca."
+  },
+  "g": [
+   {
+    "r": "カン",
+    "w": [
+     "w2000",
+     "w3191",
+     "w3192"
+    ]
+   },
+   {
+    "r": "かわ",
+    "w": [
+     "w3193",
+     "w3194"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0900",
+  "c": "棒",
+  "meaning": {
+   "en": "rod, stick",
+   "es": "vara, palo"
+  },
+  "mnemonic": {
+   "en": "The thief swung an iron rod like a crowbar, but I chased the burglar off with a pole.",
+   "es": "El ladrón blandía una barra de hierro, pero lo ahuyenté con un palo, una simple vara."
+  },
+  "g": [
+   {
+    "r": "ボウ",
+    "w": [
+     "w3195",
+     "w3196",
+     "w3197"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0901",
+  "c": "祈",
+  "meaning": {
+   "en": "pray, wish",
+   "es": "rezar, desear"
+  },
+  "mnemonic": {
+   "en": "I pray and wish for rain, and my prayer becomes a supplication repeated in every prayer at dawn.",
+   "es": "Rezo y deseo que llueva, y mi oración se vuelve súplica, una oración repetida cada amanecer."
+  },
+  "g": [
+   {
+    "r": "いの",
+    "w": [
+     "w3198",
+     "w3199"
+    ]
+   },
+   {
+    "r": "キ",
+    "w": [
+     "w3200",
+     "w3201"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0902",
+  "c": "拾",
+  "meaning": {
+   "en": "pick up, gather",
+   "es": "recoger, encontrar"
+  },
+  "mnemonic": {
+   "en": "I pick up a found article, report the finding, and hope the office keeps control of lost things.",
+   "es": "Recojo un objeto encontrado, informo del hallazgo y espero que la oficina tenga control de lo perdido."
+  },
+  "g": [
+   {
+    "r": "ひろ",
+    "w": [
+     "w3202",
+     "w3203"
+    ]
+   },
+   {
+    "r": "シュウ",
+    "w": [
+     "w3204",
+     "w3205"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0903",
+  "c": "粉",
+  "meaning": {
+   "en": "flour, powder",
+   "es": "harina, polvo"
+  },
+  "mnemonic": {
+   "en": "The flour, milk powder and breadcrumbs were ground in very small pieces into a fine powder, light as pollen.",
+   "es": "La harina, la leche en polvo y el pan rallado quedaron hechos pedazos, un polvo fino ligero como el polen."
+  },
+  "g": [
+   {
+    "r": "こな",
+    "w": [
+     "w3206",
+     "w3207",
+     "w3208"
+    ]
+   },
+   {
+    "r": "フン",
+    "w": [
+     "w3209",
+     "w3210"
+    ]
+   },
+   {
+    "r": "こ",
+    "w": [
+     "w3211"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0904",
+  "c": "糸",
+  "meaning": {
+   "en": "thread",
+   "es": "hilo"
+  },
+  "mnemonic": {
+   "en": "At the beginning I used knitting wool, then thread, then silk thread to finish the scarf.",
+   "es": "Como punto de partida usé lana, luego hilo y al final hilo de seda para terminar la bufanda."
+  },
+  "g": [
+   {
+    "r": "いと",
+    "w": [
+     "w2989",
+     "w3212",
+     "w3213"
+    ]
+   },
+   {
+    "r": "シ",
+    "w": [
+     "w3214"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0905",
+  "c": "綿",
+  "meaning": {
+   "en": "cotton",
+   "es": "algodón"
+  },
+  "mnemonic": {
+   "en": "Raw cotton is spun into cotton yarn and woven into soft cotton cloth.",
+   "es": "El algodón crudo se hila en algodón fino y se teje en tela de algodón."
+  },
+  "g": [
+   {
+    "r": "メン",
+    "w": [
+     "w3215",
+     "w3216",
+     "w3217"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0906",
+  "c": "汗",
+  "meaning": {
+   "en": "sweat, perspire",
+   "es": "sudor, sudar"
+  },
+  "mnemonic": {
+   "en": "The sweating started as a cold sweat, and soon sweat and perspiration soaked my shirt.",
+   "es": "La sudoración empezó como sudor frío, y pronto el sudor me empapó la camisa."
+  },
+  "g": [
+   {
+    "r": "あせ",
+    "w": [
+     "w3218",
+     "w3219"
+    ]
+   },
+   {
+    "r": "カン",
+    "w": [
+     "w3220",
+     "w3221"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0907",
+  "c": "銅",
+  "meaning": {
+   "en": "copper",
+   "es": "cobre"
+  },
+  "mnemonic": {
+   "en": "The old copper coin was pure copper, while the statue beside it was bronze.",
+   "es": "La vieja moneda de cobre era cobre puro, mientras que la estatua a su lado era de bronce."
+  },
+  "g": [
+   {
+    "r": "ドウ",
+    "w": [
+     "w3222",
+     "w3223",
+     "w3224"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0908",
+  "c": "湿",
+  "meaning": {
+   "en": "damp, wet",
+   "es": "húmedo, mojado"
+  },
+  "mnemonic": {
+   "en": "The humidity and moisture of the wetlands made my clothes damp, and the rash of eczema flared up.",
+   "es": "La humedad del humedal hizo que mi ropa se humedeciera, y la erupción del eczema empeoró."
+  },
+  "g": [
+   {
+    "r": "シッ",
+    "w": [
+     "w3225",
+     "w3226",
+     "w3227"
+    ]
+   },
+   {
+    "r": "シツ",
+    "w": [
+     "w3228",
+     "w3229"
+    ]
+   },
+   {
+    "r": "しめ",
+    "w": [
+     "w3230"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0909",
+  "c": "瓶",
+  "meaning": {
+   "en": "bottle, jar",
+   "es": "botella, frasco"
+  },
+  "mnemonic": {
+   "en": "After the bottling, one bottle of the bottled jam stood next to a vase of flowers.",
+   "es": "Tras el embotellado, una botella de mermelada quedó junto a un florero con flores."
+  },
+  "g": [
+   {
+    "r": "ビン",
+    "w": [
+     "w3231",
+     "w3232",
+     "w3233"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0910",
+  "c": "咲",
+  "meaning": {
+   "en": "bloom, blossom",
+   "es": "florecer"
+  },
+  "mnemonic": {
+   "en": "The first roses bloom in spring, and by summer they bloom in profusion.",
+   "es": "Las primeras rosas florecen en primavera, y en verano florecen profusamente."
+  },
+  "g": [
+   {
+    "r": "さ",
+    "w": [
+     "w3234",
+     "w3235"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0911",
+  "c": "召",
+  "meaning": {
+   "en": "call, summon",
+   "es": "llamar, convocar"
+  },
+  "mnemonic": {
+   "en": "Please eat and drink, the host said, before he sent for the lawyer with a summons about convening the council.",
+   "es": "Coman y beban, dijo el anfitrión, antes de llamar y convocar al abogado con una citación y una convocatoria."
+  },
+  "g": [
+   {
+    "r": "め",
+    "w": [
+     "w3236",
+     "w3237"
+    ]
+   },
+   {
+    "r": "ショウ",
+    "w": [
+     "w3238",
+     "w3239"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0912",
+  "c": "缶",
+  "meaning": {
+   "en": "tin can, container",
+   "es": "lata, recipiente"
+  },
+  "mnemonic": {
+   "en": "The canned goods came in a tin can, and now the empty can waits for recycling.",
+   "es": "La conserva venía en una lata, y ahora la lata vacía espera el reciclaje."
+  },
+  "g": [
+   {
+    "r": "カン",
+    "w": [
+     "w3240",
+     "w3241",
+     "w3242"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0913",
+  "c": "隻",
+  "meaning": {
+   "en": "counter for ships",
+   "es": "contador de barcos"
+  },
+  "mnemonic": {
+   "en": "The counter for ships showed one boat, and the one-legged sailor said only a few words.",
+   "es": "Con el contador de barcos vimos un barco, y el marinero de una pierna dijo pocas palabras."
+  },
+  "g": [
+   {
+    "r": "セキ",
+    "w": [
+     "w3243",
+     "w3244"
+    ]
+   },
+   {
+    "r": "セッ",
+    "w": [
+     "w3245",
+     "w3246"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0914",
+  "c": "脂",
+  "meaning": {
+   "en": "fat, grease",
+   "es": "grasa, sebo"
+  },
+  "mnemonic": {
+   "en": "The fatty meat left fat and grease in the pan, while sticky resin and other fats and oils coated my hands.",
+   "es": "El tocino dejó grasa en la sartén, y la resina pegajosa y otras grasas y aceites me mancharon las manos."
+  },
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     "w3247",
+     "w3248",
+     "w3249"
+    ]
+   },
+   {
+    "r": "あぶら",
+    "w": [
+     "w3250",
+     "w3251"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0915",
+  "c": "蒸",
+  "meaning": {
+   "en": "steam, heat",
+   "es": "vapor, cocer al vapor"
+  },
+  "mnemonic": {
+   "en": "On a humid, sultry day I steam the rice, and the steam rises as water vapor until evaporation dries the pot.",
+   "es": "En un día bochornoso cuezo al vapor el arroz, y el vapor de agua sube hasta que la evaporación seca la olla."
+  },
+  "g": [
+   {
+    "r": "ジョウ",
+    "w": [
+     "w3252",
+     "w3253",
+     "w3254"
+    ]
+   },
+   {
+    "r": "む",
+    "w": [
+     "w3255",
+     "w3256"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0916",
+  "c": "肌",
+  "meaning": {
+   "en": "skin, texture",
+   "es": "piel, textura"
+  },
+  "mnemonic": {
+   "en": "Soft underwear against my skin lets me feel the texture and grain of the cloth.",
+   "es": "La ropa interior suave sobre la piel me deja sentir la textura y la veta de la tela."
+  },
+  "g": [
+   {
+    "r": "はだ",
+    "w": [
+     "w3257",
+     "w3258",
+     "w3259"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0917",
+  "c": "耕",
+  "meaning": {
+   "en": "till, plow",
+   "es": "arar, labrar"
+  },
+  "mnemonic": {
+   "en": "On the arable land, farming means cultivation, and agriculture begins when I till and plow the soil.",
+   "es": "En la tierra cultivable, la labranza es cultivo, y la agricultura empieza cuando aro y labro el suelo."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w3260",
+     "w3261",
+     "w3262"
+    ]
+   },
+   {
+    "r": "たがや",
+    "w": [
+     "w3263"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0918",
+  "c": "鈍",
+  "meaning": {
+   "en": "dull, blunt",
+   "es": "torpe, desafilado"
+  },
+  "mnemonic": {
+   "en": "My blunt knife is dull, my skills become less capable, my thickheadedness grows, and everything is slowing down.",
+   "es": "Con el cuchillo desafilado me siento torpe, mis manos se entorpecen, me vuelvo insensible y todo va en desaceleración."
+  },
+  "g": [
+   {
+    "r": "にぶ",
+    "w": [
+     "w3264",
+     "w3265"
+    ]
+   },
+   {
+    "r": "ドン",
+    "w": [
+     "w3266",
+     "w3267"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0919",
+  "c": "泥",
+  "meaning": {
+   "en": "mud, mire",
+   "es": "barro, lodo"
+  },
+  "mnemonic": {
+   "en": "The dead drunk thief stumbled through the bog, sank in the mud, and slept on a bed of peat.",
+   "es": "Con su borrachera, el ladrón cruzó el pantano, se hundió en el barro y durmió sobre la turba."
+  },
+  "g": [
+   {
+    "r": "どろ",
+    "w": [
+     "w3268",
+     "w3196",
+     "w3269"
+    ]
+   },
+   {
+    "r": "デイ",
+    "w": [
+     "w3270",
+     "w3271"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0920",
+  "c": "隅",
+  "meaning": {
+   "en": "corner, nook",
+   "es": "rincón, esquina"
+  },
+  "mnemonic": {
+   "en": "In the four corners of the room, the quietest corner is the nook where I read.",
+   "es": "De las cuatro esquinas del cuarto, la esquina más tranquila es un rincón donde leo."
+  },
+  "g": [
+   {
+    "r": "すみ",
+    "w": [
+     "w3272",
+     "w3273",
+     "w3274"
+    ]
+   },
+   {
+    "r": "グウ",
+    "w": [
+     "w3275"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0921",
+  "c": "灯",
+  "meaning": {
+   "en": "lamp, light",
+   "es": "lámpara, luz"
+  },
+  "mnemonic": {
+   "en": "Out of lamp oil, the lighthouse keeper turned on a fluorescent lamp, and its light lit the whole coast.",
+   "es": "Sin queroseno, el guardián del faro encendió una lámpara fluorescente y su luz alumbró toda la costa."
+  },
+  "g": [
+   {
+    "r": "トウ",
+    "w": [
+     "w3276",
+     "w2474",
+     "w3277"
+    ]
+   },
+   {
+    "r": "ひ",
+    "w": [
+     "w3278"
+    ]
+   },
+   {
+    "r": "とも",
+    "w": [
+     "w3279"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0922",
+  "c": "辛",
+  "meaning": {
+   "en": "spicy, bitter",
+   "es": "picante, amargo"
+  },
+  "mnemonic": {
+   "en": "The curry was salty and hot and spicy, the wine had a dry taste, and eating the spices took patience.",
+   "es": "El curry estaba salado y picante, el vino tenía un sabor seco, y comer tantas especias exigió paciencia."
+  },
+  "g": [
+   {
+    "r": "から",
+    "w": [
+     "w2967",
+     "w3280",
+     "w3281"
+    ]
+   },
+   {
+    "r": "シン",
+    "w": [
+     "w3282",
+     "w2694"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0923",
+  "c": "磨",
+  "meaning": {
+   "en": "grind, polish",
+   "es": "moler, pulir"
+  },
+  "mnemonic": {
+   "en": "After toothbrushing with fresh toothpaste, I brush and polish my shoes until the grinding gives them a fine polish.",
+   "es": "Tras el cepillado dental con pasta, cepillo y pulo los zapatos hasta que el esmerilado les da un pulido perfecto."
+  },
+  "g": [
+   {
+    "r": "みが",
+    "w": [
+     "w3283",
+     "w3284",
+     "w3285"
+    ]
+   },
+   {
+    "r": "マ",
+    "w": [
+     "w3286",
+     "w3287"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0924",
+  "c": "麦",
+  "meaning": {
+   "en": "barley, wheat",
+   "es": "cebada, trigo"
+  },
+  "mnemonic": {
+   "en": "The farmer grows wheat for bread and barley for malt, and both grains wave gold in the field.",
+   "es": "El granjero cultiva trigo para el pan y cebada para la malta, y ambos ondean dorados en el campo."
+  },
+  "g": [
+   {
+    "r": "むぎ",
+    "w": [
+     "w3288",
+     "w3289",
+     "w3290"
+    ]
+   },
+   {
+    "r": "バク",
+    "w": [
+     "w3291"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0925",
+  "c": "姓",
+  "meaning": {
+   "en": "surname",
+   "es": "apellido"
+  },
+  "mnemonic": {
+   "en": "The farmer wrote his full name, then his surname, and finally his original family name from before marriage.",
+   "es": "El campesino escribió su nombre completo, luego su apellido y por último su apellido anterior al matrimonio."
+  },
+  "g": [
+   {
+    "r": "セイ",
+    "w": [
+     "w3292",
+     "w3293",
+     "w3294"
+    ]
+   },
+   {
+    "r": "ショウ",
+    "w": [
+     "w3295"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0926",
+  "c": "筒",
+  "meaning": {
+   "en": "cylinder, pipe",
+   "es": "cilindro, tubo"
+  },
+  "mnemonic": {
+   "en": "Beside the round well I filled my canteen, sealed an envelope, and rolled it into a cylinder to slide down the tube.",
+   "es": "Junto al pozo redondo llené la cantimplora, cerré un sobre y lo enrollé como un cilindro para meterlo en el tubo."
+  },
+  "g": [
+   {
+    "r": "トウ",
+    "w": [
+     "w3296",
+     "w2950",
+     "w3297"
+    ]
+   },
+   {
+    "r": "つつ",
+    "w": [
+     "w3298",
+     "w3299"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0927",
+  "c": "鼻",
+  "meaning": {
+   "en": "nose, snout",
+   "es": "nariz, hocico"
+  },
+  "mnemonic": {
+   "en": "With a dripping nose and a red tip of nose, I went to otolaryngology to have my nose checked.",
+   "es": "Con moco nasal y la punta de la nariz roja, fui a otorrinolaringología para que me revisaran la nariz."
+  },
+  "g": [
+   {
+    "r": "はな",
+    "w": [
+     "w3300",
+     "w3301",
+     "w3302"
+    ]
+   },
+   {
+    "r": "ビ",
+    "w": [
+     "w3303"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0928",
+  "c": "粒",
+  "meaning": {
+   "en": "grain, drop",
+   "es": "grano, gota"
+  },
+  "mnemonic": {
+   "en": "One large drop fell on a grain of rice, turning every granular particle of sugar into a sticky grain.",
+   "es": "Una gota grande cayó sobre un grano de arroz y volvió cada partícula del azúcar granulado un grano pegajoso."
+  },
+  "g": [
+   {
+    "r": "つぶ",
+    "w": [
+     "w3304",
+     "w3305",
+     "w0704"
+    ]
+   },
+   {
+    "r": "リュウ",
+    "w": [
+     "w3306",
+     "w3307"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0929",
+  "c": "詞",
+  "meaning": {
+   "en": "part of speech, words",
+   "es": "parte de la oración"
+  },
+  "mnemonic": {
+   "en": "In the sentence, the adverb speeds the verb, the pronoun replaces the noun, and the adjective colors the words.",
+   "es": "En la frase, el adverbio acelera el verbo, el pronombre sustituye al nombre y el adjetivo colorea las palabras."
+  },
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     "w2167",
+     "w3308",
+     "w3309"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0930",
+  "c": "胃",
+  "meaning": {
+   "en": "stomach",
+   "es": "estómago"
+  },
+  "mnemonic": {
+   "en": "My stomach growled, so the doctor checked my stomach and intestines before lunch.",
+   "es": "Me rugía el estómago, así que el médico revisó mi estómago e intestinos antes del almuerzo."
+  },
+  "g": [
+   {
+    "r": "イ",
+    "w": [
+     "w3310",
+     "w2928",
+     "w3311"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0931",
+  "c": "畳",
+  "meaning": {
+   "en": "tatami mat, fold",
+   "es": "tatami, plegar"
+  },
+  "mnemonic": {
+   "en": "In my room of four and a half tatami mats, I keep a folding table on the tatami mat.",
+   "es": "En mi cuarto de cuatro tatamis y medio, guardo una mesa plegable sobre el tatami."
+  },
+  "g": [
+   {
+    "r": "たたみ",
+    "w": [
+     "w3312"
+    ]
+   },
+   {
+    "r": "ジョウ",
+    "w": [
+     "w3313",
+     "w3314"
+    ]
+   },
+   {
+    "r": "たた",
+    "w": [
+     "w3315"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0932",
+  "c": "机",
+  "meaning": {
+   "en": "desk, table",
+   "es": "escritorio, mesa"
+  },
+  "mnemonic": {
+   "en": "I sit at my desk, and on the desk a single pencil waits for me.",
+   "es": "Me siento en mi escritorio, y sobre el escritorio un solo lápiz me espera."
+  },
+  "g": [
+   {
+    "r": "つくえ",
+    "w": [
+     "w3316"
+    ]
+   },
+   {
+    "r": "キ",
+    "w": [
+     "w3317"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0933",
+  "c": "膚",
+  "meaning": {
+   "en": "skin",
+   "es": "piel"
+  },
+  "mnemonic": {
+   "en": "When a skin disease spread across my skin, the dermatology clinic gave me a cream.",
+   "es": "Cuando una enfermedad de la piel se extendió por mi piel, la clínica de dermatología me dio una crema."
+  },
+  "g": [
+   {
+    "r": "フ",
+    "w": [
+     "w2888",
+     "w3318",
+     "w3319"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0934",
+  "c": "濯",
+  "meaning": {
+   "en": "wash, rinse",
+   "es": "lavar, enjuagar"
+  },
+  "mnemonic": {
+   "en": "I stuff the laundry into the washing machine and hang the washing out to dry.",
+   "es": "Meto la ropa sucia en la lavadora y tiendo la colada al sol."
+  },
+  "g": [
+   {
+    "r": "タク",
+    "w": [
+     "w0559",
+     "w3320",
+     "w3321"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0935",
+  "c": "塔",
+  "meaning": {
+   "en": "tower, pagoda",
+   "es": "torre, pagoda"
+  },
+  "mnemonic": {
+   "en": "From the control tower you can see the old pagoda, a tower as tall as the Tower of Babel.",
+   "es": "Desde la torre de control se ve la vieja pagoda, una torre tan alta como la torre de Babel."
+  },
+  "g": [
+   {
+    "r": "トウ",
+    "w": [
+     "w3322",
+     "w3323",
+     "w3324"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0936",
+  "c": "沸",
+  "meaning": {
+   "en": "boil, seethe",
+   "es": "hervir, bullir"
+  },
+  "mnemonic": {
+   "en": "I boil water in the water heater, and when it boils, the boiling steam hisses out.",
+   "es": "Caliento agua en el calentador de agua, y cuando hierve, la ebullición hace silbar la tetera."
+  },
+  "g": [
+   {
+    "r": "わ",
+    "w": [
+     "w3325",
+     "w3326",
+     "w3327"
+    ]
+   },
+   {
+    "r": "フッ",
+    "w": [
+     "w3328"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0937",
+  "c": "灰",
+  "meaning": {
+   "en": "ashes, grey",
+   "es": "ceniza, gris"
+  },
+  "mnemonic": {
+   "en": "The grey ash in the ashtray looked like the lime the builder mixed into his mortar.",
+   "es": "La ceniza gris del cenicero parecía la cal que el albañil mezclaba en el mortero."
+  },
+  "g": [
+   {
+    "r": "はい",
+    "w": [
+     "w3329",
+     "w3330",
+     "w3331"
+    ]
+   },
+   {
+    "r": "カイ",
+    "w": [
+     "w3332"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0938",
+  "c": "菓",
+  "meaning": {
+   "en": "candy, cakes",
+   "es": "dulce, pastel"
+  },
+  "mnemonic": {
+   "en": "At the confectionery shop I bought a sweet for myself and a box of sweets for the children.",
+   "es": "En la confitería compré una golosina para mí y una caja de dulces para los niños."
+  },
+  "g": [
+   {
+    "r": "カ",
+    "w": [
+     "w3333",
+     "w3334",
+     "w3335"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0939",
+  "c": "帽",
+  "meaning": {
+   "en": "cap, hat",
+   "es": "gorra, sombrero"
+  },
+  "mnemonic": {
+   "en": "On a sunny day I wear a hat, and on a windy day a tight cap.",
+   "es": "En un día de sol llevo sombrero, y en un día de viento una gorra ajustada."
+  },
+  "g": [
+   {
+    "r": "ボウ",
+    "w": [
+     "w3336"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0940",
+  "c": "枯",
+  "meaning": {
+   "en": "wither, dry up",
+   "es": "marchitarse, secarse"
+  },
+  "mnemonic": {
+   "en": "The flowers wither beside a dead tree, dry leaves fall, and such ups and downs end in withering.",
+   "es": "Las flores se marchitan junto a un árbol muerto, cae una hoja seca, y esos altibajos acaban en marchitamiento."
+  },
+  "g": [
+   {
+    "r": "か",
+    "w": [
+     "w3337",
+     "w3338",
+     "w3339"
+    ]
+   },
+   {
+    "r": "コ",
+    "w": [
+     "w3340",
+     "w3341"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0941",
+  "c": "涼",
+  "meaning": {
+   "en": "cool, refreshing",
+   "es": "fresco, refrescante"
+  },
+  "mnemonic": {
+   "en": "I cool off on the porch, where a cool breeze feels refreshing and the evening is cool.",
+   "es": "Me refresco en el porche, donde una brisa fresca resulta refrescante y la tarde es fresca."
+  },
+  "g": [
+   {
+    "r": "すず",
+    "w": [
+     "w3342",
+     "w3343"
+    ]
+   },
+   {
+    "r": "リョウ",
+    "w": [
+     "w3344",
+     "w3345"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0942",
+  "c": "舟",
+  "meaning": {
+   "en": "boat, ship",
+   "es": "barco, bote"
+  },
+  "mnemonic": {
+   "en": "A small boat rocks beside the big ship, the lightest watercraft in the harbor.",
+   "es": "Un bote pequeño se mece junto al gran barco, la embarcación más ligera del puerto."
+  },
+  "g": [
+   {
+    "r": "ふね",
+    "w": [
+     "w3346"
+    ]
+   },
+   {
+    "r": "シュウ",
+    "w": [
+     "w3347"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0943",
+  "c": "貝",
+  "meaning": {
+   "en": "shellfish, shell",
+   "es": "marisco, concha"
+  },
+  "mnemonic": {
+   "en": "I found a shell on the beach and ate fresh shellfish for dinner.",
+   "es": "Encontré una concha en la playa y cené marisco fresco."
+  },
+  "g": [
+   {
+    "r": "かい",
+    "w": [
+     "w3348",
+     "w3349"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0944",
+  "c": "符",
+  "meaning": {
+   "en": "token, sign",
+   "es": "señal, signo"
+  },
+  "mnemonic": {
+   "en": "By coincidence, the sign on my ticket was a question mark drawn beside a musical note.",
+   "es": "Por coincidencia, el símbolo de mi billete era un signo de interrogación junto a una nota musical."
+  },
+  "g": [
+   {
+    "r": "フ",
+    "w": [
+     "w3350",
+     "w3351",
+     "w3352"
+    ]
+   },
+   {
+    "r": "プ",
+    "w": [
+     "w3353",
+     "w3354"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0945",
+  "c": "憎",
+  "meaning": {
+   "en": "hate, detest",
+   "es": "odiar, detestar"
+  },
+  "mnemonic": {
+   "en": "I hate that hateful, odious man with a hatred so deep that love and hate blur together.",
+   "es": "Detesto a ese hombre odioso y detestable con un odio tan hondo que amor y odio se confunden."
+  },
+  "g": [
+   {
+    "r": "にく",
+    "w": [
+     "w3355",
+     "w3356",
+     "w3357"
+    ]
+   },
+   {
+    "r": "ゾウ",
+    "w": [
+     "w3358",
+     "w3359"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0946",
+  "c": "皿",
+  "meaning": {
+   "en": "dish, plate",
+   "es": "plato"
+  },
+  "mnemonic": {
+   "en": "After dinner the washing-up covers every plate, dish, small plate, and even the ashtray.",
+   "es": "Después de cenar, el lavado de platos incluye cada plato, cada platillo y hasta el cenicero."
+  },
+  "g": [
+   {
+    "r": "さら",
+    "w": [
+     "w3360",
+     "w3361",
+     "w3362"
+    ]
+   },
+   {
+    "r": "ざら",
+    "w": [
+     "w3331",
+     "w3363"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0947",
+  "c": "肯",
+  "meaning": {
+   "en": "consent, affirm",
+   "es": "consentir, afirmar"
+  },
+  "mnemonic": {
+   "en": "She nodded in affirmation, giving a positive answer and her full consent.",
+   "es": "Asintió con una afirmación clara, dando su consentimiento pleno."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w3364"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0948",
+  "c": "燥",
+  "meaning": {
+   "en": "parch, dry up",
+   "es": "resecar, secarse"
+  },
+  "mnemonic": {
+   "en": "In the dry, arid desert, my impatience grew as the parched ground cracked.",
+   "es": "En el desierto seco y árido, mi impaciencia crecía mientras la tierra reseca se agrietaba."
+  },
+  "g": [
+   {
+    "r": "ソウ",
+    "w": [
+     "w3192",
+     "w3365"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0949",
+  "c": "畜",
+  "meaning": {
+   "en": "livestock",
+   "es": "ganado"
+  },
+  "mnemonic": {
+   "en": "Stock-farming is hard work, since animal husbandry means feeding the livestock and domestic animals every dawn.",
+   "es": "La ganadería es trabajo duro, porque cuidar el ganado y los animales domésticos empieza cada amanecer."
+  },
+  "g": [
+   {
+    "r": "チク",
+    "w": [
+     "w3366",
+     "w3367",
+     "w3368"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0950",
+  "c": "挟",
+  "meaning": {
+   "en": "pinch, between",
+   "es": "sujetar, entre"
+  },
+  "mnemonic": {
+   "en": "I insert the letter and hold it between the pages, but it gets stuck between them like a pincer attack.",
+   "es": "Inserto la carta y la sujeto entre las páginas, pero queda atrapada como en un ataque en pinza."
+  },
+  "g": [
+   {
+    "r": "はさ",
+    "w": [
+     "w3369",
+     "w3370",
+     "w3371"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0951",
+  "c": "曇",
+  "meaning": {
+   "en": "cloudy, cloud up",
+   "es": "nublado, nublarse"
+  },
+  "mnemonic": {
+   "en": "The sky becomes cloudy by noon, and the cloudy weather lasts all afternoon.",
+   "es": "El cielo se nubla al mediodía, y el cielo nublado dura toda la tarde."
+  },
+  "g": [
+   {
+    "r": "くも",
+    "w": [
+     "w3372",
+     "w3373"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0952",
+  "c": "滴",
+  "meaning": {
+   "en": "drip, drop",
+   "es": "gotear, gota"
+  },
+  "mnemonic": {
+   "en": "A drop of water fell from the roof, then raindrops followed, drip after drop.",
+   "es": "Cayó una gota de agua del tejado, luego siguieron las gotas de lluvia, gota tras gota."
+  },
+  "g": [
+   {
+    "r": "テキ",
+    "w": [
+     "w3374",
+     "w3375"
+    ]
+   },
+   {
+    "r": "しずく",
+    "w": [
+     "w3376"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0953",
+  "c": "伺",
+  "meaning": {
+   "en": "visit, inquire",
+   "es": "visitar, preguntar"
+  },
+  "mnemonic": {
+   "en": "I humbly visit the boss to ask a question, then hand in my informal resignation.",
+   "es": "Voy humildemente a ver al jefe para preguntar, y luego le entrego mi renuncia informal."
+  },
+  "g": [
+   {
+    "r": "うかが",
+    "w": [
+     "w3377",
+     "w3378"
+    ]
+   }
+  ]
+ }
+]
