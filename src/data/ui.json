@@ -51,10 +51,6 @@
     "en": "Save your progress to your account",
     "es": "Guarda tu progreso en tu cuenta"
   },
-  "download_file": {
-    "en": "Download your progress as a file",
-    "es": "Descarga tu progreso como archivo"
-  },
   "study": {
     "en": "Study",
     "es": "Estudiar"
@@ -218,14 +214,6 @@
   "load_failed": {
     "en": "Load failed",
     "es": "Error al cargar"
-  },
-  "download_failed": {
-    "en": "Download failed",
-    "es": "Error al descargar"
-  },
-  "not_progress_file": {
-    "en": "Not a progress file",
-    "es": "No es un archivo de progreso"
   },
   "loaded_plus": {
     "en": "Loaded +{n}",
@@ -422,5 +410,25 @@
   "chars": {
     "en": " chars",
     "es": " caracteres"
+  },
+  "save": {
+    "en": "Save",
+    "es": "Guardar"
+  },
+  "saved": {
+    "en": "Saved",
+    "es": "Guardado"
+  },
+  "sign_in_first": {
+    "en": "Enter your email above to sync",
+    "es": "Escribe tu correo arriba para sincronizar"
+  },
+  "sync_signed_out": {
+    "en": "Enter your email and press save: a sign-in link arrives by email. We store only your email, your mastered words, your last deck and language.",
+    "es": "Escribe tu correo y pulsa guardar: recibirás un enlace de acceso. Solo guardamos tu correo, tus palabras dominadas, tu último mazo e idioma."
+  },
+  "sync_unavailable": {
+    "en": "Progress is kept on this device only",
+    "es": "El progreso se guarda solo en este dispositivo"
   }
 }

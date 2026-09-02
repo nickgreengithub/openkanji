@@ -1376,7 +1376,16 @@ const READING_INDEX = (() => {
 const SUPABASE_URL = "";
 const SUPABASE_ANON_KEY = "";
 const OK_TOKEN_KEY = "openkanji.token";
+const OK_REFRESH_KEY = "openkanji.refresh";
+// Last deck and language, kept locally and synced with the mastered set.
+const OK_DECK_KEY = "openkanji.deck";
+const OK_LANG_KEY = "openkanji.lang";
 const okSyncReady = () => !!(SUPABASE_URL && SUPABASE_ANON_KEY);
+const lsGet = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+const lsSet = (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} };
+// A deck the rail can show, and a language that shipped complete.
+const okDeck = (d) => (d && DECKS.includes(d) && deckData(d).length ? d : null);
+const okLang = (c) => (c && LANGS.some(l => l[0] === c && !l[3]) ? c : null);
 const okIsEmail = (s) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(s || "").trim());
 // mastered is a { "word|reading": true } map. Union merge: local OR server wins.
 const okMerge = (a, b) => {
@@ -1411,8 +1420,10 @@ class Component extends DCLogic {
     // Leaving _savedSig null when mastered could not be read keeps isDirty()
     // false, which disables save. Refusing to write is the safe failure: the
     // alternative overwrites unreadable-but-present progress with {}.
-    this._savedSig = m ? this.masterSig(m) : null;
-    this.setState({ seen: s || {}, mastered: m || {}, allFuri: this.furiDefault });
+    const deck0 = okDeck(lsGet(OK_DECK_KEY));
+    const lang0 = okLang(lsGet(OK_LANG_KEY));
+    this._savedSig = m ? this.saveSig(m, deck0, lang0) : null;
+    this.setState({ seen: s || {}, mastered: m || {}, deck: deck0, uiLang: lang0 || undefined, allFuri: this.furiDefault });
     this.measureList();
     this.restoreSession();
     this._onResize = () => this.scheduleMeasure();
@@ -1661,15 +1672,20 @@ class Component extends DCLogic {
     if (!okSyncReady()) return;
     try {
       const h = window.location.hash || "";
+      let fromLink = false;
       if (h.indexOf("access_token=") >= 0) {
-        const tok = new URLSearchParams(h.replace(/^#/, "")).get("access_token");
+        const q = new URLSearchParams(h.replace(/^#/, ""));
+        const tok = q.get("access_token");
         if (tok) {
-          localStorage.setItem(OK_TOKEN_KEY, tok);
+          lsSet(OK_TOKEN_KEY, tok);
+          // The refresh token is what keeps a sign-in alive past the access
+          // token's hour; without it every session would end after 60 minutes.
+          lsSet(OK_REFRESH_KEY, q.get("refresh_token"));
           history.replaceState(null, "", window.location.pathname + window.location.search);
+          fromLink = true;
         }
       }
-      const tok = localStorage.getItem(OK_TOKEN_KEY);
-      if (tok) this.fetchUser(tok);
+      if (lsGet(OK_TOKEN_KEY)) this.fetchUser(fromLink);
     } catch (e) {}
   }
 
@@ -1677,12 +1693,59 @@ class Component extends DCLogic {
     return { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + tok, "Content-Type": "application/json" };
   }
 
-  async fetchUser(tok) {
+  // Authenticated fetch. A 401 means the access token expired: refresh once
+  // and retry; if the refresh fails too, the session is gone and we sign out.
+  async okFetch(path, opts) {
+    const tok = lsGet(OK_TOKEN_KEY);
+    if (!tok) return null;
+    const go = (t) => fetch(SUPABASE_URL + path, Object.assign({}, opts || {}, {
+      headers: Object.assign(this.okHeaders(t), (opts && opts.headers) || {})
+    }));
+    let r = await go(tok);
+    if (r.status === 401) {
+      const fresh = await this.refreshSession();
+      if (!fresh) return r;
+      r = await go(fresh);
+    }
+    return r;
+  }
+
+  async refreshSession() {
+    const rt = lsGet(OK_REFRESH_KEY);
+    if (!rt) { this.signOut(); return null; }
     try {
-      const r = await fetch(SUPABASE_URL + "/auth/v1/user", { headers: this.okHeaders(tok) });
-      if (!r.ok) { localStorage.removeItem(OK_TOKEN_KEY); return; }
+      const r = await fetch(SUPABASE_URL + "/auth/v1/token?grant_type=refresh_token", {
+        method: "POST",
+        headers: { apikey: SUPABASE_ANON_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({ refresh_token: rt })
+      });
+      if (!r.ok) { this.signOut(); return null; }
+      const j = await r.json();
+      if (!j || !j.access_token) { this.signOut(); return null; }
+      lsSet(OK_TOKEN_KEY, j.access_token);
+      if (j.refresh_token) lsSet(OK_REFRESH_KEY, j.refresh_token);
+      return j.access_token;
+    } catch (e) { return null; }
+  }
+
+  signOut() {
+    lsSet(OK_TOKEN_KEY, null);
+    lsSet(OK_REFRESH_KEY, null);
+    this.setState({ userEmail: null });
+  }
+
+  // Resolves the stored session to an email. Arriving from a magic link also
+  // loads progress, so a new device shows the account's state without a click.
+  async fetchUser(fromLink) {
+    try {
+      const r = await this.okFetch("/auth/v1/user");
+      if (!r) return;
+      if (!r.ok) { if (r.status === 401 || r.status === 403) this.signOut(); return; }
       const u = await r.json();
-      if (u && u.email) this.setState({ userEmail: u.email, authMsg: "" });
+      if (u && u.email) {
+        this.setState({ userEmail: u.email, authMsg: "" });
+        if (fromLink) this.pullProgress();
+      }
     } catch (e) {}
   }
 
@@ -1697,7 +1760,9 @@ class Component extends DCLogic {
     if (!okIsEmail(email)) { this.flashMsg(T("enter_valid_email")); return; }
     this.setState({ authBusy: true });
     try {
-      const r = await fetch(SUPABASE_URL + "/auth/v1/otp", {
+      // The link must bring the learner back to this page, on this origin.
+      const back = encodeURIComponent(window.location.origin + window.location.pathname);
+      const r = await fetch(SUPABASE_URL + "/auth/v1/otp?redirect_to=" + back, {
         method: "POST",
         headers: { apikey: SUPABASE_ANON_KEY, "Content-Type": "application/json" },
         body: JSON.stringify({ email: String(email).trim(), create_user: true })
@@ -1707,37 +1772,47 @@ class Component extends DCLogic {
     this.setState({ authBusy: false });
   }
 
-  async pushMastered(m) {
-    const tok = okSyncReady() ? localStorage.getItem(OK_TOKEN_KEY) : null;
-    if (!tok || !this.state.userEmail) return;
+  // One row per user: the mastered set plus the last deck and language.
+  async pushProgress(cur) {
+    if (!okSyncReady() || !cur.userEmail) return;
     try {
-      const r = await fetch(SUPABASE_URL + "/rest/v1/progress?on_conflict=user_id", {
+      const r = await this.okFetch("/rest/v1/progress?on_conflict=user_id", {
         method: "POST",
-        headers: Object.assign(this.okHeaders(tok), { Prefer: "resolution=merge-duplicates" }),
-        body: JSON.stringify({ mastered: m || {} })
+        headers: { Prefer: "resolution=merge-duplicates" },
+        body: JSON.stringify({ mastered: cur.mastered || {}, deck: cur.deck || null, lang: cur.uiLang || null, updated_at: new Date().toISOString() })
       });
-      if (!r.ok) this.flashMsg(T("save_failed"));
+      if (!r || !r.ok) this.flashMsg(T("save_failed"));
     } catch (e) { this.flashMsg(T("save_failed")); }
   }
 
-  // Explicit user action, long after mount, so it can just setState and let the
-  // normal render path persist to localStorage.
-  async pullMastered() {
-    const tok = okSyncReady() ? localStorage.getItem(OK_TOKEN_KEY) : null;
-    if (!tok || !this.state.userEmail || this.state.authBusy) return;
+  // Explicit user action (or the return from a magic link), long after mount,
+  // so it can just setState and persist. Mastered merges as a union; deck and
+  // language are single values, so the server's copy wins on Load.
+  async pullProgress() {
+    if (!okSyncReady() || !this.state.userEmail || this.state.authBusy) return;
     this.setState({ authBusy: true });
     try {
-      const r = await fetch(SUPABASE_URL + "/rest/v1/progress?select=mastered", { headers: this.okHeaders(tok) });
-      if (!r.ok) { this.flashMsg(T("load_failed")); this.setState({ authBusy: false }); return; }
+      const r = await this.okFetch("/rest/v1/progress?select=mastered,deck,lang");
+      if (!r || !r.ok) { this.flashMsg(T("load_failed")); this.setState({ authBusy: false }); return; }
       const rows = await r.json();
-      const remote = (rows && rows[0] && rows[0].mastered) || {};
-      const merged = okMerge(this.state.mastered, remote);
+      const row = (rows && rows[0]) || {};
+      const merged = okMerge(this.state.mastered, row.mastered || {});
+      const added = Object.keys(merged).length - Object.keys(this.state.mastered || {}).length;
+      const deck = okDeck(row.deck) || this.state.deck;
+      const lang = okLang(row.lang) || this.state.uiLang;
       this.persistMastered(merged);
-      this._savedSig = this.masterSig(merged);
-      this.setState({ mastered: merged });
-      this.flashMsg("Loaded");
+      this.rememberPrefs(deck, lang);
+      this._savedSig = this.saveSig(merged, deck, lang);
+      this.setState({ mastered: merged, deck: deck, uiLang: lang });
+      setLang(lang || "EN"); // the confirmation reads in the language just loaded
+      this.flashMsg(added > 0 ? T("loaded_plus", { n: added }) : T("already_up_to_date"));
     } catch (e) { this.flashMsg(T("load_failed")); }
     this.setState({ authBusy: false });
+  }
+
+  rememberPrefs(deck, lang) {
+    if (deck !== undefined) lsSet(OK_DECK_KEY, deck);
+    if (lang !== undefined) lsSet(OK_LANG_KEY, lang);
   }
 
   // True when mastered has changed since the last save. Recomputed from a
@@ -1756,64 +1831,21 @@ class Component extends DCLogic {
     return this._doneCache[deck];
   }
 
-  // Save/Load fall back to a progress file when there is no account to sync
-  // with, so both buttons do something real with no backend configured.
-  exportProgress() {
-    try {
-      const payload = {
-        app: "openkanji", version: 1, exported: new Date().toISOString(),
-        mastered: this.state.mastered || {}, seen: this.state.seen || {}
-      };
-      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "openkanji-progress.json";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-      this.flashMsg("Downloaded");
-    } catch (e) { this.flashMsg(T("download_failed")); }
-  }
-
-  importProgress() {
-    const inp = document.createElement("input");
-    inp.type = "file";
-    inp.accept = "application/json,.json";
-    inp.onchange = () => {
-      const f = inp.files && inp.files[0];
-      if (!f) return;
-      const rd = new FileReader();
-      rd.onload = () => {
-        try {
-          const d = JSON.parse(rd.result);
-          if (!d || typeof d !== "object" || !d.mastered) { this.flashMsg(T("not_progress_file")); return; }
-          // Union, never replace: importing can only ever add progress.
-          const mastered = okMerge(this.state.mastered, d.mastered);
-          const seen = okMerge(this.state.seen, d.seen);
-          const added = Object.keys(mastered).length - Object.keys(this.state.mastered || {}).length;
-          this.persistMastered(mastered);
-          this.persist(seen);
-          this._savedSig = this.masterSig(mastered);
-          this.setState({ mastered: mastered, seen: seen });
-          this.flashMsg(added > 0 ? T("loaded_plus", { n: added }) : T("already_up_to_date"));
-        } catch (e) { this.flashMsg(T("not_progress_file")); }
-      };
-      rd.readAsText(f);
-    };
-    inp.click();
-  }
-
-  // True once there is any progress worth exporting.
+  // True once there is any progress worth saving.
   hasProgress(st) {
     const m = st.mastered || {};
     for (const k in m) if (m[k]) return true;
     return false;
   }
 
+  // Save lights up when the mastered set, the deck or the language moved
+  // since the last save or load.
   isDirty(st) {
-    return this._savedSig != null && this.masterSig(st.mastered) !== this._savedSig;
+    return this._savedSig != null && this.saveSig(st.mastered, st.deck, st.uiLang) !== this._savedSig;
+  }
+
+  saveSig(m, deck, lang) {
+    return this.masterSig(m) + "\n" + (deck || "") + "\n" + (lang || "");
   }
 
   masterSig(m) {
@@ -3059,7 +3091,7 @@ class Component extends DCLogic {
         frac: d[1] ? "—" : this.deckDone(d[0], st.mastered) + " / " + deckData(d[0]).length,
         pct: d[1] ? "0%" : (deckData(d[0]).length ? Math.round(this.deckDone(d[0], st.mastered) / deckData(d[0]).length * 100) : 0) + "%",
         fg: (st.deck || "JLPT N4") === d[0] ? "var(--text-accent)" : "var(--text-muted)",
-        pick: () => { if (d[1]) return; this.setState({ deck: d[0] }); },
+        pick: () => { if (d[1]) return; this.rememberPrefs(d[0], undefined); this.setState({ deck: d[0] }); },
         studyOpacity: d[1] ? .3 : (deckData(d[0]).length > 0 && this.deckDone(d[0], st.mastered) === deckData(d[0]).length ? .3 : 1),
         studyPointer: d[1] ? "none" : "auto",
         study: (e) => {
@@ -3192,7 +3224,7 @@ class Component extends DCLogic {
           nameFg: soon ? "var(--text-muted)" : "var(--text-body)",
           opacity: soon ? .55 : 1,
           cursor: soon ? "default" : "pointer",
-          pick: () => { if (soon) return; if (this._lmT) clearTimeout(this._lmT); this.setState({ uiLang: l[0], langMenu: false }); }
+          pick: () => { if (soon) return; if (this._lmT) clearTimeout(this._lmT); this.rememberPrefs(undefined, l[0]); this.setState({ uiLang: l[0], langMenu: false }); }
         };
       }),
       tipEyeOpen: st.tip === "eye", tipSaveOpen: st.tip === "save",
@@ -3480,15 +3512,15 @@ class Component extends DCLogic {
       onEmailKey: (e) => { if (e && e.key === "Enter") this.sendMagicLink(this.state.emailDraft); },
       loadFill: "var(--accent)",
       loadCursor: "pointer",
-      loadNow: () => { if (okSyncReady() && st.userEmail) this.pullMastered(); else this.importProgress(); },
+      loadNow: () => { if (okSyncReady() && st.userEmail) this.pullProgress(); else this.flashMsg(T(okSyncReady() ? "sign_in_first" : "sync_unavailable")); },
       saveDirty: this.isDirty(st),
       saveBtnClass: (this.isDirty(st) || this.hasProgress(st)) ? "ok-navbtn" : "",
       saveGlow: st.saveFlash ? "0 0 0 1px rgba(8,145,178,.30), 0 0 10px rgba(8,145,178,.40)" : "none",
       saveCursor: (this.isDirty(st) || this.hasProgress(st)) ? "pointer" : "default",
       saveFill: (this.isDirty(st) || this.hasProgress(st)) ? "var(--accent)" : "#9aabb6",
-      saveTipBody: (okSyncReady() && st.userEmail) ? T("save_to_account") : T("download_file"),
+      saveTipBody: !okSyncReady() ? T("sync_unavailable") : st.userEmail ? T("save_to_account") : T("sync_signed_out"),
       saved: st.saved, notSaved: !st.saved,
-      saveLabel: st.saved ? "Saved" : "Save",
+      saveLabel: st.saved ? T("saved") : T("save"),
       saveNow: () => {
         // Read live state, not the captured `st` snapshot: what gets written to
         // disk, uploaded, and recorded in _savedSig must be the same map, and
@@ -3496,20 +3528,14 @@ class Component extends DCLogic {
         const cur = this.state;
         // Signed out with an email typed in: this button sends the magic link.
         if (okSyncReady() && !(cur.userEmail || this.props.userEmail)) { this.sendMagicLink(cur.emailDraft); return; }
-        // No account configured: Save exports a progress file instead.
-        if (!okSyncReady() || !cur.userEmail) {
-          if (!this.hasProgress(cur)) { this.flashMsg(T("nothing_to_save")); return; }
-          this.persistMastered(cur.mastered);
-          this.persist(cur.seen);
-          this._savedSig = this.masterSig(cur.mastered);
-          this.exportProgress();
-          return;
-        }
-        if (!this.isDirty(cur)) return;
-        this.pushMastered(cur.mastered);
+        // Progress always lands in localStorage; the account is what carries
+        // it to another device.
         this.persistMastered(cur.mastered);
         this.persist(cur.seen);
-        this._savedSig = this.masterSig(cur.mastered);
+        if (!okSyncReady() || !cur.userEmail) { this.flashMsg(T(okSyncReady() ? "sign_in_first" : "sync_unavailable")); return; }
+        if (!this.isDirty(cur)) return;
+        this.pushProgress(cur);
+        this._savedSig = this.saveSig(cur.mastered, cur.deck, cur.uiLang);
         if (this._saveT) clearTimeout(this._saveT);
         this.setState({ saved: true });
         this._saveT = setTimeout(() => this.setState({ saved: false }), 1600);

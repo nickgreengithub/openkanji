@@ -88,6 +88,8 @@ alongside the `src/` change; `npm run check` catches a forgotten rebuild.
 ## Progress sync
 
 Progress lives in `localStorage` (`openkanji.seen`, `openkanji.mastered`,
-`openkanji.gamewins`). Optional email-only accounts sync the mastered set via
-Supabase -- see [docs/sync-design.md](docs/sync-design.md). Inert until
-`SUPABASE_URL` and `SUPABASE_ANON_KEY` are set in `src/app.html`.
+`openkanji.gamewins`, plus the last deck and language). Optional email-only
+accounts sync the mastered set, last deck and language via Supabase -- see
+[docs/sync-design.md](docs/sync-design.md) for the schema, policies and
+redirect URLs. Inert until `SUPABASE_URL` and `SUPABASE_ANON_KEY` are set in
+`src/app.html`.

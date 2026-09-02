@@ -1,16 +1,20 @@
 # Email-only accounts + progress sync — design
 
-Status: **agreed, not yet implemented.** Waiting on a Supabase project and the
-openkanji.org DNS cutover.
+Status: **implemented in the app, inert until configured.** The client is in
+`src/app.html`; it activates when `SUPABASE_URL` and `SUPABASE_ANON_KEY` are
+filled in. Still needed: a Supabase project with the schema below, and the
+site origin(s) registered as redirect URLs.
 
 ## Decisions
 
 | Decision | Choice |
 |---|---|
-| What syncs | `mastered` only — not `seen`, not `gamewins` |
-| Timestamps | None. Booleans only |
-| Sync trigger | Explicit **Save** / **Load** buttons — no background sync |
-| Load semantics | **Merge** (union). Local OR server mastered ⇒ mastered |
+| What syncs | `mastered`, plus the last `deck` and `lang` — not `seen`, not `gamewins` |
+| Timestamps | None per word. Booleans only; `updated_at` on the row is informational |
+| Sync trigger | Explicit **Save** / **Load** buttons, plus one automatic Load on return from the magic link |
+| Load semantics | `mastered`: **merge** (union). Local OR server ⇒ mastered. `deck`/`lang`: server wins |
+| Save semantics | `mastered`: upsert the local set. `deck`/`lang`: last writer wins |
+| Progress files | None. Signed out, progress stays in `localStorage` only |
 | Auth | Supabase magic link (email, no password) |
 | Domain | Ship on openkanji.org before wiring auth |
 
@@ -63,14 +67,22 @@ Supabase is a plain REST API, so `fetch` is enough:
 
 ```sql
 create table public.progress (
-  user_id  uuid primary key references auth.users(id) on delete cascade,
-  mastered jsonb not null default '{}'::jsonb
+  user_id    uuid primary key references auth.users(id) default auth.uid(),
+  mastered   jsonb not null default '{}'::jsonb,
+  deck       text,
+  lang       text,
+  updated_at timestamptz not null default now()
 );
 
 alter table public.progress enable row level security;
 ```
 
-One row per user, one column. `on delete cascade` means deleting the auth user
+`user_id` defaults to `auth.uid()` so the client never sends it: the upsert
+body is `{mastered, deck, lang, updated_at}` and the row is the caller's own.
+`mastered` is a `{ "w0226": true }` map keyed by stable word id (see README),
+so a gloss or reading correction never invalidates a save. `deck` and `lang`
+are the app's own labels (`"JLPT N3"`, `"ES"`); the client ignores a value it
+no longer recognises. `on delete cascade` means deleting the auth user
 deletes their progress — a deletion request needs no extra code.
 
 ## Row Level Security
@@ -108,6 +120,23 @@ const merge = (a = {}, b = {}) => {
 
 Conflict-free and order-independent, so two devices converge no matter who saves first.
 
+## Session lifetime
+
+The magic link returns `access_token` **and** `refresh_token` in the URL
+fragment. Both are stored. An access token lasts an hour; on the first 401 the
+client posts the refresh token to `/auth/v1/token?grant_type=refresh_token`,
+stores the new pair and retries once. A failed refresh signs the learner out
+cleanly rather than leaving a dead session in the nav.
+
+## Redirect URLs
+
+The link must land back on the page that sent it, so the OTP request carries
+`redirect_to=<origin>/<path>`. Every origin the site is served from must be on
+the Supabase allow list (Authentication → URL Configuration):
+
+- `https://nickgreengithub.github.io/openkanji/`
+- `https://openkanji.org/` once the DNS cutover happens
+
 ## UI change
 
 The nav container grows from `13rem` to fit a second `2.35rem` button:
@@ -143,6 +172,5 @@ and offering deletion (which is one `delete from auth.users`, cascading).
 
 ## Open
 
-- Copy for the sign-in prompt and the "check your email" state.
-- Whether Save should be allowed signed-out (currently it persists locally, which
-  should keep working untouched).
+- Un-mastering does not propagate (see above). If it should, add a small
+  `unmastered` tombstone set alongside `mastered`; still no timestamps.
