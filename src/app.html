@@ -682,12 +682,13 @@ a:hover{color:var(--text-accent-hover)}
     <main sc-camel-on-animation-end="{{ clearScreenAnim }}" style="flex:1 1 auto;min-height:0;overflow:hidden;display:flex;flex-direction:column;padding:0 2.75rem 1.25rem;animation:ok-screen-back 420ms cubic-bezier(.16,.84,.28,1) both">
       <div style="flex:1 1 auto;min-height:0;display:flex;align-items:stretch">
       <div style="box-sizing:border-box;flex:0 0 calc(21rem + {{ ruleH }});min-width:0;display:flex;flex-direction:column;margin-left:-1.25rem;padding:1.25rem 1.5rem 0 1.25rem;border-right:{{ ruleH }} solid var(--cyan-a45)">
+        <div class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;margin-right:-1.5rem;padding-right:1.5rem">
         <sc-for list="{{ deckTabs }}" as="dt" hint-placeholder-count="7">
-          <div sc-camel-on-click="{{ dt.pick }}" sc-camel-on-mouse-enter="{{ dt.tipEnter }}" sc-camel-on-mouse-leave="{{ dt.tipLeave }}" style="position:relative;user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:1.1rem;height:5.4rem;box-sizing:border-box;padding:0 1rem 0 1.25rem;border-bottom:1px solid var(--cyan-a15);cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
+          <div sc-camel-on-click="{{ dt.pick }}" sc-camel-on-mouse-enter="{{ dt.tipEnter }}" sc-camel-on-mouse-leave="{{ dt.tipLeave }}" style="position:relative;user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:1.1rem;height:4.5rem;box-sizing:border-box;padding:0 1rem 0 1.25rem;border-bottom:1px solid var(--cyan-a15);cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
             <div style="position:absolute;left:0;top:0;bottom:0;width:{{ dt.barH }};background:{{ dt.barBg }}"></div>
             <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.6rem">
               <div style="display:flex;align-items:baseline;justify-content:space-between;gap:.7rem">
-                <span style="min-width:0;font-family:var(--font-2);font-size:1.125rem;letter-spacing:.12em;text-transform:uppercase;color:{{ dt.fg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ dt.name }}</span>
+                <span style="min-width:0;font-family:var(--font-2);font-size:1rem;letter-spacing:.03em;text-transform:uppercase;color:{{ dt.fg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ dt.name }}</span>
                 <span style="flex:0 0 auto;font-family:var(--font-2);font-size:1rem;color:var(--text-muted)">{{ dt.frac }}</span>
               </div>
               <span style="height:.4rem;background:var(--cyan-a15);display:block">
@@ -707,7 +708,7 @@ a:hover{color:var(--text-accent-hover)}
             </sc-if>
           </div>
         </sc-for>
-        <span style="flex:1 1 auto"></span>
+        </div>
         <div sc-camel-on-click="{{ printDeck }}" style="user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:.7rem;margin:0 -1.5rem 0 -1.25rem;padding:1.1rem 1.5rem 1.1rem 1.25rem;border-top:{{ ruleH }} solid var(--cyan-a45);cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
           <span style="width:2.1rem;height:2.1rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent)"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 9 V3.5 H17 V9"></path><path d="M4 9 H20 V17 H17"></path><path d="M7 17 H4 V9"></path><path d="M7 14 H17 V21 H7 Z"></path></svg></span>
           <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_pdf }}</span>
@@ -1172,7 +1173,15 @@ const setLang = (code) => { CURRENT_LANG = _CORPUS[code] || I18N[code] ? code : 
 const deckData = (deck) => corpusFor(CURRENT_LANG).index[deck || DEFAULT_DECK] || [];
 
 // Display order for the deck rail. A deck with no kanji renders as "coming soon".
-const DECKS = ["JLPT N1", "JLPT N2", "JLPT N3", "JLPT N4", "JLPT N5", "Core 1000"];
+// [name, tip key, "from-to"] in rail order, emitted from decks.json. Splitting
+// a deck or reordering the rail is a data edit, not a code edit.
+const DECK_LIST = __DECKS__;
+const DECKS = DECK_LIST.map((d) => d[0]);
+const DECK_META = (() => {
+  const m = {};
+  DECK_LIST.forEach((d) => { m[d[0]] = { tip: d[1], range: d[2] }; });
+  return m;
+})();
 const batchCount = (deck) => Math.ceil(deckData(deck).length / SETN);
 const setOf = (b, deck) => deckData(deck).slice(b * SETN, b * SETN + SETN);
 
@@ -1408,7 +1417,16 @@ const okSyncReady = () => location.protocol === "http:" || location.protocol ===
 const lsGet = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} };
 // A deck the rail can show, and a language that shipped complete.
-const okDeck = (d) => (d && DECKS.includes(d) && deckData(d).length ? d : null);
+// A deck saved before the levels were split no longer exists under that name.
+// Land on its first chunk -- "JLPT N1" -> "JLPT N1-A", "Core 1000" -> "Core
+// 001-200" -- rather than silently resetting someone to the default deck.
+const okDeck = (d) => {
+  if (!d) return null;
+  if (DECKS.includes(d) && deckData(d).length) return d;
+  const base = String(d).replace(/ \d+$/, "");
+  const hit = DECKS.find((n) => n === d + "-A" || n === base + "-A" || n.indexOf(base + " 0") === 0);
+  return hit && deckData(hit).length ? hit : null;
+};
 const okLang = (c) => (c && LANGS.some(l => l[0] === c && !l[3]) ? c : null);
 const okIsEmail = (s) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(s || "").trim());
 // mastered is a { "word|reading": true } map. Union merge: local OR server wins.
@@ -3132,14 +3150,12 @@ class Component extends DCLogic {
         tipOpen: st.deckTip === d[0],
         tipEnter: () => { if (this._dtT) clearTimeout(this._dtT); this.setState({ deckTip: d[0] }); },
         tipLeave: () => { if (this._dtT) clearTimeout(this._dtT); this._dtT = setTimeout(() => this.setState({ deckTip: null }), 160); },
-        tipBody: ({
-          "JLPT N1": T("tip_jlpt_n1"),
-          "JLPT N2": T("tip_jlpt_n2"),
-          "JLPT N3": T("tip_jlpt_n3"),
-          "JLPT N4": T("tip_jlpt_n4"),
-          "JLPT N5": T("tip_jlpt_n5"),
-          "Core 1000": T("tip_core")
-        })[d[0]],
+        tipBody: (() => {
+          const meta = DECK_META[d[0]] || {};
+          const body = T(meta.tip || "tip_core");
+          // A split deck says which slice of the level it is.
+          return meta.range && meta.range !== "1-" + deckData(d[0]).length ? meta.range + " \u00b7 " + body : body;
+        })(),
         barH: (st.deck || "JLPT N4") === d[0] ? "3px" : "0",
         barBg: d[1] ? "var(--cyan-a45)" : "var(--accent)",
         frac: d[1] ? "—" : this.deckDone(d[0], st.mastered) + " / " + deckData(d[0]).length,

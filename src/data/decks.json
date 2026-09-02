@@ -9,19 +9,24 @@
   },
   {
     "deck": "JLPT N3",
-    "file": "jlpt-n3.json"
+    "file": "jlpt-n3.json",
+    "split": 200
   },
   {
     "deck": "JLPT N2",
-    "file": "jlpt-n2.json"
+    "file": "jlpt-n2.json",
+    "split": 200
   },
   {
     "deck": "JLPT N1",
-    "file": "jlpt-n1.json"
+    "file": "jlpt-n1.json",
+    "split": 200
   },
   {
-    "deck": "Core 1000",
+    "deck": "Core",
     "order": "core-10000.json",
-    "limit": 1000
+    "limit": 1000,
+    "split": 200,
+    "splitLabel": "range"
   }
 ]

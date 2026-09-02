@@ -43,6 +43,31 @@ function readJson(rel) {
 
 function loadData() {
   const decks = readJson("data/decks.json");
+
+  // A deck of 1031 kanji is not a deck, it is a syllabus. `split: 200` cuts one
+  // into chunks of at most that many, which become decks in their own right --
+  // "JLPT N1-A", "JLPT N1-B" -- without touching the data files. Chunk names
+  // are letters by default; `splitLabel: "range"` numbers them instead, for a
+  // deck with no level letter to hang off ("Core 001-200").
+  const chunker = (spec, total) => {
+    const size = spec.split;
+    if (!size || total <= size) return { name: () => spec.deck, chunks: [[spec.deck, 1, total]] };
+    const chunks = [];
+    for (let from = 0; from < total; from += size) {
+      const to = Math.min(from + size, total);
+      const pad = (n) => String(n).padStart(3, "0");
+      const name = spec.splitLabel === "range"
+        ? spec.deck + " " + pad(from + 1) + "-" + pad(to)
+        : spec.deck + "-" + String.fromCharCode(65 + chunks.length);
+      chunks.push([name, from + 1, to]);
+    }
+    return { name: (i) => chunks[Math.floor(i / size)][0], chunks };
+  };
+
+  // Rail order, and what each tab needs to describe itself. Filled in as the
+  // decks are read so it always matches what actually shipped.
+  const deckOrder = [];
+  const tipKey = (deck) => "tip_" + deck.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/_+$/, "");
   const words = readJson("data/words.json");
 
   // lang -> count of translated fields carrying it; a language is complete
@@ -82,10 +107,13 @@ function loadData() {
   const seenId = new Map();
   const used = new Set();
   const byId = {};
-  for (const { deck, file } of decks) {
+  for (const spec of decks) {
+    const { deck, file } = spec;
     if (!file) continue; // view decks are resolved below, once every record exists
     const recs = readJson("data/kanji/" + file);
     if (!Array.isArray(recs)) throw new Error(file + ": expected an array");
+    const cut = chunker(spec, recs.length);
+    cut.chunks.forEach(([name, from, to]) => deckOrder.push([name, tipKey(deck), from + "-" + to]));
     recs.forEach((k, i) => {
       const at = file + "[" + i + "]" + (k && k.c ? " (" + k.c + ")" : "");
       if (!k || !k.id) throw new Error(at + ": missing `id`");
@@ -107,17 +135,20 @@ function loadData() {
         });
       });
       byId[k.id] = k;
-      kanji.push(Object.assign({}, k, { deck }));
+      kanji.push(Object.assign({}, k, { deck: cut.name(i) }));
     });
   }
 
   // View decks: an ordered list of existing kanji ids in data/<order>, no
   // records of their own. A kanji is still defined exactly once; the view
   // re-uses its words, so progress is shared and nothing can drift.
-  for (const { deck, order, limit } of decks) {
+  for (const spec of decks) {
+    const { deck, order, limit } = spec;
     if (!order) continue;
     const ids = readJson("data/" + order);
     if (!Array.isArray(ids) || !ids.length) throw new Error(order + ": expected a non-empty array of kanji ids");
+    const cut = chunker(spec, Math.min(limit || ids.length, ids.length));
+    cut.chunks.forEach(([name, from, to]) => deckOrder.push([name, tipKey(deck), from + "-" + to]));
     const seen = new Set();
     ids.forEach((id, i) => {
       if (!byId[id]) throw new Error(order + "[" + i + "]: unknown kanji id " + id);
@@ -125,7 +156,7 @@ function loadData() {
       seen.add(id);
       // `limit` shows only the head of the list; the file keeps the full order.
       if (limit && i >= limit) return;
-      kanji.push(Object.assign({}, byId[id], { deck }));
+      kanji.push(Object.assign({}, byId[id], { deck: cut.name(i) }));
     });
   }
 
@@ -141,7 +172,7 @@ function loadData() {
   const partial = Object.keys(coverage).filter((c) => coverage[c] !== fields);
   if (!complete.includes(DEFAULT_LANG))
     throw new Error("default language '" + DEFAULT_LANG + "' is incomplete: " + (coverage[DEFAULT_LANG] || 0) + "/" + fields + " fields");
-  return { kanji, words, ui, complete, partial, coverage, fields };
+  return { kanji, words, ui, complete, partial, coverage, fields, deckOrder };
 }
 
 const pick = (v, lang) => v[lang] || v[DEFAULT_LANG];
@@ -167,7 +198,7 @@ function flatten(kanji, words, lang) {
 
 function loadKanjiAndLangs() {
   const langs = readJson("data/langs.json");
-  const { kanji, words, ui, complete, partial, coverage, fields } = loadData();
+  const { kanji, words, ui, complete, partial, coverage, fields, deckOrder } = loadData();
 
   const known = new Set(langs.map((l) => l.code.toLowerCase()));
   for (const c of complete.concat(partial)) {
@@ -206,7 +237,7 @@ function loadKanjiAndLangs() {
     uiT[c.toUpperCase()] = t;
   }
 
-  return { data: flatten(kanji, words, DEFAULT_LANG), exT, i18n, uiT, langs, available, partial, coverage, fields };
+  return { data: flatten(kanji, words, DEFAULT_LANG), exT, i18n, uiT, langs, available, partial, coverage, fields, deckOrder };
 }
 
 function build() {
@@ -223,11 +254,14 @@ function build() {
     };
   }
 
-  const { data, exT, i18n, uiT, langs, available, partial, coverage, fields } = loadKanjiAndLangs();
+  const { data, exT, i18n, uiT, langs, available, partial, coverage, fields, deckOrder } = loadKanjiAndLangs();
 
   let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
   const tokens = {
     __KANJI_DATA__: JSON.stringify(data),
+    // [name, ui.json tip key, "from-to"] in rail order, so adding or splitting
+    // a deck is a decks.json edit and nothing else.
+    __DECKS__: JSON.stringify(deckOrder),
     // Complete non-default languages ride along so the picker can switch
     // without a refetch. Incomplete ones are omitted entirely.
     __KANJI_I18N__: JSON.stringify(i18n),
