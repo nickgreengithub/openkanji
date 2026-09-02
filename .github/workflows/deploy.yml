@@ -1,0 +1,60 @@
+name: CI / Deploy
+
+# The site is a Worker serving static assets out of dist/, and dist/ is
+# gitignored -- the built page never travels with the commit. So a push is not
+# a deploy unless something rebuilds and ships it, which is what this does.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Never let two deploys race; never cancel one half-way.
+concurrency:
+  group: deploy-main
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Catches a src/ change committed without rebuilding: index.html is the
+      # GitHub Pages target and is committed, so it must match src/.
+      - name: index.html is up to date with src/
+        run: npm run check
+
+      - name: Worker tests
+        run: npm test
+        working-directory: worker
+
+  deploy:
+    needs: test
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Writes index.html and dist/index.html. dist/ is what wrangler uploads.
+      - name: Build
+        run: npm run build
+
+      - name: Fail if dist/ is empty
+        run: test -s dist/index.html
+
+      - name: Deploy Worker and assets
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

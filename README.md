@@ -87,21 +87,34 @@ Cloudflare Worker `openkanji`, serving both the site and the API at
 openkanji.org. Static assets come from `dist/`; `/api/*` is handled by
 `worker/src/index.js`.
 
-Pushes to `main` build automatically:
+Pushing to `main` deploys, through `.github/workflows/deploy.yml`: it runs
+`npm run check` and the worker tests, then builds and ships with
+`cloudflare/wrangler-action`. Pull requests run the checks without deploying,
+and `workflow_dispatch` re-deploys `main` by hand from the Actions tab.
 
-```
-Build command   npm run build
-Deploy command  npx wrangler deploy
-```
+Two repository secrets are required (Settings -> Secrets and variables ->
+Actions):
 
-`npx wrangler deploy` is the Workers command -- `wrangler pages deploy` is for
-Pages projects and will fail here.
+| Secret | Where it comes from |
+|---|---|
+| `CLOUDFLARE_API_TOKEN` | Cloudflare -> My Profile -> API Tokens, **Edit Cloudflare Workers** template |
+| `CLOUDFLARE_ACCOUNT_ID` | the dashboard URL, or `npx wrangler whoami` |
+
+The build step is not optional: `dist/` is gitignored, so the built page never
+travels with the commit and anything that deploys has to rebuild first.
+
+**One deploy path only.** If Cloudflare's Workers Builds git integration is
+also connected in the dashboard, turn one of the two off -- otherwise every
+push deploys twice and the two can race.
 
 To deploy by hand:
 
 ```sh
 npm run build && npx wrangler deploy
 ```
+
+`npx wrangler deploy` is the Workers command -- `wrangler pages deploy` is for
+Pages projects and will fail here.
 
 Secrets live on the Worker, never in the repo:
 
@@ -113,7 +126,7 @@ openssl rand -base64 32 | npx wrangler secret put SESSION_SECRET --name openkanj
 Worker tests:
 
 ```sh
-node --experimental-sqlite --no-warnings worker/test/worker.test.mjs
+cd worker && npm test
 ```
 
 ## Progress sync
