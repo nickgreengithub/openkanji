@@ -1,0 +1,1793 @@
+[
+ {
+  "c": "楽",
+  "meaning": "comfort, music",
+  "sentence": "Music is fun, so I relax at ease and enjoy it.",
+  "g": [
+   {
+    "r": "ガク",
+    "w": [
+     [
+      "音楽",
+      "おんがく",
+      "music"
+     ]
+    ]
+   },
+   {
+    "r": "ラク",
+    "w": [
+     [
+      "楽",
+      "らく",
+      "ease, comfort"
+     ],
+     [
+      "気楽",
+      "きらく",
+      "at ease"
+     ]
+    ]
+   },
+   {
+    "r": "たの",
+    "w": [
+     [
+      "楽しい",
+      "たのしい",
+      "fun, enjoyable"
+     ],
+     [
+      "楽しむ",
+      "たのしむ",
+      "to enjoy"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "明",
+  "meaning": "bright, clear",
+  "sentence": "Tomorrow, before dawn, I will give a bright explanation of the invention under one light.",
+  "g": [
+   {
+    "r": "メイ",
+    "w": [
+     [
+      "説明",
+      "せつめい",
+      "explanation"
+     ],
+     [
+      "発明",
+      "はつめい",
+      "invention"
+     ]
+    ]
+   },
+   {
+    "r": "あか",
+    "w": [
+     [
+      "明るい",
+      "あかるい",
+      "bright"
+     ],
+     [
+      "明かり",
+      "あかり",
+      "a light"
+     ]
+    ]
+   },
+   {
+    "r": "あ",
+    "w": [
+     [
+      "明ける",
+      "あける",
+      "to dawn, end"
+     ]
+    ]
+   },
+   {
+    "r": "あした",
+    "w": [
+     [
+      "明日",
+      "あした",
+      "tomorrow"
+     ]
+    ]
+   },
+   {
+    "r": "あす",
+    "w": [
+     [
+      "明日",
+      "あす",
+      "tomorrow"
+     ]
+    ],
+    "alt": true
+   }
+  ]
+ },
+ {
+  "c": "音",
+  "meaning": "sound, noise",
+  "sentence": "The sound of footsteps and the tone colour of the music taught me the pronunciation.",
+  "g": [
+   {
+    "r": "オン",
+    "w": [
+     [
+      "音楽",
+      "おんがく",
+      "music"
+     ],
+     [
+      "発音",
+      "はつおん",
+      "pronunciation"
+     ]
+    ]
+   },
+   {
+    "r": "おと",
+    "w": [
+     [
+      "音",
+      "おと",
+      "a sound"
+     ],
+     [
+      "足音",
+      "あしおと",
+      "footsteps"
+     ]
+    ]
+   },
+   {
+    "r": "ね",
+    "w": [
+     [
+      "音色",
+      "ねいろ",
+      "tone colour"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "発",
+  "meaning": "depart, emit",
+  "sentence": "Before the departure of the first train, the presentation about the invention explained the pronunciation.",
+  "g": [
+   {
+    "r": "ハツ",
+    "w": [
+     [
+      "発音",
+      "はつおん",
+      "pronunciation"
+     ],
+     [
+      "発明",
+      "はつめい",
+      "invention"
+     ],
+     [
+      "始発",
+      "しはつ",
+      "first train"
+     ]
+    ]
+   },
+   {
+    "r": "パツ",
+    "w": [
+     [
+      "出発",
+      "しゅっぱつ",
+      "departure"
+     ]
+    ]
+   },
+   {
+    "r": "ピョウ",
+    "w": [
+     [
+      "発表",
+      "はっぴょう",
+      "presentation"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "表",
+  "meaning": "surface, express",
+  "sentence": "The presentation used a chart to express what was on the surface.",
+  "g": [
+   {
+    "r": "ヒョウ",
+    "w": [
+     [
+      "発表",
+      "はっぴょう",
+      "presentation"
+     ],
+     [
+      "表",
+      "ひょう",
+      "table, chart"
+     ]
+    ]
+   },
+   {
+    "r": "おもて",
+    "w": [
+     [
+      "表",
+      "おもて",
+      "front, surface"
+     ]
+    ]
+   },
+   {
+    "r": "あらわ",
+    "w": [
+     [
+      "表す",
+      "あらわす",
+      "to express"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "使",
+  "meaning": "use, envoy",
+  "sentence": "At the embassy they explained the use and how to use it, so I used it.",
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     [
+      "使用",
+      "しよう",
+      "use"
+     ],
+     [
+      "大使館",
+      "たいしかん",
+      "embassy"
+     ]
+    ]
+   },
+   {
+    "r": "つか",
+    "w": [
+     [
+      "使う",
+      "つかう",
+      "to use"
+     ],
+     [
+      "使い方",
+      "つかいかた",
+      "how to use"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "用",
+  "meaning": "use, task",
+  "sentence": "I have an errand, so the preparation and the use of the tool I employ must be ready.",
+  "g": [
+   {
+    "r": "ヨウ",
+    "w": [
+     [
+      "使用",
+      "しよう",
+      "use"
+     ],
+     [
+      "用事",
+      "ようじ",
+      "errand"
+     ],
+     [
+      "用意",
+      "ようい",
+      "preparation"
+     ]
+    ]
+   },
+   {
+    "r": "もち",
+    "w": [
+     [
+      "用いる",
+      "もちいる",
+      "to use (formal)"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "意",
+  "meaning": "mind, intent",
+  "sentence": "With caution, prepare your opinion and explain its meaning.",
+  "g": [
+   {
+    "r": "イ",
+    "w": [
+     [
+      "用意",
+      "ようい",
+      "preparation"
+     ],
+     [
+      "意見",
+      "いけん",
+      "opinion"
+     ],
+     [
+      "意味",
+      "いみ",
+      "meaning"
+     ],
+     [
+      "注意",
+      "ちゅうい",
+      "caution"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "味",
+  "meaning": "taste, flavour",
+  "sentence": "The meaning of my hobby is the taste, so I always do a tasting.",
+  "g": [
+   {
+    "r": "ミ",
+    "w": [
+     [
+      "意味",
+      "いみ",
+      "meaning"
+     ],
+     [
+      "趣味",
+      "しゅみ",
+      "hobby"
+     ]
+    ]
+   },
+   {
+    "r": "あじ",
+    "w": [
+     [
+      "味",
+      "あじ",
+      "taste"
+     ],
+     [
+      "味見",
+      "あじみ",
+      "tasting"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "注",
+  "meaning": "pour, note",
+  "sentence": "With caution I placed an order, poured the water, and then had an injection.",
+  "g": [
+   {
+    "r": "チュウ",
+    "w": [
+     [
+      "注意",
+      "ちゅうい",
+      "caution"
+     ],
+     [
+      "注文",
+      "ちゅうもん",
+      "an order"
+     ],
+     [
+      "注射",
+      "ちゅうしゃ",
+      "injection"
+     ]
+    ]
+   },
+   {
+    "r": "そそ",
+    "w": [
+     [
+      "注ぐ",
+      "そそぐ",
+      "to pour"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "主",
+  "meaning": "main, master",
+  "sentence": "The owner is mainly the husband, and he is the subject of the sentence.",
+  "g": [
+   {
+    "r": "シュ",
+    "w": [
+     [
+      "主人",
+      "しゅじん",
+      "husband, owner"
+     ],
+     [
+      "主語",
+      "しゅご",
+      "grammatical subject"
+     ]
+    ]
+   },
+   {
+    "r": "おも",
+    "w": [
+     [
+      "主に",
+      "おもに",
+      "mainly"
+     ]
+    ]
+   },
+   {
+    "r": "ぬし",
+    "w": [
+     [
+      "持ち主",
+      "もちぬし",
+      "owner"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "重",
+  "meaning": "heavy, pile",
+  "sentence": "My body weight is important, because the heavy weight piles up.",
+  "g": [
+   {
+    "r": "ジュウ",
+    "w": [
+     [
+      "体重",
+      "たいじゅう",
+      "body weight"
+     ],
+     [
+      "重要",
+      "じゅうよう",
+      "important"
+     ]
+    ]
+   },
+   {
+    "r": "おも",
+    "w": [
+     [
+      "重い",
+      "おもい",
+      "heavy"
+     ],
+     [
+      "重さ",
+      "おもさ",
+      "weight"
+     ]
+    ]
+   },
+   {
+    "r": "かさ",
+    "w": [
+     [
+      "重ねる",
+      "かさねる",
+      "to pile up"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "世",
+  "meaning": "world, generation",
+  "sentence": "In this century, society takes care of the world.",
+  "g": [
+   {
+    "r": "セイ",
+    "w": [
+     [
+      "世紀",
+      "せいき",
+      "century"
+     ]
+    ]
+   },
+   {
+    "r": "セ",
+    "w": [
+     [
+      "世界",
+      "せかい",
+      "world"
+     ],
+     [
+      "世話",
+      "せわ",
+      "care, help"
+     ]
+    ]
+   },
+   {
+    "r": "よ",
+    "w": [
+     [
+      "世の中",
+      "よのなか",
+      "society"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "界",
+  "meaning": "boundary, world",
+  "sentence": "All over the world, this industry is the biggest in the world.",
+  "g": [
+   {
+    "r": "カイ",
+    "w": [
+     [
+      "世界",
+      "せかい",
+      "world"
+     ],
+     [
+      "世界中",
+      "せかいじゅう",
+      "all over the world"
+     ],
+     [
+      "業界",
+      "ぎょうかい",
+      "industry"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "開",
+  "meaning": "open",
+  "sentence": "At the store opening the doors open at the start, so I opened them and unfolded the map.",
+  "g": [
+   {
+    "r": "カイ",
+    "w": [
+     [
+      "開始",
+      "かいし",
+      "start"
+     ],
+     [
+      "開店",
+      "かいてん",
+      "store opening"
+     ]
+    ]
+   },
+   {
+    "r": "あ",
+    "w": [
+     [
+      "開く",
+      "あく",
+      "to open (intr.)"
+     ],
+     [
+      "開ける",
+      "あける",
+      "to open (tr.)"
+     ]
+    ]
+   },
+   {
+    "r": "ひら",
+    "w": [
+     [
+      "開く",
+      "ひらく",
+      "to open, unfold"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "始",
+  "meaning": "begin",
+  "sentence": "The start is when the first train begins, so I will begin too.",
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     [
+      "開始",
+      "かいし",
+      "start"
+     ],
+     [
+      "始発",
+      "しはつ",
+      "first train"
+     ]
+    ]
+   },
+   {
+    "r": "はじ",
+    "w": [
+     [
+      "始まる",
+      "はじまる",
+      "to begin (intr.)"
+     ],
+     [
+      "始める",
+      "はじめる",
+      "to begin (tr.)"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "転",
+  "meaning": "revolve, turn",
+  "sentence": "After changing schools I fell over while driving my bicycle.",
+  "g": [
+   {
+    "r": "テン",
+    "w": [
+     [
+      "自転車",
+      "じてんしゃ",
+      "bicycle"
+     ],
+     [
+      "運転",
+      "うんてん",
+      "driving"
+     ],
+     [
+      "転校",
+      "てんこう",
+      "changing schools"
+     ]
+    ]
+   },
+   {
+    "r": "ころ",
+    "w": [
+     [
+      "転ぶ",
+      "ころぶ",
+      "to fall over"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "運",
+  "meaning": "carry, luck",
+  "sentence": "With good luck, driving and exercise let me carry it.",
+  "g": [
+   {
+    "r": "ウン",
+    "w": [
+     [
+      "運転",
+      "うんてん",
+      "driving"
+     ],
+     [
+      "運動",
+      "うんどう",
+      "exercise"
+     ],
+     [
+      "幸運",
+      "こううん",
+      "good luck"
+     ]
+    ]
+   },
+   {
+    "r": "はこ",
+    "w": [
+     [
+      "運ぶ",
+      "はこぶ",
+      "to carry"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "動",
+  "meaning": "move",
+  "sentence": "The animal moved the car, and exercise moves my body too.",
+  "g": [
+   {
+    "r": "ドウ",
+    "w": [
+     [
+      "運動",
+      "うんどう",
+      "exercise"
+     ],
+     [
+      "自動車",
+      "じどうしゃ",
+      "car"
+     ],
+     [
+      "動物",
+      "どうぶつ",
+      "animal"
+     ]
+    ]
+   },
+   {
+    "r": "うご",
+    "w": [
+     [
+      "動く",
+      "うごく",
+      "to move"
+     ],
+     [
+      "動かす",
+      "うごかす",
+      "to move (tr.)"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "物",
+  "meaning": "thing, object",
+  "sentence": "While sightseeing I left my luggage and goods in the building, so they became lost items next to an animal.",
+  "g": [
+   {
+    "r": "ブツ",
+    "w": [
+     [
+      "動物",
+      "どうぶつ",
+      "animal"
+     ],
+     [
+      "見物",
+      "けんぶつ",
+      "sightseeing"
+     ]
+    ]
+   },
+   {
+    "r": "モツ",
+    "w": [
+     [
+      "荷物",
+      "にもつ",
+      "luggage"
+     ]
+    ]
+   },
+   {
+    "r": "もの",
+    "w": [
+     [
+      "建物",
+      "たてもの",
+      "building"
+     ],
+     [
+      "品物",
+      "しなもの",
+      "goods"
+     ],
+     [
+      "忘れ物",
+      "わすれもの",
+      "lost item"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "活",
+  "meaning": "life, activity",
+  "sentence": "Daily life and club activities both make use of my energy.",
+  "g": [
+   {
+    "r": "カツ",
+    "w": [
+     [
+      "生活",
+      "せいかつ",
+      "daily life"
+     ],
+     [
+      "活動",
+      "かつどう",
+      "activity"
+     ],
+     [
+      "活用",
+      "かつよう",
+      "practical use"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "漢",
+  "meaning": "China, Han",
+  "sentence": "Chinese characters are called kanji.",
+  "g": [
+   {
+    "r": "カン",
+    "w": [
+     [
+      "漢字",
+      "かんじ",
+      "kanji"
+     ],
+     [
+      "漢語",
+      "かんご",
+      "Sino-Japanese word"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "字",
+  "meaning": "character, letter",
+  "sentence": "My handwriting shapes each character and number.",
+  "g": [
+   {
+    "r": "ジ",
+    "w": [
+     [
+      "漢字",
+      "かんじ",
+      "kanji"
+     ],
+     [
+      "数字",
+      "すうじ",
+      "numeral"
+     ],
+     [
+      "字",
+      "じ",
+      "character"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "習",
+  "meaning": "learn",
+  "sentence": "I learn in class, revise what I studied, and practise it.",
+  "g": [
+   {
+    "r": "シュウ",
+    "w": [
+     [
+      "習字",
+      "しゅうじ",
+      "calligraphy"
+     ],
+     [
+      "練習",
+      "れんしゅう",
+      "practice"
+     ]
+    ]
+   },
+   {
+    "r": "なら",
+    "w": [
+     [
+      "習う",
+      "ならう",
+      "to learn"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "研",
+  "meaning": "polish, research",
+  "sentence": "At the laboratory the researcher polishes the study.",
+  "g": [
+   {
+    "r": "ケン",
+    "w": [
+     [
+      "研究",
+      "けんきゅう",
+      "research"
+     ],
+     [
+      "研究室",
+      "けんきゅうしつ",
+      "laboratory"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "究",
+  "meaning": "investigate",
+  "sentence": "The research investigates it thoroughly.",
+  "g": [
+   {
+    "r": "キュウ",
+    "w": [
+     [
+      "研究",
+      "けんきゅう",
+      "research"
+     ],
+     [
+      "研究者",
+      "けんきゅうしゃ",
+      "researcher"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "教",
+  "meaning": "teach",
+  "sentence": "The teacher teaches in the classroom and shares religion.",
+  "g": [
+   {
+    "r": "キョウ",
+    "w": [
+     [
+      "教室",
+      "きょうしつ",
+      "classroom"
+     ],
+     [
+      "教科書",
+      "きょうかしょ",
+      "textbook"
+     ],
+     [
+      "宗教",
+      "しゅうきょう",
+      "religion"
+     ]
+    ]
+   },
+   {
+    "r": "おし",
+    "w": [
+     [
+      "教える",
+      "おしえる",
+      "to teach"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "室",
+  "meaning": "room",
+  "sentence": "The classroom and the laboratory are both rooms indoors.",
+  "g": [
+   {
+    "r": "シツ",
+    "w": [
+     [
+      "教室",
+      "きょうしつ",
+      "classroom"
+     ],
+     [
+      "室内",
+      "しつない",
+      "indoors"
+     ],
+     [
+      "和室",
+      "わしつ",
+      "Japanese-style room"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "質",
+  "meaning": "quality, question",
+  "sentence": "The question was about quality, so I asked politely.",
+  "g": [
+   {
+    "r": "シツ",
+    "w": [
+     [
+      "質問",
+      "しつもん",
+      "question"
+     ],
+     [
+      "品質",
+      "ひんしつ",
+      "quality"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "問",
+  "meaning": "question, ask",
+  "sentence": "There is no question or problem, so I inquired.",
+  "g": [
+   {
+    "r": "モン",
+    "w": [
+     [
+      "質問",
+      "しつもん",
+      "question"
+     ],
+     [
+      "問題",
+      "もんだい",
+      "problem"
+     ]
+    ]
+   },
+   {
+    "r": "と",
+    "w": [
+     [
+      "問う",
+      "とう",
+      "to ask"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "題",
+  "meaning": "topic, title",
+  "sentence": "The homework problem had a difficult title.",
+  "g": [
+   {
+    "r": "ダイ",
+    "w": [
+     [
+      "問題",
+      "もんだい",
+      "problem"
+     ],
+     [
+      "宿題",
+      "しゅくだい",
+      "homework"
+     ],
+     [
+      "話題",
+      "わだい",
+      "topic"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "答",
+  "meaning": "answer",
+  "sentence": "The answer sheet holds my reply, and I answered.",
+  "g": [
+   {
+    "r": "トウ",
+    "w": [
+     [
+      "答案",
+      "とうあん",
+      "answer sheet"
+     ],
+     [
+      "回答",
+      "かいとう",
+      "reply"
+     ]
+    ]
+   },
+   {
+    "r": "こた",
+    "w": [
+     [
+      "答える",
+      "こたえる",
+      "to answer"
+     ],
+     [
+      "答え",
+      "こたえ",
+      "an answer"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "考",
+  "meaning": "think, consider",
+  "sentence": "My idea is that thinking things over is a way of considering.",
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     [
+      "参考",
+      "さんこう",
+      "reference"
+     ],
+     [
+      "考古学",
+      "こうこがく",
+      "archaeology"
+     ]
+    ]
+   },
+   {
+    "r": "かんが",
+    "w": [
+     [
+      "考える",
+      "かんがえる",
+      "to think"
+     ],
+     [
+      "考え",
+      "かんがえ",
+      "an idea"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "験",
+  "meaning": "test, verify",
+  "sentence": "The examination is an experiment in experience.",
+  "g": [
+   {
+    "r": "ケン",
+    "w": [
+     [
+      "試験",
+      "しけん",
+      "examination"
+     ],
+     [
+      "経験",
+      "けいけん",
+      "experience"
+     ],
+     [
+      "実験",
+      "じっけん",
+      "experiment"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "試",
+  "meaning": "try, test",
+  "sentence": "For the exam I did a trial and tried it out.",
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     [
+      "試験",
+      "しけん",
+      "examination"
+     ],
+     [
+      "試合",
+      "しあい",
+      "match, game"
+     ]
+    ]
+   },
+   {
+    "r": "ため",
+    "w": [
+     [
+      "試す",
+      "ためす",
+      "to try"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "品",
+  "meaning": "goods, article",
+  "sentence": "The product on display is a fine article of goods.",
+  "g": [
+   {
+    "r": "ヒン",
+    "w": [
+     [
+      "作品",
+      "さくひん",
+      "a work, piece"
+     ],
+     [
+      "食品",
+      "しょくひん",
+      "foodstuff"
+     ],
+     [
+      "品質",
+      "ひんしつ",
+      "quality"
+     ]
+    ]
+   },
+   {
+    "r": "しな",
+    "w": [
+     [
+      "品物",
+      "しなもの",
+      "goods"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "作",
+  "meaning": "make, produce",
+  "sentence": "The farmer makes a work of art and produces a crop.",
+  "g": [
+   {
+    "r": "サク",
+    "w": [
+     [
+      "作品",
+      "さくひん",
+      "a work, piece"
+     ],
+     [
+      "作文",
+      "さくぶん",
+      "composition"
+     ]
+    ]
+   },
+   {
+    "r": "サ",
+    "w": [
+     [
+      "作業",
+      "さぎょう",
+      "work, operation"
+     ]
+    ]
+   },
+   {
+    "r": "つく",
+    "w": [
+     [
+      "作る",
+      "つくる",
+      "to make"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "業",
+  "meaning": "business, work",
+  "sentence": "The class is over, so the industry gets on with its business.",
+  "g": [
+   {
+    "r": "ギョウ",
+    "w": [
+     [
+      "授業",
+      "じゅぎょう",
+      "class, lesson"
+     ],
+     [
+      "業界",
+      "ぎょうかい",
+      "industry"
+     ],
+     [
+      "工業",
+      "こうぎょう",
+      "industry"
+     ]
+    ]
+   },
+   {
+    "r": "ゴウ",
+    "w": [
+     [
+      "卒業",
+      "そつぎょう",
+      "graduation"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "産",
+  "meaning": "produce, give birth",
+  "sentence": "Local produce comes from an industry that gives birth to goods.",
+  "g": [
+   {
+    "r": "サン",
+    "w": [
+     [
+      "生産",
+      "せいさん",
+      "production"
+     ],
+     [
+      "産業",
+      "さんぎょう",
+      "industry"
+     ],
+     [
+      "お土産",
+      "おみやげ",
+      "souvenir"
+     ]
+    ]
+   },
+   {
+    "r": "う",
+    "w": [
+     [
+      "産む",
+      "うむ",
+      "to give birth"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "員",
+  "meaning": "member, staff",
+  "sentence": "The staff member is a shop worker and a company employee.",
+  "g": [
+   {
+    "r": "イン",
+    "w": [
+     [
+      "社員",
+      "しゃいん",
+      "company employee"
+     ],
+     [
+      "店員",
+      "てんいん",
+      "shop assistant"
+     ],
+     [
+      "会員",
+      "かいいん",
+      "member"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "料",
+  "meaning": "fee, material",
+  "sentence": "The cooking fee covers the ingredients.",
+  "g": [
+   {
+    "r": "リョウ",
+    "w": [
+     [
+      "料理",
+      "りょうり",
+      "cooking"
+     ],
+     [
+      "料金",
+      "りょうきん",
+      "fee"
+     ],
+     [
+      "材料",
+      "ざいりょう",
+      "ingredients"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "理",
+  "meaning": "reason, logic",
+  "sentence": "The cooking has its reason, and physics is logical.",
+  "g": [
+   {
+    "r": "リ",
+    "w": [
+     [
+      "料理",
+      "りょうり",
+      "cooking"
+     ],
+     [
+      "理由",
+      "りゆう",
+      "reason"
+     ],
+     [
+      "物理",
+      "ぶつり",
+      "physics"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "由",
+  "meaning": "reason, cause",
+  "sentence": "There is a reason: it is a matter of freedom.",
+  "g": [
+   {
+    "r": "ユ",
+    "w": [
+     [
+      "理由",
+      "りゆう",
+      "reason"
+     ],
+     [
+      "自由",
+      "じゆう",
+      "freedom"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "自",
+  "meaning": "self, oneself",
+  "sentence": "The car and the bicycle are self-propelled, and I introduce myself.",
+  "g": [
+   {
+    "r": "ジ",
+    "w": [
+     [
+      "自転車",
+      "じてんしゃ",
+      "bicycle"
+     ],
+     [
+      "自動車",
+      "じどうしゃ",
+      "car"
+     ],
+     [
+      "自分",
+      "じぶん",
+      "oneself"
+     ],
+     [
+      "自由",
+      "じゆう",
+      "freedom"
+     ]
+    ]
+   },
+   {
+    "r": "みずか",
+    "w": [
+     [
+      "自ら",
+      "みずから",
+      "personally"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "別",
+  "meaning": "separate, another",
+  "sentence": "On another occasion we said goodbye and went our separate ways.",
+  "g": [
+   {
+    "r": "ベツ",
+    "w": [
+     [
+      "別々",
+      "べつべつ",
+      "separately"
+     ],
+     [
+      "特別",
+      "とくべつ",
+      "special"
+     ],
+     [
+      "区別",
+      "くべつ",
+      "distinction"
+     ]
+    ]
+   },
+   {
+    "r": "わか",
+    "w": [
+     [
+      "別れる",
+      "わかれる",
+      "to part"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "特",
+  "meaning": "special",
+  "sentence": "The express train is a special feature.",
+  "g": [
+   {
+    "r": "トク",
+    "w": [
+     [
+      "特別",
+      "とくべつ",
+      "special"
+     ],
+     [
+      "特急",
+      "とっきゅう",
+      "express train"
+     ],
+     [
+      "特徴",
+      "とくちょう",
+      "feature"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "急",
+  "meaning": "hurry, urgent",
+  "sentence": "It is urgent, so on the express train I hurried suddenly.",
+  "g": [
+   {
+    "r": "キュウ",
+    "w": [
+     [
+      "特急",
+      "とっきゅう",
+      "express train"
+     ],
+     [
+      "急行",
+      "きゅうこう",
+      "express"
+     ],
+     [
+      "救急車",
+      "きゅうきゅうしゃ",
+      "ambulance"
+     ]
+    ]
+   },
+   {
+    "r": "いそ",
+    "w": [
+     [
+      "急ぐ",
+      "いそぐ",
+      "to hurry"
+     ]
+    ]
+   },
+   {
+    "r": "きゅう",
+    "w": [
+     [
+      "急に",
+      "きゅうに",
+      "suddenly"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "送",
+  "meaning": "send",
+  "sentence": "I sent the delivery and saw my friend off.",
+  "g": [
+   {
+    "r": "ソウ",
+    "w": [
+     [
+      "放送",
+      "ほうそう",
+      "broadcast"
+     ],
+     [
+      "送料",
+      "そうりょう",
+      "postage"
+     ]
+    ]
+   },
+   {
+    "r": "おく",
+    "w": [
+     [
+      "送る",
+      "おくる",
+      "to send"
+     ],
+     [
+      "見送る",
+      "みおくる",
+      "to see off"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "待",
+  "meaning": "wait",
+  "sentence": "In the waiting room I wait with anticipation.",
+  "g": [
+   {
+    "r": "タイ",
+    "w": [
+     [
+      "待合室",
+      "まちあいしつ",
+      "waiting room"
+     ],
+     [
+      "期待",
+      "きたい",
+      "expectation"
+     ]
+    ]
+   },
+   {
+    "r": "ま",
+    "w": [
+     [
+      "待つ",
+      "まつ",
+      "to wait"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "c": "持",
+  "meaning": "hold, have",
+  "sentence": "The owner holds his belongings and carries them.",
+  "g": [
+   {
+    "r": "ジ",
+    "w": [
+     [
+      "持参",
+      "じさん",
+      "bringing along"
+     ],
+     [
+      "所持",
+      "しょじ",
+      "possession"
+     ]
+    ]
+   },
+   {
+    "r": "も",
+    "w": [
+     [
+      "持つ",
+      "もつ",
+      "to hold"
+     ],
+     [
+      "持ち主",
+      "もちぬし",
+      "owner"
+     ],
+     [
+      "持ち物",
+      "もちもの",
+      "belongings"
+     ]
+    ]
+   }
+  ]
+ }
+]

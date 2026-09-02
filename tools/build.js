@@ -21,6 +21,48 @@ const OUT = path.join(ROOT, "index.html");
 // early and blank the page. Escaping every "</" is valid JSON and safe.
 const encodeTemplate = (s) => JSON.stringify(s).replace(/<\//g, "<\\u002F");
 
+// Kanji data lives in src/data/*.json, one file per deck, assembled here.
+// Validated on every build so a malformed record fails loudly instead of
+// shipping a blank page.
+function loadKanji() {
+  const decks = JSON.parse(fs.readFileSync(path.join(SRC, "data/decks.json"), "utf8"));
+  const out = [];
+  const seen = new Map();
+
+  for (const { deck, file } of decks) {
+    let records;
+    try {
+      records = JSON.parse(fs.readFileSync(path.join(SRC, "data", file), "utf8"));
+    } catch (e) {
+      throw new Error(file + ": " + e.message);
+    }
+    if (!Array.isArray(records)) throw new Error(file + ": expected an array");
+
+    records.forEach((k, i) => {
+      const at = file + "[" + i + "]" + (k && k.c ? " (" + k.c + ")" : "");
+      if (!k || typeof k.c !== "string" || [...k.c].length !== 1) throw new Error(at + ": `c` must be a single character");
+      if (!k.meaning) throw new Error(at + ": missing `meaning`");
+      if (!k.sentence) throw new Error(at + ": missing `sentence`");
+      if (!Array.isArray(k.g) || !k.g.length) throw new Error(at + ": needs at least one reading group");
+      k.g.forEach((g, gi) => {
+        if (!g.r) throw new Error(at + " group " + gi + ": missing reading `r`");
+        if (!Array.isArray(g.w) || !g.w.length) throw new Error(at + " group " + gi + " (" + g.r + "): needs at least one word");
+        g.w.forEach((w) => {
+          if (!Array.isArray(w) || w.length !== 3 || w.some((x) => typeof x !== "string" || !x))
+            throw new Error(at + " group " + g.r + ": each word must be [surface, reading, gloss]");
+        });
+      });
+      // A kanji belongs to exactly one deck -- duplicates would double-count
+      // progress and show the character in two places.
+      if (seen.has(k.c)) throw new Error(at + ": already defined in " + seen.get(k.c));
+      seen.set(k.c, file);
+
+      out.push(Object.assign({}, k, { deck }));
+    });
+  }
+  return out;
+}
+
 function build() {
   const meta = JSON.parse(fs.readFileSync(path.join(SRC, "assets/manifest.json"), "utf8"));
 
@@ -35,7 +77,11 @@ function build() {
     };
   }
 
-  const template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
+  const kanji = loadKanji();
+  let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
+  if (!template.includes("__KANJI_DATA__")) throw new Error("app.html is missing __KANJI_DATA__");
+  template = template.replace("__KANJI_DATA__", () => JSON.stringify(kanji));
+
   const shell = fs.readFileSync(path.join(SRC, "shell.html"), "utf8");
 
   for (const token of ["__BUNDLER_MANIFEST__", "__BUNDLER_TEMPLATE__"]) {
