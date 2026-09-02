@@ -244,5 +244,12 @@ if (process.argv.includes("--check")) {
   }
 } else {
   fs.writeFileSync(OUT, out);
-  console.log("built index.html (" + out.length + " bytes)");
+  // dist/ is what Cloudflare Pages deploys: the site only, not the source
+  // tree. index.html stays at the repo root for GitHub Pages during the move.
+  const dist = path.join(ROOT, "dist");
+  fs.mkdirSync(dist, { recursive: true });
+  fs.writeFileSync(path.join(dist, "index.html"), out);
+  const cname = path.join(ROOT, "CNAME");
+  if (fs.existsSync(cname)) fs.copyFileSync(cname, path.join(dist, "CNAME"));
+  console.log("built index.html + dist/index.html (" + out.length + " bytes)");
 }
