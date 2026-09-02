@@ -1,0 +1,28 @@
+name = "openkanji-api"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+# Served from the same origin as the site, so the session cookie is first-party
+# and there is no CORS. Point this at the zone once DNS is live.
+# routes = [{ pattern = "openkanji.org/api/*", zone_name = "openkanji.org" }]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "openkanji"
+database_id = "TODO-run-wrangler-d1-create-openkanji"
+
+# Cloudflare Email Service. Sending to arbitrary recipients needs the Workers
+# Paid plan; without it, only addresses verified in your account receive mail.
+[[send_email]]
+name = "EMAIL"
+
+[vars]
+# From address for the sign-in mail. Must be on a domain you have verified.
+MAIL_FROM = "login@openkanji.org"
+# Where the magic link lands. Must be an origin you control: the callback
+# refuses to redirect anywhere else.
+SITE_URL = "https://openkanji.org"
+
+# Secrets (wrangler secret put <NAME>):
+#   SESSION_SECRET  random 32+ bytes, signs the session cookie. Rotating it
+#                   signs everyone out, which is the intended panic button.

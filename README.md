@@ -11,6 +11,7 @@ src/app.html        the app: styles, template, and all logic
 src/shell.html      bundler bootstrap, with two generated-line placeholders
 src/assets/         fonts + React UMD, plus manifest.json describing them
 tools/build.js      src/ -> index.html
+worker/             the progress-sync API (Cloudflare Worker + D1)
 ```
 
 `index.html` is a single self-contained file (GitHub Pages serves it as a static
@@ -89,7 +90,14 @@ alongside the `src/` change; `npm run check` catches a forgotten rebuild.
 
 Progress lives in `localStorage` (`openkanji.seen`, `openkanji.mastered`,
 `openkanji.gamewins`, plus the last deck and language). Optional email-only
-accounts sync the mastered set, last deck and language via Supabase -- see
-[docs/sync-design.md](docs/sync-design.md) for the schema, policies and
-redirect URLs. Inert until `SUPABASE_URL` and `SUPABASE_ANON_KEY` are set in
-`src/app.html`.
+accounts sync the mastered set, last deck and language through `worker/` -- a
+Cloudflare Worker over D1, with magic-link sign-in and an HttpOnly session
+cookie. See [docs/sync-design.md](docs/sync-design.md) for the API, schema,
+security notes and deployment steps.
+
+```sh
+cd worker && npm test     # 24 tests, real SQL against an in-memory SQLite
+```
+
+Sync is inert until `API_BASE` is set in `src/app.html`; until then the app
+keeps progress on the device, exactly as it does now.

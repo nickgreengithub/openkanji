@@ -430,5 +430,21 @@
   "sync_unavailable": {
     "en": "Progress is kept on this device only",
     "es": "El progreso se guarda solo en este dispositivo"
+  },
+  "too_many_requests": {
+    "en": "Too many sign-in attempts, try later",
+    "es": "Demasiados intentos, prueba más tarde"
+  },
+  "sign_in_failed": {
+    "en": "That sign-in link has expired",
+    "es": "Ese enlace de acceso ha caducado"
+  },
+  "account_deleted": {
+    "en": "Account deleted",
+    "es": "Cuenta eliminada"
+  },
+  "delete_failed": {
+    "en": "Could not delete the account",
+    "es": "No se pudo eliminar la cuenta"
   }
 }

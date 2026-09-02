@@ -1373,14 +1373,14 @@ const READING_INDEX = (() => {
 // --- email-only progress sync (Supabase REST, no SDK) ---
 // Fill these in from Supabase -> Settings -> API. The anon key is public by
 // design; RLS is what protects the data. Never put the service_role key here.
-const SUPABASE_URL = "";
-const SUPABASE_ANON_KEY = "";
-const OK_TOKEN_KEY = "openkanji.token";
-const OK_REFRESH_KEY = "openkanji.refresh";
+// The sync API (worker/) served from this site's own origin, so the session
+// cookie is first-party and there is nothing to store in the browser. Empty
+// disables sync: progress then stays in localStorage, as it always has.
+const API_BASE = "";
 // Last deck and language, kept locally and synced with the mastered set.
 const OK_DECK_KEY = "openkanji.deck";
 const OK_LANG_KEY = "openkanji.lang";
-const okSyncReady = () => !!(SUPABASE_URL && SUPABASE_ANON_KEY);
+const okSyncReady = () => !!API_BASE;
 const lsGet = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} };
 // A deck the rail can show, and a language that shipped complete.
@@ -1668,84 +1668,46 @@ class Component extends DCLogic {
 
   // Reads the magic-link token out of the URL fragment on return, or resumes a
   // stored one. Silent on failure: signed-out is a valid state, not an error.
+  // The session is an HttpOnly cookie the API sets, so there is no token here
+  // to store, refresh or leak. All this does is notice the redirect back from
+  // a sign-in link and ask the API who we are.
   restoreSession() {
     if (!okSyncReady()) return;
     try {
       const h = window.location.hash || "";
-      let fromLink = false;
-      if (h.indexOf("access_token=") >= 0) {
-        const q = new URLSearchParams(h.replace(/^#/, ""));
-        const tok = q.get("access_token");
-        if (tok) {
-          lsSet(OK_TOKEN_KEY, tok);
-          // The refresh token is what keeps a sign-in alive past the access
-          // token's hour; without it every session would end after 60 minutes.
-          lsSet(OK_REFRESH_KEY, q.get("refresh_token"));
-          history.replaceState(null, "", window.location.pathname + window.location.search);
-          fromLink = true;
-        }
+      const fromLink = h === "#signed-in";
+      if (fromLink || h === "#sign-in-failed") {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+        if (!fromLink) { this.flashMsg(T("sign_in_failed")); return; }
       }
-      if (lsGet(OK_TOKEN_KEY)) this.fetchUser(fromLink);
+      this.fetchUser(fromLink);
     } catch (e) {}
   }
 
-  okHeaders(tok) {
-    return { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + tok, "Content-Type": "application/json" };
-  }
-
-  // Authenticated fetch. A 401 means the access token expired: refresh once
-  // and retry; if the refresh fails too, the session is gone and we sign out.
-  async okFetch(path, opts) {
-    const tok = lsGet(OK_TOKEN_KEY);
-    if (!tok) return null;
-    const go = (t) => fetch(SUPABASE_URL + path, Object.assign({}, opts || {}, {
-      headers: Object.assign(this.okHeaders(t), (opts && opts.headers) || {})
+  // Cookies ride along automatically; every reply is JSON or a status we care
+  // about, so callers only ever check `ok`.
+  api(path, opts) {
+    return fetch(API_BASE + path, Object.assign({ credentials: "include" }, opts || {}, {
+      headers: Object.assign({ "Content-Type": "application/json" }, (opts && opts.headers) || {})
     }));
-    let r = await go(tok);
-    if (r.status === 401) {
-      const fresh = await this.refreshSession();
-      if (!fresh) return r;
-      r = await go(fresh);
-    }
-    return r;
   }
 
-  async refreshSession() {
-    const rt = lsGet(OK_REFRESH_KEY);
-    if (!rt) { this.signOut(); return null; }
-    try {
-      const r = await fetch(SUPABASE_URL + "/auth/v1/token?grant_type=refresh_token", {
-        method: "POST",
-        headers: { apikey: SUPABASE_ANON_KEY, "Content-Type": "application/json" },
-        body: JSON.stringify({ refresh_token: rt })
-      });
-      if (!r.ok) { this.signOut(); return null; }
-      const j = await r.json();
-      if (!j || !j.access_token) { this.signOut(); return null; }
-      lsSet(OK_TOKEN_KEY, j.access_token);
-      if (j.refresh_token) lsSet(OK_REFRESH_KEY, j.refresh_token);
-      return j.access_token;
-    } catch (e) { return null; }
-  }
-
-  signOut() {
-    lsSet(OK_TOKEN_KEY, null);
-    lsSet(OK_REFRESH_KEY, null);
+  async signOut() {
+    if (okSyncReady()) { try { await this.api("/logout", { method: "POST" }); } catch (e) {} }
     this.setState({ userEmail: null });
   }
 
-  // Resolves the stored session to an email. Arriving from a magic link also
-  // loads progress, so a new device shows the account's state without a click.
+  // Resolves the session to an email. Arriving from a sign-in link also loads
+  // progress, so a new device shows the account's state without a click.
   async fetchUser(fromLink) {
     try {
-      const r = await this.okFetch("/auth/v1/user");
-      if (!r) return;
-      if (!r.ok) { if (r.status === 401 || r.status === 403) this.signOut(); return; }
+      const r = await this.api("/me");
+      if (!r.ok) { this.setState({ userEmail: null }); return; }
       const u = await r.json();
-      if (u && u.email) {
-        this.setState({ userEmail: u.email, authMsg: "" });
-        if (fromLink) this.pullProgress();
-      }
+      // A null email is the ordinary signed-out answer, not a failure.
+      if (!u || !u.email) { this.setState({ userEmail: null }); return; }
+      this.setState({ userEmail: u.email, authMsg: "" });
+      if (fromLink) this.pullProgress();
     } catch (e) {}
   }
 
@@ -1760,28 +1722,38 @@ class Component extends DCLogic {
     if (!okIsEmail(email)) { this.flashMsg(T("enter_valid_email")); return; }
     this.setState({ authBusy: true });
     try {
-      // The link must bring the learner back to this page, on this origin.
-      const back = encodeURIComponent(window.location.origin + window.location.pathname);
-      const r = await fetch(SUPABASE_URL + "/auth/v1/otp?redirect_to=" + back, {
+      // The mail is written in whichever language the learner is reading.
+      const r = await this.api("/login", {
         method: "POST",
-        headers: { apikey: SUPABASE_ANON_KEY, "Content-Type": "application/json" },
-        body: JSON.stringify({ email: String(email).trim(), create_user: true })
+        body: JSON.stringify({ email: String(email).trim(), lang: (this.state.uiLang || "EN").toLowerCase() })
       });
-      this.flashMsg(r.ok ? T("check_your_email") : T("could_not_send_link"));
+      this.flashMsg(r.ok ? T("check_your_email") : T(r.status === 429 ? "too_many_requests" : "could_not_send_link"));
     } catch (e) { this.flashMsg(T("could_not_send_link")); }
     this.setState({ authBusy: false });
   }
 
-  // One row per user: the mastered set plus the last deck and language.
+  // Erases the account and everything stored against it. No undo, so callers
+  // are expected to confirm first.
+  async deleteAccount() {
+    if (!okSyncReady() || !this.state.userEmail) return;
+    try {
+      const r = await this.api("/account", { method: "DELETE" });
+      if (!r.ok) { this.flashMsg(T("delete_failed")); return; }
+      this.setState({ userEmail: null });
+      this.flashMsg(T("account_deleted"));
+    } catch (e) { this.flashMsg(T("delete_failed")); }
+  }
+
+  // One row per learner: the mastered set plus the last deck and language.
+  // The API unions `mastered` server-side, so a save can only ever add.
   async pushProgress(cur) {
     if (!okSyncReady() || !cur.userEmail) return;
     try {
-      const r = await this.okFetch("/rest/v1/progress?on_conflict=user_id", {
-        method: "POST",
-        headers: { Prefer: "resolution=merge-duplicates" },
-        body: JSON.stringify({ mastered: cur.mastered || {}, deck: cur.deck || null, lang: cur.uiLang || null, updated_at: new Date().toISOString() })
+      const r = await this.api("/progress", {
+        method: "PUT",
+        body: JSON.stringify({ mastered: cur.mastered || {}, deck: cur.deck || null, lang: cur.uiLang || null })
       });
-      if (!r || !r.ok) this.flashMsg(T("save_failed"));
+      if (!r.ok) { this.flashMsg(T("save_failed")); if (r.status === 401) this.setState({ userEmail: null }); }
     } catch (e) { this.flashMsg(T("save_failed")); }
   }
 
@@ -1792,10 +1764,14 @@ class Component extends DCLogic {
     if (!okSyncReady() || !this.state.userEmail || this.state.authBusy) return;
     this.setState({ authBusy: true });
     try {
-      const r = await this.okFetch("/rest/v1/progress?select=mastered,deck,lang");
-      if (!r || !r.ok) { this.flashMsg(T("load_failed")); this.setState({ authBusy: false }); return; }
-      const rows = await r.json();
-      const row = (rows && rows[0]) || {};
+      const r = await this.api("/progress");
+      if (!r.ok) {
+        this.flashMsg(T("load_failed"));
+        if (r.status === 401) this.setState({ userEmail: null });
+        this.setState({ authBusy: false });
+        return;
+      }
+      const row = (await r.json()) || {};
       const merged = okMerge(this.state.mastered, row.mastered || {});
       const added = Object.keys(merged).length - Object.keys(this.state.mastered || {}).length;
       const deck = okDeck(row.deck) || this.state.deck;

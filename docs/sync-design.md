@@ -1,9 +1,12 @@
 # Email-only accounts + progress sync — design
 
-Status: **implemented in the app, inert until configured.** The client is in
-`src/app.html`; it activates when `SUPABASE_URL` and `SUPABASE_ANON_KEY` are
-filled in. Still needed: a Supabase project with the schema below, and the
-site origin(s) registered as redirect URLs.
+Status: **implemented and tested, not yet deployed.** The API lives in
+`worker/`; the client half is in `src/app.html`. Sync is inert until
+`API_BASE` is filled in (see *Deploying* below).
+
+Everything runs on Cloudflare: Pages for the site, a Worker for the API, D1 for
+the data, Email Service for the sign-in mail. One vendor, one dashboard, and
+the auth is reusable by the next app on the same account.
 
 ## Decisions
 
@@ -11,166 +14,143 @@ site origin(s) registered as redirect URLs.
 |---|---|
 | What syncs | `mastered`, plus the last `deck` and `lang` — not `seen`, not `gamewins` |
 | Timestamps | None per word. Booleans only; `updated_at` on the row is informational |
-| Sync trigger | Explicit **Save** / **Load** buttons, plus one automatic Load on return from the magic link |
-| Load semantics | `mastered`: **merge** (union). Local OR server ⇒ mastered. `deck`/`lang`: server wins |
-| Save semantics | `mastered`: upsert the local set. `deck`/`lang`: last writer wins |
-| Progress files | None. Signed out, progress stays in `localStorage` only |
-| Auth | Supabase magic link (email, no password) |
-| Domain | Ship on openkanji.org before wiring auth |
+| Sync trigger | Explicit **Save** / **Load**, plus one automatic Load on return from a sign-in link |
+| Load semantics | `mastered`: **merge** (union). `deck`/`lang`: server wins |
+| Save semantics | `mastered`: union, **server-side too**. `deck`/`lang`: last writer wins |
+| Auth | Magic link by email. No password, no third-party identity |
+| Session | HttpOnly cookie, HMAC-signed, 180 days |
+| Progress files | None. Signed out, progress stays in `localStorage` |
 
 Known consequence of dropping timestamps: **un-mastering doesn't propagate.**
-Un-check a word on the laptop, Load on the phone, it comes back. Accepted.
+Un-check a word on the laptop, Load on the phone, it comes back. Accepted — and
+now enforced on the server as well, which is what makes a save from a device
+that never loaded unable to erase another device's progress.
 
-## What's already built
+## Shape
 
-The save control exists in the nav (`flex:0 0 13rem` container, click → `saveNow`):
+```
+openkanji.org/*        Pages    the static site (index.html)
+openkanji.org/api/*    Worker   this API
+                       D1       users, progress, login_tokens
+                       Email    the sign-in mail
+```
 
-- A text span bound to `userId`, which **already** renders
-  `props.userEmail.split("@")[0]` when an email is present and falls back to
-  `"Save Progress"` when there are unsaved changes.
-- A `2.35rem` icon button — floppy disk, swapping to a checkmark for 1.6s after save.
-- A hover tooltip already reading *"Email-only required"*.
-- `saveNow` currently writes `localStorage` only; `_savedSig` / `masterSig()` track
-  dirty state so the button greys out when there's nothing to save.
+The Worker is routed on **the site's own origin**, which is the load-bearing
+choice: the session cookie is then first-party, there is no CORS, and no token
+is ever handed to JavaScript. Putting the API on `api.openkanji.org` would work
+but costs a CORS preflight on every call and a `SameSite=None` cookie.
 
-So the UI contract is settled. What's missing is a Load button, and a server.
+## API
 
-## Why this is simpler than background sync
-
-An earlier sketch assumed automatic sync, which needed a `localStorage` shim and an
-interception of the bundler's `DOMContentLoaded` boot to win a race against the
-app's one-and-only read of storage at mount.
-
-**Explicit buttons remove all of that.** Load is a user action that happens long
-after mount, so it can merge and call `setState({ mastered })` directly — the app
-re-renders and `persistMastered()` writes through to `localStorage` as usual. No
-shimming, no boot hook, no reload.
-
-## No SDK
-
-The bundle currently has **zero external network dependencies** (React is embedded).
-Pulling in the Supabase JS SDK from a CDN would reintroduce one, plus a third-party
-request on every page load.
-
-Supabase is a plain REST API, so `fetch` is enough:
-
-| Need | Call |
+| | |
 |---|---|
-| Send magic link | `POST /auth/v1/otp` |
-| Session | access token arrives in the URL fragment on return |
-| Read progress | `GET /rest/v1/progress?select=mastered` |
-| Write progress | `POST /rest/v1/progress` with `Prefer: resolution=merge-duplicates` |
-
-~100 lines of `fetch`, no dependency added.
+| `POST /api/login` | `{email, lang}` → sends a sign-in link. Uniform reply: never reveals whether an address has an account |
+| `GET /api/callback?token=` | verifies, sets the cookie, redirects to `/#signed-in` (or `/#sign-in-failed`) |
+| `GET /api/me` | `{email}` — **`{email: null}` with a 200 when signed out**, because the app asks on every page load and an error there is console noise |
+| `GET /api/progress` | `{mastered, deck, lang}` |
+| `PUT /api/progress` | `{mastered, deck, lang}` — unions `mastered` into the stored set |
+| `POST /api/logout` | clears the cookie |
+| `DELETE /api/account` | erases the account, its progress and its sign-in rows |
 
 ## Schema
 
 ```sql
-create table public.progress (
-  user_id    uuid primary key references auth.users(id) default auth.uid(),
-  mastered   jsonb not null default '{}'::jsonb,
-  deck       text,
-  lang       text,
-  updated_at timestamptz not null default now()
+create table users (
+  id integer primary key autoincrement,
+  email text not null unique,
+  created_at integer not null
 );
-
-alter table public.progress enable row level security;
+create table progress (
+  user_id integer primary key references users(id) on delete cascade,
+  mastered text not null default '{}',   -- JSON { "w0226": true }
+  deck text, lang text,
+  updated_at integer not null
+);
+create table login_tokens (
+  hash text primary key,                 -- SHA-256 of the token, never the token
+  email text not null, ip text,
+  created_at integer not null, expires_at integer not null, used_at integer
+);
 ```
 
-`user_id` defaults to `auth.uid()` so the client never sends it: the upsert
-body is `{mastered, deck, lang, updated_at}` and the row is the caller's own.
-`mastered` is a `{ "w0226": true }` map keyed by stable word id (see README),
-so a gloss or reading correction never invalidates a save. `deck` and `lang`
-are the app's own labels (`"JLPT N3"`, `"ES"`); the client ignores a value it
-no longer recognises. `on delete cascade` means deleting the auth user
-deletes their progress — a deletion request needs no extra code.
+`mastered` is keyed by **stable word id**, so correcting a reading or a gloss
+never invalidates anyone's progress. The full schema, with indexes, is
+`worker/schema.sql`.
 
-## Row Level Security
+## Security
 
-Without policies, RLS denies everything. These three are the entire security model,
-enforced in the database, so a client bug cannot expose another user's row.
+Nothing here is sensitive — the worst a stolen session buys is somebody else's
+list of mastered words. The care goes somewhere else: **an endpoint that sends
+email on demand is an abuse target**, and a magic link is easy to get subtly
+wrong. So:
 
-```sql
-create policy "read own progress" on public.progress
-  for select using ((select auth.uid()) = user_id);
+- **Tokens are stored as SHA-256, never in the clear.** A dump of the database
+  cannot be replayed to sign in as anyone.
+- **Single use, 15 minutes.** Claiming a token and marking it used are one
+  `UPDATE ... WHERE used_at IS NULL ... RETURNING`, so two clicks cannot both win.
+- **Rate limited in two dimensions**: 5 links per address per hour, 20 per IP
+  per hour. `login_tokens` doubles as the ledger, so this needs no extra table
+  and no extra write.
+- **Sessions are HMAC-signed** (`payload.signature`, verified with WebCrypto)
+  and the account is **re-resolved on every request**. A stateless cookie alone
+  would keep verifying after the account was deleted; resolving the user is
+  what makes deletion final.
+- **Cookie is `HttpOnly; Secure; SameSite=Lax`.** `Lax` is also the CSRF
+  defence: it withholds the cookie from cross-site `PUT`/`DELETE`.
+- **Writes are validated, not just stored.** Keys must look like `w1234`, the
+  set is capped at 20,000 entries and the body at 512 KB, and deck/language
+  labels are length-capped. Otherwise the row is a free object store.
+- **The callback only ever redirects to `SITE_URL`**, so it cannot be turned
+  into an open redirect.
 
-create policy "insert own progress" on public.progress
-  for insert with check ((select auth.uid()) = user_id);
+Tests for all of the above: `worker/test/worker.test.mjs`, run with `npm test`
+in `worker/`. They exercise the real SQL against an in-memory SQLite.
 
-create policy "update own progress" on public.progress
-  for update using      ((select auth.uid()) = user_id)
-              with check ((select auth.uid()) = user_id);
-```
+## Deploying
 
-The `anon` key ships in the client and is designed to be public — it grants nothing
-by itself. The `service_role` key bypasses RLS entirely and must never reach the
-browser or the repo.
+1. **D1**
 
-## Merge
+   ```sh
+   npx wrangler d1 create openkanji            # put the id in wrangler.toml
+   npx wrangler d1 execute openkanji --remote --file=worker/schema.sql
+   ```
 
-`mastered` is a `{ "word|reading": true }` map. Union, per the decision above:
+2. **Secret and vars** — `SESSION_SECRET` signs the cookie; rotating it signs
+   everyone out, which is the intended panic button.
 
-```js
-const merge = (a = {}, b = {}) => {
-  const out = { ...a };
-  for (const k of Object.keys(b)) if (b[k]) out[k] = true;
-  return out;
-};
-```
+   ```sh
+   npx wrangler secret put SESSION_SECRET      # 32+ random bytes
+   ```
 
-Conflict-free and order-independent, so two devices converge no matter who saves first.
+   Set `MAIL_FROM` and `SITE_URL` in `wrangler.toml`.
 
-## Session lifetime
+3. **Email Service** — verify the sending domain in the dashboard. Sending to
+   arbitrary recipients needs the **Workers Paid plan** ($5/month, 3,000 emails
+   included); without it only addresses verified in your own account receive
+   mail, which is enough to test but not to ship.
 
-The magic link returns `access_token` **and** `refresh_token` in the URL
-fragment. Both are stored. An access token lasts an hour; on the first 401 the
-client posts the refresh token to `/auth/v1/token?grant_type=refresh_token`,
-stores the new pair and retries once. A failed refresh signs the learner out
-cleanly rather than leaving a dead session in the nav.
+4. **Route** — uncomment the `routes` line in `wrangler.toml` so the Worker
+   serves `openkanji.org/api/*`, then `npx wrangler deploy`.
 
-## Redirect URLs
+5. **Site** — deploy `index.html` to Cloudflare Pages on the same domain.
 
-The link must land back on the page that sent it, so the OTP request carries
-`redirect_to=<origin>/<path>`. Every origin the site is served from must be on
-the Supabase allow list (Authentication → URL Configuration):
-
-- `https://nickgreengithub.github.io/openkanji/`
-- `https://openkanji.org/` once the DNS cutover happens
-
-## UI change
-
-The nav container grows from `13rem` to fit a second `2.35rem` button:
-
-```
-┌──────────────────────────────────────────┐
-│  nickgreenemail        │  💾  │  ⤓  │
-│  (userId / "Save Progress")  save   load │
-└──────────────────────────────────────────┘
-```
-
-The click handler currently sits on the **container**, so it must move onto the save
-icon itself — otherwise clicking Load would also trigger a save via bubbling. Each
-button then greys out independently (`saveFill` when clean, load greyed when signed
-out), consistent with how save already behaves.
-
-## Sign-in flow
-
-1. Signed out, the text span is a click target → prompts for an email.
-2. `POST /auth/v1/otp` → "check your email".
-3. The emailed link returns to openkanji.org with a token in the URL fragment; the
-   app stores it and strips the fragment.
-4. `userEmail` is set → the span switches to the local part, per existing `userId`.
-
-Redirect URLs are configured per-origin in Supabase, which is why the domain should
-be settled first — otherwise auth gets configured twice.
+6. **Switch it on** — set `API_BASE = "/api"` in `src/app.html`, rebuild,
+   commit. Until then the app runs exactly as it does today, with progress in
+   `localStorage`.
 
 ## Privacy
 
-Stored: an email address and a set of mastered word keys. Nothing else. The email is
-still personal data under GDPR, so the site needs a short note saying what's stored
-and offering deletion (which is one `delete from auth.users`, cascading).
+Stored: an email address, a set of mastered word ids, a deck name and a
+language code. Nothing else — no timestamps per word, no analytics, no IP
+beyond the hour-long rate-limit window in `login_tokens`.
+
+The email is still personal data under GDPR, so the site needs a short note
+saying what is stored and offering deletion. `DELETE /api/account` is the
+mechanism and it is complete (account, progress and sign-in rows), but **it has
+no UI affordance yet** — that is the one piece of this design still to place.
 
 ## Open
 
-- Un-mastering does not propagate (see above). If it should, add a small
-  `unmastered` tombstone set alongside `mastered`; still no timestamps.
+- Where the delete-account control lives in the nav, and its confirm step.
+- Un-mastering does not propagate. If it should, add an `unmastered` tombstone
+  set alongside `mastered`; still no timestamps.
