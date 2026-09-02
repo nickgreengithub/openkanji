@@ -58,3 +58,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # The action defaults to wrangler 3, which cannot read wrangler.jsonc
+          # -- it finds no config, so no `main`, and fails with
+          # "Missing entry-point". JSONC config needs wrangler 4.
+          wranglerVersion: '4.128.0'
