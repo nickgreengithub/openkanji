@@ -1,0 +1,3424 @@
+{
+ "w0001": {
+  "id": "w0001",
+  "w": "生活",
+  "reading": "せいかつ",
+  "gloss": {
+   "en": "daily life"
+  }
+ },
+ "w0002": {
+  "id": "w0002",
+  "w": "学生",
+  "reading": "がくせい",
+  "gloss": {
+   "en": "student"
+  }
+ },
+ "w0003": {
+  "id": "w0003",
+  "w": "先生",
+  "reading": "せんせい",
+  "gloss": {
+   "en": "teacher"
+  }
+ },
+ "w0004": {
+  "id": "w0004",
+  "w": "生まれる",
+  "reading": "うまれる",
+  "gloss": {
+   "en": "to be born"
+  }
+ },
+ "w0005": {
+  "id": "w0005",
+  "w": "生きる",
+  "reading": "いきる",
+  "gloss": {
+   "en": "to live"
+  }
+ },
+ "w0006": {
+  "id": "w0006",
+  "w": "会社",
+  "reading": "かいしゃ",
+  "gloss": {
+   "en": "company"
+  }
+ },
+ "w0007": {
+  "id": "w0007",
+  "w": "社会",
+  "reading": "しゃかい",
+  "gloss": {
+   "en": "society"
+  }
+ },
+ "w0008": {
+  "id": "w0008",
+  "w": "社員",
+  "reading": "しゃいん",
+  "gloss": {
+   "en": "company employee"
+  }
+ },
+ "w0009": {
+  "id": "w0009",
+  "w": "神社",
+  "reading": "じんじゃ",
+  "gloss": {
+   "en": "shrine"
+  }
+ },
+ "w0010": {
+  "id": "w0010",
+  "w": "開店",
+  "reading": "かいてん",
+  "gloss": {
+   "en": "store opening"
+  }
+ },
+ "w0011": {
+  "id": "w0011",
+  "w": "店員",
+  "reading": "てんいん",
+  "gloss": {
+   "en": "shop assistant"
+  }
+ },
+ "w0012": {
+  "id": "w0012",
+  "w": "売店",
+  "reading": "ばいてん",
+  "gloss": {
+   "en": "kiosk"
+  }
+ },
+ "w0013": {
+  "id": "w0013",
+  "w": "店",
+  "reading": "みせ",
+  "gloss": {
+   "en": "shop"
+  }
+ },
+ "w0014": {
+  "id": "w0014",
+  "w": "売買",
+  "reading": "ばいばい",
+  "gloss": {
+   "en": "trade"
+  }
+ },
+ "w0015": {
+  "id": "w0015",
+  "w": "売る",
+  "reading": "うる",
+  "gloss": {
+   "en": "to sell"
+  }
+ },
+ "w0016": {
+  "id": "w0016",
+  "w": "売り切れ",
+  "reading": "うりきれ",
+  "gloss": {
+   "en": "sold out"
+  }
+ },
+ "w0017": {
+  "id": "w0017",
+  "w": "購買",
+  "reading": "こうばい",
+  "gloss": {
+   "en": "purchase"
+  }
+ },
+ "w0018": {
+  "id": "w0018",
+  "w": "買う",
+  "reading": "かう",
+  "gloss": {
+   "en": "to buy"
+  }
+ },
+ "w0019": {
+  "id": "w0019",
+  "w": "買い物",
+  "reading": "かいもの",
+  "gloss": {
+   "en": "shopping"
+  }
+ },
+ "w0020": {
+  "id": "w0020",
+  "w": "五分",
+  "reading": "ごふん",
+  "gloss": {
+   "en": "five minutes"
+  }
+ },
+ "w0021": {
+  "id": "w0021",
+  "w": "何分",
+  "reading": "なんぷん",
+  "gloss": {
+   "en": "how many minutes"
+  }
+ },
+ "w0022": {
+  "id": "w0022",
+  "w": "自分",
+  "reading": "じぶん",
+  "gloss": {
+   "en": "oneself"
+  }
+ },
+ "w0023": {
+  "id": "w0023",
+  "w": "半分",
+  "reading": "はんぶん",
+  "gloss": {
+   "en": "half"
+  }
+ },
+ "w0024": {
+  "id": "w0024",
+  "w": "分かる",
+  "reading": "わかる",
+  "gloss": {
+   "en": "to understand"
+  }
+ },
+ "w0025": {
+  "id": "w0025",
+  "w": "分ける",
+  "reading": "わける",
+  "gloss": {
+   "en": "to divide"
+  }
+ },
+ "w0026": {
+  "id": "w0026",
+  "w": "時間",
+  "reading": "じかん",
+  "gloss": {
+   "en": "time"
+  }
+ },
+ "w0027": {
+  "id": "w0027",
+  "w": "時計",
+  "reading": "とけい",
+  "gloss": {
+   "en": "clock"
+  }
+ },
+ "w0028": {
+  "id": "w0028",
+  "w": "同時",
+  "reading": "どうじ",
+  "gloss": {
+   "en": "at the same time"
+  }
+ },
+ "w0029": {
+  "id": "w0029",
+  "w": "時",
+  "reading": "とき",
+  "gloss": {
+   "en": "time, when"
+  }
+ },
+ "w0030": {
+  "id": "w0030",
+  "w": "人間",
+  "reading": "にんげん",
+  "gloss": {
+   "en": "human being"
+  }
+ },
+ "w0031": {
+  "id": "w0031",
+  "w": "空間",
+  "reading": "くうかん",
+  "gloss": {
+   "en": "space"
+  }
+ },
+ "w0032": {
+  "id": "w0032",
+  "w": "間",
+  "reading": "あいだ",
+  "gloss": {
+   "en": "interval, between"
+  }
+ },
+ "w0033": {
+  "id": "w0033",
+  "w": "間違い",
+  "reading": "まちがい",
+  "gloss": {
+   "en": "mistake"
+  }
+ },
+ "w0034": {
+  "id": "w0034",
+  "w": "一",
+  "reading": "いち",
+  "gloss": {
+   "en": "one"
+  }
+ },
+ "w0035": {
+  "id": "w0035",
+  "w": "一つ",
+  "reading": "ひとつ",
+  "gloss": {
+   "en": "one thing"
+  }
+ },
+ "w0036": {
+  "id": "w0036",
+  "w": "一人",
+  "reading": "ひとり",
+  "gloss": {
+   "en": "one person, alone"
+  }
+ },
+ "w0037": {
+  "id": "w0037",
+  "w": "二",
+  "reading": "に",
+  "gloss": {
+   "en": "two"
+  }
+ },
+ "w0038": {
+  "id": "w0038",
+  "w": "二つ",
+  "reading": "ふたつ",
+  "gloss": {
+   "en": "two things"
+  }
+ },
+ "w0039": {
+  "id": "w0039",
+  "w": "二人",
+  "reading": "ふたり",
+  "gloss": {
+   "en": "two people"
+  }
+ },
+ "w0040": {
+  "id": "w0040",
+  "w": "三",
+  "reading": "さん",
+  "gloss": {
+   "en": "three"
+  }
+ },
+ "w0041": {
+  "id": "w0041",
+  "w": "三人",
+  "reading": "さんにん",
+  "gloss": {
+   "en": "three people"
+  }
+ },
+ "w0042": {
+  "id": "w0042",
+  "w": "三つ",
+  "reading": "みっつ",
+  "gloss": {
+   "en": "three things"
+  }
+ },
+ "w0043": {
+  "id": "w0043",
+  "w": "四",
+  "reading": "し",
+  "gloss": {
+   "en": "four"
+  }
+ },
+ "w0044": {
+  "id": "w0044",
+  "w": "四月",
+  "reading": "しがつ",
+  "gloss": {
+   "en": "April"
+  }
+ },
+ "w0045": {
+  "id": "w0045",
+  "w": "四つ",
+  "reading": "よっつ",
+  "gloss": {
+   "en": "four things"
+  }
+ },
+ "w0046": {
+  "id": "w0046",
+  "w": "五",
+  "reading": "ご",
+  "gloss": {
+   "en": "five"
+  }
+ },
+ "w0047": {
+  "id": "w0047",
+  "w": "五月",
+  "reading": "ごがつ",
+  "gloss": {
+   "en": "May"
+  }
+ },
+ "w0048": {
+  "id": "w0048",
+  "w": "五つ",
+  "reading": "いつつ",
+  "gloss": {
+   "en": "five things"
+  }
+ },
+ "w0049": {
+  "id": "w0049",
+  "w": "六",
+  "reading": "ろく",
+  "gloss": {
+   "en": "six"
+  }
+ },
+ "w0050": {
+  "id": "w0050",
+  "w": "六月",
+  "reading": "ろくがつ",
+  "gloss": {
+   "en": "June"
+  }
+ },
+ "w0051": {
+  "id": "w0051",
+  "w": "六つ",
+  "reading": "むっつ",
+  "gloss": {
+   "en": "six things"
+  }
+ },
+ "w0052": {
+  "id": "w0052",
+  "w": "七月",
+  "reading": "しちがつ",
+  "gloss": {
+   "en": "July"
+  }
+ },
+ "w0053": {
+  "id": "w0053",
+  "w": "七",
+  "reading": "なな",
+  "gloss": {
+   "en": "seven"
+  }
+ },
+ "w0054": {
+  "id": "w0054",
+  "w": "七つ",
+  "reading": "ななつ",
+  "gloss": {
+   "en": "seven things"
+  }
+ },
+ "w0055": {
+  "id": "w0055",
+  "w": "八",
+  "reading": "はち",
+  "gloss": {
+   "en": "eight"
+  }
+ },
+ "w0056": {
+  "id": "w0056",
+  "w": "八月",
+  "reading": "はちがつ",
+  "gloss": {
+   "en": "August"
+  }
+ },
+ "w0057": {
+  "id": "w0057",
+  "w": "八つ",
+  "reading": "やっつ",
+  "gloss": {
+   "en": "eight things"
+  }
+ },
+ "w0058": {
+  "id": "w0058",
+  "w": "九",
+  "reading": "きゅう",
+  "gloss": {
+   "en": "nine"
+  }
+ },
+ "w0059": {
+  "id": "w0059",
+  "w": "九月",
+  "reading": "くがつ",
+  "gloss": {
+   "en": "September"
+  }
+ },
+ "w0060": {
+  "id": "w0060",
+  "w": "九つ",
+  "reading": "ここのつ",
+  "gloss": {
+   "en": "nine things"
+  }
+ },
+ "w0061": {
+  "id": "w0061",
+  "w": "十",
+  "reading": "じゅう",
+  "gloss": {
+   "en": "ten"
+  }
+ },
+ "w0062": {
+  "id": "w0062",
+  "w": "十月",
+  "reading": "じゅうがつ",
+  "gloss": {
+   "en": "October"
+  }
+ },
+ "w0063": {
+  "id": "w0063",
+  "w": "十日",
+  "reading": "とおか",
+  "gloss": {
+   "en": "tenth day"
+  }
+ },
+ "w0064": {
+  "id": "w0064",
+  "w": "百",
+  "reading": "ひゃく",
+  "gloss": {
+   "en": "hundred"
+  }
+ },
+ "w0065": {
+  "id": "w0065",
+  "w": "百円",
+  "reading": "ひゃくえん",
+  "gloss": {
+   "en": "hundred yen"
+  }
+ },
+ "w0066": {
+  "id": "w0066",
+  "w": "千",
+  "reading": "せん",
+  "gloss": {
+   "en": "thousand"
+  }
+ },
+ "w0067": {
+  "id": "w0067",
+  "w": "千円",
+  "reading": "せんえん",
+  "gloss": {
+   "en": "thousand yen"
+  }
+ },
+ "w0068": {
+  "id": "w0068",
+  "w": "万",
+  "reading": "まん",
+  "gloss": {
+   "en": "ten thousand"
+  }
+ },
+ "w0069": {
+  "id": "w0069",
+  "w": "一万円",
+  "reading": "いちまんえん",
+  "gloss": {
+   "en": "ten thousand yen"
+  }
+ },
+ "w0070": {
+  "id": "w0070",
+  "w": "円",
+  "reading": "えん",
+  "gloss": {
+   "en": "yen, circle"
+  }
+ },
+ "w0071": {
+  "id": "w0071",
+  "w": "毎日",
+  "reading": "まいにち",
+  "gloss": {
+   "en": "every day"
+  }
+ },
+ "w0072": {
+  "id": "w0072",
+  "w": "日曜日",
+  "reading": "にちようび",
+  "gloss": {
+   "en": "Sunday"
+  }
+ },
+ "w0073": {
+  "id": "w0073",
+  "w": "日本",
+  "reading": "にほん",
+  "gloss": {
+   "en": "Japan"
+  }
+ },
+ "w0074": {
+  "id": "w0074",
+  "w": "日",
+  "reading": "ひ",
+  "gloss": {
+   "en": "sun, day"
+  }
+ },
+ "w0075": {
+  "id": "w0075",
+  "w": "月曜日",
+  "reading": "げつようび",
+  "gloss": {
+   "en": "Monday"
+  }
+ },
+ "w0076": {
+  "id": "w0076",
+  "w": "一月",
+  "reading": "いちがつ",
+  "gloss": {
+   "en": "January"
+  }
+ },
+ "w0077": {
+  "id": "w0077",
+  "w": "月",
+  "reading": "つき",
+  "gloss": {
+   "en": "moon, month"
+  }
+ },
+ "w0078": {
+  "id": "w0078",
+  "w": "火曜日",
+  "reading": "かようび",
+  "gloss": {
+   "en": "Tuesday"
+  }
+ },
+ "w0079": {
+  "id": "w0079",
+  "w": "火",
+  "reading": "ひ",
+  "gloss": {
+   "en": "fire"
+  }
+ },
+ "w0080": {
+  "id": "w0080",
+  "w": "水曜日",
+  "reading": "すいようび",
+  "gloss": {
+   "en": "Wednesday"
+  }
+ },
+ "w0081": {
+  "id": "w0081",
+  "w": "水",
+  "reading": "みず",
+  "gloss": {
+   "en": "water"
+  }
+ },
+ "w0082": {
+  "id": "w0082",
+  "w": "木曜日",
+  "reading": "もくようび",
+  "gloss": {
+   "en": "Thursday"
+  }
+ },
+ "w0083": {
+  "id": "w0083",
+  "w": "木",
+  "reading": "き",
+  "gloss": {
+   "en": "tree, wood"
+  }
+ },
+ "w0084": {
+  "id": "w0084",
+  "w": "金曜日",
+  "reading": "きんようび",
+  "gloss": {
+   "en": "Friday"
+  }
+ },
+ "w0085": {
+  "id": "w0085",
+  "w": "金",
+  "reading": "きん",
+  "gloss": {
+   "en": "gold"
+  }
+ },
+ "w0086": {
+  "id": "w0086",
+  "w": "お金",
+  "reading": "おかね",
+  "gloss": {
+   "en": "money"
+  }
+ },
+ "w0087": {
+  "id": "w0087",
+  "w": "土曜日",
+  "reading": "どようび",
+  "gloss": {
+   "en": "Saturday"
+  }
+ },
+ "w0088": {
+  "id": "w0088",
+  "w": "土",
+  "reading": "つち",
+  "gloss": {
+   "en": "earth, soil"
+  }
+ },
+ "w0089": {
+  "id": "w0089",
+  "w": "曜日",
+  "reading": "ようび",
+  "gloss": {
+   "en": "day of the week"
+  }
+ },
+ "w0090": {
+  "id": "w0090",
+  "w": "何曜日",
+  "reading": "なんようび",
+  "gloss": {
+   "en": "what day of the week"
+  }
+ },
+ "w0091": {
+  "id": "w0091",
+  "w": "去年",
+  "reading": "きょねん",
+  "gloss": {
+   "en": "last year"
+  }
+ },
+ "w0092": {
+  "id": "w0092",
+  "w": "来年",
+  "reading": "らいねん",
+  "gloss": {
+   "en": "next year"
+  }
+ },
+ "w0093": {
+  "id": "w0093",
+  "w": "年",
+  "reading": "とし",
+  "gloss": {
+   "en": "year"
+  }
+ },
+ "w0094": {
+  "id": "w0094",
+  "w": "半",
+  "reading": "はん",
+  "gloss": {
+   "en": "half"
+  }
+ },
+ "w0095": {
+  "id": "w0095",
+  "w": "今",
+  "reading": "いま",
+  "gloss": {
+   "en": "now"
+  }
+ },
+ "w0096": {
+  "id": "w0096",
+  "w": "今日",
+  "reading": "きょう",
+  "gloss": {
+   "en": "today"
+  }
+ },
+ "w0097": {
+  "id": "w0097",
+  "w": "今年",
+  "reading": "ことし",
+  "gloss": {
+   "en": "this year"
+  }
+ },
+ "w0098": {
+  "id": "w0098",
+  "w": "上手",
+  "reading": "じょうず",
+  "gloss": {
+   "en": "skillful"
+  }
+ },
+ "w0099": {
+  "id": "w0099",
+  "w": "上",
+  "reading": "うえ",
+  "gloss": {
+   "en": "up, above"
+  }
+ },
+ "w0100": {
+  "id": "w0100",
+  "w": "下",
+  "reading": "した",
+  "gloss": {
+   "en": "down, below"
+  }
+ },
+ "w0101": {
+  "id": "w0101",
+  "w": "下手",
+  "reading": "へた",
+  "gloss": {
+   "en": "unskillful"
+  }
+ },
+ "w0102": {
+  "id": "w0102",
+  "w": "中国",
+  "reading": "ちゅうごく",
+  "gloss": {
+   "en": "China"
+  }
+ },
+ "w0103": {
+  "id": "w0103",
+  "w": "中",
+  "reading": "なか",
+  "gloss": {
+   "en": "middle, inside"
+  }
+ },
+ "w0104": {
+  "id": "w0104",
+  "w": "外国人",
+  "reading": "がいこくじん",
+  "gloss": {
+   "en": "foreigner"
+  }
+ },
+ "w0105": {
+  "id": "w0105",
+  "w": "人気",
+  "reading": "にんき",
+  "gloss": {
+   "en": "popularity"
+  }
+ },
+ "w0106": {
+  "id": "w0106",
+  "w": "人",
+  "reading": "ひと",
+  "gloss": {
+   "en": "person"
+  }
+ },
+ "w0107": {
+  "id": "w0107",
+  "w": "男性",
+  "reading": "だんせい",
+  "gloss": {
+   "en": "male"
+  }
+ },
+ "w0108": {
+  "id": "w0108",
+  "w": "男",
+  "reading": "おとこ",
+  "gloss": {
+   "en": "man"
+  }
+ },
+ "w0109": {
+  "id": "w0109",
+  "w": "男の子",
+  "reading": "おとこのこ",
+  "gloss": {
+   "en": "boy"
+  }
+ },
+ "w0110": {
+  "id": "w0110",
+  "w": "女性",
+  "reading": "じょせい",
+  "gloss": {
+   "en": "female"
+  }
+ },
+ "w0111": {
+  "id": "w0111",
+  "w": "女",
+  "reading": "おんな",
+  "gloss": {
+   "en": "woman"
+  }
+ },
+ "w0112": {
+  "id": "w0112",
+  "w": "女の子",
+  "reading": "おんなのこ",
+  "gloss": {
+   "en": "girl"
+  }
+ },
+ "w0113": {
+  "id": "w0113",
+  "w": "椅子",
+  "reading": "いす",
+  "gloss": {
+   "en": "chair"
+  }
+ },
+ "w0114": {
+  "id": "w0114",
+  "w": "子",
+  "reading": "こ",
+  "gloss": {
+   "en": "child"
+  }
+ },
+ "w0115": {
+  "id": "w0115",
+  "w": "子ども",
+  "reading": "こども",
+  "gloss": {
+   "en": "child, kids"
+  }
+ },
+ "w0116": {
+  "id": "w0116",
+  "w": "父母",
+  "reading": "ふぼ",
+  "gloss": {
+   "en": "parents"
+  }
+ },
+ "w0117": {
+  "id": "w0117",
+  "w": "父",
+  "reading": "ちち",
+  "gloss": {
+   "en": "father"
+  }
+ },
+ "w0118": {
+  "id": "w0118",
+  "w": "お父さん",
+  "reading": "おとうさん",
+  "gloss": {
+   "en": "father (polite)"
+  }
+ },
+ "w0119": {
+  "id": "w0119",
+  "w": "母",
+  "reading": "はは",
+  "gloss": {
+   "en": "mother"
+  }
+ },
+ "w0120": {
+  "id": "w0120",
+  "w": "お母さん",
+  "reading": "おかあさん",
+  "gloss": {
+   "en": "mother (polite)"
+  }
+ },
+ "w0121": {
+  "id": "w0121",
+  "w": "友人",
+  "reading": "ゆうじん",
+  "gloss": {
+   "en": "friend (formal)"
+  }
+ },
+ "w0122": {
+  "id": "w0122",
+  "w": "友だち",
+  "reading": "ともだち",
+  "gloss": {
+   "en": "friend"
+  }
+ },
+ "w0123": {
+  "id": "w0123",
+  "w": "先週",
+  "reading": "せんしゅう",
+  "gloss": {
+   "en": "last week"
+  }
+ },
+ "w0124": {
+  "id": "w0124",
+  "w": "先",
+  "reading": "さき",
+  "gloss": {
+   "en": "ahead, previous"
+  }
+ },
+ "w0125": {
+  "id": "w0125",
+  "w": "大学",
+  "reading": "だいがく",
+  "gloss": {
+   "en": "university"
+  }
+ },
+ "w0126": {
+  "id": "w0126",
+  "w": "学ぶ",
+  "reading": "まなぶ",
+  "gloss": {
+   "en": "to study, to learn"
+  }
+ },
+ "w0127": {
+  "id": "w0127",
+  "w": "学校",
+  "reading": "がっこう",
+  "gloss": {
+   "en": "school"
+  }
+ },
+ "w0128": {
+  "id": "w0128",
+  "w": "高校",
+  "reading": "こうこう",
+  "gloss": {
+   "en": "high school"
+  }
+ },
+ "w0129": {
+  "id": "w0129",
+  "w": "高い",
+  "reading": "たかい",
+  "gloss": {
+   "en": "high, expensive"
+  }
+ },
+ "w0130": {
+  "id": "w0130",
+  "w": "大切",
+  "reading": "たいせつ",
+  "gloss": {
+   "en": "important"
+  }
+ },
+ "w0131": {
+  "id": "w0131",
+  "w": "大きい",
+  "reading": "おおきい",
+  "gloss": {
+   "en": "big, large"
+  }
+ },
+ "w0132": {
+  "id": "w0132",
+  "w": "小学校",
+  "reading": "しょうがっこう",
+  "gloss": {
+   "en": "primary school"
+  }
+ },
+ "w0133": {
+  "id": "w0133",
+  "w": "小さい",
+  "reading": "ちいさい",
+  "gloss": {
+   "en": "small, little"
+  }
+ },
+ "w0134": {
+  "id": "w0134",
+  "w": "社長",
+  "reading": "しゃちょう",
+  "gloss": {
+   "en": "company president"
+  }
+ },
+ "w0135": {
+  "id": "w0135",
+  "w": "長い",
+  "reading": "ながい",
+  "gloss": {
+   "en": "long"
+  }
+ },
+ "w0136": {
+  "id": "w0136",
+  "w": "白紙",
+  "reading": "はくし",
+  "gloss": {
+   "en": "blank paper"
+  }
+ },
+ "w0137": {
+  "id": "w0137",
+  "w": "白",
+  "reading": "しろ",
+  "gloss": {
+   "en": "white"
+  }
+ },
+ "w0138": {
+  "id": "w0138",
+  "w": "白い",
+  "reading": "しろい",
+  "gloss": {
+   "en": "white"
+  }
+ },
+ "w0139": {
+  "id": "w0139",
+  "w": "富士山",
+  "reading": "ふじさん",
+  "gloss": {
+   "en": "Mount Fuji"
+  }
+ },
+ "w0140": {
+  "id": "w0140",
+  "w": "山",
+  "reading": "やま",
+  "gloss": {
+   "en": "mountain"
+  }
+ },
+ "w0141": {
+  "id": "w0141",
+  "w": "川",
+  "reading": "かわ",
+  "gloss": {
+   "en": "river"
+  }
+ },
+ "w0142": {
+  "id": "w0142",
+  "w": "天気",
+  "reading": "てんき",
+  "gloss": {
+   "en": "weather"
+  }
+ },
+ "w0143": {
+  "id": "w0143",
+  "w": "天",
+  "reading": "てん",
+  "gloss": {
+   "en": "heaven, sky"
+  }
+ },
+ "w0144": {
+  "id": "w0144",
+  "w": "元気",
+  "reading": "げんき",
+  "gloss": {
+   "en": "healthy, energetic"
+  }
+ },
+ "w0145": {
+  "id": "w0145",
+  "w": "雨天",
+  "reading": "うてん",
+  "gloss": {
+   "en": "rainy weather"
+  }
+ },
+ "w0146": {
+  "id": "w0146",
+  "w": "雨",
+  "reading": "あめ",
+  "gloss": {
+   "en": "rain"
+  }
+ },
+ "w0147": {
+  "id": "w0147",
+  "w": "電車",
+  "reading": "でんしゃ",
+  "gloss": {
+   "en": "train"
+  }
+ },
+ "w0148": {
+  "id": "w0148",
+  "w": "電話",
+  "reading": "でんわ",
+  "gloss": {
+   "en": "telephone"
+  }
+ },
+ "w0149": {
+  "id": "w0149",
+  "w": "自転車",
+  "reading": "じてんしゃ",
+  "gloss": {
+   "en": "bicycle"
+  }
+ },
+ "w0150": {
+  "id": "w0150",
+  "w": "車",
+  "reading": "くるま",
+  "gloss": {
+   "en": "car"
+  }
+ },
+ "w0151": {
+  "id": "w0151",
+  "w": "駅",
+  "reading": "えき",
+  "gloss": {
+   "en": "station"
+  }
+ },
+ "w0152": {
+  "id": "w0152",
+  "w": "駅員",
+  "reading": "えきいん",
+  "gloss": {
+   "en": "station attendant"
+  }
+ },
+ "w0153": {
+  "id": "w0153",
+  "w": "外国",
+  "reading": "がいこく",
+  "gloss": {
+   "en": "foreign country"
+  }
+ },
+ "w0154": {
+  "id": "w0154",
+  "w": "国",
+  "reading": "くに",
+  "gloss": {
+   "en": "country"
+  }
+ },
+ "w0155": {
+  "id": "w0155",
+  "w": "日本語",
+  "reading": "にほんご",
+  "gloss": {
+   "en": "Japanese language"
+  }
+ },
+ "w0156": {
+  "id": "w0156",
+  "w": "単語",
+  "reading": "たんご",
+  "gloss": {
+   "en": "word"
+  }
+ },
+ "w0157": {
+  "id": "w0157",
+  "w": "会話",
+  "reading": "かいわ",
+  "gloss": {
+   "en": "conversation"
+  }
+ },
+ "w0158": {
+  "id": "w0158",
+  "w": "話す",
+  "reading": "はなす",
+  "gloss": {
+   "en": "to talk, to speak"
+  }
+ },
+ "w0159": {
+  "id": "w0159",
+  "w": "読書",
+  "reading": "どくしょ",
+  "gloss": {
+   "en": "reading"
+  }
+ },
+ "w0160": {
+  "id": "w0160",
+  "w": "読む",
+  "reading": "よむ",
+  "gloss": {
+   "en": "to read"
+  }
+ },
+ "w0161": {
+  "id": "w0161",
+  "w": "図書館",
+  "reading": "としょかん",
+  "gloss": {
+   "en": "library"
+  }
+ },
+ "w0162": {
+  "id": "w0162",
+  "w": "書く",
+  "reading": "かく",
+  "gloss": {
+   "en": "to write"
+  }
+ },
+ "w0163": {
+  "id": "w0163",
+  "w": "見学",
+  "reading": "けんがく",
+  "gloss": {
+   "en": "study visit"
+  }
+ },
+ "w0164": {
+  "id": "w0164",
+  "w": "見る",
+  "reading": "みる",
+  "gloss": {
+   "en": "to see, to look"
+  }
+ },
+ "w0165": {
+  "id": "w0165",
+  "w": "見せる",
+  "reading": "みせる",
+  "gloss": {
+   "en": "to show"
+  }
+ },
+ "w0166": {
+  "id": "w0166",
+  "w": "新聞",
+  "reading": "しんぶん",
+  "gloss": {
+   "en": "newspaper"
+  }
+ },
+ "w0167": {
+  "id": "w0167",
+  "w": "聞く",
+  "reading": "きく",
+  "gloss": {
+   "en": "to hear, to listen"
+  }
+ },
+ "w0168": {
+  "id": "w0168",
+  "w": "旅行",
+  "reading": "りょこう",
+  "gloss": {
+   "en": "travel"
+  }
+ },
+ "w0169": {
+  "id": "w0169",
+  "w": "銀行",
+  "reading": "ぎんこう",
+  "gloss": {
+   "en": "bank"
+  }
+ },
+ "w0170": {
+  "id": "w0170",
+  "w": "行く",
+  "reading": "いく",
+  "gloss": {
+   "en": "to go"
+  }
+ },
+ "w0171": {
+  "id": "w0171",
+  "w": "来週",
+  "reading": "らいしゅう",
+  "gloss": {
+   "en": "next week"
+  }
+ },
+ "w0172": {
+  "id": "w0172",
+  "w": "来る",
+  "reading": "くる",
+  "gloss": {
+   "en": "to come"
+  }
+ },
+ "w0173": {
+  "id": "w0173",
+  "w": "出発",
+  "reading": "しゅっぱつ",
+  "gloss": {
+   "en": "departure"
+  }
+ },
+ "w0174": {
+  "id": "w0174",
+  "w": "出る",
+  "reading": "でる",
+  "gloss": {
+   "en": "to go out, to leave"
+  }
+ },
+ "w0175": {
+  "id": "w0175",
+  "w": "出口",
+  "reading": "でぐち",
+  "gloss": {
+   "en": "exit"
+  }
+ },
+ "w0176": {
+  "id": "w0176",
+  "w": "入学",
+  "reading": "にゅうがく",
+  "gloss": {
+   "en": "entering school"
+  }
+ },
+ "w0177": {
+  "id": "w0177",
+  "w": "入る",
+  "reading": "はいる",
+  "gloss": {
+   "en": "to enter, to go in"
+  }
+ },
+ "w0178": {
+  "id": "w0178",
+  "w": "入口",
+  "reading": "いりぐち",
+  "gloss": {
+   "en": "entrance"
+  }
+ },
+ "w0179": {
+  "id": "w0179",
+  "w": "国立",
+  "reading": "こくりつ",
+  "gloss": {
+   "en": "national"
+  }
+ },
+ "w0180": {
+  "id": "w0180",
+  "w": "立つ",
+  "reading": "たつ",
+  "gloss": {
+   "en": "to stand"
+  }
+ },
+ "w0181": {
+  "id": "w0181",
+  "w": "休日",
+  "reading": "きゅうじつ",
+  "gloss": {
+   "en": "holiday"
+  }
+ },
+ "w0182": {
+  "id": "w0182",
+  "w": "休む",
+  "reading": "やすむ",
+  "gloss": {
+   "en": "to rest"
+  }
+ },
+ "w0183": {
+  "id": "w0183",
+  "w": "休み",
+  "reading": "やすみ",
+  "gloss": {
+   "en": "day off, break"
+  }
+ },
+ "w0184": {
+  "id": "w0184",
+  "w": "食事",
+  "reading": "しょくじ",
+  "gloss": {
+   "en": "meal"
+  }
+ },
+ "w0185": {
+  "id": "w0185",
+  "w": "食堂",
+  "reading": "しょくどう",
+  "gloss": {
+   "en": "dining hall"
+  }
+ },
+ "w0186": {
+  "id": "w0186",
+  "w": "食べる",
+  "reading": "たべる",
+  "gloss": {
+   "en": "to eat"
+  }
+ },
+ "w0187": {
+  "id": "w0187",
+  "w": "飲食",
+  "reading": "いんしょく",
+  "gloss": {
+   "en": "food and drink"
+  }
+ },
+ "w0188": {
+  "id": "w0188",
+  "w": "飲む",
+  "reading": "のむ",
+  "gloss": {
+   "en": "to drink"
+  }
+ },
+ "w0189": {
+  "id": "w0189",
+  "w": "飲み物",
+  "reading": "のみもの",
+  "gloss": {
+   "en": "a drink"
+  }
+ },
+ "w0190": {
+  "id": "w0190",
+  "w": "有名",
+  "reading": "ゆうめい",
+  "gloss": {
+   "en": "famous"
+  }
+ },
+ "w0191": {
+  "id": "w0191",
+  "w": "名前",
+  "reading": "なまえ",
+  "gloss": {
+   "en": "name"
+  }
+ },
+ "w0192": {
+  "id": "w0192",
+  "w": "人口",
+  "reading": "じんこう",
+  "gloss": {
+   "en": "population"
+  }
+ },
+ "w0193": {
+  "id": "w0193",
+  "w": "口",
+  "reading": "くち",
+  "gloss": {
+   "en": "mouth"
+  }
+ },
+ "w0194": {
+  "id": "w0194",
+  "w": "目的",
+  "reading": "もくてき",
+  "gloss": {
+   "en": "purpose"
+  }
+ },
+ "w0195": {
+  "id": "w0195",
+  "w": "目",
+  "reading": "め",
+  "gloss": {
+   "en": "eye"
+  }
+ },
+ "w0196": {
+  "id": "w0196",
+  "w": "耳",
+  "reading": "みみ",
+  "gloss": {
+   "en": "ear"
+  }
+ },
+ "w0197": {
+  "id": "w0197",
+  "w": "手段",
+  "reading": "しゅだん",
+  "gloss": {
+   "en": "means, method"
+  }
+ },
+ "w0198": {
+  "id": "w0198",
+  "w": "手",
+  "reading": "て",
+  "gloss": {
+   "en": "hand"
+  }
+ },
+ "w0199": {
+  "id": "w0199",
+  "w": "手紙",
+  "reading": "てがみ",
+  "gloss": {
+   "en": "letter"
+  }
+ },
+ "w0200": {
+  "id": "w0200",
+  "w": "不足",
+  "reading": "ふそく",
+  "gloss": {
+   "en": "shortage"
+  }
+ },
+ "w0201": {
+  "id": "w0201",
+  "w": "足",
+  "reading": "あし",
+  "gloss": {
+   "en": "foot, leg"
+  }
+ },
+ "w0202": {
+  "id": "w0202",
+  "w": "空港",
+  "reading": "くうこう",
+  "gloss": {
+   "en": "airport"
+  }
+ },
+ "w0203": {
+  "id": "w0203",
+  "w": "空気",
+  "reading": "くうき",
+  "gloss": {
+   "en": "air"
+  }
+ },
+ "w0204": {
+  "id": "w0204",
+  "w": "空",
+  "reading": "そら",
+  "gloss": {
+   "en": "sky"
+  }
+ },
+ "w0205": {
+  "id": "w0205",
+  "w": "花火",
+  "reading": "はなび",
+  "gloss": {
+   "en": "fireworks"
+  }
+ },
+ "w0206": {
+  "id": "w0206",
+  "w": "花",
+  "reading": "はな",
+  "gloss": {
+   "en": "flower"
+  }
+ },
+ "w0207": {
+  "id": "w0207",
+  "w": "金魚",
+  "reading": "きんぎょ",
+  "gloss": {
+   "en": "goldfish"
+  }
+ },
+ "w0208": {
+  "id": "w0208",
+  "w": "魚",
+  "reading": "さかな",
+  "gloss": {
+   "en": "fish"
+  }
+ },
+ "w0209": {
+  "id": "w0209",
+  "w": "犬",
+  "reading": "いぬ",
+  "gloss": {
+   "en": "dog"
+  }
+ },
+ "w0210": {
+  "id": "w0210",
+  "w": "少年",
+  "reading": "しょうねん",
+  "gloss": {
+   "en": "boy"
+  }
+ },
+ "w0211": {
+  "id": "w0211",
+  "w": "少し",
+  "reading": "すこし",
+  "gloss": {
+   "en": "a little"
+  }
+ },
+ "w0212": {
+  "id": "w0212",
+  "w": "少ない",
+  "reading": "すくない",
+  "gloss": {
+   "en": "few, not much"
+  }
+ },
+ "w0213": {
+  "id": "w0213",
+  "w": "多分",
+  "reading": "たぶん",
+  "gloss": {
+   "en": "probably"
+  }
+ },
+ "w0214": {
+  "id": "w0214",
+  "w": "多い",
+  "reading": "おおい",
+  "gloss": {
+   "en": "many, much"
+  }
+ },
+ "w0215": {
+  "id": "w0215",
+  "w": "安全",
+  "reading": "あんぜん",
+  "gloss": {
+   "en": "safety"
+  }
+ },
+ "w0216": {
+  "id": "w0216",
+  "w": "安心",
+  "reading": "あんしん",
+  "gloss": {
+   "en": "relief"
+  }
+ },
+ "w0217": {
+  "id": "w0217",
+  "w": "安い",
+  "reading": "やすい",
+  "gloss": {
+   "en": "cheap"
+  }
+ },
+ "w0218": {
+  "id": "w0218",
+  "w": "新しい",
+  "reading": "あたらしい",
+  "gloss": {
+   "en": "new"
+  }
+ },
+ "w0219": {
+  "id": "w0219",
+  "w": "中古",
+  "reading": "ちゅうこ",
+  "gloss": {
+   "en": "secondhand"
+  }
+ },
+ "w0220": {
+  "id": "w0220",
+  "w": "古い",
+  "reading": "ふるい",
+  "gloss": {
+   "en": "old"
+  }
+ },
+ "w0221": {
+  "id": "w0221",
+  "w": "早々",
+  "reading": "そうそう",
+  "gloss": {
+   "en": "promptly"
+  }
+ },
+ "w0222": {
+  "id": "w0222",
+  "w": "早い",
+  "reading": "はやい",
+  "gloss": {
+   "en": "early, fast"
+  }
+ },
+ "w0223": {
+  "id": "w0223",
+  "w": "努力",
+  "reading": "どりょく",
+  "gloss": {
+   "en": "effort"
+  }
+ },
+ "w0224": {
+  "id": "w0224",
+  "w": "力",
+  "reading": "ちから",
+  "gloss": {
+   "en": "power, strength"
+  }
+ },
+ "w0225": {
+  "id": "w0225",
+  "w": "会う",
+  "reading": "あう",
+  "gloss": {
+   "en": "to meet"
+  }
+ },
+ "w0226": {
+  "id": "w0226",
+  "w": "音楽",
+  "reading": "おんがく",
+  "gloss": {
+   "en": "music"
+  },
+  "sentences": [
+   {
+    "ja": "音楽を聞くのが好きです。",
+    "t": {
+     "en": "I like listening to music."
+    }
+   },
+   {
+    "ja": "この音楽は明るいですね。",
+    "t": {
+     "en": "This music is cheerful, isn't it."
+    }
+   }
+  ],
+  "alt": [
+   {
+    "w": "歌",
+    "reading": "うた",
+    "gloss": {
+     "en": "song"
+    }
+   },
+   {
+    "w": "曲",
+    "reading": "きょく",
+    "gloss": {
+     "en": "tune, track"
+    }
+   }
+  ],
+  "kata": [
+   {
+    "w": "ミュージック",
+    "reading": "みゅーじっく",
+    "gloss": {
+     "en": "music"
+    }
+   }
+  ]
+ },
+ "w0227": {
+  "id": "w0227",
+  "w": "楽",
+  "reading": "らく",
+  "gloss": {
+   "en": "ease, comfort"
+  },
+  "sentences": [
+   {
+    "ja": "この仕事は楽です。",
+    "t": {
+     "en": "This job is easy."
+    }
+   },
+   {
+    "ja": "楽な服が好きです。",
+    "t": {
+     "en": "I like comfortable clothes."
+    }
+   }
+  ],
+  "alt": [
+   {
+    "w": "簡単",
+    "reading": "かんたん",
+    "gloss": {
+     "en": "simple, easy"
+    }
+   },
+   {
+    "w": "気楽",
+    "reading": "きらく",
+    "gloss": {
+     "en": "easygoing"
+    }
+   }
+  ],
+  "kata": [
+   {
+    "w": "イージー",
+    "reading": "いーじー",
+    "gloss": {
+     "en": "easy"
+    }
+   }
+  ]
+ },
+ "w0228": {
+  "id": "w0228",
+  "w": "気楽",
+  "reading": "きらく",
+  "gloss": {
+   "en": "at ease"
+  },
+  "sentences": [
+   {
+    "ja": "気楽に話しましょう。",
+    "t": {
+     "en": "Let's talk casually."
+    }
+   },
+   {
+    "ja": "気楽な生活がしたい。",
+    "t": {
+     "en": "I want an easygoing life."
+    }
+   }
+  ],
+  "alt": [
+   {
+    "w": "のんびり",
+    "reading": "のんびり",
+    "gloss": {
+     "en": "at a relaxed pace"
+    }
+   },
+   {
+    "w": "楽",
+    "reading": "らく",
+    "gloss": {
+     "en": "ease, comfort"
+    }
+   }
+  ],
+  "kata": [
+   {
+    "w": "リラックス",
+    "reading": "りらっくす",
+    "gloss": {
+     "en": "relax"
+    }
+   }
+  ]
+ },
+ "w0229": {
+  "id": "w0229",
+  "w": "楽しい",
+  "reading": "たのしい",
+  "gloss": {
+   "en": "fun, enjoyable"
+  },
+  "sentences": [
+   {
+    "ja": "旅行は楽しいです。",
+    "t": {
+     "en": "Travelling is fun."
+    }
+   },
+   {
+    "ja": "楽しい一日でした。",
+    "t": {
+     "en": "It was an enjoyable day."
+    }
+   }
+  ],
+  "alt": [
+   {
+    "w": "面白い",
+    "reading": "おもしろい",
+    "gloss": {
+     "en": "interesting, amusing"
+    }
+   },
+   {
+    "w": "うれしい",
+    "reading": "うれしい",
+    "gloss": {
+     "en": "glad, happy"
+    }
+   }
+  ],
+  "kata": [
+   {
+    "w": "ハッピー",
+    "reading": "はっぴー",
+    "gloss": {
+     "en": "happy"
+    }
+   }
+  ]
+ },
+ "w0230": {
+  "id": "w0230",
+  "w": "楽しむ",
+  "reading": "たのしむ",
+  "gloss": {
+   "en": "to enjoy"
+  },
+  "sentences": [
+   {
+    "ja": "旅行を楽しみました。",
+    "t": {
+     "en": "I enjoyed the trip."
+    }
+   },
+   {
+    "ja": "音楽を楽しむ。",
+    "t": {
+     "en": "To enjoy music."
+    }
+   }
+  ],
+  "alt": [
+   {
+    "w": "味わう",
+    "reading": "あじわう",
+    "gloss": {
+     "en": "to savour"
+    }
+   },
+   {
+    "w": "遊ぶ",
+    "reading": "あそぶ",
+    "gloss": {
+     "en": "to play, have fun"
+    }
+   }
+  ],
+  "kata": [
+   {
+    "w": "エンジョイ",
+    "reading": "えんじょい",
+    "gloss": {
+     "en": "enjoy"
+    }
+   }
+  ]
+ },
+ "w0231": {
+  "id": "w0231",
+  "w": "説明",
+  "reading": "せつめい",
+  "gloss": {
+   "en": "explanation"
+  }
+ },
+ "w0232": {
+  "id": "w0232",
+  "w": "発明",
+  "reading": "はつめい",
+  "gloss": {
+   "en": "invention"
+  }
+ },
+ "w0233": {
+  "id": "w0233",
+  "w": "明るい",
+  "reading": "あかるい",
+  "gloss": {
+   "en": "bright"
+  }
+ },
+ "w0234": {
+  "id": "w0234",
+  "w": "明かり",
+  "reading": "あかり",
+  "gloss": {
+   "en": "a light"
+  }
+ },
+ "w0235": {
+  "id": "w0235",
+  "w": "明ける",
+  "reading": "あける",
+  "gloss": {
+   "en": "to dawn, end"
+  }
+ },
+ "w0236": {
+  "id": "w0236",
+  "w": "明日",
+  "reading": "あした",
+  "gloss": {
+   "en": "tomorrow"
+  }
+ },
+ "w0237": {
+  "id": "w0237",
+  "w": "明日",
+  "reading": "あす",
+  "gloss": {
+   "en": "tomorrow"
+  }
+ },
+ "w0238": {
+  "id": "w0238",
+  "w": "発音",
+  "reading": "はつおん",
+  "gloss": {
+   "en": "pronunciation"
+  },
+  "sentences": [
+   {
+    "ja": "発音が難しいです。",
+    "t": {
+     "en": "The pronunciation is difficult."
+    }
+   },
+   {
+    "ja": "先生が発音を直してくれた。",
+    "t": {
+     "en": "The teacher corrected my pronunciation."
+    }
+   }
+  ],
+  "alt": [
+   {
+    "w": "読み方",
+    "reading": "よみかた",
+    "gloss": {
+     "en": "reading, how to read"
+    }
+   }
+  ],
+  "kata": [
+   {
+    "w": "アクセント",
+    "reading": "あくせんと",
+    "gloss": {
+     "en": "accent, stress"
+    }
+   }
+  ]
+ },
+ "w0239": {
+  "id": "w0239",
+  "w": "音",
+  "reading": "おと",
+  "gloss": {
+   "en": "a sound"
+  }
+ },
+ "w0240": {
+  "id": "w0240",
+  "w": "足音",
+  "reading": "あしおと",
+  "gloss": {
+   "en": "footsteps"
+  }
+ },
+ "w0241": {
+  "id": "w0241",
+  "w": "音色",
+  "reading": "ねいろ",
+  "gloss": {
+   "en": "tone colour"
+  }
+ },
+ "w0242": {
+  "id": "w0242",
+  "w": "始発",
+  "reading": "しはつ",
+  "gloss": {
+   "en": "first train"
+  }
+ },
+ "w0243": {
+  "id": "w0243",
+  "w": "発表",
+  "reading": "はっぴょう",
+  "gloss": {
+   "en": "presentation"
+  }
+ },
+ "w0244": {
+  "id": "w0244",
+  "w": "表",
+  "reading": "ひょう",
+  "gloss": {
+   "en": "front, surface"
+  }
+ },
+ "w0245": {
+  "id": "w0245",
+  "w": "表",
+  "reading": "おもて",
+  "gloss": {
+   "en": "front, surface"
+  }
+ },
+ "w0246": {
+  "id": "w0246",
+  "w": "表す",
+  "reading": "あらわす",
+  "gloss": {
+   "en": "to express"
+  }
+ },
+ "w0247": {
+  "id": "w0247",
+  "w": "使用",
+  "reading": "しよう",
+  "gloss": {
+   "en": "use"
+  }
+ },
+ "w0248": {
+  "id": "w0248",
+  "w": "大使館",
+  "reading": "たいしかん",
+  "gloss": {
+   "en": "embassy"
+  }
+ },
+ "w0249": {
+  "id": "w0249",
+  "w": "使う",
+  "reading": "つかう",
+  "gloss": {
+   "en": "to use"
+  }
+ },
+ "w0250": {
+  "id": "w0250",
+  "w": "使い方",
+  "reading": "つかいかた",
+  "gloss": {
+   "en": "how to use"
+  }
+ },
+ "w0251": {
+  "id": "w0251",
+  "w": "用事",
+  "reading": "ようじ",
+  "gloss": {
+   "en": "errand"
+  }
+ },
+ "w0252": {
+  "id": "w0252",
+  "w": "用意",
+  "reading": "ようい",
+  "gloss": {
+   "en": "preparation"
+  }
+ },
+ "w0253": {
+  "id": "w0253",
+  "w": "用いる",
+  "reading": "もちいる",
+  "gloss": {
+   "en": "to use (formal)"
+  }
+ },
+ "w0254": {
+  "id": "w0254",
+  "w": "意見",
+  "reading": "いけん",
+  "gloss": {
+   "en": "opinion"
+  }
+ },
+ "w0255": {
+  "id": "w0255",
+  "w": "意味",
+  "reading": "いみ",
+  "gloss": {
+   "en": "meaning"
+  },
+  "sentences": [
+   {
+    "ja": "この言葉の意味は何ですか。",
+    "t": {
+     "en": "What does this word mean?"
+    }
+   },
+   {
+    "ja": "意味が分かりません。",
+    "t": {
+     "en": "I don't understand the meaning."
+    }
+   }
+  ],
+  "alt": [
+   {
+    "w": "訳",
+    "reading": "やく",
+    "gloss": {
+     "en": "translation, sense"
+    }
+   },
+   {
+    "w": "内容",
+    "reading": "ないよう",
+    "gloss": {
+     "en": "content"
+    }
+   }
+  ],
+  "kata": []
+ },
+ "w0256": {
+  "id": "w0256",
+  "w": "注意",
+  "reading": "ちゅうい",
+  "gloss": {
+   "en": "caution"
+  }
+ },
+ "w0257": {
+  "id": "w0257",
+  "w": "趣味",
+  "reading": "しゅみ",
+  "gloss": {
+   "en": "hobby"
+  }
+ },
+ "w0258": {
+  "id": "w0258",
+  "w": "味",
+  "reading": "あじ",
+  "gloss": {
+   "en": "taste"
+  }
+ },
+ "w0259": {
+  "id": "w0259",
+  "w": "味見",
+  "reading": "あじみ",
+  "gloss": {
+   "en": "tasting"
+  }
+ },
+ "w0260": {
+  "id": "w0260",
+  "w": "注文",
+  "reading": "ちゅうもん",
+  "gloss": {
+   "en": "an order"
+  }
+ },
+ "w0261": {
+  "id": "w0261",
+  "w": "注射",
+  "reading": "ちゅうしゃ",
+  "gloss": {
+   "en": "injection"
+  }
+ },
+ "w0262": {
+  "id": "w0262",
+  "w": "注ぐ",
+  "reading": "そそぐ",
+  "gloss": {
+   "en": "to pour"
+  }
+ },
+ "w0263": {
+  "id": "w0263",
+  "w": "主人",
+  "reading": "しゅじん",
+  "gloss": {
+   "en": "husband, owner"
+  }
+ },
+ "w0264": {
+  "id": "w0264",
+  "w": "主語",
+  "reading": "しゅご",
+  "gloss": {
+   "en": "grammatical subject"
+  }
+ },
+ "w0265": {
+  "id": "w0265",
+  "w": "主に",
+  "reading": "おもに",
+  "gloss": {
+   "en": "mainly"
+  }
+ },
+ "w0266": {
+  "id": "w0266",
+  "w": "持ち主",
+  "reading": "もちぬし",
+  "gloss": {
+   "en": "owner"
+  }
+ },
+ "w0267": {
+  "id": "w0267",
+  "w": "体重",
+  "reading": "たいじゅう",
+  "gloss": {
+   "en": "body weight"
+  }
+ },
+ "w0268": {
+  "id": "w0268",
+  "w": "重要",
+  "reading": "じゅうよう",
+  "gloss": {
+   "en": "important"
+  }
+ },
+ "w0269": {
+  "id": "w0269",
+  "w": "重い",
+  "reading": "おもい",
+  "gloss": {
+   "en": "heavy"
+  }
+ },
+ "w0270": {
+  "id": "w0270",
+  "w": "重さ",
+  "reading": "おもさ",
+  "gloss": {
+   "en": "weight"
+  }
+ },
+ "w0271": {
+  "id": "w0271",
+  "w": "重ねる",
+  "reading": "かさねる",
+  "gloss": {
+   "en": "to pile up"
+  }
+ },
+ "w0272": {
+  "id": "w0272",
+  "w": "世紀",
+  "reading": "せいき",
+  "gloss": {
+   "en": "century"
+  }
+ },
+ "w0273": {
+  "id": "w0273",
+  "w": "世界",
+  "reading": "せかい",
+  "gloss": {
+   "en": "world"
+  },
+  "sentences": [
+   {
+    "ja": "世界は広いです。",
+    "t": {
+     "en": "The world is wide."
+    }
+   },
+   {
+    "ja": "世界中に友達がいます。",
+    "t": {
+     "en": "I have friends all over the world."
+    }
+   }
+  ],
+  "alt": [
+   {
+    "w": "地球",
+    "reading": "ちきゅう",
+    "gloss": {
+     "en": "the earth"
+    }
+   },
+   {
+    "w": "世の中",
+    "reading": "よのなか",
+    "gloss": {
+     "en": "society, the world"
+    }
+   }
+  ],
+  "kata": [
+   {
+    "w": "ワールド",
+    "reading": "わーるど",
+    "gloss": {
+     "en": "world"
+    }
+   }
+  ]
+ },
+ "w0274": {
+  "id": "w0274",
+  "w": "世話",
+  "reading": "せわ",
+  "gloss": {
+   "en": "care, help"
+  }
+ },
+ "w0275": {
+  "id": "w0275",
+  "w": "世の中",
+  "reading": "よのなか",
+  "gloss": {
+   "en": "society"
+  }
+ },
+ "w0276": {
+  "id": "w0276",
+  "w": "世界中",
+  "reading": "せかいじゅう",
+  "gloss": {
+   "en": "all over the world"
+  }
+ },
+ "w0277": {
+  "id": "w0277",
+  "w": "業界",
+  "reading": "ぎょうかい",
+  "gloss": {
+   "en": "industry"
+  }
+ },
+ "w0278": {
+  "id": "w0278",
+  "w": "開始",
+  "reading": "かいし",
+  "gloss": {
+   "en": "start"
+  }
+ },
+ "w0279": {
+  "id": "w0279",
+  "w": "開く",
+  "reading": "あく",
+  "gloss": {
+   "en": "to open, unfold"
+  }
+ },
+ "w0280": {
+  "id": "w0280",
+  "w": "開ける",
+  "reading": "あける",
+  "gloss": {
+   "en": "to open (tr.)"
+  }
+ },
+ "w0281": {
+  "id": "w0281",
+  "w": "開く",
+  "reading": "ひらく",
+  "gloss": {
+   "en": "to open, unfold"
+  }
+ },
+ "w0282": {
+  "id": "w0282",
+  "w": "始まる",
+  "reading": "はじまる",
+  "gloss": {
+   "en": "to begin (intr.)"
+  }
+ },
+ "w0283": {
+  "id": "w0283",
+  "w": "始める",
+  "reading": "はじめる",
+  "gloss": {
+   "en": "to begin (tr.)"
+  }
+ },
+ "w0284": {
+  "id": "w0284",
+  "w": "運転",
+  "reading": "うんてん",
+  "gloss": {
+   "en": "driving"
+  }
+ },
+ "w0285": {
+  "id": "w0285",
+  "w": "転校",
+  "reading": "てんこう",
+  "gloss": {
+   "en": "changing schools"
+  }
+ },
+ "w0286": {
+  "id": "w0286",
+  "w": "転ぶ",
+  "reading": "ころぶ",
+  "gloss": {
+   "en": "to fall over"
+  }
+ },
+ "w0287": {
+  "id": "w0287",
+  "w": "運動",
+  "reading": "うんどう",
+  "gloss": {
+   "en": "exercise"
+  },
+  "sentences": [
+   {
+    "ja": "毎朝運動します。",
+    "t": {
+     "en": "I exercise every morning."
+    }
+   },
+   {
+    "ja": "運動が足りません。",
+    "t": {
+     "en": "I don't get enough exercise."
+    }
+   }
+  ],
+  "alt": [
+   {
+    "w": "体操",
+    "reading": "たいそう",
+    "gloss": {
+     "en": "gymnastics, exercises"
+    }
+   }
+  ],
+  "kata": [
+   {
+    "w": "スポーツ",
+    "reading": "すぽーつ",
+    "gloss": {
+     "en": "sport"
+    }
+   },
+   {
+    "w": "トレーニング",
+    "reading": "とれーにんぐ",
+    "gloss": {
+     "en": "training"
+    }
+   }
+  ]
+ },
+ "w0288": {
+  "id": "w0288",
+  "w": "幸運",
+  "reading": "こううん",
+  "gloss": {
+   "en": "good luck"
+  }
+ },
+ "w0289": {
+  "id": "w0289",
+  "w": "運ぶ",
+  "reading": "はこぶ",
+  "gloss": {
+   "en": "to carry"
+  }
+ },
+ "w0290": {
+  "id": "w0290",
+  "w": "自動車",
+  "reading": "じどうしゃ",
+  "gloss": {
+   "en": "car"
+  }
+ },
+ "w0291": {
+  "id": "w0291",
+  "w": "動物",
+  "reading": "どうぶつ",
+  "gloss": {
+   "en": "animal"
+  },
+  "sentences": [
+   {
+    "ja": "動物園に行きたい。",
+    "t": {
+     "en": "I want to go to the zoo."
+    }
+   },
+   {
+    "ja": "この動物は速く動く。",
+    "t": {
+     "en": "This animal moves fast."
+    }
+   }
+  ],
+  "alt": [
+   {
+    "w": "生き物",
+    "reading": "いきもの",
+    "gloss": {
+     "en": "living creature"
+    }
+   }
+  ],
+  "kata": [
+   {
+    "w": "ペット",
+    "reading": "ぺっと",
+    "gloss": {
+     "en": "pet"
+    }
+   }
+  ]
+ },
+ "w0292": {
+  "id": "w0292",
+  "w": "動く",
+  "reading": "うごく",
+  "gloss": {
+   "en": "to move"
+  }
+ },
+ "w0293": {
+  "id": "w0293",
+  "w": "動かす",
+  "reading": "うごかす",
+  "gloss": {
+   "en": "to move (tr.)"
+  }
+ },
+ "w0294": {
+  "id": "w0294",
+  "w": "見物",
+  "reading": "けんぶつ",
+  "gloss": {
+   "en": "sightseeing"
+  }
+ },
+ "w0295": {
+  "id": "w0295",
+  "w": "荷物",
+  "reading": "にもつ",
+  "gloss": {
+   "en": "luggage"
+  },
+  "sentences": [
+   {
+    "ja": "荷物を運びます。",
+    "t": {
+     "en": "I'll carry the luggage."
+    }
+   },
+   {
+    "ja": "荷物が重いです。",
+    "t": {
+     "en": "The luggage is heavy."
+    }
+   }
+  ],
+  "alt": [
+   {
+    "w": "手荷物",
+    "reading": "てにもつ",
+    "gloss": {
+     "en": "hand luggage"
+    }
+   },
+   {
+    "w": "かばん",
+    "reading": "かばん",
+    "gloss": {
+     "en": "bag"
+    }
+   }
+  ],
+  "kata": [
+   {
+    "w": "バッグ",
+    "reading": "ばっぐ",
+    "gloss": {
+     "en": "bag"
+    }
+   },
+   {
+    "w": "スーツケース",
+    "reading": "すーつけーす",
+    "gloss": {
+     "en": "suitcase"
+    }
+   }
+  ]
+ },
+ "w0296": {
+  "id": "w0296",
+  "w": "建物",
+  "reading": "たてもの",
+  "gloss": {
+   "en": "building"
+  }
+ },
+ "w0297": {
+  "id": "w0297",
+  "w": "品物",
+  "reading": "しなもの",
+  "gloss": {
+   "en": "goods"
+  }
+ },
+ "w0298": {
+  "id": "w0298",
+  "w": "忘れ物",
+  "reading": "わすれもの",
+  "gloss": {
+   "en": "lost item"
+  }
+ },
+ "w0299": {
+  "id": "w0299",
+  "w": "活動",
+  "reading": "かつどう",
+  "gloss": {
+   "en": "activity"
+  }
+ },
+ "w0300": {
+  "id": "w0300",
+  "w": "活用",
+  "reading": "かつよう",
+  "gloss": {
+   "en": "practical use"
+  }
+ },
+ "w0301": {
+  "id": "w0301",
+  "w": "漢字",
+  "reading": "かんじ",
+  "gloss": {
+   "en": "kanji"
+  }
+ },
+ "w0302": {
+  "id": "w0302",
+  "w": "漢語",
+  "reading": "かんご",
+  "gloss": {
+   "en": "Sino-Japanese word"
+  }
+ },
+ "w0303": {
+  "id": "w0303",
+  "w": "数字",
+  "reading": "すうじ",
+  "gloss": {
+   "en": "numeral"
+  }
+ },
+ "w0304": {
+  "id": "w0304",
+  "w": "字",
+  "reading": "じ",
+  "gloss": {
+   "en": "character"
+  }
+ },
+ "w0305": {
+  "id": "w0305",
+  "w": "習字",
+  "reading": "しゅうじ",
+  "gloss": {
+   "en": "calligraphy"
+  }
+ },
+ "w0306": {
+  "id": "w0306",
+  "w": "練習",
+  "reading": "れんしゅう",
+  "gloss": {
+   "en": "practice"
+  }
+ },
+ "w0307": {
+  "id": "w0307",
+  "w": "習う",
+  "reading": "ならう",
+  "gloss": {
+   "en": "to learn"
+  }
+ },
+ "w0308": {
+  "id": "w0308",
+  "w": "研究",
+  "reading": "けんきゅう",
+  "gloss": {
+   "en": "research"
+  }
+ },
+ "w0309": {
+  "id": "w0309",
+  "w": "研究室",
+  "reading": "けんきゅうしつ",
+  "gloss": {
+   "en": "laboratory"
+  }
+ },
+ "w0310": {
+  "id": "w0310",
+  "w": "研究者",
+  "reading": "けんきゅうしゃ",
+  "gloss": {
+   "en": "researcher"
+  }
+ },
+ "w0311": {
+  "id": "w0311",
+  "w": "教室",
+  "reading": "きょうしつ",
+  "gloss": {
+   "en": "classroom"
+  }
+ },
+ "w0312": {
+  "id": "w0312",
+  "w": "教科書",
+  "reading": "きょうかしょ",
+  "gloss": {
+   "en": "textbook"
+  }
+ },
+ "w0313": {
+  "id": "w0313",
+  "w": "宗教",
+  "reading": "しゅうきょう",
+  "gloss": {
+   "en": "religion"
+  }
+ },
+ "w0314": {
+  "id": "w0314",
+  "w": "教える",
+  "reading": "おしえる",
+  "gloss": {
+   "en": "to teach"
+  }
+ },
+ "w0315": {
+  "id": "w0315",
+  "w": "室内",
+  "reading": "しつない",
+  "gloss": {
+   "en": "indoors"
+  }
+ },
+ "w0316": {
+  "id": "w0316",
+  "w": "和室",
+  "reading": "わしつ",
+  "gloss": {
+   "en": "Japanese-style room"
+  }
+ },
+ "w0317": {
+  "id": "w0317",
+  "w": "質問",
+  "reading": "しつもん",
+  "gloss": {
+   "en": "question"
+  }
+ },
+ "w0318": {
+  "id": "w0318",
+  "w": "品質",
+  "reading": "ひんしつ",
+  "gloss": {
+   "en": "quality"
+  }
+ },
+ "w0319": {
+  "id": "w0319",
+  "w": "問題",
+  "reading": "もんだい",
+  "gloss": {
+   "en": "problem"
+  }
+ },
+ "w0320": {
+  "id": "w0320",
+  "w": "問う",
+  "reading": "とう",
+  "gloss": {
+   "en": "to ask"
+  }
+ },
+ "w0321": {
+  "id": "w0321",
+  "w": "宿題",
+  "reading": "しゅくだい",
+  "gloss": {
+   "en": "homework"
+  }
+ },
+ "w0322": {
+  "id": "w0322",
+  "w": "話題",
+  "reading": "わだい",
+  "gloss": {
+   "en": "topic"
+  }
+ },
+ "w0323": {
+  "id": "w0323",
+  "w": "答案",
+  "reading": "とうあん",
+  "gloss": {
+   "en": "answer sheet"
+  }
+ },
+ "w0324": {
+  "id": "w0324",
+  "w": "回答",
+  "reading": "かいとう",
+  "gloss": {
+   "en": "reply"
+  }
+ },
+ "w0325": {
+  "id": "w0325",
+  "w": "答える",
+  "reading": "こたえる",
+  "gloss": {
+   "en": "to answer"
+  }
+ },
+ "w0326": {
+  "id": "w0326",
+  "w": "答え",
+  "reading": "こたえ",
+  "gloss": {
+   "en": "an answer"
+  }
+ },
+ "w0327": {
+  "id": "w0327",
+  "w": "参考",
+  "reading": "さんこう",
+  "gloss": {
+   "en": "reference"
+  }
+ },
+ "w0328": {
+  "id": "w0328",
+  "w": "考古学",
+  "reading": "こうこがく",
+  "gloss": {
+   "en": "archaeology"
+  }
+ },
+ "w0329": {
+  "id": "w0329",
+  "w": "考える",
+  "reading": "かんがえる",
+  "gloss": {
+   "en": "to think"
+  }
+ },
+ "w0330": {
+  "id": "w0330",
+  "w": "考え",
+  "reading": "かんがえ",
+  "gloss": {
+   "en": "an idea"
+  }
+ },
+ "w0331": {
+  "id": "w0331",
+  "w": "試験",
+  "reading": "しけん",
+  "gloss": {
+   "en": "examination"
+  }
+ },
+ "w0332": {
+  "id": "w0332",
+  "w": "経験",
+  "reading": "けいけん",
+  "gloss": {
+   "en": "experience"
+  }
+ },
+ "w0333": {
+  "id": "w0333",
+  "w": "実験",
+  "reading": "じっけん",
+  "gloss": {
+   "en": "experiment"
+  }
+ },
+ "w0334": {
+  "id": "w0334",
+  "w": "試合",
+  "reading": "しあい",
+  "gloss": {
+   "en": "match, game"
+  }
+ },
+ "w0335": {
+  "id": "w0335",
+  "w": "試す",
+  "reading": "ためす",
+  "gloss": {
+   "en": "to try"
+  }
+ },
+ "w0336": {
+  "id": "w0336",
+  "w": "作品",
+  "reading": "さくひん",
+  "gloss": {
+   "en": "a work, piece"
+  }
+ },
+ "w0337": {
+  "id": "w0337",
+  "w": "食品",
+  "reading": "しょくひん",
+  "gloss": {
+   "en": "foodstuff"
+  }
+ },
+ "w0338": {
+  "id": "w0338",
+  "w": "作文",
+  "reading": "さくぶん",
+  "gloss": {
+   "en": "composition"
+  }
+ },
+ "w0339": {
+  "id": "w0339",
+  "w": "作業",
+  "reading": "さぎょう",
+  "gloss": {
+   "en": "work, operation"
+  }
+ },
+ "w0340": {
+  "id": "w0340",
+  "w": "作る",
+  "reading": "つくる",
+  "gloss": {
+   "en": "to make"
+  }
+ },
+ "w0341": {
+  "id": "w0341",
+  "w": "授業",
+  "reading": "じゅぎょう",
+  "gloss": {
+   "en": "class, lesson"
+  }
+ },
+ "w0342": {
+  "id": "w0342",
+  "w": "工業",
+  "reading": "こうぎょう",
+  "gloss": {
+   "en": "industry"
+  }
+ },
+ "w0343": {
+  "id": "w0343",
+  "w": "卒業",
+  "reading": "そつぎょう",
+  "gloss": {
+   "en": "graduation"
+  }
+ },
+ "w0344": {
+  "id": "w0344",
+  "w": "生産",
+  "reading": "せいさん",
+  "gloss": {
+   "en": "production"
+  }
+ },
+ "w0345": {
+  "id": "w0345",
+  "w": "産業",
+  "reading": "さんぎょう",
+  "gloss": {
+   "en": "industry"
+  }
+ },
+ "w0346": {
+  "id": "w0346",
+  "w": "お土産",
+  "reading": "おみやげ",
+  "gloss": {
+   "en": "souvenir"
+  }
+ },
+ "w0347": {
+  "id": "w0347",
+  "w": "産む",
+  "reading": "うむ",
+  "gloss": {
+   "en": "to give birth"
+  }
+ },
+ "w0348": {
+  "id": "w0348",
+  "w": "会員",
+  "reading": "かいいん",
+  "gloss": {
+   "en": "member"
+  }
+ },
+ "w0349": {
+  "id": "w0349",
+  "w": "料理",
+  "reading": "りょうり",
+  "gloss": {
+   "en": "cooking"
+  }
+ },
+ "w0350": {
+  "id": "w0350",
+  "w": "料金",
+  "reading": "りょうきん",
+  "gloss": {
+   "en": "fee"
+  }
+ },
+ "w0351": {
+  "id": "w0351",
+  "w": "材料",
+  "reading": "ざいりょう",
+  "gloss": {
+   "en": "ingredients"
+  }
+ },
+ "w0352": {
+  "id": "w0352",
+  "w": "理由",
+  "reading": "りゆう",
+  "gloss": {
+   "en": "reason"
+  }
+ },
+ "w0353": {
+  "id": "w0353",
+  "w": "物理",
+  "reading": "ぶつり",
+  "gloss": {
+   "en": "physics"
+  }
+ },
+ "w0354": {
+  "id": "w0354",
+  "w": "自由",
+  "reading": "じゆう",
+  "gloss": {
+   "en": "freedom"
+  }
+ },
+ "w0355": {
+  "id": "w0355",
+  "w": "自ら",
+  "reading": "みずから",
+  "gloss": {
+   "en": "personally"
+  }
+ },
+ "w0356": {
+  "id": "w0356",
+  "w": "別々",
+  "reading": "べつべつ",
+  "gloss": {
+   "en": "separately"
+  }
+ },
+ "w0357": {
+  "id": "w0357",
+  "w": "特別",
+  "reading": "とくべつ",
+  "gloss": {
+   "en": "special"
+  }
+ },
+ "w0358": {
+  "id": "w0358",
+  "w": "区別",
+  "reading": "くべつ",
+  "gloss": {
+   "en": "distinction"
+  }
+ },
+ "w0359": {
+  "id": "w0359",
+  "w": "別れる",
+  "reading": "わかれる",
+  "gloss": {
+   "en": "to part"
+  }
+ },
+ "w0360": {
+  "id": "w0360",
+  "w": "特急",
+  "reading": "とっきゅう",
+  "gloss": {
+   "en": "express train"
+  }
+ },
+ "w0361": {
+  "id": "w0361",
+  "w": "特徴",
+  "reading": "とくちょう",
+  "gloss": {
+   "en": "feature"
+  }
+ },
+ "w0362": {
+  "id": "w0362",
+  "w": "急行",
+  "reading": "きゅうこう",
+  "gloss": {
+   "en": "express"
+  }
+ },
+ "w0363": {
+  "id": "w0363",
+  "w": "救急車",
+  "reading": "きゅうきゅうしゃ",
+  "gloss": {
+   "en": "ambulance"
+  }
+ },
+ "w0364": {
+  "id": "w0364",
+  "w": "急ぐ",
+  "reading": "いそぐ",
+  "gloss": {
+   "en": "to hurry"
+  }
+ },
+ "w0365": {
+  "id": "w0365",
+  "w": "急に",
+  "reading": "きゅうに",
+  "gloss": {
+   "en": "suddenly"
+  }
+ },
+ "w0366": {
+  "id": "w0366",
+  "w": "放送",
+  "reading": "ほうそう",
+  "gloss": {
+   "en": "broadcast"
+  }
+ },
+ "w0367": {
+  "id": "w0367",
+  "w": "送料",
+  "reading": "そうりょう",
+  "gloss": {
+   "en": "postage"
+  }
+ },
+ "w0368": {
+  "id": "w0368",
+  "w": "送る",
+  "reading": "おくる",
+  "gloss": {
+   "en": "to send"
+  }
+ },
+ "w0369": {
+  "id": "w0369",
+  "w": "見送る",
+  "reading": "みおくる",
+  "gloss": {
+   "en": "to see off"
+  }
+ },
+ "w0370": {
+  "id": "w0370",
+  "w": "待合室",
+  "reading": "まちあいしつ",
+  "gloss": {
+   "en": "waiting room"
+  }
+ },
+ "w0371": {
+  "id": "w0371",
+  "w": "期待",
+  "reading": "きたい",
+  "gloss": {
+   "en": "expectation"
+  }
+ },
+ "w0372": {
+  "id": "w0372",
+  "w": "待つ",
+  "reading": "まつ",
+  "gloss": {
+   "en": "to wait"
+  }
+ },
+ "w0373": {
+  "id": "w0373",
+  "w": "持参",
+  "reading": "じさん",
+  "gloss": {
+   "en": "bringing along"
+  }
+ },
+ "w0374": {
+  "id": "w0374",
+  "w": "所持",
+  "reading": "しょじ",
+  "gloss": {
+   "en": "possession"
+  }
+ },
+ "w0375": {
+  "id": "w0375",
+  "w": "持つ",
+  "reading": "もつ",
+  "gloss": {
+   "en": "to hold"
+  }
+ },
+ "w0376": {
+  "id": "w0376",
+  "w": "持ち物",
+  "reading": "もちもの",
+  "gloss": {
+   "en": "belongings"
+  }
+ }
+}

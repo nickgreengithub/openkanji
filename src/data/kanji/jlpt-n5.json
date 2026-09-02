@@ -1,3623 +1,2257 @@
 [
  {
+  "id": "k0001",
   "c": "生",
   "meaning": {
    "en": "life, birth"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The student was born, lives a life, and grows."
   },
   "g": [
    {
     "r": "セイ",
     "w": [
-     [
-      "生活",
-      "せいかつ",
-      {
-       "en": "daily life"
-      }
-     ],
-     [
-      "学生",
-      "がくせい",
-      {
-       "en": "student"
-      }
-     ],
-     [
-      "先生",
-      "せんせい",
-      {
-       "en": "teacher"
-      }
-     ]
+     "w0001",
+     "w0002",
+     "w0003"
     ]
    },
    {
     "r": "う",
     "w": [
-     [
-      "生まれる",
-      "うまれる",
-      {
-       "en": "to be born"
-      }
-     ]
+     "w0004"
     ]
    },
    {
     "r": "い",
     "w": [
-     [
-      "生きる",
-      "いきる",
-      {
-       "en": "to live"
-      }
-     ]
+     "w0005"
     ]
    }
   ]
  },
  {
+  "id": "k0002",
   "c": "社",
   "meaning": {
    "en": "company, shrine"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The company employee visited the shrine with society in mind."
   },
   "g": [
    {
     "r": "シャ",
     "w": [
-     [
-      "会社",
-      "かいしゃ",
-      {
-       "en": "company"
-      }
-     ],
-     [
-      "社会",
-      "しゃかい",
-      {
-       "en": "society"
-      }
-     ],
-     [
-      "社員",
-      "しゃいん",
-      {
-       "en": "company employee"
-      }
-     ]
+     "w0006",
+     "w0007",
+     "w0008"
     ]
    },
    {
     "r": "やしろ",
     "w": [
-     [
-      "神社",
-      "じんじゃ",
-      {
-       "en": "shrine"
-      }
-     ]
+     "w0009"
     ]
    }
   ]
  },
  {
+  "id": "k0003",
   "c": "店",
   "meaning": {
    "en": "shop"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "At the store opening the shop assistant stood in the department store."
   },
   "g": [
    {
     "r": "テン",
     "w": [
-     [
-      "開店",
-      "かいてん",
-      {
-       "en": "store opening"
-      }
-     ],
-     [
-      "店員",
-      "てんいん",
-      {
-       "en": "shop assistant"
-      }
-     ],
-     [
-      "売店",
-      "ばいてん",
-      {
-       "en": "kiosk"
-      }
-     ]
+     "w0010",
+     "w0011",
+     "w0012"
     ]
    },
    {
     "r": "みせ",
     "w": [
-     [
-      "店",
-      "みせ",
-      {
-       "en": "shop"
-      }
-     ]
+     "w0013"
     ]
    }
   ]
  },
  {
+  "id": "k0004",
   "c": "売",
   "meaning": {
    "en": "sell"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Sales are good at the kiosk, so it sells out and I sell more."
   },
   "g": [
    {
     "r": "バイ",
     "w": [
-     [
-      "売店",
-      "ばいてん",
-      {
-       "en": "kiosk"
-      }
-     ],
-     [
-      "売買",
-      "ばいばい",
-      {
-       "en": "trade"
-      }
-     ]
+     "w0012",
+     "w0014"
     ]
    },
    {
     "r": "う",
     "w": [
-     [
-      "売る",
-      "うる",
-      {
-       "en": "to sell"
-      }
-     ],
-     [
-      "売り切れ",
-      "うりきれ",
-      {
-       "en": "sold out"
-      }
-     ]
+     "w0015",
+     "w0016"
     ]
    }
   ]
  },
  {
+  "id": "k0005",
   "c": "買",
   "meaning": {
    "en": "buy"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "I go shopping and buy things in trade."
   },
   "g": [
    {
     "r": "バイ",
     "w": [
-     [
-      "売買",
-      "ばいばい",
-      {
-       "en": "trade"
-      }
-     ],
-     [
-      "購買",
-      "こうばい",
-      {
-       "en": "purchase"
-      }
-     ]
+     "w0014",
+     "w0017"
     ]
    },
    {
     "r": "か",
     "w": [
-     [
-      "買う",
-      "かう",
-      {
-       "en": "to buy"
-      }
-     ],
-     [
-      "買い物",
-      "かいもの",
-      {
-       "en": "shopping"
-      }
-     ]
+     "w0018",
+     "w0019"
     ]
    }
   ]
  },
  {
+  "id": "k0006",
   "c": "分",
   "meaning": {
    "en": "minute, part"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "For five minutes I understood myself and divided it up."
   },
   "g": [
    {
     "r": "フン",
     "w": [
-     [
-      "五分",
-      "ごふん",
-      {
-       "en": "five minutes"
-      }
-     ],
-     [
-      "何分",
-      "なんぷん",
-      {
-       "en": "how many minutes"
-      }
-     ]
+     "w0020",
+     "w0021"
     ]
    },
    {
     "r": "ブン",
     "w": [
-     [
-      "自分",
-      "じぶん",
-      {
-       "en": "oneself"
-      }
-     ],
-     [
-      "半分",
-      "はんぶん",
-      {
-       "en": "half"
-      }
-     ]
+     "w0022",
+     "w0023"
     ]
    },
    {
     "r": "わ",
     "w": [
-     [
-      "分かる",
-      "わかる",
-      {
-       "en": "to understand"
-      }
-     ],
-     [
-      "分ける",
-      "わける",
-      {
-       "en": "to divide"
-      }
-     ]
+     "w0024",
+     "w0025"
     ]
    }
   ]
  },
  {
+  "id": "k0007",
   "c": "時",
   "meaning": {
    "en": "time, hour"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "At times, the clock shows the hour of the era."
   },
   "g": [
    {
     "r": "ジ",
     "w": [
-     [
-      "時間",
-      "じかん",
-      {
-       "en": "time"
-      }
-     ],
-     [
-      "時計",
-      "とけい",
-      {
-       "en": "clock"
-      }
-     ],
-     [
-      "同時",
-      "どうじ",
-      {
-       "en": "at the same time"
-      }
-     ]
+     "w0026",
+     "w0027",
+     "w0028"
     ]
    },
    {
     "r": "とき",
     "w": [
-     [
-      "時",
-      "とき",
-      {
-       "en": "time, when"
-      }
-     ]
+     "w0029"
     ]
    }
   ]
  },
  {
+  "id": "k0008",
   "c": "間",
   "meaning": {
    "en": "interval, between"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "For a while, in the time between, the person made a mistake."
   },
   "g": [
    {
     "r": "カン",
     "w": [
-     [
-      "時間",
-      "じかん",
-      {
-       "en": "time"
-      }
-     ],
-     [
-      "人間",
-      "にんげん",
-      {
-       "en": "human being"
-      }
-     ],
-     [
-      "空間",
-      "くうかん",
-      {
-       "en": "space"
-      }
-     ]
+     "w0026",
+     "w0030",
+     "w0031"
     ]
    },
    {
     "r": "あいだ",
     "w": [
-     [
-      "間",
-      "あいだ",
-      {
-       "en": "interval, between"
-      }
-     ]
+     "w0032"
     ]
    },
    {
     "r": "ま",
     "w": [
-     [
-      "間違い",
-      "まちがい",
-      {
-       "en": "mistake"
-      }
-     ]
+     "w0033"
     ]
    }
   ]
  },
  {
+  "id": "k0009",
   "c": "一",
   "meaning": {
    "en": "one"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "One person alone took one thing and called it number one."
   },
   "g": [
    {
     "r": "イチ",
     "w": [
-     [
-      "一",
-      "いち",
-      {
-       "en": "one"
-      }
-     ]
+     "w0034"
     ]
    },
    {
     "r": "ひと",
     "w": [
-     [
-      "一つ",
-      "ひとつ",
-      {
-       "en": "one thing"
-      }
-     ],
-     [
-      "一人",
-      "ひとり",
-      {
-       "en": "one person, alone"
-      }
-     ]
+     "w0035",
+     "w0036"
     ]
    }
   ]
  },
  {
+  "id": "k0010",
   "c": "二",
   "meaning": {
    "en": "two"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Two people carried two things, two apiece."
   },
   "g": [
    {
     "r": "ニ",
     "w": [
-     [
-      "二",
-      "に",
-      {
-       "en": "two"
-      }
-     ]
+     "w0037"
     ]
    },
    {
     "r": "ふた",
     "w": [
-     [
-      "二つ",
-      "ふたつ",
-      {
-       "en": "two things"
-      }
-     ],
-     [
-      "二人",
-      "ふたり",
-      {
-       "en": "two people"
-      }
-     ]
+     "w0038",
+     "w0039"
     ]
    }
   ]
  },
  {
+  "id": "k0011",
   "c": "三",
   "meaning": {
    "en": "three"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Three people shared three things between the three of them."
   },
   "g": [
    {
     "r": "サン",
     "w": [
-     [
-      "三",
-      "さん",
-      {
-       "en": "three"
-      }
-     ],
-     [
-      "三人",
-      "さんにん",
-      {
-       "en": "three people"
-      }
-     ]
+     "w0040",
+     "w0041"
     ]
    },
    {
     "r": "みっ",
     "w": [
-     [
-      "三つ",
-      "みっつ",
-      {
-       "en": "three things"
-      }
-     ]
+     "w0042"
     ]
    }
   ]
  },
  {
+  "id": "k0012",
   "c": "四",
   "meaning": {
    "en": "four"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "In April four things arrived, one for each of the four."
   },
   "g": [
    {
     "r": "シ",
     "w": [
-     [
-      "四",
-      "し",
-      {
-       "en": "four"
-      }
-     ],
-     [
-      "四月",
-      "しがつ",
-      {
-       "en": "April"
-      }
-     ]
+     "w0043",
+     "w0044"
     ]
    },
    {
     "r": "よっ",
     "w": [
-     [
-      "四つ",
-      "よっつ",
-      {
-       "en": "four things"
-      }
-     ]
+     "w0045"
     ]
    }
   ]
  },
  {
+  "id": "k0013",
   "c": "五",
   "meaning": {
    "en": "five"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "By May I had five things, all five in a row."
   },
   "g": [
    {
     "r": "ゴ",
     "w": [
-     [
-      "五",
-      "ご",
-      {
-       "en": "five"
-      }
-     ],
-     [
-      "五月",
-      "ごがつ",
-      {
-       "en": "May"
-      }
-     ]
+     "w0046",
+     "w0047"
     ]
    },
    {
     "r": "いつ",
     "w": [
-     [
-      "五つ",
-      "いつつ",
-      {
-       "en": "five things"
-      }
-     ]
+     "w0048"
     ]
    }
   ]
  },
  {
+  "id": "k0014",
   "c": "六",
   "meaning": {
    "en": "six"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "In June I counted six things, six in all."
   },
   "g": [
    {
     "r": "ロク",
     "w": [
-     [
-      "六",
-      "ろく",
-      {
-       "en": "six"
-      }
-     ],
-     [
-      "六月",
-      "ろくがつ",
-      {
-       "en": "June"
-      }
-     ]
+     "w0049",
+     "w0050"
     ]
    },
    {
     "r": "むっ",
     "w": [
-     [
-      "六つ",
-      "むっつ",
-      {
-       "en": "six things"
-      }
-     ]
+     "w0051"
     ]
    }
   ]
  },
  {
+  "id": "k0015",
   "c": "七",
   "meaning": {
    "en": "seven"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "July brought seven things, seven days apart."
   },
   "g": [
    {
     "r": "シチ",
     "w": [
-     [
-      "七月",
-      "しちがつ",
-      {
-       "en": "July"
-      }
-     ]
+     "w0052"
     ]
    },
    {
     "r": "なな",
     "w": [
-     [
-      "七",
-      "なな",
-      {
-       "en": "seven"
-      }
-     ],
-     [
-      "七つ",
-      "ななつ",
-      {
-       "en": "seven things"
-      }
-     ]
+     "w0053",
+     "w0054"
     ]
    }
   ]
  },
  {
+  "id": "k0016",
   "c": "八",
   "meaning": {
    "en": "eight"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "August held eight things, eight of them exactly."
   },
   "g": [
    {
     "r": "ハチ",
     "w": [
-     [
-      "八",
-      "はち",
-      {
-       "en": "eight"
-      }
-     ],
-     [
-      "八月",
-      "はちがつ",
-      {
-       "en": "August"
-      }
-     ]
+     "w0055",
+     "w0056"
     ]
    },
    {
     "r": "やっ",
     "w": [
-     [
-      "八つ",
-      "やっつ",
-      {
-       "en": "eight things"
-      }
-     ]
+     "w0057"
     ]
    }
   ]
  },
  {
+  "id": "k0017",
   "c": "九",
   "meaning": {
    "en": "nine"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "September ended with nine things, nine and no more."
   },
   "g": [
    {
     "r": "キュウ",
     "w": [
-     [
-      "九",
-      "きゅう",
-      {
-       "en": "nine"
-      }
-     ]
+     "w0058"
     ]
    },
    {
     "r": "ク",
     "w": [
-     [
-      "九月",
-      "くがつ",
-      {
-       "en": "September"
-      }
-     ]
+     "w0059"
     ]
    },
    {
     "r": "ここの",
     "w": [
-     [
-      "九つ",
-      "ここのつ",
-      {
-       "en": "nine things"
-      }
-     ]
+     "w0060"
     ]
    }
   ]
  },
  {
+  "id": "k0018",
   "c": "十",
   "meaning": {
    "en": "ten"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "On the tenth day of October I had counted ten."
   },
   "g": [
    {
     "r": "ジュウ",
     "w": [
-     [
-      "十",
-      "じゅう",
-      {
-       "en": "ten"
-      }
-     ],
-     [
-      "十月",
-      "じゅうがつ",
-      {
-       "en": "October"
-      }
-     ]
+     "w0061",
+     "w0062"
     ]
    },
    {
     "r": "とお",
     "w": [
-     [
-      "十日",
-      "とおか",
-      {
-       "en": "tenth day"
-      }
-     ]
+     "w0063"
     ]
    }
   ]
  },
  {
+  "id": "k0019",
   "c": "百",
   "meaning": {
    "en": "hundred"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "A hundred yen buys a hundred of them."
   },
   "g": [
    {
     "r": "ヒャク",
     "w": [
-     [
-      "百",
-      "ひゃく",
-      {
-       "en": "hundred"
-      }
-     ],
-     [
-      "百円",
-      "ひゃくえん",
-      {
-       "en": "hundred yen"
-      }
-     ]
+     "w0064",
+     "w0065"
     ]
    }
   ]
  },
  {
+  "id": "k0020",
   "c": "千",
   "meaning": {
    "en": "thousand"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "A thousand yen note is worth one thousand."
   },
   "g": [
    {
     "r": "セン",
     "w": [
-     [
-      "千",
-      "せん",
-      {
-       "en": "thousand"
-      }
-     ],
-     [
-      "千円",
-      "せんえん",
-      {
-       "en": "thousand yen"
-      }
-     ]
+     "w0066",
+     "w0067"
     ]
    }
   ]
  },
  {
+  "id": "k0021",
   "c": "万",
   "meaning": {
    "en": "ten thousand"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Ten thousand yen is a single note worth ten thousand."
   },
   "g": [
    {
     "r": "マン",
     "w": [
-     [
-      "万",
-      "まん",
-      {
-       "en": "ten thousand"
-      }
-     ],
-     [
-      "一万円",
-      "いちまんえん",
-      {
-       "en": "ten thousand yen"
-      }
-     ]
+     "w0068",
+     "w0069"
     ]
    }
   ]
  },
  {
+  "id": "k0022",
   "c": "円",
   "meaning": {
    "en": "yen, circle"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The yen coin is a circle worth a hundred yen."
   },
   "g": [
    {
     "r": "エン",
     "w": [
-     [
-      "円",
-      "えん",
-      {
-       "en": "yen, circle"
-      }
-     ],
-     [
-      "百円",
-      "ひゃくえん",
-      {
-       "en": "hundred yen"
-      }
-     ]
+     "w0070",
+     "w0065"
     ]
    }
   ]
  },
  {
+  "id": "k0023",
   "c": "日",
   "meaning": {
    "en": "sun, day"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Every day the sun rises over Japan, Sunday included."
   },
   "g": [
    {
     "r": "ニチ",
     "w": [
-     [
-      "毎日",
-      "まいにち",
-      {
-       "en": "every day"
-      }
-     ],
-     [
-      "日曜日",
-      "にちようび",
-      {
-       "en": "Sunday"
-      }
-     ]
+     "w0071",
+     "w0072"
     ]
    },
    {
     "r": "ニ",
     "w": [
-     [
-      "日本",
-      "にほん",
-      {
-       "en": "Japan"
-      }
-     ]
+     "w0073"
     ]
    },
    {
     "r": "ひ",
     "w": [
-     [
-      "日",
-      "ひ",
-      {
-       "en": "sun, day"
-      }
-     ]
+     "w0074"
     ]
    }
   ]
  },
  {
+  "id": "k0024",
   "c": "月",
   "meaning": {
    "en": "moon, month"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "On Monday in January I watched the moon for a month."
   },
   "g": [
    {
     "r": "ゲツ",
     "w": [
-     [
-      "月曜日",
-      "げつようび",
-      {
-       "en": "Monday"
-      }
-     ]
+     "w0075"
     ]
    },
    {
     "r": "ガツ",
     "w": [
-     [
-      "一月",
-      "いちがつ",
-      {
-       "en": "January"
-      }
-     ]
+     "w0076"
     ]
    },
    {
     "r": "つき",
     "w": [
-     [
-      "月",
-      "つき",
-      {
-       "en": "moon, month"
-      }
-     ]
+     "w0077"
     ]
    }
   ]
  },
  {
+  "id": "k0025",
   "c": "火",
   "meaning": {
    "en": "fire"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "On Tuesday we lit a fire."
   },
   "g": [
    {
     "r": "カ",
     "w": [
-     [
-      "火曜日",
-      "かようび",
-      {
-       "en": "Tuesday"
-      }
-     ]
+     "w0078"
     ]
    },
    {
     "r": "ひ",
     "w": [
-     [
-      "火",
-      "ひ",
-      {
-       "en": "fire"
-      }
-     ]
+     "w0079"
     ]
    }
   ]
  },
  {
+  "id": "k0026",
   "c": "水",
   "meaning": {
    "en": "water"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "On Wednesday I drank the water."
   },
   "g": [
    {
     "r": "スイ",
     "w": [
-     [
-      "水曜日",
-      "すいようび",
-      {
-       "en": "Wednesday"
-      }
-     ]
+     "w0080"
     ]
    },
    {
     "r": "みず",
     "w": [
-     [
-      "水",
-      "みず",
-      {
-       "en": "water"
-      }
-     ]
+     "w0081"
     ]
    }
   ]
  },
  {
+  "id": "k0027",
   "c": "木",
   "meaning": {
    "en": "tree, wood"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "On Thursday I sat under a tree and carved the wood."
   },
   "g": [
    {
     "r": "モク",
     "w": [
-     [
-      "木曜日",
-      "もくようび",
-      {
-       "en": "Thursday"
-      }
-     ]
+     "w0082"
     ]
    },
    {
     "r": "き",
     "w": [
-     [
-      "木",
-      "き",
-      {
-       "en": "tree, wood"
-      }
-     ]
+     "w0083"
     ]
    }
   ]
  },
  {
+  "id": "k0028",
   "c": "金",
   "meaning": {
    "en": "gold, money"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "On Friday I spent my money and kept the gold."
   },
   "g": [
    {
     "r": "キン",
     "w": [
-     [
-      "金曜日",
-      "きんようび",
-      {
-       "en": "Friday"
-      }
-     ],
-     [
-      "金",
-      "きん",
-      {
-       "en": "gold"
-      }
-     ]
+     "w0084",
+     "w0085"
     ]
    },
    {
     "r": "かね",
     "w": [
-     [
-      "お金",
-      "おかね",
-      {
-       "en": "money"
-      }
-     ]
+     "w0086"
     ]
    }
   ]
  },
  {
+  "id": "k0029",
   "c": "土",
   "meaning": {
    "en": "earth, soil"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "On Saturday I turned the soil and worked the earth."
   },
   "g": [
    {
     "r": "ド",
     "w": [
-     [
-      "土曜日",
-      "どようび",
-      {
-       "en": "Saturday"
-      }
-     ]
+     "w0087"
     ]
    },
    {
     "r": "つち",
     "w": [
-     [
-      "土",
-      "つち",
-      {
-       "en": "earth, soil"
-      }
-     ]
+     "w0088"
     ]
    }
   ]
  },
  {
+  "id": "k0030",
   "c": "曜",
   "meaning": {
    "en": "weekday"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "What day of the week falls on this weekday?"
   },
   "g": [
    {
     "r": "ヨウ",
     "w": [
-     [
-      "曜日",
-      "ようび",
-      {
-       "en": "day of the week"
-      }
-     ],
-     [
-      "何曜日",
-      "なんようび",
-      {
-       "en": "what day of the week"
-      }
-     ]
+     "w0089",
+     "w0090"
     ]
    }
   ]
  },
  {
+  "id": "k0031",
   "c": "年",
   "meaning": {
    "en": "year"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Last year and this year each lasted a year."
   },
   "g": [
    {
     "r": "ネン",
     "w": [
-     [
-      "去年",
-      "きょねん",
-      {
-       "en": "last year"
-      }
-     ],
-     [
-      "来年",
-      "らいねん",
-      {
-       "en": "next year"
-      }
-     ]
+     "w0091",
+     "w0092"
     ]
    },
    {
     "r": "とし",
     "w": [
-     [
-      "年",
-      "とし",
-      {
-       "en": "year"
-      }
-     ]
+     "w0093"
     ]
    }
   ]
  },
  {
+  "id": "k0032",
   "c": "半",
   "meaning": {
    "en": "half"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Half past, and half of it already gone."
   },
   "g": [
    {
     "r": "ハン",
     "w": [
-     [
-      "半",
-      "はん",
-      {
-       "en": "half"
-      }
-     ],
-     [
-      "半分",
-      "はんぶん",
-      {
-       "en": "half"
-      }
-     ]
+     "w0094",
+     "w0023"
     ]
    }
   ]
  },
  {
+  "id": "k0033",
   "c": "今",
   "meaning": {
    "en": "now"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Right now, today, in this year."
   },
   "g": [
    {
     "r": "いま",
     "w": [
-     [
-      "今",
-      "いま",
-      {
-       "en": "now"
-      }
-     ]
+     "w0095"
     ]
    },
    {
     "r": "きょう",
     "w": [
-     [
-      "今日",
-      "きょう",
-      {
-       "en": "today"
-      }
-     ]
+     "w0096"
     ]
    },
    {
     "r": "ことし",
     "w": [
-     [
-      "今年",
-      "ことし",
-      {
-       "en": "this year"
-      }
-     ]
+     "w0097"
     ]
    }
   ]
  },
  {
+  "id": "k0034",
   "c": "上",
   "meaning": {
    "en": "up, above"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Above all else, she is skillful."
   },
   "g": [
    {
     "r": "ジョウ",
     "w": [
-     [
-      "上手",
-      "じょうず",
-      {
-       "en": "skillful"
-      }
-     ]
+     "w0098"
     ]
    },
    {
     "r": "うえ",
     "w": [
-     [
-      "上",
-      "うえ",
-      {
-       "en": "up, above"
-      }
-     ]
+     "w0099"
     ]
    }
   ]
  },
  {
+  "id": "k0035",
   "c": "下",
   "meaning": {
    "en": "down, below"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Below that line, he is unskillful."
   },
   "g": [
    {
     "r": "した",
     "w": [
-     [
-      "下",
-      "した",
-      {
-       "en": "down, below"
-      }
-     ]
+     "w0100"
     ]
    },
    {
     "r": "へた",
     "w": [
-     [
-      "下手",
-      "へた",
-      {
-       "en": "unskillful"
-      }
-     ]
+     "w0101"
     ]
    }
   ]
  },
  {
+  "id": "k0036",
   "c": "中",
   "meaning": {
    "en": "middle, inside"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Inside China, right in the middle."
   },
   "g": [
    {
     "r": "チュウ",
     "w": [
-     [
-      "中国",
-      "ちゅうごく",
-      {
-       "en": "China"
-      }
-     ]
+     "w0102"
     ]
    },
    {
     "r": "なか",
     "w": [
-     [
-      "中",
-      "なか",
-      {
-       "en": "middle, inside"
-      }
-     ]
+     "w0103"
     ]
    }
   ]
  },
  {
+  "id": "k0037",
   "c": "人",
   "meaning": {
    "en": "person"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "One person, then two people, then everyone."
   },
   "g": [
    {
     "r": "ジン",
     "w": [
-     [
-      "外国人",
-      "がいこくじん",
-      {
-       "en": "foreigner"
-      }
-     ]
+     "w0104"
     ]
    },
    {
     "r": "ニン",
     "w": [
-     [
-      "人気",
-      "にんき",
-      {
-       "en": "popularity"
-      }
-     ]
+     "w0105"
     ]
    },
    {
     "r": "ひと",
     "w": [
-     [
-      "人",
-      "ひと",
-      {
-       "en": "person"
-      }
-     ]
+     "w0106"
     ]
    }
   ]
  },
  {
+  "id": "k0038",
   "c": "男",
   "meaning": {
    "en": "man, male"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The man is a male student, a boy no longer."
   },
   "g": [
    {
     "r": "ダン",
     "w": [
-     [
-      "男性",
-      "だんせい",
-      {
-       "en": "male"
-      }
-     ]
+     "w0107"
     ]
    },
    {
     "r": "おとこ",
     "w": [
-     [
-      "男",
-      "おとこ",
-      {
-       "en": "man"
-      }
-     ],
-     [
-      "男の子",
-      "おとこのこ",
-      {
-       "en": "boy"
-      }
-     ]
+     "w0108",
+     "w0109"
     ]
    }
   ]
  },
  {
+  "id": "k0039",
   "c": "女",
   "meaning": {
    "en": "woman, female"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The woman is a female student, a girl no longer."
   },
   "g": [
    {
     "r": "ジョ",
     "w": [
-     [
-      "女性",
-      "じょせい",
-      {
-       "en": "female"
-      }
-     ]
+     "w0110"
     ]
    },
    {
     "r": "おんな",
     "w": [
-     [
-      "女",
-      "おんな",
-      {
-       "en": "woman"
-      }
-     ],
-     [
-      "女の子",
-      "おんなのこ",
-      {
-       "en": "girl"
-      }
-     ]
+     "w0111",
+     "w0112"
     ]
    }
   ]
  },
  {
+  "id": "k0040",
   "c": "子",
   "meaning": {
    "en": "child"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The child is a boy, and that child is a girl."
   },
   "g": [
    {
     "r": "シ",
     "w": [
-     [
-      "椅子",
-      "いす",
-      {
-       "en": "chair"
-      }
-     ]
+     "w0113"
     ]
    },
    {
     "r": "こ",
     "w": [
-     [
-      "子",
-      "こ",
-      {
-       "en": "child"
-      }
-     ],
-     [
-      "子ども",
-      "こども",
-      {
-       "en": "child, kids"
-      }
-     ]
+     "w0114",
+     "w0115"
     ]
    }
   ]
  },
  {
+  "id": "k0041",
   "c": "父",
   "meaning": {
    "en": "father"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "My father, your father, everyone's dad."
   },
   "g": [
    {
     "r": "フ",
     "w": [
-     [
-      "父母",
-      "ふぼ",
-      {
-       "en": "parents"
-      }
-     ]
+     "w0116"
     ]
    },
    {
     "r": "ちち",
     "w": [
-     [
-      "父",
-      "ちち",
-      {
-       "en": "father"
-      }
-     ]
+     "w0117"
     ]
    },
    {
     "r": "とう",
     "w": [
-     [
-      "お父さん",
-      "おとうさん",
-      {
-       "en": "father (polite)"
-      }
-     ]
+     "w0118"
     ]
    }
   ]
  },
  {
+  "id": "k0042",
   "c": "母",
   "meaning": {
    "en": "mother"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "My mother, your mother, everyone's mum."
   },
   "g": [
    {
     "r": "ボ",
     "w": [
-     [
-      "父母",
-      "ふぼ",
-      {
-       "en": "parents"
-      }
-     ]
+     "w0116"
     ]
    },
    {
     "r": "はは",
     "w": [
-     [
-      "母",
-      "はは",
-      {
-       "en": "mother"
-      }
-     ]
+     "w0119"
     ]
    },
    {
     "r": "かあ",
     "w": [
-     [
-      "お母さん",
-      "おかあさん",
-      {
-       "en": "mother (polite)"
-      }
-     ]
+     "w0120"
     ]
    }
   ]
  },
  {
+  "id": "k0043",
   "c": "友",
   "meaning": {
    "en": "friend"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "A friend is a friend, in any language."
   },
   "g": [
    {
     "r": "ユウ",
     "w": [
-     [
-      "友人",
-      "ゆうじん",
-      {
-       "en": "friend (formal)"
-      }
-     ]
+     "w0121"
     ]
    },
    {
     "r": "とも",
     "w": [
-     [
-      "友だち",
-      "ともだち",
-      {
-       "en": "friend"
-      }
-     ]
+     "w0122"
     ]
    }
   ]
  },
  {
+  "id": "k0044",
   "c": "先",
   "meaning": {
    "en": "ahead, previous"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The teacher went ahead of us last week."
   },
   "g": [
    {
     "r": "セン",
     "w": [
-     [
-      "先生",
-      "せんせい",
-      {
-       "en": "teacher"
-      }
-     ],
-     [
-      "先週",
-      "せんしゅう",
-      {
-       "en": "last week"
-      }
-     ]
+     "w0003",
+     "w0123"
     ]
    },
    {
     "r": "さき",
     "w": [
-     [
-      "先",
-      "さき",
-      {
-       "en": "ahead, previous"
-      }
-     ]
+     "w0124"
     ]
    }
   ]
  },
  {
+  "id": "k0045",
   "c": "学",
   "meaning": {
    "en": "study, learning"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "A student studies at the university."
   },
   "g": [
    {
     "r": "ガク",
     "w": [
-     [
-      "学生",
-      "がくせい",
-      {
-       "en": "student"
-      }
-     ],
-     [
-      "大学",
-      "だいがく",
-      {
-       "en": "university"
-      }
-     ]
+     "w0002",
+     "w0125"
     ]
    },
    {
     "r": "まな",
     "w": [
-     [
-      "学ぶ",
-      "まなぶ",
-      {
-       "en": "to study, to learn"
-      }
-     ]
+     "w0126"
     ]
    }
   ]
  },
  {
+  "id": "k0046",
   "c": "校",
   "meaning": {
    "en": "school"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "At school, the high school students gathered."
   },
   "g": [
    {
     "r": "コウ",
     "w": [
-     [
-      "学校",
-      "がっこう",
-      {
-       "en": "school"
-      }
-     ],
-     [
-      "高校",
-      "こうこう",
-      {
-       "en": "high school"
-      }
-     ]
+     "w0127",
+     "w0128"
     ]
    }
   ]
  },
  {
+  "id": "k0047",
   "c": "高",
   "meaning": {
    "en": "high, expensive"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The high school on the hill is expensive."
   },
   "g": [
    {
     "r": "コウ",
     "w": [
-     [
-      "高校",
-      "こうこう",
-      {
-       "en": "high school"
-      }
-     ]
+     "w0128"
     ]
    },
    {
     "r": "たか",
     "w": [
-     [
-      "高い",
-      "たかい",
-      {
-       "en": "high, expensive"
-      }
-     ]
+     "w0129"
     ]
    }
   ]
  },
  {
+  "id": "k0048",
   "c": "大",
   "meaning": {
    "en": "big, large"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "A big university is a large place."
   },
   "g": [
    {
     "r": "ダイ",
     "w": [
-     [
-      "大学",
-      "だいがく",
-      {
-       "en": "university"
-      }
-     ]
+     "w0125"
     ]
    },
    {
     "r": "タイ",
     "w": [
-     [
-      "大切",
-      "たいせつ",
-      {
-       "en": "important"
-      }
-     ]
+     "w0130"
     ]
    },
    {
     "r": "おお",
     "w": [
-     [
-      "大きい",
-      "おおきい",
-      {
-       "en": "big, large"
-      }
-     ]
+     "w0131"
     ]
    }
   ]
  },
  {
+  "id": "k0049",
   "c": "小",
   "meaning": {
    "en": "small, little"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "A small primary school for little ones."
   },
   "g": [
    {
     "r": "ショウ",
     "w": [
-     [
-      "小学校",
-      "しょうがっこう",
-      {
-       "en": "primary school"
-      }
-     ]
+     "w0132"
     ]
    },
    {
     "r": "ちい",
     "w": [
-     [
-      "小さい",
-      "ちいさい",
-      {
-       "en": "small, little"
-      }
-     ]
+     "w0133"
     ]
    }
   ]
  },
  {
+  "id": "k0050",
   "c": "長",
   "meaning": {
    "en": "long, chief"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The company chief gave a long speech."
   },
   "g": [
    {
     "r": "チョウ",
     "w": [
-     [
-      "社長",
-      "しゃちょう",
-      {
-       "en": "company president"
-      }
-     ]
+     "w0134"
     ]
    },
    {
     "r": "なが",
     "w": [
-     [
-      "長い",
-      "ながい",
-      {
-       "en": "long"
-      }
-     ]
+     "w0135"
     ]
    }
   ]
  },
  {
+  "id": "k0051",
   "c": "白",
   "meaning": {
    "en": "white"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "White paper, white walls, all white."
   },
   "g": [
    {
     "r": "ハク",
     "w": [
-     [
-      "白紙",
-      "はくし",
-      {
-       "en": "blank paper"
-      }
-     ]
+     "w0136"
     ]
    },
    {
     "r": "しろ",
     "w": [
-     [
-      "白",
-      "しろ",
-      {
-       "en": "white"
-      }
-     ],
-     [
-      "白い",
-      "しろい",
-      {
-       "en": "white"
-      }
-     ]
+     "w0137",
+     "w0138"
     ]
    }
   ]
  },
  {
+  "id": "k0052",
   "c": "山",
   "meaning": {
    "en": "mountain"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Mount Fuji is the mountain everyone climbs."
   },
   "g": [
    {
     "r": "サン",
     "w": [
-     [
-      "富士山",
-      "ふじさん",
-      {
-       "en": "Mount Fuji"
-      }
-     ]
+     "w0139"
     ]
    },
    {
     "r": "やま",
     "w": [
-     [
-      "山",
-      "やま",
-      {
-       "en": "mountain"
-      }
-     ]
+     "w0140"
     ]
    }
   ]
  },
  {
+  "id": "k0053",
   "c": "川",
   "meaning": {
    "en": "river"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The river runs down beside the mountain."
   },
   "g": [
    {
     "r": "かわ",
     "w": [
-     [
-      "川",
-      "かわ",
-      {
-       "en": "river"
-      }
-     ]
+     "w0141"
     ]
    }
   ]
  },
  {
+  "id": "k0054",
   "c": "天",
   "meaning": {
    "en": "heaven, sky"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The weather in the sky turned fine."
   },
   "g": [
    {
     "r": "テン",
     "w": [
-     [
-      "天気",
-      "てんき",
-      {
-       "en": "weather"
-      }
-     ],
-     [
-      "天",
-      "てん",
-      {
-       "en": "heaven, sky"
-      }
-     ]
+     "w0142",
+     "w0143"
     ]
    }
   ]
  },
  {
+  "id": "k0055",
   "c": "気",
   "meaning": {
    "en": "spirit, energy"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "In good weather my spirit is healthy and full of energy."
   },
   "g": [
    {
     "r": "キ",
     "w": [
-     [
-      "天気",
-      "てんき",
-      {
-       "en": "weather"
-      }
-     ],
-     [
-      "元気",
-      "げんき",
-      {
-       "en": "healthy, energetic"
-      }
-     ]
+     "w0142",
+     "w0144"
     ]
    }
   ]
  },
  {
+  "id": "k0056",
   "c": "雨",
   "meaning": {
    "en": "rain"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Rain fell, and the rainy season began."
   },
   "g": [
    {
     "r": "ウ",
     "w": [
-     [
-      "雨天",
-      "うてん",
-      {
-       "en": "rainy weather"
-      }
-     ]
+     "w0145"
     ]
    },
    {
     "r": "あめ",
     "w": [
-     [
-      "雨",
-      "あめ",
-      {
-       "en": "rain"
-      }
-     ]
+     "w0146"
     ]
    }
   ]
  },
  {
+  "id": "k0057",
   "c": "電",
   "meaning": {
    "en": "electricity"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The electric train runs on electricity, and so does the phone."
   },
   "g": [
    {
     "r": "デン",
     "w": [
-     [
-      "電車",
-      "でんしゃ",
-      {
-       "en": "train"
-      }
-     ],
-     [
-      "電話",
-      "でんわ",
-      {
-       "en": "telephone"
-      }
-     ]
+     "w0147",
+     "w0148"
     ]
    }
   ]
  },
  {
+  "id": "k0058",
   "c": "車",
   "meaning": {
    "en": "car, vehicle"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The car waited while the train passed."
   },
   "g": [
    {
     "r": "シャ",
     "w": [
-     [
-      "電車",
-      "でんしゃ",
-      {
-       "en": "train"
-      }
-     ],
-     [
-      "自転車",
-      "じてんしゃ",
-      {
-       "en": "bicycle"
-      }
-     ]
+     "w0147",
+     "w0149"
     ]
    },
    {
     "r": "くるま",
     "w": [
-     [
-      "車",
-      "くるま",
-      {
-       "en": "car"
-      }
-     ]
+     "w0150"
     ]
    }
   ]
  },
  {
+  "id": "k0059",
   "c": "駅",
   "meaning": {
    "en": "station"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "I met the station attendant at the station."
   },
   "g": [
    {
     "r": "エキ",
     "w": [
-     [
-      "駅",
-      "えき",
-      {
-       "en": "station"
-      }
-     ],
-     [
-      "駅員",
-      "えきいん",
-      {
-       "en": "station attendant"
-      }
-     ]
+     "w0151",
+     "w0152"
     ]
    }
   ]
  },
  {
+  "id": "k0060",
   "c": "国",
   "meaning": {
    "en": "country"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "A foreigner comes from another country."
   },
   "g": [
    {
     "r": "コク",
     "w": [
-     [
-      "外国",
-      "がいこく",
-      {
-       "en": "foreign country"
-      }
-     ]
+     "w0153"
     ]
    },
    {
     "r": "くに",
     "w": [
-     [
-      "国",
-      "くに",
-      {
-       "en": "country"
-      }
-     ]
+     "w0154"
     ]
    }
   ]
  },
  {
+  "id": "k0061",
   "c": "語",
   "meaning": {
    "en": "language, word"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The Japanese language has a word for it."
   },
   "g": [
    {
     "r": "ゴ",
     "w": [
-     [
-      "日本語",
-      "にほんご",
-      {
-       "en": "Japanese language"
-      }
-     ],
-     [
-      "単語",
-      "たんご",
-      {
-       "en": "word"
-      }
-     ]
+     "w0155",
+     "w0156"
     ]
    }
   ]
  },
  {
+  "id": "k0062",
   "c": "話",
   "meaning": {
    "en": "talk, story"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "We talk on the telephone and tell a story."
   },
   "g": [
    {
     "r": "ワ",
     "w": [
-     [
-      "会話",
-      "かいわ",
-      {
-       "en": "conversation"
-      }
-     ],
-     [
-      "電話",
-      "でんわ",
-      {
-       "en": "telephone"
-      }
-     ]
+     "w0157",
+     "w0148"
     ]
    },
    {
     "r": "はな",
     "w": [
-     [
-      "話す",
-      "はなす",
-      {
-       "en": "to talk, to speak"
-      }
-     ]
+     "w0158"
     ]
    }
   ]
  },
  {
+  "id": "k0063",
   "c": "読",
   "meaning": {
    "en": "read"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "I read the book and read it aloud."
   },
   "g": [
    {
     "r": "ドク",
     "w": [
-     [
-      "読書",
-      "どくしょ",
-      {
-       "en": "reading"
-      }
-     ]
+     "w0159"
     ]
    },
    {
     "r": "よ",
     "w": [
-     [
-      "読む",
-      "よむ",
-      {
-       "en": "to read"
-      }
-     ]
+     "w0160"
     ]
    }
   ]
  },
  {
+  "id": "k0064",
   "c": "書",
   "meaning": {
    "en": "write"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "I write in the library and read what I wrote."
   },
   "g": [
    {
     "r": "ショ",
     "w": [
-     [
-      "図書館",
-      "としょかん",
-      {
-       "en": "library"
-      }
-     ],
-     [
-      "読書",
-      "どくしょ",
-      {
-       "en": "reading"
-      }
-     ]
+     "w0161",
+     "w0159"
     ]
    },
    {
     "r": "か",
     "w": [
-     [
-      "書く",
-      "かく",
-      {
-       "en": "to write"
-      }
-     ]
+     "w0162"
     ]
    }
   ]
  },
  {
+  "id": "k0065",
   "c": "見",
   "meaning": {
    "en": "see, look"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Look and see what can be seen."
   },
   "g": [
    {
     "r": "ケン",
     "w": [
-     [
-      "見学",
-      "けんがく",
-      {
-       "en": "study visit"
-      }
-     ]
+     "w0163"
     ]
    },
    {
     "r": "み",
     "w": [
-     [
-      "見る",
-      "みる",
-      {
-       "en": "to see, to look"
-      }
-     ],
-     [
-      "見せる",
-      "みせる",
-      {
-       "en": "to show"
-      }
-     ]
+     "w0164",
+     "w0165"
     ]
    }
   ]
  },
  {
+  "id": "k0066",
   "c": "聞",
   "meaning": {
    "en": "hear, listen"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Listen to the news and hear the story."
   },
   "g": [
    {
     "r": "ブン",
     "w": [
-     [
-      "新聞",
-      "しんぶん",
-      {
-       "en": "newspaper"
-      }
-     ]
+     "w0166"
     ]
    },
    {
     "r": "き",
     "w": [
-     [
-      "聞く",
-      "きく",
-      {
-       "en": "to hear, to listen"
-      }
-     ]
+     "w0167"
     ]
    }
   ]
  },
  {
+  "id": "k0067",
   "c": "行",
   "meaning": {
    "en": "go"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "I go to the bank and go home again."
   },
   "g": [
    {
     "r": "コウ",
     "w": [
-     [
-      "旅行",
-      "りょこう",
-      {
-       "en": "travel"
-      }
-     ],
-     [
-      "銀行",
-      "ぎんこう",
-      {
-       "en": "bank"
-      }
-     ]
+     "w0168",
+     "w0169"
     ]
    },
    {
     "r": "い",
     "w": [
-     [
-      "行く",
-      "いく",
-      {
-       "en": "to go"
-      }
-     ]
+     "w0170"
     ]
    }
   ]
  },
  {
+  "id": "k0068",
   "c": "来",
   "meaning": {
    "en": "come"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Come next week, come again next year."
   },
   "g": [
    {
     "r": "ライ",
     "w": [
-     [
-      "来週",
-      "らいしゅう",
-      {
-       "en": "next week"
-      }
-     ],
-     [
-      "来年",
-      "らいねん",
-      {
-       "en": "next year"
-      }
-     ]
+     "w0171",
+     "w0092"
     ]
    },
    {
     "r": "く",
     "w": [
-     [
-      "来る",
-      "くる",
-      {
-       "en": "to come"
-      }
-     ]
+     "w0172"
     ]
    }
   ]
  },
  {
+  "id": "k0069",
   "c": "出",
   "meaning": {
    "en": "exit, go out"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Go out through the exit and leave."
   },
   "g": [
    {
     "r": "シュツ",
     "w": [
-     [
-      "出発",
-      "しゅっぱつ",
-      {
-       "en": "departure"
-      }
-     ]
+     "w0173"
     ]
    },
    {
     "r": "で",
     "w": [
-     [
-      "出る",
-      "でる",
-      {
-       "en": "to go out, to leave"
-      }
-     ],
-     [
-      "出口",
-      "でぐち",
-      {
-       "en": "exit"
-      }
-     ]
+     "w0174",
+     "w0175"
     ]
    }
   ]
  },
  {
+  "id": "k0070",
   "c": "入",
   "meaning": {
    "en": "enter, go in"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Enter by the entrance and go in."
   },
   "g": [
    {
     "r": "ニュウ",
     "w": [
-     [
-      "入学",
-      "にゅうがく",
-      {
-       "en": "entering school"
-      }
-     ]
+     "w0176"
     ]
    },
    {
     "r": "はい",
     "w": [
-     [
-      "入る",
-      "はいる",
-      {
-       "en": "to enter, to go in"
-      }
-     ]
+     "w0177"
     ]
    },
    {
     "r": "いり",
     "w": [
-     [
-      "入口",
-      "いりぐち",
-      {
-       "en": "entrance"
-      }
-     ]
+     "w0178"
     ]
    }
   ]
  },
  {
+  "id": "k0071",
   "c": "立",
   "meaning": {
    "en": "stand"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Stand up and stand still."
   },
   "g": [
    {
     "r": "リツ",
     "w": [
-     [
-      "国立",
-      "こくりつ",
-      {
-       "en": "national"
-      }
-     ]
+     "w0179"
     ]
    },
    {
     "r": "た",
     "w": [
-     [
-      "立つ",
-      "たつ",
-      {
-       "en": "to stand"
-      }
-     ]
+     "w0180"
     ]
    }
   ]
  },
  {
+  "id": "k0072",
   "c": "休",
   "meaning": {
    "en": "rest"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "On a day off I rest and take a holiday."
   },
   "g": [
    {
     "r": "キュウ",
     "w": [
-     [
-      "休日",
-      "きゅうじつ",
-      {
-       "en": "holiday"
-      }
-     ]
+     "w0181"
     ]
    },
    {
     "r": "やす",
     "w": [
-     [
-      "休む",
-      "やすむ",
-      {
-       "en": "to rest"
-      }
-     ],
-     [
-      "休み",
-      "やすみ",
-      {
-       "en": "day off, break"
-      }
-     ]
+     "w0182",
+     "w0183"
     ]
    }
   ]
  },
  {
+  "id": "k0073",
   "c": "食",
   "meaning": {
    "en": "eat, food"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "I eat my meal in the dining room."
   },
   "g": [
    {
     "r": "ショク",
     "w": [
-     [
-      "食事",
-      "しょくじ",
-      {
-       "en": "meal"
-      }
-     ],
-     [
-      "食堂",
-      "しょくどう",
-      {
-       "en": "dining hall"
-      }
-     ]
+     "w0184",
+     "w0185"
     ]
    },
    {
     "r": "た",
     "w": [
-     [
-      "食べる",
-      "たべる",
-      {
-       "en": "to eat"
-      }
-     ]
+     "w0186"
     ]
    }
   ]
  },
  {
+  "id": "k0074",
   "c": "飲",
   "meaning": {
    "en": "drink"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "I drink a drink with my meal."
   },
   "g": [
    {
     "r": "イン",
     "w": [
-     [
-      "飲食",
-      "いんしょく",
-      {
-       "en": "food and drink"
-      }
-     ]
+     "w0187"
     ]
    },
    {
     "r": "の",
     "w": [
-     [
-      "飲む",
-      "のむ",
-      {
-       "en": "to drink"
-      }
-     ],
-     [
-      "飲み物",
-      "のみもの",
-      {
-       "en": "a drink"
-      }
-     ]
+     "w0188",
+     "w0189"
     ]
    }
   ]
  },
  {
+  "id": "k0075",
   "c": "名",
   "meaning": {
    "en": "name"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Write your name; it is a famous name."
   },
   "g": [
    {
     "r": "メイ",
     "w": [
-     [
-      "有名",
-      "ゆうめい",
-      {
-       "en": "famous"
-      }
-     ]
+     "w0190"
     ]
    },
    {
     "r": "な",
     "w": [
-     [
-      "名前",
-      "なまえ",
-      {
-       "en": "name"
-      }
-     ]
+     "w0191"
     ]
    }
   ]
  },
  {
+  "id": "k0076",
   "c": "口",
   "meaning": {
    "en": "mouth"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The mouth of the exit, the mouth on your face."
   },
   "g": [
    {
     "r": "コウ",
     "w": [
-     [
-      "人口",
-      "じんこう",
-      {
-       "en": "population"
-      }
-     ]
+     "w0192"
     ]
    },
    {
     "r": "くち",
     "w": [
-     [
-      "口",
-      "くち",
-      {
-       "en": "mouth"
-      }
-     ]
+     "w0193"
     ]
    }
   ]
  },
  {
+  "id": "k0077",
   "c": "目",
   "meaning": {
    "en": "eye"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "My eyes woke and the eye opened."
   },
   "g": [
    {
     "r": "モク",
     "w": [
-     [
-      "目的",
-      "もくてき",
-      {
-       "en": "purpose"
-      }
-     ]
+     "w0194"
     ]
    },
    {
     "r": "め",
     "w": [
-     [
-      "目",
-      "め",
-      {
-       "en": "eye"
-      }
-     ]
+     "w0195"
     ]
    }
   ]
  },
  {
+  "id": "k0078",
   "c": "耳",
   "meaning": {
    "en": "ear"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The ear hears what the eye cannot see."
   },
   "g": [
    {
     "r": "みみ",
     "w": [
-     [
-      "耳",
-      "みみ",
-      {
-       "en": "ear"
-      }
-     ]
+     "w0196"
     ]
    }
   ]
  },
  {
+  "id": "k0079",
   "c": "手",
   "meaning": {
    "en": "hand"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "A letter written by hand, held in the hand."
   },
   "g": [
    {
     "r": "シュ",
     "w": [
-     [
-      "手段",
-      "しゅだん",
-      {
-       "en": "means, method"
-      }
-     ]
+     "w0197"
     ]
    },
    {
     "r": "て",
     "w": [
-     [
-      "手",
-      "て",
-      {
-       "en": "hand"
-      }
-     ],
-     [
-      "手紙",
-      "てがみ",
-      {
-       "en": "letter"
-      }
-     ]
+     "w0198",
+     "w0199"
     ]
    }
   ]
  },
  {
+  "id": "k0080",
   "c": "足",
   "meaning": {
    "en": "foot, leg"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "My legs are tired, so my feet stopped."
   },
   "g": [
    {
     "r": "ソク",
     "w": [
-     [
-      "不足",
-      "ふそく",
-      {
-       "en": "shortage"
-      }
-     ]
+     "w0200"
     ]
    },
    {
     "r": "あし",
     "w": [
-     [
-      "足",
-      "あし",
-      {
-       "en": "foot, leg"
-      }
-     ]
+     "w0201"
     ]
    }
   ]
  },
  {
+  "id": "k0081",
   "c": "空",
   "meaning": {
    "en": "sky, empty"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The sky is empty above the airport."
   },
   "g": [
    {
     "r": "クウ",
     "w": [
-     [
-      "空港",
-      "くうこう",
-      {
-       "en": "airport"
-      }
-     ],
-     [
-      "空気",
-      "くうき",
-      {
-       "en": "air"
-      }
-     ]
+     "w0202",
+     "w0203"
     ]
    },
    {
     "r": "そら",
     "w": [
-     [
-      "空",
-      "そら",
-      {
-       "en": "sky"
-      }
-     ]
+     "w0204"
     ]
    }
   ]
  },
  {
+  "id": "k0082",
   "c": "花",
   "meaning": {
    "en": "flower"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The flower opened, a fireworks flower in the sky."
   },
   "g": [
    {
     "r": "カ",
     "w": [
-     [
-      "花火",
-      "はなび",
-      {
-       "en": "fireworks"
-      }
-     ]
+     "w0205"
     ]
    },
    {
     "r": "はな",
     "w": [
-     [
-      "花",
-      "はな",
-      {
-       "en": "flower"
-      }
-     ]
+     "w0206"
     ]
    }
   ]
  },
  {
+  "id": "k0083",
   "c": "魚",
   "meaning": {
    "en": "fish"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The fish in the fish shop came from the river."
   },
   "g": [
    {
     "r": "ギョ",
     "w": [
-     [
-      "金魚",
-      "きんぎょ",
-      {
-       "en": "goldfish"
-      }
-     ]
+     "w0207"
     ]
    },
    {
     "r": "さかな",
     "w": [
-     [
-      "魚",
-      "さかな",
-      {
-       "en": "fish"
-      }
-     ]
+     "w0208"
     ]
    }
   ]
  },
  {
+  "id": "k0084",
   "c": "犬",
   "meaning": {
    "en": "dog"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The dog barked; it was a big dog."
   },
   "g": [
    {
     "r": "いぬ",
     "w": [
-     [
-      "犬",
-      "いぬ",
-      {
-       "en": "dog"
-      }
-     ]
+     "w0209"
     ]
    }
   ]
  },
  {
+  "id": "k0085",
   "c": "少",
   "meaning": {
    "en": "few, little"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "A little water, and only a few drops."
   },
   "g": [
    {
     "r": "ショウ",
     "w": [
-     [
-      "少年",
-      "しょうねん",
-      {
-       "en": "boy"
-      }
-     ]
+     "w0210"
     ]
    },
    {
     "r": "すこ",
     "w": [
-     [
-      "少し",
-      "すこし",
-      {
-       "en": "a little"
-      }
-     ]
+     "w0211"
     ]
    },
    {
     "r": "すく",
     "w": [
-     [
-      "少ない",
-      "すくない",
-      {
-       "en": "few, not much"
-      }
-     ]
+     "w0212"
     ]
    }
   ]
  },
  {
+  "id": "k0086",
   "c": "多",
   "meaning": {
    "en": "many, much"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Many people, much noise, too many."
   },
   "g": [
    {
     "r": "タ",
     "w": [
-     [
-      "多分",
-      "たぶん",
-      {
-       "en": "probably"
-      }
-     ]
+     "w0213"
     ]
    },
    {
     "r": "おお",
     "w": [
-     [
-      "多い",
-      "おおい",
-      {
-       "en": "many, much"
-      }
-     ]
+     "w0214"
     ]
    }
   ]
  },
  {
+  "id": "k0087",
   "c": "安",
   "meaning": {
    "en": "cheap, safe"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "It is cheap here, and safe too."
   },
   "g": [
    {
     "r": "アン",
     "w": [
-     [
-      "安全",
-      "あんぜん",
-      {
-       "en": "safety"
-      }
-     ],
-     [
-      "安心",
-      "あんしん",
-      {
-       "en": "relief"
-      }
-     ]
+     "w0215",
+     "w0216"
     ]
    },
    {
     "r": "やす",
     "w": [
-     [
-      "安い",
-      "やすい",
-      {
-       "en": "cheap"
-      }
-     ]
+     "w0217"
     ]
    }
   ]
  },
  {
+  "id": "k0088",
   "c": "新",
   "meaning": {
    "en": "new"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "A new newspaper arrived, brand new."
   },
   "g": [
    {
     "r": "シン",
     "w": [
-     [
-      "新聞",
-      "しんぶん",
-      {
-       "en": "newspaper"
-      }
-     ]
+     "w0166"
     ]
    },
    {
     "r": "あたら",
     "w": [
-     [
-      "新しい",
-      "あたらしい",
-      {
-       "en": "new"
-      }
-     ]
+     "w0218"
     ]
    }
   ]
  },
  {
+  "id": "k0089",
   "c": "古",
   "meaning": {
    "en": "old"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The old bookshop sells old books."
   },
   "g": [
    {
     "r": "コ",
     "w": [
-     [
-      "中古",
-      "ちゅうこ",
-      {
-       "en": "secondhand"
-      }
-     ]
+     "w0219"
     ]
    },
    {
     "r": "ふる",
     "w": [
-     [
-      "古い",
-      "ふるい",
-      {
-       "en": "old"
-      }
-     ]
+     "w0220"
     ]
    }
   ]
  },
  {
+  "id": "k0090",
   "c": "早",
   "meaning": {
    "en": "early, fast"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "An early start, a fast finish."
   },
   "g": [
    {
     "r": "ソウ",
     "w": [
-     [
-      "早々",
-      "そうそう",
-      {
-       "en": "promptly"
-      }
-     ]
+     "w0221"
     ]
    },
    {
     "r": "はや",
     "w": [
-     [
-      "早い",
-      "はやい",
-      {
-       "en": "early, fast"
-      }
-     ]
+     "w0222"
     ]
    }
   ]
  },
  {
+  "id": "k0091",
   "c": "力",
   "meaning": {
    "en": "power, strength"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "With effort comes the strength and power to finish."
   },
   "g": [
    {
     "r": "リョク",
     "w": [
-     [
-      "努力",
-      "どりょく",
-      {
-       "en": "effort"
-      }
-     ]
+     "w0223"
     ]
    },
    {
     "r": "ちから",
     "w": [
-     [
-      "力",
-      "ちから",
-      {
-       "en": "power, strength"
-      }
-     ]
+     "w0224"
     ]
    }
   ]
  },
  {
+  "id": "k0092",
   "c": "会",
   "meaning": {
    "en": "meet, meeting"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "We meet at the company for a conversation."
   },
   "g": [
    {
     "r": "カイ",
     "w": [
-     [
-      "会社",
-      "かいしゃ",
-      {
-       "en": "company"
-      }
-     ],
-     [
-      "会話",
-      "かいわ",
-      {
-       "en": "conversation"
-      }
-     ]
+     "w0006",
+     "w0157"
     ]
    },
    {
     "r": "あ",
     "w": [
-     [
-      "会う",
-      "あう",
-      {
-       "en": "to meet"
-      }
-     ]
+     "w0225"
     ]
    }
   ]

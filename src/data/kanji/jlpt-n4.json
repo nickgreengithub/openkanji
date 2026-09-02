@@ -1,2370 +1,1280 @@
 [
  {
+  "id": "k0093",
   "c": "楽",
   "meaning": {
    "en": "comfort, music"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Music is fun, so I relax at ease and enjoy it."
   },
   "g": [
    {
     "r": "ガク",
     "w": [
-     [
-      "音楽",
-      "おんがく",
-      {
-       "en": "music"
-      }
-     ]
+     "w0226"
     ]
    },
    {
     "r": "ラク",
     "w": [
-     [
-      "楽",
-      "らく",
-      {
-       "en": "ease, comfort"
-      }
-     ],
-     [
-      "気楽",
-      "きらく",
-      {
-       "en": "at ease"
-      }
-     ]
+     "w0227",
+     "w0228"
     ]
    },
    {
     "r": "たの",
     "w": [
-     [
-      "楽しい",
-      "たのしい",
-      {
-       "en": "fun, enjoyable"
-      }
-     ],
-     [
-      "楽しむ",
-      "たのしむ",
-      {
-       "en": "to enjoy"
-      }
-     ]
+     "w0229",
+     "w0230"
     ]
    }
   ]
  },
  {
+  "id": "k0094",
   "c": "明",
   "meaning": {
    "en": "bright, clear"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Tomorrow, before dawn, I will give a bright explanation of the invention under one light."
   },
   "g": [
    {
     "r": "メイ",
     "w": [
-     [
-      "説明",
-      "せつめい",
-      {
-       "en": "explanation"
-      }
-     ],
-     [
-      "発明",
-      "はつめい",
-      {
-       "en": "invention"
-      }
-     ]
+     "w0231",
+     "w0232"
     ]
    },
    {
     "r": "あか",
     "w": [
-     [
-      "明るい",
-      "あかるい",
-      {
-       "en": "bright"
-      }
-     ],
-     [
-      "明かり",
-      "あかり",
-      {
-       "en": "a light"
-      }
-     ]
+     "w0233",
+     "w0234"
     ]
    },
    {
     "r": "あ",
     "w": [
-     [
-      "明ける",
-      "あける",
-      {
-       "en": "to dawn, end"
-      }
-     ]
+     "w0235"
     ]
    },
    {
     "r": "あした",
     "w": [
-     [
-      "明日",
-      "あした",
-      {
-       "en": "tomorrow"
-      }
-     ]
+     "w0236"
     ]
    },
    {
     "r": "あす",
     "w": [
-     [
-      "明日",
-      "あす",
-      {
-       "en": "tomorrow"
-      }
-     ]
+     "w0237"
     ]
    }
   ]
  },
  {
+  "id": "k0095",
   "c": "音",
   "meaning": {
    "en": "sound, noise"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The sound of footsteps and the tone colour of the music taught me the pronunciation."
   },
   "g": [
    {
     "r": "オン",
     "w": [
-     [
-      "音楽",
-      "おんがく",
-      {
-       "en": "music"
-      }
-     ],
-     [
-      "発音",
-      "はつおん",
-      {
-       "en": "pronunciation"
-      }
-     ]
+     "w0226",
+     "w0238"
     ]
    },
    {
     "r": "おと",
     "w": [
-     [
-      "音",
-      "おと",
-      {
-       "en": "a sound"
-      }
-     ],
-     [
-      "足音",
-      "あしおと",
-      {
-       "en": "footsteps"
-      }
-     ]
+     "w0239",
+     "w0240"
     ]
    },
    {
     "r": "ね",
     "w": [
-     [
-      "音色",
-      "ねいろ",
-      {
-       "en": "tone colour"
-      }
-     ]
+     "w0241"
     ]
    }
   ]
  },
  {
+  "id": "k0096",
   "c": "発",
   "meaning": {
    "en": "depart, emit"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Before the departure of the first train, the presentation about the invention explained the pronunciation."
   },
   "g": [
    {
     "r": "ハツ",
     "w": [
-     [
-      "発音",
-      "はつおん",
-      {
-       "en": "pronunciation"
-      }
-     ],
-     [
-      "発明",
-      "はつめい",
-      {
-       "en": "invention"
-      }
-     ],
-     [
-      "始発",
-      "しはつ",
-      {
-       "en": "first train"
-      }
-     ]
+     "w0238",
+     "w0232",
+     "w0242"
     ]
    },
    {
     "r": "パツ",
     "w": [
-     [
-      "出発",
-      "しゅっぱつ",
-      {
-       "en": "departure"
-      }
-     ]
+     "w0173"
     ]
    },
    {
     "r": "ピョウ",
     "w": [
-     [
-      "発表",
-      "はっぴょう",
-      {
-       "en": "presentation"
-      }
-     ]
+     "w0243"
     ]
    }
   ]
  },
  {
+  "id": "k0097",
   "c": "表",
   "meaning": {
    "en": "surface, express"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The presentation used a chart to express what was on the surface."
   },
   "g": [
    {
     "r": "ヒョウ",
     "w": [
-     [
-      "発表",
-      "はっぴょう",
-      {
-       "en": "presentation"
-      }
-     ],
-     [
-      "表",
-      "ひょう",
-      {
-       "en": "front, surface"
-      }
-     ]
+     "w0243",
+     "w0244"
     ]
    },
    {
     "r": "おもて",
     "w": [
-     [
-      "表",
-      "おもて",
-      {
-       "en": "front, surface"
-      }
-     ]
+     "w0245"
     ]
    },
    {
     "r": "あらわ",
     "w": [
-     [
-      "表す",
-      "あらわす",
-      {
-       "en": "to express"
-      }
-     ]
+     "w0246"
     ]
    }
   ]
  },
  {
+  "id": "k0098",
   "c": "使",
   "meaning": {
    "en": "use, envoy"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "At the embassy they explained the use and how to use it, so I used it."
   },
   "g": [
    {
     "r": "シ",
     "w": [
-     [
-      "使用",
-      "しよう",
-      {
-       "en": "use"
-      }
-     ],
-     [
-      "大使館",
-      "たいしかん",
-      {
-       "en": "embassy"
-      }
-     ]
+     "w0247",
+     "w0248"
     ]
    },
    {
     "r": "つか",
     "w": [
-     [
-      "使う",
-      "つかう",
-      {
-       "en": "to use"
-      }
-     ],
-     [
-      "使い方",
-      "つかいかた",
-      {
-       "en": "how to use"
-      }
-     ]
+     "w0249",
+     "w0250"
     ]
    }
   ]
  },
  {
+  "id": "k0099",
   "c": "用",
   "meaning": {
    "en": "use, task"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "I have an errand, so the preparation and the use of the tool I employ must be ready."
   },
   "g": [
    {
     "r": "ヨウ",
     "w": [
-     [
-      "使用",
-      "しよう",
-      {
-       "en": "use"
-      }
-     ],
-     [
-      "用事",
-      "ようじ",
-      {
-       "en": "errand"
-      }
-     ],
-     [
-      "用意",
-      "ようい",
-      {
-       "en": "preparation"
-      }
-     ]
+     "w0247",
+     "w0251",
+     "w0252"
     ]
    },
    {
     "r": "もち",
     "w": [
-     [
-      "用いる",
-      "もちいる",
-      {
-       "en": "to use (formal)"
-      }
-     ]
+     "w0253"
     ]
    }
   ]
  },
  {
+  "id": "k0100",
   "c": "意",
   "meaning": {
    "en": "mind, intent"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "With caution, prepare your opinion and explain its meaning."
   },
   "g": [
    {
     "r": "イ",
     "w": [
-     [
-      "用意",
-      "ようい",
-      {
-       "en": "preparation"
-      }
-     ],
-     [
-      "意見",
-      "いけん",
-      {
-       "en": "opinion"
-      }
-     ],
-     [
-      "意味",
-      "いみ",
-      {
-       "en": "meaning"
-      }
-     ],
-     [
-      "注意",
-      "ちゅうい",
-      {
-       "en": "caution"
-      }
-     ]
+     "w0252",
+     "w0254",
+     "w0255",
+     "w0256"
     ]
    }
   ]
  },
  {
+  "id": "k0101",
   "c": "味",
   "meaning": {
    "en": "taste, flavour"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The meaning of my hobby is the taste, so I always do a tasting."
   },
   "g": [
    {
     "r": "ミ",
     "w": [
-     [
-      "意味",
-      "いみ",
-      {
-       "en": "meaning"
-      }
-     ],
-     [
-      "趣味",
-      "しゅみ",
-      {
-       "en": "hobby"
-      }
-     ]
+     "w0255",
+     "w0257"
     ]
    },
    {
     "r": "あじ",
     "w": [
-     [
-      "味",
-      "あじ",
-      {
-       "en": "taste"
-      }
-     ],
-     [
-      "味見",
-      "あじみ",
-      {
-       "en": "tasting"
-      }
-     ]
+     "w0258",
+     "w0259"
     ]
    }
   ]
  },
  {
+  "id": "k0102",
   "c": "注",
   "meaning": {
    "en": "pour, note"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "With caution I placed an order, poured the water, and then had an injection."
   },
   "g": [
    {
     "r": "チュウ",
     "w": [
-     [
-      "注意",
-      "ちゅうい",
-      {
-       "en": "caution"
-      }
-     ],
-     [
-      "注文",
-      "ちゅうもん",
-      {
-       "en": "an order"
-      }
-     ],
-     [
-      "注射",
-      "ちゅうしゃ",
-      {
-       "en": "injection"
-      }
-     ]
+     "w0256",
+     "w0260",
+     "w0261"
     ]
    },
    {
     "r": "そそ",
     "w": [
-     [
-      "注ぐ",
-      "そそぐ",
-      {
-       "en": "to pour"
-      }
-     ]
+     "w0262"
     ]
    }
   ]
  },
  {
+  "id": "k0103",
   "c": "主",
   "meaning": {
    "en": "main, master"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The owner is mainly the husband, and he is the subject of the sentence."
   },
   "g": [
    {
     "r": "シュ",
     "w": [
-     [
-      "主人",
-      "しゅじん",
-      {
-       "en": "husband, owner"
-      }
-     ],
-     [
-      "主語",
-      "しゅご",
-      {
-       "en": "grammatical subject"
-      }
-     ]
+     "w0263",
+     "w0264"
     ]
    },
    {
     "r": "おも",
     "w": [
-     [
-      "主に",
-      "おもに",
-      {
-       "en": "mainly"
-      }
-     ]
+     "w0265"
     ]
    },
    {
     "r": "ぬし",
     "w": [
-     [
-      "持ち主",
-      "もちぬし",
-      {
-       "en": "owner"
-      }
-     ]
+     "w0266"
     ]
    }
   ]
  },
  {
+  "id": "k0104",
   "c": "重",
   "meaning": {
    "en": "heavy, pile"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "My body weight is important, because the heavy weight piles up."
   },
   "g": [
    {
     "r": "ジュウ",
     "w": [
-     [
-      "体重",
-      "たいじゅう",
-      {
-       "en": "body weight"
-      }
-     ],
-     [
-      "重要",
-      "じゅうよう",
-      {
-       "en": "important"
-      }
-     ]
+     "w0267",
+     "w0268"
     ]
    },
    {
     "r": "おも",
     "w": [
-     [
-      "重い",
-      "おもい",
-      {
-       "en": "heavy"
-      }
-     ],
-     [
-      "重さ",
-      "おもさ",
-      {
-       "en": "weight"
-      }
-     ]
+     "w0269",
+     "w0270"
     ]
    },
    {
     "r": "かさ",
     "w": [
-     [
-      "重ねる",
-      "かさねる",
-      {
-       "en": "to pile up"
-      }
-     ]
+     "w0271"
     ]
    }
   ]
  },
  {
+  "id": "k0105",
   "c": "世",
   "meaning": {
    "en": "world, generation"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "In this century, society takes care of the world."
   },
   "g": [
    {
     "r": "セイ",
     "w": [
-     [
-      "世紀",
-      "せいき",
-      {
-       "en": "century"
-      }
-     ]
+     "w0272"
     ]
    },
    {
     "r": "セ",
     "w": [
-     [
-      "世界",
-      "せかい",
-      {
-       "en": "world"
-      }
-     ],
-     [
-      "世話",
-      "せわ",
-      {
-       "en": "care, help"
-      }
-     ]
+     "w0273",
+     "w0274"
     ]
    },
    {
     "r": "よ",
     "w": [
-     [
-      "世の中",
-      "よのなか",
-      {
-       "en": "society"
-      }
-     ]
+     "w0275"
     ]
    }
   ]
  },
  {
+  "id": "k0106",
   "c": "界",
   "meaning": {
    "en": "boundary, world"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "All over the world, this industry is the biggest in the world."
   },
   "g": [
    {
     "r": "カイ",
     "w": [
-     [
-      "世界",
-      "せかい",
-      {
-       "en": "world"
-      }
-     ],
-     [
-      "世界中",
-      "せかいじゅう",
-      {
-       "en": "all over the world"
-      }
-     ],
-     [
-      "業界",
-      "ぎょうかい",
-      {
-       "en": "industry"
-      }
-     ]
+     "w0273",
+     "w0276",
+     "w0277"
     ]
    }
   ]
  },
  {
+  "id": "k0107",
   "c": "開",
   "meaning": {
    "en": "open"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "At the store opening the doors open at the start, so I opened them and unfolded the map."
   },
   "g": [
    {
     "r": "カイ",
     "w": [
-     [
-      "開始",
-      "かいし",
-      {
-       "en": "start"
-      }
-     ],
-     [
-      "開店",
-      "かいてん",
-      {
-       "en": "store opening"
-      }
-     ]
+     "w0278",
+     "w0010"
     ]
    },
    {
     "r": "あ",
     "w": [
-     [
-      "開く",
-      "あく",
-      {
-       "en": "to open, unfold"
-      }
-     ],
-     [
-      "開ける",
-      "あける",
-      {
-       "en": "to open (tr.)"
-      }
-     ]
+     "w0279",
+     "w0280"
     ]
    },
    {
     "r": "ひら",
     "w": [
-     [
-      "開く",
-      "ひらく",
-      {
-       "en": "to open, unfold"
-      }
-     ]
+     "w0281"
     ]
    }
   ]
  },
  {
+  "id": "k0108",
   "c": "始",
   "meaning": {
    "en": "begin"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The start is when the first train begins, so I will begin too."
   },
   "g": [
    {
     "r": "シ",
     "w": [
-     [
-      "開始",
-      "かいし",
-      {
-       "en": "start"
-      }
-     ],
-     [
-      "始発",
-      "しはつ",
-      {
-       "en": "first train"
-      }
-     ]
+     "w0278",
+     "w0242"
     ]
    },
    {
     "r": "はじ",
     "w": [
-     [
-      "始まる",
-      "はじまる",
-      {
-       "en": "to begin (intr.)"
-      }
-     ],
-     [
-      "始める",
-      "はじめる",
-      {
-       "en": "to begin (tr.)"
-      }
-     ]
+     "w0282",
+     "w0283"
     ]
    }
   ]
  },
  {
+  "id": "k0109",
   "c": "転",
   "meaning": {
    "en": "revolve, turn"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "After changing schools I fell over while driving my bicycle."
   },
   "g": [
    {
     "r": "テン",
     "w": [
-     [
-      "自転車",
-      "じてんしゃ",
-      {
-       "en": "bicycle"
-      }
-     ],
-     [
-      "運転",
-      "うんてん",
-      {
-       "en": "driving"
-      }
-     ],
-     [
-      "転校",
-      "てんこう",
-      {
-       "en": "changing schools"
-      }
-     ]
+     "w0149",
+     "w0284",
+     "w0285"
     ]
    },
    {
     "r": "ころ",
     "w": [
-     [
-      "転ぶ",
-      "ころぶ",
-      {
-       "en": "to fall over"
-      }
-     ]
+     "w0286"
     ]
    }
   ]
  },
  {
+  "id": "k0110",
   "c": "運",
   "meaning": {
    "en": "carry, luck"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "With good luck, driving and exercise let me carry it."
   },
   "g": [
    {
     "r": "ウン",
     "w": [
-     [
-      "運転",
-      "うんてん",
-      {
-       "en": "driving"
-      }
-     ],
-     [
-      "運動",
-      "うんどう",
-      {
-       "en": "exercise"
-      }
-     ],
-     [
-      "幸運",
-      "こううん",
-      {
-       "en": "good luck"
-      }
-     ]
+     "w0284",
+     "w0287",
+     "w0288"
     ]
    },
    {
     "r": "はこ",
     "w": [
-     [
-      "運ぶ",
-      "はこぶ",
-      {
-       "en": "to carry"
-      }
-     ]
+     "w0289"
     ]
    }
   ]
  },
  {
+  "id": "k0111",
   "c": "動",
   "meaning": {
    "en": "move"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The animal moved the car, and exercise moves my body too."
   },
   "g": [
    {
     "r": "ドウ",
     "w": [
-     [
-      "運動",
-      "うんどう",
-      {
-       "en": "exercise"
-      }
-     ],
-     [
-      "自動車",
-      "じどうしゃ",
-      {
-       "en": "car"
-      }
-     ],
-     [
-      "動物",
-      "どうぶつ",
-      {
-       "en": "animal"
-      }
-     ]
+     "w0287",
+     "w0290",
+     "w0291"
     ]
    },
    {
     "r": "うご",
     "w": [
-     [
-      "動く",
-      "うごく",
-      {
-       "en": "to move"
-      }
-     ],
-     [
-      "動かす",
-      "うごかす",
-      {
-       "en": "to move (tr.)"
-      }
-     ]
+     "w0292",
+     "w0293"
     ]
    }
   ]
  },
  {
+  "id": "k0112",
   "c": "物",
   "meaning": {
    "en": "thing, object"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "While sightseeing I left my luggage and goods in the building, so they became lost items next to an animal."
   },
   "g": [
    {
     "r": "ブツ",
     "w": [
-     [
-      "動物",
-      "どうぶつ",
-      {
-       "en": "animal"
-      }
-     ],
-     [
-      "見物",
-      "けんぶつ",
-      {
-       "en": "sightseeing"
-      }
-     ]
+     "w0291",
+     "w0294"
     ]
    },
    {
     "r": "モツ",
     "w": [
-     [
-      "荷物",
-      "にもつ",
-      {
-       "en": "luggage"
-      }
-     ]
+     "w0295"
     ]
    },
    {
     "r": "もの",
     "w": [
-     [
-      "建物",
-      "たてもの",
-      {
-       "en": "building"
-      }
-     ],
-     [
-      "品物",
-      "しなもの",
-      {
-       "en": "goods"
-      }
-     ],
-     [
-      "忘れ物",
-      "わすれもの",
-      {
-       "en": "lost item"
-      }
-     ]
+     "w0296",
+     "w0297",
+     "w0298"
     ]
    }
   ]
  },
  {
+  "id": "k0113",
   "c": "活",
   "meaning": {
    "en": "life, activity"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Daily life and club activities both make use of my energy."
   },
   "g": [
    {
     "r": "カツ",
     "w": [
-     [
-      "生活",
-      "せいかつ",
-      {
-       "en": "daily life"
-      }
-     ],
-     [
-      "活動",
-      "かつどう",
-      {
-       "en": "activity"
-      }
-     ],
-     [
-      "活用",
-      "かつよう",
-      {
-       "en": "practical use"
-      }
-     ]
+     "w0001",
+     "w0299",
+     "w0300"
     ]
    }
   ]
  },
  {
+  "id": "k0114",
   "c": "漢",
   "meaning": {
    "en": "China, Han"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Chinese characters are called kanji."
   },
   "g": [
    {
     "r": "カン",
     "w": [
-     [
-      "漢字",
-      "かんじ",
-      {
-       "en": "kanji"
-      }
-     ],
-     [
-      "漢語",
-      "かんご",
-      {
-       "en": "Sino-Japanese word"
-      }
-     ]
+     "w0301",
+     "w0302"
     ]
    }
   ]
  },
  {
+  "id": "k0115",
   "c": "字",
   "meaning": {
    "en": "character, letter"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "My handwriting shapes each character and number."
   },
   "g": [
    {
     "r": "ジ",
     "w": [
-     [
-      "漢字",
-      "かんじ",
-      {
-       "en": "kanji"
-      }
-     ],
-     [
-      "数字",
-      "すうじ",
-      {
-       "en": "numeral"
-      }
-     ],
-     [
-      "字",
-      "じ",
-      {
-       "en": "character"
-      }
-     ]
+     "w0301",
+     "w0303",
+     "w0304"
     ]
    }
   ]
  },
  {
+  "id": "k0116",
   "c": "習",
   "meaning": {
    "en": "learn"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "I learn in class, revise what I studied, and practise it."
   },
   "g": [
    {
     "r": "シュウ",
     "w": [
-     [
-      "習字",
-      "しゅうじ",
-      {
-       "en": "calligraphy"
-      }
-     ],
-     [
-      "練習",
-      "れんしゅう",
-      {
-       "en": "practice"
-      }
-     ]
+     "w0305",
+     "w0306"
     ]
    },
    {
     "r": "なら",
     "w": [
-     [
-      "習う",
-      "ならう",
-      {
-       "en": "to learn"
-      }
-     ]
+     "w0307"
     ]
    }
   ]
  },
  {
+  "id": "k0117",
   "c": "研",
   "meaning": {
    "en": "polish, research"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "At the laboratory the researcher polishes the study."
   },
   "g": [
    {
     "r": "ケン",
     "w": [
-     [
-      "研究",
-      "けんきゅう",
-      {
-       "en": "research"
-      }
-     ],
-     [
-      "研究室",
-      "けんきゅうしつ",
-      {
-       "en": "laboratory"
-      }
-     ]
+     "w0308",
+     "w0309"
     ]
    }
   ]
  },
  {
+  "id": "k0118",
   "c": "究",
   "meaning": {
    "en": "investigate"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The research investigates it thoroughly."
   },
   "g": [
    {
     "r": "キュウ",
     "w": [
-     [
-      "研究",
-      "けんきゅう",
-      {
-       "en": "research"
-      }
-     ],
-     [
-      "研究者",
-      "けんきゅうしゃ",
-      {
-       "en": "researcher"
-      }
-     ]
+     "w0308",
+     "w0310"
     ]
    }
   ]
  },
  {
+  "id": "k0119",
   "c": "教",
   "meaning": {
    "en": "teach"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The teacher teaches in the classroom and shares religion."
   },
   "g": [
    {
     "r": "キョウ",
     "w": [
-     [
-      "教室",
-      "きょうしつ",
-      {
-       "en": "classroom"
-      }
-     ],
-     [
-      "教科書",
-      "きょうかしょ",
-      {
-       "en": "textbook"
-      }
-     ],
-     [
-      "宗教",
-      "しゅうきょう",
-      {
-       "en": "religion"
-      }
-     ]
+     "w0311",
+     "w0312",
+     "w0313"
     ]
    },
    {
     "r": "おし",
     "w": [
-     [
-      "教える",
-      "おしえる",
-      {
-       "en": "to teach"
-      }
-     ]
+     "w0314"
     ]
    }
   ]
  },
  {
+  "id": "k0120",
   "c": "室",
   "meaning": {
    "en": "room"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The classroom and the laboratory are both rooms indoors."
   },
   "g": [
    {
     "r": "シツ",
     "w": [
-     [
-      "教室",
-      "きょうしつ",
-      {
-       "en": "classroom"
-      }
-     ],
-     [
-      "室内",
-      "しつない",
-      {
-       "en": "indoors"
-      }
-     ],
-     [
-      "和室",
-      "わしつ",
-      {
-       "en": "Japanese-style room"
-      }
-     ]
+     "w0311",
+     "w0315",
+     "w0316"
     ]
    }
   ]
  },
  {
+  "id": "k0121",
   "c": "質",
   "meaning": {
    "en": "quality, question"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The question was about quality, so I asked politely."
   },
   "g": [
    {
     "r": "シツ",
     "w": [
-     [
-      "質問",
-      "しつもん",
-      {
-       "en": "question"
-      }
-     ],
-     [
-      "品質",
-      "ひんしつ",
-      {
-       "en": "quality"
-      }
-     ]
+     "w0317",
+     "w0318"
     ]
    }
   ]
  },
  {
+  "id": "k0122",
   "c": "問",
   "meaning": {
    "en": "question, ask"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "There is no question or problem, so I inquired."
   },
   "g": [
    {
     "r": "モン",
     "w": [
-     [
-      "質問",
-      "しつもん",
-      {
-       "en": "question"
-      }
-     ],
-     [
-      "問題",
-      "もんだい",
-      {
-       "en": "problem"
-      }
-     ]
+     "w0317",
+     "w0319"
     ]
    },
    {
     "r": "と",
     "w": [
-     [
-      "問う",
-      "とう",
-      {
-       "en": "to ask"
-      }
-     ]
+     "w0320"
     ]
    }
   ]
  },
  {
+  "id": "k0123",
   "c": "題",
   "meaning": {
    "en": "topic, title"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The homework problem had a difficult title."
   },
   "g": [
    {
     "r": "ダイ",
     "w": [
-     [
-      "問題",
-      "もんだい",
-      {
-       "en": "problem"
-      }
-     ],
-     [
-      "宿題",
-      "しゅくだい",
-      {
-       "en": "homework"
-      }
-     ],
-     [
-      "話題",
-      "わだい",
-      {
-       "en": "topic"
-      }
-     ]
+     "w0319",
+     "w0321",
+     "w0322"
     ]
    }
   ]
  },
  {
+  "id": "k0124",
   "c": "答",
   "meaning": {
    "en": "answer"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The answer sheet holds my reply, and I answered."
   },
   "g": [
    {
     "r": "トウ",
     "w": [
-     [
-      "答案",
-      "とうあん",
-      {
-       "en": "answer sheet"
-      }
-     ],
-     [
-      "回答",
-      "かいとう",
-      {
-       "en": "reply"
-      }
-     ]
+     "w0323",
+     "w0324"
     ]
    },
    {
     "r": "こた",
     "w": [
-     [
-      "答える",
-      "こたえる",
-      {
-       "en": "to answer"
-      }
-     ],
-     [
-      "答え",
-      "こたえ",
-      {
-       "en": "an answer"
-      }
-     ]
+     "w0325",
+     "w0326"
     ]
    }
   ]
  },
  {
+  "id": "k0125",
   "c": "考",
   "meaning": {
    "en": "think, consider"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "My idea is that thinking things over is a way of considering."
   },
   "g": [
    {
     "r": "コウ",
     "w": [
-     [
-      "参考",
-      "さんこう",
-      {
-       "en": "reference"
-      }
-     ],
-     [
-      "考古学",
-      "こうこがく",
-      {
-       "en": "archaeology"
-      }
-     ]
+     "w0327",
+     "w0328"
     ]
    },
    {
     "r": "かんが",
     "w": [
-     [
-      "考える",
-      "かんがえる",
-      {
-       "en": "to think"
-      }
-     ],
-     [
-      "考え",
-      "かんがえ",
-      {
-       "en": "an idea"
-      }
-     ]
+     "w0329",
+     "w0330"
     ]
    }
   ]
  },
  {
+  "id": "k0126",
   "c": "験",
   "meaning": {
    "en": "test, verify"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The examination is an experiment in experience."
   },
   "g": [
    {
     "r": "ケン",
     "w": [
-     [
-      "試験",
-      "しけん",
-      {
-       "en": "examination"
-      }
-     ],
-     [
-      "経験",
-      "けいけん",
-      {
-       "en": "experience"
-      }
-     ],
-     [
-      "実験",
-      "じっけん",
-      {
-       "en": "experiment"
-      }
-     ]
+     "w0331",
+     "w0332",
+     "w0333"
     ]
    }
   ]
  },
  {
+  "id": "k0127",
   "c": "試",
   "meaning": {
    "en": "try, test"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "For the exam I did a trial and tried it out."
   },
   "g": [
    {
     "r": "シ",
     "w": [
-     [
-      "試験",
-      "しけん",
-      {
-       "en": "examination"
-      }
-     ],
-     [
-      "試合",
-      "しあい",
-      {
-       "en": "match, game"
-      }
-     ]
+     "w0331",
+     "w0334"
     ]
    },
    {
     "r": "ため",
     "w": [
-     [
-      "試す",
-      "ためす",
-      {
-       "en": "to try"
-      }
-     ]
+     "w0335"
     ]
    }
   ]
  },
  {
+  "id": "k0128",
   "c": "品",
   "meaning": {
    "en": "goods, article"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The product on display is a fine article of goods."
   },
   "g": [
    {
     "r": "ヒン",
     "w": [
-     [
-      "作品",
-      "さくひん",
-      {
-       "en": "a work, piece"
-      }
-     ],
-     [
-      "食品",
-      "しょくひん",
-      {
-       "en": "foodstuff"
-      }
-     ],
-     [
-      "品質",
-      "ひんしつ",
-      {
-       "en": "quality"
-      }
-     ]
+     "w0336",
+     "w0337",
+     "w0318"
     ]
    },
    {
     "r": "しな",
     "w": [
-     [
-      "品物",
-      "しなもの",
-      {
-       "en": "goods"
-      }
-     ]
+     "w0297"
     ]
    }
   ]
  },
  {
+  "id": "k0129",
   "c": "作",
   "meaning": {
    "en": "make, produce"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The farmer makes a work of art and produces a crop."
   },
   "g": [
    {
     "r": "サク",
     "w": [
-     [
-      "作品",
-      "さくひん",
-      {
-       "en": "a work, piece"
-      }
-     ],
-     [
-      "作文",
-      "さくぶん",
-      {
-       "en": "composition"
-      }
-     ]
+     "w0336",
+     "w0338"
     ]
    },
    {
     "r": "サ",
     "w": [
-     [
-      "作業",
-      "さぎょう",
-      {
-       "en": "work, operation"
-      }
-     ]
+     "w0339"
     ]
    },
    {
     "r": "つく",
     "w": [
-     [
-      "作る",
-      "つくる",
-      {
-       "en": "to make"
-      }
-     ]
+     "w0340"
     ]
    }
   ]
  },
  {
+  "id": "k0130",
   "c": "業",
   "meaning": {
    "en": "business, work"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The class is over, so the industry gets on with its business."
   },
   "g": [
    {
     "r": "ギョウ",
     "w": [
-     [
-      "授業",
-      "じゅぎょう",
-      {
-       "en": "class, lesson"
-      }
-     ],
-     [
-      "業界",
-      "ぎょうかい",
-      {
-       "en": "industry"
-      }
-     ],
-     [
-      "工業",
-      "こうぎょう",
-      {
-       "en": "industry"
-      }
-     ]
+     "w0341",
+     "w0277",
+     "w0342"
     ]
    },
    {
     "r": "ゴウ",
     "w": [
-     [
-      "卒業",
-      "そつぎょう",
-      {
-       "en": "graduation"
-      }
-     ]
+     "w0343"
     ]
    }
   ]
  },
  {
+  "id": "k0131",
   "c": "産",
   "meaning": {
    "en": "produce, give birth"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "Local produce comes from an industry that gives birth to goods."
   },
   "g": [
    {
     "r": "サン",
     "w": [
-     [
-      "生産",
-      "せいさん",
-      {
-       "en": "production"
-      }
-     ],
-     [
-      "産業",
-      "さんぎょう",
-      {
-       "en": "industry"
-      }
-     ],
-     [
-      "お土産",
-      "おみやげ",
-      {
-       "en": "souvenir"
-      }
-     ]
+     "w0344",
+     "w0345",
+     "w0346"
     ]
    },
    {
     "r": "う",
     "w": [
-     [
-      "産む",
-      "うむ",
-      {
-       "en": "to give birth"
-      }
-     ]
+     "w0347"
     ]
    }
   ]
  },
  {
+  "id": "k0132",
   "c": "員",
   "meaning": {
    "en": "member, staff"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The staff member is a shop worker and a company employee."
   },
   "g": [
    {
     "r": "イン",
     "w": [
-     [
-      "社員",
-      "しゃいん",
-      {
-       "en": "company employee"
-      }
-     ],
-     [
-      "店員",
-      "てんいん",
-      {
-       "en": "shop assistant"
-      }
-     ],
-     [
-      "会員",
-      "かいいん",
-      {
-       "en": "member"
-      }
-     ]
+     "w0008",
+     "w0011",
+     "w0348"
     ]
    }
   ]
  },
  {
+  "id": "k0133",
   "c": "料",
   "meaning": {
    "en": "fee, material"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The cooking fee covers the ingredients."
   },
   "g": [
    {
     "r": "リョウ",
     "w": [
-     [
-      "料理",
-      "りょうり",
-      {
-       "en": "cooking"
-      }
-     ],
-     [
-      "料金",
-      "りょうきん",
-      {
-       "en": "fee"
-      }
-     ],
-     [
-      "材料",
-      "ざいりょう",
-      {
-       "en": "ingredients"
-      }
-     ]
+     "w0349",
+     "w0350",
+     "w0351"
     ]
    }
   ]
  },
  {
+  "id": "k0134",
   "c": "理",
   "meaning": {
    "en": "reason, logic"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The cooking has its reason, and physics is logical."
   },
   "g": [
    {
     "r": "リ",
     "w": [
-     [
-      "料理",
-      "りょうり",
-      {
-       "en": "cooking"
-      }
-     ],
-     [
-      "理由",
-      "りゆう",
-      {
-       "en": "reason"
-      }
-     ],
-     [
-      "物理",
-      "ぶつり",
-      {
-       "en": "physics"
-      }
-     ]
+     "w0349",
+     "w0352",
+     "w0353"
     ]
    }
   ]
  },
  {
+  "id": "k0135",
   "c": "由",
   "meaning": {
    "en": "reason, cause"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "There is a reason: it is a matter of freedom."
   },
   "g": [
    {
     "r": "ユ",
     "w": [
-     [
-      "理由",
-      "りゆう",
-      {
-       "en": "reason"
-      }
-     ],
-     [
-      "自由",
-      "じゆう",
-      {
-       "en": "freedom"
-      }
-     ]
+     "w0352",
+     "w0354"
     ]
    }
   ]
  },
  {
+  "id": "k0136",
   "c": "自",
   "meaning": {
    "en": "self, oneself"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The car and the bicycle are self-propelled, and I introduce myself."
   },
   "g": [
    {
     "r": "ジ",
     "w": [
-     [
-      "自転車",
-      "じてんしゃ",
-      {
-       "en": "bicycle"
-      }
-     ],
-     [
-      "自動車",
-      "じどうしゃ",
-      {
-       "en": "car"
-      }
-     ],
-     [
-      "自分",
-      "じぶん",
-      {
-       "en": "oneself"
-      }
-     ],
-     [
-      "自由",
-      "じゆう",
-      {
-       "en": "freedom"
-      }
-     ]
+     "w0149",
+     "w0290",
+     "w0022",
+     "w0354"
     ]
    },
    {
     "r": "みずか",
     "w": [
-     [
-      "自ら",
-      "みずから",
-      {
-       "en": "personally"
-      }
-     ]
+     "w0355"
     ]
    }
   ]
  },
  {
+  "id": "k0137",
   "c": "別",
   "meaning": {
    "en": "separate, another"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "On another occasion we said goodbye and went our separate ways."
   },
   "g": [
    {
     "r": "ベツ",
     "w": [
-     [
-      "別々",
-      "べつべつ",
-      {
-       "en": "separately"
-      }
-     ],
-     [
-      "特別",
-      "とくべつ",
-      {
-       "en": "special"
-      }
-     ],
-     [
-      "区別",
-      "くべつ",
-      {
-       "en": "distinction"
-      }
-     ]
+     "w0356",
+     "w0357",
+     "w0358"
     ]
    },
    {
     "r": "わか",
     "w": [
-     [
-      "別れる",
-      "わかれる",
-      {
-       "en": "to part"
-      }
-     ]
+     "w0359"
     ]
    }
   ]
  },
  {
+  "id": "k0138",
   "c": "特",
   "meaning": {
    "en": "special"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The express train is a special feature."
   },
   "g": [
    {
     "r": "トク",
     "w": [
-     [
-      "特別",
-      "とくべつ",
-      {
-       "en": "special"
-      }
-     ],
-     [
-      "特急",
-      "とっきゅう",
-      {
-       "en": "express train"
-      }
-     ],
-     [
-      "特徴",
-      "とくちょう",
-      {
-       "en": "feature"
-      }
-     ]
+     "w0357",
+     "w0360",
+     "w0361"
     ]
    }
   ]
  },
  {
+  "id": "k0139",
   "c": "急",
   "meaning": {
    "en": "hurry, urgent"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "It is urgent, so on the express train I hurried suddenly."
   },
   "g": [
    {
     "r": "キュウ",
     "w": [
-     [
-      "特急",
-      "とっきゅう",
-      {
-       "en": "express train"
-      }
-     ],
-     [
-      "急行",
-      "きゅうこう",
-      {
-       "en": "express"
-      }
-     ],
-     [
-      "救急車",
-      "きゅうきゅうしゃ",
-      {
-       "en": "ambulance"
-      }
-     ]
+     "w0360",
+     "w0362",
+     "w0363"
     ]
    },
    {
     "r": "いそ",
     "w": [
-     [
-      "急ぐ",
-      "いそぐ",
-      {
-       "en": "to hurry"
-      }
-     ]
+     "w0364"
     ]
    },
    {
     "r": "きゅう",
     "w": [
-     [
-      "急に",
-      "きゅうに",
-      {
-       "en": "suddenly"
-      }
-     ]
+     "w0365"
     ]
    }
   ]
  },
  {
+  "id": "k0140",
   "c": "送",
   "meaning": {
    "en": "send"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "I sent the delivery and saw my friend off."
   },
   "g": [
    {
     "r": "ソウ",
     "w": [
-     [
-      "放送",
-      "ほうそう",
-      {
-       "en": "broadcast"
-      }
-     ],
-     [
-      "送料",
-      "そうりょう",
-      {
-       "en": "postage"
-      }
-     ]
+     "w0366",
+     "w0367"
     ]
    },
    {
     "r": "おく",
     "w": [
-     [
-      "送る",
-      "おくる",
-      {
-       "en": "to send"
-      }
-     ],
-     [
-      "見送る",
-      "みおくる",
-      {
-       "en": "to see off"
-      }
-     ]
+     "w0368",
+     "w0369"
     ]
    }
   ]
  },
  {
+  "id": "k0141",
   "c": "待",
   "meaning": {
    "en": "wait"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "In the waiting room I wait with anticipation."
   },
   "g": [
    {
     "r": "タイ",
     "w": [
-     [
-      "待合室",
-      "まちあいしつ",
-      {
-       "en": "waiting room"
-      }
-     ],
-     [
-      "期待",
-      "きたい",
-      {
-       "en": "expectation"
-      }
-     ]
+     "w0370",
+     "w0371"
     ]
    },
    {
     "r": "ま",
     "w": [
-     [
-      "待つ",
-      "まつ",
-      {
-       "en": "to wait"
-      }
-     ]
+     "w0372"
     ]
    }
   ]
  },
  {
+  "id": "k0142",
   "c": "持",
   "meaning": {
    "en": "hold, have"
   },
-  "sentence": {
+  "mnemonic": {
    "en": "The owner holds his belongings and carries them."
   },
   "g": [
    {
     "r": "ジ",
     "w": [
-     [
-      "持参",
-      "じさん",
-      {
-       "en": "bringing along"
-      }
-     ],
-     [
-      "所持",
-      "しょじ",
-      {
-       "en": "possession"
-      }
-     ]
+     "w0373",
+     "w0374"
     ]
    },
    {
     "r": "も",
     "w": [
-     [
-      "持つ",
-      "もつ",
-      {
-       "en": "to hold"
-      }
-     ],
-     [
-      "持ち主",
-      "もちぬし",
-      {
-       "en": "owner"
-      }
-     ],
-     [
-      "持ち物",
-      "もちもの",
-      {
-       "en": "belongings"
-      }
-     ]
+     "w0375",
+     "w0266",
+     "w0376"
     ]
    }
   ]

@@ -21,20 +21,14 @@ const OUT = path.join(ROOT, "index.html");
 // early and blank the page. Escaping every "</" is valid JSON and safe.
 const encodeTemplate = (s) => JSON.stringify(s).replace(/<\//g, "<\\u002F");
 
-// Kanji data lives in src/data/kanji/<deck>.json, one file per deck, with every
-// translation inline on the record it belongs to:
+// Data model (see README):
+//   src/data/words.json         every word once, by stable id
+//   src/data/kanji/<deck>.json  kanji, referencing words by id
+//   src/data/decks.json         deck order      src/data/langs.json  languages
 //
-//   { "c":"\u4e00", "meaning":{"en":"one","es":"uno"},
-//     "sentence":{"en":"..."},
-//     "g":[{"r":"\u30a4\u30c1","w":[["\u4e00","\u3044\u3061",{"en":"one","es":"uno"}]]}] }
-//
-// Everything about a kanji is in one place -- there are no keys to match up
-// between files and so nothing to drift. src/data/decks.json gives load order,
-// src/data/langs.json is the language registry.
-//
-// Adding a deck: a JSON file plus a line in decks.json.
-// Adding a language: add its code to every translated field. A language ships
-// only once it is complete; a partial one fails the build.
+// IDs are stable and never reused: user progress is stored as ids, so the
+// text of a word can be corrected without invalidating anyone's progress.
+// Every human-readable string is {lang: text}.
 const DEFAULT_LANG = "en";
 
 function readJson(rel) {
@@ -45,88 +39,107 @@ function readJson(rel) {
   }
 }
 
-// A translated field is {lang: string}. Returns the set of languages present.
-function langsOf(value, at, field) {
-  if (!value || typeof value !== "object" || Array.isArray(value))
-    throw new Error(at + ": `" + field + "` must be an object of {lang: text}");
-  const codes = Object.keys(value);
-  if (!codes.length) throw new Error(at + ": `" + field + "` has no translations");
-  for (const c of codes) {
-    if (typeof value[c] !== "string" || !value[c].trim())
-      throw new Error(at + ": `" + field + "." + c + "` is empty");
-  }
-  return codes;
-}
-
-function loadKanji() {
+function loadData() {
   const decks = readJson("data/decks.json");
-  const out = [];
-  const seen = new Map();
-  // lang -> number of translated fields carrying it. A language is complete
-  // when it covers every field, which is how "coming soon" is decided.
+  const words = readJson("data/words.json");
+
+  // lang -> count of translated fields carrying it; a language is complete
+  // when it covers every one.
   const coverage = {};
   let fields = 0;
+  const track = (v, at, field) => {
+    fields++;
+    if (!v || typeof v !== "object" || Array.isArray(v)) throw new Error(at + ": `" + field + "` must be {lang: text}");
+    const codes = Object.keys(v);
+    if (!codes.length) throw new Error(at + ": `" + field + "` has no translations");
+    for (const c of codes) {
+      if (typeof v[c] !== "string" || !v[c].trim()) throw new Error(at + ": `" + field + "." + c + "` is empty");
+      coverage[c] = (coverage[c] || 0) + 1;
+    }
+  };
 
+  for (const [id, w] of Object.entries(words)) {
+    const at = "words.json " + id + (w && w.w ? " (" + w.w + ")" : "");
+    if (!w || w.id !== id) throw new Error(at + ": `id` must match its key");
+    if (!w.w || !w.reading) throw new Error(at + ": needs `w` and `reading`");
+    track(w.gloss, at, "gloss");
+    (w.sentences || []).forEach((s, i) => {
+      if (!s.ja) throw new Error(at + " sentence " + i + ": missing `ja`");
+      track(s.t, at + " sentence " + i, "t");
+    });
+    for (const list of ["alt", "kata"]) {
+      (w[list] || []).forEach((x, i) => {
+        if (!x.w || !x.reading) throw new Error(at + " " + list + "[" + i + "]: needs `w` and `reading`");
+        track(x.gloss, at + " " + list + "[" + i + "]", "gloss");
+      });
+    }
+  }
+
+  const kanji = [];
+  const seenChar = new Map();
+  const seenId = new Map();
+  const used = new Set();
   for (const { deck, file } of decks) {
-    const records = readJson("data/kanji/" + file);
-    if (!Array.isArray(records)) throw new Error(file + ": expected an array");
-
-    records.forEach((k, i) => {
+    const recs = readJson("data/kanji/" + file);
+    if (!Array.isArray(recs)) throw new Error(file + ": expected an array");
+    recs.forEach((k, i) => {
       const at = file + "[" + i + "]" + (k && k.c ? " (" + k.c + ")" : "");
-      if (!k || typeof k.c !== "string" || [...k.c].length !== 1)
-        throw new Error(at + ": `c` must be a single character");
+      if (!k || !k.id) throw new Error(at + ": missing `id`");
+      if (typeof k.c !== "string" || [...k.c].length !== 1) throw new Error(at + ": `c` must be a single character");
+      if (seenId.has(k.id)) throw new Error(at + ": id " + k.id + " already used in " + seenId.get(k.id));
+      seenId.set(k.id, file);
+      if (seenChar.has(k.c)) throw new Error(at + ": already defined in " + seenChar.get(k.c));
+      seenChar.set(k.c, file);
+      track(k.meaning, at, "meaning");
+      track(k.mnemonic, at, "mnemonic");
       if (!Array.isArray(k.g) || !k.g.length) throw new Error(at + ": needs at least one reading group");
-
-      const count = (v, field) => {
-        fields++;
-        for (const c of langsOf(v, at, field)) coverage[c] = (coverage[c] || 0) + 1;
-      };
-      count(k.meaning, "meaning");
-      count(k.sentence, "sentence");
-
       k.g.forEach((g) => {
         if (!g.r) throw new Error(at + ": a reading group is missing `r`");
         if (!Array.isArray(g.w) || !g.w.length) throw new Error(at + " group " + g.r + ": needs at least one word");
-        g.w.forEach((w) => {
-          if (!Array.isArray(w) || w.length !== 3 || typeof w[0] !== "string" || typeof w[1] !== "string")
-            throw new Error(at + " group " + g.r + ": each word must be [surface, reading, {lang: gloss}]");
-          count(w[2], "gloss for \"" + w[0] + "\"");
+        g.w.forEach((id) => {
+          // Referential integrity: a kanji may not point at a word that is gone.
+          if (!words[id]) throw new Error(at + " group " + g.r + ": unknown word id " + id);
+          used.add(id);
         });
       });
-
-      // One deck per kanji: duplicates would double-count progress.
-      if (seen.has(k.c)) throw new Error(at + ": already defined in " + seen.get(k.c));
-      seen.set(k.c, file);
-      out.push(Object.assign({}, k, { deck }));
+      kanji.push(Object.assign({}, k, { deck }));
     });
   }
+
+  const orphans = Object.keys(words).filter((id) => !used.has(id));
+  if (orphans.length) throw new Error("words.json: " + orphans.length + " word(s) referenced by no kanji: " + orphans.slice(0, 5).join(", "));
 
   const complete = Object.keys(coverage).filter((c) => coverage[c] === fields);
   const partial = Object.keys(coverage).filter((c) => coverage[c] !== fields);
   if (!complete.includes(DEFAULT_LANG))
-    throw new Error(
-      "the default language '" + DEFAULT_LANG + "' is incomplete: " +
-      (coverage[DEFAULT_LANG] || 0) + "/" + fields + " fields"
-    );
-  return { records: out, complete, partial, fields };
+    throw new Error("default language '" + DEFAULT_LANG + "' is incomplete: " + (coverage[DEFAULT_LANG] || 0) + "/" + fields + " fields");
+  return { kanji, words, complete, partial, coverage, fields };
 }
 
-// Flatten to the shape the app consumes: meaning/sentence/gloss as plain
-// strings in `lang`. Missing entries fall back to the default language.
 const pick = (v, lang) => v[lang] || v[DEFAULT_LANG];
-function flatten(records, lang) {
-  return records.map((k) => ({
+
+// Join into the shape the app consumes. A word tuple is
+// [surface, reading, gloss, id] -- the id is what progress is keyed on.
+function flatten(kanji, words, lang) {
+  return kanji.map((k) => ({
+    id: k.id,
     c: k.c,
     deck: k.deck,
     meaning: pick(k.meaning, lang),
-    sentence: pick(k.sentence, lang),
-    g: k.g.map((g) => ({ r: g.r, w: g.w.map((w) => [w[0], w[1], pick(w[2], lang)]) })),
+    sentence: pick(k.mnemonic, lang),
+    g: k.g.map((g) => ({
+      r: g.r,
+      w: g.w.map((id) => {
+        const w = words[id];
+        return [w.w, w.reading, pick(w.gloss, lang), id];
+      }),
+    })),
   }));
 }
 
 function loadKanjiAndLangs() {
   const langs = readJson("data/langs.json");
-  const { records, complete, partial, fields } = loadKanji();
+  const { kanji, words, complete, partial, coverage, fields } = loadData();
 
   const known = new Set(langs.map((l) => l.code.toLowerCase()));
   for (const c of complete.concat(partial)) {
@@ -139,15 +152,15 @@ function loadKanjiAndLangs() {
     const code = l.code.toLowerCase();
     if (!complete.includes(code) || code === DEFAULT_LANG) continue;
     const t = {};
-    for (const k of records) {
-      const words = {};
-      for (const g of k.g) for (const w of g.w) words[w[0]] = pick(w[2], code);
-      t[k.c] = { meaning: pick(k.meaning, code), sentence: pick(k.sentence, code), words };
+    for (const k of kanji) {
+      const w = {};
+      for (const g of k.g) for (const id of g.w) w[id] = pick(words[id].gloss, code);
+      t[k.c] = { meaning: pick(k.meaning, code), sentence: pick(k.mnemonic, code), words: w };
     }
     i18n[l.code] = t;
   }
 
-  return { data: flatten(records, DEFAULT_LANG), i18n, langs, available, partial, fields };
+  return { data: flatten(kanji, words, DEFAULT_LANG), i18n, langs, available, partial, coverage, fields };
 }
 
 function build() {
@@ -164,7 +177,7 @@ function build() {
     };
   }
 
-  const { data, i18n, langs, available, partial, fields } = loadKanjiAndLangs();
+  const { data, i18n, langs, available, partial, coverage, fields } = loadKanjiAndLangs();
 
   let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
   const tokens = {
@@ -187,7 +200,7 @@ function build() {
     (available.length < langs.length ? " (" + (langs.length - available.length) + " pending)" : "")
   );
   for (const c of partial) {
-    console.log("  note: '" + c + "' is incomplete and will not ship");
+    console.log("  note: '" + c + "' is incomplete (" + coverage[c] + "/" + fields + " fields) and will not ship");
   }
 
   const shell = fs.readFileSync(path.join(SRC, "shell.html"), "utf8");

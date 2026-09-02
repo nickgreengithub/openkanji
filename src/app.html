@@ -1049,7 +1049,7 @@ const localizeData = (code) => {
     const e = t[k.c];
     if (!e) return k;
     return { c: k.c, deck: k.deck, meaning: e.meaning || k.meaning, sentence: e.sentence || k.sentence,
-      g: k.g.map(g => ({ r: g.r, w: g.w.map(w => [w[0], w[1], (e.words && e.words[w[0]]) || w[2]]) })) };
+      g: k.g.map(g => ({ r: g.r, w: g.w.map(w => [w[0], w[1], (e.words && e.words[w[3]]) || w[2], w[3]]) })) };
   });
 };
 
@@ -1373,8 +1373,11 @@ class Component extends DCLogic {
       try { return JSON.parse(localStorage.getItem(key) || "{}") || {}; }
       catch (e) { return null; }
     };
-    const s = read("openkanji.seen");
-    const m = read("openkanji.mastered");
+    const s = this.migrateKeys(read("openkanji.seen"));
+    const m = this.migrateKeys(read("openkanji.mastered"));
+    // Write the upgraded keys straight back so the migration happens once.
+    if (s) this.persist(s);
+    if (m) this.persistMastered(m);
     this.bindKeys();
     // Leaving _savedSig null when mastered could not be read keeps isDirty()
     // false, which disables save. Refusing to write is the safe failure: the
@@ -1591,7 +1594,34 @@ class Component extends DCLogic {
   // slots complete together because mastery is keyed by the word itself
   allKeys(list) {
     const out = [];
-    list.forEach(kk => kk.g.forEach(g => g.w.forEach(w => { out.push(w[0]); })));
+    list.forEach(kk => kk.g.forEach(g => g.w.forEach(w => { out.push(w[3]); })));
+    return out;
+  }
+
+  // Progress used to be keyed on the word's surface text, which conflated
+  // words that share a surface (表 ひょう "chart" vs おもて "surface") and broke
+  // whenever a surface was corrected. It is now keyed on the stable word id.
+  // Old saves are upgraded once, on load; a surface with two readings marks
+  // both, which is the generous reading of what the user meant.
+  migrateKeys(map) {
+    if (!map) return map;
+    const keys = Object.keys(map);
+    if (!keys.length || keys.every(k => /^w\d+$/.test(k))) return map;
+    const bySurface = {};
+    DATA.forEach(k => k.g.forEach(g => g.w.forEach(w => {
+      (bySurface[w[0]] = bySurface[w[0]] || []).push(w[3]);
+    })));
+    const out = {};
+    let moved = 0, dropped = 0;
+    for (const key of keys) {
+      if (!map[key]) continue;
+      if (/^w\d+$/.test(key)) { out[key] = true; continue; }
+      const ids = bySurface[key];
+      if (!ids) { dropped++; continue; }
+      ids.forEach(id => { out[id] = true; });
+      moved++;
+    }
+    try { localStorage.setItem("openkanji.migrated", JSON.stringify({ moved, dropped, at: new Date().toISOString() })); } catch (e) {}
     return out;
   }
 
@@ -1905,7 +1935,7 @@ class Component extends DCLogic {
     const sel = this.state.chatSel;
     const out = [];
     DATA.forEach(dk => dk.g.forEach(g => g.w.forEach(w => {
-      if (!sel[w[0]] || out.some(x => x.indexOf(w[0] + "(") === 0)) return;
+      if (!sel[w[3]] || out.some(x => x.indexOf(w[0] + "(") === 0)) return;
       out.push(w[0] + "(" + w[1] + ") = " + w[2] + " [kanji " + dk.c + "]");
     })));
     return out.length ? out.join("; ") : "empty — the learner has not chosen any words yet";
@@ -2019,7 +2049,7 @@ class Component extends DCLogic {
       return;
     }
     const all = [];
-    DATA.forEach(dk => dk.g.forEach(g => g.w.forEach(w => { if (this.state.chatSel[w[0]]) all.push(w); })));
+    DATA.forEach(dk => dk.g.forEach(g => g.w.forEach(w => { if (this.state.chatSel[w[3]]) all.push(w); })));
     const pick = (pool, n) => {
       const a = pool.slice();
       const out = [];
@@ -2195,13 +2225,13 @@ class Component extends DCLogic {
     const out = [];
     const seenKey = {};
     const add = (kk, w) => {
-      const key = w[0]; // mastery and the words list are both keyed by the word
+      const key = w[3]; // mastery and the words list are keyed by the stable word id
       if (seenKey[key]) return;
       seenKey[key] = true;
       out.push({ key: key, k: kk.c, w: w[0], r: w[1], g: w[2] });
     };
     DATA.forEach(kk => kk.g.forEach(g => g.w.forEach(w => {
-      if (st.chatSel[w[0]]) add(kk, w);
+      if (st.chatSel[w[3]]) add(kk, w);
     })));
     return out;
   }
@@ -2211,7 +2241,7 @@ class Component extends DCLogic {
     const want = {}; keys.forEach(k => { want[k] = true; });
     const found = {};
     DATA.forEach(kk => kk.g.forEach(g => g.w.forEach(w => {
-      if (want[w[0]] && !found[w[0]]) found[w[0]] = { key: w[0], k: kk.c, w: w[0], r: w[1], g: w[2] };
+      if (want[w[3]] && !found[w[3]]) found[w[3]] = { key: w[3], k: kk.c, w: w[0], r: w[1], g: w[2] };
     })));
     return keys.map(k => found[k]).filter(Boolean);
   }
@@ -3480,7 +3510,7 @@ class Component extends DCLogic {
       chatList: (() => {
         const out = [];
         DATA.forEach(dk => dk.g.forEach(g => g.w.forEach(w => {
-          if (!st.chatSel[w[0]] || out.some(x => x.w === w[0])) return;
+          if (!st.chatSel[w[3]] || out.some(x => x.w === w[0])) return;
           out.push({ w: w[0], f: w[1], remove: (e) => { e.stopPropagation(); this.setState(s => { const sel = Object.assign({}, s.chatSel); delete sel[w[0]]; return { chatSel: sel }; }); } });
         })));
         return out;
@@ -3496,7 +3526,7 @@ class Component extends DCLogic {
       usedWords: (() => {
         let typed = String(st.draft || "") + " " + (st.history || []).join(" ");
         const list = [];
-        DATA.forEach(dk => dk.g.forEach(g => g.w.forEach(w => { if (st.chatSel[w[0]] && !list.some(x => x[0] === w[0])) list.push(w); })));
+        DATA.forEach(dk => dk.g.forEach(g => g.w.forEach(w => { if (st.chatSel[w[3]] && !list.some(x => x[0] === w[0])) list.push(w); })));
         // longest words claim their text first, so 楽 does not tick inside 音楽
         const hits = {};
         list.slice().sort((a, b) => b[0].length - a[0].length).forEach(w => {
@@ -3685,7 +3715,7 @@ class Component extends DCLogic {
             showRule: gi > 0 && !g.alt,
             showInnerRule: gi > 0 && !!g.alt,
             rows: g.w.map((w, wi) => {
-              const key = w[0];
+              const key = w[3];
               const at = w[0].indexOf(kk.c);
               const id = "L" + ki + ":" + key;
               return {
