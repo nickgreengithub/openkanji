@@ -1,0 +1,426 @@
+{
+  "kanji_word_list": {
+    "en": "Kanji-word list",
+    "es": "Lista kanji-palabras"
+  },
+  "kanji_progress": {
+    "en": "Kanji progress",
+    "es": "Progreso de kanji"
+  },
+  "word_progress": {
+    "en": "Word progress",
+    "es": "Progreso de palabras"
+  },
+  "mastered_before": {
+    "en": "You have mastered",
+    "es": "Has dominado"
+  },
+  "of_kanji_in": {
+    "en": "of kanji in",
+    "es": "de los kanji de"
+  },
+  "of_words_in": {
+    "en": "of words in",
+    "es": "de las palabras de"
+  },
+  "show_hide_translations": {
+    "en": "Show/hide translations",
+    "es": "Mostrar u ocultar traducciones"
+  },
+  "toggle_hint": {
+    "en": "Click on and off for quick self-study",
+    "es": "Activa y desactiva para autoevaluarte rápido"
+  },
+  "save_progress": {
+    "en": "Save progress",
+    "es": "Guardar progreso"
+  },
+  "save_progress_title": {
+    "en": "Save Progress",
+    "es": "Guardar progreso"
+  },
+  "load_progress": {
+    "en": "Load Progress",
+    "es": "Cargar progreso"
+  },
+  "load_saved_progress": {
+    "en": "Load saved progress",
+    "es": "Cargar progreso guardado"
+  },
+  "save_to_account": {
+    "en": "Save your progress to your account",
+    "es": "Guarda tu progreso en tu cuenta"
+  },
+  "download_file": {
+    "en": "Download your progress as a file",
+    "es": "Descarga tu progreso como archivo"
+  },
+  "study": {
+    "en": "Study",
+    "es": "Estudiar"
+  },
+  "study_kanji": {
+    "en": "Study Kanji",
+    "es": "Estudiar kanji"
+  },
+  "study_words": {
+    "en": "Study Words",
+    "es": "Estudiar palabras"
+  },
+  "flashcards": {
+    "en": "Flashcards",
+    "es": "Tarjetas"
+  },
+  "game": {
+    "en": "game",
+    "es": "juego"
+  },
+  "game_title": {
+    "en": "Game",
+    "es": "Juego"
+  },
+  "memorise": {
+    "en": "memorise",
+    "es": "memorizar"
+  },
+  "write": {
+    "en": "write",
+    "es": "escribir"
+  },
+  "lang_to_kanji": {
+    "en": "English → 漢字",
+    "es": "Español → 漢字"
+  },
+  "easy": {
+    "en": "Easy",
+    "es": "Fácil"
+  },
+  "hard": {
+    "en": "Hard",
+    "es": "Difícil"
+  },
+  "select_fake_word": {
+    "en": "Select the fake word",
+    "es": "Elige la palabra falsa"
+  },
+  "ai_writing_practice": {
+    "en": "AI writing practice",
+    "es": "Práctica de escritura con IA"
+  },
+  "review": {
+    "en": "review",
+    "es": "repaso"
+  },
+  "review_list": {
+    "en": "Review list",
+    "es": "Lista de repaso"
+  },
+  "pdf": {
+    "en": "pdf",
+    "es": "pdf"
+  },
+  "words_list": {
+    "en": "words list",
+    "es": "lista de palabras"
+  },
+  "for_example": {
+    "en": "For example:",
+    "es": "Por ejemplo:"
+  },
+  "verdict": {
+    "en": "verdict",
+    "es": "veredicto"
+  },
+  "natural": {
+    "en": "natural",
+    "es": "natural"
+  },
+  "not_natural": {
+    "en": "not natural",
+    "es": "no natural"
+  },
+  "correction": {
+    "en": "correction",
+    "es": "corrección"
+  },
+  "note": {
+    "en": "note",
+    "es": "nota"
+  },
+  "better": {
+    "en": "better",
+    "es": "mejor"
+  },
+  "coming_soon": {
+    "en": "coming soon",
+    "es": "próximamente"
+  },
+  "soon": {
+    "en": "soon",
+    "es": "pronto"
+  },
+  "game_mode_1": {
+    "en": "english → kanji",
+    "es": "español → kanji"
+  },
+  "game_mode_2": {
+    "en": "english → kanji · confusable",
+    "es": "español → kanji · confusos"
+  },
+  "game_mode_3": {
+    "en": "spot the wrong pair",
+    "es": "encuentra el par incorrecto"
+  },
+  "game_mode_4": {
+    "en": "word → reading",
+    "es": "palabra → lectura"
+  },
+  "tip_jlpt_n1": {
+    "en": "Near-native. ~3000 kanji, academic and literary texts.",
+    "es": "Casi nativo. ~3000 kanji, textos académicos y literarios."
+  },
+  "tip_jlpt_n2": {
+    "en": "Upper-intermediate. ~1000 kanji, newspapers and business.",
+    "es": "Intermedio alto. ~1000 kanji, prensa y negocios."
+  },
+  "tip_jlpt_n3": {
+    "en": "Intermediate. ~650 kanji, everyday conversation and articles.",
+    "es": "Intermedio. ~650 kanji, conversación diaria y artículos."
+  },
+  "tip_jlpt_n4": {
+    "en": "Basic. ~300 kanji, simple daily-life Japanese.",
+    "es": "Básico. ~300 kanji, japonés sencillo de la vida diaria."
+  },
+  "tip_jlpt_n5": {
+    "en": "Beginner. ~100 kanji, first phrases and greetings.",
+    "es": "Principiante. ~100 kanji, primeras frases y saludos."
+  },
+  "tip_core": {
+    "en": "The 1000 most frequent kanji, level-agnostic. Progress is shared with the level decks.",
+    "es": "Los 1000 kanji más frecuentes, sin importar el nivel. El progreso se comparte con los mazos por nivel."
+  },
+  "enter_valid_email": {
+    "en": "Enter a valid email",
+    "es": "Escribe un correo válido"
+  },
+  "check_your_email": {
+    "en": "Check your email",
+    "es": "Revisa tu correo"
+  },
+  "could_not_send_link": {
+    "en": "Could not send link",
+    "es": "No se pudo enviar el enlace"
+  },
+  "save_failed": {
+    "en": "Save failed",
+    "es": "Error al guardar"
+  },
+  "load_failed": {
+    "en": "Load failed",
+    "es": "Error al cargar"
+  },
+  "download_failed": {
+    "en": "Download failed",
+    "es": "Error al descargar"
+  },
+  "not_progress_file": {
+    "en": "Not a progress file",
+    "es": "No es un archivo de progreso"
+  },
+  "loaded_plus": {
+    "en": "Loaded +{n}",
+    "es": "Cargadas +{n}"
+  },
+  "already_up_to_date": {
+    "en": "Already up to date",
+    "es": "Ya está al día"
+  },
+  "nothing_to_save": {
+    "en": "Nothing to save yet",
+    "es": "Nada que guardar todavía"
+  },
+  "check_failed": {
+    "en": "Check failed — try again.",
+    "es": "La revisión falló. Inténtalo de nuevo."
+  },
+  "couldnt_answer": {
+    "en": "Couldn't answer that — try again.",
+    "es": "No pude responder. Inténtalo de nuevo."
+  },
+  "intro_add_words": {
+    "en": "To test your comprehension, go back to the table → click word rows to add them to your WORDS LIST and study them here.",
+    "es": "Para poner a prueba tu comprensión, vuelve a la tabla → haz clic en las filas de palabras para añadirlas a tu LISTA DE PALABRAS y estudiarlas aquí."
+  },
+  "intro_click_rows": {
+    "en": "To test your comprehension, click word rows to add them to your WORDS LIST and study them here.",
+    "es": "Para poner a prueba tu comprensión, haz clic en las filas de palabras para añadirlas a tu LISTA DE PALABRAS y estudiarlas aquí."
+  },
+  "make_any_sentence": {
+    "en": "Make any sentence using your words list.",
+    "es": "Escribe cualquier frase con tu lista de palabras."
+  },
+  "use_together": {
+    "en": " — use these together in one sentence.",
+    "es": " — úsalas juntas en una frase."
+  },
+  "then_try": {
+    "en": " — then try these.",
+    "es": " — luego prueba con estas."
+  },
+  "tap_fake": {
+    "en": "tap the made-up word",
+    "es": "toca la palabra inventada"
+  },
+  "not_real_word": {
+    "en": "{w} is not a real word",
+    "es": "{w} no es una palabra real"
+  },
+  "hint_kanji_pos": {
+    "en": "Kanji position in set",
+    "es": "Posición del kanji en el bloque"
+  },
+  "hint_set": {
+    "en": "Words mastered across {deck}",
+    "es": "Palabras dominadas en {deck}"
+  },
+  "hint_this": {
+    "en": "Words mastered for this kanji",
+    "es": "Palabras dominadas de este kanji"
+  },
+  "kanji_queued": {
+    "en": "{n} kanji queued",
+    "es": "{n} kanji en cola"
+  },
+  "kanji_queued_four": {
+    "en": "{n} kanji queued — four games.",
+    "es": "{n} kanji en cola — cuatro juegos."
+  },
+  "kanji_queued_cards": {
+    "en": "{n} kanji queued — glyph → reading and meaning.",
+    "es": "{n} kanji en cola — signo → lectura y significado."
+  },
+  "kanji_queued_excl": {
+    "en": "{n} kanji queued (mastered kanji are excluded) — click ranges on the home screen to add or remove.",
+    "es": "{n} kanji en cola (se excluyen los dominados) — haz clic en los rangos de la pantalla de inicio para añadir o quitar."
+  },
+  "click_dice": {
+    "en": "Click a range's dice on the grid to queue kanji.",
+    "es": "Haz clic en el dado de un rango para poner kanji en cola."
+  },
+  "click_range_home": {
+    "en": "Click a range (1-10, 11-20 …) on the home screen to add its kanji to a game.",
+    "es": "Haz clic en un rango (1-10, 11-20 …) en la pantalla de inicio para añadir sus kanji a un juego."
+  },
+  "words_in_list_write": {
+    "en": "{n} words in your list — write sentences, graded by Ken-Sensei.",
+    "es": "{n} palabras en tu lista — escribe frases, corregidas por Ken-Sensei."
+  },
+  "words_in_list_cards": {
+    "en": "{n} words in your list — space or click to flip, → next, ← back.",
+    "es": "{n} palabras en tu lista — espacio o clic para girar, → siguiente, ← atrás."
+  },
+  "words_queued_write": {
+    "en": "{n} words queued — click to practise writing with them.",
+    "es": "{n} palabras en cola — haz clic para practicar la escritura."
+  },
+  "add_words_write": {
+    "en": "Add words with + to practise writing with them.",
+    "es": "Añade palabras con + para practicar la escritura."
+  },
+  "add_words_cards": {
+    "en": "Add words with + to drill them here.",
+    "es": "Añade palabras con + para repasarlas aquí."
+  },
+  "cards_reviewed": {
+    "en": "{n} cards reviewed",
+    "es": "{n} tarjetas repasadas"
+  },
+  "correct": {
+    "en": "correct",
+    "es": "correcto"
+  },
+  "not_quite": {
+    "en": "not quite",
+    "es": "casi"
+  },
+  "completed": {
+    "en": "Completed",
+    "es": "Completado"
+  },
+  "not_completed": {
+    "en": "Not completed",
+    "es": "Sin completar"
+  },
+  "completed_both": {
+    "en": "Completed · both readings",
+    "es": "Completado · ambas lecturas"
+  },
+  "not_completed_both": {
+    "en": "Not completed · both readings",
+    "es": "Sin completar · ambas lecturas"
+  },
+  "furigana_on": {
+    "en": "furigana on",
+    "es": "furigana activado"
+  },
+  "furigana_off": {
+    "en": "furigana off",
+    "es": "furigana desactivado"
+  },
+  "seen_on": {
+    "en": "seen it ●",
+    "es": "visto ●"
+  },
+  "seen_off": {
+    "en": "seen it ○",
+    "es": "visto ○"
+  },
+  "ask_sensei": {
+    "en": "Ask Ken-Sensei a question...",
+    "es": "Pregunta algo a Ken-Sensei..."
+  },
+  "needs_work": {
+    "en": "needs work",
+    "es": "necesita trabajo"
+  },
+  "verdict_1": {
+    "en": "A Japanese speaker wouldn't follow this yet.",
+    "es": "Un hablante japonés todavía no lo entendería."
+  },
+  "verdict_2": {
+    "en": "Understandable, but the grammar breaks down.",
+    "es": "Se entiende, pero la gramática falla."
+  },
+  "verdict_3": {
+    "en": "Understood, with a few slips and a stiff feel.",
+    "es": "Se entiende, con algunos deslices y un tono rígido."
+  },
+  "verdict_4": {
+    "en": "Understood and natural — just a couple of slips.",
+    "es": "Se entiende y suena natural, solo un par de deslices."
+  },
+  "verdict_5": {
+    "en": "Correct, but no native would phrase it this way.",
+    "es": "Correcto, pero ningún nativo lo diría así."
+  },
+  "verdict_6": {
+    "en": "Correct and clear, a little stiff.",
+    "es": "Correcto y claro, un poco rígido."
+  },
+  "verdict_7": {
+    "en": "Clear, correct and natural.",
+    "es": "Claro, correcto y natural."
+  },
+  "word_good": {
+    "en": "good",
+    "es": "bien"
+  },
+  "word_almost": {
+    "en": "almost",
+    "es": "casi"
+  },
+  "chars": {
+    "en": " chars",
+    "es": " caracteres"
+  }
+}

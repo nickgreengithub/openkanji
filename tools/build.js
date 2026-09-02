@@ -25,6 +25,7 @@ const encodeTemplate = (s) => JSON.stringify(s).replace(/<\//g, "<\\u002F");
 //   src/data/words.json         every word once, by stable id
 //   src/data/kanji/<deck>.json  kanji, referencing words by id
 //   src/data/<view>.json        a view deck: existing kanji ids in display order
+//   src/data/ui.json            interface strings, {key: {lang: text}}
 //   src/data/decks.json         deck order      src/data/langs.json  languages
 //
 // IDs are stable and never reused: user progress is stored as ids, so the
@@ -113,7 +114,7 @@ function loadData() {
   // View decks: an ordered list of existing kanji ids in data/<order>, no
   // records of their own. A kanji is still defined exactly once; the view
   // re-uses its words, so progress is shared and nothing can drift.
-  for (const { deck, order } of decks) {
+  for (const { deck, order, limit } of decks) {
     if (!order) continue;
     const ids = readJson("data/" + order);
     if (!Array.isArray(ids) || !ids.length) throw new Error(order + ": expected a non-empty array of kanji ids");
@@ -122,9 +123,16 @@ function loadData() {
       if (!byId[id]) throw new Error(order + "[" + i + "]: unknown kanji id " + id);
       if (seen.has(id)) throw new Error(order + "[" + i + "]: id " + id + " listed twice");
       seen.add(id);
+      // `limit` shows only the head of the list; the file keeps the full order.
+      if (limit && i >= limit) return;
       kanji.push(Object.assign({}, byId[id], { deck }));
     });
   }
+
+  // UI chrome -- labels, tips, status messages -- is translated like any other
+  // field, so a language is complete only when it covers the interface too.
+  const ui = readJson("data/ui.json");
+  for (const [key, v] of Object.entries(ui)) track(v, "ui.json " + key, "text");
 
   const orphans = Object.keys(words).filter((id) => !used.has(id));
   if (orphans.length) throw new Error("words.json: " + orphans.length + " word(s) referenced by no kanji: " + orphans.slice(0, 5).join(", "));
@@ -133,7 +141,7 @@ function loadData() {
   const partial = Object.keys(coverage).filter((c) => coverage[c] !== fields);
   if (!complete.includes(DEFAULT_LANG))
     throw new Error("default language '" + DEFAULT_LANG + "' is incomplete: " + (coverage[DEFAULT_LANG] || 0) + "/" + fields + " fields");
-  return { kanji, words, complete, partial, coverage, fields };
+  return { kanji, words, ui, complete, partial, coverage, fields };
 }
 
 const pick = (v, lang) => v[lang] || v[DEFAULT_LANG];
@@ -159,7 +167,7 @@ function flatten(kanji, words, lang) {
 
 function loadKanjiAndLangs() {
   const langs = readJson("data/langs.json");
-  const { kanji, words, complete, partial, coverage, fields } = loadData();
+  const { kanji, words, ui, complete, partial, coverage, fields } = loadData();
 
   const known = new Set(langs.map((l) => l.code.toLowerCase()));
   for (const c of complete.concat(partial)) {
@@ -190,7 +198,15 @@ function loadKanjiAndLangs() {
     exT[id] = per;
   }
 
-  return { data: flatten(kanji, words, DEFAULT_LANG), exT, i18n, langs, available, partial, coverage, fields };
+  // Interface strings by language: { EN: { key: text }, ES: { ... } }.
+  const uiT = {};
+  for (const c of complete) {
+    const t = {};
+    for (const [key, v] of Object.entries(ui)) t[key] = pick(v, c);
+    uiT[c.toUpperCase()] = t;
+  }
+
+  return { data: flatten(kanji, words, DEFAULT_LANG), exT, i18n, uiT, langs, available, partial, coverage, fields };
 }
 
 function build() {
@@ -207,7 +223,7 @@ function build() {
     };
   }
 
-  const { data, exT, i18n, langs, available, partial, coverage, fields } = loadKanjiAndLangs();
+  const { data, exT, i18n, uiT, langs, available, partial, coverage, fields } = loadKanjiAndLangs();
 
   let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
   const tokens = {
@@ -216,6 +232,7 @@ function build() {
     // without a refetch. Incomplete ones are omitted entirely.
     __KANJI_I18N__: JSON.stringify(i18n),
     __EX_TRANSLATIONS__: JSON.stringify(exT),
+    __UI__: JSON.stringify(uiT),
     // code, display name, kanji label, and whether the language is complete.
     __LANGS__: JSON.stringify(
       langs.map((l) => [l.code, l.name, l.ja, available.includes(l.code) ? "" : "soon"])

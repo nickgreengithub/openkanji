@@ -26,6 +26,7 @@ impractical and every diff reads as "1 line changed".
 src/data/decks.json          deck load order
 src/data/langs.json          language registry
 src/data/kanji/<deck>.json   the kanji, with every translation inline
+src/data/ui.json             interface strings, {key: {lang: text}}
 ```
 
 Each record holds everything about one kanji, translations included:
@@ -47,15 +48,17 @@ It stops showing "coming soon" on its own once it has kanji.
 `decks.json` gives `order` instead of `file`, pointing at a JSON array of
 kanji ids in `src/data/`. A kanji is still defined exactly once, and the view
 shares its words, so progress is shared with the level decks.
-`src/data/core-10000.json` (the Core 10000 deck) is every ranked kanji in
-frequency order; regenerate it after adding kanji with
+`src/data/core-10000.json` is every ranked kanji in frequency order; the
+Core 1000 deck shows its first 1000 (`limit` in `decks.json`). Regenerate it
+after adding kanji with
 
 ```sh
 node tools/core-order.js <kanji-frequency.json>   # { "漢": rank, ... }
 ```
 
-**Add a language**: add its code to every translated field, and to
-`langs.json`. A language ships only when it is *complete* -- a partial one is
+**Add a language**: add its code to every translated field (kanji, words and
+`ui.json`), and to `langs.json`. The `ja` label is the language's full Japanese
+name (英語, not 英). A language ships only when it is *complete* -- a partial one is
 reported and omitted, so the picker never offers half-translated content.
 
 `build.js` validates every build and names the file, index and kanji:

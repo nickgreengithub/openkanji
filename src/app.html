@@ -377,7 +377,7 @@ a:hover{color:var(--text-accent-hover)}
           <sc-if value="{{ batchOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute;top:100%;left:1.75rem;width:26rem;padding-top:.75rem;z-index:60">
               <div style="background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28)">
-                <div style="display:flex;align-items:center;height:2.85rem;padding:0 1.1rem;border-bottom:1px solid var(--cyan-a35);background:var(--accent-soft)"><span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-accent);white-space:nowrap">Kanji-word list</span></div>
+                <div style="display:flex;align-items:center;height:2.85rem;padding:0 1.1rem;border-bottom:1px solid var(--cyan-a35);background:var(--accent-soft)"><span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-accent);white-space:nowrap">{{ t_kanji_word_list }}</span></div>
                 <sc-for list="{{ batches }}" as="b" hint-placeholder-count="2">
                   <div sc-camel-on-click="{{ b.pick }}" style="height:4rem;display:flex;align-items:center;gap:.9rem;padding:0 1.1rem;border-bottom:1px solid var(--cyan-a35);background:{{ b.bg }};cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
                     <span style="flex:0 0 5rem;font-family:var(--font-2);font-size:1rem;letter-spacing:.06em;color:{{ b.fg }};white-space:nowrap">{{ b.label }}</span>
@@ -385,7 +385,7 @@ a:hover{color:var(--text-accent-hover)}
                       <span style="display:block;width:{{ b.pct }};height:100%;background:var(--accent)"></span>
                     </span>
                     <span style="flex:0 0 auto;font-family:var(--font-2);font-size:1rem;color:var(--text-muted);white-space:nowrap">{{ b.frac }}</span>
-                    <span sc-camel-on-click="{{ b.study }}" title="Study" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ b.studyOpacity }};pointer-events:{{ b.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
+                    <span sc-camel-on-click="{{ b.study }}" title="{{ t_study }}" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ b.studyOpacity }};pointer-events:{{ b.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
                       <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
                     </span>
                   </div>
@@ -409,8 +409,8 @@ a:hover{color:var(--text-accent-hover)}
           <span style="flex:0 0 2rem;font-family:var(--font-2);font-size:1.125rem;font-variant-numeric:tabular-nums;color:{{ kanjiMuted }};transition:color 260ms ease">{{ kanjiTotal }}</span>
           <sc-if value="{{ hintKanjiProg.open }}" hint-placeholder-val="{{ false }}">
             <div style="{{ progTipStyle }}">
-              <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">Kanji progress</span>
-              <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">You have mastered <span style="color:var(--text-accent)">{{ kanjiPct }}</span> of kanji in {{ progDeck }}</span>
+              <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">{{ t_kanji_progress }}</span>
+              <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ t_mastered_before }} <span style="color:var(--text-accent)">{{ kanjiPct }}</span> {{ t_of_kanji_in }} {{ progDeck }}</span>
             </div>
           </sc-if>
         </div>
@@ -433,8 +433,8 @@ a:hover{color:var(--text-accent-hover)}
           <span style="flex:0 0 2rem;font-family:var(--font-2);font-size:1.125rem;font-variant-numeric:tabular-nums;color:{{ masteryMuted }};transition:color 260ms ease">{{ setTotal }}</span>
           <sc-if value="{{ hintSet.open }}" hint-placeholder-val="{{ false }}">
             <div style="{{ progTipStyle }}">
-              <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">Word progress</span>
-              <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">You have mastered <span style="color:var(--text-accent)">{{ progPctLabel }}</span> of words in {{ progDeck }}</span>
+              <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">{{ t_word_progress }}</span>
+              <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ t_mastered_before }} <span style="color:var(--text-accent)">{{ progPctLabel }}</span> {{ t_of_words_in }} {{ progDeck }}</span>
             </div>
           </sc-if>
         </div>
@@ -478,8 +478,8 @@ a:hover{color:var(--text-accent-hover)}
           <sc-if value="{{ tipEyeOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute;top:100%;right:0;padding-top:.4rem;z-index:70;cursor:default">
               <div style="width:max-content;max-width:24rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column;gap:.4rem;padding:.75rem .9rem">
-                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">Show/hide translations</span>
-                <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">Click on and off for quick self-study</span>
+                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">{{ t_show_hide_translations }}</span>
+                <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ t_toggle_hint }}</span>
               </div>
             </div>
           </sc-if>
@@ -490,7 +490,7 @@ a:hover{color:var(--text-accent-hover)}
             <span style="flex:1 1 auto;min-width:0;height:2.35rem;display:flex;align-items:center;border:1px solid {{ saveFill }};border-right:0;padding:0 .7rem;font-family:var(--font-2);font-size:1rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ userId }}</span>
           </sc-if>
           <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ false }}">
-            <input type="email" placeholder="Save Progress" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onEmailKey }}" style="flex:1 1 auto;min-width:0;width:100%;height:2.35rem;box-sizing:border-box;background:transparent;border:1px solid {{ saveFill }};border-right:0;border-radius:0;outline:none;padding:0 .7rem;font-family:var(--font-2);font-size:1rem;color:var(--text-body)"/>
+            <input type="email" placeholder="{{ t_save_progress_title }}" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onEmailKey }}" style="flex:1 1 auto;min-width:0;width:100%;height:2.35rem;box-sizing:border-box;background:transparent;border:1px solid {{ saveFill }};border-right:0;border-radius:0;outline:none;padding:0 .7rem;font-family:var(--font-2);font-size:1rem;color:var(--text-body)"/>
           </sc-if>
           <sc-if value="{{ showSave }}" hint-placeholder-val="{{ false }}">
           <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
@@ -501,12 +501,12 @@ a:hover{color:var(--text-accent-hover)}
           </sc-if>
           </sc-if>
           <sc-if value="{{ showLoad }}" hint-placeholder-val="{{ true }}">
-          <span sc-camel-on-click="{{ loadNow }}" title="Load saved progress" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ loadFill }};border-left:0;background:{{ loadFill }};cursor:{{ loadCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M2.5 4.5 H9.2 L11.4 7.2 H19.5 V10.5 H2.5 Z" fill="var(--surface-page)"></path><path d="M2.5 11.6 H22 L19 20.5 H2.5 Z" fill="var(--surface-page)"></path></svg></span>
+          <span sc-camel-on-click="{{ loadNow }}" title="{{ t_load_saved_progress }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ loadFill }};border-left:0;background:{{ loadFill }};cursor:{{ loadCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M2.5 4.5 H9.2 L11.4 7.2 H19.5 V10.5 H2.5 Z" fill="var(--surface-page)"></path><path d="M2.5 11.6 H22 L19 20.5 H2.5 Z" fill="var(--surface-page)"></path></svg></span>
           </sc-if>
           <sc-if value="{{ tipSaveOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute;top:100%;right:0;padding-top:.4rem;z-index:70;cursor:default">
               <div style="min-width:17rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column;gap:.4rem;padding:.75rem .9rem">
-                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-accent)">Save progress</span>
+                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-accent)">{{ t_save_progress }}</span>
                 <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ saveTipBody }}</span>
               </div>
             </div>
@@ -535,7 +535,7 @@ a:hover{color:var(--text-accent-hover)}
           <sc-if value="{{ tipCardOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute;top:100%;right:0;padding-top:.4rem;z-index:70;cursor:default">
               <div style="width:max-content;max-width:24rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column;gap:.4rem;padding:.75rem .9rem">
-                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">Flashcards</span>
+                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">{{ t_flashcards }}</span>
                 <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ cardTipBody }}</span>
               </div>
             </div>
@@ -591,34 +591,34 @@ a:hover{color:var(--text-accent-hover)}
         <sc-if value="{{ gMenuOn }}" hint-placeholder-val="{{ true }}">
           <div style="flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;animation:ok-game-b 340ms cubic-bezier(.2,.7,.3,1);opacity:{{ gMorphFade }};transition:opacity 150ms ease">
             <div sc-camel-on-click="{{ gStart1 }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;border-right:1px solid #9fb4c0;border-bottom:1px solid #9fb4c0;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">game</span>
+              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_game }}</span>
               <span style="font-family:var(--font-2);font-size:2.8rem;line-height:1;color:var(--text-accent)">01</span>
-              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">English → 漢字 <span style="color:var(--text-muted)">Easy</span></span>
+              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">{{ t_lang_to_kanji }} <span style="color:var(--text-muted)">{{ t_easy }}</span></span>
             </div>
             <div sc-camel-on-click="{{ gStart2 }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;border-bottom:1px solid #9fb4c0;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">game</span>
+              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_game }}</span>
               <span style="font-family:var(--font-2);font-size:2.8rem;line-height:1;color:var(--text-accent)">02</span>
-              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">English → 漢字 <span style="color:var(--text-muted)">Hard</span></span>
+              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">{{ t_lang_to_kanji }} <span style="color:var(--text-muted)">{{ t_hard }}</span></span>
             </div>
             <div sc-camel-on-click="{{ gStart3 }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;border-right:1px solid #9fb4c0;border-bottom:1px solid #9fb4c0;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">game</span>
+              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_game }}</span>
               <span style="font-family:var(--font-2);font-size:2.8rem;line-height:1;color:var(--text-accent)">03</span>
-              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">Select the fake word</span>
+              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">{{ t_select_fake_word }}</span>
             </div>
             <div sc-camel-on-click="{{ gStart4 }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;border-bottom:1px solid #9fb4c0;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">game</span>
+              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_game }}</span>
               <span style="font-family:var(--font-2);font-size:2.8rem;line-height:1;color:var(--text-accent)">04</span>
               <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">単語 → ひらがな</span>
             </div>
             <div sc-camel-on-click="{{ gCards }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;border-right:1px solid #9fb4c0;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">memorise</span>
+              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_memorise }}</span>
               <span style="height:2.8rem;display:flex;align-items:center;color:var(--text-accent)"><svg width="36" height="36" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6.5" y="3.5" width="14" height="14"></rect><path d="M14 20.5 H3.5 V9"></path></svg></span>
-              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">Flashcards</span>
+              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">{{ t_flashcards }}</span>
             </div>
             <div sc-camel-on-click="{{ gChat }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">write</span>
+              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_write }}</span>
               <span style="height:2.8rem;display:flex;align-items:center;color:var(--text-accent)"><svg width="36" height="36" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5 H20 V17 H12 L7 21 V17 H4 Z"></path></svg></span>
-              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">AI writing practice</span>
+              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">{{ t_ai_writing_practice }}</span>
             </div>
           </div>
         </sc-if>
@@ -660,7 +660,7 @@ a:hover{color:var(--text-accent-hover)}
             </sc-for>
             <sc-if value="{{ gMissedOn }}" hint-placeholder-val="{{ false }}">
               <div style="display:flex;flex-direction:column;align-items:center;gap:.7rem;padding-top:.5rem">
-                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">review</span>
+                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_review }}</span>
                 <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem">
                   <sc-for list="{{ gMissed }}" as="gm" hint-placeholder-count="3">
                     <span style="width:4rem;height:4rem;display:flex;align-items:center;justify-content:center;border:1px solid #e8a3b0;background:#f8e4e8;font-size:2.5rem;line-height:1;color:#8c3a4a">{{ gm.c }}</span>
@@ -694,7 +694,7 @@ a:hover{color:var(--text-accent-hover)}
                 <span style="display:block;width:{{ dt.pct }};height:100%;background:{{ dt.barBg }}"></span>
               </span>
             </div>
-            <span sc-camel-on-click="{{ dt.study }}" title="Study" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ dt.studyOpacity }};pointer-events:{{ dt.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
+            <span sc-camel-on-click="{{ dt.study }}" title="{{ t_study }}" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ dt.studyOpacity }};pointer-events:{{ dt.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
               <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
             </span>
             <sc-if value="{{ dt.tipOpen }}" hint-placeholder-val="{{ false }}">
@@ -710,7 +710,7 @@ a:hover{color:var(--text-accent-hover)}
         <span style="flex:1 1 auto"></span>
         <div sc-camel-on-click="{{ printDeck }}" style="user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:.7rem;margin:0 -1.5rem 0 -1.25rem;padding:1.1rem 1.5rem 1.1rem 1.25rem;border-top:{{ ruleH }} solid var(--cyan-a45);cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
           <span style="width:2.1rem;height:2.1rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent)"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 9 V3.5 H17 V9"></path><path d="M4 9 H20 V17 H17"></path><path d="M7 17 H4 V9"></path><path d="M7 14 H17 V21 H7 Z"></path></svg></span>
-          <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">pdf</span>
+          <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_pdf }}</span>
         </div>
       </div>
 
@@ -769,7 +769,7 @@ a:hover{color:var(--text-accent-hover)}
             <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.16em;color:var(--text-body)">{{ lb.range }}</span>
             <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.16em;color:var(--cyan-a55)">漢字</span>
           </span>
-          <span sc-camel-on-click="{{ lb.study }}" title="Study" style="flex:0 0 auto;width:2rem;height:2rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ lb.studyOpacity }};pointer-events:{{ lb.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
+          <span sc-camel-on-click="{{ lb.study }}" title="{{ t_study }}" style="flex:0 0 auto;width:2rem;height:2rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ lb.studyOpacity }};pointer-events:{{ lb.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
             <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
           </span>
         </div>
@@ -796,7 +796,7 @@ a:hover{color:var(--text-accent-hover)}
                       </span>
                     </sc-if>
                     <span class="ok-kacts" style="position:absolute;left:-.3rem;right:-.3rem;top:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:.3rem">
-                      <span sc-camel-on-click="{{ kg.openStudy }}" title="Study" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
+                      <span sc-camel-on-click="{{ kg.openStudy }}" title="{{ t_study }}" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
                         <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
                       </span>
                     </span>
@@ -891,7 +891,7 @@ a:hover{color:var(--text-accent-hover)}
 
         <div style="flex:0 0 15rem;min-height:0;overflow:hidden;background:var(--surface-input);border-right:{{ ruleH }} solid var(--cyan-a45);display:flex;flex-direction:column">
           <div style="flex:0 0 auto;display:flex;align-items:center;padding:.85rem 1.1rem">
-            <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted)">words list</span>
+            <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted)">{{ t_words_list }}</span>
           </div>
           <div class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow:auto;display:flex;flex-direction:column">
             <sc-for list="{{ usedWords }}" as="u" hint-placeholder-count="5">
@@ -913,7 +913,7 @@ a:hover{color:var(--text-accent-hover)}
               <span style="font-size:1.375rem;line-height:1">日本語</span>
             </div>
             <div sc-camel-on-click="{{ setLangEn }}" style="user-select:none;flex:1 1 0;display:flex;align-items:center;justify-content:center;border-left:{{ ruleH }} solid var(--cyan-a45);background:{{ enBg }};color:{{ enFg }};cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.1em">EN</span>
+              <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.1em">{{ langCode }}</span>
             </div>
           </div>
         </div>
@@ -924,7 +924,7 @@ a:hover{color:var(--text-accent-hover)}
               <div style="max-width:88%;padding:.85rem 1.1rem;font-size:1.25rem;line-height:1.55;text-wrap:pretty;background:var(--accent-soft);color:var(--text-body);display:flex;flex-direction:column;gap:.55rem">
                 <span>{{ intro.a }}</span>
                 <sc-if value="{{ intro.showEg }}" hint-placeholder-val="{{ true }}">
-                  <span style="color:var(--text-body)">For example:</span>
+                  <span style="color:var(--text-body)">{{ t_for_example }}</span>
                 </sc-if>
                 <sc-for list="{{ intro.egs }}" as="eg" hint-placeholder-count="2">
                   <span style="display:flex;gap:.6rem"><span style="flex:0 0 auto;color:var(--cyan-a55)">•</span><span style="min-width:0">{{ eg.t }}</span></span>
@@ -999,20 +999,20 @@ a:hover{color:var(--text-accent-hover)}
             <sc-if value="{{ hasResult }}" hint-placeholder-val="{{ false }}">
               <div style="border-top:2px solid var(--cyan-a55)">
                 <div style="display:flex;align-items:baseline;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--cyan-a28)">
-                  <span style="flex:0 0 8rem;font-family:var(--font-2);font-size:1.125rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)">verdict</span>
-                  <sc-if value="{{ r.ok }}" hint-placeholder-val="{{ true }}"><span style="font-size:1.375rem;line-height:1.1;color:var(--status-ok)">natural</span></sc-if>
-                  <sc-if value="{{ r.notOk }}" hint-placeholder-val="{{ false }}"><span style="font-size:1.375rem;line-height:1.1;color:var(--status-warn)">not natural</span></sc-if>
+                  <span style="flex:0 0 8rem;font-family:var(--font-2);font-size:1.125rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)">{{ t_verdict }}</span>
+                  <sc-if value="{{ r.ok }}" hint-placeholder-val="{{ true }}"><span style="font-size:1.375rem;line-height:1.1;color:var(--status-ok)">{{ t_natural }}</span></sc-if>
+                  <sc-if value="{{ r.notOk }}" hint-placeholder-val="{{ false }}"><span style="font-size:1.375rem;line-height:1.1;color:var(--status-warn)">{{ t_not_natural }}</span></sc-if>
                 </div>
                 <div style="display:flex;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--cyan-a28)">
-                  <span style="flex:0 0 8rem;font-family:var(--font-2);font-size:1.125rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)">correction</span>
+                  <span style="flex:0 0 8rem;font-family:var(--font-2);font-size:1.125rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)">{{ t_correction }}</span>
                   <span style="flex:1 1 auto;min-width:0;font-size:1.25rem;line-height:1.6;color:var(--text-body)">{{ r.correction }}</span>
                 </div>
                 <div style="display:flex;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--cyan-a28)">
-                  <span style="flex:0 0 8rem;font-family:var(--font-2);font-size:1.125rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)">note</span>
+                  <span style="flex:0 0 8rem;font-family:var(--font-2);font-size:1.125rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)">{{ t_note }}</span>
                   <span style="flex:1 1 auto;min-width:0;font-size:1.25rem;line-height:1.6;color:var(--text-body)">{{ r.note }}</span>
                 </div>
                 <div style="display:flex;gap:1rem;padding:.7rem 0">
-                  <span style="flex:0 0 8rem;font-family:var(--font-2);font-size:1.125rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)">better</span>
+                  <span style="flex:0 0 8rem;font-family:var(--font-2);font-size:1.125rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)">{{ t_better }}</span>
                   <span style="flex:1 1 auto;min-width:0;font-size:1.25rem;line-height:1.6;color:var(--text-accent)">{{ r.better }}</span>
                 </div>
               </div>
@@ -1039,6 +1039,25 @@ const DATA = __KANJI_DATA__;
 const I18N = __KANJI_I18N__;
 // [code, name, kanji label, "soon" when the language has no data yet]
 const LANGS = __LANGS__;
+// Interface strings by language, { EN: { key: text }, ES: { ... } }. Only
+// complete languages ship, so a key missing here is a build error, not a
+// runtime fallback.
+const UI = __UI__;
+// T("key", { n: 3 }) -> the current language's text with {n} filled in.
+const T = (key, params) => {
+  const tbl = UI[CURRENT_LANG] || UI.EN;
+  let out = (tbl && tbl[key]) || (UI.EN && UI.EN[key]) || key;
+  if (params) for (const p in params) out = out.split("{" + p + "}").join(params[p]);
+  return out;
+};
+// Every ui.json key as a `t_<key>` template binding for the current language.
+const uiVals = () => {
+  const out = {};
+  for (const key in UI.EN) out["t_" + key] = T(key);
+  return out;
+};
+// The learner's own language, in English, for the tutor prompts.
+const langName = () => (LANGS.find(l => l[0] === CURRENT_LANG) || LANGS[0])[1];
 // Example-sentence translations by word id and language. EXTRA still holds the
 // Japanese with its furigana tokens; only the translation is localised.
 const EX_T = __EX_TRANSLATIONS__;
@@ -1153,7 +1172,7 @@ const setLang = (code) => { CURRENT_LANG = _CORPUS[code] || I18N[code] ? code : 
 const deckData = (deck) => corpusFor(CURRENT_LANG).index[deck || DEFAULT_DECK] || [];
 
 // Display order for the deck rail. A deck with no kanji renders as "coming soon".
-const DECKS = ["JLPT N1", "JLPT N2", "JLPT N3", "JLPT N4", "JLPT N5", "Core 10000"];
+const DECKS = ["JLPT N1", "JLPT N2", "JLPT N3", "JLPT N4", "JLPT N5", "Core 1000"];
 const batchCount = (deck) => Math.ceil(deckData(deck).length / SETN);
 const setOf = (b, deck) => deckData(deck).slice(b * SETN, b * SETN + SETN);
 
@@ -1586,7 +1605,8 @@ class Component extends DCLogic {
   // every kanji in the batch that also teaches this word
   sharedWith(word, kanji) {
     const out = [];
-    DATA.forEach((kk, i) => {
+    const pool = deckData(this.state.deck);
+    pool.forEach((kk, i) => {
       if (kk.c === kanji) return;
       if (!kk.g.some(g => g.w.some(w => w[0] === word))) return;
       const b = Math.floor(i / SETN);
@@ -1594,7 +1614,7 @@ class Component extends DCLogic {
         c: kk.c,
         batch: b,
         sel: i - b * SETN,
-        label: (b * SETN + 1) + "-" + Math.min((b + 1) * SETN, DATA.length)
+        label: (b * SETN + 1) + "-" + Math.min((b + 1) * SETN, pool.length)
       });
     });
     return out;
@@ -1674,7 +1694,7 @@ class Component extends DCLogic {
 
   async sendMagicLink(email) {
     if (!okSyncReady() || this.state.authBusy) return;
-    if (!okIsEmail(email)) { this.flashMsg("Enter a valid email"); return; }
+    if (!okIsEmail(email)) { this.flashMsg(T("enter_valid_email")); return; }
     this.setState({ authBusy: true });
     try {
       const r = await fetch(SUPABASE_URL + "/auth/v1/otp", {
@@ -1682,8 +1702,8 @@ class Component extends DCLogic {
         headers: { apikey: SUPABASE_ANON_KEY, "Content-Type": "application/json" },
         body: JSON.stringify({ email: String(email).trim(), create_user: true })
       });
-      this.flashMsg(r.ok ? "Check your email" : "Could not send link");
-    } catch (e) { this.flashMsg("Could not send link"); }
+      this.flashMsg(r.ok ? T("check_your_email") : T("could_not_send_link"));
+    } catch (e) { this.flashMsg(T("could_not_send_link")); }
     this.setState({ authBusy: false });
   }
 
@@ -1696,8 +1716,8 @@ class Component extends DCLogic {
         headers: Object.assign(this.okHeaders(tok), { Prefer: "resolution=merge-duplicates" }),
         body: JSON.stringify({ mastered: m || {} })
       });
-      if (!r.ok) this.flashMsg("Save failed");
-    } catch (e) { this.flashMsg("Save failed"); }
+      if (!r.ok) this.flashMsg(T("save_failed"));
+    } catch (e) { this.flashMsg(T("save_failed")); }
   }
 
   // Explicit user action, long after mount, so it can just setState and let the
@@ -1708,7 +1728,7 @@ class Component extends DCLogic {
     this.setState({ authBusy: true });
     try {
       const r = await fetch(SUPABASE_URL + "/rest/v1/progress?select=mastered", { headers: this.okHeaders(tok) });
-      if (!r.ok) { this.flashMsg("Load failed"); this.setState({ authBusy: false }); return; }
+      if (!r.ok) { this.flashMsg(T("load_failed")); this.setState({ authBusy: false }); return; }
       const rows = await r.json();
       const remote = (rows && rows[0] && rows[0].mastered) || {};
       const merged = okMerge(this.state.mastered, remote);
@@ -1716,7 +1736,7 @@ class Component extends DCLogic {
       this._savedSig = this.masterSig(merged);
       this.setState({ mastered: merged });
       this.flashMsg("Loaded");
-    } catch (e) { this.flashMsg("Load failed"); }
+    } catch (e) { this.flashMsg(T("load_failed")); }
     this.setState({ authBusy: false });
   }
 
@@ -1754,7 +1774,7 @@ class Component extends DCLogic {
       a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
       this.flashMsg("Downloaded");
-    } catch (e) { this.flashMsg("Download failed"); }
+    } catch (e) { this.flashMsg(T("download_failed")); }
   }
 
   importProgress() {
@@ -1768,7 +1788,7 @@ class Component extends DCLogic {
       rd.onload = () => {
         try {
           const d = JSON.parse(rd.result);
-          if (!d || typeof d !== "object" || !d.mastered) { this.flashMsg("Not a progress file"); return; }
+          if (!d || typeof d !== "object" || !d.mastered) { this.flashMsg(T("not_progress_file")); return; }
           // Union, never replace: importing can only ever add progress.
           const mastered = okMerge(this.state.mastered, d.mastered);
           const seen = okMerge(this.state.seen, d.seen);
@@ -1777,8 +1797,8 @@ class Component extends DCLogic {
           this.persist(seen);
           this._savedSig = this.masterSig(mastered);
           this.setState({ mastered: mastered, seen: seen });
-          this.flashMsg(added > 0 ? "Loaded +" + added : "Already up to date");
-        } catch (e) { this.flashMsg("Not a progress file"); }
+          this.flashMsg(added > 0 ? T("loaded_plus", { n: added }) : T("already_up_to_date"));
+        } catch (e) { this.flashMsg(T("not_progress_file")); }
       };
       rd.readAsText(f);
     };
@@ -1845,7 +1865,7 @@ class Component extends DCLogic {
       this.setState({ loading: false, result: json });
       this.startTyping();
     } catch (e) {
-      this.setState({ loading: false, result: { natural: false, correction: null, note: "Check failed — try again.", better: "—" } });
+      this.setState({ loading: false, result: { natural: false, correction: null, note: T("check_failed"), better: "—" } });
     }
   }
 
@@ -1860,8 +1880,8 @@ class Component extends DCLogic {
         model: this.props.model ?? "claude-haiku-4-5",
         system: [
           "You are Ken-Sensei, a patient Japanese teacher helping a JLPT N4 learner.",
-          "The learner is asking a question in English about Japanese — grammar, usage, nuance, or one of the words in their WORDS LIST.",
-          "Answer in plain English, two or three short sentences, concrete and example-led. No preamble, no lists.",
+          "The learner is asking a question in " + langName() + " about Japanese — grammar, usage, nuance, or one of the words in their WORDS LIST.",
+          "Answer in plain " + langName() + ", two or three short sentences, concrete and example-led. No preamble, no lists.",
           "FURIGANA RULE — this is the opposite of what you may expect, follow it exactly. The learner already knows the words in their WORDS LIST, so those words take NO reading: write them bare. Every OTHER word containing kanji — any word not in the WORDS LIST, including verbs, adjectives and nouns you introduce yourself — MUST be followed immediately by its reading in hiragana inside Japanese corner brackets, e.g. 飾る「かざる」. Never use round brackets for readings. Reserve 「」 for readings ONLY — never to quote a phrase; quote Japanese phrases with straight single quotes instead. The unit is the WHOLE WORD including its okurigana: write 考える「かんがえる」 not 考「かんが」える, and 見えています「みえています」 not 見「み」えています.",
           "OUTPUT: respond ONLY with JSON, no markdown fences. Keys: note (string, your answer); better (string, one short Japanese example sentence using a word from their WORDS LIST, or \"\" if an example would not help)."
         ].join(" "),
@@ -1876,7 +1896,7 @@ class Component extends DCLogic {
       this.setState({ loading: false, result: answer });
       this.startTyping();
     } catch (e) {
-      this.setState({ loading: false, result: { understood: true, note: "Couldn't answer that — try again.", better: "", ask: true } });
+      this.setState({ loading: false, result: { understood: true, note: T("couldnt_answer"), better: "", ask: true } });
     }
   }
 
@@ -2055,7 +2075,7 @@ class Component extends DCLogic {
   async makeIntroExamples(kk) {
     const sel = Object.keys(this.state.chatSel);
     if (!sel.length) {
-      this.startIntro("To test your comprehension, go back to the table → click word rows to add them to your WORDS LIST and study them here.".length);
+      this.startIntro(T("intro_add_words").length);
       return;
     }
     const all = [];
@@ -2069,11 +2089,11 @@ class Component extends DCLogic {
     const g1 = pick(all, 3);
     const left = all.filter(w => !g1.some(x => x[0] === w[0]));
     const g2 = pick(left.length >= 2 ? left : all, 3);
-    const LEAD = "Make any sentence using your words list.";
+    const LEAD = T("make_any_sentence");
     this.startIntro(LEAD.length);
     const fallback = [
-      g1.map(w => w[2]).join(", ") + " — use these together in one sentence.",
-      g2.map(w => w[2]).join(", ") + " — then try these."
+      g1.map(w => w[2]).join(", ") + T("use_together"),
+      g2.map(w => w[2]).join(", ") + T("then_try")
     ];
     let landed = false;
     setTimeout(() => {
@@ -2085,7 +2105,7 @@ class Component extends DCLogic {
       const raw = await window.claude.complete({
         model: this.props.model ?? "claude-haiku-4-5",
         system: ["You write example prompts for a Japanese learner.",
-          "Given two groups of Japanese words, write ONE short natural ENGLISH sentence per group that a learner could plausibly translate into Japanese.",
+          "Given two groups of Japanese words, write ONE short natural " + langName().toUpperCase() + " sentence per group that a learner could plausibly translate into Japanese.",
           "THE SENTENCE MUST MAKE SENSE. It has to describe a situation a real person could actually be in: one consistent time frame (never a past event placed in the future, e.g. never 'I heard it tomorrow'), agreeing tense throughout, and a subject that can plausibly do the verb.",
           "Coherence beats coverage: if the words in a group cannot be combined into a sensible sentence, USE ONLY THE ONES THAT FIT and drop the rest. Never bend meaning or invent a contradiction to squeeze a word in.",
           "Keep it concrete and everyday — something the learner might really want to say. 12 words maximum. No Japanese, no quotes, no numbering.",
@@ -2153,8 +2173,9 @@ class Component extends DCLogic {
 
   // A4 portrait sheet of the deck's kanji — logo, glyphs + meanings, no progress marks, no ranges
   printDeckPdf() {
-    const deck = this.state.deck || "JLPT N4";
-    const cells = DATA.map(kk => {
+    const deck = this.state.deck || DEFAULT_DECK;
+    const pool = deckData(deck);
+    const cells = pool.map(kk => {
       const ens = String(kk.meaning || "").split(/,\s*/).slice(0, 2).map(t => t.trim());
       return '<div class="c"><span class="k">' + kk.c + '</span><span class="m">' + ens.join("<br>") + "</span></div>";
     }).join("");
@@ -2176,7 +2197,7 @@ class Component extends DCLogic {
       ".m{font-size:3.6mm;line-height:1.3;text-align:center;color:#4a5b68;overflow-wrap:anywhere}",
       "</style></head><body>",
       '<header><div class="brand"><span class="mark">\u958b</span><span class="wm"><b>OpenKanji</b><i>.org</i></span></div>',
-      '<span class="deck">' + deck + " \u00b7 " + DATA.length + " kanji</span></header>",
+      '<span class="deck">' + deck + " \u00b7 " + pool.length + " kanji</span></header>",
       '<div class="grid">' + cells + "</div>",
       "</body></html>"
     ].join("\n");
@@ -2297,9 +2318,11 @@ class Component extends DCLogic {
     const out = [];
     const m = this.state.mastered || {};
     let src = [];
+    // Scoped to the selected deck: a kanji in a view deck must not count twice.
+    const pool = deckData(this.state.deck);
     if (this.state.gKanji) src = [this.state.gKanji];
-    else if (this.state.gBatch != null) src = DATA.slice(this.state.gBatch * 10, this.state.gBatch * 10 + 10);
-    else src = DATA.slice();
+    else if (this.state.gBatch != null) src = pool.slice(this.state.gBatch * 10, this.state.gBatch * 10 + 10);
+    else src = pool.slice();
     src.forEach(kk => {
       const ks = this.allKeys([kk]);
       if (ks.length > 0 && ks.every(x => m[x])) return;
@@ -2410,9 +2433,9 @@ class Component extends DCLogic {
       if (reals.length < 3) return null;
       this._usedFakes[fake[0]] = true;
       return {
-        mode: 3, kanji: kk.c, prompt: "tap the made-up word",
+        mode: 3, kanji: kk.c, prompt: T("tap_fake"),
         grid: true, tiles: this.shuffleA([{ big: fake[0], sub: fake[1], ok: true }].concat(reals)),
-        reveal: [fake[0] + " is not a real word"],
+        reveal: [T("not_real_word", { w: fake[0] })],
         compare: null
       };
     }
@@ -2963,6 +2986,7 @@ class Component extends DCLogic {
     const r = st.result || {};
 
     return {
+      ...uiVals(),
       seqNum: st.screen === "detail" ? String(st.sel + 1).padStart(2, "0") : String(SETN).padStart(2, "0"),
       seqTotal: SETN,
       masteredFrac: (() => {
@@ -3023,12 +3047,12 @@ class Component extends DCLogic {
         tipEnter: () => { if (this._dtT) clearTimeout(this._dtT); this.setState({ deckTip: d[0] }); },
         tipLeave: () => { if (this._dtT) clearTimeout(this._dtT); this._dtT = setTimeout(() => this.setState({ deckTip: null }), 160); },
         tipBody: ({
-          "JLPT N1": "Near-native. ~3000 kanji, academic and literary texts.",
-          "JLPT N2": "Upper-intermediate. ~1000 kanji, newspapers and business.",
-          "JLPT N3": "Intermediate. ~650 kanji, everyday conversation and articles.",
-          "JLPT N4": "Basic. ~300 kanji, simple daily-life Japanese.",
-          "JLPT N5": "Beginner. ~100 kanji, first phrases and greetings.",
-          "Core 10000": "Every JLPT kanji in frequency order, level-agnostic. Progress is shared with the level decks."
+          "JLPT N1": T("tip_jlpt_n1"),
+          "JLPT N2": T("tip_jlpt_n2"),
+          "JLPT N3": T("tip_jlpt_n3"),
+          "JLPT N4": T("tip_jlpt_n4"),
+          "JLPT N5": T("tip_jlpt_n5"),
+          "Core 1000": T("tip_core")
         })[d[0]],
         barH: (st.deck || "JLPT N4") === d[0] ? "3px" : "0",
         barBg: d[1] ? "var(--cyan-a45)" : "var(--accent)",
@@ -3119,9 +3143,9 @@ class Component extends DCLogic {
       masteryGlow: st.masteryFlash ? "0 0 0 2px rgba(8,145,178,.35), 0 0 14px rgba(8,145,178,.5)" : "none",
       masteryBar: "var(--accent)",
       masteryMuted: st.masteryFlash ? "var(--text-accent)" : "var(--text-muted)",
-      hintKanji: { label: "Kanji position in set", open: st.hint === "kanji", enter: () => this.setState({ hint: "kanji" }), leave: () => this.setState({ hint: null }) },
+      hintKanji: { label: T("hint_kanji_pos"), open: st.hint === "kanji", enter: () => this.setState({ hint: "kanji" }), leave: () => this.setState({ hint: null }) },
       hintSet: {
-        label: "Words mastered across JLPT N4", open: st.hint === "set",
+        label: T("hint_set", { deck: st.deck || DEFAULT_DECK }), open: st.hint === "set",
         enter: (e) => { const b = e.currentTarget.getBoundingClientRect(); this.setState({ hint: "set", progRect: { left: b.left, right: b.right, top: b.top, bottom: b.bottom } }); },
         leave: () => this.setState({ hint: null, progRect: null })
       },
@@ -3147,7 +3171,7 @@ class Component extends DCLogic {
         if (!b) return base;
         return Object.assign(base, { left: Math.max(10, b.left) + "px", top: (b.bottom + 4) + "px" });
       })(),
-      hintThis: { label: "Words mastered for this kanji", open: st.hint === "this", enter: () => this.setState({ hint: "this" }), leave: () => this.setState({ hint: null }) },
+      hintThis: { label: T("hint_this"), open: st.hint === "this", enter: () => this.setState({ hint: "this" }), leave: () => this.setState({ hint: null }) },
       revealed: !st.conceal, concealed: !!st.conceal,
       toggleReveal: () => this.setState(s => ({ conceal: !s.conceal })),
       langCode: st.uiLang || "EN",
@@ -3162,7 +3186,7 @@ class Component extends DCLogic {
         const active = (st.uiLang || "EN") === l[0];
         const soon = !!l[2];
         return {
-          code: l[0], name: l[1], tag: l[2],
+          code: l[0], name: l[1], tag: l[2] ? T("soon") : "",
           bg: active ? "var(--accent-soft)" : "transparent",
           codeFg: active ? "var(--text-accent)" : soon ? "var(--text-muted)" : "var(--text-body)",
           nameFg: soon ? "var(--text-muted)" : "var(--text-body)",
@@ -3190,10 +3214,10 @@ class Component extends DCLogic {
       },
       tipPrimaryOpen: st.tip === "primary",
       tipPrimaryEnter: () => { if (this._tipT) clearTimeout(this._tipT); this.setState({ tip: "primary" }); },
-      slotPrimaryTitle: st.screen !== "detail" ? "Game" : "AI writing practice",
+      slotPrimaryTitle: st.screen !== "detail" ? T("game_title") : T("ai_writing_practice"),
       slotPrimaryBody: st.screen !== "detail"
-        ? (CQ.length ? CQ.length + " kanji queued — four games." : "Click a range's dice on the grid to queue kanji.")
-        : (Object.keys(st.chatSel || {}).length ? Object.keys(st.chatSel).length + " words in your list — write sentences, graded by Ken-Sensei." : "Add words with + to practise writing with them."),
+        ? (CQ.length ? T("kanji_queued_four", { n: CQ.length }) : T("click_dice"))
+        : (Object.keys(st.chatSel || {}).length ? T("words_in_list_write", { n: Object.keys(st.chatSel).length }) : T("add_words_write")),
       openCardsNav: () => {
         const q = this.shuffleA(this.cardQueue().slice());
         if (!q.length) return;
@@ -3201,10 +3225,10 @@ class Component extends DCLogic {
         this.setState({ cardsOn: true, cardsClosing: false, cQueue: q, cIdx: 0, cShown: false, cDone: 0, cMastered: [], cFlip: false, cMove: "next" });
       },
       cardTipBody: st.screen !== "detail"
-        ? (CQ.length ? CQ.length + " kanji queued — glyph → reading and meaning." : "Click a range's dice on the grid to queue kanji.")
+        ? (CQ.length ? T("kanji_queued_cards", { n: CQ.length }) : T("click_dice"))
         : Object.keys(st.chatSel || {}).length
-        ? Object.keys(st.chatSel).length + " words in your list \u2014 space or click to flip, \u2192 next, \u2190 back."
-        : "Add words with + to drill them here.",
+        ? T("words_in_list_cards", { n: Object.keys(st.chatSel).length })
+        : T("add_words_cards"),
       openCards: () => {
         const q = this.shuffleA(this.cardQueue().slice());
         if (!q.length) return;
@@ -3239,7 +3263,7 @@ class Component extends DCLogic {
       cardRestart: () => this.cardRestart(),
       cardSummary: (() => {
         const n = (st.cQueue || []).length;
-        return n + " cards reviewed";
+        return T("cards_reviewed", { n: n });
       })(),
       cardMasteredOn: (st.cMastered || []).length > 0,
       cardMastered: (st.cMastered || []).map(w => ({ w: w })),
@@ -3251,8 +3275,8 @@ class Component extends DCLogic {
       chatLayerOpacity: st.screen === "detail" ? 1 : 0,
       chatLayerPE: st.screen === "detail" ? "auto" : "none",
       chatTipBody: Object.keys(st.chatSel).length === 0
-        ? "To test your comprehension, click word rows to add them to your WORDS LIST and study them here."
-        : Object.keys(st.chatSel).length + " words queued \u2014 click to practise writing with them.",
+        ? T("intro_click_rows")
+        : T("words_queued_write", { n: Object.keys(st.chatSel).length }),
       openGame: () => { this._gAnswer = null; this._gIdx = undefined; this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gBatch: null, gKanji: null, gFinished: false, gPicked: -1 }); },
       closeGame: () => { if (this._gAdvT) clearTimeout(this._gAdvT); this.setState({ gameClosing: true }); setTimeout(() => this.setState({ gameOpen: false, gameClosing: false }), 180); },
       gameVeilAnim: st.dlgSeamless ? "none" : (st.gameClosing ? "ok-veil-out 180ms ease forwards" : "ok-veil-in 180ms ease"),
@@ -3309,7 +3333,7 @@ class Component extends DCLogic {
           opacity: 1
         };
       }),
-      gHdr: st.gMode ? GAME_MODES[st.gMode - 1].name : this.gamePool().length + " kanji queued",
+      gHdr: st.gMode ? T("game_mode_" + st.gMode) : T("kanji_queued", { n: this.gamePool().length }),
       gModeOn: !!st.gMode && !st.gFinished,
       gQAnim: (st.gAnimFlip ? "ok-game-a" : "ok-game-b") + " 340ms cubic-bezier(.2,.7,.3,1)",
       gRevealOpacity: gAns >= 0 ? 1 : 0,
@@ -3329,7 +3353,7 @@ class Component extends DCLogic {
         this.setState({ gMode: null, gFinished: false, gPicked: -1 });
       },
       gNotMenuOn: !!st.gameOpen && !!st.gMode,
-      gHeadTitle: st.screen === "detail" ? "Study Words" : "Study Kanji",
+      gHeadTitle: st.screen === "detail" ? T("study_words") : T("study_kanji"),
       gScopeUnit: st.screen === "detail" ? "単語" : "漢字",
       gPanelW: st.gMorph ? "min(58rem,100%)" : "min(46rem,100%)",
       gPanelH: st.gMorph ? "min(42rem,100%)" : "min(36rem,100%)",
@@ -3388,7 +3412,7 @@ class Component extends DCLogic {
       gRevealTitle: (() => {
         const q = (st.gRounds || [])[gIdxEff];
         if (!q || gAns < 0) return "";
-        return q.tiles[gAns].ok ? "correct" : "not quite";
+        return q.tiles[gAns].ok ? T("correct") : T("not_quite");
       })(),
       gCompareOn: (() => {
         const q = (st.gRounds || [])[gIdxEff];
@@ -3425,8 +3449,8 @@ class Component extends DCLogic {
       gameBtnClass: Object.keys(st.gameSets || {}).length === 0 ? "" : "ok-navbtn",
       gameCursor: Object.keys(st.gameSets || {}).length === 0 ? "default" : "pointer",
       gameTipBody: Object.keys(st.gameSets || {}).length === 0
-        ? "Click a range (1-10, 11-20 …) on the home screen to add its kanji to a game."
-        : this.gamePool().length + " kanji queued (mastered kanji are excluded) — click ranges on the home screen to add or remove.",
+        ? T("click_range_home")
+        : T("kanji_queued_excl", { n: this.gamePool().length }),
       tipEyeEnter: () => { if (this._tipT) clearTimeout(this._tipT); this.setState({ tip: "eye" }); },
       tipSaveEnter: () => { if (this._tipT) clearTimeout(this._tipT); this.setState({ tip: "save" }); },
       tipLeave: () => { if (this._tipT) clearTimeout(this._tipT); this._tipT = setTimeout(() => this.setState({ tip: null }), 160); },
@@ -3445,7 +3469,7 @@ class Component extends DCLogic {
       userId: (() => {
         if (st.authMsg) return st.authMsg;
         const em = st.userEmail || this.props.userEmail;
-        return em ? String(em).split("@")[0] : (st.screen === "home" ? "Load Progress" : "Save Progress");
+        return em ? String(em).split("@")[0] : (st.screen === "home" ? T("load_progress") : T("save_progress_title"));
       })(),
       showLoad: st.screen === "home",
       showSave: st.screen !== "home",
@@ -3462,7 +3486,7 @@ class Component extends DCLogic {
       saveGlow: st.saveFlash ? "0 0 0 1px rgba(8,145,178,.30), 0 0 10px rgba(8,145,178,.40)" : "none",
       saveCursor: (this.isDirty(st) || this.hasProgress(st)) ? "pointer" : "default",
       saveFill: (this.isDirty(st) || this.hasProgress(st)) ? "var(--accent)" : "#9aabb6",
-      saveTipBody: (okSyncReady() && st.userEmail) ? "Save your progress to your account" : "Download your progress as a file",
+      saveTipBody: (okSyncReady() && st.userEmail) ? T("save_to_account") : T("download_file"),
       saved: st.saved, notSaved: !st.saved,
       saveLabel: st.saved ? "Saved" : "Save",
       saveNow: () => {
@@ -3474,7 +3498,7 @@ class Component extends DCLogic {
         if (okSyncReady() && !(cur.userEmail || this.props.userEmail)) { this.sendMagicLink(cur.emailDraft); return; }
         // No account configured: Save exports a progress file instead.
         if (!okSyncReady() || !cur.userEmail) {
-          if (!this.hasProgress(cur)) { this.flashMsg("Nothing to save yet"); return; }
+          if (!this.hasProgress(cur)) { this.flashMsg(T("nothing_to_save")); return; }
           this.persistMastered(cur.mastered);
           this.persist(cur.seen);
           this._savedSig = this.masterSig(cur.mastered);
@@ -3492,8 +3516,8 @@ class Component extends DCLogic {
       },
       intro: (() => {
         const a = Object.keys(st.chatSel).length
-          ? "Make any sentence using your words list."
-          : "To test your comprehension, go back to the table → click word rows to add them to your WORDS LIST and study them here.";
+          ? T("make_any_sentence")
+          : T("intro_add_words");
         const egs = st.introEgs || [];
         const n = st.intro;
         let rest = n - a.length;
@@ -3681,7 +3705,7 @@ class Component extends DCLogic {
           notAllQueued: !this.allKeys([kk]).every(x => st.chatSel[x]),
           addBg: this.allKeys([kk]).every(x => st.chatSel[x]) ? "var(--accent)" : "transparent",
           addFg: this.allKeys([kk]).every(x => st.chatSel[x]) ? "#ffffff" : "var(--text-accent)",
-          addLabel: this.allKeys([kk]).every(x => st.chatSel[x]) ? "Review list" : "Review list",
+          addLabel: this.allKeys([kk]).every(x => st.chatSel[x]) ? T("review_list") : T("review_list"),
           addPop: (e) => {
             e.stopPropagation();
             const ks = this.allKeys([kk]);
@@ -3780,7 +3804,7 @@ class Component extends DCLogic {
                 cbOpen: st.cbHover === id && !!st.cbRect && this.sharedWith(w[0], kk.c).length > 0,
                 cbPlainOpen: st.cbHover === id && !!st.cbRect && this.sharedWith(w[0], kk.c).length === 0,
                 doneJa: st.mastered[key] ? "完了" : "未完了",
-                doneEn: st.mastered[key] ? "Completed" : "Not completed",
+                doneEn: st.mastered[key] ? T("completed") : T("not_completed"),
                 adjacent: false,
                 cbEnter: (e) => {
                   if (this._cbT) clearTimeout(this._cbT);
@@ -3911,7 +3935,7 @@ class Component extends DCLogic {
                 // adjacency replaces the plain state and states both readings
                 if (rw.markDone) { rw.markDone = false; rw.markPairDone = true; }
                 if (rw.markOpen) { rw.markOpen = false; rw.markPairOpen = true; }
-                rw.doneEn = rw.markPairDone ? "Completed · both readings" : "Not completed · both readings";
+                rw.doneEn = rw.markPairDone ? T("completed_both") : T("not_completed_both");
               }));
               const first = cl.bands[0].rows[0];
               cl.merged = true;
@@ -4004,7 +4028,7 @@ class Component extends DCLogic {
         })));
         return { w: word, f: f2, remove: () => this.setState(s => ({ quiz: s.quiz.filter(q => q !== key) })) };
       }),
-      furiLabel: st.allFuri ? "furigana on" : "furigana off",
+      furiLabel: st.allFuri ? T("furigana_on") : T("furigana_off"),
       toggleAllFuri: () => this.setState(s => ({ allFuri: !s.allFuri })),
       goGrid: () => this.setState({ screen: "grid" }),
       tiles, masteredTiles, studyTiles,
@@ -4041,7 +4065,7 @@ class Component extends DCLogic {
       openDlg: () => this.setState({ dlg: true }),
       closeDlg: () => this.setState({ dlg: false }),
       stop: (e) => e.stopPropagation(),
-      seenLabel: st.seen[k.c] ? "seen it ●" : "seen it ○",
+      seenLabel: st.seen[k.c] ? T("seen_on") : T("seen_off"),
       toggleSeen: () => {
         const seen = Object.assign({}, st.seen, { [k.c]: !st.seen[k.c] });
         this.persist(seen); this.setState({ seen });
@@ -4080,7 +4104,7 @@ class Component extends DCLogic {
         const cs = Math.min(this.state.compStart || 0, draft.length);
         this.setState({ compStart: cs, draft: draft, cand: this.lookupCandidates(draft), candIdx: 0 });
       },
-      inputHint: st.lang === "en" ? "Ask Ken-Sensei a question..." : "日本語で書いてください...",
+      inputHint: st.lang === "en" ? T("ask_sensei") : "日本語で書いてください...",
       setLangJa: () => this.setState({ lang: "ja", cand: null, candIdx: 0, compStart: 0 }),
       setLangEn: () => this.setState({ lang: "en", cand: null, candIdx: 0, compStart: 0 }),
       jaBg: st.lang === "en" ? "transparent" : "var(--accent)",
@@ -4099,12 +4123,12 @@ class Component extends DCLogic {
       sentenceParts: this.splitSentence(k),
       submitLabel: st.loading ? "送信中..." : "ケン先生に送る",
       checkDisabled: st.loading,
-      charCount: st.draft.length + " chars",
+      charCount: st.draft.length + T("chars"),
       hasResult: !!st.result,
       r: (() => {
-        const lv = (v) => v === "good" ? { pct: "100%", color: "var(--status-ok)", word: "good" }
-          : v === "ok" ? { pct: "60%", color: "var(--status-warn)", word: "almost" }
-          : { pct: "25%", color: "var(--status-error)", word: "needs work" };
+        const lv = (v) => v === "good" ? { pct: "100%", color: "var(--status-ok)", word: T("word_good") }
+          : v === "ok" ? { pct: "60%", color: "var(--status-warn)", word: T("word_almost") }
+          : { pct: "25%", color: "var(--status-error)", word: T("needs_work") };
         // one line, chosen by the weakest axis that matters
         const rank = { good: 2, ok: 1, bad: 0 };
         const acc = rank[r.accurate] === undefined ? 2 : rank[r.accurate];
@@ -4112,25 +4136,25 @@ class Component extends DCLogic {
         let verdictLine = "", verdictColor = "var(--status-ok)";
         if (st.result && !r.ask) {
           if (r.understood === false) {
-            verdictLine = "A Japanese speaker wouldn't follow this yet.";
+            verdictLine = T("verdict_1");
             verdictColor = "var(--status-error)";
           } else if (acc === 0) {
-            verdictLine = "Understandable, but the grammar breaks down.";
+            verdictLine = T("verdict_2");
             verdictColor = "var(--status-error)";
           } else if (acc === 1 && nat <= 1) {
-            verdictLine = "Understood, with a few slips and a stiff feel.";
+            verdictLine = T("verdict_3");
             verdictColor = "var(--status-warn)";
           } else if (acc === 1) {
-            verdictLine = "Understood and natural — just a couple of slips.";
+            verdictLine = T("verdict_4");
             verdictColor = "var(--status-warn)";
           } else if (nat === 0) {
-            verdictLine = "Correct, but no native would phrase it this way.";
+            verdictLine = T("verdict_5");
             verdictColor = "var(--status-warn)";
           } else if (nat === 1) {
-            verdictLine = "Correct and clear, a little stiff.";
+            verdictLine = T("verdict_6");
             verdictColor = "var(--status-warn)";
           } else {
-            verdictLine = "Clear, correct and natural.";
+            verdictLine = T("verdict_7");
             verdictColor = "var(--status-ok)";
           }
         }
