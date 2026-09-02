@@ -3849,5 +3849,2543 @@
    "en": "belongings",
    "es": "pertenencias"
   }
+ },
+ "w0377": {
+  "id": "w0377",
+  "w": "悪化",
+  "reading": "あっか",
+  "gloss": {
+   "en": "worsening",
+   "es": "empeoramiento"
+  }
+ },
+ "w0378": {
+  "id": "w0378",
+  "w": "悪い",
+  "reading": "わるい",
+  "gloss": {
+   "en": "bad",
+   "es": "malo"
+  }
+ },
+ "w0379": {
+  "id": "w0379",
+  "w": "暗記",
+  "reading": "あんき",
+  "gloss": {
+   "en": "memorisation",
+   "es": "memorización"
+  }
+ },
+ "w0380": {
+  "id": "w0380",
+  "w": "暗い",
+  "reading": "くらい",
+  "gloss": {
+   "en": "dark",
+   "es": "oscuro"
+  }
+ },
+ "w0381": {
+  "id": "w0381",
+  "w": "医者",
+  "reading": "いしゃ",
+  "gloss": {
+   "en": "doctor",
+   "es": "médico"
+  }
+ },
+ "w0382": {
+  "id": "w0382",
+  "w": "医学",
+  "reading": "いがく",
+  "gloss": {
+   "en": "medical science",
+   "es": "medicina"
+  }
+ },
+ "w0383": {
+  "id": "w0383",
+  "w": "教育",
+  "reading": "きょういく",
+  "gloss": {
+   "en": "education",
+   "es": "educación"
+  }
+ },
+ "w0384": {
+  "id": "w0384",
+  "w": "育てる",
+  "reading": "そだてる",
+  "gloss": {
+   "en": "to raise",
+   "es": "criar"
+  }
+ },
+ "w0385": {
+  "id": "w0385",
+  "w": "病院",
+  "reading": "びょういん",
+  "gloss": {
+   "en": "hospital",
+   "es": "hospital"
+  }
+ },
+ "w0386": {
+  "id": "w0386",
+  "w": "大学院",
+  "reading": "だいがくいん",
+  "gloss": {
+   "en": "graduate school",
+   "es": "posgrado"
+  }
+ },
+ "w0387": {
+  "id": "w0387",
+  "w": "映画",
+  "reading": "えいが",
+  "gloss": {
+   "en": "film",
+   "es": "película"
+  }
+ },
+ "w0388": {
+  "id": "w0388",
+  "w": "映る",
+  "reading": "うつる",
+  "gloss": {
+   "en": "to be reflected",
+   "es": "reflejarse"
+  }
+ },
+ "w0389": {
+  "id": "w0389",
+  "w": "英語",
+  "reading": "えいご",
+  "gloss": {
+   "en": "English language",
+   "es": "idioma inglés"
+  }
+ },
+ "w0390": {
+  "id": "w0390",
+  "w": "英国",
+  "reading": "えいこく",
+  "gloss": {
+   "en": "Britain",
+   "es": "Gran Bretaña"
+  }
+ },
+ "w0391": {
+  "id": "w0391",
+  "w": "水泳",
+  "reading": "すいえい",
+  "gloss": {
+   "en": "swimming",
+   "es": "natación"
+  }
+ },
+ "w0392": {
+  "id": "w0392",
+  "w": "泳ぐ",
+  "reading": "およぐ",
+  "gloss": {
+   "en": "to swim",
+   "es": "nadar"
+  }
+ },
+ "w0393": {
+  "id": "w0393",
+  "w": "屋上",
+  "reading": "おくじょう",
+  "gloss": {
+   "en": "rooftop",
+   "es": "azotea"
+  }
+ },
+ "w0394": {
+  "id": "w0394",
+  "w": "本屋",
+  "reading": "ほんや",
+  "gloss": {
+   "en": "bookshop",
+   "es": "librería"
+  }
+ },
+ "w0395": {
+  "id": "w0395",
+  "w": "部屋",
+  "reading": "へや",
+  "gloss": {
+   "en": "room",
+   "es": "habitación"
+  }
+ },
+ "w0396": {
+  "id": "w0396",
+  "w": "温度",
+  "reading": "おんど",
+  "gloss": {
+   "en": "temperature",
+   "es": "temperatura"
+  }
+ },
+ "w0397": {
+  "id": "w0397",
+  "w": "温泉",
+  "reading": "おんせん",
+  "gloss": {
+   "en": "hot spring",
+   "es": "aguas termales"
+  }
+ },
+ "w0398": {
+  "id": "w0398",
+  "w": "温かい",
+  "reading": "あたたかい",
+  "gloss": {
+   "en": "warm",
+   "es": "cálido"
+  }
+ },
+ "w0399": {
+  "id": "w0399",
+  "w": "文化",
+  "reading": "ぶんか",
+  "gloss": {
+   "en": "culture",
+   "es": "cultura"
+  }
+ },
+ "w0400": {
+  "id": "w0400",
+  "w": "化学",
+  "reading": "かがく",
+  "gloss": {
+   "en": "chemistry",
+   "es": "química"
+  }
+ },
+ "w0401": {
+  "id": "w0401",
+  "w": "荷重",
+  "reading": "かじゅう",
+  "gloss": {
+   "en": "load",
+   "es": "carga"
+  }
+ },
+ "w0402": {
+  "id": "w0402",
+  "w": "歌手",
+  "reading": "かしゅ",
+  "gloss": {
+   "en": "singer",
+   "es": "cantante"
+  }
+ },
+ "w0403": {
+  "id": "w0403",
+  "w": "歌",
+  "reading": "うた",
+  "gloss": {
+   "en": "song",
+   "es": "canción"
+  }
+ },
+ "w0404": {
+  "id": "w0404",
+  "w": "歌う",
+  "reading": "うたう",
+  "gloss": {
+   "en": "to sing",
+   "es": "cantar"
+  }
+ },
+ "w0405": {
+  "id": "w0405",
+  "w": "画家",
+  "reading": "がか",
+  "gloss": {
+   "en": "painter",
+   "es": "pintor"
+  }
+ },
+ "w0406": {
+  "id": "w0406",
+  "w": "計画",
+  "reading": "けいかく",
+  "gloss": {
+   "en": "plan",
+   "es": "plan"
+  }
+ },
+ "w0407": {
+  "id": "w0407",
+  "w": "一回",
+  "reading": "いっかい",
+  "gloss": {
+   "en": "once",
+   "es": "una vez"
+  }
+ },
+ "w0408": {
+  "id": "w0408",
+  "w": "今回",
+  "reading": "こんかい",
+  "gloss": {
+   "en": "this time",
+   "es": "esta vez"
+  }
+ },
+ "w0409": {
+  "id": "w0409",
+  "w": "回る",
+  "reading": "まわる",
+  "gloss": {
+   "en": "to turn",
+   "es": "girar"
+  }
+ },
+ "w0410": {
+  "id": "w0410",
+  "w": "海外",
+  "reading": "かいがい",
+  "gloss": {
+   "en": "overseas",
+   "es": "extranjero"
+  }
+ },
+ "w0411": {
+  "id": "w0411",
+  "w": "海",
+  "reading": "うみ",
+  "gloss": {
+   "en": "sea",
+   "es": "mar"
+  }
+ },
+ "w0412": {
+  "id": "w0412",
+  "w": "帰国",
+  "reading": "きこく",
+  "gloss": {
+   "en": "returning home",
+   "es": "regreso al país"
+  }
+ },
+ "w0413": {
+  "id": "w0413",
+  "w": "帰る",
+  "reading": "かえる",
+  "gloss": {
+   "en": "to return",
+   "es": "volver"
+  }
+ },
+ "w0414": {
+  "id": "w0414",
+  "w": "起立",
+  "reading": "きりつ",
+  "gloss": {
+   "en": "standing up",
+   "es": "ponerse de pie"
+  }
+ },
+ "w0415": {
+  "id": "w0415",
+  "w": "起きる",
+  "reading": "おきる",
+  "gloss": {
+   "en": "to wake up",
+   "es": "despertarse"
+  }
+ },
+ "w0416": {
+  "id": "w0416",
+  "w": "起こる",
+  "reading": "おこる",
+  "gloss": {
+   "en": "to occur",
+   "es": "ocurrir"
+  }
+ },
+ "w0417": {
+  "id": "w0417",
+  "w": "初級",
+  "reading": "しょきゅう",
+  "gloss": {
+   "en": "beginner level",
+   "es": "nivel inicial"
+  }
+ },
+ "w0418": {
+  "id": "w0418",
+  "w": "上級",
+  "reading": "じょうきゅう",
+  "gloss": {
+   "en": "advanced level",
+   "es": "nivel avanzado"
+  }
+ },
+ "w0419": {
+  "id": "w0419",
+  "w": "過去",
+  "reading": "かこ",
+  "gloss": {
+   "en": "the past",
+   "es": "el pasado"
+  }
+ },
+ "w0420": {
+  "id": "w0420",
+  "w": "去る",
+  "reading": "さる",
+  "gloss": {
+   "en": "to leave",
+   "es": "irse"
+  }
+ },
+ "w0421": {
+  "id": "w0421",
+  "w": "東京",
+  "reading": "とうきょう",
+  "gloss": {
+   "en": "Tokyo",
+   "es": "Tokio"
+  }
+ },
+ "w0422": {
+  "id": "w0422",
+  "w": "京都",
+  "reading": "きょうと",
+  "gloss": {
+   "en": "Kyoto",
+   "es": "Kioto"
+  }
+ },
+ "w0423": {
+  "id": "w0423",
+  "w": "銀",
+  "reading": "ぎん",
+  "gloss": {
+   "en": "silver",
+   "es": "plata"
+  }
+ },
+ "w0424": {
+  "id": "w0424",
+  "w": "地区",
+  "reading": "ちく",
+  "gloss": {
+   "en": "district",
+   "es": "distrito"
+  }
+ },
+ "w0425": {
+  "id": "w0425",
+  "w": "区役所",
+  "reading": "くやくしょ",
+  "gloss": {
+   "en": "ward office",
+   "es": "oficina del distrito"
+  }
+ },
+ "w0426": {
+  "id": "w0426",
+  "w": "苦労",
+  "reading": "くろう",
+  "gloss": {
+   "en": "hardship",
+   "es": "penalidades"
+  }
+ },
+ "w0427": {
+  "id": "w0427",
+  "w": "苦しい",
+  "reading": "くるしい",
+  "gloss": {
+   "en": "painful",
+   "es": "doloroso"
+  }
+ },
+ "w0428": {
+  "id": "w0428",
+  "w": "苦い",
+  "reading": "にがい",
+  "gloss": {
+   "en": "bitter",
+   "es": "amargo"
+  }
+ },
+ "w0429": {
+  "id": "w0429",
+  "w": "道具",
+  "reading": "どうぐ",
+  "gloss": {
+   "en": "tool",
+   "es": "herramienta"
+  }
+ },
+ "w0430": {
+  "id": "w0430",
+  "w": "家具",
+  "reading": "かぐ",
+  "gloss": {
+   "en": "furniture",
+   "es": "muebles"
+  }
+ },
+ "w0431": {
+  "id": "w0431",
+  "w": "君主",
+  "reading": "くんしゅ",
+  "gloss": {
+   "en": "monarch",
+   "es": "monarca"
+  }
+ },
+ "w0432": {
+  "id": "w0432",
+  "w": "君",
+  "reading": "きみ",
+  "gloss": {
+   "en": "you (familiar)",
+   "es": "tú (familiar)"
+  }
+ },
+ "w0433": {
+  "id": "w0433",
+  "w": "兄弟",
+  "reading": "きょうだい",
+  "gloss": {
+   "en": "siblings",
+   "es": "hermanos"
+  }
+ },
+ "w0434": {
+  "id": "w0434",
+  "w": "兄",
+  "reading": "あに",
+  "gloss": {
+   "en": "older brother",
+   "es": "hermano mayor"
+  }
+ },
+ "w0435": {
+  "id": "w0435",
+  "w": "子弟",
+  "reading": "してい",
+  "gloss": {
+   "en": "children",
+   "es": "hijos"
+  }
+ },
+ "w0436": {
+  "id": "w0436",
+  "w": "弟",
+  "reading": "おとうと",
+  "gloss": {
+   "en": "younger brother",
+   "es": "hermano menor"
+  }
+ },
+ "w0437": {
+  "id": "w0437",
+  "w": "姉妹",
+  "reading": "しまい",
+  "gloss": {
+   "en": "sisters",
+   "es": "hermanas"
+  }
+ },
+ "w0438": {
+  "id": "w0438",
+  "w": "姉",
+  "reading": "あね",
+  "gloss": {
+   "en": "older sister",
+   "es": "hermana mayor"
+  }
+ },
+ "w0439": {
+  "id": "w0439",
+  "w": "妹",
+  "reading": "いもうと",
+  "gloss": {
+   "en": "younger sister",
+   "es": "hermana menor"
+  }
+ },
+ "w0440": {
+  "id": "w0440",
+  "w": "関係",
+  "reading": "かんけい",
+  "gloss": {
+   "en": "relation",
+   "es": "relación"
+  }
+ },
+ "w0441": {
+  "id": "w0441",
+  "w": "係",
+  "reading": "かかり",
+  "gloss": {
+   "en": "person in charge",
+   "es": "encargado"
+  }
+ },
+ "w0442": {
+  "id": "w0442",
+  "w": "軽食",
+  "reading": "けいしょく",
+  "gloss": {
+   "en": "light meal",
+   "es": "comida ligera"
+  }
+ },
+ "w0443": {
+  "id": "w0443",
+  "w": "軽い",
+  "reading": "かるい",
+  "gloss": {
+   "en": "light",
+   "es": "ligero"
+  }
+ },
+ "w0444": {
+  "id": "w0444",
+  "w": "血液",
+  "reading": "けつえき",
+  "gloss": {
+   "en": "blood",
+   "es": "sangre"
+  }
+ },
+ "w0445": {
+  "id": "w0445",
+  "w": "血",
+  "reading": "ち",
+  "gloss": {
+   "en": "blood",
+   "es": "sangre"
+  }
+ },
+ "w0446": {
+  "id": "w0446",
+  "w": "県庁",
+  "reading": "けんちょう",
+  "gloss": {
+   "en": "prefectural office",
+   "es": "oficina prefectural"
+  }
+ },
+ "w0447": {
+  "id": "w0447",
+  "w": "県",
+  "reading": "けん",
+  "gloss": {
+   "en": "prefecture",
+   "es": "prefectura"
+  }
+ },
+ "w0448": {
+  "id": "w0448",
+  "w": "建設",
+  "reading": "けんせつ",
+  "gloss": {
+   "en": "construction",
+   "es": "construcción"
+  }
+ },
+ "w0449": {
+  "id": "w0449",
+  "w": "建てる",
+  "reading": "たてる",
+  "gloss": {
+   "en": "to build",
+   "es": "construir"
+  }
+ },
+ "w0450": {
+  "id": "w0450",
+  "w": "元",
+  "reading": "もと",
+  "gloss": {
+   "en": "origin",
+   "es": "origen"
+  }
+ },
+ "w0451": {
+  "id": "w0451",
+  "w": "言語",
+  "reading": "げんご",
+  "gloss": {
+   "en": "language",
+   "es": "lenguaje"
+  }
+ },
+ "w0452": {
+  "id": "w0452",
+  "w": "言う",
+  "reading": "いう",
+  "gloss": {
+   "en": "to say",
+   "es": "decir"
+  }
+ },
+ "w0453": {
+  "id": "w0453",
+  "w": "言葉",
+  "reading": "ことば",
+  "gloss": {
+   "en": "word, language",
+   "es": "palabra, idioma"
+  }
+ },
+ "w0454": {
+  "id": "w0454",
+  "w": "原因",
+  "reading": "げんいん",
+  "gloss": {
+   "en": "cause",
+   "es": "causa"
+  }
+ },
+ "w0455": {
+  "id": "w0455",
+  "w": "原料",
+  "reading": "げんりょう",
+  "gloss": {
+   "en": "raw material",
+   "es": "materia prima"
+  }
+ },
+ "w0456": {
+  "id": "w0456",
+  "w": "戸外",
+  "reading": "こがい",
+  "gloss": {
+   "en": "outdoors",
+   "es": "al aire libre"
+  }
+ },
+ "w0457": {
+  "id": "w0457",
+  "w": "戸",
+  "reading": "と",
+  "gloss": {
+   "en": "door",
+   "es": "puerta"
+  }
+ },
+ "w0458": {
+  "id": "w0458",
+  "w": "御飯",
+  "reading": "ごはん",
+  "gloss": {
+   "en": "cooked rice, meal",
+   "es": "arroz, comida"
+  }
+ },
+ "w0459": {
+  "id": "w0459",
+  "w": "観光",
+  "reading": "かんこう",
+  "gloss": {
+   "en": "sightseeing",
+   "es": "turismo"
+  }
+ },
+ "w0460": {
+  "id": "w0460",
+  "w": "光",
+  "reading": "ひかり",
+  "gloss": {
+   "en": "light",
+   "es": "luz"
+  }
+ },
+ "w0461": {
+  "id": "w0461",
+  "w": "好意",
+  "reading": "こうい",
+  "gloss": {
+   "en": "goodwill",
+   "es": "buena voluntad"
+  }
+ },
+ "w0462": {
+  "id": "w0462",
+  "w": "好き",
+  "reading": "すき",
+  "gloss": {
+   "en": "liked, favourite",
+   "es": "que gusta"
+  }
+ },
+ "w0463": {
+  "id": "w0463",
+  "w": "工場",
+  "reading": "こうじょう",
+  "gloss": {
+   "en": "factory",
+   "es": "fábrica"
+  }
+ },
+ "w0464": {
+  "id": "w0464",
+  "w": "工事",
+  "reading": "こうじ",
+  "gloss": {
+   "en": "construction work",
+   "es": "obras"
+  }
+ },
+ "w0465": {
+  "id": "w0465",
+  "w": "広告",
+  "reading": "こうこく",
+  "gloss": {
+   "en": "advertisement",
+   "es": "anuncio"
+  }
+ },
+ "w0466": {
+  "id": "w0466",
+  "w": "広い",
+  "reading": "ひろい",
+  "gloss": {
+   "en": "wide, spacious",
+   "es": "ancho, espacioso"
+  }
+ },
+ "w0467": {
+  "id": "w0467",
+  "w": "港",
+  "reading": "みなと",
+  "gloss": {
+   "en": "harbour",
+   "es": "puerto"
+  }
+ },
+ "w0468": {
+  "id": "w0468",
+  "w": "番号",
+  "reading": "ばんごう",
+  "gloss": {
+   "en": "number",
+   "es": "número"
+  }
+ },
+ "w0469": {
+  "id": "w0469",
+  "w": "信号",
+  "reading": "しんごう",
+  "gloss": {
+   "en": "traffic light",
+   "es": "semáforo"
+  }
+ },
+ "w0470": {
+  "id": "w0470",
+  "w": "黒板",
+  "reading": "こくばん",
+  "gloss": {
+   "en": "blackboard",
+   "es": "pizarra"
+  }
+ },
+ "w0471": {
+  "id": "w0471",
+  "w": "黒い",
+  "reading": "くろい",
+  "gloss": {
+   "en": "black",
+   "es": "negro"
+  }
+ },
+ "w0472": {
+  "id": "w0472",
+  "w": "最近",
+  "reading": "さいきん",
+  "gloss": {
+   "en": "recently",
+   "es": "recientemente"
+  }
+ },
+ "w0473": {
+  "id": "w0473",
+  "w": "最後",
+  "reading": "さいご",
+  "gloss": {
+   "en": "the last",
+   "es": "el último"
+  }
+ },
+ "w0474": {
+  "id": "w0474",
+  "w": "野菜",
+  "reading": "やさい",
+  "gloss": {
+   "en": "vegetable",
+   "es": "verdura"
+  }
+ },
+ "w0475": {
+  "id": "w0475",
+  "w": "仕事",
+  "reading": "しごと",
+  "gloss": {
+   "en": "work, job",
+   "es": "trabajo"
+  }
+ },
+ "w0476": {
+  "id": "w0476",
+  "w": "仕方",
+  "reading": "しかた",
+  "gloss": {
+   "en": "way of doing",
+   "es": "manera de hacer"
+  }
+ },
+ "w0477": {
+  "id": "w0477",
+  "w": "死亡",
+  "reading": "しぼう",
+  "gloss": {
+   "en": "death",
+   "es": "fallecimiento"
+  }
+ },
+ "w0478": {
+  "id": "w0478",
+  "w": "死ぬ",
+  "reading": "しぬ",
+  "gloss": {
+   "en": "to die",
+   "es": "morir"
+  }
+ },
+ "w0479": {
+  "id": "w0479",
+  "w": "私立",
+  "reading": "しりつ",
+  "gloss": {
+   "en": "private (institution)",
+   "es": "privado"
+  }
+ },
+ "w0480": {
+  "id": "w0480",
+  "w": "私",
+  "reading": "わたし",
+  "gloss": {
+   "en": "I, me",
+   "es": "yo"
+  }
+ },
+ "w0481": {
+  "id": "w0481",
+  "w": "思想",
+  "reading": "しそう",
+  "gloss": {
+   "en": "thought, ideology",
+   "es": "pensamiento"
+  }
+ },
+ "w0482": {
+  "id": "w0482",
+  "w": "思う",
+  "reading": "おもう",
+  "gloss": {
+   "en": "to think",
+   "es": "pensar"
+  }
+ },
+ "w0483": {
+  "id": "w0483",
+  "w": "思い出",
+  "reading": "おもいで",
+  "gloss": {
+   "en": "memory",
+   "es": "recuerdo"
+  }
+ },
+ "w0484": {
+  "id": "w0484",
+  "w": "用紙",
+  "reading": "ようし",
+  "gloss": {
+   "en": "form, blank sheet",
+   "es": "formulario"
+  }
+ },
+ "w0485": {
+  "id": "w0485",
+  "w": "紙",
+  "reading": "かみ",
+  "gloss": {
+   "en": "paper",
+   "es": "papel"
+  }
+ },
+ "w0486": {
+  "id": "w0486",
+  "w": "事故",
+  "reading": "じこ",
+  "gloss": {
+   "en": "accident",
+   "es": "accidente"
+  }
+ },
+ "w0487": {
+  "id": "w0487",
+  "w": "事",
+  "reading": "こと",
+  "gloss": {
+   "en": "thing, matter",
+   "es": "cosa, asunto"
+  }
+ },
+ "w0488": {
+  "id": "w0488",
+  "w": "卒業式",
+  "reading": "そつぎょうしき",
+  "gloss": {
+   "en": "graduation ceremony",
+   "es": "ceremonia de graduación"
+  }
+ },
+ "w0489": {
+  "id": "w0489",
+  "w": "形式",
+  "reading": "けいしき",
+  "gloss": {
+   "en": "form, style",
+   "es": "forma, estilo"
+  }
+ },
+ "w0490": {
+  "id": "w0490",
+  "w": "写真",
+  "reading": "しゃしん",
+  "gloss": {
+   "en": "photograph",
+   "es": "fotografía"
+  }
+ },
+ "w0491": {
+  "id": "w0491",
+  "w": "写す",
+  "reading": "うつす",
+  "gloss": {
+   "en": "to copy",
+   "es": "copiar"
+  }
+ },
+ "w0492": {
+  "id": "w0492",
+  "w": "若者",
+  "reading": "わかもの",
+  "gloss": {
+   "en": "young person",
+   "es": "joven"
+  }
+ },
+ "w0493": {
+  "id": "w0493",
+  "w": "者",
+  "reading": "もの",
+  "gloss": {
+   "en": "person",
+   "es": "persona"
+  }
+ },
+ "w0494": {
+  "id": "w0494",
+  "w": "借金",
+  "reading": "しゃっきん",
+  "gloss": {
+   "en": "debt",
+   "es": "deuda"
+  }
+ },
+ "w0495": {
+  "id": "w0495",
+  "w": "借りる",
+  "reading": "かりる",
+  "gloss": {
+   "en": "to borrow",
+   "es": "pedir prestado"
+  }
+ },
+ "w0496": {
+  "id": "w0496",
+  "w": "弱点",
+  "reading": "じゃくてん",
+  "gloss": {
+   "en": "weak point",
+   "es": "punto débil"
+  }
+ },
+ "w0497": {
+  "id": "w0497",
+  "w": "弱い",
+  "reading": "よわい",
+  "gloss": {
+   "en": "weak",
+   "es": "débil"
+  }
+ },
+ "w0498": {
+  "id": "w0498",
+  "w": "取材",
+  "reading": "しゅざい",
+  "gloss": {
+   "en": "news gathering",
+   "es": "reportaje"
+  }
+ },
+ "w0499": {
+  "id": "w0499",
+  "w": "取る",
+  "reading": "とる",
+  "gloss": {
+   "en": "to take",
+   "es": "tomar"
+  }
+ },
+ "w0500": {
+  "id": "w0500",
+  "w": "日本酒",
+  "reading": "にほんしゅ",
+  "gloss": {
+   "en": "sake",
+   "es": "sake"
+  }
+ },
+ "w0501": {
+  "id": "w0501",
+  "w": "酒",
+  "reading": "さけ",
+  "gloss": {
+   "en": "alcohol",
+   "es": "alcohol"
+  }
+ },
+ "w0502": {
+  "id": "w0502",
+  "w": "首都",
+  "reading": "しゅと",
+  "gloss": {
+   "en": "capital city",
+   "es": "capital"
+  }
+ },
+ "w0503": {
+  "id": "w0503",
+  "w": "首",
+  "reading": "くび",
+  "gloss": {
+   "en": "neck",
+   "es": "cuello"
+  }
+ },
+ "w0504": {
+  "id": "w0504",
+  "w": "受験",
+  "reading": "じゅけん",
+  "gloss": {
+   "en": "taking an exam",
+   "es": "examinarse"
+  }
+ },
+ "w0505": {
+  "id": "w0505",
+  "w": "受ける",
+  "reading": "うける",
+  "gloss": {
+   "en": "to receive",
+   "es": "recibir"
+  }
+ },
+ "w0506": {
+  "id": "w0506",
+  "w": "受付",
+  "reading": "うけつけ",
+  "gloss": {
+   "en": "reception",
+   "es": "recepción"
+  }
+ },
+ "w0507": {
+  "id": "w0507",
+  "w": "終点",
+  "reading": "しゅうてん",
+  "gloss": {
+   "en": "terminus",
+   "es": "término"
+  }
+ },
+ "w0508": {
+  "id": "w0508",
+  "w": "終わる",
+  "reading": "おわる",
+  "gloss": {
+   "en": "to end",
+   "es": "terminar"
+  }
+ },
+ "w0509": {
+  "id": "w0509",
+  "w": "集合",
+  "reading": "しゅうごう",
+  "gloss": {
+   "en": "gathering",
+   "es": "reunión"
+  }
+ },
+ "w0510": {
+  "id": "w0510",
+  "w": "集める",
+  "reading": "あつめる",
+  "gloss": {
+   "en": "to collect",
+   "es": "coleccionar"
+  }
+ },
+ "w0511": {
+  "id": "w0511",
+  "w": "集まる",
+  "reading": "あつまる",
+  "gloss": {
+   "en": "to gather",
+   "es": "reunirse"
+  }
+ },
+ "w0512": {
+  "id": "w0512",
+  "w": "住所",
+  "reading": "じゅうしょ",
+  "gloss": {
+   "en": "address",
+   "es": "dirección"
+  }
+ },
+ "w0513": {
+  "id": "w0513",
+  "w": "住む",
+  "reading": "すむ",
+  "gloss": {
+   "en": "to live",
+   "es": "vivir"
+  }
+ },
+ "w0514": {
+  "id": "w0514",
+  "w": "宿泊",
+  "reading": "しゅくはく",
+  "gloss": {
+   "en": "lodging",
+   "es": "alojamiento"
+  }
+ },
+ "w0515": {
+  "id": "w0515",
+  "w": "春分",
+  "reading": "しゅんぶん",
+  "gloss": {
+   "en": "spring equinox",
+   "es": "equinoccio de primavera"
+  }
+ },
+ "w0516": {
+  "id": "w0516",
+  "w": "春",
+  "reading": "はる",
+  "gloss": {
+   "en": "spring",
+   "es": "primavera"
+  }
+ },
+ "w0517": {
+  "id": "w0517",
+  "w": "夏期",
+  "reading": "かき",
+  "gloss": {
+   "en": "summer season",
+   "es": "temporada de verano"
+  }
+ },
+ "w0518": {
+  "id": "w0518",
+  "w": "夏",
+  "reading": "なつ",
+  "gloss": {
+   "en": "summer",
+   "es": "verano"
+  }
+ },
+ "w0519": {
+  "id": "w0519",
+  "w": "夏休み",
+  "reading": "なつやすみ",
+  "gloss": {
+   "en": "summer holiday",
+   "es": "vacaciones de verano"
+  }
+ },
+ "w0520": {
+  "id": "w0520",
+  "w": "秋分",
+  "reading": "しゅうぶん",
+  "gloss": {
+   "en": "autumn equinox",
+   "es": "equinoccio de otoño"
+  }
+ },
+ "w0521": {
+  "id": "w0521",
+  "w": "秋",
+  "reading": "あき",
+  "gloss": {
+   "en": "autumn",
+   "es": "otoño"
+  }
+ },
+ "w0522": {
+  "id": "w0522",
+  "w": "冬期",
+  "reading": "とうき",
+  "gloss": {
+   "en": "winter season",
+   "es": "temporada de invierno"
+  }
+ },
+ "w0523": {
+  "id": "w0523",
+  "w": "冬",
+  "reading": "ふゆ",
+  "gloss": {
+   "en": "winter",
+   "es": "invierno"
+  }
+ },
+ "w0524": {
+  "id": "w0524",
+  "w": "場所",
+  "reading": "ばしょ",
+  "gloss": {
+   "en": "place",
+   "es": "lugar"
+  }
+ },
+ "w0525": {
+  "id": "w0525",
+  "w": "台所",
+  "reading": "だいどころ",
+  "gloss": {
+   "en": "kitchen",
+   "es": "cocina"
+  }
+ },
+ "w0526": {
+  "id": "w0526",
+  "w": "残暑",
+  "reading": "ざんしょ",
+  "gloss": {
+   "en": "lingering heat",
+   "es": "calor tardío"
+  }
+ },
+ "w0527": {
+  "id": "w0527",
+  "w": "暑い",
+  "reading": "あつい",
+  "gloss": {
+   "en": "hot (weather)",
+   "es": "caluroso"
+  }
+ },
+ "w0528": {
+  "id": "w0528",
+  "w": "寒気",
+  "reading": "かんき",
+  "gloss": {
+   "en": "chill",
+   "es": "frío"
+  }
+ },
+ "w0529": {
+  "id": "w0529",
+  "w": "寒い",
+  "reading": "さむい",
+  "gloss": {
+   "en": "cold (weather)",
+   "es": "frío"
+  }
+ },
+ "w0530": {
+  "id": "w0530",
+  "w": "消防",
+  "reading": "しょうぼう",
+  "gloss": {
+   "en": "firefighting",
+   "es": "bomberos"
+  }
+ },
+ "w0531": {
+  "id": "w0531",
+  "w": "消す",
+  "reading": "けす",
+  "gloss": {
+   "en": "to erase, turn off",
+   "es": "borrar, apagar"
+  }
+ },
+ "w0532": {
+  "id": "w0532",
+  "w": "消える",
+  "reading": "きえる",
+  "gloss": {
+   "en": "to disappear",
+   "es": "desaparecer"
+  }
+ },
+ "w0533": {
+  "id": "w0533",
+  "w": "商業",
+  "reading": "しょうぎょう",
+  "gloss": {
+   "en": "commerce",
+   "es": "comercio"
+  }
+ },
+ "w0534": {
+  "id": "w0534",
+  "w": "商店",
+  "reading": "しょうてん",
+  "gloss": {
+   "en": "shop",
+   "es": "comercio"
+  }
+ },
+ "w0535": {
+  "id": "w0535",
+  "w": "会場",
+  "reading": "かいじょう",
+  "gloss": {
+   "en": "venue",
+   "es": "recinto"
+  }
+ },
+ "w0536": {
+  "id": "w0536",
+  "w": "場合",
+  "reading": "ばあい",
+  "gloss": {
+   "en": "case, situation",
+   "es": "caso"
+  }
+ },
+ "w0537": {
+  "id": "w0537",
+  "w": "心配",
+  "reading": "しんぱい",
+  "gloss": {
+   "en": "worry",
+   "es": "preocupación"
+  }
+ },
+ "w0538": {
+  "id": "w0538",
+  "w": "心",
+  "reading": "こころ",
+  "gloss": {
+   "en": "heart, mind",
+   "es": "corazón, mente"
+  }
+ },
+ "w0539": {
+  "id": "w0539",
+  "w": "真実",
+  "reading": "しんじつ",
+  "gloss": {
+   "en": "truth",
+   "es": "verdad"
+  }
+ },
+ "w0540": {
+  "id": "w0540",
+  "w": "真中",
+  "reading": "まなか",
+  "gloss": {
+   "en": "the middle",
+   "es": "el centro"
+  }
+ },
+ "w0541": {
+  "id": "w0541",
+  "w": "深夜",
+  "reading": "しんや",
+  "gloss": {
+   "en": "late at night",
+   "es": "altas horas"
+  }
+ },
+ "w0542": {
+  "id": "w0542",
+  "w": "深い",
+  "reading": "ふかい",
+  "gloss": {
+   "en": "deep",
+   "es": "profundo"
+  }
+ },
+ "w0543": {
+  "id": "w0543",
+  "w": "進歩",
+  "reading": "しんぽ",
+  "gloss": {
+   "en": "progress",
+   "es": "progreso"
+  }
+ },
+ "w0544": {
+  "id": "w0544",
+  "w": "進む",
+  "reading": "すすむ",
+  "gloss": {
+   "en": "to advance",
+   "es": "avanzar"
+  }
+ },
+ "w0545": {
+  "id": "w0545",
+  "w": "親切",
+  "reading": "しんせつ",
+  "gloss": {
+   "en": "kindness",
+   "es": "amabilidad"
+  }
+ },
+ "w0546": {
+  "id": "w0546",
+  "w": "親",
+  "reading": "おや",
+  "gloss": {
+   "en": "parent",
+   "es": "padre/madre"
+  }
+ },
+ "w0547": {
+  "id": "w0547",
+  "w": "地図",
+  "reading": "ちず",
+  "gloss": {
+   "en": "map",
+   "es": "mapa"
+  }
+ },
+ "w0548": {
+  "id": "w0548",
+  "w": "正解",
+  "reading": "せいかい",
+  "gloss": {
+   "en": "correct answer",
+   "es": "respuesta correcta"
+  }
+ },
+ "w0549": {
+  "id": "w0549",
+  "w": "正しい",
+  "reading": "ただしい",
+  "gloss": {
+   "en": "correct",
+   "es": "correcto"
+  }
+ },
+ "w0550": {
+  "id": "w0550",
+  "w": "声明",
+  "reading": "せいめい",
+  "gloss": {
+   "en": "statement",
+   "es": "declaración"
+  }
+ },
+ "w0551": {
+  "id": "w0551",
+  "w": "声",
+  "reading": "こえ",
+  "gloss": {
+   "en": "voice",
+   "es": "voz"
+  }
+ },
+ "w0552": {
+  "id": "w0552",
+  "w": "青年",
+  "reading": "せいねん",
+  "gloss": {
+   "en": "youth",
+   "es": "joven"
+  }
+ },
+ "w0553": {
+  "id": "w0553",
+  "w": "青い",
+  "reading": "あおい",
+  "gloss": {
+   "en": "blue",
+   "es": "azul"
+  }
+ },
+ "w0554": {
+  "id": "w0554",
+  "w": "赤道",
+  "reading": "せきどう",
+  "gloss": {
+   "en": "equator",
+   "es": "ecuador"
+  }
+ },
+ "w0555": {
+  "id": "w0555",
+  "w": "赤い",
+  "reading": "あかい",
+  "gloss": {
+   "en": "red",
+   "es": "rojo"
+  }
+ },
+ "w0556": {
+  "id": "w0556",
+  "w": "切手",
+  "reading": "きって",
+  "gloss": {
+   "en": "postage stamp",
+   "es": "sello"
+  }
+ },
+ "w0557": {
+  "id": "w0557",
+  "w": "切る",
+  "reading": "きる",
+  "gloss": {
+   "en": "to cut",
+   "es": "cortar"
+  }
+ },
+ "w0558": {
+  "id": "w0558",
+  "w": "小説",
+  "reading": "しょうせつ",
+  "gloss": {
+   "en": "novel",
+   "es": "novela"
+  }
+ },
+ "w0559": {
+  "id": "w0559",
+  "w": "洗濯",
+  "reading": "せんたく",
+  "gloss": {
+   "en": "laundry",
+   "es": "colada"
+  }
+ },
+ "w0560": {
+  "id": "w0560",
+  "w": "洗う",
+  "reading": "あらう",
+  "gloss": {
+   "en": "to wash",
+   "es": "lavar"
+  }
+ },
+ "w0561": {
+  "id": "w0561",
+  "w": "線路",
+  "reading": "せんろ",
+  "gloss": {
+   "en": "railway track",
+   "es": "vía férrea"
+  }
+ },
+ "w0562": {
+  "id": "w0562",
+  "w": "新幹線",
+  "reading": "しんかんせん",
+  "gloss": {
+   "en": "bullet train",
+   "es": "tren bala"
+  }
+ },
+ "w0563": {
+  "id": "w0563",
+  "w": "走行",
+  "reading": "そうこう",
+  "gloss": {
+   "en": "running, travelling",
+   "es": "circulación"
+  }
+ },
+ "w0564": {
+  "id": "w0564",
+  "w": "走る",
+  "reading": "はしる",
+  "gloss": {
+   "en": "to run",
+   "es": "correr"
+  }
+ },
+ "w0565": {
+  "id": "w0565",
+  "w": "家族",
+  "reading": "かぞく",
+  "gloss": {
+   "en": "family",
+   "es": "familia"
+  }
+ },
+ "w0566": {
+  "id": "w0566",
+  "w": "民族",
+  "reading": "みんぞく",
+  "gloss": {
+   "en": "ethnic group",
+   "es": "etnia"
+  }
+ },
+ "w0567": {
+  "id": "w0567",
+  "w": "太陽",
+  "reading": "たいよう",
+  "gloss": {
+   "en": "the sun",
+   "es": "el sol"
+  }
+ },
+ "w0568": {
+  "id": "w0568",
+  "w": "太い",
+  "reading": "ふとい",
+  "gloss": {
+   "en": "thick",
+   "es": "grueso"
+  }
+ },
+ "w0569": {
+  "id": "w0569",
+  "w": "体育",
+  "reading": "たいいく",
+  "gloss": {
+   "en": "physical education",
+   "es": "educación física"
+  }
+ },
+ "w0570": {
+  "id": "w0570",
+  "w": "身体",
+  "reading": "しんたい",
+  "gloss": {
+   "en": "body",
+   "es": "cuerpo"
+  }
+ },
+ "w0571": {
+  "id": "w0571",
+  "w": "体",
+  "reading": "からだ",
+  "gloss": {
+   "en": "body",
+   "es": "cuerpo"
+  }
+ },
+ "w0572": {
+  "id": "w0572",
+  "w": "貸与",
+  "reading": "たいよ",
+  "gloss": {
+   "en": "lending",
+   "es": "préstamo"
+  }
+ },
+ "w0573": {
+  "id": "w0573",
+  "w": "貸す",
+  "reading": "かす",
+  "gloss": {
+   "en": "to lend",
+   "es": "prestar"
+  }
+ },
+ "w0574": {
+  "id": "w0574",
+  "w": "時代",
+  "reading": "じだい",
+  "gloss": {
+   "en": "era, period",
+   "es": "época"
+  }
+ },
+ "w0575": {
+  "id": "w0575",
+  "w": "電車代",
+  "reading": "でんしゃだい",
+  "gloss": {
+   "en": "train fare",
+   "es": "precio del tren"
+  }
+ },
+ "w0576": {
+  "id": "w0576",
+  "w": "代わる",
+  "reading": "かわる",
+  "gloss": {
+   "en": "to substitute",
+   "es": "sustituir"
+  }
+ },
+ "w0577": {
+  "id": "w0577",
+  "w": "台風",
+  "reading": "たいふう",
+  "gloss": {
+   "en": "typhoon",
+   "es": "tifón"
+  }
+ },
+ "w0578": {
+  "id": "w0578",
+  "w": "一台",
+  "reading": "いちだい",
+  "gloss": {
+   "en": "one machine",
+   "es": "una máquina"
+  }
+ },
+ "w0579": {
+  "id": "w0579",
+  "w": "短所",
+  "reading": "たんしょ",
+  "gloss": {
+   "en": "shortcoming",
+   "es": "defecto"
+  }
+ },
+ "w0580": {
+  "id": "w0580",
+  "w": "短い",
+  "reading": "みじかい",
+  "gloss": {
+   "en": "short",
+   "es": "corto"
+  }
+ },
+ "w0581": {
+  "id": "w0581",
+  "w": "地下",
+  "reading": "ちか",
+  "gloss": {
+   "en": "underground",
+   "es": "subterráneo"
+  }
+ },
+ "w0582": {
+  "id": "w0582",
+  "w": "地震",
+  "reading": "じしん",
+  "gloss": {
+   "en": "earthquake",
+   "es": "terremoto"
+  }
+ },
+ "w0583": {
+  "id": "w0583",
+  "w": "電池",
+  "reading": "でんち",
+  "gloss": {
+   "en": "battery",
+   "es": "pila"
+  }
+ },
+ "w0584": {
+  "id": "w0584",
+  "w": "池",
+  "reading": "いけ",
+  "gloss": {
+   "en": "pond",
+   "es": "estanque"
+  }
+ },
+ "w0585": {
+  "id": "w0585",
+  "w": "知識",
+  "reading": "ちしき",
+  "gloss": {
+   "en": "knowledge",
+   "es": "conocimiento"
+  }
+ },
+ "w0586": {
+  "id": "w0586",
+  "w": "知る",
+  "reading": "しる",
+  "gloss": {
+   "en": "to know",
+   "es": "saber"
+  }
+ },
+ "w0587": {
+  "id": "w0587",
+  "w": "知り合い",
+  "reading": "しりあい",
+  "gloss": {
+   "en": "acquaintance",
+   "es": "conocido"
+  }
+ },
+ "w0588": {
+  "id": "w0588",
+  "w": "お茶",
+  "reading": "おちゃ",
+  "gloss": {
+   "en": "tea",
+   "es": "té"
+  }
+ },
+ "w0589": {
+  "id": "w0589",
+  "w": "喫茶店",
+  "reading": "きっさてん",
+  "gloss": {
+   "en": "coffee shop",
+   "es": "cafetería"
+  }
+ },
+ "w0590": {
+  "id": "w0590",
+  "w": "到着",
+  "reading": "とうちゃく",
+  "gloss": {
+   "en": "arrival",
+   "es": "llegada"
+  }
+ },
+ "w0591": {
+  "id": "w0591",
+  "w": "着る",
+  "reading": "きる",
+  "gloss": {
+   "en": "to wear",
+   "es": "vestir"
+  }
+ },
+ "w0592": {
+  "id": "w0592",
+  "w": "着く",
+  "reading": "つく",
+  "gloss": {
+   "en": "to arrive",
+   "es": "llegar"
+  }
+ },
+ "w0593": {
+  "id": "w0593",
+  "w": "昼食",
+  "reading": "ちゅうしょく",
+  "gloss": {
+   "en": "lunch",
+   "es": "almuerzo"
+  }
+ },
+ "w0594": {
+  "id": "w0594",
+  "w": "昼",
+  "reading": "ひる",
+  "gloss": {
+   "en": "noon, daytime",
+   "es": "mediodía"
+  }
+ },
+ "w0595": {
+  "id": "w0595",
+  "w": "昼ご飯",
+  "reading": "ひるごはん",
+  "gloss": {
+   "en": "lunch",
+   "es": "almuerzo"
+  }
+ },
+ "w0596": {
+  "id": "w0596",
+  "w": "町長",
+  "reading": "ちょうちょう",
+  "gloss": {
+   "en": "town mayor",
+   "es": "alcalde"
+  }
+ },
+ "w0597": {
+  "id": "w0597",
+  "w": "町",
+  "reading": "まち",
+  "gloss": {
+   "en": "town",
+   "es": "pueblo"
+  }
+ },
+ "w0598": {
+  "id": "w0598",
+  "w": "野鳥",
+  "reading": "やちょう",
+  "gloss": {
+   "en": "wild bird",
+   "es": "ave silvestre"
+  }
+ },
+ "w0599": {
+  "id": "w0599",
+  "w": "鳥",
+  "reading": "とり",
+  "gloss": {
+   "en": "bird",
+   "es": "pájaro"
+  }
+ },
+ "w0600": {
+  "id": "w0600",
+  "w": "朝食",
+  "reading": "ちょうしょく",
+  "gloss": {
+   "en": "breakfast",
+   "es": "desayuno"
+  }
+ },
+ "w0601": {
+  "id": "w0601",
+  "w": "朝",
+  "reading": "あさ",
+  "gloss": {
+   "en": "morning",
+   "es": "mañana"
+  }
+ },
+ "w0602": {
+  "id": "w0602",
+  "w": "毎朝",
+  "reading": "まいあさ",
+  "gloss": {
+   "en": "every morning",
+   "es": "cada mañana"
+  }
+ },
+ "w0603": {
+  "id": "w0603",
+  "w": "交通",
+  "reading": "こうつう",
+  "gloss": {
+   "en": "traffic",
+   "es": "tráfico"
+  }
+ },
+ "w0604": {
+  "id": "w0604",
+  "w": "普通",
+  "reading": "ふつう",
+  "gloss": {
+   "en": "ordinary",
+   "es": "normal"
+  }
+ },
+ "w0605": {
+  "id": "w0605",
+  "w": "通り",
+  "reading": "とおり",
+  "gloss": {
+   "en": "street",
+   "es": "calle"
+  }
+ },
+ "w0606": {
+  "id": "w0606",
+  "w": "予定",
+  "reading": "よてい",
+  "gloss": {
+   "en": "plan, schedule",
+   "es": "plan"
+  }
+ },
+ "w0607": {
+  "id": "w0607",
+  "w": "定食",
+  "reading": "ていしょく",
+  "gloss": {
+   "en": "set meal",
+   "es": "menú del día"
+  }
+ },
+ "w0608": {
+  "id": "w0608",
+  "w": "家庭",
+  "reading": "かてい",
+  "gloss": {
+   "en": "household",
+   "es": "hogar"
+  }
+ },
+ "w0609": {
+  "id": "w0609",
+  "w": "庭",
+  "reading": "にわ",
+  "gloss": {
+   "en": "garden",
+   "es": "jardín"
+  }
+ },
+ "w0610": {
+  "id": "w0610",
+  "w": "今度",
+  "reading": "こんど",
+  "gloss": {
+   "en": "next time",
+   "es": "la próxima vez"
+  }
+ },
+ "w0611": {
+  "id": "w0611",
+  "w": "一度",
+  "reading": "いちど",
+  "gloss": {
+   "en": "once",
+   "es": "una vez"
+  }
+ },
+ "w0612": {
+  "id": "w0612",
+  "w": "都会",
+  "reading": "とかい",
+  "gloss": {
+   "en": "city",
+   "es": "ciudad"
+  }
+ },
+ "w0613": {
+  "id": "w0613",
+  "w": "都合",
+  "reading": "つごう",
+  "gloss": {
+   "en": "convenience",
+   "es": "conveniencia"
+  }
+ },
+ "w0614": {
+  "id": "w0614",
+  "w": "半島",
+  "reading": "はんとう",
+  "gloss": {
+   "en": "peninsula",
+   "es": "península"
+  }
+ },
+ "w0615": {
+  "id": "w0615",
+  "w": "島",
+  "reading": "しま",
+  "gloss": {
+   "en": "island",
+   "es": "isla"
+  }
+ },
+ "w0616": {
+  "id": "w0616",
+  "w": "投手",
+  "reading": "とうしゅ",
+  "gloss": {
+   "en": "pitcher",
+   "es": "lanzador"
+  }
+ },
+ "w0617": {
+  "id": "w0617",
+  "w": "投げる",
+  "reading": "なげる",
+  "gloss": {
+   "en": "to throw",
+   "es": "lanzar"
+  }
+ },
+ "w0618": {
+  "id": "w0618",
+  "w": "講堂",
+  "reading": "こうどう",
+  "gloss": {
+   "en": "auditorium",
+   "es": "auditorio"
+  }
+ },
+ "w0619": {
+  "id": "w0619",
+  "w": "労働",
+  "reading": "ろうどう",
+  "gloss": {
+   "en": "labour",
+   "es": "trabajo"
+  }
+ },
+ "w0620": {
+  "id": "w0620",
+  "w": "働く",
+  "reading": "はたらく",
+  "gloss": {
+   "en": "to work",
+   "es": "trabajar"
+  }
+ },
+ "w0621": {
+  "id": "w0621",
+  "w": "道路",
+  "reading": "どうろ",
+  "gloss": {
+   "en": "road",
+   "es": "carretera"
+  }
+ },
+ "w0622": {
+  "id": "w0622",
+  "w": "柔道",
+  "reading": "じゅうどう",
+  "gloss": {
+   "en": "judo",
+   "es": "judo"
+  }
+ },
+ "w0623": {
+  "id": "w0623",
+  "w": "道",
+  "reading": "みち",
+  "gloss": {
+   "en": "road, way",
+   "es": "camino"
+  }
+ },
+ "w0624": {
+  "id": "w0624",
+  "w": "肉",
+  "reading": "にく",
+  "gloss": {
+   "en": "meat",
+   "es": "carne"
+  }
+ },
+ "w0625": {
+  "id": "w0625",
+  "w": "牛肉",
+  "reading": "ぎゅうにく",
+  "gloss": {
+   "en": "beef",
+   "es": "carne de vaca"
+  }
+ },
+ "w0626": {
+  "id": "w0626",
+  "w": "熱心",
+  "reading": "ねっしん",
+  "gloss": {
+   "en": "enthusiasm",
+   "es": "entusiasmo"
+  }
+ },
+ "w0627": {
+  "id": "w0627",
+  "w": "熱",
+  "reading": "ねつ",
+  "gloss": {
+   "en": "fever",
+   "es": "fiebre"
+  }
+ },
+ "w0628": {
+  "id": "w0628",
+  "w": "熱い",
+  "reading": "あつい",
+  "gloss": {
+   "en": "hot (to touch)",
+   "es": "caliente"
+  }
+ },
+ "w0629": {
+  "id": "w0629",
+  "w": "夕飯",
+  "reading": "ゆうはん",
+  "gloss": {
+   "en": "evening meal",
+   "es": "cena"
+  }
+ },
+ "w0630": {
+  "id": "w0630",
+  "w": "病気",
+  "reading": "びょうき",
+  "gloss": {
+   "en": "illness",
+   "es": "enfermedad"
+  }
+ },
+ "w0631": {
+  "id": "w0631",
+  "w": "病人",
+  "reading": "びょうにん",
+  "gloss": {
+   "en": "sick person",
+   "es": "enfermo"
+  }
+ },
+ "w0632": {
+  "id": "w0632",
+  "w": "不便",
+  "reading": "ふべん",
+  "gloss": {
+   "en": "inconvenient",
+   "es": "inconveniente"
+  }
+ },
+ "w0633": {
+  "id": "w0633",
+  "w": "不安",
+  "reading": "ふあん",
+  "gloss": {
+   "en": "anxiety",
+   "es": "inquietud"
+  }
+ },
+ "w0634": {
+  "id": "w0634",
+  "w": "夫婦",
+  "reading": "ふうふ",
+  "gloss": {
+   "en": "married couple",
+   "es": "matrimonio"
+  }
+ },
+ "w0635": {
+  "id": "w0635",
+  "w": "夫",
+  "reading": "おっと",
+  "gloss": {
+   "en": "husband",
+   "es": "marido"
+  }
+ },
+ "w0636": {
+  "id": "w0636",
+  "w": "全部",
+  "reading": "ぜんぶ",
+  "gloss": {
+   "en": "all",
+   "es": "todo"
+  }
+ },
+ "w0637": {
+  "id": "w0637",
+  "w": "洋服",
+  "reading": "ようふく",
+  "gloss": {
+   "en": "Western clothes",
+   "es": "ropa occidental"
+  }
+ },
+ "w0638": {
+  "id": "w0638",
+  "w": "服",
+  "reading": "ふく",
+  "gloss": {
+   "en": "clothes",
+   "es": "ropa"
+  }
+ },
+ "w0639": {
+  "id": "w0639",
+  "w": "文章",
+  "reading": "ぶんしょう",
+  "gloss": {
+   "en": "writing, text",
+   "es": "texto"
+  }
+ },
+ "w0640": {
+  "id": "w0640",
+  "w": "勉強",
+  "reading": "べんきょう",
+  "gloss": {
+   "en": "study",
+   "es": "estudio"
+  }
+ },
+ "w0641": {
+  "id": "w0641",
+  "w": "散歩",
+  "reading": "さんぽ",
+  "gloss": {
+   "en": "a walk",
+   "es": "paseo"
+  }
+ },
+ "w0642": {
+  "id": "w0642",
+  "w": "歩く",
+  "reading": "あるく",
+  "gloss": {
+   "en": "to walk",
+   "es": "caminar"
+  }
+ },
+ "w0643": {
+  "id": "w0643",
+  "w": "方法",
+  "reading": "ほうほう",
+  "gloss": {
+   "en": "method",
+   "es": "método"
+  }
+ },
+ "w0644": {
+  "id": "w0644",
+  "w": "夕方",
+  "reading": "ゆうがた",
+  "gloss": {
+   "en": "evening",
+   "es": "atardecer"
+  }
+ },
+ "w0645": {
+  "id": "w0645",
+  "w": "方",
+  "reading": "かた",
+  "gloss": {
+   "en": "person (polite)",
+   "es": "persona (cortés)"
+  }
+ },
+ "w0646": {
+  "id": "w0646",
+  "w": "国民",
+  "reading": "こくみん",
+  "gloss": {
+   "en": "citizen",
+   "es": "ciudadano"
+  }
+ },
+ "w0647": {
+  "id": "w0647",
+  "w": "民主",
+  "reading": "みんしゅ",
+  "gloss": {
+   "en": "democratic",
+   "es": "democrático"
+  }
+ },
+ "w0648": {
+  "id": "w0648",
+  "w": "無理",
+  "reading": "むり",
+  "gloss": {
+   "en": "impossible, unreasonable",
+   "es": "imposible"
+  }
+ },
+ "w0649": {
+  "id": "w0649",
+  "w": "無料",
+  "reading": "むりょう",
+  "gloss": {
+   "en": "free of charge",
+   "es": "gratis"
+  }
+ },
+ "w0650": {
+  "id": "w0650",
+  "w": "薬局",
+  "reading": "やっきょく",
+  "gloss": {
+   "en": "pharmacy",
+   "es": "farmacia"
+  }
+ },
+ "w0651": {
+  "id": "w0651",
+  "w": "薬",
+  "reading": "くすり",
+  "gloss": {
+   "en": "medicine",
+   "es": "medicina"
+  }
+ },
+ "w0652": {
+  "id": "w0652",
+  "w": "有料",
+  "reading": "ゆうりょう",
+  "gloss": {
+   "en": "fee-charging",
+   "es": "de pago"
+  }
+ },
+ "w0653": {
+  "id": "w0653",
+  "w": "西洋",
+  "reading": "せいよう",
+  "gloss": {
+   "en": "the West",
+   "es": "Occidente"
+  }
+ },
+ "w0654": {
+  "id": "w0654",
+  "w": "太平洋",
+  "reading": "たいへいよう",
+  "gloss": {
+   "en": "Pacific Ocean",
+   "es": "océano Pacífico"
+  }
+ },
+ "w0655": {
+  "id": "w0655",
+  "w": "便利",
+  "reading": "べんり",
+  "gloss": {
+   "en": "convenient",
+   "es": "cómodo"
+  }
+ },
+ "w0656": {
+  "id": "w0656",
+  "w": "利益",
+  "reading": "りえき",
+  "gloss": {
+   "en": "profit",
+   "es": "beneficio"
+  }
+ },
+ "w0657": {
+  "id": "w0657",
+  "w": "旅館",
+  "reading": "りょかん",
+  "gloss": {
+   "en": "Japanese inn",
+   "es": "posada japonesa"
+  }
+ },
+ "w0658": {
+  "id": "w0658",
+  "w": "訓練",
+  "reading": "くんれん",
+  "gloss": {
+   "en": "training",
+   "es": "entrenamiento"
+  }
  }
 }

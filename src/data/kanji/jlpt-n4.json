@@ -1378,5 +1378,3426 @@
     ]
    }
   ]
+ },
+ {
+  "id": "k0143",
+  "c": "悪",
+  "meaning": {
+   "en": "bad, evil",
+   "es": "malo, mal"
+  },
+  "mnemonic": {
+   "en": "The bad weather made me feel worse than evil.",
+   "es": "El mal tiempo me hizo sentir peor que el mal."
+  },
+  "g": [
+   {
+    "r": "アク",
+    "w": [
+     "w0377"
+    ]
+   },
+   {
+    "r": "わる",
+    "w": [
+     "w0378"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0144",
+  "c": "暗",
+  "meaning": {
+   "en": "dark",
+   "es": "oscuro"
+  },
+  "mnemonic": {
+   "en": "The dark room grew darker as I recited it from memory.",
+   "es": "La habitación oscura se oscureció más mientras lo recitaba de memoria."
+  },
+  "g": [
+   {
+    "r": "アン",
+    "w": [
+     "w0379"
+    ]
+   },
+   {
+    "r": "くら",
+    "w": [
+     "w0380"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0145",
+  "c": "医",
+  "meaning": {
+   "en": "medicine, doctor",
+   "es": "medicina, médico"
+  },
+  "mnemonic": {
+   "en": "The doctor of medicine works at the hospital.",
+   "es": "El médico de medicina trabaja en el hospital."
+  },
+  "g": [
+   {
+    "r": "イ",
+    "w": [
+     "w0381",
+     "w0382"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0146",
+  "c": "育",
+  "meaning": {
+   "en": "raise, grow",
+   "es": "criar, crecer"
+  },
+  "mnemonic": {
+   "en": "Education raises a child and helps them grow.",
+   "es": "La educación cría a un niño y le ayuda a crecer."
+  },
+  "g": [
+   {
+    "r": "イク",
+    "w": [
+     "w0383"
+    ]
+   },
+   {
+    "r": "そだ",
+    "w": [
+     "w0384"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0147",
+  "c": "院",
+  "meaning": {
+   "en": "institution",
+   "es": "institución"
+  },
+  "mnemonic": {
+   "en": "At the hospital the institution admitted me.",
+   "es": "En el hospital la institución me admitió."
+  },
+  "g": [
+   {
+    "r": "イン",
+    "w": [
+     "w0385",
+     "w0386"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0148",
+  "c": "映",
+  "meaning": {
+   "en": "reflect, project",
+   "es": "reflejar, proyectar"
+  },
+  "mnemonic": {
+   "en": "The film was projected and reflected on the screen.",
+   "es": "La película se proyectó y se reflejó en la pantalla."
+  },
+  "g": [
+   {
+    "r": "エイ",
+    "w": [
+     "w0387"
+    ]
+   },
+   {
+    "r": "うつ",
+    "w": [
+     "w0388"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0149",
+  "c": "英",
+  "meaning": {
+   "en": "England, excellent",
+   "es": "Inglaterra, excelente"
+  },
+  "mnemonic": {
+   "en": "English is spoken in England by excellent students.",
+   "es": "El inglés se habla en Inglaterra por estudiantes excelentes."
+  },
+  "g": [
+   {
+    "r": "エイ",
+    "w": [
+     "w0389",
+     "w0390"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0150",
+  "c": "泳",
+  "meaning": {
+   "en": "swim",
+   "es": "nadar"
+  },
+  "mnemonic": {
+   "en": "I swim in the pool and enjoy swimming.",
+   "es": "Nado en la piscina y disfruto de la natación."
+  },
+  "g": [
+   {
+    "r": "エイ",
+    "w": [
+     "w0391"
+    ]
+   },
+   {
+    "r": "およ",
+    "w": [
+     "w0392"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0151",
+  "c": "屋",
+  "meaning": {
+   "en": "shop, roof",
+   "es": "tienda, tejado"
+  },
+  "mnemonic": {
+   "en": "The bookshop stands under a roof.",
+   "es": "La librería está bajo un tejado."
+  },
+  "g": [
+   {
+    "r": "オク",
+    "w": [
+     "w0393"
+    ]
+   },
+   {
+    "r": "や",
+    "w": [
+     "w0394",
+     "w0395"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0152",
+  "c": "温",
+  "meaning": {
+   "en": "warm",
+   "es": "cálido"
+  },
+  "mnemonic": {
+   "en": "The warm hot spring has a pleasant temperature.",
+   "es": "La cálida aguas termales tiene una temperatura agradable."
+  },
+  "g": [
+   {
+    "r": "オン",
+    "w": [
+     "w0396",
+     "w0397"
+    ]
+   },
+   {
+    "r": "あたた",
+    "w": [
+     "w0398"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0153",
+  "c": "化",
+  "meaning": {
+   "en": "change, -ise",
+   "es": "cambio, -izar"
+  },
+  "mnemonic": {
+   "en": "Culture changes as chemistry changes it.",
+   "es": "La cultura cambia según la química la transforma."
+  },
+  "g": [
+   {
+    "r": "カ",
+    "w": [
+     "w0399",
+     "w0400"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0154",
+  "c": "荷",
+  "meaning": {
+   "en": "load, luggage",
+   "es": "carga, equipaje"
+  },
+  "mnemonic": {
+   "en": "The load of luggage was heavy.",
+   "es": "La carga de equipaje era pesada."
+  },
+  "g": [
+   {
+    "r": "カ",
+    "w": [
+     "w0401"
+    ]
+   },
+   {
+    "r": "に",
+    "w": [
+     "w0295"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0155",
+  "c": "歌",
+  "meaning": {
+   "en": "song, sing",
+   "es": "canción, cantar"
+  },
+  "mnemonic": {
+   "en": "The singer sings a song.",
+   "es": "El cantante canta una canción."
+  },
+  "g": [
+   {
+    "r": "カ",
+    "w": [
+     "w0402"
+    ]
+   },
+   {
+    "r": "うた",
+    "w": [
+     "w0403",
+     "w0404"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0156",
+  "c": "画",
+  "meaning": {
+   "en": "picture, stroke",
+   "es": "imagen, trazo"
+  },
+  "mnemonic": {
+   "en": "The film is a moving picture drawn in strokes.",
+   "es": "La película es una imagen en movimiento dibujada con trazos."
+  },
+  "g": [
+   {
+    "r": "ガ",
+    "w": [
+     "w0387",
+     "w0405"
+    ]
+   },
+   {
+    "r": "カク",
+    "w": [
+     "w0406"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0157",
+  "c": "回",
+  "meaning": {
+   "en": "times, rotate",
+   "es": "veces, girar"
+  },
+  "mnemonic": {
+   "en": "This time it rotates once, the first of several times.",
+   "es": "Esta vez gira una vez, la primera de varias veces."
+  },
+  "g": [
+   {
+    "r": "カイ",
+    "w": [
+     "w0407",
+     "w0408"
+    ]
+   },
+   {
+    "r": "まわ",
+    "w": [
+     "w0409"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0158",
+  "c": "海",
+  "meaning": {
+   "en": "sea",
+   "es": "mar"
+  },
+  "mnemonic": {
+   "en": "The sea is wide, and abroad lies across the sea.",
+   "es": "El mar es ancho, y el extranjero está al otro lado del mar."
+  },
+  "g": [
+   {
+    "r": "カイ",
+    "w": [
+     "w0410"
+    ]
+   },
+   {
+    "r": "うみ",
+    "w": [
+     "w0411"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0159",
+  "c": "帰",
+  "meaning": {
+   "en": "return",
+   "es": "volver"
+  },
+  "mnemonic": {
+   "en": "I return home and go back.",
+   "es": "Vuelvo a casa y regreso."
+  },
+  "g": [
+   {
+    "r": "キ",
+    "w": [
+     "w0412"
+    ]
+   },
+   {
+    "r": "かえ",
+    "w": [
+     "w0413"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0160",
+  "c": "起",
+  "meaning": {
+   "en": "wake, occur",
+   "es": "despertar, ocurrir"
+  },
+  "mnemonic": {
+   "en": "I wake up when it occurs and get up.",
+   "es": "Me despierto cuando ocurre y me levanto."
+  },
+  "g": [
+   {
+    "r": "キ",
+    "w": [
+     "w0414"
+    ]
+   },
+   {
+    "r": "お",
+    "w": [
+     "w0415",
+     "w0416"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0161",
+  "c": "級",
+  "meaning": {
+   "en": "class, rank",
+   "es": "clase, rango"
+  },
+  "mnemonic": {
+   "en": "The class of beginners holds the lowest rank.",
+   "es": "La clase de principiantes ocupa el rango más bajo."
+  },
+  "g": [
+   {
+    "r": "キュウ",
+    "w": [
+     "w0417",
+     "w0418"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0162",
+  "c": "去",
+  "meaning": {
+   "en": "leave, past",
+   "es": "irse, pasado"
+  },
+  "mnemonic": {
+   "en": "Last year has gone, left in the past.",
+   "es": "El año pasado se fue, quedó en el pasado."
+  },
+  "g": [
+   {
+    "r": "キョ",
+    "w": [
+     "w0419"
+    ]
+   },
+   {
+    "r": "さ",
+    "w": [
+     "w0420"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0163",
+  "c": "京",
+  "meaning": {
+   "en": "capital",
+   "es": "capital"
+  },
+  "mnemonic": {
+   "en": "Tokyo is the capital, and Kyoto was before.",
+   "es": "Tokio es la capital, y Kioto lo fue antes."
+  },
+  "g": [
+   {
+    "r": "キョウ",
+    "w": [
+     "w0421",
+     "w0422"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0164",
+  "c": "銀",
+  "meaning": {
+   "en": "silver",
+   "es": "plata"
+  },
+  "mnemonic": {
+   "en": "The bank keeps silver in the silver world.",
+   "es": "El banco guarda plata en el mundo de la plata."
+  },
+  "g": [
+   {
+    "r": "ギン",
+    "w": [
+     "w0169",
+     "w0423"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0165",
+  "c": "区",
+  "meaning": {
+   "en": "ward, district",
+   "es": "distrito"
+  },
+  "mnemonic": {
+   "en": "The city ward is one district of many.",
+   "es": "El distrito de la ciudad es uno de muchos."
+  },
+  "g": [
+   {
+    "r": "ク",
+    "w": [
+     "w0424",
+     "w0425"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0166",
+  "c": "苦",
+  "meaning": {
+   "en": "suffering, bitter",
+   "es": "sufrimiento, amargo"
+  },
+  "mnemonic": {
+   "en": "The bitter medicine caused suffering, and I struggled.",
+   "es": "La medicina amarga causó sufrimiento, y me costó."
+  },
+  "g": [
+   {
+    "r": "ク",
+    "w": [
+     "w0426"
+    ]
+   },
+   {
+    "r": "くる",
+    "w": [
+     "w0427"
+    ]
+   },
+   {
+    "r": "にが",
+    "w": [
+     "w0428"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0167",
+  "c": "具",
+  "meaning": {
+   "en": "tool, ingredient",
+   "es": "herramienta, ingrediente"
+  },
+  "mnemonic": {
+   "en": "The tool and the ingredients are both equipment.",
+   "es": "La herramienta y los ingredientes son ambos equipo."
+  },
+  "g": [
+   {
+    "r": "グ",
+    "w": [
+     "w0429",
+     "w0430"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0168",
+  "c": "君",
+  "meaning": {
+   "en": "you, lord",
+   "es": "tú, señor"
+  },
+  "mnemonic": {
+   "en": "You there, my friend, come here.",
+   "es": "Tú ahí, amigo mío, ven aquí."
+  },
+  "g": [
+   {
+    "r": "クン",
+    "w": [
+     "w0431"
+    ]
+   },
+   {
+    "r": "きみ",
+    "w": [
+     "w0432"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0169",
+  "c": "兄",
+  "meaning": {
+   "en": "older brother",
+   "es": "hermano mayor"
+  },
+  "mnemonic": {
+   "en": "My older brother is the eldest brother.",
+   "es": "Mi hermano mayor es el hermano de más edad."
+  },
+  "g": [
+   {
+    "r": "キョウ",
+    "w": [
+     "w0433"
+    ]
+   },
+   {
+    "r": "あに",
+    "w": [
+     "w0434"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0170",
+  "c": "弟",
+  "meaning": {
+   "en": "younger brother",
+   "es": "hermano menor"
+  },
+  "mnemonic": {
+   "en": "My younger brother is one of the siblings.",
+   "es": "Mi hermano menor es uno de los hermanos."
+  },
+  "g": [
+   {
+    "r": "テイ",
+    "w": [
+     "w0435"
+    ]
+   },
+   {
+    "r": "おとうと",
+    "w": [
+     "w0436"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0171",
+  "c": "姉",
+  "meaning": {
+   "en": "older sister",
+   "es": "hermana mayor"
+  },
+  "mnemonic": {
+   "en": "My older sister is the eldest sister.",
+   "es": "Mi hermana mayor es la hermana de más edad."
+  },
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     "w0437"
+    ]
+   },
+   {
+    "r": "あね",
+    "w": [
+     "w0438"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0172",
+  "c": "妹",
+  "meaning": {
+   "en": "younger sister",
+   "es": "hermana menor"
+  },
+  "mnemonic": {
+   "en": "My younger sister is one of the sisters.",
+   "es": "Mi hermana menor es una de las hermanas."
+  },
+  "g": [
+   {
+    "r": "いもうと",
+    "w": [
+     "w0439"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0173",
+  "c": "係",
+  "meaning": {
+   "en": "connection, person in charge",
+   "es": "relación, encargado"
+  },
+  "mnemonic": {
+   "en": "The person in charge handles the connection.",
+   "es": "El encargado se ocupa de la relación."
+  },
+  "g": [
+   {
+    "r": "ケイ",
+    "w": [
+     "w0440"
+    ]
+   },
+   {
+    "r": "かかり",
+    "w": [
+     "w0441"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0174",
+  "c": "軽",
+  "meaning": {
+   "en": "light (weight)",
+   "es": "ligero"
+  },
+  "mnemonic": {
+   "en": "The light bag is lighter than it looks.",
+   "es": "La bolsa ligera es más ligera de lo que parece."
+  },
+  "g": [
+   {
+    "r": "ケイ",
+    "w": [
+     "w0442"
+    ]
+   },
+   {
+    "r": "かる",
+    "w": [
+     "w0443"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0175",
+  "c": "血",
+  "meaning": {
+   "en": "blood",
+   "es": "sangre"
+  },
+  "mnemonic": {
+   "en": "Blood runs, and blood type matters.",
+   "es": "La sangre corre, y el grupo sanguíneo importa."
+  },
+  "g": [
+   {
+    "r": "ケツ",
+    "w": [
+     "w0444"
+    ]
+   },
+   {
+    "r": "ち",
+    "w": [
+     "w0445"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0176",
+  "c": "県",
+  "meaning": {
+   "en": "prefecture",
+   "es": "prefectura"
+  },
+  "mnemonic": {
+   "en": "The prefecture is governed from the prefectural office.",
+   "es": "La prefectura se gobierna desde la oficina prefectural."
+  },
+  "g": [
+   {
+    "r": "ケン",
+    "w": [
+     "w0446",
+     "w0447"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0177",
+  "c": "建",
+  "meaning": {
+   "en": "build",
+   "es": "construir"
+  },
+  "mnemonic": {
+   "en": "They build a building and construct it.",
+   "es": "Construyen un edificio y lo levantan."
+  },
+  "g": [
+   {
+    "r": "ケン",
+    "w": [
+     "w0448"
+    ]
+   },
+   {
+    "r": "た",
+    "w": [
+     "w0296",
+     "w0449"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0178",
+  "c": "元",
+  "meaning": {
+   "en": "origin, former",
+   "es": "origen, anterior"
+  },
+  "mnemonic": {
+   "en": "The former energy came from its origin.",
+   "es": "La energía anterior venía de su origen."
+  },
+  "g": [
+   {
+    "r": "ゲン",
+    "w": [
+     "w0144"
+    ]
+   },
+   {
+    "r": "もと",
+    "w": [
+     "w0450"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0179",
+  "c": "言",
+  "meaning": {
+   "en": "say, word",
+   "es": "decir, palabra"
+  },
+  "mnemonic": {
+   "en": "I say a word and speak the language.",
+   "es": "Digo una palabra y hablo el idioma."
+  },
+  "g": [
+   {
+    "r": "ゲン",
+    "w": [
+     "w0451"
+    ]
+   },
+   {
+    "r": "い",
+    "w": [
+     "w0452"
+    ]
+   },
+   {
+    "r": "こと",
+    "w": [
+     "w0453"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0180",
+  "c": "原",
+  "meaning": {
+   "en": "origin, field",
+   "es": "origen, campo"
+  },
+  "mnemonic": {
+   "en": "The original cause lies in the open field.",
+   "es": "La causa original está en el campo abierto."
+  },
+  "g": [
+   {
+    "r": "ゲン",
+    "w": [
+     "w0454",
+     "w0455"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0181",
+  "c": "戸",
+  "meaning": {
+   "en": "door",
+   "es": "puerta"
+  },
+  "mnemonic": {
+   "en": "The door of the house is a sliding door.",
+   "es": "La puerta de la casa es corredera."
+  },
+  "g": [
+   {
+    "r": "コ",
+    "w": [
+     "w0456"
+    ]
+   },
+   {
+    "r": "と",
+    "w": [
+     "w0457"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0182",
+  "c": "御",
+  "meaning": {
+   "en": "honourable",
+   "es": "honorable"
+  },
+  "mnemonic": {
+   "en": "The honourable prefix makes speech polite.",
+   "es": "El prefijo honorable hace el habla cortés."
+  },
+  "g": [
+   {
+    "r": "ゴ",
+    "w": [
+     "w0458"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0183",
+  "c": "光",
+  "meaning": {
+   "en": "light, shine",
+   "es": "luz, brillar"
+  },
+  "mnemonic": {
+   "en": "The light shines, and sightseeing follows the light.",
+   "es": "La luz brilla, y el turismo sigue la luz."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w0459"
+    ]
+   },
+   {
+    "r": "ひかり",
+    "w": [
+     "w0460"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0184",
+  "c": "好",
+  "meaning": {
+   "en": "like, fond",
+   "es": "gustar, aficionado"
+  },
+  "mnemonic": {
+   "en": "I like it, and I am fond of what I favour.",
+   "es": "Me gusta, y soy aficionado a lo que prefiero."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w0461"
+    ]
+   },
+   {
+    "r": "す",
+    "w": [
+     "w0462"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0185",
+  "c": "工",
+  "meaning": {
+   "en": "craft, industry",
+   "es": "oficio, industria"
+  },
+  "mnemonic": {
+   "en": "The factory does industrial craft work.",
+   "es": "La fábrica hace trabajo industrial."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w0463",
+     "w0464"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0186",
+  "c": "広",
+  "meaning": {
+   "en": "wide, spacious",
+   "es": "ancho, espacioso"
+  },
+  "mnemonic": {
+   "en": "The wide room is spacious and broad.",
+   "es": "La habitación ancha es espaciosa y amplia."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w0465"
+    ]
+   },
+   {
+    "r": "ひろ",
+    "w": [
+     "w0466"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0187",
+  "c": "港",
+  "meaning": {
+   "en": "harbour, port",
+   "es": "puerto"
+  },
+  "mnemonic": {
+   "en": "The port is a harbour for ships, and the airport for planes.",
+   "es": "El puerto es un refugio para barcos, y el aeropuerto para aviones."
+  },
+  "g": [
+   {
+    "r": "コウ",
+    "w": [
+     "w0202"
+    ]
+   },
+   {
+    "r": "みなと",
+    "w": [
+     "w0467"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0188",
+  "c": "号",
+  "meaning": {
+   "en": "number, issue",
+   "es": "número, edición"
+  },
+  "mnemonic": {
+   "en": "The issue number is written on the sign.",
+   "es": "El número de edición está escrito en el cartel."
+  },
+  "g": [
+   {
+    "r": "ゴウ",
+    "w": [
+     "w0468",
+     "w0469"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0189",
+  "c": "黒",
+  "meaning": {
+   "en": "black",
+   "es": "negro"
+  },
+  "mnemonic": {
+   "en": "The black board is black as night.",
+   "es": "La pizarra negra es negra como la noche."
+  },
+  "g": [
+   {
+    "r": "コク",
+    "w": [
+     "w0470"
+    ]
+   },
+   {
+    "r": "くろ",
+    "w": [
+     "w0471"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0190",
+  "c": "最",
+  "meaning": {
+   "en": "most, extreme",
+   "es": "más, extremo"
+  },
+  "mnemonic": {
+   "en": "The most recent one is also the best.",
+   "es": "El más reciente es también el mejor."
+  },
+  "g": [
+   {
+    "r": "サイ",
+    "w": [
+     "w0472",
+     "w0473"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0191",
+  "c": "菜",
+  "meaning": {
+   "en": "vegetable",
+   "es": "verdura"
+  },
+  "mnemonic": {
+   "en": "The vegetable dish is made of greens.",
+   "es": "El plato de verduras está hecho de hortalizas."
+  },
+  "g": [
+   {
+    "r": "サイ",
+    "w": [
+     "w0474"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0192",
+  "c": "仕",
+  "meaning": {
+   "en": "serve, do",
+   "es": "servir, hacer"
+  },
+  "mnemonic": {
+   "en": "The work I do serves the company.",
+   "es": "El trabajo que hago sirve a la empresa."
+  },
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     "w0475",
+     "w0476"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0193",
+  "c": "死",
+  "meaning": {
+   "en": "death, die",
+   "es": "muerte, morir"
+  },
+  "mnemonic": {
+   "en": "Death comes, and the dead do not return.",
+   "es": "La muerte llega, y los muertos no vuelven."
+  },
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     "w0477"
+    ]
+   },
+   {
+    "r": "し",
+    "w": [
+     "w0478"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0194",
+  "c": "私",
+  "meaning": {
+   "en": "I, private",
+   "es": "yo, privado"
+  },
+  "mnemonic": {
+   "en": "I speak of myself in private.",
+   "es": "Hablo de mí mismo en privado."
+  },
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     "w0479"
+    ]
+   },
+   {
+    "r": "わたし",
+    "w": [
+     "w0480"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0195",
+  "c": "思",
+  "meaning": {
+   "en": "think",
+   "es": "pensar"
+  },
+  "mnemonic": {
+   "en": "I think of it and my thoughts wander.",
+   "es": "Pienso en ello y mis pensamientos vagan."
+  },
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     "w0481"
+    ]
+   },
+   {
+    "r": "おも",
+    "w": [
+     "w0482",
+     "w0483"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0196",
+  "c": "紙",
+  "meaning": {
+   "en": "paper",
+   "es": "papel"
+  },
+  "mnemonic": {
+   "en": "The paper is white, and the newspaper is printed on it.",
+   "es": "El papel es blanco, y el periódico se imprime en él."
+  },
+  "g": [
+   {
+    "r": "シ",
+    "w": [
+     "w0484"
+    ]
+   },
+   {
+    "r": "かみ",
+    "w": [
+     "w0485",
+     "w0199"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0197",
+  "c": "事",
+  "meaning": {
+   "en": "thing, matter",
+   "es": "cosa, asunto"
+  },
+  "mnemonic": {
+   "en": "The matter of work is a serious thing.",
+   "es": "El asunto del trabajo es algo serio."
+  },
+  "g": [
+   {
+    "r": "ジ",
+    "w": [
+     "w0486",
+     "w0184"
+    ]
+   },
+   {
+    "r": "こと",
+    "w": [
+     "w0487"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0198",
+  "c": "式",
+  "meaning": {
+   "en": "ceremony, style",
+   "es": "ceremonia, estilo"
+  },
+  "mnemonic": {
+   "en": "The ceremony follows a formal style.",
+   "es": "La ceremonia sigue un estilo formal."
+  },
+  "g": [
+   {
+    "r": "シキ",
+    "w": [
+     "w0488",
+     "w0489"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0199",
+  "c": "写",
+  "meaning": {
+   "en": "copy, photograph",
+   "es": "copiar, fotografiar"
+  },
+  "mnemonic": {
+   "en": "I photograph it and copy the picture.",
+   "es": "Lo fotografío y copio la imagen."
+  },
+  "g": [
+   {
+    "r": "シャ",
+    "w": [
+     "w0490"
+    ]
+   },
+   {
+    "r": "うつ",
+    "w": [
+     "w0491"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0200",
+  "c": "者",
+  "meaning": {
+   "en": "person, -er",
+   "es": "persona, -dor"
+  },
+  "mnemonic": {
+   "en": "The doctor is a person, and so is the young person.",
+   "es": "El médico es una persona, y también el joven."
+  },
+  "g": [
+   {
+    "r": "シャ",
+    "w": [
+     "w0492"
+    ]
+   },
+   {
+    "r": "もの",
+    "w": [
+     "w0493"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0201",
+  "c": "借",
+  "meaning": {
+   "en": "borrow",
+   "es": "pedir prestado"
+  },
+  "mnemonic": {
+   "en": "I borrow it and pay back the loan.",
+   "es": "Lo pido prestado y devuelvo el préstamo."
+  },
+  "g": [
+   {
+    "r": "シャク",
+    "w": [
+     "w0494"
+    ]
+   },
+   {
+    "r": "か",
+    "w": [
+     "w0495"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0202",
+  "c": "弱",
+  "meaning": {
+   "en": "weak",
+   "es": "débil"
+  },
+  "mnemonic": {
+   "en": "The weak point makes the whole thing weaker.",
+   "es": "El punto débil hace que todo sea más débil."
+  },
+  "g": [
+   {
+    "r": "ジャク",
+    "w": [
+     "w0496"
+    ]
+   },
+   {
+    "r": "よわ",
+    "w": [
+     "w0497"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0203",
+  "c": "取",
+  "meaning": {
+   "en": "take",
+   "es": "tomar"
+  },
+  "mnemonic": {
+   "en": "I take it and take hold of the handle.",
+   "es": "Lo tomo y agarro el mango."
+  },
+  "g": [
+   {
+    "r": "シュ",
+    "w": [
+     "w0498"
+    ]
+   },
+   {
+    "r": "と",
+    "w": [
+     "w0499"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0204",
+  "c": "酒",
+  "meaning": {
+   "en": "alcohol, sake",
+   "es": "alcohol, sake"
+  },
+  "mnemonic": {
+   "en": "The sake is alcohol, and the drink is strong.",
+   "es": "El sake es alcohol, y la bebida es fuerte."
+  },
+  "g": [
+   {
+    "r": "シュ",
+    "w": [
+     "w0500"
+    ]
+   },
+   {
+    "r": "さけ",
+    "w": [
+     "w0501"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0205",
+  "c": "首",
+  "meaning": {
+   "en": "neck, head",
+   "es": "cuello, cabeza"
+  },
+  "mnemonic": {
+   "en": "The neck holds the head, and the capital is the head city.",
+   "es": "El cuello sostiene la cabeza, y la capital es la ciudad principal."
+  },
+  "g": [
+   {
+    "r": "シュ",
+    "w": [
+     "w0502"
+    ]
+   },
+   {
+    "r": "くび",
+    "w": [
+     "w0503"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0206",
+  "c": "受",
+  "meaning": {
+   "en": "receive",
+   "es": "recibir"
+  },
+  "mnemonic": {
+   "en": "I receive it and take the examination.",
+   "es": "Lo recibo y hago el examen."
+  },
+  "g": [
+   {
+    "r": "ジュ",
+    "w": [
+     "w0504"
+    ]
+   },
+   {
+    "r": "う",
+    "w": [
+     "w0505",
+     "w0506"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0207",
+  "c": "終",
+  "meaning": {
+   "en": "end, finish",
+   "es": "fin, terminar"
+  },
+  "mnemonic": {
+   "en": "At the end the last train finishes its run.",
+   "es": "Al final el último tren termina su recorrido."
+  },
+  "g": [
+   {
+    "r": "シュウ",
+    "w": [
+     "w0507"
+    ]
+   },
+   {
+    "r": "お",
+    "w": [
+     "w0508"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0208",
+  "c": "集",
+  "meaning": {
+   "en": "gather, collect",
+   "es": "reunir, coleccionar"
+  },
+  "mnemonic": {
+   "en": "We gather to collect the crowd together.",
+   "es": "Nos reunimos para juntar a la multitud."
+  },
+  "g": [
+   {
+    "r": "シュウ",
+    "w": [
+     "w0509"
+    ]
+   },
+   {
+    "r": "あつ",
+    "w": [
+     "w0510",
+     "w0511"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0209",
+  "c": "住",
+  "meaning": {
+   "en": "live, reside",
+   "es": "vivir, residir"
+  },
+  "mnemonic": {
+   "en": "I live at this address and reside here.",
+   "es": "Vivo en esta dirección y resido aquí."
+  },
+  "g": [
+   {
+    "r": "ジュウ",
+    "w": [
+     "w0512"
+    ]
+   },
+   {
+    "r": "す",
+    "w": [
+     "w0513"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0210",
+  "c": "宿",
+  "meaning": {
+   "en": "lodging, inn",
+   "es": "alojamiento, posada"
+  },
+  "mnemonic": {
+   "en": "The inn provides lodging, and homework comes home with me.",
+   "es": "La posada ofrece alojamiento, y los deberes vienen a casa conmigo."
+  },
+  "g": [
+   {
+    "r": "シュク",
+    "w": [
+     "w0321",
+     "w0514"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0211",
+  "c": "春",
+  "meaning": {
+   "en": "spring",
+   "es": "primavera"
+  },
+  "mnemonic": {
+   "en": "In spring the spring holidays begin.",
+   "es": "En primavera empiezan las vacaciones de primavera."
+  },
+  "g": [
+   {
+    "r": "シュン",
+    "w": [
+     "w0515"
+    ]
+   },
+   {
+    "r": "はる",
+    "w": [
+     "w0516"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0212",
+  "c": "夏",
+  "meaning": {
+   "en": "summer",
+   "es": "verano"
+  },
+  "mnemonic": {
+   "en": "In summer the summer holidays arrive.",
+   "es": "En verano llegan las vacaciones de verano."
+  },
+  "g": [
+   {
+    "r": "カ",
+    "w": [
+     "w0517"
+    ]
+   },
+   {
+    "r": "なつ",
+    "w": [
+     "w0518",
+     "w0519"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0213",
+  "c": "秋",
+  "meaning": {
+   "en": "autumn",
+   "es": "otoño"
+  },
+  "mnemonic": {
+   "en": "In autumn the autumn leaves turn.",
+   "es": "En otoño las hojas de otoño cambian."
+  },
+  "g": [
+   {
+    "r": "シュウ",
+    "w": [
+     "w0520"
+    ]
+   },
+   {
+    "r": "あき",
+    "w": [
+     "w0521"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0214",
+  "c": "冬",
+  "meaning": {
+   "en": "winter",
+   "es": "invierno"
+  },
+  "mnemonic": {
+   "en": "In winter the winter cold arrives.",
+   "es": "En invierno llega el frío del invierno."
+  },
+  "g": [
+   {
+    "r": "トウ",
+    "w": [
+     "w0522"
+    ]
+   },
+   {
+    "r": "ふゆ",
+    "w": [
+     "w0523"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0215",
+  "c": "所",
+  "meaning": {
+   "en": "place",
+   "es": "lugar"
+  },
+  "mnemonic": {
+   "en": "The address is the place where I live.",
+   "es": "La dirección es el lugar donde vivo."
+  },
+  "g": [
+   {
+    "r": "ショ",
+    "w": [
+     "w0524",
+     "w0525"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0216",
+  "c": "暑",
+  "meaning": {
+   "en": "hot (weather)",
+   "es": "caluroso"
+  },
+  "mnemonic": {
+   "en": "The hot summer weather is the heat itself.",
+   "es": "El caluroso verano es el calor mismo."
+  },
+  "g": [
+   {
+    "r": "ショ",
+    "w": [
+     "w0526"
+    ]
+   },
+   {
+    "r": "あつ",
+    "w": [
+     "w0527"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0217",
+  "c": "寒",
+  "meaning": {
+   "en": "cold (weather)",
+   "es": "frío"
+  },
+  "mnemonic": {
+   "en": "The cold winter weather makes it cold.",
+   "es": "El frío invierno hace que haga frío."
+  },
+  "g": [
+   {
+    "r": "カン",
+    "w": [
+     "w0528"
+    ]
+   },
+   {
+    "r": "さむ",
+    "w": [
+     "w0529"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0218",
+  "c": "消",
+  "meaning": {
+   "en": "extinguish, erase",
+   "es": "apagar, borrar"
+  },
+  "mnemonic": {
+   "en": "I erase it and the fire is extinguished.",
+   "es": "Lo borro y el fuego se apaga."
+  },
+  "g": [
+   {
+    "r": "ショウ",
+    "w": [
+     "w0530"
+    ]
+   },
+   {
+    "r": "け",
+    "w": [
+     "w0531"
+    ]
+   },
+   {
+    "r": "き",
+    "w": [
+     "w0532"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0219",
+  "c": "商",
+  "meaning": {
+   "en": "commerce",
+   "es": "comercio"
+  },
+  "mnemonic": {
+   "en": "Commerce is the business of the merchant.",
+   "es": "El comercio es el negocio del comerciante."
+  },
+  "g": [
+   {
+    "r": "ショウ",
+    "w": [
+     "w0533",
+     "w0534"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0220",
+  "c": "場",
+  "meaning": {
+   "en": "place, field",
+   "es": "lugar, campo"
+  },
+  "mnemonic": {
+   "en": "The place is a venue, the field a site.",
+   "es": "El lugar es un recinto, el campo un sitio."
+  },
+  "g": [
+   {
+    "r": "ジョウ",
+    "w": [
+     "w0535"
+    ]
+   },
+   {
+    "r": "ば",
+    "w": [
+     "w0536"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0221",
+  "c": "心",
+  "meaning": {
+   "en": "heart, mind",
+   "es": "corazón, mente"
+  },
+  "mnemonic": {
+   "en": "The heart worries and the mind is at ease.",
+   "es": "El corazón se preocupa y la mente se tranquiliza."
+  },
+  "g": [
+   {
+    "r": "シン",
+    "w": [
+     "w0537",
+     "w0216"
+    ]
+   },
+   {
+    "r": "こころ",
+    "w": [
+     "w0538"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0222",
+  "c": "真",
+  "meaning": {
+   "en": "true, real",
+   "es": "verdadero, real"
+  },
+  "mnemonic": {
+   "en": "The true photograph shows the real thing.",
+   "es": "La fotografía verdadera muestra lo real."
+  },
+  "g": [
+   {
+    "r": "シン",
+    "w": [
+     "w0539"
+    ]
+   },
+   {
+    "r": "ま",
+    "w": [
+     "w0540"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0223",
+  "c": "深",
+  "meaning": {
+   "en": "deep",
+   "es": "profundo"
+  },
+  "mnemonic": {
+   "en": "The deep water is deeper than it looks.",
+   "es": "El agua profunda es más profunda de lo que parece."
+  },
+  "g": [
+   {
+    "r": "シン",
+    "w": [
+     "w0541"
+    ]
+   },
+   {
+    "r": "ふか",
+    "w": [
+     "w0542"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0224",
+  "c": "進",
+  "meaning": {
+   "en": "advance, progress",
+   "es": "avanzar, progresar"
+  },
+  "mnemonic": {
+   "en": "We advance forward and make progress.",
+   "es": "Avanzamos hacia delante y progresamos."
+  },
+  "g": [
+   {
+    "r": "シン",
+    "w": [
+     "w0543"
+    ]
+   },
+   {
+    "r": "すす",
+    "w": [
+     "w0544"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0225",
+  "c": "親",
+  "meaning": {
+   "en": "parent, intimate",
+   "es": "padre, íntimo"
+  },
+  "mnemonic": {
+   "en": "My parents are close, and a close friend is like family.",
+   "es": "Mis padres son cercanos, y un amigo íntimo es como la familia."
+  },
+  "g": [
+   {
+    "r": "シン",
+    "w": [
+     "w0545"
+    ]
+   },
+   {
+    "r": "おや",
+    "w": [
+     "w0546"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0226",
+  "c": "図",
+  "meaning": {
+   "en": "diagram, plan",
+   "es": "diagrama, plano"
+  },
+  "mnemonic": {
+   "en": "The library keeps the diagram and the map.",
+   "es": "La biblioteca guarda el diagrama y el mapa."
+  },
+  "g": [
+   {
+    "r": "ズ",
+    "w": [
+     "w0547"
+    ]
+   },
+   {
+    "r": "ト",
+    "w": [
+     "w0161"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0227",
+  "c": "正",
+  "meaning": {
+   "en": "correct, right",
+   "es": "correcto"
+  },
+  "mnemonic": {
+   "en": "The correct answer is exactly right.",
+   "es": "La respuesta correcta es exactamente la acertada."
+  },
+  "g": [
+   {
+    "r": "セイ",
+    "w": [
+     "w0548"
+    ]
+   },
+   {
+    "r": "ただ",
+    "w": [
+     "w0549"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0228",
+  "c": "声",
+  "meaning": {
+   "en": "voice",
+   "es": "voz"
+  },
+  "mnemonic": {
+   "en": "The voice speaks aloud in a loud voice.",
+   "es": "La voz habla en voz alta."
+  },
+  "g": [
+   {
+    "r": "セイ",
+    "w": [
+     "w0550"
+    ]
+   },
+   {
+    "r": "こえ",
+    "w": [
+     "w0551"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0229",
+  "c": "青",
+  "meaning": {
+   "en": "blue, green",
+   "es": "azul, verde"
+  },
+  "mnemonic": {
+   "en": "The blue sky is deep blue.",
+   "es": "El cielo azul es de un azul intenso."
+  },
+  "g": [
+   {
+    "r": "セイ",
+    "w": [
+     "w0552"
+    ]
+   },
+   {
+    "r": "あお",
+    "w": [
+     "w0553"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0230",
+  "c": "赤",
+  "meaning": {
+   "en": "red",
+   "es": "rojo"
+  },
+  "mnemonic": {
+   "en": "The red light is bright red.",
+   "es": "La luz roja es de un rojo brillante."
+  },
+  "g": [
+   {
+    "r": "セキ",
+    "w": [
+     "w0554"
+    ]
+   },
+   {
+    "r": "あか",
+    "w": [
+     "w0555"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0231",
+  "c": "切",
+  "meaning": {
+   "en": "cut, earnest",
+   "es": "cortar, sincero"
+  },
+  "mnemonic": {
+   "en": "I cut the ticket, and it is important to be earnest.",
+   "es": "Corto el billete, y es importante ser sincero."
+  },
+  "g": [
+   {
+    "r": "セツ",
+    "w": [
+     "w0556",
+     "w0130"
+    ]
+   },
+   {
+    "r": "き",
+    "w": [
+     "w0557"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0232",
+  "c": "説",
+  "meaning": {
+   "en": "explain, theory",
+   "es": "explicar, teoría"
+  },
+  "mnemonic": {
+   "en": "The explanation sets out the theory.",
+   "es": "La explicación expone la teoría."
+  },
+  "g": [
+   {
+    "r": "セツ",
+    "w": [
+     "w0558"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0233",
+  "c": "洗",
+  "meaning": {
+   "en": "wash",
+   "es": "lavar"
+  },
+  "mnemonic": {
+   "en": "I wash it, and the washing machine washes the rest.",
+   "es": "Lo lavo, y la lavadora lava el resto."
+  },
+  "g": [
+   {
+    "r": "セン",
+    "w": [
+     "w0559"
+    ]
+   },
+   {
+    "r": "あら",
+    "w": [
+     "w0560"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0234",
+  "c": "線",
+  "meaning": {
+   "en": "line",
+   "es": "línea"
+  },
+  "mnemonic": {
+   "en": "The line runs along the railway line.",
+   "es": "La línea corre a lo largo de la vía."
+  },
+  "g": [
+   {
+    "r": "セン",
+    "w": [
+     "w0561",
+     "w0562"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0235",
+  "c": "走",
+  "meaning": {
+   "en": "run",
+   "es": "correr"
+  },
+  "mnemonic": {
+   "en": "I run fast and the car runs faster.",
+   "es": "Corro rápido y el coche corre más rápido."
+  },
+  "g": [
+   {
+    "r": "ソウ",
+    "w": [
+     "w0563"
+    ]
+   },
+   {
+    "r": "はし",
+    "w": [
+     "w0564"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0236",
+  "c": "族",
+  "meaning": {
+   "en": "family, tribe",
+   "es": "familia, tribu"
+  },
+  "mnemonic": {
+   "en": "The family is a tribe of relatives.",
+   "es": "La familia es una tribu de parientes."
+  },
+  "g": [
+   {
+    "r": "ゾク",
+    "w": [
+     "w0565",
+     "w0566"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0237",
+  "c": "太",
+  "meaning": {
+   "en": "thick, fat",
+   "es": "grueso, gordo"
+  },
+  "mnemonic": {
+   "en": "The thick line is fat and bold.",
+   "es": "La línea gruesa es gorda y marcada."
+  },
+  "g": [
+   {
+    "r": "タイ",
+    "w": [
+     "w0567"
+    ]
+   },
+   {
+    "r": "ふと",
+    "w": [
+     "w0568"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0238",
+  "c": "体",
+  "meaning": {
+   "en": "body",
+   "es": "cuerpo"
+  },
+  "mnemonic": {
+   "en": "The body is healthy when the physique is strong.",
+   "es": "El cuerpo está sano cuando el físico es fuerte."
+  },
+  "g": [
+   {
+    "r": "タイ",
+    "w": [
+     "w0569",
+     "w0570"
+    ]
+   },
+   {
+    "r": "からだ",
+    "w": [
+     "w0571"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0239",
+  "c": "貸",
+  "meaning": {
+   "en": "lend",
+   "es": "prestar"
+  },
+  "mnemonic": {
+   "en": "I lend it out, and the rental is returned.",
+   "es": "Lo presto, y el alquiler se devuelve."
+  },
+  "g": [
+   {
+    "r": "タイ",
+    "w": [
+     "w0572"
+    ]
+   },
+   {
+    "r": "か",
+    "w": [
+     "w0573"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0240",
+  "c": "代",
+  "meaning": {
+   "en": "generation, substitute",
+   "es": "generación, sustituto"
+  },
+  "mnemonic": {
+   "en": "The fare is paid by the next generation in my place.",
+   "es": "La tarifa la paga la próxima generación en mi lugar."
+  },
+  "g": [
+   {
+    "r": "ダイ",
+    "w": [
+     "w0574",
+     "w0575"
+    ]
+   },
+   {
+    "r": "か",
+    "w": [
+     "w0576"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0241",
+  "c": "台",
+  "meaning": {
+   "en": "stand, counter",
+   "es": "soporte, mostrador"
+  },
+  "mnemonic": {
+   "en": "The kitchen counter is a sturdy stand.",
+   "es": "El mostrador de la cocina es un soporte firme."
+  },
+  "g": [
+   {
+    "r": "ダイ",
+    "w": [
+     "w0577",
+     "w0578"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0242",
+  "c": "短",
+  "meaning": {
+   "en": "short",
+   "es": "corto"
+  },
+  "mnemonic": {
+   "en": "The short story is shorter than the novel.",
+   "es": "El relato corto es más corto que la novela."
+  },
+  "g": [
+   {
+    "r": "タン",
+    "w": [
+     "w0579"
+    ]
+   },
+   {
+    "r": "みじか",
+    "w": [
+     "w0580"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0243",
+  "c": "地",
+  "meaning": {
+   "en": "ground, land",
+   "es": "suelo, tierra"
+  },
+  "mnemonic": {
+   "en": "The ground is the land of this district.",
+   "es": "El suelo es la tierra de este distrito."
+  },
+  "g": [
+   {
+    "r": "チ",
+    "w": [
+     "w0581",
+     "w0582"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0244",
+  "c": "池",
+  "meaning": {
+   "en": "pond",
+   "es": "estanque"
+  },
+  "mnemonic": {
+   "en": "The pond holds water, a small pond in the park.",
+   "es": "El estanque contiene agua, un pequeño estanque en el parque."
+  },
+  "g": [
+   {
+    "r": "チ",
+    "w": [
+     "w0583"
+    ]
+   },
+   {
+    "r": "いけ",
+    "w": [
+     "w0584"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0245",
+  "c": "知",
+  "meaning": {
+   "en": "know",
+   "es": "saber"
+  },
+  "mnemonic": {
+   "en": "I know it, and knowledge is acquaintance.",
+   "es": "Lo sé, y el conocimiento es familiaridad."
+  },
+  "g": [
+   {
+    "r": "チ",
+    "w": [
+     "w0585"
+    ]
+   },
+   {
+    "r": "し",
+    "w": [
+     "w0586",
+     "w0587"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0246",
+  "c": "茶",
+  "meaning": {
+   "en": "tea",
+   "es": "té"
+  },
+  "mnemonic": {
+   "en": "The tea is green tea, served in a teacup.",
+   "es": "El té es té verde, servido en una taza."
+  },
+  "g": [
+   {
+    "r": "チャ",
+    "w": [
+     "w0588",
+     "w0589"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0247",
+  "c": "着",
+  "meaning": {
+   "en": "wear, arrive",
+   "es": "vestir, llegar"
+  },
+  "mnemonic": {
+   "en": "I wear the coat and arrive at the station.",
+   "es": "Me pongo el abrigo y llego a la estación."
+  },
+  "g": [
+   {
+    "r": "チャク",
+    "w": [
+     "w0590"
+    ]
+   },
+   {
+    "r": "き",
+    "w": [
+     "w0591"
+    ]
+   },
+   {
+    "r": "つ",
+    "w": [
+     "w0592"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0248",
+  "c": "昼",
+  "meaning": {
+   "en": "noon, daytime",
+   "es": "mediodía, día"
+  },
+  "mnemonic": {
+   "en": "At noon in the daytime I eat lunch.",
+   "es": "Al mediodía, durante el día, como el almuerzo."
+  },
+  "g": [
+   {
+    "r": "チュウ",
+    "w": [
+     "w0593"
+    ]
+   },
+   {
+    "r": "ひる",
+    "w": [
+     "w0594",
+     "w0595"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0249",
+  "c": "町",
+  "meaning": {
+   "en": "town",
+   "es": "pueblo"
+  },
+  "mnemonic": {
+   "en": "The town is a small town with one main street.",
+   "es": "El pueblo es pequeño, con una calle principal."
+  },
+  "g": [
+   {
+    "r": "チョウ",
+    "w": [
+     "w0596"
+    ]
+   },
+   {
+    "r": "まち",
+    "w": [
+     "w0597"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0250",
+  "c": "鳥",
+  "meaning": {
+   "en": "bird",
+   "es": "pájaro"
+  },
+  "mnemonic": {
+   "en": "The bird flies, and the small bird sings.",
+   "es": "El pájaro vuela, y el pajarito canta."
+  },
+  "g": [
+   {
+    "r": "チョウ",
+    "w": [
+     "w0598"
+    ]
+   },
+   {
+    "r": "とり",
+    "w": [
+     "w0599"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0251",
+  "c": "朝",
+  "meaning": {
+   "en": "morning",
+   "es": "mañana"
+  },
+  "mnemonic": {
+   "en": "This morning, every morning, the morning comes.",
+   "es": "Esta mañana, cada mañana, llega la mañana."
+  },
+  "g": [
+   {
+    "r": "チョウ",
+    "w": [
+     "w0600"
+    ]
+   },
+   {
+    "r": "あさ",
+    "w": [
+     "w0601",
+     "w0602"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0252",
+  "c": "通",
+  "meaning": {
+   "en": "pass through, commute",
+   "es": "pasar, ir a diario"
+  },
+  "mnemonic": {
+   "en": "I commute along the street, passing through.",
+   "es": "Voy a diario por la calle, pasando de largo."
+  },
+  "g": [
+   {
+    "r": "ツウ",
+    "w": [
+     "w0603",
+     "w0604"
+    ]
+   },
+   {
+    "r": "とお",
+    "w": [
+     "w0605"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0253",
+  "c": "定",
+  "meaning": {
+   "en": "fix, decide",
+   "es": "fijar, decidir"
+  },
+  "mnemonic": {
+   "en": "The fixed schedule is decided in advance.",
+   "es": "El horario fijo se decide de antemano."
+  },
+  "g": [
+   {
+    "r": "テイ",
+    "w": [
+     "w0606",
+     "w0607"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0254",
+  "c": "庭",
+  "meaning": {
+   "en": "garden",
+   "es": "jardín"
+  },
+  "mnemonic": {
+   "en": "The garden behind the house is a family garden.",
+   "es": "El jardín detrás de la casa es un jardín familiar."
+  },
+  "g": [
+   {
+    "r": "テイ",
+    "w": [
+     "w0608"
+    ]
+   },
+   {
+    "r": "にわ",
+    "w": [
+     "w0609"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0255",
+  "c": "度",
+  "meaning": {
+   "en": "degree, occasion",
+   "es": "grado, ocasión"
+  },
+  "mnemonic": {
+   "en": "On this occasion the temperature rose by a degree.",
+   "es": "En esta ocasión la temperatura subió un grado."
+  },
+  "g": [
+   {
+    "r": "ド",
+    "w": [
+     "w0610",
+     "w0611"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0256",
+  "c": "都",
+  "meaning": {
+   "en": "capital, metropolis",
+   "es": "capital, metrópoli"
+  },
+  "mnemonic": {
+   "en": "The metropolis is the capital city.",
+   "es": "La metrópoli es la ciudad capital."
+  },
+  "g": [
+   {
+    "r": "ト",
+    "w": [
+     "w0612",
+     "w0613"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0257",
+  "c": "島",
+  "meaning": {
+   "en": "island",
+   "es": "isla"
+  },
+  "mnemonic": {
+   "en": "The island is surrounded by sea, a small island.",
+   "es": "La isla está rodeada de mar, una isla pequeña."
+  },
+  "g": [
+   {
+    "r": "トウ",
+    "w": [
+     "w0614"
+    ]
+   },
+   {
+    "r": "しま",
+    "w": [
+     "w0615"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0258",
+  "c": "投",
+  "meaning": {
+   "en": "throw",
+   "es": "lanzar"
+  },
+  "mnemonic": {
+   "en": "I throw the ball and the pitcher throws it back.",
+   "es": "Lanzo la pelota y el lanzador la devuelve."
+  },
+  "g": [
+   {
+    "r": "トウ",
+    "w": [
+     "w0616"
+    ]
+   },
+   {
+    "r": "な",
+    "w": [
+     "w0617"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0259",
+  "c": "堂",
+  "meaning": {
+   "en": "hall",
+   "es": "sala"
+  },
+  "mnemonic": {
+   "en": "The dining hall is a large hall.",
+   "es": "El comedor es una sala grande."
+  },
+  "g": [
+   {
+    "r": "ドウ",
+    "w": [
+     "w0185",
+     "w0618"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0260",
+  "c": "働",
+  "meaning": {
+   "en": "work, labour",
+   "es": "trabajar, labor"
+  },
+  "mnemonic": {
+   "en": "I work hard, and labour is honest work.",
+   "es": "Trabajo duro, y la labor es trabajo honrado."
+  },
+  "g": [
+   {
+    "r": "ドウ",
+    "w": [
+     "w0619"
+    ]
+   },
+   {
+    "r": "はたら",
+    "w": [
+     "w0620"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0261",
+  "c": "道",
+  "meaning": {
+   "en": "road, way",
+   "es": "camino, vía"
+  },
+  "mnemonic": {
+   "en": "The road is a way, and the motorway is a wide road.",
+   "es": "El camino es una vía, y la autopista es un camino ancho."
+  },
+  "g": [
+   {
+    "r": "ドウ",
+    "w": [
+     "w0621",
+     "w0622"
+    ]
+   },
+   {
+    "r": "みち",
+    "w": [
+     "w0623"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0262",
+  "c": "肉",
+  "meaning": {
+   "en": "meat",
+   "es": "carne"
+  },
+  "mnemonic": {
+   "en": "The meat is beef, and the meat shop sells it.",
+   "es": "La carne es de vaca, y la carnicería la vende."
+  },
+  "g": [
+   {
+    "r": "ニク",
+    "w": [
+     "w0624",
+     "w0625"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0263",
+  "c": "熱",
+  "meaning": {
+   "en": "heat, fever",
+   "es": "calor, fiebre"
+  },
+  "mnemonic": {
+   "en": "The fever brings heat, and the water is hot.",
+   "es": "La fiebre trae calor, y el agua está caliente."
+  },
+  "g": [
+   {
+    "r": "ネツ",
+    "w": [
+     "w0626",
+     "w0627"
+    ]
+   },
+   {
+    "r": "あつ",
+    "w": [
+     "w0628"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0264",
+  "c": "飯",
+  "meaning": {
+   "en": "meal, rice",
+   "es": "comida, arroz"
+  },
+  "mnemonic": {
+   "en": "The cooked rice is the meal, and lunch is rice too.",
+   "es": "El arroz cocido es la comida, y el almuerzo también es arroz."
+  },
+  "g": [
+   {
+    "r": "ハン",
+    "w": [
+     "w0629"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0265",
+  "c": "病",
+  "meaning": {
+   "en": "illness",
+   "es": "enfermedad"
+  },
+  "mnemonic": {
+   "en": "The illness sent me to hospital, a sick person.",
+   "es": "La enfermedad me llevó al hospital, una persona enferma."
+  },
+  "g": [
+   {
+    "r": "ビョウ",
+    "w": [
+     "w0630",
+     "w0631"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0266",
+  "c": "不",
+  "meaning": {
+   "en": "not, un-",
+   "es": "no, in-"
+  },
+  "mnemonic": {
+   "en": "It is inconvenient, and that is not convenient at all.",
+   "es": "Es inconveniente, y eso no es nada conveniente."
+  },
+  "g": [
+   {
+    "r": "フ",
+    "w": [
+     "w0632",
+     "w0633"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0267",
+  "c": "夫",
+  "meaning": {
+   "en": "husband",
+   "es": "marido"
+  },
+  "mnemonic": {
+   "en": "My husband is the man of the house.",
+   "es": "Mi marido es el hombre de la casa."
+  },
+  "g": [
+   {
+    "r": "フ",
+    "w": [
+     "w0634"
+    ]
+   },
+   {
+    "r": "おっと",
+    "w": [
+     "w0635"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0268",
+  "c": "部",
+  "meaning": {
+   "en": "part, club",
+   "es": "parte, club"
+  },
+  "mnemonic": {
+   "en": "The club is one part of the department.",
+   "es": "El club es una parte del departamento."
+  },
+  "g": [
+   {
+    "r": "ブ",
+    "w": [
+     "w0395",
+     "w0636"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0269",
+  "c": "服",
+  "meaning": {
+   "en": "clothes",
+   "es": "ropa"
+  },
+  "mnemonic": {
+   "en": "The clothes I wear are Western clothes.",
+   "es": "La ropa que llevo es ropa occidental."
+  },
+  "g": [
+   {
+    "r": "フク",
+    "w": [
+     "w0637",
+     "w0638"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0270",
+  "c": "文",
+  "meaning": {
+   "en": "sentence, writing",
+   "es": "frase, escritura"
+  },
+  "mnemonic": {
+   "en": "The sentence is writing, and the culture is written down.",
+   "es": "La frase es escritura, y la cultura queda escrita."
+  },
+  "g": [
+   {
+    "r": "ブン",
+    "w": [
+     "w0639",
+     "w0338"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0271",
+  "c": "勉",
+  "meaning": {
+   "en": "endeavour",
+   "es": "esforzarse"
+  },
+  "mnemonic": {
+   "en": "I endeavour to study, and study hard.",
+   "es": "Me esfuerzo por estudiar, y estudio mucho."
+  },
+  "g": [
+   {
+    "r": "ベン",
+    "w": [
+     "w0640"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0272",
+  "c": "歩",
+  "meaning": {
+   "en": "walk, step",
+   "es": "caminar, paso"
+  },
+  "mnemonic": {
+   "en": "I walk on foot, one step at a time.",
+   "es": "Camino a pie, paso a paso."
+  },
+  "g": [
+   {
+    "r": "ホ",
+    "w": [
+     "w0641"
+    ]
+   },
+   {
+    "r": "ある",
+    "w": [
+     "w0642"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0273",
+  "c": "方",
+  "meaning": {
+   "en": "direction, person",
+   "es": "dirección, persona"
+  },
+  "mnemonic": {
+   "en": "The direction is that way, and that person went there.",
+   "es": "La dirección es por allí, y esa persona fue allá."
+  },
+  "g": [
+   {
+    "r": "ホウ",
+    "w": [
+     "w0643",
+     "w0644"
+    ]
+   },
+   {
+    "r": "かた",
+    "w": [
+     "w0645"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0274",
+  "c": "民",
+  "meaning": {
+   "en": "people, folk",
+   "es": "pueblo, gente"
+  },
+  "mnemonic": {
+   "en": "The people are citizens of the nation.",
+   "es": "El pueblo son los ciudadanos de la nación."
+  },
+  "g": [
+   {
+    "r": "ミン",
+    "w": [
+     "w0646",
+     "w0647"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0275",
+  "c": "無",
+  "meaning": {
+   "en": "nothing, without",
+   "es": "nada, sin"
+  },
+  "mnemonic": {
+   "en": "There is nothing there, without anything at all.",
+   "es": "No hay nada allí, sin nada en absoluto."
+  },
+  "g": [
+   {
+    "r": "ム",
+    "w": [
+     "w0648",
+     "w0649"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0276",
+  "c": "薬",
+  "meaning": {
+   "en": "medicine",
+   "es": "medicina"
+  },
+  "mnemonic": {
+   "en": "The medicine is from the pharmacy, a bitter medicine.",
+   "es": "La medicina es de la farmacia, una medicina amarga."
+  },
+  "g": [
+   {
+    "r": "ヤク",
+    "w": [
+     "w0650"
+    ]
+   },
+   {
+    "r": "くすり",
+    "w": [
+     "w0651"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0277",
+  "c": "有",
+  "meaning": {
+   "en": "exist, have",
+   "es": "existir, tener"
+  },
+  "mnemonic": {
+   "en": "It is famous because it has fame.",
+   "es": "Es famoso porque tiene fama."
+  },
+  "g": [
+   {
+    "r": "ユウ",
+    "w": [
+     "w0190",
+     "w0652"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0278",
+  "c": "洋",
+  "meaning": {
+   "en": "ocean, Western",
+   "es": "océano, occidental"
+  },
+  "mnemonic": {
+   "en": "The Western clothes came from across the ocean.",
+   "es": "La ropa occidental vino de allende el océano."
+  },
+  "g": [
+   {
+    "r": "ヨウ",
+    "w": [
+     "w0653",
+     "w0654"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0279",
+  "c": "利",
+  "meaning": {
+   "en": "advantage, profit",
+   "es": "ventaja, beneficio"
+  },
+  "mnemonic": {
+   "en": "The advantage is convenient, and the profit is real.",
+   "es": "La ventaja es cómoda, y el beneficio es real."
+  },
+  "g": [
+   {
+    "r": "リ",
+    "w": [
+     "w0655",
+     "w0656"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0280",
+  "c": "旅",
+  "meaning": {
+   "en": "travel",
+   "es": "viajar"
+  },
+  "mnemonic": {
+   "en": "I travel on a trip, a long journey.",
+   "es": "Viajo de excursión, un largo viaje."
+  },
+  "g": [
+   {
+    "r": "リョ",
+    "w": [
+     "w0168",
+     "w0657"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "k0281",
+  "c": "練",
+  "meaning": {
+   "en": "practise, train",
+   "es": "practicar, entrenar"
+  },
+  "mnemonic": {
+   "en": "I practise and train until it is polished.",
+   "es": "Practico y entreno hasta pulirlo."
+  },
+  "g": [
+   {
+    "r": "レン",
+    "w": [
+     "w0306",
+     "w0658"
+    ]
+   }
+  ]
  }
 ]
