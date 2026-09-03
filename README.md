@@ -23,10 +23,15 @@ impractical and every diff reads as "1 line changed".
 
 ## What the app is
 
-One screen: a grid of word cards, five across and four down. Words come in
-sets of twenty -- a sitting -- picked from the sidebar, with a study game,
-flashcards and writing practice scoped to the set on screen. Progress is the
-set of words you have marked mastered, and nothing else.
+One screen: a grid of word cards, five across and four down, and one sidebar.
+Words come in sets of twenty -- a sitting -- picked from the sidebar, with a
+study game, flashcards and writing practice scoped to the set on screen.
+Progress is the set of words you have marked mastered, and nothing else.
+
+The sidebar carries everything that is not a word: the wordmark, total
+progress as a ring, the five sets, one study control for the set in hand, and
+the account. Language sits behind the menu icon. There is no top bar, because
+nothing was left for it to hold and the cards would rather have the height.
 
 A card at rest is the word with furigana over it and its meaning underneath.
 Hovering raises the word to the top of the card, swaps the meaning for the
