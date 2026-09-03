@@ -32,11 +32,15 @@ The chrome is a single bar across the top, so almost all of the window is
 cards -- no rail, no footer, nothing else competing for an edge of the screen.
 Left to right: the mark; the sets as tabs, each filling with accent as its
 twenty words are learned; any sign-in or sync message; total progress as a
-ring; the study control for the set in hand; then the reading toggle, the
-current interface language as its own two-letter icon with a popover to
-change it, the account (its own icon, its own popover), load and save.
-Language and account used to share one menu; they are two separate,
-single-purpose icons now, because they are two separate decisions.
+ring; a solid, accent-filled Study button (the set in hand is in its
+tooltip, not repeated in the label); then a visually separate toolbar --
+its own panel background sets it off from the tabs -- holding the reading
+toggle, the current interface language as its own two-letter icon with a
+popover to change it, load and save. There is no separate account icon:
+signed out, clicking Save opens a small popover to collect an email and
+send a sign-in link; signed in, Save just saves. Account identity is not
+displayed anywhere in the chrome -- the only visible signal of being signed
+in is that Save no longer prompts.
 
 A card at rest is the word with furigana over it and its meaning underneath.
 Hovering raises the word, swaps the meaning for the example sentence and its
