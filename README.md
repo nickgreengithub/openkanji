@@ -28,19 +28,21 @@ sets of twenty -- a sitting -- picked from the sidebar, with a study game,
 flashcards and writing practice scoped to the set on screen. Progress is the
 set of words you have marked mastered, and nothing else.
 
-A card at rest is the word, its kana and its meaning. Hovering swaps the lower
-half for the example sentence and raises the tick that marks the word learned;
-the word itself never moves. A card with no example sentence keeps its meaning
-on hover rather than emptying.
+A card at rest is the word with furigana over it and its meaning underneath.
+Hovering raises the word to the top of the card, swaps the meaning for the
+example sentence and its translation, and brings out the tick that marks the
+word learned. A card with no example sentence keeps its meaning on hover.
 
 There is deliberately no per-kanji lesson. A kanji does not have a meaning so
 much as a distribution of them, so an English gloss under a glyph (`連 = take
 along, connect`) is an editorial summary rather than a fact a learner can be
 tested on -- and it misdirects when the compound sense dominates. The corpus is
 still stored by kanji, because that is how the readings hang together; the app
-flattens it into words at load. A word written with two or more kanji shows its
-kana split at the character boundaries (関連 -> かん・れん), which is the part of
-a kanji that does generalise.
+flattens it into words at load, and sets each kanji's reading above it as
+furigana -- おん over 音, がく over 楽. Which sound belongs to which character is
+the part of a kanji that does generalise, and ruby is how every Japanese
+textbook says it. Where the split is not certain the ruby covers the whole
+run instead, which is also the correct answer for a jukujikun like 大人 おとな.
 
 The list is capped at the first hundred words of a deck, and the deck is
 whichever one was last saved: word ordering and deck choice are open

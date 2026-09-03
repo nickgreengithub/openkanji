@@ -631,27 +631,27 @@ html[data-ok-ready] #ok-boot{display:none}
           <span style="flex:0 0 auto;font-family:var(--font-2);font-size:1.0625rem;color:var(--text-muted)">{{ listFrac }}</span>
         </div>
         <div ref="{{ listRef }}" class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden">
-        <div style="height:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(4,minmax(9.5rem,1fr));border-top:{{ ruleH }} solid var(--cyan-a45);border-left:{{ ruleH }} solid var(--cyan-a45)">
+        <div style="height:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(4,minmax(10rem,1fr));border-top:{{ ruleH }} solid var(--cyan-a45);border-left:{{ ruleH }} solid var(--cyan-a45)">
           <sc-for list="{{ listWords }}" as="lr" hint-placeholder-count="20">
-            <div sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" style="position:relative;min-width:0;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;padding:.8rem .7rem .45rem;border-right:{{ ruleH }} solid var(--cyan-a45);border-bottom:{{ ruleH }} solid var(--cyan-a45);background:{{ lr.bg }};transition:background 200ms ease">
-              <span style="position:absolute;left:.5rem;top:.35rem;font-family:var(--font-2);font-size:.8125rem;font-variant-numeric:tabular-nums;color:var(--cyan-a55)">{{ lr.num }}</span>
-              <span style="flex:0 0 auto;max-width:100%;font-size:{{ lr.wordSize }};line-height:1.08;color:{{ lr.wordFg }};text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color 200ms ease">{{ lr.word }}</span>
+            <div sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" style="position:relative;min-width:0;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;padding:.5rem .6rem .35rem;border-right:{{ ruleH }} solid var(--cyan-a45);border-bottom:{{ ruleH }} solid var(--cyan-a45);background:{{ lr.bg }};transition:background 200ms ease">
+              <span style="position:absolute;left:.5rem;top:.3rem;font-family:var(--font-2);font-size:.8125rem;font-variant-numeric:tabular-nums;color:var(--cyan-a55)">{{ lr.num }}</span>
+              <span style="flex:0 0 auto;height:{{ lr.padTop }};transition:height 280ms cubic-bezier(.3,.7,.3,1)"></span>
+              <span style="flex:0 0 auto;max-width:100%;font-size:{{ lr.wordSize }};line-height:1;color:{{ lr.wordFg }};text-align:center;white-space:nowrap;overflow:hidden;transition:color 200ms ease"><sc-for list="{{ lr.ruby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="font-family:var(--font-2);font-size:{{ lr.rubySize }};line-height:1.25;letter-spacing:.02em;color:var(--text-accent);opacity:{{ answerOpacity }};transition:opacity 140ms ease">{{ rb.r }}</rt></ruby></sc-for></span>
               <span style="position:relative;flex:1 1 auto;align-self:stretch;min-height:0;overflow:hidden;display:block;opacity:{{ answerOpacity }};transition:opacity 140ms ease">
-                <span style="position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.15rem;opacity:{{ lr.faceOpacity }};transform:{{ lr.faceShift }};transition:opacity 200ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)">
-                  <span style="max-width:100%;font-family:var(--font-2);font-size:1.0625rem;line-height:1.3;color:#3a4954;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ lr.furi }}</span>
-                  <span style="max-width:100%;font-family:var(--font-2);font-size:1rem;line-height:1.3;color:var(--text-muted);text-align:center;text-wrap:pretty;overflow:hidden">{{ lr.gloss }}</span>
+                <span style="position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;align-items:center;padding-top:.5rem;opacity:{{ lr.faceOpacity }};transform:{{ lr.faceShift }};transition:opacity 200ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)">
+                  <span style="max-width:100%;font-family:var(--font-2);font-size:1.125rem;line-height:1.3;color:var(--text-muted);text-align:center;text-wrap:pretty;overflow:hidden">{{ lr.gloss }}</span>
                 </span>
-                <span style="position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;opacity:{{ lr.exOpacity }};transform:{{ lr.exShift }};pointer-events:none;transition:opacity 200ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)">
-                  <span style="max-width:100%;font-size:.9375rem;line-height:1.4;color:#3a4954;text-align:center;text-wrap:pretty"><sc-for list="{{ lr.exParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--text-accent)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
-                  <span style="max-width:100%;font-family:var(--font-2);font-size:.8125rem;line-height:1.35;color:var(--text-muted);text-align:center;text-wrap:pretty">{{ lr.exEn }}</span>
+                <span style="position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;align-items:center;gap:.2rem;padding-top:.3rem;opacity:{{ lr.exOpacity }};transform:{{ lr.exShift }};pointer-events:none;transition:opacity 200ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)">
+                  <span style="max-width:100%;font-size:1.125rem;line-height:1.4;color:#3a4954;text-align:center;text-wrap:pretty"><sc-for list="{{ lr.exParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--text-accent)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
+                  <span style="max-width:100%;font-family:var(--font-2);font-size:1rem;line-height:1.25;color:var(--text-muted);text-align:center;text-wrap:pretty">{{ lr.exEn }}</span>
                 </span>
               </span>
-              <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn" title="{{ lr.markTitle }}" style="flex:0 0 auto;margin-top:.2rem;width:1.75rem;height:1.75rem;display:flex;align-items:center;justify-content:center;opacity:{{ lr.markOpacity }};transform:{{ lr.markShift }};pointer-events:{{ lr.markPointer }};cursor:pointer;transition:opacity 200ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)">
+              <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn" title="{{ lr.markTitle }}" style="position:absolute;right:.4rem;top:.3rem;width:1.75rem;height:1.75rem;display:flex;align-items:center;justify-content:center;opacity:{{ lr.markOpacity }};transform:{{ lr.markShift }};pointer-events:{{ lr.markPointer }};cursor:pointer;transition:opacity 200ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)">
                 <sc-if value="{{ lr.markDone }}" hint-placeholder-val="{{ false }}">
                   <span style="width:1.75rem;height:1.75rem;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#ffffff"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M5 13 L10 18 L19 6"></path></svg></span>
                 </sc-if>
                 <sc-if value="{{ lr.markOpen }}" hint-placeholder-val="{{ true }}">
-                  <span style="width:1.75rem;height:1.75rem;box-sizing:border-box;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--cyan-a35);transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M5 13 L10 18 L19 6"></path></svg></span>
+                  <span style="width:1.75rem;height:1.75rem;box-sizing:border-box;border:1px solid var(--accent);background:var(--surface-page);display:flex;align-items:center;justify-content:center;color:var(--cyan-a35);transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M5 13 L10 18 L19 6"></path></svg></span>
                 </sc-if>
               </span>
             </div>
@@ -2183,14 +2183,19 @@ class Component extends DCLogic {
     return r + "う";
   }
 
-  // 関連 reads かん・れん: a word written with two or more kanji shows which
-  // sound belongs to which character, which is the part of a kanji a learner
-  // can actually be tested on. Falls back to the plain reading whenever the
-  // split is not certain -- 大人 おとな has no per-character answer.
-  kanaBullets(word, reading) {
+  // Furigana, the way every Japanese textbook does it: the kana sit over the
+  // character they belong to, so 音楽 shows おん above 音 and がく above 楽 and
+  // there is nothing to interpret. Returns the word as segments, each with the
+  // kana that rides above it ("" for okurigana, which is already kana).
+  //
+  // Per-character where the readings line up; otherwise the whole kanji run
+  // takes one ruby, which is both the fallback and the correct answer for a
+  // jukujikun like 大人 おとな -- the reading belongs to the pair, not to 大.
+  wordRuby(word, reading) {
     const isKanji = (ch) => /[\u4e00-\u9faf\u3005]/.test(ch);
     const chars = String(word || "").split("");
-    if (chars.filter(isKanji).length < 2) return reading;
+    const hira = this.kata2hira(reading || "");
+    if (!chars.some(isKanji)) return [{ t: word, r: "" }];
     const RENDAKU = { "か": "が", "き": "ぎ", "く": "ぐ", "け": "げ", "こ": "ご", "さ": "ざ", "し": "じ", "す": "ず", "せ": "ぜ", "そ": "ぞ", "た": "だ", "ち": "ぢ", "つ": "づ", "て": "で", "と": "ど", "は": "ば", "ひ": "び", "ふ": "ぶ", "へ": "べ", "ほ": "ぼ" };
     const HANDAKU = { "は": "ぱ", "ひ": "ぴ", "ふ": "ぷ", "へ": "ぺ", "ほ": "ぽ" };
     const forms = (r) => {
@@ -2200,19 +2205,19 @@ class Component extends DCLogic {
       if (/[くつちき]$/.test(r)) out.slice().forEach(v => out.push(v.slice(0, -1) + "っ"));
       return out;
     };
-    let rest = this.kata2hira(reading || "");
-    const parts = [];
-    for (let i = 0; i < chars.length; i++) {
+    const out = [];
+    let rest = hira, ok = true;
+    for (let i = 0; i < chars.length && ok; i++) {
       const ch = chars[i];
       if (!isKanji(ch)) {
         const kana = this.kata2hira(ch);
-        if (rest.indexOf(kana) !== 0) return reading;
+        if (rest.indexOf(kana) !== 0) { ok = false; break; }
         rest = rest.slice(kana.length);
-        if (parts.length) parts[parts.length - 1] += kana; else parts.push(kana);
+        out.push({ t: ch, r: "" });
         continue;
       }
       const entry = DATA.find(x => x.c === ch);
-      if (!entry) return reading;
+      if (!entry) { ok = false; break; }
       const cands = [];
       entry.g.forEach(g => {
         const base = this.kata2hira(String(g.r || "").replace(/[（(].*$/, "").replace(/[.\-\u30fb]/g, ""));
@@ -2226,11 +2231,16 @@ class Component extends DCLogic {
         if (rest.indexOf(r) !== 0) continue;
         if (last ? rest.length === r.length : rest.length > r.length) hit = r;
       }
-      if (!hit) return reading;
-      parts.push(hit);
+      if (!hit) { ok = false; break; }
+      out.push({ t: ch, r: hit });
       rest = rest.slice(hit.length);
     }
-    return rest ? reading : parts.join("\u30fb");
+    if (ok && !rest) return out;
+    const runs = this.wordRuns(word, reading);
+    if (runs.length && runs.every(r => r.kana || r.furi)) {
+      return runs.map(r => ({ t: r.text, r: r.kana ? "" : r.furi }));
+    }
+    return [{ t: word, r: hira }];
   }
 
   // split a kanji run's furigana into per-character slices, matching each
@@ -3412,8 +3422,20 @@ class Component extends DCLogic {
           wordSize: w[0].length <= 2 ? "2.6rem" : w[0].length === 3 ? "2.2rem" : w[0].length === 4 ? "1.85rem" : "1.55rem",
           wordFg: done ? "var(--text-accent)" : "var(--text-body)",
           bg: done ? "rgba(8,145,178,.07)" : (hot ? "rgba(8,145,178,.045)" : "transparent"),
-          furi: this.kanaBullets(w[0], w[1]),
+          ruby: this.wordRuby(w[0], w[1]),
+          rubySize: w[0].length <= 2 ? ".875rem" : w[0].length === 3 ? ".8125rem" : ".75rem",
           gloss: w[2],
+          // At rest the word and its meaning are centred as a block; on hover
+          // the word rises to the top of the card and hands the space to the
+          // sentence. Animating a spacer is what lets the word travel rather
+          // than cross-fade -- it is the thing being learned, so it stays one
+          // object and only changes position.
+          //
+          // Half the card, less half the block: a card is 155px of usable
+          // height at 1280x800 and 217px at 1680x1050, so a flat percentage
+          // leaves the big card bottom-heavy. The subtracted rem is half the
+          // word block (its ruby, the glyph at this size, and the meaning).
+          padTop: flip ? "calc(0% - 0rem)" : ("calc(50% - " + (w[0].length <= 2 ? "2.86" : w[0].length === 3 ? "2.66" : w[0].length === 4 ? "2.49" : "2.34") + "rem)"),
           faceOpacity: flip ? 0 : 1,
           faceShift: flip ? "translateY(-.55rem)" : "translateY(0)",
           exOpacity: flip ? 1 : 0,
@@ -3424,7 +3446,7 @@ class Component extends DCLogic {
           markOpen: !done,
           markTitle: done ? T("completed") : T("not_completed"),
           markOpacity: (hot || done) ? 1 : 0,
-          markShift: (hot || done) ? "translateY(0)" : "translateY(.35rem)",
+          markShift: (hot || done) ? "translateY(0)" : "translateY(-.35rem)",
           markPointer: (hot || done) ? "auto" : "none",
           master: (ev) => { ev.stopPropagation(); this.toggleMasteredWord(key); },
           exParts: (() => {
