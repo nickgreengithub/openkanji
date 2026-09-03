@@ -28,15 +28,24 @@ Words come in sets of twenty -- a sitting -- picked from the sidebar, with a
 study game, flashcards and writing practice scoped to the set on screen.
 Progress is the set of words you have marked mastered, and nothing else.
 
-The sidebar carries everything that is not a word: the wordmark, total
-progress as a ring, the five sets, one study control for the set in hand, and
-the account. Language sits behind the menu icon. There is no top bar, because
-nothing was left for it to hold and the cards would rather have the height.
+The chrome is an icon-width rail and an icon-height footer, so almost all of
+the window is cards. The rail holds the mark, the reading toggle, load, save
+and a menu (language and account). The footer holds the sets as tabs directly
+under the grid they select -- each cell fills with accent as its twenty words
+are learned -- then any sign-in or sync message, then total progress and the
+study control for the set in hand.
 
 A card at rest is the word with furigana over it and its meaning underneath.
-Hovering raises the word to the top of the card, swaps the meaning for the
-example sentence and its translation, and brings out the tick that marks the
-word learned. A card with no example sentence keeps its meaning on hover.
+Hovering raises the word, swaps the meaning for the example sentence and its
+translation, and brings out the tick that marks the word learned. Both states
+are centred in the card. A card with no example sentence keeps its meaning on
+hover.
+
+Sentences live in `words.json` as `sentences: [{ ja, t: { en, es } }]` and are
+keyed by word id, so a word can be corrected without invalidating anyone's
+progress. Every word the app can currently reach has one; the rest of the
+corpus does not yet, and a word without a sentence degrades rather than
+breaks.
 
 There is deliberately no per-kanji lesson. A kanji does not have a meaning so
 much as a distribution of them, so an English gloss under a glyph (`連 = take

@@ -199,14 +199,16 @@ function loadKanjiAndLangs() {
     i18n[l.code] = t;
   }
 
-  // Example-sentence translations by word id: { id: { LANG: [t1, t2] } }.
-  // The Japanese text itself stays in EXTRA, which holds the furigana tokens.
+  // Example sentences by word id: the Japanese in exJa, its translations in
+  // exT as { id: { LANG: [t1, t2] } }.
   const exT = {};
+  const exJa = {};
   for (const [id, w] of Object.entries(words)) {
     if (!w.sentences || !w.sentences.length) continue;
     const per = {};
     for (const c of complete) per[c.toUpperCase()] = w.sentences.map((s) => pick(s.t, c));
     exT[id] = per;
+    exJa[id] = w.sentences.map((s) => s.ja);
   }
 
   // Interface strings by language: { EN: { key: text }, ES: { ... } }.
@@ -217,7 +219,7 @@ function loadKanjiAndLangs() {
     uiT[c.toUpperCase()] = t;
   }
 
-  return { data: flatten(kanji, words, DEFAULT_LANG), exT, i18n, uiT, langs, available, partial, coverage, fields, deckOrder };
+  return { data: flatten(kanji, words, DEFAULT_LANG), exT, exJa, i18n, uiT, langs, available, partial, coverage, fields, deckOrder };
 }
 
 function build() {
@@ -234,7 +236,7 @@ function build() {
     };
   }
 
-  const { data, exT, i18n, uiT, langs, available, partial, coverage, fields, deckOrder } = loadKanjiAndLangs();
+  const { data, exT, exJa, i18n, uiT, langs, available, partial, coverage, fields, deckOrder } = loadKanjiAndLangs();
 
   let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
   const tokens = {
@@ -246,6 +248,7 @@ function build() {
     // without a refetch. Incomplete ones are omitted entirely.
     __KANJI_I18N__: JSON.stringify(i18n),
     __EX_TRANSLATIONS__: JSON.stringify(exT),
+    __EX_JA__: JSON.stringify(exJa),
     __UI__: JSON.stringify(uiT),
     // code, display name, kanji label, and whether the language is complete.
     __LANGS__: JSON.stringify(
@@ -256,6 +259,7 @@ function build() {
     if (!template.includes(token)) throw new Error("app.html is missing " + token);
     template = template.replace(token, () => value);
   }
+  console.log("  sentences: " + Object.keys(exJa).length + " of " + Object.keys(exT).length + " translated words");
   console.log(
     "  data: " + data.length + " kanji across " + new Set(data.map((k) => k.deck)).size +
     " decks | languages: " + available.join(", ") +

@@ -499,95 +499,57 @@ html[data-ok-ready] #ok-boot{display:none}
   <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ true }}">
     <main style="flex:1 1 auto;min-height:0;overflow:hidden;display:flex;align-items:stretch">
 
-      <div style="position:relative;z-index:60;box-sizing:border-box;flex:0 0 14rem;min-width:0;display:flex;flex-direction:column;border-right:{{ ruleH }} solid var(--cyan-a45)">
-
-        <div style="position:relative;flex:0 0 auto;display:flex;align-items:center;gap:.5rem;height:3.4rem;padding:0 .5rem 0 .95rem;border-bottom:{{ ruleH }} solid var(--cyan-a45)">
-          <span style="flex:0 0 auto;font-size:1.375rem;line-height:1;color:var(--accent)">开</span>
-          <span style="flex:1 1 auto;min-width:0;font-family:var(--font-2);font-size:1.0625rem;letter-spacing:.06em;color:var(--text-body);white-space:nowrap;overflow:hidden">OpenKanji<span style="color:var(--cyan-a55)">.org</span></span>
-          <span sc-camel-on-click="{{ toggleMenu }}" style="flex:0 0 auto;user-select:none;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;color:{{ menuFg }};cursor:pointer;transition:color 140ms ease" style-hover="color:var(--text-accent)">
-            <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3.5 6.5 H20.5"></path><path d="M3.5 12 H20.5"></path><path d="M3.5 17.5 H20.5"></path></svg>
-          </span>
+      <div style="position:relative;z-index:60;box-sizing:border-box;flex:0 0 3.5rem;display:flex;flex-direction:column;align-items:center;padding:.6rem 0 .55rem;border-right:{{ ruleH }} solid var(--cyan-a45)">
+        <span title="OpenKanji.org" style="flex:0 0 auto;width:2.2rem;height:2.2rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;line-height:1;color:var(--accent)">开</span>
+        <span style="flex:1 1 auto"></span>
+        <span sc-camel-on-click="{{ toggleReveal }}" title="{{ t_show_hide_translations }}" style="user-select:none;flex:0 0 auto;width:2.2rem;height:2.2rem;margin-bottom:.4rem;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border:1px solid var(--accent);background:{{ eyeFill }};color:{{ eyeFg }};cursor:pointer;transition:background 140ms ease,color 140ms ease">
+          <sc-if value="{{ revealed }}" hint-placeholder-val="{{ true }}">
+            <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1.5 12 C5 6.5 8.5 4.5 12 4.5 C15.5 4.5 19 6.5 22.5 12 C19 17.5 15.5 19.5 12 19.5 C8.5 19.5 5 17.5 1.5 12 Z"></path><circle cx="12" cy="12" r="3.2"></circle></svg>
+          </sc-if>
+          <sc-if value="{{ concealed }}" hint-placeholder-val="{{ false }}">
+            <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1.5 12 C5 6.5 8.5 4.5 12 4.5 C15.5 4.5 19 6.5 22.5 12 C19 17.5 15.5 19.5 12 19.5 C8.5 19.5 5 17.5 1.5 12 Z"></path><circle cx="12" cy="12" r="3.2"></circle><path d="M3.5 20.5 L20.5 3.5" stroke-width="2.4"></path></svg>
+          </sc-if>
+        </span>
+        <span sc-camel-on-click="{{ loadNow }}" title="{{ t_load_saved_progress }}" class="ok-navfill" style="user-select:none;flex:0 0 auto;width:2.2rem;height:2.2rem;margin-bottom:.4rem;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border:1px solid {{ loadFill }};background:{{ loadFill }};cursor:{{ loadCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="17" height="17" sc-camel-view-box="0 0 24 24"><path d="M2.5 4.5 H9.2 L11.4 7.2 H19.5 V10.5 H2.5 Z" fill="var(--surface-page)"></path><path d="M2.5 11.6 H22 L19 20.5 H2.5 Z" fill="var(--surface-page)"></path></svg></span>
+        <span sc-camel-on-click="{{ saveNow }}" title="{{ t_save_progress_title }}" class="ok-navfill" style="user-select:none;flex:0 0 auto;width:2.2rem;height:2.2rem;margin-bottom:.55rem;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};box-shadow:{{ saveGlow }};transition:background 140ms ease,border-color 140ms ease,box-shadow 260ms ease">
+          <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
+            <svg width="17" height="17" sc-camel-view-box="0 0 24 24"><path d="M5 12.5 L9.5 17 L19 6.5" fill="none" stroke="var(--surface-page)" stroke-width="2.6"></path></svg>
+          </sc-if>
+          <sc-if value="{{ notSaved }}" hint-placeholder-val="{{ true }}">
+            <svg width="17" height="17" sc-camel-view-box="0 0 24 24"><path d="M3 3 H17.5 L21 6.5 V21 H3 Z" fill="var(--surface-page)"></path><rect x="8" y="3" width="8" height="6.6" fill="var(--accent)"></rect><rect x="13.1" y="4.2" width="1.9" height="4.2" fill="var(--surface-page)"></rect><rect x="6.4" y="13.2" width="11.2" height="7.8" fill="var(--accent)"></rect></svg>
+          </sc-if>
+        </span>
+        <span sc-camel-on-click="{{ toggleMenu }}" style="position:relative;user-select:none;flex:0 0 auto;width:2.2rem;height:2.2rem;display:flex;align-items:center;justify-content:center;color:{{ menuFg }};cursor:pointer;transition:color 140ms ease" style-hover="color:var(--text-accent)">
+          <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3.5 6.5 H20.5"></path><path d="M3.5 12 H20.5"></path><path d="M3.5 17.5 H20.5"></path></svg>
           <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-            <div sc-camel-on-mouse-leave="{{ closeMenu }}" style="position:absolute;top:100%;left:.5rem;padding-top:.4rem;z-index:80;cursor:default">
-              <div style="width:16rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column">
+            <div sc-camel-on-mouse-leave="{{ closeMenu }}" sc-camel-on-click="{{ stop }}" style="position:absolute;bottom:-.3rem;left:100%;padding-left:.5rem;z-index:80;cursor:default">
+              <div style="width:17rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column">
                 <span style="padding:.75rem 1rem;border-bottom:1px solid var(--cyan-a28);font-size:1.0625rem;letter-spacing:.06em;color:var(--text-accent);white-space:nowrap">表示言語</span>
                 <sc-for list="{{ langs }}" as="lg" hint-placeholder-count="6">
-                  <div sc-camel-on-click="{{ lg.pick }}" style="display:flex;align-items:center;gap:.8rem;padding:.85rem 1rem;border-bottom:1px solid var(--cyan-a15);background:{{ lg.bg }};cursor:{{ lg.cursor }};opacity:{{ lg.opacity }};transition:background 140ms ease" style-hover="background:var(--accent-soft)">
+                  <div sc-camel-on-click="{{ lg.pick }}" style="display:flex;align-items:center;gap:.8rem;padding:.75rem 1rem;border-bottom:1px solid var(--cyan-a15);background:{{ lg.bg }};cursor:{{ lg.cursor }};opacity:{{ lg.opacity }};transition:background 140ms ease" style-hover="background:var(--accent-soft)">
                     <span style="flex:0 0 2.2rem;font-family:var(--font-2);font-size:1.0625rem;letter-spacing:.1em;color:{{ lg.codeFg }}">{{ lg.code }}</span>
                     <span style="flex:1 1 auto;min-width:0;font-family:var(--font-2);font-size:1.0625rem;color:{{ lg.nameFg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ lg.name }}</span>
                     <span style="flex:0 0 auto;font-family:var(--font-2);font-size:.875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)">{{ lg.tag }}</span>
                   </div>
                 </sc-for>
+                <span style="padding:.75rem 1rem;border-bottom:1px solid var(--cyan-a28);font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-accent);white-space:nowrap">{{ t_save_progress }}</span>
+                <div style="display:flex;flex-direction:column;gap:.5rem;padding:.85rem 1rem">
+                  <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ true }}">
+                    <span style="height:2.2rem;display:flex;align-items:center;padding:0 .55rem;border:1px solid var(--cyan-a28);font-family:var(--font-2);font-size:.9375rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ userId }}</span>
+                  </sc-if>
+                  <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ false }}">
+                    <input type="email" placeholder="{{ t_save_progress_title }}" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onEmailKey }}" style="width:100%;height:2.2rem;box-sizing:border-box;background:transparent;border:1px solid var(--cyan-a28);border-radius:0;outline:none;padding:0 .55rem;font-family:var(--font-2);font-size:.9375rem;color:var(--text-body)"/>
+                  </sc-if>
+                  <span style="font-family:var(--font-2);font-size:.9375rem;line-height:1.45;color:var(--text-muted);text-wrap:pretty">{{ saveTipBody }}</span>
+                </div>
               </div>
             </div>
           </sc-if>
-        </div>
-
-        <div sc-camel-on-mouse-enter="{{ hintSet.enter }}" sc-camel-on-mouse-leave="{{ hintSet.leave }}" style="position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:1.15rem 0 1.2rem;border-bottom:{{ ruleH }} solid var(--cyan-a45);cursor:default">
-          <span style="position:relative;width:5.5rem;height:5.5rem;display:flex;align-items:center;justify-content:center">
-            <svg width="88" height="88" sc-camel-view-box="0 0 88 88" style="position:absolute;left:0;top:0;transform:rotate(-90deg)">
-              <circle cx="44" cy="44" r="37" fill="none" stroke="var(--cyan-a15)" stroke-width="6"></circle>
-              <circle cx="44" cy="44" r="37" fill="none" stroke="var(--accent)" stroke-width="6" stroke-dasharray="{{ donutDash }}" style="transition:stroke-dasharray 320ms cubic-bezier(.3,.7,.3,1)"></circle>
-            </svg>
-            <span style="font-family:var(--font-2);font-size:1.375rem;font-variant-numeric:tabular-nums;color:{{ masteryFg }};transition:color 260ms ease">{{ setPct }}</span>
-          </span>
-          <span style="display:flex;align-items:baseline;gap:.3rem;font-family:var(--font-2);font-size:1rem;font-variant-numeric:tabular-nums;color:var(--text-muted);white-space:nowrap">
-            <span style="color:{{ masteryFg }};transition:color 260ms ease">{{ setDone }}</span><span>/</span><span>{{ setTotal }}</span><span style="padding-left:.15rem;color:var(--cyan-a55)">単語</span>
-          </span>
-          <sc-if value="{{ hintSet.open }}" hint-placeholder-val="{{ false }}">
-            <div style="{{ progTipStyle }}">
-              <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">{{ t_word_progress }}</span>
-              <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ t_mastered_before }} <span style="color:var(--text-accent)">{{ setPct }}</span> {{ t_of_words_in }} {{ progDeck }}</span>
-            </div>
-          </sc-if>
-        </div>
-
-        <div class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;border-bottom:{{ ruleH }} solid var(--cyan-a45)">
-        <sc-for list="{{ wordSets }}" as="ws" hint-placeholder-count="5">
-          <div sc-camel-on-click="{{ ws.pick }}" sc-camel-on-mouse-enter="{{ ws.enter }}" sc-camel-on-mouse-leave="{{ ws.leave }}" style="position:relative;user-select:none;display:flex;align-items:center;gap:.5rem;height:2.9rem;padding:0 .95rem;background:{{ ws.bg }};cursor:pointer;transition:background 140ms ease">
-            <div style="position:absolute;left:0;top:0;bottom:0;width:{{ ws.barH }};background:var(--accent);transition:width 160ms ease"></div>
-            <span style="flex:1 1 auto;min-width:0;font-family:var(--font-2);font-size:1.0625rem;letter-spacing:.04em;color:{{ ws.fg }};white-space:nowrap;transition:color 140ms ease">{{ ws.label }}</span>
-            <span style="flex:0 0 auto;font-family:var(--font-2);font-size:.9375rem;font-variant-numeric:tabular-nums;color:var(--text-muted);white-space:nowrap;opacity:{{ ws.fracOpacity }};transition:opacity 160ms ease">{{ ws.frac }}</span>
-            <div style="position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--cyan-a15)"></div>
-            <div style="position:absolute;left:0;bottom:0;height:2px;width:{{ ws.pct }};background:var(--accent);transition:width 260ms ease"></div>
-          </div>
-        </sc-for>
-        </div>
-
-        <div sc-camel-on-click="{{ studyNow }}" style="user-select:none;flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:.55rem;height:2.9rem;margin:.9rem .8rem .15rem;border-top:0;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ studyOpacity }};pointer-events:{{ studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease,opacity 200ms ease" style-hover="background:var(--accent);color:#ffffff">
-          <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
-          <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap">{{ t_study }} {{ listRange }}</span>
-        </div>
-
-        <div class="{{ saveBtnClass }}" style="flex:0 0 auto;display:flex;flex-direction:column;gap:.5rem;padding:.85rem .8rem .85rem">
-          <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ true }}">
-            <span style="height:2.2rem;display:flex;align-items:center;padding:0 .55rem;border:1px solid var(--cyan-a28);font-family:var(--font-2);font-size:.9375rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ userId }}</span>
-          </sc-if>
-          <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ false }}">
-            <input type="email" placeholder="{{ t_save_progress_title }}" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onEmailKey }}" style="width:100%;height:2.2rem;box-sizing:border-box;background:transparent;border:1px solid var(--cyan-a28);border-radius:0;outline:none;padding:0 .55rem;font-family:var(--font-2);font-size:.9375rem;color:var(--text-body)"/>
-          </sc-if>
-          <div style="display:flex;align-items:stretch;gap:.4rem">
-            <span sc-camel-on-click="{{ toggleReveal }}" title="{{ t_show_hide_translations }}" style="user-select:none;flex:1 1 0;height:2.2rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);background:{{ eyeFill }};color:{{ eyeFg }};cursor:pointer;transition:background 140ms ease,color 140ms ease">
-              <sc-if value="{{ revealed }}" hint-placeholder-val="{{ true }}">
-                <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1.5 12 C5 6.5 8.5 4.5 12 4.5 C15.5 4.5 19 6.5 22.5 12 C19 17.5 15.5 19.5 12 19.5 C8.5 19.5 5 17.5 1.5 12 Z"></path><circle cx="12" cy="12" r="3.2"></circle></svg>
-              </sc-if>
-              <sc-if value="{{ concealed }}" hint-placeholder-val="{{ false }}">
-                <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1.5 12 C5 6.5 8.5 4.5 12 4.5 C15.5 4.5 19 6.5 22.5 12 C19 17.5 15.5 19.5 12 19.5 C8.5 19.5 5 17.5 1.5 12 Z"></path><circle cx="12" cy="12" r="3.2"></circle><path d="M3.5 20.5 L20.5 3.5" stroke-width="2.4"></path></svg>
-              </sc-if>
-            </span>
-            <span sc-camel-on-click="{{ loadNow }}" title="{{ t_load_saved_progress }}" class="ok-navfill" style="user-select:none;flex:1 1 0;height:2.2rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ loadFill }};background:{{ loadFill }};cursor:{{ loadCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="18" height="18" sc-camel-view-box="0 0 24 24"><path d="M2.5 4.5 H9.2 L11.4 7.2 H19.5 V10.5 H2.5 Z" fill="var(--surface-page)"></path><path d="M2.5 11.6 H22 L19 20.5 H2.5 Z" fill="var(--surface-page)"></path></svg></span>
-            <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
-              <span sc-camel-on-click="{{ saveNow }}" title="{{ t_save_progress_title }}" class="ok-navfill" style="user-select:none;flex:1 1 0;height:2.2rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};box-shadow:{{ saveGlow }};transition:background 140ms ease,border-color 140ms ease,box-shadow 260ms ease"><svg width="18" height="18" sc-camel-view-box="0 0 24 24"><path d="M5 12.5 L9.5 17 L19 6.5" fill="none" stroke="var(--surface-page)" stroke-width="2.6"></path></svg></span>
-            </sc-if>
-            <sc-if value="{{ notSaved }}" hint-placeholder-val="{{ true }}">
-              <span sc-camel-on-click="{{ saveNow }}" title="{{ t_save_progress_title }}" class="ok-navfill" style="user-select:none;flex:1 1 0;height:2.2rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};box-shadow:{{ saveGlow }};transition:background 140ms ease,border-color 140ms ease,box-shadow 260ms ease"><svg width="18" height="18" sc-camel-view-box="0 0 24 24"><path d="M3 3 H17.5 L21 6.5 V21 H3 Z" fill="var(--surface-page)"></path><rect x="8" y="3" width="8" height="6.6" fill="var(--accent)"></rect><rect x="13.1" y="4.2" width="1.9" height="4.2" fill="var(--surface-page)"></rect><rect x="6.4" y="13.2" width="11.2" height="7.8" fill="var(--accent)"></rect></svg></span>
-            </sc-if>
-          </div>
-        </div>
+        </span>
       </div>
 
-      <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;padding:1rem 1.1rem 1rem 1.2rem">
-        <div ref="{{ listRef }}" class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden">
+      <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column">
+        <div ref="{{ listRef }}" class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:.9rem 1rem .9rem .9rem">
         <div style="height:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(4,minmax(10rem,1fr));border-top:{{ ruleH }} solid var(--cyan-a45);border-left:{{ ruleH }} solid var(--cyan-a45)">
           <sc-for list="{{ listWords }}" as="lr" hint-placeholder-count="20">
             <div sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" style="position:relative;min-width:0;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;padding:.5rem .6rem .35rem;border-right:{{ ruleH }} solid var(--cyan-a45);border-bottom:{{ ruleH }} solid var(--cyan-a45);background:{{ lr.bg }};transition:background 200ms ease">
@@ -614,6 +576,38 @@ html[data-ok-ready] #ok-boot{display:none}
             </div>
           </sc-for>
         </div>
+        </div>
+
+        <div style="flex:0 0 auto;display:flex;align-items:stretch;height:3rem;border-top:{{ ruleH }} solid var(--cyan-a45)">
+          <sc-for list="{{ wordSets }}" as="ws" hint-placeholder-count="5">
+            <div sc-camel-on-click="{{ ws.pick }}" sc-camel-on-mouse-enter="{{ ws.enter }}" sc-camel-on-mouse-leave="{{ ws.leave }}" title="{{ ws.frac }}" style="position:relative;user-select:none;flex:0 0 7.5rem;min-width:0;display:flex;align-items:center;justify-content:center;border-right:{{ ruleH }} solid var(--cyan-a45);background:{{ ws.bg }};cursor:pointer;overflow:hidden;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
+              <div style="position:absolute;left:0;top:0;bottom:0;width:{{ ws.pct }};background:rgba(8,145,178,.16);transition:width 300ms cubic-bezier(.3,.7,.3,1)"></div>
+              <div style="position:absolute;left:0;right:0;top:0;height:{{ ws.barH }};background:var(--accent);transition:height 160ms ease"></div>
+              <span style="position:relative;font-family:var(--font-2);font-size:1.0625rem;letter-spacing:.05em;color:{{ ws.fg }};white-space:nowrap;transition:color 140ms ease">{{ ws.label }}</span>
+            </div>
+          </sc-for>
+          <div style="flex:1 1 auto;min-width:0;display:flex;align-items:center;padding:0 1rem;overflow:hidden">
+            <span style="min-width:0;font-family:var(--font-2);font-size:1rem;color:var(--text-accent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:{{ authMsgOpacity }};transition:opacity 200ms ease">{{ authMsg }}</span>
+          </div>
+          <div sc-camel-on-mouse-enter="{{ hintSet.enter }}" sc-camel-on-mouse-leave="{{ hintSet.leave }}" style="position:relative;flex:0 0 auto;display:flex;align-items:center;gap:.55rem;padding:0 .9rem;border-left:{{ ruleH }} solid var(--cyan-a45);cursor:default">
+            <svg width="20" height="20" sc-camel-view-box="0 0 44 44" style="flex:0 0 auto;transform:rotate(-90deg)">
+              <circle cx="22" cy="22" r="18" fill="none" stroke="var(--cyan-a15)" stroke-width="6"></circle>
+              <circle cx="22" cy="22" r="18" fill="none" stroke="var(--accent)" stroke-width="6" stroke-dasharray="{{ donutDash }}" style="transition:stroke-dasharray 320ms cubic-bezier(.3,.7,.3,1)"></circle>
+            </svg>
+            <span style="display:flex;align-items:baseline;gap:.25rem;font-family:var(--font-2);font-size:1.0625rem;font-variant-numeric:tabular-nums;color:var(--text-muted);white-space:nowrap">
+              <span style="color:{{ masteryFg }};transition:color 260ms ease">{{ setDone }}</span><span>/</span><span>{{ setTotal }}</span>
+            </span>
+            <sc-if value="{{ hintSet.open }}" hint-placeholder-val="{{ false }}">
+              <div style="{{ progTipStyle }}">
+                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">{{ t_word_progress }}</span>
+                <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ t_mastered_before }} <span style="color:var(--text-accent)">{{ setPct }}</span> {{ t_of_words_in }} {{ progDeck }}</span>
+              </div>
+            </sc-if>
+          </div>
+          <div sc-camel-on-click="{{ studyNow }}" title="{{ studyTitle }}" style="user-select:none;flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:0 1.1rem;border-left:{{ ruleH }} solid var(--cyan-a45);background:{{ studyBg }};color:{{ studyFg }};opacity:{{ studyOpacity }};pointer-events:{{ studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
+            <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
+            <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap">{{ t_study }} {{ listRange }}</span>
+          </div>
         </div>
       </div>
     </main>
@@ -804,6 +798,8 @@ const langName = () => (LANGS.find(l => l[0] === CURRENT_LANG) || LANGS[0])[1];
 // Example-sentence translations by word id and language. EXTRA still holds the
 // Japanese with its furigana tokens; only the translation is localised.
 const EX_T = __EX_TRANSLATIONS__;
+// Example sentences by word id: { w0001: ["..."] }. The card shows the first.
+const EX_JA = __EX_JA__;
 // nth translation of word `id` in the current language, falling back to the
 // English baked into EXTRA.
 const exTr = (id, n, fallback) => {
@@ -2873,21 +2869,26 @@ class Component extends DCLogic {
       // twenty words is roughly what fits in one sitting, and the whole set
       // shares one study game and one progress bar.
       // A ring rather than a bar: total progress is the one number that is
-      // about the learner rather than about the screen, so it gets a shape of
-      // its own at the top of the sidebar. 2*pi*37, the circle's own radius.
+      // about the learner rather than about the screen, so it keeps a shape of
+      // its own in the footer corner. 2*pi*18, the circle's own radius.
       donutDash: (() => {
-        const C = 232.478;
+        const C = 113.097;
         const done = WORDKEYS.filter(kx => st.mastered[kx]).length;
         const f = WORDKEYS.length ? done / WORDKEYS.length : 0;
         return (C * f).toFixed(1) + " " + C.toFixed(1);
       })(),
       menuFg: st.menuOpen ? "var(--text-accent)" : "var(--text-muted)",
+      authMsg: st.authMsg || "",
+      authMsgOpacity: st.authMsg ? 1 : 0,
       eyeFill: st.conceal ? "var(--accent)" : "transparent",
       eyeFg: st.conceal ? "#ffffff" : "var(--text-accent)",
       // One study control, for the set you are on, rather than the same icon
       // repeated down the sidebar.
       studyOpacity: WORDS.every(e => st.mastered[e.w[3]]) ? .35 : 1,
       studyPointer: WORDS.every(e => st.mastered[e.w[3]]) ? "none" : "auto",
+      studyTitle: T("study") + " " + (WSET * WORDN + 1) + "-" + (WSET * WORDN + WORDS.length),
+      studyBg: "transparent",
+      studyFg: "var(--text-accent)",
       studyNow: () => {
         this._gAnswer = null; this._gIdx = undefined;
         this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: WSET });
@@ -2902,7 +2903,7 @@ class Component extends DCLogic {
           pct: (keys.length ? Math.round(done / keys.length * 100) : 0) + "%",
           bg: on ? "rgba(8,145,178,.10)" : "transparent",
           fg: on ? "var(--text-accent)" : "var(--text-muted)",
-          barH: on ? "3px" : "0",
+          barH: on ? "3px" : "0px",
           // The count is noise until you are looking at that row.
           fracOpacity: (on || st.hoverSet === b) ? 1 : 0,
           enter: () => this.setState({ hoverSet: b }),
@@ -3380,7 +3381,9 @@ class Component extends DCLogic {
         const w = e.w;
         const key = w[3];
         const id = "L" + key;
-        const x = EXTRA[w[0]];
+        // The sentence comes from the corpus by word id. EXTRA, the old
+        // hand-written table, covered eleven words of six thousand.
+        const x = (EX_JA[key] || [])[0];
         const done = !!st.mastered[key];
         const hot = st.hoverWord === id;
         const flip = hot && !!x;
@@ -3405,7 +3408,7 @@ class Component extends DCLogic {
           // height at 1280x800 and 217px at 1680x1050, so a flat percentage
           // leaves the big card bottom-heavy. The subtracted rem is half the
           // word block (its ruby, the glyph at this size, and the meaning).
-          padTop: flip ? "calc(33.333% - 2.7rem)" : ("calc(50% - " + (w[0].length <= 2 ? "2.86" : w[0].length === 3 ? "2.66" : w[0].length === 4 ? "2.49" : "2.34") + "rem)"),
+          padTop: flip ? "calc(33.333% - 2.2rem)" : ("calc(50% - " + (w[0].length <= 2 ? "2.86" : w[0].length === 3 ? "2.66" : w[0].length === 4 ? "2.49" : "2.34") + "rem)"),
           faceOpacity: flip ? 0 : 1,
           faceShift: flip ? "translateY(-.55rem)" : "translateY(0)",
           exOpacity: flip ? 1 : 0,
@@ -3421,16 +3424,15 @@ class Component extends DCLogic {
           master: (ev) => { ev.stopPropagation(); this.toggleMasteredWord(key); },
           exParts: (() => {
             if (!x) return EMPTY;
-            const sentence = x.ex[0][0].map(t => t[0]).join("");
-            if (sentence.indexOf(w[0]) < 0) return [{ text: sentence, plain: true, hit: false }];
+            if (x.indexOf(w[0]) < 0) return [{ text: x, plain: true, hit: false }];
             const out = [];
-            sentence.split(w[0]).forEach((piece, n) => {
+            x.split(w[0]).forEach((piece, n) => {
               if (n > 0) out.push({ text: w[0], plain: false, hit: true });
               if (piece) out.push({ text: piece, plain: true, hit: false });
             });
             return out;
           })(),
-          exEn: x ? exTr(key, 0, x.ex[0][1]) : ""
+          exEn: x ? exTr(key, 0, "") : ""
         };
       }),
       writeOn: st.write, tableOn: true,
