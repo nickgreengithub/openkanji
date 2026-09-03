@@ -21,6 +21,26 @@ impractical and every diff reads as "1 line changed".
 
 **Edit `src/`, then rebuild.**
 
+## What the app is
+
+One screen: a vocabulary list. Words come in sets of twenty -- a sitting --
+picked from the sidebar, with a study game, flashcards and writing practice
+scoped to the set on screen. Progress is the set of words you have marked
+mastered, and nothing else.
+
+There is deliberately no per-kanji lesson. A kanji does not have a meaning so
+much as a distribution of them, so an English gloss under a glyph (`連 = take
+along, connect`) is an editorial summary rather than a fact a learner can be
+tested on -- and it misdirects when the compound sense dominates. The corpus is
+still stored by kanji, because that is how the readings hang together; the app
+flattens it into words at load. A word written with two or more kanji shows its
+kana split at the character boundaries (関連 -> かん・れん), which is the part of
+a kanji that does generalise.
+
+The list is capped at the first hundred words of a deck, and the deck is
+whichever one was last saved: word ordering and deck choice are open
+questions, not settled ones.
+
 ## Kanji data
 
 ```

@@ -363,66 +363,10 @@ html[data-ok-ready] #ok-boot{display:none}
 
   <sc-if value="{{ chromeShown }}" hint-placeholder-val="{{ true }}">
     <div style="position:relative;z-index:60;flex:0 0 auto;display:flex;align-items:stretch;min-width:0;margin:1.25rem 1.5rem 0;border-bottom:{{ ruleH }} solid var(--cyan-a45)">
-      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-        <div style="flex:0 0 17rem;min-width:0;height:3.75rem;display:flex;align-items:center;gap:.6rem;padding:0 1rem;white-space:nowrap">
-          <span style="font-size:1.5rem;line-height:1;color:var(--accent)">开</span>
-          <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.1em;color:var(--text-body)">OpenKanji<span style="color:var(--cyan-a55)">.org</span></span>
-        </div>
-      </sc-if>
-      <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
-        <div sc-camel-on-mouse-enter="{{ openBatch }}" sc-camel-on-mouse-leave="{{ closeBatch }}" style="position:relative;flex:0 0 28rem;min-width:0;height:3.75rem;display:flex;align-items:center;gap:0;padding:0 1rem 0 0;white-space:nowrap;cursor:pointer;transition:color 140ms ease">
-          <span sc-camel-on-click="{{ goHome }}" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);background:var(--accent);color:var(--surface-page);cursor:pointer;transition:background 140ms ease" style-hover="background:var(--text-accent-hover)">
-            <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 4 L7 12 L15 20"></path></svg>
-          </span>
-          <span style="flex:1 1 auto;min-width:0;height:2.35rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem;border:1px solid var(--accent);border-left:0;padding:0 .6rem 0 .7rem;white-space:nowrap">
-            <span style="display:flex;align-items:baseline;gap:.4rem;white-space:nowrap">
-              <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">漢字・単語リスト · {{ setLabel }}</span>
-              <span style="font-family:var(--font-2);font-size:1rem;color:var(--cyan-a35)">·</span>
-              <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;color:var(--text-muted)">{{ viewRange }}</span>
-            </span>
-            <svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="var(--accent)" style="flex:0 0 auto"><path d="M4 8 L20 8 L12 18 Z"></path></svg>
-          </span>
-          <sc-if value="{{ batchOpen }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;top:100%;left:1.75rem;width:26rem;padding-top:.75rem;z-index:60">
-              <div style="background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28)">
-                <div style="display:flex;align-items:center;height:2.85rem;padding:0 1.1rem;border-bottom:1px solid var(--cyan-a35);background:var(--accent-soft)"><span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-accent);white-space:nowrap">{{ t_kanji_word_list }}</span></div>
-                <sc-for list="{{ batches }}" as="b" hint-placeholder-count="2">
-                  <div sc-camel-on-click="{{ b.pick }}" style="height:4rem;display:flex;align-items:center;gap:.9rem;padding:0 1.1rem;border-bottom:1px solid var(--cyan-a35);background:{{ b.bg }};cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-                    <span style="flex:0 0 5rem;font-family:var(--font-2);font-size:1rem;letter-spacing:.06em;color:{{ b.fg }};white-space:nowrap">{{ b.label }}</span>
-                    <span style="flex:1 1 auto;height:.5rem;background:var(--cyan-a15);display:block">
-                      <span style="display:block;width:{{ b.pct }};height:100%;background:var(--accent)"></span>
-                    </span>
-                    <span style="flex:0 0 auto;font-family:var(--font-2);font-size:1rem;color:var(--text-muted);white-space:nowrap">{{ b.frac }}</span>
-                    <span sc-camel-on-click="{{ b.study }}" title="{{ t_study }}" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ b.studyOpacity }};pointer-events:{{ b.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
-                      <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
-                    </span>
-                  </div>
-                </sc-for>
-              </div>
-            </div>
-          </sc-if>
-        </div>
-
-      </sc-if>
-      <sc-if value="{{ showKanjiProgBar }}" hint-placeholder-val="{{ true }}">
-        <div sc-camel-on-mouse-enter="{{ hintKanjiProg.enter }}" sc-camel-on-mouse-leave="{{ hintKanjiProg.leave }}" style="position:relative;flex:1 1 10rem;min-width:0;overflow:hidden;height:3.75rem;display:flex;align-items:center;gap:.25rem;padding:0 .6rem 0 1.25rem;border-left:{{ ruleH }} solid {{ progRule }};white-space:nowrap;cursor:default;opacity:{{ progOpacity }};transition:opacity 140ms ease">
-          <sc-if value="{{ showProgLabels }}" hint-placeholder-val="{{ true }}"><span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-muted)">漢字</span></sc-if>
-          <sc-if value="{{ showProgBar }}" hint-placeholder-val="{{ true }}">
-          <span style="flex:1 1 auto;min-width:1.75rem;height:.5rem;margin:0 .4rem;background:var(--cyan-a15);display:block;box-shadow:{{ kanjiBarGlow }};transition:box-shadow 260ms ease">
-            <span style="display:block;width:{{ kanjiPct }};height:100%;background:var(--accent);transition:width 260ms ease"></span>
-          </span>
-          </sc-if>
-          <span style="flex:0 0 2rem;text-align:right;font-family:var(--font-2);font-size:1.125rem;font-variant-numeric:tabular-nums;color:{{ kanjiFg }};transition:color 260ms ease">{{ kanjiDone }}</span>
-          <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-muted)">/</span>
-          <span style="flex:0 0 2rem;font-family:var(--font-2);font-size:1.125rem;font-variant-numeric:tabular-nums;color:{{ kanjiMuted }};transition:color 260ms ease">{{ kanjiTotal }}</span>
-          <sc-if value="{{ hintKanjiProg.open }}" hint-placeholder-val="{{ false }}">
-            <div style="{{ progTipStyle }}">
-              <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">{{ t_kanji_progress }}</span>
-              <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ t_mastered_before }} <span style="color:var(--text-accent)">{{ kanjiPct }}</span> {{ t_of_kanji_in }} {{ progDeck }}</span>
-            </div>
-          </sc-if>
-        </div>
-      </sc-if>
+      <div style="flex:0 0 17rem;min-width:0;height:3.75rem;display:flex;align-items:center;gap:.6rem;padding:0 1rem;white-space:nowrap">
+        <span style="font-size:1.5rem;line-height:1;color:var(--accent)">开</span>
+        <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.1em;color:var(--text-body)">OpenKanji<span style="color:var(--cyan-a55)">.org</span></span>
+      </div>
 
         <div sc-camel-on-mouse-enter="{{ hintSet.enter }}" sc-camel-on-mouse-leave="{{ hintSet.leave }}" style="position:relative;flex:1 1 10rem;min-width:0;overflow:hidden;height:3.75rem;display:flex;align-items:center;gap:.25rem;padding:0 .6rem 0 1.25rem;border-left:{{ ruleH }} solid {{ progRule }};white-space:nowrap;cursor:default;opacity:{{ progOpacity }};transition:opacity 140ms ease">
           <sc-if value="{{ showProgLabels }}" hint-placeholder-val="{{ true }}"><span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-muted)">単語</span></sc-if>
@@ -448,7 +392,6 @@ html[data-ok-ready] #ok-boot{display:none}
         </div>
 
 
-      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
         <div sc-camel-on-mouse-enter="{{ langEnter }}" sc-camel-on-mouse-leave="{{ langLeave }}" style="position:relative;user-select:none;flex:0 0 8.6rem;height:3.75rem;display:flex;align-items:center;justify-content:center;padding:0 1rem;border-left:{{ ruleH }} solid var(--cyan-a45);cursor:pointer">
           <span style="flex:1 1 auto;min-width:0;height:2.35rem;display:flex;align-items:center;justify-content:space-between;gap:.45rem;padding:0 .5rem 0 .6rem;white-space:nowrap;border:1px solid var(--accent);transition:background 140ms ease" style-hover="background:var(--accent-soft)">
           <span style="display:flex;align-items:baseline;gap:.4rem;white-space:nowrap">
@@ -472,7 +415,6 @@ html[data-ok-ready] #ok-boot{display:none}
             </div>
           </sc-if>
         </div>
-      </sc-if>
 
         <div sc-camel-on-click="{{ toggleReveal }}" sc-camel-on-mouse-enter="{{ tipEyeEnter }}" sc-camel-on-mouse-leave="{{ tipLeave }}" style="position:relative;user-select:none;flex:0 0 4.35rem;height:3.75rem;display:flex;align-items:center;justify-content:center;padding:0;border-left:{{ ruleH }} solid var(--cyan-a45);cursor:pointer">
           <span style="width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;background:var(--accent);color:var(--surface-page);transition:background 140ms ease" style-hover="background:var(--text-accent-hover)">
@@ -493,23 +435,19 @@ html[data-ok-ready] #ok-boot{display:none}
           </sc-if>
         </div>
 
-        <div class="{{ saveBtnClass }}" sc-camel-on-mouse-enter="{{ tipSaveEnter }}" sc-camel-on-mouse-leave="{{ tipLeave }}" style="position:relative;user-select:none;flex:0 0 13rem;height:3.75rem;display:flex;align-items:center;gap:0;padding:0 1rem;border-left:{{ ruleH }} solid var(--cyan-a45);cursor:default">
+        <div class="{{ saveBtnClass }}" sc-camel-on-mouse-enter="{{ tipSaveEnter }}" sc-camel-on-mouse-leave="{{ tipLeave }}" style="position:relative;user-select:none;flex:0 0 15.5rem;height:3.75rem;display:flex;align-items:center;gap:0;padding:0 1rem;border-left:{{ ruleH }} solid var(--cyan-a45);cursor:default">
           <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ true }}">
             <span style="flex:1 1 auto;min-width:0;height:2.35rem;display:flex;align-items:center;border:1px solid {{ saveFill }};border-right:0;padding:0 .7rem;font-family:var(--font-2);font-size:1rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ userId }}</span>
           </sc-if>
           <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ false }}">
             <input type="email" placeholder="{{ t_save_progress_title }}" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onEmailKey }}" style="flex:1 1 auto;min-width:0;width:100%;height:2.35rem;box-sizing:border-box;background:transparent;border:1px solid {{ saveFill }};border-right:0;border-radius:0;outline:none;padding:0 .7rem;font-family:var(--font-2);font-size:1rem;color:var(--text-body)"/>
           </sc-if>
-          <sc-if value="{{ showSave }}" hint-placeholder-val="{{ false }}">
+          <span sc-camel-on-click="{{ loadNow }}" title="{{ t_load_saved_progress }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ loadFill }};border-left:0;border-right:0;background:{{ loadFill }};cursor:{{ loadCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M2.5 4.5 H9.2 L11.4 7.2 H19.5 V10.5 H2.5 Z" fill="var(--surface-page)"></path><path d="M2.5 11.6 H22 L19 20.5 H2.5 Z" fill="var(--surface-page)"></path></svg></span>
           <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
             <span sc-camel-on-click="{{ saveNow }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};box-shadow:{{ saveGlow }};transition:background 140ms ease,border-color 140ms ease,box-shadow 260ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M5 12.5 L9.5 17 L19 6.5" fill="none" stroke="var(--surface-page)" stroke-width="2.6"></path></svg></span>
           </sc-if>
           <sc-if value="{{ notSaved }}" hint-placeholder-val="{{ true }}">
             <span sc-camel-on-click="{{ saveNow }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ saveFill }};background:{{ saveFill }};cursor:{{ saveCursor }};box-shadow:{{ saveGlow }};transition:background 140ms ease,border-color 140ms ease,box-shadow 260ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M3 3 H17.5 L21 6.5 V21 H3 Z" fill="var(--surface-page)"></path><rect x="8" y="3" width="8" height="6.6" fill="var(--accent)"></rect><rect x="13.1" y="4.2" width="1.9" height="4.2" fill="var(--surface-page)"></rect><rect x="6.4" y="13.2" width="11.2" height="7.8" fill="var(--accent)"></rect></svg></span>
-          </sc-if>
-          </sc-if>
-          <sc-if value="{{ showLoad }}" hint-placeholder-val="{{ true }}">
-          <span sc-camel-on-click="{{ loadNow }}" title="{{ t_load_saved_progress }}" class="ok-navfill" style="flex:0 0 auto;width:2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ loadFill }};border-left:0;background:{{ loadFill }};cursor:{{ loadCursor }};transition:background 140ms ease,border-color 140ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24"><path d="M2.5 4.5 H9.2 L11.4 7.2 H19.5 V10.5 H2.5 Z" fill="var(--surface-page)"></path><path d="M2.5 11.6 H22 L19 20.5 H2.5 Z" fill="var(--surface-page)"></path></svg></span>
           </sc-if>
           <sc-if value="{{ tipSaveOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute;top:100%;right:0;padding-top:.4rem;z-index:70;cursor:default">
@@ -521,35 +459,6 @@ html[data-ok-ready] #ok-boot{display:none}
           </sc-if>
         </div>
 
-        <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ true }}">
-        <div style="position:relative;user-select:none;flex:0 0 8.7rem;height:3.75rem;display:flex;align-items:center;justify-content:flex-end;gap:0;padding:0 0 0 1rem;border-left:{{ ruleH }} solid var(--cyan-a45)">
-          <span style="flex:0 0 3rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ slotFill }};border-right:0;font-family:var(--font-2);font-size:1rem;font-variant-numeric:tabular-nums;color:{{ slotCountFg }};box-shadow:{{ slotGlow }};transition:color 300ms ease,box-shadow 300ms ease,border-color 300ms ease">{{ slotCount }}</span>
-
-          <span sc-camel-on-click="{{ slotPrimary }}" sc-camel-on-mouse-enter="{{ tipPrimaryEnter }}" sc-camel-on-mouse-leave="{{ tipLeave }}" class="{{ slotBtnClass }}" style="position:relative;flex:0 0 2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;cursor:{{ slotCursor }}">
-            <span class="ok-navfill" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border:1px solid {{ slotFill }};background:{{ slotFill }};color:var(--surface-page);opacity:{{ homeIconOpacity }};box-shadow:{{ slotGlow }};transition:background 300ms ease,opacity 280ms ease,border-color 300ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17"></rect><circle cx="8.2" cy="8.2" r="1.6" fill="currentColor" stroke="none"></circle><circle cx="15.8" cy="8.2" r="1.6" fill="currentColor" stroke="none"></circle><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"></circle><circle cx="8.2" cy="15.8" r="1.6" fill="currentColor" stroke="none"></circle><circle cx="15.8" cy="15.8" r="1.6" fill="currentColor" stroke="none"></circle></svg></span>
-            <span class="ok-navfill" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border:1px solid {{ slotFill }};background:{{ slotFill }};color:var(--surface-page);opacity:{{ detailIconOpacity }};box-shadow:{{ slotGlow }};transition:background 300ms ease,opacity 280ms ease,border-color 300ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5 H20 V17 H12 L7 21 V17 H4 Z"></path></svg></span>
-          </span>
-
-          <span sc-camel-on-click="{{ openCardsNav }}" sc-camel-on-mouse-enter="{{ tipCardEnter }}" sc-camel-on-mouse-leave="{{ tipLeave }}" class="{{ slotBtnClass }}" style="flex:0 0 2.35rem;height:2.35rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ slotFill }};border-left:0;background:{{ slotFill }};color:var(--surface-page);cursor:{{ slotCursor }};box-shadow:{{ slotGlow }};transition:background 300ms ease,border-color 300ms ease"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="3.5" width="15" height="13"></rect><path d="M17 20.5 H3 V7.5"></path></svg></span>
-
-          <sc-if value="{{ tipPrimaryOpen }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;top:100%;right:0;padding-top:.4rem;z-index:70;cursor:default">
-              <div style="width:max-content;max-width:24rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column;gap:.4rem;padding:.75rem .9rem">
-                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">{{ slotPrimaryTitle }}</span>
-                <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ slotPrimaryBody }}</span>
-              </div>
-            </div>
-          </sc-if>
-          <sc-if value="{{ tipCardOpen }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;top:100%;right:0;padding-top:.4rem;z-index:70;cursor:default">
-              <div style="width:max-content;max-width:24rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column;gap:.4rem;padding:.75rem .9rem">
-                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">{{ t_flashcards }}</span>
-                <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ cardTipBody }}</span>
-              </div>
-            </div>
-          </sc-if>
-        </div>
-        </sc-if>
       </div>
   </sc-if>
 
@@ -686,218 +595,69 @@ html[data-ok-ready] #ok-boot{display:none}
     <div style="{{ romaTipStyle }}">{{ romaTipText }}</div>
   </sc-if>
 
-  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
-    <main sc-camel-on-animation-end="{{ clearScreenAnim }}" style="flex:1 1 auto;min-height:0;overflow:hidden;display:flex;flex-direction:column;padding:0 2.75rem 1.25rem;animation:ok-screen-back 420ms cubic-bezier(.16,.84,.28,1) both">
+
+  <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ true }}">
+    <main style="flex:1 1 auto;min-height:0;overflow:hidden;display:flex;flex-direction:column;padding:0 2.75rem 1.25rem">
       <div style="flex:1 1 auto;min-height:0;display:flex;align-items:stretch">
-      <div style="box-sizing:border-box;flex:0 0 calc(21rem + {{ ruleH }});min-width:0;display:flex;flex-direction:column;margin-left:-1.25rem;padding:1.25rem 1.5rem 0 1.25rem;border-right:{{ ruleH }} solid var(--cyan-a45)">
+
+      <div style="box-sizing:border-box;flex:0 0 calc(17rem + {{ ruleH }});min-width:0;display:flex;flex-direction:column;margin-left:-1.25rem;padding:1.25rem 1.5rem 0 1.25rem;border-right:{{ ruleH }} solid var(--cyan-a45)">
         <div class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;margin-right:-1.5rem;padding-right:1.5rem">
-        <sc-for list="{{ deckTabs }}" as="dt" hint-placeholder-count="7">
-          <div sc-camel-on-click="{{ dt.pick }}" sc-camel-on-mouse-enter="{{ dt.tipEnter }}" sc-camel-on-mouse-leave="{{ dt.tipLeave }}" style="position:relative;user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:1.1rem;height:{{ dt.h }};box-sizing:border-box;padding:0 1rem 0 {{ dt.pad }};border-bottom:1px solid var(--cyan-a15);cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-            <div style="position:absolute;left:0;top:0;bottom:0;width:{{ dt.barH }};background:{{ dt.barBg }}"></div>
+        <sc-for list="{{ wordSets }}" as="ws" hint-placeholder-count="5">
+          <div sc-camel-on-click="{{ ws.pick }}" style="position:relative;user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:1.1rem;height:5rem;box-sizing:border-box;padding:0 1rem;border-bottom:1px solid var(--cyan-a15);background:{{ ws.bg }};cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:{{ ws.barH }};background:var(--accent)"></div>
             <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.6rem">
               <div style="display:flex;align-items:baseline;justify-content:space-between;gap:.7rem">
-                <span style="min-width:0;font-family:var(--font-2);font-size:{{ dt.size }};letter-spacing:.03em;text-transform:uppercase;color:{{ dt.fg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ dt.name }}</span>
-                <span style="flex:0 0 auto;font-family:var(--font-2);font-size:1rem;color:var(--text-muted)">{{ dt.frac }}</span>
+                <span style="min-width:0;font-family:var(--font-2);font-size:1.0625rem;letter-spacing:.06em;color:{{ ws.fg }};white-space:nowrap">{{ ws.label }}</span>
+                <span style="flex:0 0 auto;font-family:var(--font-2);font-size:1rem;color:var(--text-muted)">{{ ws.frac }}</span>
               </div>
               <span style="height:.4rem;background:var(--cyan-a15);display:block">
-                <span style="display:block;width:{{ dt.pct }};height:100%;background:{{ dt.barBg }}"></span>
+                <span style="display:block;width:{{ ws.pct }};height:100%;background:var(--accent)"></span>
               </span>
             </div>
-            <sc-if value="{{ dt.hasStudy }}" hint-placeholder-val="{{ true }}">
-            <span sc-camel-on-click="{{ dt.study }}" title="{{ t_study }}" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ dt.studyOpacity }};pointer-events:{{ dt.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
+            <span sc-camel-on-click="{{ ws.study }}" title="{{ t_study }}" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ ws.studyOpacity }};pointer-events:{{ ws.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
               <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
             </span>
-            </sc-if>
-            <sc-if value="{{ dt.tipOpen }}" hint-placeholder-val="{{ false }}">
-              <div style="position:absolute;top:50%;left:100%;transform:translateY(-50%);padding-left:.5rem;z-index:70;cursor:default">
-                <div style="width:16rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column;gap:.4rem;padding:.75rem .9rem">
-                  <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-accent)">{{ dt.name }}</span>
-                  <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ dt.tipBody }}</span>
-                </div>
-              </div>
-            </sc-if>
           </div>
         </sc-for>
-        </div>
-        <div sc-camel-on-click="{{ printDeck }}" style="user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:.7rem;margin:0 -1.5rem 0 -1.25rem;padding:1.1rem 1.5rem 1.1rem 1.25rem;border-top:{{ ruleH }} solid var(--cyan-a45);cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-          <span style="width:2.1rem;height:2.1rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent)"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 9 V3.5 H17 V9"></path><path d="M4 9 H20 V17 H17"></path><path d="M7 17 H4 V9"></path><path d="M7 14 H17 V21 H7 Z"></path></svg></span>
-          <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_pdf }}</span>
         </div>
       </div>
 
       <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;padding:1.25rem 0 0 1.5rem;margin-right:-1.25rem">
-      <div class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden">
-        <div style="min-width:0;border-top:{{ ruleH }} solid var(--cyan-a45);border-left:{{ ruleH }} solid var(--cyan-a45);border-right:{{ ruleH }} solid var(--cyan-a45)">
-        <div style="display:grid;grid-template-columns:repeat(10,minmax(0,1fr)) auto;">
-          <sc-for list="{{ homeRows }}" as="hr" hint-placeholder-count="2">
-            <sc-for list="{{ hr.tiles }}" as="ht" hint-placeholder-count="10">
-            <div sc-camel-on-click="{{ ht.open }}" sc-camel-on-mouse-enter="{{ ht.enter }}" sc-camel-on-mouse-leave="{{ ht.leave }}" style="position:relative;user-select:none;min-width:0;height:8.5rem;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:.4rem;border-right:{{ ruleH }} solid var(--cyan-a45);border-bottom:{{ ruleH }} solid var(--cyan-a45);background:{{ ht.bg }};color:{{ ht.fg }};cursor:pointer;transition:background 140ms ease,color 200ms ease">
-              <span style="flex:0 0 auto;width:3.25rem;height:3.25rem;display:flex;align-items:center;justify-content:center;background:{{ ht.glyphBg }};transition:background 280ms ease">
-                <span style="font-size:2.25rem;line-height:1;color:{{ ht.glyphFg }};transition:color 280ms ease">{{ ht.c }}</span>
-              </span>
-              <span style="max-width:100%;min-width:0;display:flex;flex-direction:column;align-items:center;overflow:hidden;max-height:{{ answerMax }};margin-top:{{ answerGap }};opacity:{{ answerOpacity }};transition:opacity 200ms ease,max-height 320ms cubic-bezier(.3,.7,.3,1),margin-top 320ms cubic-bezier(.3,.7,.3,1)">
-                <sc-for list="{{ ht.ens }}" as="e" hint-placeholder-count="1">
-                  <span style="max-width:100%;min-width:0;font-family:var(--font-2);font-size:.9rem;line-height:1.25;text-align:center;color:{{ ht.metaFg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ e }}</span>
-                </sc-for>
-              </span>
-            </div>
-            </sc-for>
-            <sc-for list="{{ hr.blanks }}" as="bl" hint-placeholder-count="0">
-              <div style="border-right:1px solid var(--cyan-a15);border-bottom:1px solid var(--cyan-a15)"></div>
-            </sc-for>
-            <div sc-camel-on-click="{{ hr.open }}" sc-camel-on-mouse-enter="{{ hr.enter }}" sc-camel-on-mouse-leave="{{ hr.leave }}" title="{{ hr.range }}" style="user-select:none;display:flex;align-items:center;justify-content:center;width:3.25rem;padding:0 .5rem;background:{{ hr.bg }};border-right:1px solid var(--cyan-a15);border-bottom:1px solid var(--cyan-a15);cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="width:2.1rem;height:2.1rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
-                <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
-              </span>
-            </div>
-          </sc-for>
-        </div>
-        </div>
-      </div>
-
-      </div>
-      </div>
-    </main>
-  </sc-if>
-
-  <sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
-    <main style="flex:1 1 auto;min-height:0;display:flex;flex-direction:column">
-      <div style="flex:0 0 auto;display:flex;align-items:stretch;border-bottom:{{ ruleH }} solid var(--cyan-a45)">
-        <div sc-camel-on-click="{{ goDetail }}" style="user-select:none;flex:0 0 auto;height:3.75rem;display:flex;align-items:center;gap:.6rem;padding:0 1.5rem;background:var(--accent-soft);color:var(--text-accent);cursor:pointer;transition:background 140ms ease" style-hover="background:rgba(8,145,178,.16)">
-          <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 4 L7 12 L15 20"></path></svg>
-          <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body)">戻る</span>
-        </div>
-        <div style="flex:1 1 auto;min-width:0;height:3.75rem;display:flex;align-items:center;padding:0 1.25rem">
-          <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap">{{ setLabel }} クイズ</span>
-        </div>
-      </div>
-      <div style="flex:1 1 auto;min-height:0"></div>
-    </main>
-  </sc-if>
-
-  <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
-    <main sc-camel-on-animation-end="{{ clearScreenAnim }}" style="flex:1 1 auto;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:1rem;padding:1rem 2.75rem 1.25rem;animation:ok-screen-fwd 420ms cubic-bezier(.16,.84,.28,1) both">
-
-      <div ref="{{ listRef }}" class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow:auto;margin:0 -2.75rem 0 -1.25rem;padding:0 1.5rem 0 0">
-        <div style="border-right:{{ ruleH }} solid var(--cyan-a45)">
-        <sc-for list="{{ listBatches }}" as="lb" hint-placeholder-count="2">
-        <div data-row="{{ lb.anchor }}" style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:{{ lb.gap }};padding:.7rem 1.65rem .7rem 1.25rem">
+      <div ref="{{ listRef }}" class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden">
+        <div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 1.65rem .7rem 1.25rem">
           <div style="position:absolute;left:0;right:0;top:0;height:{{ ruleH }};background:var(--cyan-a45)"></div>
           <span style="display:flex;align-items:baseline;gap:.5rem;white-space:nowrap">
-            <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.16em;color:var(--text-body)">{{ lb.range }}</span>
-            <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.16em;color:var(--cyan-a55)">漢字</span>
+            <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.16em;color:var(--text-body)">{{ listRange }}</span>
+            <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.16em;color:var(--cyan-a55)">単語</span>
           </span>
-          <span style="flex:0 0 auto;display:flex;align-items:center">
-          <span sc-camel-on-click="{{ lb.prev }}" style="user-select:none;flex:0 0 auto;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--cyan-a45);color:var(--text-accent);opacity:{{ lb.prevOpacity }};pointer-events:{{ lb.prevPointer }};cursor:pointer;margin-right:.4rem" style-hover="background:var(--accent-soft)">
-            <svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 4 L7 12 L15 20"></path></svg>
-          </span>
-          <span sc-camel-on-click="{{ lb.next }}" style="user-select:none;flex:0 0 auto;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--cyan-a45);color:var(--text-accent);opacity:{{ lb.nextOpacity }};pointer-events:{{ lb.nextPointer }};cursor:pointer;margin-right:.8rem" style-hover="background:var(--accent-soft)">
-            <svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 4 L17 12 L9 20"></path></svg>
-          </span>
-          <span sc-camel-on-click="{{ lb.study }}" title="{{ t_study }}" style="flex:0 0 auto;width:2rem;height:2rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);opacity:{{ lb.studyOpacity }};pointer-events:{{ lb.studyPointer }};cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
-            <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
-          </span>
-          </span>
+          <span style="flex:0 0 auto;font-family:var(--font-2);font-size:1.125rem;color:var(--text-muted)">{{ listFrac }}</span>
         </div>
-        <sc-for list="{{ lb.groups }}" as="kg" hint-placeholder-count="6">
-          <div style="position:relative;display:flex;align-items:stretch;min-width:0;overflow:hidden;max-height:{{ kg.blockMax }};opacity:{{ kg.blockOpacity }};background:{{ kg.bg }};transition:max-height 300ms cubic-bezier(.3,.7,.3,1),opacity 220ms ease">
-            <sc-if value="{{ kg.showRule }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;left:0;right:0;top:0;height:{{ ruleH }};background:var(--cyan-a45);z-index:1"></div></sc-if>
-            <sc-if value="{{ kg.firstRule }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:calc(18% + 0.35rem);right:0;top:0;height:{{ ruleH }};background:var(--cyan-a45);z-index:1"></div></sc-if>
-            <div sc-camel-on-mouse-enter="{{ kg.enter }}" sc-camel-on-mouse-leave="{{ kg.leave }}" class="{{ kg.cellClass }}" style="position:relative;user-select:none;flex:0 0 calc(18% + 0.35rem);min-width:0;display:flex;align-items:center;padding-left:1.25rem;cursor:default">
-              <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;align-items:center;padding:1rem 1.25rem 1rem 0">
-                <span style="position:relative;box-sizing:border-box;width:100%;max-width:9.5rem;height:8.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0 .25rem">
-                  <span style="flex:0 0 auto;width:4rem;height:4rem;display:flex;align-items:center;justify-content:center;background:{{ kg.glyphBg }};transition:background 280ms ease,color 280ms ease">
-                    <span style="font-size:3rem;line-height:1;color:{{ kg.glyphHoverFg }};transition:color 200ms ease">{{ kg.c }}</span>
-                  </span>
-                  <span style="position:relative;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;max-height:{{ kg.meanMax }};margin-top:{{ kg.meanGap }};transition:max-height 320ms cubic-bezier(.3,.7,.3,1),margin-top 320ms cubic-bezier(.3,.7,.3,1)">
-                    <span class="ok-kmean" style="max-width:100%;display:flex;flex-direction:column;align-items:center;font-family:var(--font-2);font-size:1rem;line-height:1.25;color:{{ kg.metaFg }};text-align:center;visibility:{{ meanVis }}">
-                      <sc-for list="{{ kg.meaningLines }}" as="ml" hint-placeholder-count="1">
-                        <span style="max-width:100%;overflow-wrap:anywhere;text-wrap:pretty">{{ ml.t }}</span>
-                      </sc-for>
-                    </span>
-                    <sc-if value="{{ kg.showDoneTag }}" hint-placeholder-val="{{ false }}">
-                      <span class="ok-kacts ok-kdonetag" style="position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:.4rem;pointer-events:none">
-                        <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" style="flex:0 0 auto"><path d="M5 13 L10 18 L19 6"></path></svg>
-                        <span style="font-size:1.0625rem;letter-spacing:.06em;color:var(--text-accent);white-space:nowrap">習得済み</span>
-                      </span>
-                    </sc-if>
-                    <span class="ok-kacts" style="position:absolute;left:-.3rem;right:-.3rem;top:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:.3rem">
-                      <span sc-camel-on-click="{{ kg.openStudy }}" title="{{ t_study }}" style="flex:0 0 auto;width:2.35rem;height:2.35rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);color:var(--text-accent);cursor:pointer;transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff">
-                        <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
-                      </span>
-                    </span>
-                  </span>
-                </span>
-              </div>
-                
-              
-            </div>
-            <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column">
-              <sc-for list="{{ kg.clusters }}" as="cl" hint-placeholder-count="3">
-              <div style="position:relative;display:flex;flex-direction:column;min-width:0">
-                <sc-if value="{{ cl.merged }}" hint-placeholder-val="{{ false }}">
-                  <span style="position:absolute;left:6.35rem;top:0;bottom:0;width:6rem;display:flex;align-items:center;pointer-events:none;z-index:2;font-size:1.3125rem;line-height:1.3;color:#3a4954;white-space:nowrap"><span>{{ cl.pre }}</span><span style="color:var(--text-accent)">{{ cl.hit }}</span><span>{{ cl.post }}</span></span>
-                </sc-if>
-              <sc-for list="{{ cl.bands }}" as="rg" hint-placeholder-count="1">
-                <div style="position:relative;display:flex;align-items:stretch;min-width:0;overflow:hidden;max-height:{{ rg.bandMax }};opacity:{{ rg.bandOpacity }};transition:max-height 300ms cubic-bezier(.3,.7,.3,1),opacity 220ms ease">
-                  <sc-if value="{{ rg.showRule }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;left:0;right:0;top:0;height:{{ ruleH }};background:var(--cyan-a35)"></div></sc-if>
-                  <sc-if value="{{ rg.showInnerRule }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:12.85rem;right:0;top:0;height:{{ ruleH }};background:var(--cyan-a28)"></div></sc-if>
-                  <div sc-camel-on-click="{{ rg.bandClick }}" sc-camel-on-mouse-enter="{{ rg.bandEnter }}" sc-camel-on-mouse-leave="{{ rg.bandLeave }}" style="position:relative;flex:0 0 5.75rem;min-width:0;display:flex;flex-direction:column;justify-content:center;padding:0 .5rem;color:var(--text-accent);text-decoration-color:#0891b2;text-decoration-thickness:2px;text-underline-offset:.28em;text-decoration-line:{{ rg.readUL }};cursor:pointer">
-                    <sc-for list="{{ rg.readings }}" as="rp" hint-placeholder-count="1">
-                      <span style="font-size:1.3125rem;line-height:1.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ rp.t }}</span>
-                    </sc-for>
-
-                      
-                    
-                      
-                    
-                  </div>
-                  <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column">
-                    <sc-for list="{{ rg.rows }}" as="lr" hint-placeholder-count="2">
-                      <div data-row="{{ lr.rowId }}" sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" style="position:relative;z-index:{{ lr.z }};height:{{ lr.rowH }};overflow:hidden;opacity:{{ lr.rowOpacity }};pointer-events:{{ lr.rowPointer }};display:flex;align-items:center;gap:.5rem;padding:0 .4rem 0 .7rem;background:{{ lr.rowBg }};cursor:default;transition:background 120ms ease,height 300ms cubic-bezier(.3,.7,.3,1),opacity 220ms ease">
-                        <sc-if value="{{ lr.notFirst }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;left:0;right:0;top:0;height:{{ ruleH }};background:var(--cyan-a28)"></div></sc-if>
-                        <span sc-camel-on-mouse-enter="{{ lr.wEnter }}" sc-camel-on-mouse-leave="{{ lr.wLeave }}" style="position:relative;flex:0 0 12%;min-width:5.5rem;align-self:stretch;display:flex;align-items:center;font-size:1.3125rem;line-height:1.75;white-space:nowrap;overflow:hidden;color:{{ lr.wordFg }};text-decoration-color:#0891b2;text-decoration-thickness:2px;text-underline-offset:.28em;text-decoration-line:{{ lr.wordUL }}">
-                          <sc-if value="{{ lr.showWord }}" hint-placeholder-val="{{ true }}"><span><span>{{ lr.pre }}</span><span style="color:{{ lr.hitFg }};transition:color 140ms ease">{{ lr.hit }}</span><span>{{ lr.post }}</span></span></sc-if>
-                        </span>
-                        <span sc-camel-on-mouse-enter="{{ lr.furiEnter }}" sc-camel-on-mouse-leave="{{ lr.furiLeave }}" style="flex:0 0 13.5%;min-width:0;align-self:stretch;display:flex;align-items:center;overflow:hidden;opacity:{{ answerOpacity }};transition:opacity 140ms ease,color 140ms ease"><span style="min-width:0;font-family:var(--font-2);font-size:1.3125rem;line-height:1.75;color:#3a4954;text-decoration-color:#0891b2;text-decoration-thickness:2px;text-underline-offset:.28em;text-decoration-line:{{ lr.furiUL }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ lr.furi }}</span></span>
-                        <span sc-camel-on-mouse-enter="{{ lr.glossEnter }}" sc-camel-on-mouse-leave="{{ lr.glossLeave }}" style="flex:0 0 18%;min-width:0;align-self:stretch;display:flex;align-items:center;font-family:var(--font-2);font-size:1.125rem;overflow:hidden;opacity:{{ answerOpacity }};transition:opacity 140ms ease,color 140ms ease"><span style="min-width:0;font-family:var(--font-2);font-size:1.125rem;line-height:1.75;color:var(--text-muted);text-decoration-color:#0891b2;text-decoration-thickness:2px;text-underline-offset:.28em;text-decoration-line:{{ lr.glossUL }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ lr.gloss }}</span></span>
-                        <span sc-camel-on-mouse-enter="{{ lr.exEnter }}" sc-camel-on-mouse-leave="{{ lr.exLeave }}" style="position:relative;flex:1 1 0;min-width:0;align-self:stretch;display:flex;align-items:center;opacity:{{ answerOpacity }};transition:opacity 140ms ease">
-                          <span style="position:absolute;left:0;right:0;font-size:1.3125rem;line-height:1.75;color:{{ lr.exFg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:{{ lr.exJaOpacity }};transform:{{ lr.exJaShift }};transition:opacity 220ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)"><sc-for list="{{ lr.exParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:{{ lr.exHitFg }};transition:color 140ms ease">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
-                          <span style="position:absolute;left:0;right:0;font-family:var(--font-2);font-size:1.125rem;line-height:1.75;color:#3d4a55;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:{{ lr.exEnOpacity }};transform:{{ lr.exEnShift }};transition:opacity 220ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)"><span>{{ lr.exEnPre }}</span><span style="color:var(--text-accent)">{{ lr.exEnHit }}</span><span>{{ lr.exEnPost }}</span></span>
-                        </span>
-                        <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn" style="position:relative;flex:0 0 auto;width:3.25rem;align-self:stretch;padding-right:1.25rem;display:flex;align-items:center;justify-content:center;cursor:pointer">
-                          <sc-if value="{{ lr.markPairDone }}" hint-placeholder-val="{{ false }}">
-                            <span style="width:2rem;height:2rem;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#ffffff"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2.5 13 L6.5 17 L13 8"></path><path d="M10.5 13 L14.5 17 L21.5 7"></path></svg></span>
-                          </sc-if>
-                          <sc-if value="{{ lr.markPairOpen }}" hint-placeholder-val="{{ false }}">
-                            <span style="width:2rem;height:2rem;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--cyan-a28)"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2.5 13 L6.5 17 L13 8"></path><path d="M10.5 13 L14.5 17 L21.5 7"></path></svg></span>
-                          </sc-if>
-                          <sc-if value="{{ lr.markSharedDone }}" hint-placeholder-val="{{ false }}">
-                            <span style="width:2rem;height:2rem;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#ffffff"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M2.5 13 L6.5 17 L13 8"></path><path d="M10.5 13 L14.5 17 L21.5 7"></path></svg></span>
-                          </sc-if>
-                          <sc-if value="{{ lr.markSharedOpen }}" hint-placeholder-val="{{ false }}">
-                            <span style="width:2rem;height:2rem;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent)"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M9.5 14.5 L14.5 9.5"></path><path d="M11 6.5 L13.5 4 A3.5 3.5 0 0 1 20 10.5 L17.5 13"></path><path d="M13 17.5 L10.5 20 A3.5 3.5 0 0 1 4 13.5 L6.5 11"></path></svg></span>
-                          </sc-if>
-                          <sc-if value="{{ lr.markDone }}" hint-placeholder-val="{{ false }}">
-                            <span style="width:2rem;height:2rem;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#ffffff"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M5 13 L10 18 L19 6"></path></svg></span>
-                          </sc-if>
-                          <sc-if value="{{ lr.markOpen }}" hint-placeholder-val="{{ true }}">
-                            <span style="width:2rem;height:2rem;border:1px solid var(--accent);display:block"></span>
-                          </sc-if>
-                        </span>
-                      </div>
-                    </sc-for>
-                  </div>
-                </div>
-              </sc-for>
-              </div>
-              </sc-for>
-            </div>
+        <div style="border-top:{{ ruleH }} solid var(--cyan-a45);border-bottom:{{ ruleH }} solid var(--cyan-a45)">
+        <sc-for list="{{ listWords }}" as="lr" hint-placeholder-count="6">
+          <div sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" style="position:relative;display:flex;align-items:center;gap:.5rem;height:3.6rem;padding:0 .4rem 0 1.25rem;background:{{ lr.rowBg }};transition:background 120ms ease">
+            <sc-if value="{{ lr.notFirst }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;left:0;right:0;top:0;height:{{ ruleH }};background:var(--cyan-a28)"></div></sc-if>
+            <span style="flex:0 0 2.5rem;font-family:var(--font-2);font-size:1rem;font-variant-numeric:tabular-nums;color:var(--cyan-a55)">{{ lr.num }}</span>
+            <span style="flex:0 0 17%;min-width:6.5rem;align-self:stretch;display:flex;align-items:center;font-size:1.3125rem;line-height:1.75;color:{{ lr.wordFg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ lr.word }}</span>
+            <span style="flex:0 0 17%;min-width:0;align-self:stretch;display:flex;align-items:center;overflow:hidden;opacity:{{ answerOpacity }};transition:opacity 140ms ease"><span style="min-width:0;font-family:var(--font-2);font-size:1.3125rem;line-height:1.75;color:#3a4954;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ lr.furi }}</span></span>
+            <span style="flex:0 0 22%;min-width:0;align-self:stretch;display:flex;align-items:center;overflow:hidden;opacity:{{ answerOpacity }};transition:opacity 140ms ease"><span style="min-width:0;font-family:var(--font-2);font-size:1.125rem;line-height:1.75;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ lr.gloss }}</span></span>
+            <span sc-camel-on-mouse-enter="{{ lr.exEnter }}" sc-camel-on-mouse-leave="{{ lr.exLeave }}" style="position:relative;flex:1 1 0;min-width:0;align-self:stretch;display:flex;align-items:center;opacity:{{ answerOpacity }};transition:opacity 140ms ease">
+              <span style="position:absolute;left:0;right:0;font-size:1.3125rem;line-height:1.75;color:#3a4954;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:{{ lr.exJaOpacity }};transform:{{ lr.exJaShift }};transition:opacity 220ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)"><sc-for list="{{ lr.exParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--text-accent)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
+              <span style="position:absolute;left:0;right:0;font-family:var(--font-2);font-size:1.125rem;line-height:1.75;color:#3d4a55;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:{{ lr.exEnOpacity }};transform:{{ lr.exEnShift }};transition:opacity 220ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)"><span>{{ lr.exEnPre }}</span><span style="color:var(--text-accent)">{{ lr.exEnHit }}</span><span>{{ lr.exEnPost }}</span></span>
+            </span>
+            <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn" style="position:relative;flex:0 0 auto;width:3.25rem;align-self:stretch;padding-right:1.25rem;display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <sc-if value="{{ lr.markDone }}" hint-placeholder-val="{{ false }}">
+                <span style="width:2rem;height:2rem;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#ffffff"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M5 13 L10 18 L19 6"></path></svg></span>
+              </sc-if>
+              <sc-if value="{{ lr.markOpen }}" hint-placeholder-val="{{ true }}">
+                <span style="width:2rem;height:2rem;border:1px solid var(--accent);display:block"></span>
+              </sc-if>
+            </span>
           </div>
         </sc-for>
-        <div style="height:{{ ruleH }};background:var(--cyan-a45)"></div>
-        </sc-for>
         </div>
+      </div>
+      </div>
+
       </div>
     </main>
 
@@ -1209,6 +969,37 @@ const SECTION = 100;
 const sectionCount = (deck) => Math.max(1, Math.ceil(deckData(deck).length / SECTION));
 const sectionOf = (deck, sec) => deckData(deck).slice(sec * SECTION, sec * SECTION + SECTION);
 const pad3 = (n) => String(n).padStart(3, "0");
+// The list is vocabulary, twenty words at a time. Twenty is a sitting; the
+// hundred-word ceiling is temporary, until the deck gets a real word order.
+const WORDN = 20;
+const WORDMAX = 100;
+
+// Every word of a deck, once each, in the order its kanji appear. Kanji are
+// how the corpus is stored, not how it is studied, so this flattens them away.
+const _WORDS = {};
+const deckWords = (deck) => {
+  const key = CURRENT_LANG + "|" + (deck || DEFAULT_DECK);
+  if (_WORDS[key]) return _WORDS[key];
+  const seen = {}, out = [];
+  const pool = deckData(deck);
+  for (let i = 0; i < pool.length && out.length < WORDMAX; i++) {
+    const k = pool[i];
+    for (const g of k.g) {
+      for (const w of g.w) {
+        if (seen[w[3]]) continue;
+        seen[w[3]] = 1;
+        out.push({ w: w, k: k, r: g.r });
+        if (out.length >= WORDMAX) break;
+      }
+      if (out.length >= WORDMAX) break;
+    }
+  }
+  _WORDS[key] = out;
+  return out;
+};
+const wordBatchCount = (deck) => Math.max(1, Math.ceil(deckWords(deck).length / WORDN));
+const wordsOf = (b, deck) => deckWords(deck).slice(b * WORDN, b * WORDN + WORDN);
+
 const sectionLabel = (deck, sec) =>
   pad3(sec * SECTION + 1) + "-" + pad3(Math.min((sec + 1) * SECTION, deckData(deck).length));
 const DECK_META = (() => {
@@ -1475,7 +1266,7 @@ const okMerge = (a, b) => {
 
 class Component extends DCLogic {
   state = {
-    screen: "home", batch: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
+    screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
     draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, menuOpen: false, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
@@ -1554,7 +1345,6 @@ class Component extends DCLogic {
       const p = Math.min(1, (performance.now() - t0) / dur);
       const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
       el.scrollTop = from + dist * e;
-      this.trackSection();
       if (p < 1) this._tweenR = requestAnimationFrame(step);
     };
     this._tweenR = requestAnimationFrame(step);
@@ -1565,35 +1355,12 @@ class Component extends DCLogic {
       this._listRefCb = (el) => {
         const had = !!this._listBox;
         this._listBox = el;
-        if (el && !had) {
-          this.scheduleMeasure();
-          el.addEventListener("scroll", () => this.trackSection(), { passive: true });
-        }
+        if (el && !had) this.scheduleMeasure();
       };
     }
     return this._listRefCb;
   }
 
-  // the topmost banner still at or above the viewport top names the visible range
-  trackSection() {
-    const el = this._listBox;
-    if (!el) return;
-    const top = el.getBoundingClientRect().top;
-    let seen = 0;
-    el.querySelectorAll("[data-row^='B']").forEach(b => {
-      if (b.getBoundingClientRect().top - top <= 8) seen = parseInt(b.getAttribute("data-row").slice(1), 10);
-    });
-    if (seen !== this.state.viewBatch) this.setState({ viewBatch: seen });
-
-  }
-
-  // The word list is the ten kanji you opened, and nothing else. Ten kanji is
-  // 30-50 words, which is a session; the whole deck was 40,000px of scroll and
-  // no way to tell where a set ended. Move between sets with the arrows in the
-  // header rather than by scrolling past them.
-  listWindow(st) {
-    return [Math.min(Math.max(0, st.batch || 0), Math.max(0, batchCount(st.deck) - 1))];
-  }
 
   scheduleMeasure() {
     if (this._measureQueued) return;
@@ -1650,7 +1417,6 @@ class Component extends DCLogic {
         if (this.state.cardsOn) { this.setState({ cardsOn: false, cardsClosing: false }); return; }
         if (this.state.studyMenu) { this.setState({ studyMenu: false }); return; }
         if (this.state.langMenu) { this.setState({ langMenu: false }); return; }
-        if (this.state.screen === "detail") { this.setState({ screen: "home" }); return; }
       }
       if (this.state.cardsOn) {
         const t0 = e.target;
@@ -2180,14 +1946,13 @@ class Component extends DCLogic {
   }
 
   // every route into the chat goes through here so the intro always types
-  openChat(bi, ki) {
-    const kk = setOf(bi, this.state.deck)[ki];
-    this.setState({ batch: bi, sel: ki, write: true, writeClosing: false, draft: "", sent: "", result: null, history: [], kHover: null, introEgs: null });
-    this.makeIntroExamples(kk);
+  openChat() {
+    this.setState({ write: true, writeClosing: false, draft: "", sent: "", result: null, history: [], kHover: null, introEgs: null });
+    this.makeIntroExamples();
   }
 
   // two English example sentences drawn from the current words list
-  async makeIntroExamples(kk) {
+  async makeIntroExamples() {
     const sel = Object.keys(this.state.chatSel);
     if (!sel.length) {
       this.startIntro(T("intro_add_words").length);
@@ -2286,53 +2051,6 @@ class Component extends DCLogic {
 
   glossOf(kk) { return String(kk.meaning || "").split(/,\s*/)[0]; }
 
-  // A4 portrait sheet of the deck's kanji — logo, glyphs + meanings, no progress marks, no ranges
-  printDeckPdf() {
-    const deck = this.state.deck || DEFAULT_DECK;
-    const pool = deckData(deck);
-    const cells = pool.map(kk => {
-      const ens = String(kk.meaning || "").split(/,\s*/).slice(0, 2).map(t => t.trim());
-      return '<div class="c"><span class="k">' + kk.c + '</span><span class="m">' + ens.join("<br>") + "</span></div>";
-    }).join("");
-    const html = [
-      '<!DOCTYPE html><html><head><meta charset="utf-8"><title>' + deck + " \u2014 OpenKanji</title>",
-      "<style>",
-      "@page{size:A4 portrait;margin:10mm}",
-      "*{box-sizing:border-box}",
-      'html,body{margin:0;padding:0;background:#ffffff;color:#16232c;font-family:"Alliance No.2","Alliance No.1",system-ui,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
-      "header{display:flex;align-items:baseline;justify-content:space-between;gap:12mm;padding-bottom:4mm;border-bottom:1px solid #0891b2;margin-bottom:6mm}",
-      ".brand{display:flex;align-items:center;gap:2.5mm}",
-      ".mark{width:9mm;height:9mm;display:flex;align-items:center;justify-content:center;background:#0891b2;border:1px solid #0891b2;color:#fff;font-size:5.5mm;line-height:1}",
-      ".wm{font-size:5mm;letter-spacing:.02em}",
-      ".wm b{font-weight:400;color:#16232c}.wm i{font-style:normal;color:#0891b2}",
-      ".deck{font-size:3.4mm;letter-spacing:.16em;text-transform:uppercase;color:#5f7384}",
-      ".grid{display:grid;grid-template-columns:repeat(10,1fr);border-top:1px solid #9fb4c0;border-left:1px solid #9fb4c0}",
-      ".c{min-height:30mm;padding:2mm .8mm;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2mm;border-right:1px solid #9fb4c0;border-bottom:1px solid #9fb4c0;break-inside:avoid}",
-      '.k{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:11mm;line-height:1;color:#16232c}',
-      ".m{font-size:3.6mm;line-height:1.3;text-align:center;color:#4a5b68;overflow-wrap:anywhere}",
-      "</style></head><body>",
-      '<header><div class="brand"><span class="mark">\u958b</span><span class="wm"><b>OpenKanji</b><i>.org</i></span></div>',
-      '<span class="deck">' + deck + " \u00b7 " + pool.length + " kanji</span></header>",
-      '<div class="grid">' + cells + "</div>",
-      "</body></html>"
-    ].join("\n");
-    const old = document.getElementById("ok-print-frame");
-    if (old) old.remove();
-    const fr = document.createElement("iframe");
-    fr.id = "ok-print-frame";
-    fr.setAttribute("style", "position:fixed;left:-9999px;top:0;width:210mm;height:297mm;border:0");
-    document.body.appendChild(fr);
-    fr.onload = () => {
-      const go = () => setTimeout(() => {
-        try { fr.contentWindow.focus(); fr.contentWindow.print(); } catch (e) {}
-      }, 120);
-      const d = fr.contentDocument;
-      if (d && d.fonts && d.fonts.ready) d.fonts.ready.then(go, go); else go();
-    };
-    // srcdoc is unsupported in older Edge/IE; fall back to document.write
-    if ("srcdoc" in fr) fr.srcdoc = html;
-    else { const d = fr.contentWindow.document; d.open(); d.write(html); d.close(); fr.onload(); }
-  }
 
   // split the English example sentence around the target word's gloss (for cyan highlight)
   exEnSplit(w) {
@@ -2358,14 +2076,6 @@ class Component extends DCLogic {
   // flashcard queue: the words list if any are ticked, else this set's unmastered words
   cardQueue() {
     const st = this.state;
-    if (st.screen !== "detail") {
-      // home: drill the kanji queued with the dice, front = glyph, back = readings + meaning
-      return this.gamePool().map(kk => ({
-        key: kk.c, k: kk.c, w: kk.c, kanji: true,
-        r: kk.g.map(g => g.r).filter(Boolean).join(" \u00b7 "),
-        g: kk.meaning
-      }));
-    }
     const sel = Object.keys(st.chatSel || {});
     if (!sel.length) return [];
     const out = [];
@@ -2429,19 +2139,25 @@ class Component extends DCLogic {
     this.setState({ cIdx: st.cIdx + 1, cShown: false, cMove: "next", cFlip: !st.cFlip });
   }
 
+  // Words in scope for the study game: the set of twenty on screen, or the
+  // whole list when the game was opened without one.
+  gameWords() {
+    const st = this.state;
+    return st.gBatch != null ? wordsOf(st.gBatch, st.deck) : deckWords(st.deck);
+  }
+
+  gameKeys() { return this.gameWords().map(e => e.w[3]); }
+
+  // The kanji behind those words, for the two rounds that still need one.
   gamePool() {
-    const out = [];
     const m = this.state.mastered || {};
-    let src = [];
-    // Scoped to the selected deck: a kanji in a view deck must not count twice.
-    const pool = deckData(this.state.deck);
-    if (this.state.gKanji) src = [this.state.gKanji];
-    else if (this.state.gBatch != null) src = pool.slice(this.state.gBatch * 10, this.state.gBatch * 10 + 10);
-    else src = pool.slice();
-    src.forEach(kk => {
-      const ks = this.allKeys([kk]);
+    const seen = {}, out = [];
+    this.gameWords().forEach(e => {
+      if (seen[e.k.c]) return;
+      seen[e.k.c] = true;
+      const ks = this.allKeys([e.k]);
       if (ks.length > 0 && ks.every(x => m[x])) return;
-      out.push(kk);
+      out.push(e.k);
     });
     return out;
   }
@@ -2463,6 +2179,56 @@ class Component extends DCLogic {
     }
     if (r.indexOf("う") >= 0) return r.replace("う", "");
     return r + "う";
+  }
+
+  // 関連 reads かん・れん: a word written with two or more kanji shows which
+  // sound belongs to which character, which is the part of a kanji a learner
+  // can actually be tested on. Falls back to the plain reading whenever the
+  // split is not certain -- 大人 おとな has no per-character answer.
+  kanaBullets(word, reading) {
+    const isKanji = (ch) => /[\u4e00-\u9faf\u3005]/.test(ch);
+    const chars = String(word || "").split("");
+    if (chars.filter(isKanji).length < 2) return reading;
+    const RENDAKU = { "か": "が", "き": "ぎ", "く": "ぐ", "け": "げ", "こ": "ご", "さ": "ざ", "し": "じ", "す": "ず", "せ": "ぜ", "そ": "ぞ", "た": "だ", "ち": "ぢ", "つ": "づ", "て": "で", "と": "ど", "は": "ば", "ひ": "び", "ふ": "ぶ", "へ": "べ", "ほ": "ぼ" };
+    const HANDAKU = { "は": "ぱ", "ひ": "ぴ", "ふ": "ぷ", "へ": "ぺ", "ほ": "ぽ" };
+    const forms = (r) => {
+      const out = [r];
+      if (RENDAKU[r[0]]) out.push(RENDAKU[r[0]] + r.slice(1));
+      if (HANDAKU[r[0]]) out.push(HANDAKU[r[0]] + r.slice(1));
+      if (/[くつちき]$/.test(r)) out.slice().forEach(v => out.push(v.slice(0, -1) + "っ"));
+      return out;
+    };
+    let rest = this.kata2hira(reading || "");
+    const parts = [];
+    for (let i = 0; i < chars.length; i++) {
+      const ch = chars[i];
+      if (!isKanji(ch)) {
+        const kana = this.kata2hira(ch);
+        if (rest.indexOf(kana) !== 0) return reading;
+        rest = rest.slice(kana.length);
+        if (parts.length) parts[parts.length - 1] += kana; else parts.push(kana);
+        continue;
+      }
+      const entry = DATA.find(x => x.c === ch);
+      if (!entry) return reading;
+      const cands = [];
+      entry.g.forEach(g => {
+        const base = this.kata2hira(String(g.r || "").replace(/[（(].*$/, "").replace(/[.\-\u30fb]/g, ""));
+        if (base) forms(base).forEach(f => { if (cands.indexOf(f) < 0) cands.push(f); });
+      });
+      cands.sort((a, b) => b.length - a.length);
+      const last = i === chars.length - 1;
+      let hit = null;
+      for (let c = 0; c < cands.length && !hit; c++) {
+        const r = cands[c];
+        if (rest.indexOf(r) !== 0) continue;
+        if (last ? rest.length === r.length : rest.length > r.length) hit = r;
+      }
+      if (!hit) return reading;
+      parts.push(hit);
+      rest = rest.slice(hit.length);
+    }
+    return rest ? reading : parts.join("\u30fb");
   }
 
   // split a kanji run's furigana into per-character slices, matching each
@@ -2628,10 +2394,10 @@ class Component extends DCLogic {
   startGame(mode) {
     const rounds = [];
     const seen = {};
-    const wordMode = this.state.screen === "detail" && (mode === 1 || mode === 2);
+    const wordMode = mode === 1 || mode === 2;
     if (wordMode) {
       const pool = [];
-      this.gamePool().forEach(kk => kk.g.forEach(g => g.w.forEach(w => { if (!this.state.mastered[w[0]]) pool.push({ kk: kk, w: w }); })));
+      this.gameWords().forEach(e => { if (!this.state.mastered[e.w[3]]) pool.push({ kk: e.k, w: e.w }); });
       this.shuffleA(pool).forEach(p => {
         const q = this.buildWordQ(mode, p.kk, p.w);
         if (!q) return;
@@ -2671,13 +2437,7 @@ class Component extends DCLogic {
     this.persistMastered(m);
     this.flashMastery();
     this.flashSave();
-    const kanjiDone = kk => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every(x => m[x]); };
-    const before = DATA.filter(kk => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every(x => st.mastered[x]); }).length;
-    if (DATA.filter(kanjiDone).length !== before) {
-      if (this._kanjiT) clearTimeout(this._kanjiT);
-      this.setState({ kanjiFlash: true });
-      this._kanjiT = setTimeout(() => this.setState({ kanjiFlash: false }), 700);
-    }
+
     this.setState({ mastered: m, quiz: next ? st.quiz.filter(q => q !== key) : st.quiz });
   }
 
@@ -2881,6 +2641,11 @@ class Component extends DCLogic {
     const SEC = sectionOf(st.deck, SEC_I);
     const SEC_BASE = SEC_I * (SECTION / SETN);
     const SET = setOf(st.batch, st.deck);
+    // The deck as vocabulary: every word once, in sets of twenty.
+    const WORDLIST = deckWords(st.deck);
+    const WORDKEYS = WORDLIST.map(e => e.w[3]);
+    const WSET = Math.min(Math.max(0, st.wset || 0), wordBatchCount(st.deck) - 1);
+    const WORDS = wordsOf(WSET, st.deck);
     const k = SET[st.sel] || SET[0];
     const seenN = Object.keys(st.seen).filter(c => st.seen[c]).length;
 
@@ -3133,162 +2898,38 @@ class Component extends DCLogic {
         this.persist({}); this.persistMastered({});
         this.setState({ seen: {}, mastered: {}, menuOpen: false });
       },
-      showHeader: st.screen !== "detail",
-      isGrid: st.screen === "grid", isDetail: st.screen === "detail", isQuiz: st.screen === "quiz",
-      batchOpen: st.batchOpen,
-      openBatch: () => this.setState({ batchOpen: true }),
-      closeBatch: () => this.setState({ batchOpen: false }),
-      batches: Array.from({ length: batchCount(st.deck) }, (_, b) => {
-        const keys = this.allKeys(setOf(b, st.deck));
-        const done = keys.filter(kx => st.mastered[kx]).length;
+      isDetail: true,
+      chromeShown: true,
+      progOpacity: 1,
+      progRule: "var(--cyan-a45)",
+      // The sidebar is the deck's words in sets of twenty. A set is a session:
+      // twenty words is roughly what fits in one sitting, and the whole set
+      // shares one study game and one progress bar.
+      wordSets: Array.from({ length: wordBatchCount(st.deck) }, (_, b) => {
+        const keys = wordsOf(b, st.deck).map(e => e.w[3]);
+        const done = keys.filter(x => st.mastered[x]).length;
+        const on = b === WSET;
+        const all = keys.length > 0 && done === keys.length;
         return {
-          label: (b * SETN + 1) + "-" + Math.min((b + 1) * SETN, DECK.length),
-          pct: (keys.length ? Math.round(done / keys.length * 100) : 0) + "%",
+          label: (b * WORDN + 1) + "-" + (b * WORDN + keys.length),
           frac: done + " / " + keys.length,
-          done: keys.length > 0 && done === keys.length,
-          studyOpacity: keys.length > 0 && done === keys.length ? .3 : 1,
-          studyPointer: keys.length > 0 && done === keys.length ? "none" : "auto",
-          bg: b === st.batch ? "rgba(8,145,178,.10)" : "transparent",
-          fg: b === st.batch ? "var(--text-accent)" : "var(--text-body)",
-          pick: () => this.setState({ batch: b, batchOpen: false, scrollTo: "B" + b }),
-          study: (e) => { e.stopPropagation(); this._gAnswer = null; this._gIdx = undefined; this.setState({ batchOpen: false, gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: b, gKanji: null }); }
+          pct: (keys.length ? Math.round(done / keys.length * 100) : 0) + "%",
+          bg: on ? "rgba(8,145,178,.10)" : "transparent",
+          fg: on ? "var(--text-accent)" : "var(--text-muted)",
+          barH: on ? "3px" : "0",
+          studyOpacity: all ? .3 : 1,
+          studyPointer: all ? "none" : "auto",
+          pick: () => this.setState({ wset: b }),
+          study: (e) => {
+            e.stopPropagation();
+            this._gAnswer = null; this._gIdx = undefined;
+            this.setState({ wset: b, gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: b });
+          }
         };
       }),
-      isHome: st.screen === "home",
-      chromeShown: st.screen === "home" || st.screen === "detail",
-      progOpacity: st.screen === "home" ? 0 : 1,
-      progRule: st.screen === "home" ? "transparent" : "var(--cyan-a45)",
-      goHome: () => this.setState({ screen: "home", batchOpen: false }),
-      printDeck: () => this.printDeckPdf(),
-      openDeck: () => this.setState({ screen: "detail" }),
-      homeDeck: st.deck || "JLPT N4",
-      deckTabs: (() => {
-        const cur = st.deck || DEFAULT_DECK;
-        const rows = [];
-        DECKS.forEach((name) => {
-          const total = deckData(name).length;
-          const soon = total === 0;
-          const active = cur === name;
-          const done = soon ? 0 : this.deckDone(name, st.mastered);
-          rows.push({
-            name: name, soon: soon,
-            pad: "1.25rem", h: "4.5rem", size: "1rem", hasStudy: true,
-            tipOpen: st.deckTip === name,
-            tipEnter: () => { if (this._dtT) clearTimeout(this._dtT); this.setState({ deckTip: name }); },
-            tipLeave: () => { if (this._dtT) clearTimeout(this._dtT); this._dtT = setTimeout(() => this.setState({ deckTip: null }), 160); },
-            tipBody: T((DECK_META[name] || {}).tip || "tip_core"),
-            barH: active ? "3px" : "0",
-            barBg: soon ? "var(--cyan-a45)" : "var(--accent)",
-            frac: soon ? "—" : done + " / " + total,
-            pct: soon ? "0%" : (total ? Math.round(done / total * 100) : 0) + "%",
-            fg: active ? "var(--text-accent)" : "var(--text-muted)",
-            pick: () => { if (soon) return; this.rememberPrefs(name, undefined); this.setState({ deck: name, section: 0, batch: 0 }); },
-            studyOpacity: soon ? .3 : (total > 0 && done === total ? .3 : 1),
-            studyPointer: soon ? "none" : "auto",
-            study: (e) => {
-              e.stopPropagation();
-              if (soon) return;
-              this._gAnswer = null; this._gIdx = undefined;
-              this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: null, gKanji: null, gDeckAll: true });
-            }
-          });
-          // The level opens into the hundreds it is made of. Only the active
-          // level expands, so the rail never shows more than one deck's worth.
-          if (!active || soon || sectionCount(name) < 2) return;
-          for (let sec = 0; sec < sectionCount(name); sec++) {
-            const list = sectionOf(name, sec);
-            const keys = this.allKeys(list);
-            const sDone = keys.filter((x) => st.mastered[x]).length;
-            const on = SEC_I === sec;
-            rows.push({
-              name: sectionLabel(name, sec), soon: false,
-              pad: "2.6rem", h: "3.5rem", size: ".9375rem", hasStudy: false,
-              tipOpen: false, tipEnter: () => {}, tipLeave: () => {}, tipBody: "",
-              barH: on ? "3px" : "0",
-              barBg: "var(--accent)",
-              frac: list.filter((kk) => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every((x) => st.mastered[x]); }).length + " / " + list.length,
-              pct: (keys.length ? Math.round(sDone / keys.length * 100) : 0) + "%",
-              fg: on ? "var(--text-accent)" : "var(--text-muted)",
-              pick: () => this.setState({ section: sec, batch: sec * (SECTION / SETN) }),
-              studyOpacity: 1, studyPointer: "none", study: () => {}
-            });
-          }
-        });
-        return rows;
-      })(),
-      // Only the screen that renders a list pays for building it. homeRows is
-      // one tile per kanji in the deck; listBatches is every word of every
-      // kanji. Building both on every render is what made opening a kanji, or
-      // switching to a big deck, take seconds.
-      homeRows: st.screen !== "home" ? EMPTY : (() => {
-        const tiles = SEC.map((kk, i) => {
-        const keys = this.allKeys([kk]);
-        const done = keys.filter(x => st.mastered[x]).length;
-        const complete = keys.length > 0 && done === keys.length;
-        return {
-          c: kk.c,
-          ens: (() => { const a = String(kk.meaning || "").split(/,\s*/).slice(0, 2); while (a.length < 2) a.push("\u00a0"); return a; })(),
-          bg: (st.hoverTile === i || st.hoverRange === Math.floor(i / 10)) ? "rgba(8,145,178,.10)" : "transparent",
-          enter: () => this.setState({ hoverTile: i }),
-          leave: () => { if (this.state.hoverTile === i) this.setState({ hoverTile: null }); },
-          fg: "var(--text-body)",
-          glyphFg: complete ? "#ffffff" : "var(--text-body)",
-          glyphBg: complete ? "var(--accent)" : "transparent",
-          metaFg: complete ? "var(--text-accent)" : "var(--text-muted)",
-          ringOpacity: complete ? 1 : 0,
-          ringInset: complete ? ".4rem" : "1.4rem",
-          open: () => this.setState({ screen: "detail", batch: SEC_BASE + Math.floor(i / SETN), scrollTo: kk.c + "|" + (kk.g[0].w[0][0]) })
-        };
-        });
-        const rows = [];
-        for (let i = 0; i < tiles.length; i += 10) {
-          const bi = SEC_BASE + Math.floor(i / 10), first = SEC[i];
-          rows.push({
-            range: (SEC_I * SECTION + i + 1) + "-" + (SEC_I * SECTION + Math.min(i + 10, tiles.length)),
-            tiles: tiles.slice(i, i + 10),
-            blanks: Array.from({ length: Math.max(0, 10 - tiles.slice(i, i + 10).length) }, (_, n) => n),
-            bg: st.hoverRange === bi ? "rgba(8,145,178,.10)" : "transparent",
-            fg: st.hoverRange === bi ? "var(--text-accent)" : "var(--text-muted)",
-            enter: () => this.setState({ hoverRange: bi }),
-            leave: () => { if (this.state.hoverRange === bi) this.setState({ hoverRange: null }); },
-            open: () => this.setState({ screen: "detail", batch: bi, scrollTo: first.c + "|" + first.g[0].w[0][0] }),
-            inGame: !!(st.gameSets || {})[bi],
-            notInGame: !(st.gameSets || {})[bi],
-            diceBg: (st.gameSets || {})[bi] ? "var(--accent)" : "transparent",
-            diceFg: (st.gameSets || {})[bi] ? "#ffffff" : "var(--text-accent)",
-            diceBorder: (st.gameSets || {})[bi] ? "var(--accent)" : "var(--cyan-a45)",
-            actOpacity: (() => { const ks = this.allKeys(SEC.slice(i, i + 10)).filter(x => !st.mastered[x]); return ks.length ? 1 : .3; })(),
-            actPointer: (() => { const ks = this.allKeys(SEC.slice(i, i + 10)).filter(x => !st.mastered[x]); return ks.length ? "auto" : "none"; })(),
-            studyBatch: (e) => {
-              e.stopPropagation();
-              const ks = this.allKeys(SEC.slice(i, i + 10)).filter(x => !this.state.mastered[x]);
-              if (!ks.length) return;
-              const sel = {}; ks.forEach(x => { sel[x] = true; });
-              this.setState({ chatSel: sel, screen: "detail", viewBatch: bi });
-              setTimeout(() => this.openChat(bi, 0), 0);
-            },
-            cardsBatch: (e) => {
-              e.stopPropagation();
-              const q = this.shuffleA(this.allKeys(SEC.slice(i, i + 10)).filter(x => !this.state.mastered[x]));
-              if (!q.length) return;
-              this.setState({ cardsOn: true, cardsClosing: false, cQueue: this.cardsFromKeys(q), cIdx: 0, cShown: false, cDone: 0, cMastered: [], cFlip: false, cMove: "next" });
-            },
-            pickGame: () => {
-              const g = Object.assign({}, this.state.gameSets || {});
-              if (g[bi]) delete g[bi]; else g[bi] = true;
-              if (this._gameT) clearTimeout(this._gameT);
-              this.setState({ gameSets: g, gameFlash: true });
-              this._gameT = setTimeout(() => this.setState({ gameFlash: false }), 700);
-            }
-          });
-        }
-        return rows;
-      })(),
-      setLabel: st.deck || DEFAULT_DECK,
-      viewRange: (st.viewBatch * SETN + 1) + "-" + Math.min((st.viewBatch + 1) * SETN, DECK.length),
-      setPct: (this.allKeys(DECK).length ? Math.round(this.allKeys(DECK).filter(kx => st.mastered[kx]).length / this.allKeys(DECK).length * 100) : 0) + "%",
-      setDone: this.allKeys(DECK).filter(kx => st.mastered[kx]).length,
-      setTotal: this.allKeys(DECK).length,
+      setPct: (WORDKEYS.length ? Math.round(WORDKEYS.filter(kx => st.mastered[kx]).length / WORDKEYS.length * 100) : 0) + "%",
+      setDone: WORDKEYS.filter(kx => st.mastered[kx]).length,
+      setTotal: WORDKEYS.length,
       masteryFg: st.masteryFlash ? "var(--text-accent)" : "var(--text-muted)",
       masteryFlash: st.masteryFlash, masteryCalm: !st.masteryFlash,
       masteryGlow: st.masteryFlash ? "0 0 0 2px rgba(8,145,178,.35), 0 0 14px rgba(8,145,178,.5)" : "none",
@@ -3301,17 +2942,6 @@ class Component extends DCLogic {
         leave: () => this.setState({ hint: null, progRect: null })
       },
       progDeck: st.deck || "JLPT N4",
-      hintKanjiProg: {
-        open: st.hint === "kprog",
-        enter: (e) => { const b = e.currentTarget.getBoundingClientRect(); this.setState({ hint: "kprog", progRect: { left: b.left, right: b.right, top: b.top, bottom: b.bottom } }); },
-        leave: () => this.setState({ hint: null, progRect: null })
-      },
-      kanjiDone: this.deckDone(st.deck, st.mastered),
-      kanjiTotal: deckData(st.deck).length,
-      kanjiBarGlow: st.kanjiFlash ? "0 0 0 2px rgba(8,145,178,.32), 0 0 14px rgba(8,145,178,.55)" : "none",
-      kanjiFg: st.kanjiFlash ? "var(--text-accent-hover)" : "var(--text-accent)",
-      kanjiMuted: st.kanjiFlash ? "var(--text-accent)" : "var(--text-muted)",
-      kanjiPct: (DECK.length ? Math.round(DECK.filter(kk => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every(x => st.mastered[x]); }).length / DECK.length * 100) : 0) + "%",
       progPctLabel: (() => {
         const keys = this.allKeys(DECK);
         return (keys.length ? Math.round(keys.filter(x => st.mastered[x]).length / keys.length * 100) : 0) + "%";
@@ -3438,35 +3068,17 @@ class Component extends DCLogic {
       gDoneOn: !!st.gameOpen && !!st.gMode && !!st.gFinished,
       gStart1: () => { this.setState({ gFirstOk: {} }); this.startGame(1); },
       gChat: () => {
-        let ks = [];
-        if (st.gKanji) ks = this.allKeys([st.gKanji]);
-        else if (st.gBatch != null) ks = this.allKeys(DECK.slice(st.gBatch * 10, st.gBatch * 10 + 10));
-        else ks = this.allKeys(DECK);
-        ks = ks.filter(x => !this.state.mastered[x]);
+        const ks = this.gameKeys().filter(x => !this.state.mastered[x]);
         if (!ks.length) return;
         const sel = {}; ks.forEach(x => { sel[x] = true; });
-        const at = st.gKanji && st.gChatAt ? st.gChatAt : [st.gBatch != null ? st.gBatch : 0, 0];
         this.setState({ gMorph: true });
         setTimeout(() => {
-          this.setState({ gMorph: false, dlgSeamless: true, gameOpen: false, gameClosing: false, writeFromStudy: true, chatSel: sel, screen: "detail", batch: at[0], viewBatch: at[0] });
-          this.openChat(at[0], at[1]);
+          this.setState({ gMorph: false, dlgSeamless: true, gameOpen: false, gameClosing: false, writeFromStudy: true, chatSel: sel });
+          this.openChat();
         }, 300);
       },
       gCards: () => {
-        let q;
-        if (st.screen !== "detail") {
-          q = this.shuffleA(this.gamePool().map(kk => ({
-            key: kk.c, k: kk.c, w: kk.c, kanji: true,
-            r: kk.g.map(g => g.r).filter(Boolean).join(" · "),
-            g: kk.meaning
-          })));
-        } else {
-          let ks = [];
-          if (st.gKanji) ks = this.allKeys([st.gKanji]);
-          else if (st.gBatch != null) ks = this.allKeys(DECK.slice(st.gBatch * 10, st.gBatch * 10 + 10));
-          else ks = this.allKeys(DECK);
-          q = this.cardsFromKeys(this.shuffleA(ks.filter(x => !this.state.mastered[x])));
-        }
+        const q = this.cardsFromKeys(this.shuffleA(this.gameKeys().filter(x => !this.state.mastered[x])));
         if (!q.length) return;
         this.setState({ dlgSeamless: true, gameOpen: false, gameClosing: false, cardsOn: true, cardsClosing: false, cQueue: q, cIdx: 0, cShown: false, cDone: 0, cMastered: [], cFlip: false, cMove: "next" });
       },
@@ -3504,22 +3116,15 @@ class Component extends DCLogic {
         this.setState({ gMode: null, gFinished: false, gPicked: -1 });
       },
       gNotMenuOn: !!st.gameOpen && !!st.gMode,
-      gHeadTitle: st.screen === "detail" ? T("study_words") : T("study_kanji"),
-      gScopeUnit: st.screen === "detail" ? "単語" : "漢字",
+      gHeadTitle: T("study_words"),
+      gScopeUnit: "単語",
       gPanelW: st.gMorph ? "min(58rem,100%)" : "min(46rem,100%)",
       gPanelH: st.gMorph ? "min(42rem,100%)" : "min(36rem,100%)",
       gMorphFade: st.gMorph ? 0 : 1,
       wPanelW: st.wMorph ? "min(46rem,100%)" : "min(58rem,100%)",
       wPanelH: st.wMorph ? "min(36rem,100%)" : "min(42rem,100%)",
       wMorphFade: st.wMorph ? 0 : 1,
-      gScopeWords: (() => {
-        if (st.screen !== "detail") return this.gamePool().length;
-        let ks = [];
-        if (st.gKanji) ks = this.allKeys([st.gKanji]);
-        else if (st.gBatch != null) ks = this.allKeys(DECK.slice(st.gBatch * 10, st.gBatch * 10 + 10));
-        else ks = this.allKeys(DECK);
-        return ks.filter(x => !st.mastered[x]).length;
-      })(),
+      gScopeWords: this.gameKeys().filter(x => !st.mastered[x]).length,
       cardsBackToMenu: () => { this.setState({ dlgSeamless: true, cardsOn: false, cardsClosing: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); },
       gBackToMenu: () => { if (this._gAdvT) clearTimeout(this._gAdvT); this._gAnswer = null; this._gIdx = undefined; this.setState({ gMode: null, gFinished: false, gPicked: -1 }); },
       gProgress: st.gMode && !st.gFinished ? (gIdxEff + 1) + " / " + (st.gRounds || []).length : "",
@@ -3620,10 +3225,8 @@ class Component extends DCLogic {
       userId: (() => {
         if (st.authMsg) return st.authMsg;
         const em = st.userEmail || this.props.userEmail;
-        return em ? String(em).split("@")[0] : (st.screen === "home" ? T("load_progress") : T("save_progress_title"));
+        return em ? String(em).split("@")[0] : T("save_progress_title");
       })(),
-      showLoad: st.screen === "home",
-      showSave: st.screen !== "home",
       signedOut: okSyncReady() && !(st.userEmail || this.props.userEmail) && !st.authMsg,
       signedIn: !(okSyncReady() && !(st.userEmail || this.props.userEmail) && !st.authMsg),
       emailDraft: st.emailDraft,
@@ -3785,367 +3388,49 @@ class Component extends DCLogic {
           top: (below ? b.bottom + 6 : Math.max(M, b.top - H - 6)) + "px"
         });
       })(),
-      listGroups: [],
-      listBatches: st.screen !== "detail" ? EMPTY : this.listWindow(st).map(bi => {
-        const batchSet = setOf(bi, st.deck);
-        const bKeys = this.allKeys(batchSet);
+      listRange: (WSET * WORDN + 1) + "-" + (WSET * WORDN + WORDS.length),
+      listFrac: WORDS.filter(e => st.mastered[e.w[3]]).length + " / " + WORDS.length,
+      // One row per word: the word, its kana, the meaning, an example. No kanji
+      // column and no reading groups. A kanji's English gloss is an editorial
+      // summary of a distribution, not something a learner can be tested on;
+      // the words are the lesson, so the words are what the list shows.
+      listWords: WORDS.map((e, i) => {
+        const w = e.w;
+        const key = w[3];
+        const id = "L" + key;
+        const x = EXTRA[w[0]];
         return {
-          label: (bi * SETN + 1) + "-" + Math.min((bi + 1) * SETN, DECK.length) + " 漢字",
-          prevOpacity: bi > 0 ? 1 : .25,
-          prevPointer: bi > 0 ? "auto" : "none",
-          nextOpacity: bi < batchCount(st.deck) - 1 ? 1 : .25,
-          nextPointer: bi < batchCount(st.deck) - 1 ? "auto" : "none",
-          prev: (e) => { e.stopPropagation(); const b = Math.max(0, bi - 1); this.setState({ batch: b, section: Math.floor(b / (SECTION / SETN)) }); },
-          next: (e) => { e.stopPropagation(); const b = Math.min(batchCount(st.deck) - 1, bi + 1); this.setState({ batch: b, section: Math.floor(b / (SECTION / SETN)) }); },
-          range: (bi * SETN + 1) + "-" + Math.min((bi + 1) * SETN, DECK.length),
-          frac: bKeys.filter(x => st.mastered[x]).length + " / " + bKeys.length,
-          studyOpacity: bKeys.length > 0 && bKeys.every(x => st.mastered[x]) ? .3 : 1,
-          studyPointer: bKeys.length > 0 && bKeys.every(x => st.mastered[x]) ? "none" : "auto",
-          study: () => { this._gAnswer = null; this._gIdx = undefined; this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: bi, gKanji: null }); },
-          gap: bi === 0 ? "0" : "2.5rem",
-          anchor: "B" + bi,
-          groups: batchSet.map((kk, ki) => {
-        const keys = this.allKeys([kk]);
-        const kDone = keys.filter(x => st.mastered[x]).length;
-        return {
-          c: kk.c, meaning: kk.meaning,
-          meaningLines: kk.meaning.split(",").map((t, i, arr) => ({ t: t.trim() + (i < arr.length - 1 ? "," : "") })),
-          frac: kDone + " / " + keys.length,
-          fracFg: kDone === keys.length ? "var(--accent)" : "var(--text-muted)",
-          bg: "transparent",
-          rowsHi: st.hoverKanji === kk.c,
-          allDone: (() => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every(x => st.mastered[x]); })(),
-          glyphFg: (() => { const ks = this.allKeys([kk]); return (ks.length > 0 && ks.every(x => st.mastered[x])) ? "#ffffff" : "#4a5b68"; })(),
-          glyphBg: (() => { const ks = this.allKeys([kk]); return (ks.length > 0 && ks.every(x => st.mastered[x])) ? "var(--accent)" : "transparent"; })(),
-          ringPad: (() => {
-            const ks = this.allKeys([kk]);
-            const done = ks.length > 0 && ks.every(x => st.mastered[x]);
-            const base = done ? .5 : 0;
-            return (base + (st.conceal ? 1.6 : 0)) + "rem .7rem";
+          num: WSET * WORDN + i + 1,
+          notFirst: i > 0,
+          word: w[0],
+          furi: this.kanaBullets(w[0], w[1]),
+          gloss: w[2],
+          wordFg: st.mastered[key] ? "var(--text-accent)" : "#3a4954",
+          rowBg: st.hoverWord === id ? "rgba(8,145,178,.06)" : "transparent",
+          enter: () => this.setState({ hoverWord: id }),
+          leave: () => { if (this.state.hoverWord === id) this.setState({ hoverWord: null }); },
+          markDone: !!st.mastered[key],
+          markOpen: !st.mastered[key],
+          master: (ev) => { ev.stopPropagation(); this.toggleMasteredWord(key); },
+          exJaOpacity: st.exHover === id && x ? 0 : 1,
+          exEnOpacity: st.exHover === id && x ? 1 : 0,
+          exJaShift: st.exHover === id && x ? "translateX(1.4rem)" : "translateX(0)",
+          exEnShift: st.exHover === id && x ? "translateX(0)" : "translateX(-1.4rem)",
+          exEnter: () => this.setState({ exHover: id }),
+          exLeave: () => { if (this.state.exHover === id) this.setState({ exHover: null }); },
+          exParts: (() => {
+            if (!x) return [{ text: "\u2014", plain: true, hit: false }];
+            const sentence = x.ex[0][0].map(t => t[0]).join("");
+            if (sentence.indexOf(w[0]) < 0) return [{ text: sentence, plain: true, hit: false }];
+            const out = [];
+            sentence.split(w[0]).forEach((piece, n) => {
+              if (n > 0) out.push({ text: w[0], plain: false, hit: true });
+              if (piece) out.push({ text: piece, plain: true, hit: false });
+            });
+            return out;
           })(),
-          metaFg: (() => { const ks = this.allKeys([kk]); return (ks.length > 0 && ks.every(x => st.mastered[x])) ? "var(--text-accent)" : "var(--text-muted)"; })(),
-          barOpacity: (() => { const ks = this.allKeys([kk]); return (ks.length > 0 && ks.every(x => st.mastered[x])) ? 1 : 0; })(),
-          addAll: () => this.addWordsToChat(this.allKeys([kk])),
-          showRule: ki > 0,
-          firstRule: ki === 0,
-          open: () => this.openChat(bi, ki),
-          popOpen: st.kHover === bi + ":" + ki && !!st.kRect,
-          cellClass: (() => { const ks = this.allKeys([kk]); return "ok-kcell" + ((ks.length > 0 && ks.every(x => st.mastered[x])) ? " ok-kdone" : ""); })(),
-          meanMax: st.conceal ? (st.hoverKanji === kk.c ? "4.4rem" : "0rem") : "4.4rem",
-          meanGap: st.conceal ? (st.hoverKanji === kk.c ? ".25rem" : "0rem") : ".25rem",
-          showDoneTag: (() => { const ks = this.allKeys([kk]); return ks.length > 0 && ks.every(x => st.mastered[x]); })(),
-          doneOpacity: (() => { const ks = this.allKeys([kk]); return (!st.conceal && st.hoverKanji === kk.c && ks.length > 0 && ks.every(x => st.mastered[x])) ? 1 : 0; })(),
-          actShift: st.hoverKanji === kk.c ? "translateY(0)" : "translateY(.3rem)",
-          meanOpacity: (st.conceal || st.hoverKanji === kk.c) ? 0 : 1,
-          meanShift: st.hoverKanji === kk.c ? "translateY(-.3rem)" : "translateY(0)",
-          actPointer: (() => { const ks = this.allKeys([kk]); return (!st.conceal && st.hoverKanji === kk.c && !(ks.length > 0 && ks.every(x => st.mastered[x]))) ? "auto" : "none"; })(),
-          actCursor: (() => { const ks = this.allKeys([kk]); return (ks.length > 0 && ks.every(x => st.mastered[x])) ? "not-allowed" : "pointer"; })(),
-          enter: (e) => {
-            if (this._kLeaveT) clearTimeout(this._kLeaveT);
-            const b = e.currentTarget.getBoundingClientRect();
-            this.setState({ kHover: bi + ":" + ki, hoverKanji: kk.c, kRect: { left: b.left, right: b.right, top: b.top, bottom: b.bottom } });
-          },
-          popEnter: () => { if (this._kLeaveT) clearTimeout(this._kLeaveT); },
-          leave: () => {
-            if (this._kLeaveT) clearTimeout(this._kLeaveT);
-            this._kLeaveT = setTimeout(() => {
-              if (this.state.kHover === bi + ":" + ki) this.setState({ kHover: null, hoverKanji: null, kRect: null });
-            }, 180);
-          },
-          allQueued: this.allKeys([kk]).every(x => st.chatSel[x]),
-          notAllQueued: !this.allKeys([kk]).every(x => st.chatSel[x]),
-          addBg: this.allKeys([kk]).every(x => st.chatSel[x]) ? "var(--accent)" : "transparent",
-          addFg: this.allKeys([kk]).every(x => st.chatSel[x]) ? "#ffffff" : "var(--text-accent)",
-          addLabel: this.allKeys([kk]).every(x => st.chatSel[x]) ? T("review_list") : T("review_list"),
-          addPop: (e) => {
-            e.stopPropagation();
-            const ks = this.allKeys([kk]);
-            if (ks.every(x => this.state.chatSel[x])) this.setState(s => { const sel = Object.assign({}, s.chatSel); ks.forEach(x => delete sel[x]); return { chatSel: sel }; });
-            else this.addWordsToChat(ks);
-          },
-          openStudy: (e) => {
-            e.stopPropagation();
-            this._gAnswer = null; this._gIdx = undefined;
-            this.setState({ kHover: null, hoverKanji: null, kRect: null, gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: null, gKanji: kk, gChatAt: [bi, ki] });
-          },
-
-          glyphHoverFg: (() => {
-            const ks = this.allKeys([kk]);
-            if (ks.length > 0 && ks.every(x => st.mastered[x])) return "#ffffff";
-            return st.hoverKanji === kk.c ? "var(--text-accent)" : "#4a5b68";
-          })(),
-          chat: (e) => { e.stopPropagation(); this.openChat(bi, ki); },
-            readings: kk.g.map((g, i) => i).sort((a, b) => {
-            const solo = j => (kk.g[j].w.some(w => w[0] === kk.c) ? 0 : 1);
-            return solo(a) - solo(b) || a - b;
-          }).map((gIdx, gi) => {
-            const g = kk.g[gIdx];
-            return {
-            reading: g.r,
-            readings: [{ t: g.r }],
-            notFirst: gi > 0,
-            alt: !!g.alt,
-            readBg: "transparent",
-            readFg: st.hoverBand === kk.c + ":" + gi ? "var(--accent)" : "var(--text-accent)",
-            readUL: st.hoverBand === kk.c + ":" + gi ? "underline" : "none",
-            pitchIn: !!g.w.find(w => PITCH[w[0]] !== undefined),
-            pitchWord: (g.w.find(w => PITCH[w[0]] !== undefined) || [""])[0],
-            bandEnter: (e) => {
-              const t = e.currentTarget.querySelector('span');
-              const b = (t || e.currentTarget).getBoundingClientRect();
-              this.setState({ hoverBand: kk.c + ":" + gi });
-            },
-            bandLeave: () => { if (this.state.hoverBand === kk.c + ":" + gi) this.setState({ hoverBand: null, romaHover: null, romaRect: null }); },
-            bandClick: () => this.addWordsToChat(g.w.map(w => w[0])),
-            showRule: gi > 0 && !g.alt,
-            showInnerRule: gi > 0 && !!g.alt,
-            rows: g.w.map((w, wi) => {
-              const key = w[3];
-              const at = w[0].indexOf(kk.c);
-              const id = "L" + ki + ":" + key;
-              // Asked seven times below; look it up once.
-              const shared = this.sharedWith(w[0], kk.c);
-              return {
-                notFirst: wi > 0,
-                pre: at < 0 ? w[0] : w[0].slice(0, at),
-                hit: at < 0 ? "" : kk.c,
-                post: at < 0 ? "" : w[0].slice(at + kk.c.length),
-                furi: w[1], gloss: w[2],
-                isMastered: !!st.mastered[key], notMastered: !st.mastered[key],
-                chatOn: !!st.chatSel[key], chatOff: !st.chatSel[key],
-                chatBg: st.chatSel[key] ? "var(--accent)" : "transparent",
-                chatFg: st.chatSel[key] ? "#ffffff" : "var(--cyan-a35)",
-                chatOpacity: st.mastered[key] ? .3 : ((!st.chatSel[key] && Object.keys(st.chatSel).length >= 12) ? .35 : 1),
-                chatPointer: st.mastered[key] ? "none" : "auto",
-                chatCursor: (!st.chatSel[key] && Object.keys(st.chatSel).length >= 12) ? "not-allowed" : "pointer",
-                chatToggle: (e) => {
-                  e.stopPropagation();
-                  if (this._chatFlashT) clearTimeout(this._chatFlashT);
-                  this.setState({ chatFlash: true });
-                  this._chatFlashT = setTimeout(() => this.setState({ chatFlash: false }), 620);
-                  this.setState(s => {
-                    const sel = Object.assign({}, s.chatSel);
-                    if (sel[key]) delete sel[key];
-                    else { if (Object.keys(sel).length >= 12) return null; sel[key] = true; }
-                    return { chatSel: sel };
-                  });
-                },
-                wordFg: "#3a4954",
-                hitFg: "var(--text-accent)",
-                metaFg: st.romaHover === ("f:" + id) ? "var(--accent)" : "var(--text-muted)",
-                glossFg: st.glossHover === id ? "var(--accent)" : "var(--text-muted)",
-                wordUL: st.wHover === id ? "underline" : "none",
-                exFg: "#3a4954",
-                exHitFg: "var(--text-accent)",
-                exJaOpacity: st.exHover === id && EXTRA[w[0]] ? 0 : 1,
-                exEnOpacity: st.exHover === id && EXTRA[w[0]] ? 1 : 0,
-                exJaShift: st.exHover === id && EXTRA[w[0]] ? "translateX(1.4rem)" : "translateX(0)",
-                exEnShift: st.exHover === id && EXTRA[w[0]] ? "translateX(0)" : "translateX(-1.4rem)",
-                furiUL: st.romaHover === ("f:" + id) ? "underline" : "none",
-                glossUL: st.glossHover === id ? "underline" : "none",
-                glossEnter: () => this.setState({ glossHover: id }),
-                glossLeave: () => { if (this.state.glossHover === id) this.setState({ glossHover: null }); },
-                rowBg: st.jumped === kk.c + "|" + w[0] ? "rgba(8,145,178,.16)" : ("transparent"),
-                rowClick: () => this.addWordsToChat([w[0]], true),
-                exTokens: (() => {
-                  const x = EXTRA[w[0]];
-                  if (!x) return [];
-                  return x.ex[0][0].filter(t => t[1]).map(t => ({ w: t[0], f: t[1], g: this.glossFor(t[0], t[1]) }));
-                })(),
-                rowId: kk.c + "|" + w[0],
-                showWord: !g.alt,
-                cbOpen: st.cbHover === id && !!st.cbRect && shared.length > 0,
-                cbPlainOpen: st.cbHover === id && !!st.cbRect && shared.length === 0,
-                doneJa: st.mastered[key] ? "完了" : "未完了",
-                doneEn: st.mastered[key] ? T("completed") : T("not_completed"),
-                adjacent: false,
-                cbEnter: (e) => {
-                  if (this._cbT) clearTimeout(this._cbT);
-                  const b = e.currentTarget.getBoundingClientRect();
-                  this.setState({ cbHover: id, cbRect: { left: b.left, right: b.right, top: b.top, bottom: b.bottom } });
-                },
-                cbLeave: () => {
-                  if (this._cbT) clearTimeout(this._cbT);
-                  this._cbT = setTimeout(() => {
-                    if (this.state.cbHover === id) this.setState({ cbHover: null, cbRect: null });
-                  }, 260);
-                },
-                cbKeep: () => { if (this._cbT) clearTimeout(this._cbT); },
-                word: w[0],
-                wOpen: st.wHover === id && !!st.wRect,
-                wEnter: (e) => {
-                  const t = e.currentTarget.firstElementChild;
-                  const b = (t || e.currentTarget).getBoundingClientRect();
-                  this.setState({ wHover: id, wRect: { left: b.left, right: b.right, top: b.top, bottom: b.bottom } });
-                },
-                wLeave: () => { if (this.state.wHover === id) this.setState({ wHover: null, wRect: null }); },
-                furiEnter: () => {
-                  this.setState({ romaHover: "f:" + id });
-                },
-                furiLeave: () => { if (this.state.romaHover === "f:" + id) this.setState({ romaHover: null, romaRect: null }); },
-                wGlosses: (() => {
-                  const out = [];
-                  w[0].split("").forEach(ch => {
-                    if (!/[\u4e00-\u9faf]/.test(ch)) return;
-                    if (out.length) out.push({ bar: true, target: false, plain: false, t: "" });
-                    const isTarget = ch === kk.c;
-                    out.push({ bar: false, target: isTarget, plain: !isTarget, t: this.glossFor(ch, "") });
-                  });
-                  return out;
-                })(),
-                sharedRaw: shared,
-                sharedList: [],
-                markSharedDone: shared.length > 0 && !!st.mastered[key],
-                markSharedOpen: shared.length > 0 && !st.mastered[key],
-                markPairDone: false,
-                markPairOpen: false,
-                markDone: shared.length === 0 && !!st.mastered[key],
-                markOpen: shared.length === 0 && !st.mastered[key],
-                exParts: (() => {
-                  const x = EXTRA[w[0]];
-                  if (!x) return [{ text: "—", plain: true, hit: false }];
-                  const sentence = x.ex[0][0].map(t => t[0]).join("");
-                  if (sentence.indexOf(w[0]) < 0) return [{ text: sentence, plain: true, hit: false }];
-                  const out = [];
-                  sentence.split(w[0]).forEach((piece, i) => {
-                    if (i > 0) out.push({ text: w[0], plain: false, hit: true });
-                    if (piece) out.push({ text: piece, plain: true, hit: false });
-                  });
-                  return out;
-                })(),
-                exEn: (EXTRA[w[0]] ? exTr(w[3], 0, EXTRA[w[0]].ex[0][1]) : ""),
-                exEnPre: this.exEnSplit(w)[0], exEnHit: this.exEnSplit(w)[1], exEnPost: this.exEnSplit(w)[2],
-                exOpen: st.exHover === id && !!st.exRect && !!EXTRA[w[0]],
-                z: (st.exHover === id || st.wHover === id || st.cbHover === id) ? 40 : 0,
-                exEnter: (e) => {
-                  e.stopPropagation();
-                  const t = e.currentTarget.firstElementChild;
-                  const b = (t || e.currentTarget).getBoundingClientRect();
-                  this.setState({ exHover: id, exRect: { left: b.left, bottom: b.bottom, top: b.top } });
-                },
-                exLeave: () => { if (this.state.exHover === id) this.setState({ exHover: null, exRect: null }); },
-                expanded: st.expand === id || st.expandClosing === id,
-                anim: st.expandClosing === id ? "ok-row-close 200ms ease forwards" : "ok-row-open 220ms cubic-bezier(.2,.7,.3,1)",
-                toggle: () => {
-                  if (this.state.expand === id) {
-                    if (this._collapseT) clearTimeout(this._collapseT);
-                    this.setState({ expand: null, expandClosing: id });
-                    this._collapseT = setTimeout(() => this.setState({ expandClosing: null }), 200);
-                    return;
-                  }
-                  this.setState({ expand: id, expandClosing: null });
-                },
-                master: (e) => { e.stopPropagation(); this.toggleMasteredWord(key); },
-                d: (() => {
-                  const x = EXTRA[w[0]];
-                  return {
-                    hasEx: !!x,
-                    runs: this.wordRuns(w[0], w[1]).map(run => {
-                      const chars = run.text.split("");
-                      let per = chars.map(() => "");
-                      if (!run.kana) {
-                        if (chars.length === 1) per = [run.furi || ""];
-                        else {
-                          const at = chars.indexOf(kk.c);
-                          const sp = at >= 0 ? this.furiSplit(run.furi || "", g.r) : null;
-                          if (sp && sp.hit && chars.length === 2) per = at === 0 ? [sp.hit, sp.post] : [sp.pre, sp.hit];
-                          else { per = chars.map(() => ""); per[0] = run.furi || ""; }
-                        }
-                      }
-                      return {
-                        chars: chars.map((ch, ci) => ({
-                          ch: ch,
-                          furi: per[ci] || "",
-                          gloss: run.kana ? "" : (KMEAN[ch] || "—"),
-                          color: ch === kk.c ? "var(--text-accent)" : "var(--text-body)"
-                        }))
-                      };
-                    }),
-                    s1: x ? segJa(x.ex[0][0], w[0]) : [],
-                    g1: x ? segEn(exTr(w[3], 0, x.ex[0][1]), w[2]) : [],
-                    s2: x ? segJa(x.ex[1][0], w[0]) : [],
-                    g2: x ? segEn(exTr(w[3], 1, x.ex[1][1]), w[2]) : [],
-                    alts: x && x.alt ? x.alt.filter(a => a[0].indexOf(kk.c) < 0).map(a => ({ w: a[0], f: a[1], g: a[2] })) : [],
-                    katas: x && x.kata ? x.kata.map(a => ({ w: a[0], f: a[1], g: a[2] })) : []
-                  };
-                })(),
-                enter: () => this.setState({ hover: id }),
-                leave: () => { if (this.state.hover === id) this.setState({ hover: null }); }
-              };
-            })
-          }; })
+          exEnPre: this.exEnSplit(w)[0], exEnHit: this.exEnSplit(w)[1], exEnPost: this.exEnSplit(w)[2]
         };
-          }).map(kg => {
-            const clusters = [];
-            kg.readings.forEach(band => {
-              if (band.alt && clusters.length) { clusters[clusters.length - 1].bands.push(band); return; }
-              clusters.push({ bands: [band], merged: false, pre: "", hit: "", post: "" });
-            });
-            clusters.forEach(cl => {
-              if (cl.bands.length < 2) return;
-              cl.bands.forEach(b => b.rows.forEach(rw => {
-                rw.adjacent = true;
-                // adjacency replaces the plain state and states both readings
-                if (rw.markDone) { rw.markDone = false; rw.markPairDone = true; }
-                if (rw.markOpen) { rw.markOpen = false; rw.markPairOpen = true; }
-                rw.doneEn = rw.markPairDone ? T("completed_both") : T("not_completed_both");
-              }));
-              const first = cl.bands[0].rows[0];
-              cl.merged = true;
-              cl.pre = first.pre; cl.hit = first.hit; cl.post = first.post;
-              cl.bands.forEach(b => b.rows.forEach(rw => { rw.showWord = false; }));
-            });
-            const rowH = st.listRowH ? st.listRowH + "px" : "4.25rem";
-            let anyOpen = false;
-            clusters.forEach(cl => cl.bands.forEach(b => {
-              let bandOpen = false;
-              b.rows.forEach(rw => {
-                const gone = false;
-                rw.rowH = gone ? "0px" : rowH;
-                rw.rowOpacity = gone ? 0 : 1;
-                rw.rowPointer = gone ? "none" : "auto";
-                if (!gone) { bandOpen = true; anyOpen = true; }
-              });
-              b.bandMax = bandOpen ? "200rem" : "0px";
-              b.bandOpacity = bandOpen ? 1 : 0;
-            }));
-            return Object.assign({}, kg, { clusters: clusters, blockMax: anyOpen ? "200rem" : "0px", blockOpacity: anyOpen ? 1 : 0 });
-          })
-        };
-      }).map(lb => {
-        // render order defines the word numbers the popover refers to
-        const index = {};
-        let n = 0;
-        lb.groups.forEach(kg => kg.clusters.forEach(cl => cl.bands.forEach(bd => bd.rows.forEach(rw => {
-          rw.n = ++n;
-          index[rw.rowId] = { n: n, word: rw.word };
-        }))));
-        lb.groups.forEach(kg => kg.clusters.forEach(cl => cl.bands.forEach(bd => bd.rows.forEach(rw => {
-          rw.sharedList = (rw.sharedRaw || []).map(s => {
-            const id = s.c + "|" + rw.word;
-            const hitAt = rw.word.indexOf(s.c);
-            const target = index[id];
-            const num = target ? target.n : null;
-            const glosses = [];
-            rw.word.split("").forEach((ch, ci) => {
-              if (!/[\u4e00-\u9faf]/.test(ch)) return;
-              if (glosses.length) glosses.push({ bar: true, target: false, plain: false, t: "" });
-              const isTarget = ch === s.c;
-              glosses.push({ bar: false, target: isTarget, plain: !isTarget, t: this.glossFor(ch, "") });
-            });
-            return {
-              glosses: glosses,
-              n: num === null ? "—" : num,
-              pre: hitAt < 0 ? rw.word : rw.word.slice(0, hitAt),
-              hit: hitAt < 0 ? "" : s.c,
-              post: hitAt < 0 ? "" : rw.word.slice(hitAt + s.c.length),
-              up: num !== null && num < rw.n,
-              down: num === null || num >= rw.n,
-              go: (e) => { e.stopPropagation(); this.setState({ cbHover: null, cbRect: null, scrollTo: id }); }
-            };
-          });
-        }))));
-        return lb;
       }),
       writeOn: st.write, tableOn: true,
       sent: st.sent || "", hasSent: !!st.sent, loading: st.loading,
@@ -4157,7 +3442,7 @@ class Component extends DCLogic {
       panelAnim: st.dlgSeamless ? "none" : (st.writeClosing ? "ok-panel-out 180ms ease forwards" : "ok-panel-in 220ms cubic-bezier(.2,.7,.3,1)"),
       toggleWrite: () => {
         if (this.state.write) { this.closeWrite(); return; }
-        this.openChat(st.batch, st.sel);
+        this.openChat();
       },
       closeWrite: () => this.closeWrite(),
       writeFromStudy: !!st.writeFromStudy,
