@@ -23,10 +23,15 @@ impractical and every diff reads as "1 line changed".
 
 ## What the app is
 
-One screen: a vocabulary list. Words come in sets of twenty -- a sitting --
-picked from the sidebar, with a study game, flashcards and writing practice
-scoped to the set on screen. Progress is the set of words you have marked
-mastered, and nothing else.
+One screen: a grid of word cards, five across and four down. Words come in
+sets of twenty -- a sitting -- picked from the sidebar, with a study game,
+flashcards and writing practice scoped to the set on screen. Progress is the
+set of words you have marked mastered, and nothing else.
+
+A card at rest is the word, its kana and its meaning. Hovering swaps the lower
+half for the example sentence and raises the tick that marks the word learned;
+the word itself never moves. A card with no example sentence keeps its meaning
+on hover rather than emptying.
 
 There is deliberately no per-kanji lesson. A kanji does not have a meaning so
 much as a distribution of them, so an English gloss under a glyph (`連 = take
