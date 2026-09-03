@@ -47,6 +47,35 @@ progress. Every word the app can currently reach has one; the rest of the
 corpus does not yet, and a word without a sentence degrades rather than
 breaks.
 
+## How a set of twenty is chosen
+
+A set should be twenty unrelated words, not twenty ways of saying the same
+thing -- 音, 足音 and 音色 in one sitting is one lesson pretending to be three.
+So a word carries two more fields:
+
+```
+"cat":  1-20   a semantic category from src/data/categories.json
+"freq": -2.24  blended corpus frequency, higher is commoner
+```
+
+The app deals the deck out like cards: one word from each category in turn,
+commonest first. A set therefore holds the widest spread of meaning the deck
+can give, and the words worth knowing first come first. Where a category runs
+out, the set is topped up from whichever category has most left.
+
+`freq` is a weighted mean of -log10(rank) across three corpora, renormalised
+over the ones that have the word (a word missing from one list is usually a
+tokenisation artefact -- 研究室 splits into 研究 + 室 -- not evidence of rarity):
+
+```
+50%  wordfreq ja   Wikipedia + OpenSubtitles + web + Twitter + Reddit
+20%  JPDB v2.2     anime, drama, manga, light novels, visual novels
+30%  BCCWJ         books, newspapers, magazines, government, web
+```
+
+Both fields are optional and only meaningful together; a deck that is not
+fully tagged keeps the order it had.
+
 There is deliberately no per-kanji lesson. A kanji does not have a meaning so
 much as a distribution of them, so an English gloss under a glyph (`連 = take
 along, connect`) is an editorial summary rather than a fact a learner can be

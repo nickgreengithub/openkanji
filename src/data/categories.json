@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "kind": "noun",
+    "name": "Food & drink"
+  },
+  {
+    "id": 2,
+    "kind": "noun",
+    "name": "Body & health"
+  },
+  {
+    "id": 3,
+    "kind": "noun",
+    "name": "Home, objects & clothing"
+  },
+  {
+    "id": 4,
+    "kind": "noun",
+    "name": "Places, buildings & directions"
+  },
+  {
+    "id": 5,
+    "kind": "noun",
+    "name": "Nature, weather & living things"
+  },
+  {
+    "id": 6,
+    "kind": "noun",
+    "name": "People, family & roles"
+  },
+  {
+    "id": 7,
+    "kind": "noun",
+    "name": "Work, school, money & shopping"
+  },
+  {
+    "id": 8,
+    "kind": "noun",
+    "name": "Time, calendar & quantity"
+  },
+  {
+    "id": 9,
+    "kind": "noun",
+    "name": "Society, events & situations"
+  },
+  {
+    "id": 10,
+    "kind": "noun",
+    "name": "Ideas, information & communication"
+  },
+  {
+    "id": 11,
+    "kind": "verb",
+    "name": "Movement"
+  },
+  {
+    "id": 12,
+    "kind": "verb",
+    "name": "Body & domestic"
+  },
+  {
+    "id": 13,
+    "kind": "verb",
+    "name": "Handling & making"
+  },
+  {
+    "id": 14,
+    "kind": "verb",
+    "name": "Speech, thought & social"
+  },
+  {
+    "id": 15,
+    "kind": "verb",
+    "name": "Change & occurrence"
+  },
+  {
+    "id": 16,
+    "kind": "adjective",
+    "name": "Physical"
+  },
+  {
+    "id": 17,
+    "kind": "adjective",
+    "name": "Evaluative & character"
+  },
+  {
+    "id": 18,
+    "kind": "feeling",
+    "name": "Positive states"
+  },
+  {
+    "id": 19,
+    "kind": "feeling",
+    "name": "Negative states"
+  },
+  {
+    "id": 20,
+    "kind": "other",
+    "name": "Adverbs & degree"
+  }
+]

@@ -15,7 +15,9 @@
           "es": "La vida en Tokio es divertida."
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -2.538
   },
   "w0002": {
     "id": "w0002",
@@ -177,7 +179,9 @@
           "es": "La apertura es a las diez."
         }
       }
-    ]
+    ],
+    "cat": 7,
+    "freq": -3.957
   },
   "w0011": {
     "id": "w0011",
@@ -2337,7 +2341,9 @@
           "es": "Ir a la escuela en bicicleta."
         }
       }
-    ]
+    ],
+    "cat": 3,
+    "freq": -3.352
   },
   "w0150": {
     "id": "w0150",
@@ -2643,7 +2649,9 @@
           "es": "La salida es a las ocho."
         }
       }
-    ]
+    ],
+    "cat": 4,
+    "freq": -3.405
   },
   "w0174": {
     "id": "w0174",
@@ -3200,7 +3208,9 @@
           "es": "música"
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -2.952
   },
   "w0227": {
     "id": "w0227",
@@ -3253,7 +3263,9 @@
           "es": "fácil"
         }
       }
-    ]
+    ],
+    "cat": 18,
+    "freq": -3.093
   },
   "w0228": {
     "id": "w0228",
@@ -3306,7 +3318,9 @@
           "es": "relajarse"
         }
       }
-    ]
+    ],
+    "cat": 18,
+    "freq": -3.812
   },
   "w0229": {
     "id": "w0229",
@@ -3359,7 +3373,9 @@
           "es": "feliz"
         }
       }
-    ]
+    ],
+    "cat": 18,
+    "freq": -2.763
   },
   "w0230": {
     "id": "w0230",
@@ -3412,7 +3428,9 @@
           "es": "disfrutar"
         }
       }
-    ]
+    ],
+    "cat": 18,
+    "freq": -3.204
   },
   "w0231": {
     "id": "w0231",
@@ -3430,7 +3448,9 @@
           "es": "La explicación del profesor es fácil de seguir."
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -2.624
   },
   "w0232": {
     "id": "w0232",
@@ -3448,7 +3468,9 @@
           "es": "El teléfono es un gran invento."
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -3.7
   },
   "w0233": {
     "id": "w0233",
@@ -3466,7 +3488,9 @@
           "es": "Esta habitación es luminosa."
         }
       }
-    ]
+    ],
+    "cat": 16,
+    "freq": -3.324
   },
   "w0234": {
     "id": "w0234",
@@ -3484,7 +3508,9 @@
           "es": "Se ve una luz a lo lejos."
         }
       }
-    ]
+    ],
+    "cat": 3,
+    "freq": -3.835
   },
   "w0235": {
     "id": "w0235",
@@ -3502,7 +3528,9 @@
           "es": "Hablamos hasta que amaneció."
         }
       }
-    ]
+    ],
+    "cat": 15,
+    "freq": -4.108
   },
   "w0236": {
     "id": "w0236",
@@ -3520,7 +3548,9 @@
           "es": "Vendré otra vez mañana."
         }
       }
-    ]
+    ],
+    "cat": 8,
+    "freq": -3.108
   },
   "w0237": {
     "id": "w0237",
@@ -3538,7 +3568,9 @@
           "es": "Mañana por la mañana es temprano."
         }
       }
-    ]
+    ],
+    "cat": 8,
+    "freq": -2.783
   },
   "w0238": {
     "id": "w0238",
@@ -3583,7 +3615,9 @@
           "es": "acento"
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -3.773
   },
   "w0239": {
     "id": "w0239",
@@ -3601,7 +3635,9 @@
           "es": "Se oyó un ruido fuerte fuera."
         }
       }
-    ]
+    ],
+    "cat": 5,
+    "freq": -2.565
   },
   "w0240": {
     "id": "w0240",
@@ -3619,7 +3655,9 @@
           "es": "Se oyen pasos en el pasillo."
         }
       }
-    ]
+    ],
+    "cat": 5,
+    "freq": -3.899
   },
   "w0241": {
     "id": "w0241",
@@ -3637,7 +3675,9 @@
           "es": "Este piano tiene un timbre suave."
         }
       }
-    ]
+    ],
+    "cat": 5,
+    "freq": -4.056
   },
   "w0242": {
     "id": "w0242",
@@ -3655,7 +3695,9 @@
           "es": "Alcancé el primer tren."
         }
       }
-    ]
+    ],
+    "cat": 4,
+    "freq": -4.276
   },
   "w0243": {
     "id": "w0243",
@@ -3673,7 +3715,9 @@
           "es": "Mañana tengo una presentación de mi investigación."
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -2.92
   },
   "w0244": {
     "id": "w0244",
@@ -3691,7 +3735,9 @@
           "es": "Responde mirando la tabla, por favor."
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -3.137
   },
   "w0245": {
     "id": "w0245",
@@ -3709,7 +3755,9 @@
           "es": "Escribir el nombre en el anverso del papel."
         }
       }
-    ]
+    ],
+    "cat": 4,
+    "freq": -3.457
   },
   "w0246": {
     "id": "w0246",
@@ -3727,7 +3775,9 @@
           "es": "Expresar los sentimientos con palabras."
         }
       }
-    ]
+    ],
+    "cat": 14,
+    "freq": -3.699
   },
   "w0247": {
     "id": "w0247",
@@ -3745,7 +3795,9 @@
           "es": "Esta sala se usa para reuniones."
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -2.638
   },
   "w0248": {
     "id": "w0248",
@@ -3763,7 +3815,9 @@
           "es": "Conseguí el visado en la embajada."
         }
       }
-    ]
+    ],
+    "cat": 4,
+    "freq": -4.002
   },
   "w0249": {
     "id": "w0249",
@@ -3781,7 +3835,9 @@
           "es": "Usar un diccionario."
         }
       }
-    ]
+    ],
+    "cat": 13,
+    "freq": -2.42
   },
   "w0250": {
     "id": "w0250",
@@ -3799,7 +3855,9 @@
           "es": "Aprendí a usar la máquina."
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -3.414
   },
   "w0251": {
     "id": "w0251",
@@ -3817,7 +3875,9 @@
           "es": "Tengo un recado por la tarde."
         }
       }
-    ]
+    ],
+    "cat": 7,
+    "freq": -3.701
   },
   "w0252": {
     "id": "w0252",
@@ -3835,7 +3895,9 @@
           "es": "Preparo el viaje."
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -2.96
   },
   "w0253": {
     "id": "w0253",
@@ -3853,7 +3915,9 @@
           "es": "Emplear una palabra antigua."
         }
       }
-    ]
+    ],
+    "cat": 13,
+    "freq": -3.452
   },
   "w0254": {
     "id": "w0254",
@@ -3871,7 +3935,9 @@
           "es": "Quiero oír tu opinión."
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -2.981
   },
   "w0255": {
     "id": "w0255",
@@ -3915,7 +3981,9 @@
         }
       }
     ],
-    "kata": []
+    "kata": [],
+    "cat": 10,
+    "freq": -2.358
   },
   "w0256": {
     "id": "w0256",
@@ -3933,7 +4001,9 @@
           "es": "Ten cuidado con los coches."
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -2.851
   },
   "w0257": {
     "id": "w0257",
@@ -3951,7 +4021,9 @@
           "es": "Mi afición es la fotografía."
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -3.205
   },
   "w0258": {
     "id": "w0258",
@@ -3969,7 +4041,9 @@
           "es": "Esta sopa tiene poco sabor."
         }
       }
-    ]
+    ],
+    "cat": 1,
+    "freq": -2.953
   },
   "w0259": {
     "id": "w0259",
@@ -3987,7 +4061,9 @@
           "es": "Probar mientras se cocina."
         }
       }
-    ]
+    ],
+    "cat": 1,
+    "freq": -4.285
   },
   "w0260": {
     "id": "w0260",
@@ -4005,7 +4081,9 @@
           "es": "Quisiera pedir, por favor."
         }
       }
-    ]
+    ],
+    "cat": 7,
+    "freq": -3.375
   },
   "w0261": {
     "id": "w0261",
@@ -4023,7 +4101,9 @@
           "es": "Me pusieron una inyección en el brazo."
         }
       }
-    ]
+    ],
+    "cat": 2,
+    "freq": -3.814
   },
   "w0262": {
     "id": "w0262",
@@ -4041,7 +4121,9 @@
           "es": "Servir agua en un vaso."
         }
       }
-    ]
+    ],
+    "cat": 12,
+    "freq": -3.722
   },
   "w0263": {
     "id": "w0263",
@@ -4059,7 +4141,9 @@
           "es": "Mi marido ha salido ahora."
         }
       }
-    ]
+    ],
+    "cat": 6,
+    "freq": -3.344
   },
   "w0264": {
     "id": "w0264",
@@ -4077,7 +4161,9 @@
           "es": "¿Cuál es el sujeto de esta oración?"
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -4.279
   },
   "w0265": {
     "id": "w0265",
@@ -4095,7 +4181,9 @@
           "es": "Trabajo principalmente de noche."
         }
       }
-    ]
+    ],
+    "cat": 20,
+    "freq": -3.317
   },
   "w0266": {
     "id": "w0266",
@@ -4113,7 +4201,9 @@
           "es": "Buscar al dueño de la bicicleta."
         }
       }
-    ]
+    ],
+    "cat": 6,
+    "freq": -3.626
   },
   "w0267": {
     "id": "w0267",
@@ -4131,7 +4221,9 @@
           "es": "Me peso todas las mañanas."
         }
       }
-    ]
+    ],
+    "cat": 2,
+    "freq": -3.422
   },
   "w0268": {
     "id": "w0268",
@@ -4149,7 +4241,9 @@
           "es": "Este es un problema importante."
         }
       }
-    ]
+    ],
+    "cat": 17,
+    "freq": -2.734
   },
   "w0269": {
     "id": "w0269",
@@ -4167,7 +4261,9 @@
           "es": "Esta bolsa es pesada."
         }
       }
-    ]
+    ],
+    "cat": 16,
+    "freq": -3.189
   },
   "w0270": {
     "id": "w0270",
@@ -4185,7 +4281,9 @@
           "es": "Comprobar el peso del equipaje."
         }
       }
-    ]
+    ],
+    "cat": 8,
+    "freq": -4.251
   },
   "w0271": {
     "id": "w0271",
@@ -4203,7 +4301,9 @@
           "es": "Apilar los platos."
         }
       }
-    ]
+    ],
+    "cat": 13,
+    "freq": -3.569
   },
   "w0272": {
     "id": "w0272",
@@ -4221,7 +4321,9 @@
           "es": "Escuchar música del siglo veinte."
         }
       }
-    ]
+    ],
+    "cat": 8,
+    "freq": -3.262
   },
   "w0273": {
     "id": "w0273",
@@ -4274,7 +4376,9 @@
           "es": "mundo"
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -2.239
   },
   "w0274": {
     "id": "w0274",
@@ -4292,7 +4396,9 @@
           "es": "Cuido del perro."
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -3.582
   },
   "w0275": {
     "id": "w0275",
@@ -4310,7 +4416,9 @@
           "es": "El mundo ha cambiado."
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -3.292
   },
   "w0276": {
     "id": "w0276",
@@ -4328,7 +4436,9 @@
           "es": "Tengo amigos por todo el mundo."
         }
       }
-    ]
+    ],
+    "cat": 4,
+    "freq": -3.689
   },
   "w0277": {
     "id": "w0277",
@@ -4346,7 +4456,9 @@
           "es": "La competencia en este sector es feroz."
         }
       }
-    ]
+    ],
+    "cat": 7,
+    "freq": -3.452
   },
   "w0278": {
     "id": "w0278",
@@ -4364,7 +4476,9 @@
           "es": "Esperar el comienzo del partido."
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -2.917
   },
   "w0279": {
     "id": "w0279",
@@ -4382,7 +4496,9 @@
           "es": "La ventana se abre con el viento."
         }
       }
-    ]
+    ],
+    "cat": 15,
+    "freq": -3.867
   },
   "w0280": {
     "id": "w0280",
@@ -4400,7 +4516,9 @@
           "es": "Abrir la ventana."
         }
       }
-    ]
+    ],
+    "cat": 13,
+    "freq": -3.27
   },
   "w0281": {
     "id": "w0281",
@@ -4418,7 +4536,9 @@
           "es": "La tienda abre a las diez."
         }
       }
-    ]
+    ],
+    "cat": 13,
+    "freq": -2.986
   },
   "w0282": {
     "id": "w0282",
@@ -4436,7 +4556,9 @@
           "es": "La clase empieza."
         }
       }
-    ]
+    ],
+    "cat": 15,
+    "freq": -2.927
   },
   "w0283": {
     "id": "w0283",
@@ -4454,7 +4576,9 @@
           "es": "Empezar un trabajo nuevo."
         }
       }
-    ]
+    ],
+    "cat": 15,
+    "freq": -2.798
   },
   "w0284": {
     "id": "w0284",
@@ -4472,7 +4596,9 @@
           "es": "Conducir de noche cansa."
         }
       }
-    ]
+    ],
+    "cat": 11,
+    "freq": -3.084
   },
   "w0285": {
     "id": "w0285",
@@ -4490,7 +4616,9 @@
           "es": "El año pasado cambié de colegio."
         }
       }
-    ]
+    ],
+    "cat": 7,
+    "freq": -4.156
   },
   "w0286": {
     "id": "w0286",
@@ -4508,7 +4636,9 @@
           "es": "Caerse en un camino nevado."
         }
       }
-    ]
+    ],
+    "cat": 11,
+    "freq": -4.02
   },
   "w0287": {
     "id": "w0287",
@@ -4561,7 +4691,9 @@
           "es": "entrenamiento"
         }
       }
-    ]
+    ],
+    "cat": 2,
+    "freq": -2.962
   },
   "w0288": {
     "id": "w0288",
@@ -4579,7 +4711,9 @@
           "es": "Te deseo buena suerte."
         }
       }
-    ]
+    ],
+    "cat": 18,
+    "freq": -3.804
   },
   "w0289": {
     "id": "w0289",
@@ -4597,7 +4731,9 @@
           "es": "Llevar la mesa a la habitación de al lado."
         }
       }
-    ]
+    ],
+    "cat": 11,
+    "freq": -3.376
   },
   "w0290": {
     "id": "w0290",
@@ -4615,7 +4751,9 @@
           "es": "Visité una fábrica de automóviles."
         }
       }
-    ]
+    ],
+    "cat": 3,
+    "freq": -3.386
   },
   "w0291": {
     "id": "w0291",
@@ -4660,7 +4798,9 @@
           "es": "mascota"
         }
       }
-    ]
+    ],
+    "cat": 5,
+    "freq": -3.058
   },
   "w0292": {
     "id": "w0292",
@@ -4678,7 +4818,9 @@
           "es": "Las agujas del reloj se mueven."
         }
       }
-    ]
+    ],
+    "cat": 11,
+    "freq": -2.979
   },
   "w0293": {
     "id": "w0293",
@@ -4696,7 +4838,9 @@
           "es": "Mover una caja pesada."
         }
       }
-    ]
+    ],
+    "cat": 13,
+    "freq": -3.349
   },
   "w0294": {
     "id": "w0294",
@@ -4714,7 +4858,9 @@
           "es": "Hice turismo en Kioto."
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -3.973
   },
   "w0295": {
     "id": "w0295",
@@ -4775,7 +4921,9 @@
           "es": "maleta"
         }
       }
-    ]
+    ],
+    "cat": 3,
+    "freq": -3.365
   },
   "w0296": {
     "id": "w0296",
@@ -4793,7 +4941,9 @@
           "es": "Aquel edificio es antiguo."
         }
       }
-    ]
+    ],
+    "cat": 4,
+    "freq": -3.098
   },
   "w0297": {
     "id": "w0297",
@@ -4811,7 +4961,9 @@
           "es": "Este artículo es caro."
         }
       }
-    ]
+    ],
+    "cat": 7,
+    "freq": -3.993
   },
   "w0298": {
     "id": "w0298",
@@ -4829,7 +4981,9 @@
           "es": "Me dejé algo olvidado en el tren."
         }
       }
-    ]
+    ],
+    "cat": 3,
+    "freq": -4.138
   },
   "w0299": {
     "id": "w0299",
@@ -4847,7 +5001,9 @@
           "es": "Participar en las actividades del club."
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -2.693
   },
   "w0300": {
     "id": "w0300",
@@ -4865,7 +5021,9 @@
           "es": "Aplicar las palabras aprendidas."
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -3.424
   },
   "w0301": {
     "id": "w0301",
@@ -4883,7 +5041,9 @@
           "es": "Practico kanji todos los días."
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -3.578
   },
   "w0302": {
     "id": "w0302",
@@ -4901,7 +5061,9 @@
           "es": "Este texto tiene muchas palabras sinojaponesas."
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -4.572
   },
   "w0303": {
     "id": "w0303",
@@ -4919,7 +5081,9 @@
           "es": "Escribir las cifras grandes."
         }
       }
-    ]
+    ],
+    "cat": 8,
+    "freq": -3.325
   },
   "w0304": {
     "id": "w0304",
@@ -4937,7 +5101,9 @@
           "es": "Tienes buena letra."
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -3.231
   },
   "w0305": {
     "id": "w0305",
@@ -4955,7 +5121,9 @@
           "es": "Aprendí caligrafía en la escuela."
         }
       }
-    ]
+    ],
+    "cat": 7,
+    "freq": -4.479
   },
   "w0306": {
     "id": "w0306",
@@ -4973,7 +5141,9 @@
           "es": "Practico todos los días."
         }
       }
-    ]
+    ],
+    "cat": 7,
+    "freq": -3.121
   },
   "w0307": {
     "id": "w0307",
@@ -4991,7 +5161,9 @@
           "es": "Aprender piano."
         }
       }
-    ]
+    ],
+    "cat": 14,
+    "freq": -3.912
   },
   "w0308": {
     "id": "w0308",
@@ -5009,7 +5181,9 @@
           "es": "Investigo en la universidad."
         }
       }
-    ]
+    ],
+    "cat": 7,
+    "freq": -2.69
   },
   "w0309": {
     "id": "w0309",
@@ -5027,7 +5201,9 @@
           "es": "Te espero en el laboratorio."
         }
       }
-    ]
+    ],
+    "cat": 4,
+    "freq": -3.927
   },
   "w0310": {
     "id": "w0310",
@@ -5045,7 +5221,9 @@
           "es": "Se reunieron investigadores jóvenes."
         }
       }
-    ]
+    ],
+    "cat": 6,
+    "freq": -3.641
   },
   "w0311": {
     "id": "w0311",
@@ -5063,7 +5241,9 @@
           "es": "El aula está en el tercer piso."
         }
       }
-    ]
+    ],
+    "cat": 4,
+    "freq": -3.292
   },
   "w0312": {
     "id": "w0312",
@@ -5081,7 +5261,9 @@
           "es": "Olvidé el libro de texto."
         }
       }
-    ]
+    ],
+    "cat": 3,
+    "freq": -3.633
   },
   "w0313": {
     "id": "w0313",
@@ -5099,7 +5281,9 @@
           "es": "Hablar de religión es difícil."
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -3.347
   },
   "w0314": {
     "id": "w0314",
@@ -5117,7 +5301,9 @@
           "es": "Enseñar japonés."
         }
       }
-    ]
+    ],
+    "cat": 14,
+    "freq": -2.961
   },
   "w0315": {
     "id": "w0315",
@@ -5135,7 +5321,9 @@
           "es": "Dentro hace calor."
         }
       }
-    ]
+    ],
+    "cat": 4,
+    "freq": -3.695
   },
   "w0316": {
     "id": "w0316",
@@ -5153,7 +5341,9 @@
           "es": "Descansé en una habitación de estilo japonés."
         }
       }
-    ]
+    ],
+    "cat": 4,
+    "freq": -4.246
   },
   "w0317": {
     "id": "w0317",
@@ -5171,7 +5361,9 @@
           "es": "¿Hay alguna pregunta?"
         }
       }
-    ]
+    ],
+    "cat": 10,
+    "freq": -2.756
   },
   "w0318": {
     "id": "w0318",
@@ -5189,7 +5381,9 @@
           "es": "Esta calidad es excelente."
         }
       }
-    ]
+    ],
+    "cat": 17,
+    "freq": -3.741
   },
   "w0319": {
     "id": "w0319",
@@ -5207,7 +5401,9 @@
           "es": "Resolví el problema."
         }
       }
-    ]
+    ],
+    "cat": 9,
+    "freq": -2.241
   },
   "w0320": {
     "id": "w0320",
@@ -5225,7 +5421,9 @@
           "es": "Preguntar el motivo."
         }
       }
-    ]
+    ],
+    "cat": 14,
+    "freq": -3.506
   },
   "w0321": {
     "id": "w0321",
@@ -5243,7 +5441,9 @@
           "es": "Entregad los deberes, por favor."
         }
       }
-    ]
+    ],
+    "cat": 7,
+    "freq": -3.803
   },
   "w0322": {
     "id": "w0322",

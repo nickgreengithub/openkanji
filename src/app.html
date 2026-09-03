@@ -947,9 +947,41 @@ const deckWords = (deck) => {
       if (out.length >= WORDMAX) break;
     }
   }
-  _WORDS[key] = out;
+  _WORDS[key] = spreadByCategory(out);
+  return _WORDS[key];
+};
+// A set of twenty should be twenty unrelated words, not twenty ways of saying
+// the same thing: studying 音 next to 足音 next to 音色 is one lesson pretending
+// to be three. Every word carries a semantic category and a blended corpus
+// frequency, so deal the words out like cards -- one from each category in
+// turn, commonest first -- and each set gets the widest spread the deck can
+// give while still front-loading the words worth knowing first.
+//
+// Applied only when the whole set is tagged; a partly tagged deck keeps the
+// order it had rather than sorting the tagged words to the front.
+const CAT = 4, FREQ = 5;
+const spreadByCategory = (list) => {
+  if (!list.length || list.some((e) => e.w[CAT] === undefined)) return list;
+  const bins = {};
+  for (const e of list.slice().sort((a, b) => b.w[FREQ] - a.w[FREQ])) {
+    (bins[e.w[CAT]] = bins[e.w[CAT]] || []).push(e);
+  }
+  const keys = Object.keys(bins).sort((a, b) => a - b);
+  const out = [];
+  while (out.length < list.length) {
+    const before = out.length;
+    // one from each category, in category order: the diverse pass
+    for (const k of keys) if (bins[k].length && out.length - before < WORDN) out.push(bins[k].shift());
+    // a short set is topped up from whichever category has most left, which
+    // keeps the repeat as far from the rest of its category as it can be
+    while (out.length - before < WORDN && out.length < list.length) {
+      const k = keys.reduce((a, b) => (bins[b].length > bins[a].length ? b : a));
+      out.push(bins[k].shift());
+    }
+  }
   return out;
 };
+
 const wordBatchCount = (deck) => Math.max(1, Math.ceil(deckWords(deck).length / WORDN));
 const wordsOf = (b, deck) => deckWords(deck).slice(b * WORDN, b * WORDN + WORDN);
 

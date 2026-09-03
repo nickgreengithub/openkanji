@@ -43,6 +43,7 @@ function readJson(rel) {
 
 function loadData() {
   const decks = readJson("data/decks.json");
+  const catIds = new Set(readJson("data/categories.json").map((c) => c.id));
 
   // Rail order, and what each tab needs to describe itself. Filled in as the
   // decks are read so it always matches what actually shipped. A deck is whole
@@ -72,6 +73,14 @@ function loadData() {
     if (!w || w.id !== id) throw new Error(at + ": `id` must match its key");
     if (!w.w || !w.reading) throw new Error(at + ": needs `w` and `reading`");
     track(w.gloss, at, "gloss");
+    // Optional, and only meaningful in pairs: `cat` is a semantic category from
+    // categories.json, `freq` a blended corpus frequency (higher = commoner).
+    // The app orders a set of words by them, so half of one is no use.
+    if ((w.cat === undefined) !== (w.freq === undefined)) throw new Error(at + ": `cat` and `freq` go together");
+    if (w.cat !== undefined) {
+      if (!catIds.has(w.cat)) throw new Error(at + ": unknown category " + w.cat);
+      if (typeof w.freq !== "number") throw new Error(at + ": `freq` must be a number");
+    }
     (w.sentences || []).forEach((s, i) => {
       if (!s.ja) throw new Error(at + " sentence " + i + ": missing `ja`");
       track(s.t, at + " sentence " + i, "t");
@@ -170,7 +179,10 @@ function flatten(kanji, words, lang) {
       r: g.r,
       w: g.w.map((id) => {
         const w = words[id];
-        return [w.w, w.reading, pick(w.gloss, lang), id];
+        // [surface, reading, gloss, id, category, frequency]
+        return w.cat === undefined
+          ? [w.w, w.reading, pick(w.gloss, lang), id]
+          : [w.w, w.reading, pick(w.gloss, lang), id, w.cat, w.freq];
       }),
     })),
   }));
