@@ -23,17 +23,20 @@ impractical and every diff reads as "1 line changed".
 
 ## What the app is
 
-One screen: a grid of word cards, five across and four down, and one sidebar.
-Words come in sets of twenty -- a sitting -- picked from the sidebar, with a
-study game, flashcards and writing practice scoped to the set on screen.
-Progress is the set of words you have marked mastered, and nothing else.
+One screen: a grid of word cards, five across and four down, under one bar.
+Words come in sets of twenty -- a sitting -- picked from the bar, with a study
+game, flashcards and writing practice scoped to the set on screen. Progress is
+the set of words you have marked mastered, and nothing else.
 
-The chrome is an icon-width rail and an icon-height footer, so almost all of
-the window is cards. The rail holds the mark, the reading toggle, load, save
-and a menu (language and account). The footer holds the sets as tabs directly
-under the grid they select -- each cell fills with accent as its twenty words
-are learned -- then any sign-in or sync message, then total progress and the
-study control for the set in hand.
+The chrome is a single bar across the top, so almost all of the window is
+cards -- no rail, no footer, nothing else competing for an edge of the screen.
+Left to right: the mark; the sets as tabs, each filling with accent as its
+twenty words are learned; any sign-in or sync message; total progress as a
+ring; the study control for the set in hand; then the reading toggle, the
+current interface language as its own two-letter icon with a popover to
+change it, the account (its own icon, its own popover), load and save.
+Language and account used to share one menu; they are two separate,
+single-purpose icons now, because they are two separate decisions.
 
 A card at rest is the word with furigana over it and its meaning underneath.
 Hovering raises the word, swaps the meaning for the example sentence and its
