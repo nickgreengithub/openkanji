@@ -1,4 +1,3 @@
-import Anthropic from "@anthropic-ai/sdk";
 // OpenKanji progress sync -- Cloudflare Worker.
 //
 // Email-only sign-in by magic link, and one row of progress per learner:
@@ -33,10 +32,18 @@ const now = () => Math.floor(Date.now() / 1000);
 // Inside Claude Design the page had window.claude; on the site it has this.
 // The key is a Worker secret the page never sees. Signed in only, and metered
 // per account per hour, because every call costs money and the URL is public.
+//
+// DeepSeek speaks the OpenAI chat-completions shape: one POST, one JSON body.
+// That is little enough to write out, so the Worker carries no dependency and
+// there is nothing to install or bundle.
 const AI_MAX_SYSTEM = 12000;
 const AI_MAX_MSG = 4000;
 const AI_MAX_MSGS = 8;
-const AI_MODELS = ["claude-haiku-4-5", "claude-sonnet-5", "claude-opus-5"];
+const AI_URL = "https://api.deepseek.com/chat/completions";
+const AI_MODEL_DEFAULT = "deepseek-v4-flash";
+// AI_MODEL is an operator setting in wrangler.jsonc, not user input, so any
+// well-formed name passes: a different model is a config change, not a deploy.
+const AI_MODEL_OK = /^[a-zA-Z0-9._:-]{1,64}$/;
 // The meter's table is created on first use, once per database binding, so
 // there is no migration to run.
 const aiUsageReady = new WeakSet();
@@ -52,11 +59,11 @@ async function aiAllowed(db, userId, perHour) {
   return !row || row.n <= perHour;
 }
 async function handleAsk(request, env, user) {
-  if (!env.ANTHROPIC_API_KEY) return json({ error: "not_configured" }, 503);
+  if (!env.DEEPSEEK_API_KEY) return json({ error: "not_configured" }, 503);
   const body = await readJson(request);
   if (!body || typeof body.system !== "string" || !Array.isArray(body.messages) || !body.messages.length) return json({ error: "bad_body" }, 400);
   if (body.system.length > AI_MAX_SYSTEM || body.messages.length > AI_MAX_MSGS) return json({ error: "too_long" }, 413);
-  const messages = [];
+  const messages = [{ role: "system", content: body.system }];
   for (const m of body.messages) {
     if (!m || (m.role !== "user" && m.role !== "assistant") || typeof m.content !== "string") return json({ error: "bad_body" }, 400);
     if (m.content.length > AI_MAX_MSG) return json({ error: "too_long" }, 413);
@@ -64,18 +71,29 @@ async function handleAsk(request, env, user) {
   }
   const perHour = Number(env.AI_PER_HOUR) > 0 ? Number(env.AI_PER_HOUR) : 150;
   if (!(await aiAllowed(env.DB, user.id, perHour))) return json({ error: "rate_limited" }, 429);
-  const model = AI_MODELS.includes(env.AI_MODEL) ? env.AI_MODEL : "claude-haiku-4-5";
-  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, fetch: env.AI_FETCH, maxRetries: 1 });
+  const model = AI_MODEL_OK.test(env.AI_MODEL || "") ? env.AI_MODEL : AI_MODEL_DEFAULT;
+  const send = env.AI_FETCH || fetch;
+  let res;
   try {
-    const res = await client.messages.create({ model, max_tokens: 4096, system: body.system, messages });
-    if (res.stop_reason === "refusal") return json({ error: "refused" }, 422);
-    const text = res.content.filter((b) => b.type === "text").map((b) => b.text).join("");
-    return json({ text, model: res.model });
-  } catch (e) {
-    if (e instanceof Anthropic.AuthenticationError) return json({ error: "not_configured" }, 503);
-    if (e instanceof Anthropic.RateLimitError) return json({ error: "upstream_busy" }, 503);
+    res = await send(AI_URL, {
+      method: "POST",
+      headers: { "content-type": "application/json", authorization: `Bearer ${env.DEEPSEEK_API_KEY}` },
+      body: JSON.stringify({ model, messages, max_tokens: 4096, stream: false }),
+    });
+  } catch {
     return json({ error: "upstream_failed" }, 502);
   }
+  // 401/403 is a bad key and 402 an empty balance: both are ours to fix, and
+  // both leave the learner with the same dead feature, so they read alike.
+  if (res.status === 401 || res.status === 402 || res.status === 403) return json({ error: "not_configured" }, 503);
+  if (res.status === 429 || res.status >= 500) return json({ error: "upstream_busy" }, 503);
+  if (!res.ok) return json({ error: "upstream_failed" }, 502);
+  const out = await res.json().catch(() => null);
+  const choice = out && Array.isArray(out.choices) ? out.choices[0] : null;
+  if (choice && choice.finish_reason === "content_filter") return json({ error: "refused" }, 422);
+  const text = choice && choice.message && choice.message.content;
+  if (typeof text !== "string") return json({ error: "upstream_failed" }, 502);
+  return json({ text, model: (out && out.model) || model });
 }
 const json = (data, status = 200, headers = {}) =>
   new Response(JSON.stringify(data), {

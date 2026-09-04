@@ -44,8 +44,9 @@ function makeEnv() {
     MAIL_FROM: "login@openkanji.test",
     SITE_URL: SITE,
     // The AI route: a key that is never sent anywhere, and a fetch that plays
-    // the Messages API so the SDK is exercised without the network.
-    ANTHROPIC_API_KEY: "sk-ant-test",
+    // DeepSeek's chat-completions endpoint, so the call is exercised without
+    // the network.
+    DEEPSEEK_API_KEY: "sk-deepseek-test",
     AI_PER_HOUR: "3",
     _ai: [],
   };
@@ -54,10 +55,10 @@ const aiStub = (env, text = '{"c":["味"]}') => {
   env.AI_FETCH = async (url, init) => {
     env._ai.push({ url: String(url), body: JSON.parse(init.body) });
     return new Response(JSON.stringify({
-      id: "msg_test", type: "message", role: "assistant", model: "claude-haiku-4-5",
-      content: [{ type: "text", text }], stop_reason: "end_turn", stop_sequence: null,
-      usage: { input_tokens: 10, output_tokens: 5 },
-    }), { status: 200, headers: { "content-type": "application/json", "request-id": "req_test" } });
+      id: "chat_test", object: "chat.completion", model: "deepseek-v4-flash",
+      choices: [{ index: 0, message: { role: "assistant", content: text }, finish_reason: "stop" }],
+      usage: { prompt_tokens: 10, completion_tokens: 5, total_tokens: 15 },
+    }), { status: 200, headers: { "content-type": "application/json" } });
   };
 };
 
@@ -341,7 +342,7 @@ await test("ask needs a signed-in caller", async () => {
   assert.equal(env._ai.length, 0, "nothing went upstream");
 });
 
-await test("ask proxies to Claude through the SDK and returns the text", async () => {
+await test("ask proxies to DeepSeek and returns the text", async () => {
   const env = makeEnv(); aiStub(env);
   const cookie = await signedIn(env);
   const r = await call(env, "POST", "/api/ask", { cookie, body: { system: "You are an IME.", messages: [{ role: "user", content: "Reading: あじ" }] } });
@@ -349,10 +350,12 @@ await test("ask proxies to Claude through the SDK and returns the text", async (
   const j = await r.json();
   assert.equal(j.text, '{"c":["味"]}');
   assert.equal(env._ai.length, 1);
-  assert.match(env._ai[0].url, /\/v1\/messages$/);
-  assert.equal(env._ai[0].body.model, "claude-haiku-4-5");
-  assert.equal(env._ai[0].body.system, "You are an IME.");
-  assert.deepEqual(env._ai[0].body.messages, [{ role: "user", content: "Reading: あじ" }]);
+  assert.match(env._ai[0].url, /\/chat\/completions$/);
+  assert.equal(env._ai[0].body.model, "deepseek-v4-flash");
+  assert.deepEqual(env._ai[0].body.messages, [
+    { role: "system", content: "You are an IME." },
+    { role: "user", content: "Reading: あじ" },
+  ]);
 });
 
 await test("ask validates the body and refuses oversize prompts", async () => {
@@ -375,7 +378,7 @@ await test("ask is metered per account per hour", async () => {
 });
 
 await test("ask says so when the key is not configured", async () => {
-  const env = makeEnv(); aiStub(env); delete env.ANTHROPIC_API_KEY;
+  const env = makeEnv(); aiStub(env); delete env.DEEPSEEK_API_KEY;
   const cookie = await signedIn(env);
   const r = await call(env, "POST", "/api/ask", { cookie, body: { system: "s", messages: [{ role: "user", content: "a" }] } });
   assert.equal(r.status, 503);

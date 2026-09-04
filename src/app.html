@@ -1069,7 +1069,7 @@ html[data-ok-ready] #ok-boot{display:none}
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;startFurigana&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;showTileMeanings&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;model&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;claude-haiku-4-5&quot;,&quot;claude-sonnet-4-5&quot;],&quot;default&quot;:&quot;claude-haiku-4-5&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;userEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Account&quot;}}">
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;startFurigana&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;showTileMeanings&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;userEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Account&quot;}}">
 // Injected by tools/build.js from src/data/*.json -- edit those, not this.
 const DATA = __KANJI_DATA__;
 // Non-default languages, keyed by code: { "ES": { "楽": {meaning, sentence, words} } }.
@@ -1573,8 +1573,9 @@ const okDeck = (d) => {
 const okLang = (c) => (c && LANGS.some(l => l[0] === c && !l[3]) ? c : null);
 const okIsEmail = (s) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(s || "").trim());
 // The AI behind Write and the IME. Inside Claude Design the host provides
-// window.claude; on the site the Worker does, holding the key as a secret and
-// answering only signed-in callers. Same request shape either way, text back.
+// window.claude; on the site the Worker does, holding the key as a secret,
+// choosing the model, and answering only signed-in callers. Same request
+// shape either way, text back.
 async function okComplete(req) {
   if (typeof window !== "undefined" && window.claude && typeof window.claude.complete === "function") return window.claude.complete(req);
   if (!okSyncReady()) throw new Error("ai_unavailable");
@@ -2253,7 +2254,6 @@ class Component extends DCLogic {
     this.setState(s => ({ loading: true, result: null, sent: answer, draft: "", compStart: 0, history: (s.history || []).concat([answer]) }));
     try {
       const raw = await okComplete({
-        model: this.props.model ?? "claude-haiku-4-5",
         system: [
           "You are Ken-Sensei, a patient Japanese teacher marking a JLPT N4 composition drill.",
           "TASK: the learner picked a WORDS LIST — the N4 words they want to practise, possibly drawn from several different kanji — and was shown one or two English example sentences as inspiration. They then wrote a Japanese sentence of their own.",
@@ -2295,7 +2295,6 @@ class Component extends DCLogic {
     this.setState({ loading: true, result: null, sent: q, draft: "", compStart: 0 });
     try {
       const raw = await okComplete({
-        model: this.props.model ?? "claude-haiku-4-5",
         system: [
           "You are Ken-Sensei, a patient Japanese teacher helping a JLPT N4 learner.",
           "The learner is asking a question in " + langName() + " about Japanese — grammar, usage, nuance, or one of the words in their WORDS LIST.",
@@ -2520,7 +2519,6 @@ class Component extends DCLogic {
     }, 4000);
     try {
       const raw = await okComplete({
-        model: this.props.model ?? "claude-haiku-4-5",
         system: ["You write example prompts for a Japanese learner.",
           "Given two groups of Japanese words, write ONE short natural " + langName().toUpperCase() + " sentence per group that a learner could plausibly translate into Japanese.",
           "THE SENTENCE MUST MAKE SENSE. It has to describe a situation a real person could actually be in: one consistent time frame (never a past event placed in the future, e.g. never 'I heard it tomorrow'), agreeing tense throughout, and a subject that can plausibly do the verb.",
@@ -3068,8 +3066,7 @@ class Component extends DCLogic {
     this._convT = setTimeout(async () => {
       try {
         const raw = await okComplete({
-          model: this.props.model ?? "claude-haiku-4-5",
-          system: ["You are the conversion engine of a Japanese IME.",
+            system: ["You are the conversion engine of a Japanese IME.",
             "Given a hiragana reading, return the standard Japanese spellings a real IME would offer, most common first.",
             "Include kanji spellings and, if the word is normally written in katakana, the katakana form. Omit the plain hiragana form.",
             "Only include spellings that genuinely have this exact reading. If there are none, return an empty list.",

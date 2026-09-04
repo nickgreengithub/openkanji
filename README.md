@@ -174,26 +174,29 @@ the order of the untagged tail, are open questions, not settled ones.
 
 ## Write, and the key behind it
 
-Write (and the kana-to-kanji candidates in its composer) calls Claude. Inside
+Write (and the kana-to-kanji candidates in its composer) calls a model. Inside
 Claude Design the page got that for free through `window.claude`, which is
 the host's bridge to the designer's own account; on the public site there is
 no such object, so the app asks the Worker instead: `POST /api/ask` with the
 same `{ system, messages }` and the text comes back. The Worker holds the key
 as a secret the page never sees, answers only signed-in accounts, caps each
-account at `AI_PER_HOUR` calls an hour (150), bounds the prompt size, and
-calls the model through the official SDK. A signed-out learner who opens
-Write is sent to the sign-in panel.
+account at `AI_PER_HOUR` calls an hour (150), and bounds the prompt size. A
+signed-out learner who opens Write is sent to the sign-in panel.
+
+Upstream is DeepSeek, whose API is the OpenAI chat-completions shape -- one
+POST, one JSON body -- so the Worker calls it over plain `fetch` and has no
+dependencies at all.
 
 Setup, once:
 
 ```
-wrangler secret put ANTHROPIC_API_KEY     # a pay-as-you-go key from console.anthropic.com
+wrangler secret put DEEPSEEK_API_KEY   # a pay-as-you-go key from platform.deepseek.com
 ```
 
-`AI_MODEL` in `wrangler.jsonc` picks the model (`claude-haiku-4-5` by
-default, the app's original choice; `claude-sonnet-5` or `claude-opus-5` for
-better marking at higher cost). The per-account meter lives in an `ai_usage`
-table the Worker creates on first use, so no migration is needed.
+`AI_MODEL` in `wrangler.jsonc` picks the model (`deepseek-v4-flash` by
+default); any name DeepSeek serves works, since it is an operator setting and
+not user input. The per-account meter lives in an `ai_usage` table the Worker
+creates on first use, so no migration is needed.
 
 ## Kanji data
 

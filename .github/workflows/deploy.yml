@@ -26,31 +26,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          # The Worker's one dependency (the Anthropic SDK) took ~7 minutes to
-          # install on a cold runner, twice per deploy. Cache ~/.npm.
-          cache: 'npm'
-          cache-dependency-path: worker/package-lock.json
 
       # Catches a src/ change committed without rebuilding: index.html is the
       # GitHub Pages target and is committed, so it must match src/.
       - name: index.html is up to date with src/
         run: npm run check
 
-      # `npm ci` takes a flat 7m01s on these runners -- the same 421s every
-      # time, which is a fetch timing out and retrying, not a slow download.
-      # So skip it: cache the tree itself, keyed on the lockfile.
-      - name: Worker dependencies
-        id: worker-modules
-        uses: actions/cache@v4
-        with:
-          path: worker/node_modules
-          key: ${{ runner.os }}-worker-modules-${{ hashFiles('worker/package-lock.json') }}
-
-      - name: Install Worker dependencies
-        if: steps.worker-modules.outputs.cache-hit != 'true'
-        run: npm ci --prefer-offline --no-audit --no-fund
-        working-directory: worker
-
+      # The Worker has no dependencies -- it calls DeepSeek over plain fetch --
+      # so there is nothing to install here, and nothing to cache.
       - name: Worker tests
         run: npm test
         working-directory: worker
@@ -64,10 +47,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          # The Worker's one dependency (the Anthropic SDK) took ~7 minutes to
-          # install on a cold runner, twice per deploy. Cache ~/.npm.
-          cache: 'npm'
-          cache-dependency-path: worker/package-lock.json
 
       # Writes index.html and dist/index.html. dist/ is what wrangler uploads.
       - name: Build
@@ -75,22 +54,6 @@ jobs:
 
       - name: Fail if dist/ is empty
         run: test -s dist/index.html
-
-      # The Worker imports the Anthropic SDK; wrangler bundles it from here.
-      # `npm ci` takes a flat 7m01s on these runners -- the same 421s every
-      # time, which is a fetch timing out and retrying, not a slow download.
-      # So skip it: cache the tree itself, keyed on the lockfile.
-      - name: Worker dependencies
-        id: worker-modules
-        uses: actions/cache@v4
-        with:
-          path: worker/node_modules
-          key: ${{ runner.os }}-worker-modules-${{ hashFiles('worker/package-lock.json') }}
-
-      - name: Install Worker dependencies
-        if: steps.worker-modules.outputs.cache-hit != 'true'
-        run: npm ci --prefer-offline --no-audit --no-fund
-        working-directory: worker
 
       - name: Deploy Worker and assets
         uses: cloudflare/wrangler-action@v3
