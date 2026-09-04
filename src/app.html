@@ -545,6 +545,10 @@ a:hover{color:var(--text-accent-hover)}
 .ok-card-r{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding-left:1.1rem;border-left:1px solid var(--ok-line)}
 .ok-card-ex{margin-top:0;padding-top:0;border-top:0;font-size:1.125rem;line-height:1.55}
 .ok-card-tr{font-size:1rem}
+.ok-card-l{position:relative;padding-bottom:1.9rem}
+.ok-play{position:absolute;right:.35rem;bottom:0;width:1.9rem;height:1.9rem;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ok-mute);cursor:pointer;user-select:none;transition:background 140ms ease,color 140ms ease}
+.ok-play:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
+@keyframes ok-speak{0%,100%{opacity:1}50%{opacity:.45}}
 .ok-tick{position:absolute;top:.85rem;right:.85rem;width:2rem;height:2rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
 .ok-tick:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
 .ok-card-r{padding-right:2.4rem}
@@ -596,6 +600,7 @@ a:hover{color:var(--text-accent-hover)}
 @media (prefers-reduced-motion:reduce){
   .ok-page-set,.ok-page-map,.ok-focus,.ok-sheet,.ok-card,.ok-cards,.ok-set-check,.ok-toast,.ok-veil,.ok-view,.ok-veil-out,.ok-sheet-out,.ok-focus-out{animation:none!important}
   .ok-card,.ok-tile,.ok-hero,.ok-pmode,.ok-qtile{transition:none!important}
+  .ok-play,.ok-focus-actions .ok-btn{animation:none!important}
 }
 </style>
 
@@ -803,6 +808,7 @@ html[data-ok-ready] #ok-boot{display:none}
               <div class="ok-card-l">
               <span class="ok-card-word" style="font-size:{{ lr.wordSize }};color:{{ lr.wordFg }}"><sc-for list="{{ lr.ruby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ lr.rubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
               <span class="ok-card-gloss" style="opacity:{{ lr.ansOpacity }}">{{ lr.gloss }}</span>
+              <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
               </div>
               <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span>
               <sc-if value="{{ lr.hasEx }}" hint-placeholder-val="{{ true }}">
@@ -881,6 +887,7 @@ html[data-ok-ready] #ok-boot{display:none}
           <span class="ok-focus-tr" style="opacity:{{ focusAns }}">{{ focusExEn }}</span>
         </sc-if>
         <div class="ok-focus-actions">
+          <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ focusPlay }}" class="ok-btn" title="{{ t_listen }}" style="{{ focusPlayStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
           <sc-if value="{{ focusHidden }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ revealFocus }}" class="ok-btn">{{ t_show_answer }}</span></sc-if>
           <span sc-camel-on-click="{{ focusMaster }}" class="ok-btn" style="{{ focusPillStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg><span>{{ focusPillLabel }}</span></span>
         </div>
@@ -1509,6 +1516,44 @@ async function okComplete(req) {
   const j = await r.json();
   return j.text || "";
 }
+// Speech: the browser's own Japanese voice, the word then the sentence. Free
+// and instant; the voice varies by platform, which is the trade for that.
+const okCanSpeak = () => typeof window !== "undefined" && !!window.speechSynthesis && typeof window.SpeechSynthesisUtterance === "function";
+let _okVoice = null;
+const okVoice = () => {
+  if (!okCanSpeak()) return null;
+  const vs = window.speechSynthesis.getVoices() || [];
+  const ja = vs.filter(v => /^ja/i.test(v.lang));
+  if (!ja.length) return null;
+  // the voices that sound like a person first, then whatever is Japanese
+  const pref = ["kyoko", "o-ren", "otoya", "nanami", "keita", "google 日本語", "ichiro", "ayumi", "haruka"];
+  const byName = ja.find(v => pref.some(n => v.name.toLowerCase().indexOf(n) >= 0));
+  return byName || ja.find(v => v.localService) || ja[0];
+};
+if (okCanSpeak() && window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener("voiceschanged", () => { _okVoice = okVoice(); });
+// -> a promise that settles when the last utterance ends (or fails)
+const okSpeak = (parts) => new Promise((resolve) => {
+  if (!okCanSpeak()) return resolve(false);
+  const synth = window.speechSynthesis;
+  try { synth.cancel(); } catch (e) {}
+  const voice = _okVoice || (_okVoice = okVoice());
+  const list = parts.filter(Boolean);
+  if (!list.length) return resolve(false);
+  let left = list.length, done = false;
+  const finish = () => { if (!done) { done = true; resolve(true); } };
+  list.forEach((p, i) => {
+    const u = new SpeechSynthesisUtterance(p.text);
+    u.lang = "ja-JP";
+    if (voice) u.voice = voice;
+    u.rate = p.rate || 0.9;
+    u.pitch = 1;
+    u.onend = () => { if (--left <= 0) finish(); };
+    u.onerror = () => { if (--left <= 0) finish(); };
+    synth.speak(u);
+  });
+  // some engines never fire onend; never leave the button lit
+  setTimeout(finish, 12000);
+});
 const okAiReady = () => (typeof window !== "undefined" && !!(window.claude && window.claude.complete)) || okSyncReady();
 // mastered is a { "word|reading": true } map. Union merge: local OR server wins.
 const okMerge = (a, b) => {
@@ -1521,7 +1566,7 @@ const okMerge = (a, b) => {
 class Component extends DCLogic {
   state = {
     screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
-    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, zoom: "map", focus: null, focusShown: false, acctOpen: false, sync: "local", meanings: null, quiz: [], quizOpen: false, partsPage: 0
+    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, zoom: "map", focus: null, focusShown: false, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
   get furiDefault() { return this.props.startFurigana ?? true; }
@@ -1956,6 +2001,13 @@ class Component extends DCLogic {
     if (this.state.gameClosing || this.state.cardsClosing) return;
     this.setState({ gameClosing: true, cardsClosing: true });
     setTimeout(() => this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, gMode: null, gFinished: false, dlgSeamless: false }), 200);
+  }
+  // Say a word, then its sentence; the button stays lit until the voice stops.
+  speakWord(key, word, sentence) {
+    if (!okCanSpeak()) return;
+    if (this.state.speaking === key) { try { window.speechSynthesis.cancel(); } catch (e) {} this.setState({ speaking: null }); return; }
+    this.setState({ speaking: key });
+    okSpeak([{ text: word, rate: 0.82 }, sentence ? { text: sentence, rate: 0.95 } : null]).then(() => { if (this.state.speaking === key) this.setState({ speaking: null }); });
   }
   focusStep(d) {
     const n = wordsOf(this.state.wset, this.state.deck).length;
@@ -3383,6 +3435,9 @@ class Component extends DCLogic {
           focusExEn: f && fx ? exTr(f.w[3], 0, "") : "",
           focusHidden: fHidden,
           revealFocus: () => this.setState({ focusShown: true }),
+          focusPlay: () => { if (f) this.speakWord("F" + f.w[3], f.w[0], fx || ""); },
+          focusPlayStyle: f && st.speaking === "F" + f.w[3] ? "border-color:var(--ok-acc);color:var(--ok-acc);animation:ok-speak 1.1s ease-in-out infinite" : "",
+          canSpeak: okCanSpeak(),
           focusPillStyle: okPill(fDone),
           focusPillLabel: fDone ? T("learned") : T("got_it"),
           focusMaster: () => { if (f) this.toggleMasteredWord(f.w[3]); },
@@ -3984,6 +4039,8 @@ class Component extends DCLogic {
           pillLabel: done ? T("learned") : T("got_it"),
           master: (ev) => { ev.stopPropagation(); this.toggleMasteredWord(key); },
           tickStyle: done ? "background:var(--ok-acc);border-color:var(--ok-acc);color:#ffffff" : "",
+          play: (ev) => { if (ev && ev.stopPropagation) ev.stopPropagation(); this.speakWord(key, w[0], x || ""); },
+          playStyle: st.speaking === key ? "color:var(--ok-acc);background:var(--ok-acc-s);animation:ok-speak 1.1s ease-in-out infinite" : "",
           open: (ev) => {
             const r = ev && ev.currentTarget && ev.currentTarget.getBoundingClientRect ? ev.currentTarget.getBoundingClientRect() : null;
             const from = r ? [Math.round(r.left + r.width / 2 - window.innerWidth / 2), Math.round(r.top + r.height / 2 - window.innerHeight / 2)] : [0, 0];

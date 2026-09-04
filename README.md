@@ -43,7 +43,13 @@ the right, where a Japanese sentence gets a line long enough to hold it
 (the earlier word-over-sentence card had to keep the sentence small to
 avoid wrapping; that was a width problem). Two across on desktop, stacked
 on a phone. Everything shows at once, no hover. The learned control
-is a tick in the card's corner, icon only: an empty circle that fills. Tapping a card opens it large, with arrow keys
+is a tick in the card's corner, icon only: an empty circle that fills. A
+speaker bottom-right of the word column reads the word, then the sentence,
+in the browser's own Japanese voice (the Web Speech API: free and instant,
+but the voice is whatever the platform has -- good on Apple devices, uneven
+elsewhere; pre-rendered audio is the upgrade if the feature earns it). The
+focus view has the same button. Neither appears where the browser has no
+speech synthesis. Tapping a card opens it large, with arrow keys
 to walk the set, Enter to mark, Escape to close. At the foot of the cards,
 where reading finishes, are Previous set and Next set; small chevrons either
 side of the set's name and the arrow keys do the same. When the twentieth

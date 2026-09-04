@@ -682,5 +682,9 @@
   "deck": {
     "en": "This deck",
     "es": "Este mazo"
+  },
+  "listen": {
+    "en": "Listen",
+    "es": "Escuchar"
   }
 }
