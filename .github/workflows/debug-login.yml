@@ -1,0 +1,18 @@
+name: Debug / login endpoint
+
+# Temporary, manual-only diagnostic: calls the live /api/login endpoint and
+# prints the raw response, since the sandbox this gets triggered from cannot
+# reach openkanji.org directly. Deleted once the "could not send link" issue
+# is diagnosed.
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call /api/login
+        run: |
+          curl -sS -i -X POST https://openkanji.org/api/login \
+            -H "Content-Type: application/json" \
+            -d '{"email":"openkanji-debug-probe@example.com","lang":"en"}'
