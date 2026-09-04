@@ -497,6 +497,7 @@ a:hover{color:var(--text-accent-hover)}
 @media (min-width:641px){
   .ok-veil-p{align-items:center;padding:1.5rem}
   .ok-sheet{width:min(44rem,100%);height:auto;max-height:min(42rem,100%);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(20,24,30,.35);animation:ok-rise 220ms cubic-bezier(.2,.7,.3,1)}
+  .ok-sheet-fixed{height:min(42rem,100%)}
   .ok-quiz{min-height:30rem}
   .ok-fc{min-height:28rem}
 }
@@ -544,7 +545,18 @@ a:hover{color:var(--text-accent-hover)}
 .ok-card-r{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding-left:1.1rem;border-left:1px solid var(--ok-line)}
 .ok-card-ex{margin-top:0;padding-top:0;border-top:0;font-size:1.125rem;line-height:1.55}
 .ok-card-tr{font-size:1rem}
-.ok-card-l .ok-pill{margin-top:auto}
+.ok-tick{position:absolute;top:.85rem;right:.85rem;width:2rem;height:2rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
+.ok-tick:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
+.ok-card-r{padding-right:2.4rem}
+.ok-cards{will-change:transform}
+@keyframes ok-swipe-out-la{from{opacity:1;transform:none}to{opacity:0;transform:translateX(-48px)}}
+@keyframes ok-swipe-out-lb{from{opacity:1;transform:none}to{opacity:0;transform:translateX(-48px)}}
+@keyframes ok-swipe-out-ra{from{opacity:1;transform:none}to{opacity:0;transform:translateX(48px)}}
+@keyframes ok-swipe-out-rb{from{opacity:1;transform:none}to{opacity:0;transform:translateX(48px)}}
+@keyframes ok-swipe-in-la{from{opacity:0;transform:translateX(48px)}to{opacity:1;transform:none}}
+@keyframes ok-swipe-in-lb{from{opacity:0;transform:translateX(48px)}to{opacity:1;transform:none}}
+@keyframes ok-swipe-in-ra{from{opacity:0;transform:translateX(-48px)}to{opacity:1;transform:none}}
+@keyframes ok-swipe-in-rb{from{opacity:0;transform:translateX(-48px)}to{opacity:1;transform:none}}
 /* Sheet views and their exits */
 .ok-view{animation:ok-fade 180ms ease}
 .ok-veil-out{animation:ok-fade-out 180ms ease forwards!important}
@@ -565,7 +577,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-w-eg{display:flex;gap:.5rem;color:var(--ok-body)}
 .ok-w-eg i{font-style:normal;color:var(--ok-acc)}
 .ok-w-verdict{font-family:var(--font-2);font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase}
-.ok-w-cands{display:flex;gap:.4rem;padding:0 1.25rem .5rem;overflow-x:auto}
+.ok-w-cands{flex:0 0 auto;height:2.9rem;display:flex;align-items:center;gap:.4rem;padding:0 1.25rem;overflow-x:auto;overflow-y:hidden}
 .ok-w-cand{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .8rem;border-radius:999px;border:1px solid var(--ok-line);background:var(--ok-card);font-size:1.125rem;cursor:pointer;user-select:none}
 .ok-w-cand:hover{border-color:var(--ok-acc)}
 .ok-w-cand i{font-style:normal;font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute)}
@@ -577,11 +589,12 @@ a:hover{color:var(--text-accent-hover)}
   .ok-rings{grid-template-columns:1fr 1fr}
   .ok-card{flex-direction:column;gap:.5rem}
   .ok-card-l{flex:0 0 auto}
-  .ok-card-r{padding-left:0;border-left:0;padding-top:.6rem;border-top:1px solid var(--ok-line)}
+  .ok-card-r{padding-left:0;padding-right:0;border-left:0;padding-top:.6rem;border-top:1px solid var(--ok-line)}
+  .ok-card-l{padding-right:2.4rem}
   .ok-continue{display:none}
 }
 @media (prefers-reduced-motion:reduce){
-  .ok-page-set,.ok-page-map,.ok-focus,.ok-sheet,.ok-card,.ok-set-check,.ok-toast,.ok-veil,.ok-view,.ok-veil-out,.ok-sheet-out,.ok-focus-out{animation:none!important}
+  .ok-page-set,.ok-page-map,.ok-focus,.ok-sheet,.ok-card,.ok-cards,.ok-set-check,.ok-toast,.ok-veil,.ok-view,.ok-veil-out,.ok-sheet-out,.ok-focus-out{animation:none!important}
   .ok-card,.ok-tile,.ok-hero,.ok-pmode,.ok-qtile{transition:none!important}
 }
 </style>
@@ -785,14 +798,14 @@ html[data-ok-ready] #ok-boot{display:none}
         </div>
       </header>
       <div class="ok-set-body ok-scroll">
-        <div class="ok-cards">
+        <div class="ok-cards" style="animation:{{ cardsAnim }}">
           <sc-for list="{{ listWords }}" as="lr" hint-placeholder-count="20">
-            <div sc-camel-on-click="{{ lr.open }}" sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" class="ok-card" style="background:{{ lr.bg }};border-color:{{ lr.border }};animation:{{ lr.anim }};animation-delay:{{ lr.delay }}">
+            <div sc-camel-on-click="{{ lr.open }}" sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" class="ok-card" style="background:{{ lr.bg }};border-color:{{ lr.border }}">
               <div class="ok-card-l">
               <span class="ok-card-word" style="font-size:{{ lr.wordSize }};color:{{ lr.wordFg }}"><sc-for list="{{ lr.ruby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ lr.rubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
               <span class="ok-card-gloss" style="opacity:{{ lr.ansOpacity }}">{{ lr.gloss }}</span>
-              <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-pill" title="{{ lr.markTitle }}" style="{{ lr.pillStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg><span>{{ lr.pillLabel }}</span></span>
               </div>
+              <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span>
               <sc-if value="{{ lr.hasEx }}" hint-placeholder-val="{{ true }}">
                 <div class="ok-card-r">
                 <span class="ok-card-ex"><sc-for list="{{ lr.exParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok-acc)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
@@ -882,7 +895,7 @@ html[data-ok-ready] #ok-boot{display:none}
 
       <sc-if value="{{ writeOn }}" hint-placeholder-val="{{ false }}">
       <div sc-camel-on-click="{{ closeWrite }}" class="ok-veil ok-veil-p {{ wVeilOut }}">
-      <div sc-camel-on-click="{{ stop }}" class="ok-sheet {{ wSheetOut }}">
+      <div sc-camel-on-click="{{ stop }}" class="ok-sheet ok-sheet-fixed {{ wSheetOut }}">
         <div class="ok-sheet-top">
           <span sc-camel-on-click="{{ wBack }}" class="ok-round-btn" title="{{ t_back }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span>
           <div class="ok-sheet-title"><span class="ok-eyebrow">{{ t_write_title }}</span><span class="ok-sheet-h">{{ pTitle }}</span></div>
@@ -917,13 +930,13 @@ html[data-ok-ready] #ok-boot{display:none}
             </div>
           </sc-if>
         </div>
-        <sc-if value="{{ candOpen }}" hint-placeholder-val="{{ false }}">
-          <div class="ok-w-cands">
+        <div class="ok-w-cands">
+          <sc-if value="{{ candOpen }}" hint-placeholder-val="{{ false }}">
             <sc-for list="{{ candList }}" as="c" hint-placeholder-count="2">
               <span sc-camel-on-click="{{ c.pick }}" class="ok-w-cand" style="{{ c.chip }}"><i>{{ c.n }}</i>{{ c.w }}</span>
             </sc-for>
-          </div>
-        </sc-if>
+          </sc-if>
+        </div>
         <div class="ok-w-bar">
           <div class="ok-w-input" style="--text-base:1.125rem;--border-default:transparent;--pad-editor:0 .9rem;--leading-relaxed:2.9rem">
             <x-import component-from-global-scope="PasteToFileDesignSystem_0eb22b.PasteArea" placeholder="{{ inputHint }}" value="{{ draft }}" sc-camel-on-change="{{ onDraft }}" sc-camel-on-key-down="{{ onDraftKey }}" rows="{{ oneRow }}" style="width:100%;height:100%;resize:none;overflow:hidden;white-space:nowrap" hint-size="100%,100%"></x-import>
@@ -1900,17 +1913,22 @@ class Component extends DCLogic {
   }
 
   // Move to another set of the deck: remembered, and the list starts at the top.
+  // Between sets the grid leaves as one piece in the direction of travel
+  // and the next arrives from the other side: a swipe, not a cut.
   stepSet(d) {
     const n = wordBatchCount(this.state.deck);
     const b = Math.min(n - 1, Math.max(0, (this.state.wset || 0) + d));
-    if (b !== (this.state.wset || 0)) this.gotoSet(b, d);
+    if (b === (this.state.wset || 0) || this._swipeT) return;
+    const k = ((this.state.swipe || {}).n || 0) + 1;
+    this.setState({ swipe: { dir: d > 0 ? "l" : "r", n: k, phase: "out" }, focus: null, focusShown: false });
+    this._swipeT = setTimeout(() => { this._swipeT = null; this.gotoSet(b, d); }, 170);
   }
   gotoSet(b, dir) {
     lsSet(OK_SET_KEY, String(b));
     // Cards slide in the direction of travel between sets; from the map they
     // arrive with the screen, so no slide.
-    const slide = dir ? { dir: dir > 0 ? "l" : "r", n: ((this.state.slide || {}).n || 0) + 1 } : null;
-    this.setState({ wset: b, zoom: "set", focus: null, focusShown: false, hoverWord: null, acctOpen: false, slide: slide });
+    const swipe = dir ? { dir: dir > 0 ? "l" : "r", n: ((this.state.swipe || {}).n || 0) + 1, phase: "in" } : null;
+    this.setState({ wset: b, zoom: "set", focus: null, focusShown: false, hoverWord: null, acctOpen: false, swipe: swipe });
     requestAnimationFrame(() => { const el = document.querySelector(".ok-set-body"); if (el) el.scrollTop = 0; });
   }
   closeFocusView() {
@@ -3911,6 +3929,11 @@ class Component extends DCLogic {
       // meaning; on hover the lower half swaps for the example sentence and
       // the tick rises into reach. The word itself never moves -- it is the
       // thing being learned, so it stays put while everything around it turns.
+      cardsAnim: (() => {
+        const sw = st.swipe; if (!sw) return "none";
+        const ab = sw.n % 2 ? "a" : "b";
+        return sw.phase === "out" ? "ok-swipe-out-" + sw.dir + ab + " 170ms ease-in both" : "ok-swipe-in-" + sw.dir + ab + " 260ms cubic-bezier(.2,.7,.3,1) both";
+      })(),
       listWords: WORDS.map((e, i) => {
         const w = e.w;
         const key = w[3];
@@ -3943,8 +3966,7 @@ class Component extends DCLogic {
           pillStyle: okPill(done),
           pillLabel: done ? T("learned") : T("got_it"),
           master: (ev) => { ev.stopPropagation(); this.toggleMasteredWord(key); },
-          anim: st.slide ? "ok-slide-" + st.slide.dir + (st.slide.n % 2 ? "a" : "b") + " 240ms cubic-bezier(.2,.7,.3,1) both" : "none",
-          delay: st.slide ? (i * 14) + "ms" : "0ms",
+          tickStyle: done ? "background:var(--ok-acc);border-color:var(--ok-acc);color:#ffffff" : "",
           open: (ev) => {
             const r = ev && ev.currentTarget && ev.currentTarget.getBoundingClientRect ? ev.currentTarget.getBoundingClientRect() : null;
             const from = r ? [Math.round(r.left + r.width / 2 - window.innerWidth / 2), Math.round(r.top + r.height / 2 - window.innerHeight / 2)] : [0, 0];
