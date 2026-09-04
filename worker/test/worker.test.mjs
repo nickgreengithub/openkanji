@@ -43,8 +43,23 @@ function makeEnv() {
     SESSION_SECRET: "test-secret-abcdefghijklmnopqrstuvwxyz",
     MAIL_FROM: "login@openkanji.test",
     SITE_URL: SITE,
+    // The AI route: a key that is never sent anywhere, and a fetch that plays
+    // the Messages API so the SDK is exercised without the network.
+    ANTHROPIC_API_KEY: "sk-ant-test",
+    AI_PER_HOUR: "3",
+    _ai: [],
   };
 }
+const aiStub = (env, text = '{"c":["味"]}') => {
+  env.AI_FETCH = async (url, init) => {
+    env._ai.push({ url: String(url), body: JSON.parse(init.body) });
+    return new Response(JSON.stringify({
+      id: "msg_test", type: "message", role: "assistant", model: "claude-haiku-4-5",
+      content: [{ type: "text", text }], stop_reason: "end_turn", stop_sequence: null,
+      usage: { input_tokens: 10, output_tokens: 5 },
+    }), { status: 200, headers: { "content-type": "application/json", "request-id": "req_test" } });
+  };
+};
 
 const call = (env, method, path, { body, cookie, ip } = {}) => {
   const headers = { "content-type": "application/json" };
@@ -318,6 +333,54 @@ await test("delete erases the account, its progress and its sign-in rows", async
 });
 
 // --- misc ---
+
+await test("ask needs a signed-in caller", async () => {
+  const env = makeEnv(); aiStub(env);
+  const r = await call(env, "POST", "/api/ask", { body: { system: "s", messages: [{ role: "user", content: "あじ" }] } });
+  assert.equal(r.status, 401);
+  assert.equal(env._ai.length, 0, "nothing went upstream");
+});
+
+await test("ask proxies to Claude through the SDK and returns the text", async () => {
+  const env = makeEnv(); aiStub(env);
+  const cookie = await signedIn(env);
+  const r = await call(env, "POST", "/api/ask", { cookie, body: { system: "You are an IME.", messages: [{ role: "user", content: "Reading: あじ" }] } });
+  assert.equal(r.status, 200);
+  const j = await r.json();
+  assert.equal(j.text, '{"c":["味"]}');
+  assert.equal(env._ai.length, 1);
+  assert.match(env._ai[0].url, /\/v1\/messages$/);
+  assert.equal(env._ai[0].body.model, "claude-haiku-4-5");
+  assert.equal(env._ai[0].body.system, "You are an IME.");
+  assert.deepEqual(env._ai[0].body.messages, [{ role: "user", content: "Reading: あじ" }]);
+});
+
+await test("ask validates the body and refuses oversize prompts", async () => {
+  const env = makeEnv(); aiStub(env);
+  const cookie = await signedIn(env);
+  for (const bad of [{}, { system: "s" }, { system: "s", messages: [] }, { system: "s", messages: [{ role: "system", content: "x" }] }, { system: "s", messages: [{ role: "user", content: 5 }] }]) {
+    assert.equal((await call(env, "POST", "/api/ask", { cookie, body: bad })).status, 400, JSON.stringify(bad));
+  }
+  assert.equal((await call(env, "POST", "/api/ask", { cookie, body: { system: "x".repeat(20000), messages: [{ role: "user", content: "a" }] } })).status, 413);
+  assert.equal(env._ai.length, 0, "nothing went upstream");
+});
+
+await test("ask is metered per account per hour", async () => {
+  const env = makeEnv(); aiStub(env);
+  const cookie = await signedIn(env);
+  const body = { system: "s", messages: [{ role: "user", content: "a" }] };
+  for (let i = 0; i < 3; i++) assert.equal((await call(env, "POST", "/api/ask", { cookie, body })).status, 200);
+  assert.equal((await call(env, "POST", "/api/ask", { cookie, body })).status, 429);
+  assert.equal(env._ai.length, 3, "the fourth never went upstream");
+});
+
+await test("ask says so when the key is not configured", async () => {
+  const env = makeEnv(); aiStub(env); delete env.ANTHROPIC_API_KEY;
+  const cookie = await signedIn(env);
+  const r = await call(env, "POST", "/api/ask", { cookie, body: { system: "s", messages: [{ role: "user", content: "a" }] } });
+  assert.equal(r.status, 503);
+  assert.equal((await r.json()).error, "not_configured");
+});
 
 await test("unknown routes 404 for a signed-in caller", async () => {
   const env = makeEnv();

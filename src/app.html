@@ -678,7 +678,6 @@ html[data-ok-ready] #ok-boot{display:none}
                     <div class="ok-pmiss">
                       <span class="ok-pmiss-w">{{ pm.w }}</span>
                       <span class="ok-muted">{{ pm.g }}</span>
-                      <sc-if value="{{ pm.hasKey }}" hint-placeholder-val="{{ true }}"><span sc-camel-on-click="{{ pm.master }}" class="ok-pill" style="{{ pm.pill }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg><span>{{ pm.label }}</span></span></sc-if>
                     </div>
                   </sc-for>
                 </div>
@@ -1496,6 +1495,21 @@ const okDeck = (d) => {
 };
 const okLang = (c) => (c && LANGS.some(l => l[0] === c && !l[3]) ? c : null);
 const okIsEmail = (s) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(s || "").trim());
+// The AI behind Write and the IME. Inside Claude Design the host provides
+// window.claude; on the site the Worker does, holding the key as a secret and
+// answering only signed-in callers. Same request shape either way, text back.
+async function okComplete(req) {
+  if (typeof window !== "undefined" && window.claude && typeof window.claude.complete === "function") return window.claude.complete(req);
+  if (!okSyncReady()) throw new Error("ai_unavailable");
+  const r = await fetch(API_BASE + "/ask", {
+    method: "POST", credentials: "include", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ system: req.system, messages: req.messages })
+  });
+  if (!r.ok) throw new Error("ai_" + r.status);
+  const j = await r.json();
+  return j.text || "";
+}
+const okAiReady = () => (typeof window !== "undefined" && !!(window.claude && window.claude.complete)) || okSyncReady();
 // mastered is a { "word|reading": true } map. Union merge: local OR server wins.
 const okMerge = (a, b) => {
   const out = Object.assign({}, a || {});
@@ -2037,7 +2051,7 @@ class Component extends DCLogic {
     this._typeLen = 0;
     this.setState(s => ({ loading: true, result: null, sent: answer, draft: "", compStart: 0, history: (s.history || []).concat([answer]) }));
     try {
-      const raw = await window.claude.complete({
+      const raw = await okComplete({
         model: this.props.model ?? "claude-haiku-4-5",
         system: [
           "You are Ken-Sensei, a patient Japanese teacher marking a JLPT N4 composition drill.",
@@ -2079,7 +2093,7 @@ class Component extends DCLogic {
     this._typeLen = 0;
     this.setState({ loading: true, result: null, sent: q, draft: "", compStart: 0 });
     try {
-      const raw = await window.claude.complete({
+      const raw = await okComplete({
         model: this.props.model ?? "claude-haiku-4-5",
         system: [
           "You are Ken-Sensei, a patient Japanese teacher helping a JLPT N4 learner.",
@@ -2304,7 +2318,7 @@ class Component extends DCLogic {
       this.startIntro((LEAD + fallback.join("")).length, true);
     }, 4000);
     try {
-      const raw = await window.claude.complete({
+      const raw = await okComplete({
         model: this.props.model ?? "claude-haiku-4-5",
         system: ["You write example prompts for a Japanese learner.",
           "Given two groups of Japanese words, write ONE short natural " + langName().toUpperCase() + " sentence per group that a learner could plausibly translate into Japanese.",
@@ -2852,7 +2866,7 @@ class Component extends DCLogic {
     if (this._convT) clearTimeout(this._convT);
     this._convT = setTimeout(async () => {
       try {
-        const raw = await window.claude.complete({
+        const raw = await okComplete({
           model: this.props.model ?? "claude-haiku-4-5",
           system: ["You are the conversion engine of a Japanese IME.",
             "Given a hiragana reading, return the standard Japanese spellings a real IME would offer, most common first.",
@@ -3639,6 +3653,9 @@ class Component extends DCLogic {
       gDoneOn: !!st.gameOpen && !!st.gMode && !!st.gFinished,
       gStart1: () => { this.setState({ gFirstOk: {} }); this.startGame(1); },
       gChat: () => {
+        // Write needs the model, and the model needs an account behind it.
+        if (!okAiReady()) { this.flashMsg(T("sync_unavailable")); return; }
+        if (!(window.claude && window.claude.complete) && !this.state.userEmail) { this.closePractice(); this.flashMsg(T("sign_in_first")); setTimeout(() => this.setState({ acctOpen: true }), 220); return; }
         const ks = this.practiceWords().map(e => e.w[3]);
         if (!ks.length) return;
         const sel = {}; ks.forEach(x => { sel[x] = true; });

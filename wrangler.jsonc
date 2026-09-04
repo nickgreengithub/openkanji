@@ -3,6 +3,7 @@
   "name": "openkanji",
   "main": "worker/src/index.js",
   "compatibility_date": "2026-09-02",
+  "compatibility_flags": ["nodejs_compat"],
 
   // Static assets are matched before the Worker runs, so "/" is served from
   // dist without invoking code. Unmatched paths fall through to the Worker,
@@ -20,10 +21,13 @@
     }
   ],
 
-  // Secrets (RESEND_API_KEY, SESSION_SECRET) are set with `wrangler secret put`
-  // and never live in this file.
+  // Secrets (RESEND_API_KEY, SESSION_SECRET, ANTHROPIC_API_KEY) are set with
+  // `wrangler secret put` and never live in this file.
   "vars": {
     "MAIL_FROM": "OpenKanji <nick@openkanji.org>",
-    "SITE_URL": "https://openkanji.org"
+    "SITE_URL": "https://openkanji.org",
+    // The model behind Write and the IME, and each account's calls per hour.
+    "AI_MODEL": "claude-haiku-4-5",
+    "AI_PER_HOUR": "150"
   }
 }

@@ -1,3 +1,4 @@
+import Anthropic from "@anthropic-ai/sdk";
 // OpenKanji progress sync -- Cloudflare Worker.
 //
 // Email-only sign-in by magic link, and one row of progress per learner:
@@ -27,6 +28,55 @@ const RATE_EMAIL = 5;
 const RATE_IP = 20;
 
 const now = () => Math.floor(Date.now() / 1000);
+
+// ---------- AI: the writing coach and the IME, proxied ----------
+// Inside Claude Design the page had window.claude; on the site it has this.
+// The key is a Worker secret the page never sees. Signed in only, and metered
+// per account per hour, because every call costs money and the URL is public.
+const AI_MAX_SYSTEM = 12000;
+const AI_MAX_MSG = 4000;
+const AI_MAX_MSGS = 8;
+const AI_MODELS = ["claude-haiku-4-5", "claude-sonnet-5", "claude-opus-5"];
+// The meter's table is created on first use, once per database binding, so
+// there is no migration to run.
+const aiUsageReady = new WeakSet();
+async function aiAllowed(db, userId, perHour) {
+  if (!aiUsageReady.has(db)) {
+    await db.prepare("create table if not exists ai_usage (user_id text not null, hour integer not null, n integer not null default 0, primary key (user_id, hour))").run();
+    aiUsageReady.add(db);
+  }
+  const hour = Math.floor(now() / 3600);
+  const row = await db.prepare(
+    "insert into ai_usage (user_id, hour, n) values (?1, ?2, 1) on conflict(user_id, hour) do update set n = n + 1 returning n"
+  ).bind(userId, hour).first();
+  return !row || row.n <= perHour;
+}
+async function handleAsk(request, env, user) {
+  if (!env.ANTHROPIC_API_KEY) return json({ error: "not_configured" }, 503);
+  const body = await readJson(request);
+  if (!body || typeof body.system !== "string" || !Array.isArray(body.messages) || !body.messages.length) return json({ error: "bad_body" }, 400);
+  if (body.system.length > AI_MAX_SYSTEM || body.messages.length > AI_MAX_MSGS) return json({ error: "too_long" }, 413);
+  const messages = [];
+  for (const m of body.messages) {
+    if (!m || (m.role !== "user" && m.role !== "assistant") || typeof m.content !== "string") return json({ error: "bad_body" }, 400);
+    if (m.content.length > AI_MAX_MSG) return json({ error: "too_long" }, 413);
+    messages.push({ role: m.role, content: m.content });
+  }
+  const perHour = Number(env.AI_PER_HOUR) > 0 ? Number(env.AI_PER_HOUR) : 150;
+  if (!(await aiAllowed(env.DB, user.id, perHour))) return json({ error: "rate_limited" }, 429);
+  const model = AI_MODELS.includes(env.AI_MODEL) ? env.AI_MODEL : "claude-haiku-4-5";
+  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, fetch: env.AI_FETCH, maxRetries: 1 });
+  try {
+    const res = await client.messages.create({ model, max_tokens: 4096, system: body.system, messages });
+    if (res.stop_reason === "refusal") return json({ error: "refused" }, 422);
+    const text = res.content.filter((b) => b.type === "text").map((b) => b.text).join("");
+    return json({ text, model: res.model });
+  } catch (e) {
+    if (e instanceof Anthropic.AuthenticationError) return json({ error: "not_configured" }, 503);
+    if (e instanceof Anthropic.RateLimitError) return json({ error: "upstream_busy" }, 503);
+    return json({ error: "upstream_failed" }, 502);
+  }
+}
 const json = (data, status = 200, headers = {}) =>
   new Response(JSON.stringify(data), {
     status,
@@ -323,6 +373,7 @@ export default {
 
     // Everything below needs a live account.
     if (!user) return json({ error: "signed_out" }, 401, userId ? { "set-cookie": cookieHeader("", 0) } : {});
+    if (method === "POST" && path === "/api/ask") return handleAsk(request, env, user);
     if (method === "GET" && path === "/api/progress") return handleGetProgress(env, user.id);
     if (method === "PUT" && path === "/api/progress") return handlePutProgress(request, env, user.id);
     if (method === "DELETE" && path === "/api/account") {

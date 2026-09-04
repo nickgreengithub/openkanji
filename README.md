@@ -43,7 +43,7 @@ the right, where a Japanese sentence gets a line long enough to hold it
 (the earlier word-over-sentence card had to keep the sentence small to
 avoid wrapping; that was a width problem). Two across on desktop, stacked
 on a phone. Everything shows at once, no hover. The learned control
-is a visible "Got it" pill. Tapping a card opens it large, with arrow keys
+is a tick in the card's corner, icon only: an empty circle that fills. Tapping a card opens it large, with arrow keys
 to walk the set, Enter to mark, Escape to close. At the foot of the cards,
 where reading finishes, are Previous set and Next set; small chevrons either
 side of the set's name and the arrow keys do the same. When the twentieth
@@ -69,8 +69,7 @@ first half easy, the second with confusable distractors), and Write (sentences,
 checked by AI) -- the same sheet: the set's words as pills that tick as
 they are used, a thread, verdicts as cards, a composer pinned to the foot. A finished set is still worth a run: with
 nothing left unlearned, practice covers the whole set. The quiz ends on a
-results screen with what was missed and a Got it pill on each, so a miss can
-be dealt with where it is noticed.
+results screen that lists what was missed.
 
 **What it is worth.** The top of the map is four rings on one honest 0-100
 axis: this deck, then TV & film, anime & manga, books & news, each domain
@@ -154,6 +153,29 @@ run instead, which is also the correct answer for a jukujikun like 大人 おと
 The list runs to the first thousand words of a deck (JLPT N4 has 451, N1
 about 3,000), and the deck is whichever one was last saved: deck choice, and
 the order of the untagged tail, are open questions, not settled ones.
+
+## Write, and the key behind it
+
+Write (and the kana-to-kanji candidates in its composer) calls Claude. Inside
+Claude Design the page got that for free through `window.claude`, which is
+the host's bridge to the designer's own account; on the public site there is
+no such object, so the app asks the Worker instead: `POST /api/ask` with the
+same `{ system, messages }` and the text comes back. The Worker holds the key
+as a secret the page never sees, answers only signed-in accounts, caps each
+account at `AI_PER_HOUR` calls an hour (150), bounds the prompt size, and
+calls the model through the official SDK. A signed-out learner who opens
+Write is sent to the sign-in panel.
+
+Setup, once:
+
+```
+wrangler secret put ANTHROPIC_API_KEY     # a pay-as-you-go key from console.anthropic.com
+```
+
+`AI_MODEL` in `wrangler.jsonc` picks the model (`claude-haiku-4-5` by
+default, the app's original choice; `claude-sonnet-5` or `claude-opus-5` for
+better marking at higher cost). The per-account meter lives in an `ai_usage`
+table the Worker creates on first use, so no migration is needed.
 
 ## Kanji data
 

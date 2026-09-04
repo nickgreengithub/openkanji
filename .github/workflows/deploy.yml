@@ -32,6 +32,10 @@ jobs:
       - name: index.html is up to date with src/
         run: npm run check
 
+      - name: Worker dependencies
+        run: npm ci
+        working-directory: worker
+
       - name: Worker tests
         run: npm test
         working-directory: worker
@@ -52,6 +56,11 @@ jobs:
 
       - name: Fail if dist/ is empty
         run: test -s dist/index.html
+
+      # The Worker imports the Anthropic SDK; wrangler bundles it from here.
+      - name: Worker dependencies
+        run: npm ci
+        working-directory: worker
 
       - name: Deploy Worker and assets
         uses: cloudflare/wrangler-action@v3
