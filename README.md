@@ -23,44 +23,47 @@ impractical and every diff reads as "1 line changed".
 
 ## What the app is
 
-One screen: a grid of word cards, five across and four down, under one bar.
-Words come in sets of twenty -- a sitting -- picked from the bar, with a study
-game, flashcards and writing practice scoped to the set on screen. Progress is
-the set of words you have marked mastered, and nothing else.
+Two screens, one metaphor: zoom out to the map, zoom in to a set.
 
-The chrome is a single bar across the top, so almost all of the window is
-cards -- no rail, no footer, nothing else competing for an edge of the screen.
-Left to right: the mark; the set pager -- previous, the set in hand ("1-20
-· Set 1 / 23", filling with accent as its twenty words are learned), next;
-any sign-in or sync message; total progress as a ring; a solid,
-accent-filled Study button (the set in hand is in its tooltip, not repeated
-in the label); then a visually separate toolbar -- its own panel background
-sets it off from the pager -- holding the reading
-toggle, the current interface language as its own two-letter icon with a
-popover to change it, load and save. There is no separate account icon:
-signed out, clicking Save opens a small popover to collect an email and
-send a sign-in link; signed in, Save just saves. Account identity is not
-displayed anywhere in the chrome -- the only visible signal of being signed
-in is that Save no longer prompts.
+**The map** is the home screen. The deck's name, one progress bar for the
+whole deck, a "Continue" card naming the set in hand (or the next unfinished
+one once that is done), and every set of the deck as a numbered tile, ten to
+a row -- fifty for a thousand-word deck. A tile fills with accent as its
+twenty words are learned, turns solid when they all are, and the set in hand
+wears a ring. Tapping a tile opens it. There is no other navigation: the map
+is the only place that needs to list the sets, and it scales to fifty without
+a trick.
 
-A deck runs to a thousand words, fifty sets, which is too many for a tab
-strip. Clicking the set in hand opens a map of all of them: one row per
-hundred words, five sets of twenty across, each cell filling with accent as
-it is learned and the active one outlined. Clicking a cell jumps there and
-closes the map; the arrows either side step one set at a time and dim at
-the ends. The header of the map says how much of the whole deck is learned.
+**The set** is twenty cards under a quiet header: back to the map, the set's
+name and count, a Learn / Recall switch, and one primary button, Practice
+(the games and flashcards, scoped to these twenty). Nothing else. A card
+shows the word with furigana, its meaning, the example sentence with the
+word lit, and its translation -- all at once, no hover. The learned control
+is a visible "Got it" pill. Tapping a card opens it large, with arrow keys
+to walk the set, Enter to mark, Escape to close. At the foot of the cards,
+where reading finishes, are Previous set and Next set; the arrow keys do the
+same. Recall hides the answers -- meaning, translation, furigana -- and
+pointing at a card shows that card's; opened large in Recall, a card is a
+flashcard with a Show answer button (or Space).
 
-A card at rest is the word with furigana over it and its meaning underneath.
-Hovering raises the word, swaps the meaning for the example sentence and its
-translation, and brings out the tick that marks the word learned. Both states
-are centred in the card. A card with no example sentence keeps its meaning on
-hover.
+**Progress saves itself.** There is no Save and no Load. Signed out, progress
+lives on the device. Signed in, every mark is pushed after a short debounce
+(and flushed if the tab closes mid-run), and the account's copy is loaded on
+every start, so a second device simply shows it. The one avatar on every
+screen shows who is signed in and, by its dot, the sync state: green synced,
+amber saving, red failed, grey local. Its panel holds sign-in (a magic link
+by email, no password), sign-out, and the two settings -- interface language
+and furigana on or off.
+
+**Visually**: one accent, reserved for progress and the primary action;
+everything else neutral. Cards and tiles are rounded surfaces with a faint
+shadow; there are no hairlines between things. On a phone the map is five
+tiles across, the cards are one column, and a bottom bar carries Map, the
+mode and Practice.
 
 Sentences live in `words.json` as `sentences: [{ ja, t: { en, es } }]` and are
 keyed by word id, so a word can be corrected without invalidating anyone's
-progress. Every word the app can currently reach has one; the rest of the
-corpus does not yet, and a word without a sentence degrades rather than
-breaks.
+progress. A word without a sentence shows its meaning and nothing below it.
 
 ## How a set of twenty is chosen
 

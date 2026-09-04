@@ -347,6 +347,112 @@ a:hover{color:var(--text-accent-hover)}
   .ok-cellbtn:hover > span[style*="height: 2rem"],.ok-cellbtn:hover > span[style*="height:2rem"]{background:var(--text-accent-hover)!important;border-color:var(--text-accent-hover)!important;color:#ffffff!important}
 </style>
 
+<style>/* The two-screen app: a map you zoom out to, a set you read through.
+   One accent, reserved for progress and the primary action; everything else
+   neutral. No hairlines between cards -- surfaces and space do the work. */
+:root{
+  --ok-bg:#f4f4f1;--ok-card:#ffffff;--ok-line:#e4e4df;--ok-ink:#1b1f24;--ok-mute:#6b7280;--ok-body:#3b4149;
+  --ok-acc:#0891b2;--ok-acc-h:#0e7490;--ok-acc-s:rgba(8,145,178,.09);--ok-acc-t:rgba(8,145,178,.16);
+  --ok-shadow:0 1px 2px rgba(20,24,30,.04),0 4px 14px rgba(20,24,30,.05);
+  --ok-shadow-h:0 2px 4px rgba(20,24,30,.06),0 10px 28px rgba(20,24,30,.10);
+}
+.ok-page{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;background:var(--ok-bg);color:var(--ok-ink)}
+.ok-page.ok-scroll{overflow-y:auto}
+.ok-top{flex:0 0 auto;position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:1rem;height:3.5rem;padding:0 4.25rem 0 1.25rem;background:rgba(244,244,241,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--ok-line)}
+.ok-top-l,.ok-top-r{display:flex;align-items:center;gap:.75rem;flex:1 1 0;min-width:0}
+.ok-top-r{justify-content:flex-end}
+.ok-top-c{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;line-height:1.15;min-width:0}
+.ok-mark{font-size:1.35rem;line-height:1;color:var(--ok-acc)}
+.ok-deck{font-family:var(--font-2);font-size:1.0625rem;letter-spacing:.02em;white-space:nowrap}
+.ok-wrap{width:100%;max-width:64rem;margin:0 auto;padding:1.75rem 1.25rem 3rem;display:flex;flex-direction:column;gap:1.75rem}
+.ok-h2{font-family:var(--font-2);font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ok-mute)}
+.ok-muted{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute)}
+.ok-row{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.ok-overall{display:flex;flex-direction:column;gap:.6rem}
+.ok-bar{height:.5rem;border-radius:999px;background:#e6e6e1;overflow:hidden}
+.ok-bar-fill{height:100%;background:var(--ok-acc);border-radius:999px;transition:width 400ms cubic-bezier(.3,.7,.3,1)}
+.ok-hero{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;padding:1.35rem 1.6rem;background:var(--ok-card);border:1px solid var(--ok-line);border-radius:16px;box-shadow:var(--ok-shadow);cursor:pointer;user-select:none;transition:box-shadow 160ms ease,transform 160ms ease}
+.ok-hero:hover{box-shadow:var(--ok-shadow-h);transform:translateY(-1px)}
+.ok-hero-l{display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.ok-eyebrow{font-family:var(--font-2);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ok-acc)}
+.ok-hero-title{font-size:1.7rem;line-height:1.15}
+.ok-btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;height:2.4rem;padding:0 1.1rem;border-radius:999px;border:1px solid var(--ok-line);background:var(--ok-card);font-family:var(--font-2);font-size:.9375rem;letter-spacing:.02em;color:var(--ok-ink);cursor:pointer;user-select:none;white-space:nowrap;transition:background 140ms ease,border-color 140ms ease,color 140ms ease}
+.ok-btn:hover{border-color:#c9c9c2;background:#fafaf8}
+.ok-btn-primary{background:var(--ok-acc);border-color:var(--ok-acc);color:#fff}
+.ok-btn-primary:hover{background:var(--ok-acc-h);border-color:var(--ok-acc-h)}
+.ok-tiles{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:.55rem}
+.ok-tile{position:relative;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;border-radius:12px;border:1px solid var(--ok-line);overflow:hidden;cursor:pointer;user-select:none;font-family:var(--font-2);font-size:1.0625rem;font-variant-numeric:tabular-nums;transition:transform 140ms ease,box-shadow 140ms ease}
+.ok-tile:hover{transform:translateY(-1px);box-shadow:var(--ok-shadow-h)}
+.ok-tile-fill{position:absolute;left:0;right:0;bottom:0;background:var(--ok-acc-t);pointer-events:none;transition:height 300ms ease}
+.ok-tile-n{position:relative}
+.ok-tile-check{position:absolute;right:.3rem;bottom:.3rem}
+.ok-back{display:inline-flex;align-items:center;gap:.25rem;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);cursor:pointer;user-select:none;padding:.35rem .6rem .35rem .3rem;border-radius:8px;white-space:nowrap}
+.ok-back:hover{color:var(--ok-ink);background:rgba(0,0,0,.045)}
+.ok-set-title{font-size:1.25rem;white-space:nowrap}
+.ok-set-sub{font-size:.8125rem;white-space:nowrap}
+.ok-seg{display:inline-flex;padding:.2rem;border-radius:999px;background:#e7e7e2}
+.ok-seg-b{padding:.3rem .85rem;border-radius:999px;font-family:var(--font-2);font-size:.875rem;letter-spacing:.02em;cursor:pointer;user-select:none;transition:background 140ms ease,color 140ms ease,box-shadow 140ms ease}
+.ok-set-body{flex:1 1 auto;min-height:0;overflow-y:auto}
+.ok-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(16.5rem,1fr));gap:1rem;padding:1.25rem 1.25rem 0;max-width:92rem;margin:0 auto}
+.ok-card{position:relative;display:flex;flex-direction:column;gap:.45rem;padding:1.05rem 1.1rem .9rem;border-radius:14px;border:1px solid var(--ok-line);background:var(--ok-card);box-shadow:var(--ok-shadow);cursor:pointer;transition:box-shadow 160ms ease,transform 160ms ease,background 200ms ease,border-color 200ms ease}
+.ok-card:hover{box-shadow:var(--ok-shadow-h);transform:translateY(-1px)}
+.ok-card-word{line-height:1.1;white-space:nowrap;overflow:hidden;transition:color 200ms ease}
+.ok-card-word rt{font-family:var(--font-2);font-size:.5em;line-height:1.2;letter-spacing:.02em;color:var(--ok-acc);transition:opacity 140ms ease}
+.ok-card-gloss{font-family:var(--font-2);font-size:1.0625rem;line-height:1.35;color:var(--ok-body);transition:opacity 140ms ease}
+.ok-card-ex{margin-top:.2rem;padding-top:.65rem;border-top:1px solid var(--ok-line);font-size:1rem;line-height:1.5;color:var(--ok-body);text-wrap:pretty}
+.ok-card-tr{font-family:var(--font-2);font-size:.9rem;line-height:1.4;color:var(--ok-mute);transition:opacity 140ms ease}
+.ok-pill{margin-top:.55rem;align-self:flex-start;display:inline-flex;align-items:center;gap:.35rem;height:1.95rem;padding:0 .8rem 0 .6rem;border-radius:999px;border:1px solid var(--ok-line);font-family:var(--font-2);font-size:.8125rem;letter-spacing:.03em;user-select:none;cursor:pointer;transition:background 140ms ease,border-color 140ms ease,color 140ms ease}
+.ok-pill:hover{border-color:var(--ok-acc);color:var(--ok-acc)}
+.ok-setnav{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:92rem;margin:0 auto;padding:1.75rem 1.25rem 3rem}
+.ok-acct{position:fixed;top:.6rem;right:1rem;z-index:70}
+.ok-avatar{position:relative;width:2.3rem;height:2.3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-2);font-size:1rem;cursor:pointer;border:1px solid var(--ok-line);user-select:none;transition:box-shadow 140ms ease}
+.ok-avatar:hover{box-shadow:var(--ok-shadow-h)}
+.ok-dot{position:absolute;right:-2px;bottom:-2px;width:.7rem;height:.7rem;border-radius:50%;border:2px solid var(--ok-bg);transition:background 200ms ease}
+.ok-pop{position:absolute;top:100%;right:0;padding-top:.5rem;cursor:default}
+.ok-pop-in{width:19.5rem;display:flex;flex-direction:column;gap:.6rem;padding:1.05rem 1.15rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:0 18px 48px rgba(20,24,30,.18)}
+.ok-pop-title{font-size:1.0625rem;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ok-pop-sep{height:1px;background:var(--ok-line);margin:.3rem 0}
+.ok-link{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-acc);cursor:pointer;align-self:flex-start;user-select:none}
+.ok-link:hover{text-decoration:underline}
+.ok-input{width:100%;height:2.4rem;padding:0 .75rem;border-radius:8px;border:1px solid #d5d5cf;background:#fff;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);outline:none}
+.ok-input:focus{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
+.ok-chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.ok-chip{padding:.3rem .75rem;border-radius:999px;border:1px solid var(--ok-line);font-family:var(--font-2);font-size:.875rem;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease}
+.ok-veil{position:fixed;inset:0;z-index:95;background:rgba(20,24,30,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;animation:ok-fade 160ms ease}
+.ok-focus{position:relative;width:min(40rem,100%);display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:2.5rem 3.75rem 2rem;border-radius:20px;background:var(--ok-card);box-shadow:0 30px 80px rgba(20,24,30,.35);text-align:center;animation:ok-rise 200ms cubic-bezier(.2,.7,.3,1)}
+.ok-x{position:absolute;top:.55rem;right:.95rem;font-size:1.7rem;line-height:1;color:var(--ok-mute);cursor:pointer;user-select:none}
+.ok-x:hover{color:var(--ok-ink)}
+.ok-focus-n{font-family:var(--font-2);font-size:.8125rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-mute)}
+.ok-focus-word{line-height:1.15;white-space:nowrap}
+.ok-focus-word rt{font-family:var(--font-2);font-size:.42em;color:var(--ok-acc);transition:opacity 160ms ease}
+.ok-focus-ans{display:flex;flex-direction:column;gap:.2rem;transition:opacity 160ms ease}
+.ok-focus-reading{font-size:1.5rem;color:var(--ok-acc)}
+.ok-focus-gloss{font-family:var(--font-2);font-size:1.25rem;color:var(--ok-body)}
+.ok-focus-ex{font-size:1.25rem;line-height:1.5;color:var(--ok-body);padding-top:.9rem;border-top:1px solid var(--ok-line);width:100%;text-wrap:pretty}
+.ok-focus-tr{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-mute);transition:opacity 160ms ease;text-wrap:pretty}
+.ok-focus-actions{display:flex;gap:.6rem;margin-top:.6rem}
+.ok-focus-arrow{position:absolute;top:50%;transform:translateY(-50%);width:2.6rem;height:2.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ok-mute);cursor:pointer;user-select:none}
+.ok-focus-arrow:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
+.ok-focus-arrow-l{left:.6rem}.ok-focus-arrow-r{right:.6rem}
+.ok-toast{position:fixed;left:50%;bottom:1.5rem;transform:translateX(-50%);z-index:120;padding:.7rem 1.15rem;border-radius:10px;background:#1b1f24;color:#fff;font-family:var(--font-2);font-size:.9375rem;box-shadow:0 10px 30px rgba(0,0,0,.25);white-space:nowrap;animation:ok-toast-in 200ms ease}
+@keyframes ok-toast-in{from{opacity:0;transform:translate(-50%,.5rem)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes ok-fade{from{opacity:0}to{opacity:1}}
+@keyframes ok-rise{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+.ok-bottombar{display:none}
+@media (max-width:640px){
+  .ok-top{padding-left:.75rem;padding-right:3.5rem;gap:.5rem}
+  .ok-top-set .ok-seg,.ok-top-set .ok-practice,.ok-set-sub{display:none}
+  .ok-tiles{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .ok-cards{grid-template-columns:1fr;padding:1rem .9rem 0}
+  .ok-setnav{padding-bottom:5rem}
+  .ok-hero{flex-direction:column;align-items:flex-start}
+  .ok-focus{padding:2rem 2.25rem 1.5rem}
+  .ok-bottombar{position:fixed;left:0;right:0;bottom:0;z-index:65;display:flex;align-items:stretch;height:3.5rem;background:rgba(244,244,241,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
+  .ok-bb-b{flex:1 1 0;display:flex;align-items:center;justify-content:center;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);cursor:pointer;user-select:none}
+  .ok-bb-primary{color:var(--ok-acc)}
+}
+</style>
+
 <style>
 #ok-boot{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#faf9f5;z-index:9999;animation:ok-boot-giveup 6s step-end forwards}
 #ok-boot i{width:88px;height:88px;display:flex;align-items:center;justify-content:center;font-style:normal;background:#0891b2;color:#fff;font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:50px;animation:ok-boot 1.5s ease-in-out infinite}
@@ -496,158 +602,154 @@ html[data-ok-ready] #ok-boot{display:none}
   </sc-if>
 
 
-  <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ true }}">
-    <main style="flex:1 1 auto;min-height:0;overflow:hidden;display:flex;flex-direction:column">
-
-      <div style="position:relative;z-index:60;flex:0 0 auto;display:flex;align-items:stretch;height:3.25rem;border-bottom:{{ ruleH }} solid var(--cyan-a45)">
-        <span title="OpenKanji.org" style="flex:0 0 auto;display:flex;align-items:center;padding:0 1.1rem;border-right:{{ ruleH }} solid var(--cyan-a45);font-size:1.4rem;line-height:1;color:var(--accent)">开</span>
-
-        <!-- The set pager: previous, the set in hand (which opens the map of all
-             sets), next. A deck is up to fifty sets, which is too many to lay
-             out as tabs, so the bar shows one and the popover shows them all. -->
-        <span sc-camel-on-click="{{ prevSet }}" title="{{ t_prev_set }}" style="user-select:none;flex:0 0 auto;width:2.6rem;display:flex;align-items:center;justify-content:center;border-right:{{ ruleH }} solid var(--cyan-a45);color:{{ prevFg }};cursor:{{ prevCursor }};transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent-soft)">
-          <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg>
-        </span>
-        <div sc-camel-on-click="{{ toggleSets }}" title="{{ setFrac }}" style="position:relative;user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:.75rem;padding:0 1.1rem;border-right:{{ ruleH }} solid var(--cyan-a45);background:{{ setsBg }};cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-          <div style="position:absolute;left:0;top:0;bottom:0;width:{{ setPctW }};background:rgba(8,145,178,.16);transition:width 300ms cubic-bezier(.3,.7,.3,1);pointer-events:none"></div>
-          <div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--accent);pointer-events:none"></div>
-          <span style="position:relative;font-family:var(--font-2);font-size:1.0625rem;letter-spacing:.05em;color:var(--text-accent);white-space:nowrap">{{ listRange }}</span>
-          <span style="position:relative;font-family:var(--font-2);font-size:.875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap">{{ setCounter }}</span>
-          <svg width="12" height="12" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position:relative;transform:{{ setsCaret }};transition:transform 160ms ease"><path d="M5 9 L12 16 L19 9"></path></svg>
-          <sc-if value="{{ setsOpen }}" hint-placeholder-val="{{ false }}">
-            <div sc-camel-on-mouse-leave="{{ closeSets }}" sc-camel-on-click="{{ stop }}" style="position:absolute;top:100%;left:-2.6rem;padding-top:.4rem;z-index:80;cursor:default">
-              <div style="background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column">
-                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:2rem;padding:.75rem 1rem;border-bottom:1px solid var(--cyan-a28)">
-                  <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-accent);white-space:nowrap">{{ t_word_sets }}</span>
-                  <span style="font-family:var(--font-2);font-size:.9375rem;color:var(--text-muted);white-space:nowrap">{{ setsSummary }}</span>
-                </div>
-                <!-- one row per hundred words, five sets of twenty across -->
-                <div style="display:flex;flex-direction:column;padding:.6rem .75rem .75rem">
-                  <sc-for list="{{ setRows }}" as="row" hint-placeholder-count="2">
-                    <div style="display:flex;align-items:stretch;gap:.35rem;padding:.175rem 0">
-                      <span style="flex:0 0 4.6rem;display:flex;align-items:center;font-family:var(--font-2);font-size:.8125rem;letter-spacing:.06em;font-variant-numeric:tabular-nums;color:var(--text-muted);white-space:nowrap">{{ row.label }}</span>
-                      <sc-for list="{{ row.cells }}" as="ws" hint-placeholder-count="5">
-                        <div sc-camel-on-click="{{ ws.pick }}" title="{{ ws.frac }}" style="position:relative;flex:0 0 4.9rem;height:2.3rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ ws.border }};background:{{ ws.bg }};cursor:pointer;overflow:hidden;transition:border-color 140ms ease,background 140ms ease" style-hover="border-color:var(--accent)">
-                          <div style="position:absolute;left:0;top:0;bottom:0;width:{{ ws.pct }};background:rgba(8,145,178,.18);pointer-events:none"></div>
-                          <span style="position:relative;font-family:var(--font-2);font-size:.9375rem;letter-spacing:.03em;font-variant-numeric:tabular-nums;color:{{ ws.fg }};white-space:nowrap">{{ ws.label }}</span>
-                        </div>
-                      </sc-for>
-                    </div>
-                  </sc-for>
-                </div>
+  <!-- ===== Map: the whole deck at a glance, and the way into a set ===== -->
+  <sc-if value="{{ onMap }}" hint-placeholder-val="{{ true }}">
+    <main class="ok-page ok-scroll">
+      <header class="ok-top">
+        <div class="ok-top-l">
+          <span class="ok-mark" title="OpenKanji.org">开</span>
+          <span class="ok-deck">{{ deckName }}</span>
+        </div>
+      </header>
+      <section class="ok-wrap">
+        <div class="ok-overall">
+          <div class="ok-row"><span class="ok-h2">{{ t_your_progress }}</span><span class="ok-muted">{{ deckSummary }}</span></div>
+          <div class="ok-bar"><div class="ok-bar-fill" style="width:{{ deckPct }}"></div></div>
+        </div>
+        <div sc-camel-on-click="{{ continueSet }}" class="ok-hero">
+          <div class="ok-hero-l">
+            <span class="ok-eyebrow">{{ heroEyebrow }}</span>
+            <span class="ok-hero-title">{{ heroTitle }}</span>
+            <span class="ok-muted">{{ heroSub }}</span>
+          </div>
+          <span class="ok-btn ok-btn-primary">{{ heroCta }} <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg></span>
+        </div>
+        <div class="ok-overall">
+          <div class="ok-row"><span class="ok-h2">{{ t_all_sets }}</span><span class="ok-muted">{{ setsLegend }}</span></div>
+          <div class="ok-tiles">
+            <sc-for list="{{ setTiles }}" as="tl" hint-placeholder-count="10">
+              <div sc-camel-on-click="{{ tl.pick }}" title="{{ tl.frac }}" class="ok-tile" style="background:{{ tl.bg }};color:{{ tl.fg }};box-shadow:{{ tl.ring }}">
+                <div class="ok-tile-fill" style="height:{{ tl.pct }};opacity:{{ tl.fillOpacity }}"></div>
+                <span class="ok-tile-n">{{ tl.n }}</span>
+                <sc-if value="{{ tl.done }}" hint-placeholder-val="{{ false }}"><span class="ok-tile-check"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span></sc-if>
               </div>
-            </div>
-          </sc-if>
+            </sc-for>
+          </div>
         </div>
-        <span sc-camel-on-click="{{ nextSet }}" title="{{ t_next_set }}" style="user-select:none;flex:0 0 auto;width:2.6rem;display:flex;align-items:center;justify-content:center;border-right:{{ ruleH }} solid var(--cyan-a45);color:{{ nextFg }};cursor:{{ nextCursor }};transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent-soft)">
-          <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg>
-        </span>
+      </section>
+    </main>
+  </sc-if>
 
-        <div style="flex:1 1 auto;min-width:0;display:flex;align-items:center;padding:0 1rem;overflow:hidden">
-          <span style="min-width:0;font-family:var(--font-2);font-size:1rem;color:var(--text-accent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:{{ authMsgOpacity }};transition:opacity 200ms ease">{{ authMsg }}</span>
+  <!-- ===== Set: twenty words, read through, marked as they land ===== -->
+  <sc-if value="{{ onSet }}" hint-placeholder-val="{{ false }}">
+    <main class="ok-page">
+      <header class="ok-top ok-top-set">
+        <div class="ok-top-l">
+          <span sc-camel-on-click="{{ goMap }}" class="ok-back"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg><span>{{ t_map }}</span></span>
         </div>
-
-        <div sc-camel-on-mouse-enter="{{ hintSet.enter }}" sc-camel-on-mouse-leave="{{ hintSet.leave }}" style="position:relative;flex:0 0 auto;display:flex;align-items:center;gap:.55rem;padding:0 .9rem;border-left:{{ ruleH }} solid var(--cyan-a45);cursor:default">
-          <svg width="20" height="20" sc-camel-view-box="0 0 44 44" style="flex:0 0 auto;transform:rotate(-90deg)">
-            <circle cx="22" cy="22" r="18" fill="none" stroke="var(--cyan-a15)" stroke-width="6"></circle>
-            <circle cx="22" cy="22" r="18" fill="none" stroke="var(--accent)" stroke-width="6" stroke-dasharray="{{ donutDash }}" style="transition:stroke-dasharray 320ms cubic-bezier(.3,.7,.3,1)"></circle>
-          </svg>
-          <span style="display:flex;align-items:baseline;gap:.25rem;font-family:var(--font-2);font-size:1.0625rem;font-variant-numeric:tabular-nums;color:var(--text-muted);white-space:nowrap">
-            <span style="color:{{ masteryFg }};transition:color 260ms ease">{{ setDone }}</span><span>/</span><span>{{ setTotal }}</span>
-          </span>
-          <sc-if value="{{ hintSet.open }}" hint-placeholder-val="{{ false }}">
-            <div style="{{ progTipStyle }}">
-              <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--text-accent)">{{ t_word_progress }}</span>
-              <span style="font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--text-muted);text-wrap:pretty">{{ t_mastered_before }} <span style="color:var(--text-accent)">{{ setPct }}</span> {{ t_of_words_in }} {{ progDeck }}</span>
-            </div>
-          </sc-if>
+        <div class="ok-top-c">
+          <span class="ok-set-title">{{ setTitle }}</span>
+          <span class="ok-muted ok-set-sub">{{ setSub }}</span>
         </div>
-
-        <div sc-camel-on-click="{{ studyNow }}" title="{{ studyTitle }}" style="user-select:none;flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:0 1.2rem;margin:0 .1rem;background:var(--accent);color:#ffffff;opacity:{{ studyOpacity }};pointer-events:{{ studyPointer }};cursor:pointer;transition:background 140ms ease" style-hover="background:var(--text-accent-hover)">
-          <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5 H10.5 A1.5 1.5 0 0 1 12 7 V20 A1.5 1.5 0 0 0 10.5 18.5 H3 Z"></path><path d="M21 5.5 H13.5 A1.5 1.5 0 0 0 12 7 V20 A1.5 1.5 0 0 1 13.5 18.5 H21 Z"></path></svg>
-          <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap">{{ t_study }}</span>
+        <div class="ok-top-r">
+          <div class="ok-seg">
+            <span sc-camel-on-click="{{ modeLearn }}" class="ok-seg-b" style="{{ learnStyle }}">{{ t_learn }}</span>
+            <span sc-camel-on-click="{{ modeRecall }}" class="ok-seg-b" style="{{ recallStyle }}">{{ t_recall }}</span>
+          </div>
+          <span sc-camel-on-click="{{ studyNow }}" class="ok-btn ok-btn-primary ok-practice">{{ t_practice }}</span>
         </div>
-
-        <div style="flex:0 0 auto;display:flex;align-items:stretch;border-left:{{ ruleH }} solid var(--cyan-a45);background:var(--surface-panel)">
-          <span sc-camel-on-click="{{ toggleReveal }}" title="{{ t_show_hide_translations }}" style="user-select:none;flex:0 0 auto;width:3.1rem;display:flex;align-items:center;justify-content:center;background:{{ eyeFill }};color:{{ eyeFg }};cursor:pointer;transition:background 140ms ease,color 140ms ease">
-            <sc-if value="{{ revealed }}" hint-placeholder-val="{{ true }}">
-              <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1.5 12 C5 6.5 8.5 4.5 12 4.5 C15.5 4.5 19 6.5 22.5 12 C19 17.5 15.5 19.5 12 19.5 C8.5 19.5 5 17.5 1.5 12 Z"></path><circle cx="12" cy="12" r="3.2"></circle></svg>
-            </sc-if>
-            <sc-if value="{{ concealed }}" hint-placeholder-val="{{ false }}">
-              <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1.5 12 C5 6.5 8.5 4.5 12 4.5 C15.5 4.5 19 6.5 22.5 12 C19 17.5 15.5 19.5 12 19.5 C8.5 19.5 5 17.5 1.5 12 Z"></path><circle cx="12" cy="12" r="3.2"></circle><path d="M3.5 20.5 L20.5 3.5" stroke-width="2.4"></path></svg>
-            </sc-if>
-          </span>
-
-          <span sc-camel-on-click="{{ toggleLang }}" style="position:relative;user-select:none;flex:0 0 auto;width:3.1rem;display:flex;align-items:center;justify-content:center;border-left:{{ ruleH }} solid var(--cyan-a45);color:{{ langFg }};cursor:pointer;transition:color 140ms ease" style-hover="color:var(--text-accent)">
-            <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.06em">{{ langCode }}</span>
-            <sc-if value="{{ langOpen }}" hint-placeholder-val="{{ false }}">
-              <div sc-camel-on-mouse-leave="{{ closeLang }}" sc-camel-on-click="{{ stop }}" style="position:absolute;top:100%;right:0;padding-top:.4rem;z-index:80;cursor:default">
-                <div style="width:15rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column">
-                  <span style="padding:.75rem 1rem;border-bottom:1px solid var(--cyan-a28);font-size:1.0625rem;letter-spacing:.06em;color:var(--text-accent);white-space:nowrap">表示言語</span>
-                  <sc-for list="{{ langs }}" as="lg" hint-placeholder-count="6">
-                    <div sc-camel-on-click="{{ lg.pick }}" style="display:flex;align-items:center;gap:.8rem;padding:.75rem 1rem;border-bottom:1px solid var(--cyan-a15);background:{{ lg.bg }};cursor:{{ lg.cursor }};opacity:{{ lg.opacity }};transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-                      <span style="flex:0 0 2.2rem;font-family:var(--font-2);font-size:1.0625rem;letter-spacing:.1em;color:{{ lg.codeFg }}">{{ lg.code }}</span>
-                      <span style="flex:1 1 auto;min-width:0;font-family:var(--font-2);font-size:1.0625rem;color:{{ lg.nameFg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ lg.name }}</span>
-                      <span style="flex:0 0 auto;font-family:var(--font-2);font-size:.875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)">{{ lg.tag }}</span>
-                    </div>
-                  </sc-for>
-                </div>
-              </div>
-            </sc-if>
-          </span>
-
-          <span sc-camel-on-click="{{ loadNow }}" title="{{ t_load_saved_progress }}" class="ok-navfill" style="user-select:none;flex:0 0 auto;width:3.1rem;display:flex;align-items:center;justify-content:center;border-left:{{ ruleH }} solid var(--cyan-a45);background:{{ loadFill }};cursor:{{ loadCursor }};transition:background 140ms ease"><svg width="18" height="18" sc-camel-view-box="0 0 24 24"><path d="M2.5 4.5 H9.2 L11.4 7.2 H19.5 V10.5 H2.5 Z" fill="var(--surface-page)"></path><path d="M2.5 11.6 H22 L19 20.5 H2.5 Z" fill="var(--surface-page)"></path></svg></span>
-
-          <span sc-camel-on-click="{{ saveNow }}" title="{{ t_save_progress_title }}" class="ok-navfill" style="position:relative;user-select:none;flex:0 0 auto;width:3.1rem;display:flex;align-items:center;justify-content:center;border-left:{{ ruleH }} solid var(--cyan-a45);background:{{ saveFill }};cursor:{{ saveCursor }};box-shadow:{{ saveGlow }};transition:background 140ms ease,box-shadow 260ms ease">
-            <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
-              <svg width="18" height="18" sc-camel-view-box="0 0 24 24"><path d="M5 12.5 L9.5 17 L19 6.5" fill="none" stroke="var(--surface-page)" stroke-width="2.6"></path></svg>
-            </sc-if>
-            <sc-if value="{{ notSaved }}" hint-placeholder-val="{{ true }}">
-              <svg width="18" height="18" sc-camel-view-box="0 0 24 24"><path d="M3 3 H17.5 L21 6.5 V21 H3 Z" fill="var(--surface-page)"></path><rect x="8" y="3" width="8" height="6.6" fill="var(--accent)"></rect><rect x="13.1" y="4.2" width="1.9" height="4.2" fill="var(--surface-page)"></rect><rect x="6.4" y="13.2" width="11.2" height="7.8" fill="var(--accent)"></rect></svg>
-            </sc-if>
-            <sc-if value="{{ saveOpen }}" hint-placeholder-val="{{ false }}">
-              <div sc-camel-on-mouse-leave="{{ closeSaveOpen }}" sc-camel-on-click="{{ stop }}" style="position:absolute;top:100%;right:0;padding-top:.4rem;z-index:80;cursor:default">
-                <div style="width:16rem;background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column;gap:.5rem;padding:.85rem 1rem">
-                  <input type="email" autofocus="" placeholder="{{ t_save_progress_title }}" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onSaveEmailKey }}" style="width:100%;height:2.2rem;box-sizing:border-box;background:transparent;border:1px solid var(--cyan-a28);border-radius:0;outline:none;padding:0 .55rem;font-family:var(--font-2);font-size:.9375rem;color:var(--text-body)"/>
-                  <span style="font-family:var(--font-2);font-size:.9375rem;line-height:1.45;color:var(--text-muted);text-wrap:pretty">{{ saveTipBody }}</span>
-                </div>
-              </div>
-            </sc-if>
-          </span>
-        </div>
-      </div>
-
-      <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column">
-        <div ref="{{ listRef }}" class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:.9rem 1rem .9rem .9rem">
-        <div style="height:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(4,minmax(10rem,1fr));border-top:{{ ruleH }} solid var(--cyan-a45);border-left:{{ ruleH }} solid var(--cyan-a45)">
+      </header>
+      <div class="ok-set-body ok-scroll">
+        <div class="ok-cards">
           <sc-for list="{{ listWords }}" as="lr" hint-placeholder-count="20">
-            <div sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" style="position:relative;min-width:0;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;padding:.5rem .6rem .35rem;border-right:{{ ruleH }} solid var(--cyan-a45);border-bottom:{{ ruleH }} solid var(--cyan-a45);background:{{ lr.bg }};transition:background 200ms ease">
-              <span style="position:absolute;left:.5rem;top:.3rem;font-family:var(--font-2);font-size:.8125rem;font-variant-numeric:tabular-nums;color:var(--cyan-a55)">{{ lr.num }}</span>
-              <span style="flex:0 0 auto;height:{{ lr.padTop }};transition:height 280ms cubic-bezier(.3,.7,.3,1)"></span>
-              <span style="flex:0 0 auto;max-width:100%;font-size:{{ lr.wordSize }};line-height:1;color:{{ lr.wordFg }};text-align:center;white-space:nowrap;overflow:hidden;transition:color 200ms ease"><sc-for list="{{ lr.ruby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="font-family:var(--font-2);font-size:{{ lr.rubySize }};line-height:1.25;letter-spacing:.02em;color:var(--text-accent);opacity:{{ answerOpacity }};transition:opacity 140ms ease">{{ rb.r }}</rt></ruby></sc-for></span>
-              <span style="position:relative;flex:1 1 auto;align-self:stretch;min-height:0;overflow:hidden;display:block;opacity:{{ answerOpacity }};transition:opacity 140ms ease">
-                <span style="position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;align-items:center;padding-top:.5rem;opacity:{{ lr.faceOpacity }};transform:{{ lr.faceShift }};transition:opacity 200ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)">
-                  <span style="max-width:100%;font-family:var(--font-2);font-size:1.125rem;line-height:1.3;color:var(--text-muted);text-align:center;text-wrap:pretty;overflow:hidden">{{ lr.gloss }}</span>
-                </span>
-                <span style="position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2rem;opacity:{{ lr.exOpacity }};transform:{{ lr.exShift }};pointer-events:none;transition:opacity 200ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)">
-                  <span style="max-width:100%;font-size:1.125rem;line-height:1.4;color:#3a4954;text-align:center;text-wrap:pretty"><sc-for list="{{ lr.exParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--text-accent)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
-                  <span style="max-width:100%;font-family:var(--font-2);font-size:1rem;line-height:1.25;color:var(--text-muted);text-align:center;text-wrap:pretty">{{ lr.exEn }}</span>
-                </span>
-              </span>
-              <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn" title="{{ lr.markTitle }}" style="position:absolute;right:.4rem;top:.3rem;width:1.75rem;height:1.75rem;display:flex;align-items:center;justify-content:center;opacity:{{ lr.markOpacity }};transform:{{ lr.markShift }};pointer-events:{{ lr.markPointer }};cursor:pointer;transition:opacity 200ms ease,transform 260ms cubic-bezier(.3,.7,.3,1)">
-                <sc-if value="{{ lr.markDone }}" hint-placeholder-val="{{ false }}">
-                  <span style="width:1.75rem;height:1.75rem;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#ffffff"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M5 13 L10 18 L19 6"></path></svg></span>
-                </sc-if>
-                <sc-if value="{{ lr.markOpen }}" hint-placeholder-val="{{ true }}">
-                  <span style="width:1.75rem;height:1.75rem;box-sizing:border-box;border:1px solid var(--accent);background:var(--surface-page);display:flex;align-items:center;justify-content:center;color:var(--cyan-a35);transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent);color:#ffffff"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M5 13 L10 18 L19 6"></path></svg></span>
-                </sc-if>
-              </span>
+            <div sc-camel-on-click="{{ lr.open }}" sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" class="ok-card" style="background:{{ lr.bg }};border-color:{{ lr.border }}">
+              <span class="ok-card-word" style="font-size:{{ lr.wordSize }};color:{{ lr.wordFg }}"><sc-for list="{{ lr.ruby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ lr.rubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
+              <span class="ok-card-gloss" style="opacity:{{ lr.ansOpacity }}">{{ lr.gloss }}</span>
+              <sc-if value="{{ lr.hasEx }}" hint-placeholder-val="{{ true }}">
+                <span class="ok-card-ex"><sc-for list="{{ lr.exParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok-acc)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
+                <span class="ok-card-tr" style="opacity:{{ lr.ansOpacity }}">{{ lr.exEn }}</span>
+              </sc-if>
+              <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-pill" title="{{ lr.markTitle }}" style="{{ lr.pillStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg><span>{{ lr.pillLabel }}</span></span>
             </div>
           </sc-for>
         </div>
+        <div class="ok-setnav">
+          <span sc-camel-on-click="{{ prevSet }}" class="ok-btn" style="visibility:{{ prevVis }}"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12 H5"></path><path d="M11 6 L5 12 L11 18"></path></svg><span>{{ prevLabel }}</span></span>
+          <span class="ok-muted">{{ setCounter }}</span>
+          <span sc-camel-on-click="{{ nextSet }}" class="ok-btn" style="visibility:{{ nextVis }}"><span>{{ nextLabel }}</span><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg></span>
         </div>
       </div>
+      <nav class="ok-bottombar">
+        <span sc-camel-on-click="{{ goMap }}" class="ok-bb-b">{{ t_map }}</span>
+        <span sc-camel-on-click="{{ toggleMode }}" class="ok-bb-b">{{ modeLabel }}</span>
+        <span sc-camel-on-click="{{ studyNow }}" class="ok-bb-b ok-bb-primary">{{ t_practice }}</span>
+      </nav>
     </main>
+  </sc-if>
+
+  <!-- ===== Account: one avatar on every screen, sync state on its dot ===== -->
+  <div class="ok-acct">
+    <span sc-camel-on-click="{{ toggleAcct }}" class="ok-avatar" title="{{ acctTitle }}" style="background:{{ avatarBg }};color:{{ avatarFg }}">
+      <sc-if value="{{ acctIn }}" hint-placeholder-val="{{ false }}"><span>{{ avatarInitial }}</span></sc-if>
+      <sc-if value="{{ acctNotIn }}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8.3" r="3.4"></circle><path d="M4.5 20 C4.5 15.6 7.8 13.2 12 13.2 C16.2 13.2 19.5 15.6 19.5 20" stroke-linecap="round"></path></svg></sc-if>
+      <span class="ok-dot" style="background:{{ syncDot }}"></span>
+    </span>
+    <sc-if value="{{ acctOpen }}" hint-placeholder-val="{{ false }}">
+      <div sc-camel-on-mouse-leave="{{ closeAcct }}" sc-camel-on-click="{{ stop }}" class="ok-pop">
+        <div class="ok-pop-in">
+          <sc-if value="{{ acctIn }}" hint-placeholder-val="{{ false }}">
+            <span class="ok-pop-title" title="{{ userEmail }}">{{ userEmail }}</span>
+            <span class="ok-muted">{{ syncText }}</span>
+            <span sc-camel-on-click="{{ signOutNow }}" class="ok-link">{{ t_sign_out }}</span>
+          </sc-if>
+          <sc-if value="{{ acctOut }}" hint-placeholder-val="{{ true }}">
+            <span class="ok-pop-title">{{ t_keep_progress }}</span>
+            <span class="ok-muted">{{ t_keep_progress_body }}</span>
+            <input type="email" class="ok-input" placeholder="{{ t_email_placeholder }}" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onAcctEmailKey }}"/>
+            <span sc-camel-on-click="{{ sendLinkNow }}" class="ok-btn ok-btn-primary" style="align-self:flex-start">{{ t_send_link }}</span>
+          </sc-if>
+          <sc-if value="{{ acctSyncOff }}" hint-placeholder-val="{{ false }}">
+            <span class="ok-muted">{{ t_sync_unavailable }}</span>
+          </sc-if>
+          <div class="ok-pop-sep"></div>
+          <span class="ok-h2">{{ t_language }}</span>
+          <div class="ok-chips"><sc-for list="{{ langChips }}" as="lg" hint-placeholder-count="6"><span sc-camel-on-click="{{ lg.pick }}" class="ok-chip" style="{{ lg.chip }}">{{ lg.name }}</span></sc-for></div>
+          <span class="ok-h2">{{ t_furigana }}</span>
+          <div class="ok-chips">
+            <span sc-camel-on-click="{{ furiOn }}" class="ok-chip" style="{{ furiOnStyle }}">{{ t_on }}</span>
+            <span sc-camel-on-click="{{ furiOff }}" class="ok-chip" style="{{ furiOffStyle }}">{{ t_off }}</span>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- ===== Focus: one word, large; in Recall it is a flashcard ===== -->
+  <sc-if value="{{ focusOn }}" hint-placeholder-val="{{ false }}">
+    <div sc-camel-on-click="{{ closeFocus }}" class="ok-veil">
+      <div sc-camel-on-click="{{ stop }}" class="ok-focus">
+        <span sc-camel-on-click="{{ closeFocus }}" class="ok-x">×</span>
+        <span class="ok-focus-n">{{ focusCounter }}</span>
+        <span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
+        <div class="ok-focus-ans" style="opacity:{{ focusAns }}">
+          <sc-if value="{{ focusShowReading }}" hint-placeholder-val="{{ false }}"><span class="ok-focus-reading">{{ focusReading }}</span></sc-if>
+          <span class="ok-focus-gloss">{{ focusGloss }}</span>
+        </div>
+        <sc-if value="{{ focusHasEx }}" hint-placeholder-val="{{ true }}">
+          <span class="ok-focus-ex"><sc-for list="{{ focusExParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok-acc)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
+          <span class="ok-focus-tr" style="opacity:{{ focusAns }}">{{ focusExEn }}</span>
+        </sc-if>
+        <div class="ok-focus-actions">
+          <sc-if value="{{ focusHidden }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ revealFocus }}" class="ok-btn">{{ t_show_answer }}</span></sc-if>
+          <span sc-camel-on-click="{{ focusMaster }}" class="ok-btn" style="{{ focusPillStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg><span>{{ focusPillLabel }}</span></span>
+        </div>
+        <span sc-camel-on-click="{{ focusPrev }}" class="ok-focus-arrow ok-focus-arrow-l" style="visibility:{{ focusPrevVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span>
+        <span sc-camel-on-click="{{ focusNext }}" class="ok-focus-arrow ok-focus-arrow-r" style="visibility:{{ focusNextVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}"><div class="ok-toast">{{ authMsg }}</div></sc-if>
 
       <sc-if value="{{ writeOn }}" hint-placeholder-val="{{ false }}">
       <div sc-camel-on-click="{{ closeWrite }}" style="position:fixed;inset:0;z-index:80;background:rgba(16,26,34,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:2.5rem;animation:{{ veilAnim }}">
@@ -1264,6 +1366,23 @@ const API_BASE = "";
 // Last deck and language, kept locally and synced with the mastered set.
 const OK_DECK_KEY = "openkanji.deck";
 const OK_LANG_KEY = "openkanji.lang";
+const OK_SET_KEY = "openkanji.set";
+const OK_FURI_KEY = "openkanji.furi";
+const OK_EMPTY = [];
+// The learned control on a card and in the focus view.
+const okPill = (done) => done ? "background:var(--ok-acc);border-color:var(--ok-acc);color:#ffffff" : "background:transparent;color:var(--ok-mute)";
+const okChip = (on) => on ? "background:var(--ok-acc);border-color:var(--ok-acc);color:#ffffff" : "background:transparent;color:var(--ok-ink)";
+// The sentence split around the word it illustrates, so the word can be lit.
+const okExParts = (x, wd) => {
+  if (!x) return OK_EMPTY;
+  if (x.indexOf(wd) < 0) return [{ text: x, plain: true, hit: false }];
+  const out = [];
+  x.split(wd).forEach((piece, n) => {
+    if (n > 0) out.push({ text: wd, plain: false, hit: true });
+    if (piece) out.push({ text: piece, plain: true, hit: false });
+  });
+  return out;
+};
 // Sync is available on any http(s) origin. file:// has nothing to call, and
 // there the app falls back to localStorage only.
 const okSyncReady = () => location.protocol === "http:" || location.protocol === "https:";
@@ -1295,7 +1414,7 @@ const okMerge = (a, b) => {
 class Component extends DCLogic {
   state = {
     screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
-    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, langOpen: false, saveOpen: false, setsOpen: false, meanings: null, quiz: [], quizOpen: false, partsPage: 0
+    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, zoom: "map", focus: null, focusShown: false, acctOpen: false, sync: "local", meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
   get furiDefault() { return this.props.startFurigana ?? true; }
@@ -1320,7 +1439,12 @@ class Component extends DCLogic {
     const deck0 = okDeck(lsGet(OK_DECK_KEY));
     const lang0 = okLang(lsGet(OK_LANG_KEY));
     this._savedSig = m ? this.saveSig(m, deck0, lang0) : null;
-    this.setState({ seen: s || {}, mastered: m || {}, deck: deck0, uiLang: lang0 || undefined, allFuri: this.furiDefault });
+    const wset0 = Math.max(0, parseInt(lsGet(OK_SET_KEY) || "0", 10) || 0);
+    const furi0 = lsGet(OK_FURI_KEY);
+    this.setState({ seen: s || {}, mastered: m || {}, deck: deck0, uiLang: lang0 || undefined, allFuri: furi0 == null ? this.furiDefault : furi0 === "1", wset: wset0 });
+    // A sync still in its debounce window when the tab goes must not be lost.
+    this._onHide = () => { if (this._syncT) { clearTimeout(this._syncT); this._syncT = null; this.pushProgress(this.state); } };
+    window.addEventListener("pagehide", this._onHide);
     this.measureList();
     // Real content exists now, so the boot cover can go.
     try { document.documentElement.setAttribute("data-ok-ready", "1"); } catch (e) {}
@@ -1433,6 +1557,8 @@ class Component extends DCLogic {
     if (this._onKey) return;
     this._onKey = (e) => {
       if (e.key === "Escape") {
+        if (this.state.focus != null) { this.setState({ focus: null, focusShown: false }); return; }
+        if (this.state.acctOpen) { this.setState({ acctOpen: false }); return; }
         if (this.state.about) { this.setState({ about: false }); return; }
         if (this.state.write) { this.closeWrite(); return; }
         if (this.state.dlg) { this.setState({ dlg: false }); return; }
@@ -1456,6 +1582,20 @@ class Component extends DCLogic {
       if (this.state.screen !== "detail" || this.state.dlg || this.state.about || this.state.write) return;
       const t = e.target;
       if (t && (t.tagName === "TEXTAREA" || t.tagName === "INPUT" || t.isContentEditable)) return;
+      if (this.state.gameOpen) return;
+      // In the focus view the arrows walk the set, Space shows the answer,
+      // Enter marks the word. On the set itself the arrows change set.
+      if (this.state.focus != null) {
+        if (e.key === "ArrowRight") { e.preventDefault(); this.focusStep(1); return; }
+        if (e.key === "ArrowLeft") { e.preventDefault(); this.focusStep(-1); return; }
+        if (e.key === " " || e.key === "Spacebar") { e.preventDefault(); this.setState({ focusShown: true }); return; }
+        if (e.key === "Enter") { e.preventDefault(); const w = wordsOf(this.state.wset, this.state.deck)[this.state.focus]; if (w) this.toggleMasteredWord(w.w[3]); return; }
+        return;
+      }
+      if (this.state.zoom === "set") {
+        if (e.key === "ArrowRight") { this.stepSet(1); return; }
+        if (e.key === "ArrowLeft") { this.stepSet(-1); return; }
+      }
     };
     window.addEventListener("keydown", this._onKey);
   }
@@ -1607,8 +1747,10 @@ class Component extends DCLogic {
       const u = await r.json();
       // A null email is the ordinary signed-out answer, not a failure.
       if (!u || !u.email) { this.setState({ userEmail: null }); return; }
-      this.setState({ userEmail: u.email, authMsg: "" });
-      if (fromLink) this.pullProgress();
+      this.setState({ userEmail: u.email, authMsg: "", sync: "synced" });
+      // Signed in means the account's copy is the one to show: load it every
+      // time, quietly unless this is the arrival from a sign-in link.
+      this.pullProgress(!fromLink);
     } catch (e) {}
   }
 
@@ -1652,16 +1794,52 @@ class Component extends DCLogic {
     try {
       const r = await this.api("/progress", {
         method: "PUT",
-        body: JSON.stringify({ mastered: cur.mastered || {}, deck: cur.deck || null, lang: cur.uiLang || null })
+        keepalive: true,
+        // Having loaded first is what earns the right to replace: only then
+        // is this copy the whole truth, un-masterings included.
+        body: JSON.stringify({ mastered: cur.mastered || {}, deck: cur.deck || null, lang: cur.uiLang || null, replace: !!this._loaded })
       });
-      if (!r.ok) { this.flashMsg(T("save_failed")); if (r.status === 401) this.setState({ userEmail: null }); }
-    } catch (e) { this.flashMsg(T("save_failed")); }
+      if (!r.ok) { this.setState({ sync: "failed" }); this.flashMsg(T("save_failed")); if (r.status === 401) this.setState({ userEmail: null }); return; }
+      this._savedSig = this.saveSig(cur.mastered, cur.deck, cur.uiLang);
+      this.setState({ sync: "synced" });
+    } catch (e) { this.setState({ sync: "failed" }); this.flashMsg(T("save_failed")); }
+  }
+
+  // Progress saves itself. Debounced, so a run of ticks is one request, and
+  // flushed on pagehide so closing the tab mid-run loses nothing.
+  scheduleSync() {
+    if (!okSyncReady() || !this.state.userEmail) return;
+    if (this._syncT) clearTimeout(this._syncT);
+    if (this.state.sync !== "saving") this.setState({ sync: "saving" });
+    this._syncT = setTimeout(() => { this._syncT = null; this.pushProgress(this.state); }, 1200);
+  }
+
+  setFuri(on) {
+    lsSet(OK_FURI_KEY, on ? "1" : "0");
+    this.setState({ allFuri: !!on });
+  }
+
+  // Move to another set of the deck: remembered, and the list starts at the top.
+  stepSet(d) {
+    const n = wordBatchCount(this.state.deck);
+    const b = Math.min(n - 1, Math.max(0, (this.state.wset || 0) + d));
+    this.gotoSet(b);
+  }
+  gotoSet(b) {
+    lsSet(OK_SET_KEY, String(b));
+    this.setState({ wset: b, zoom: "set", focus: null, focusShown: false, hoverWord: null, acctOpen: false });
+    requestAnimationFrame(() => { const el = document.querySelector(".ok-set-body"); if (el) el.scrollTop = 0; });
+  }
+  focusStep(d) {
+    const n = wordsOf(this.state.wset, this.state.deck).length;
+    const i = Math.min(n - 1, Math.max(0, (this.state.focus || 0) + d));
+    this.setState({ focus: i, focusShown: false });
   }
 
   // Explicit user action (or the return from a magic link), long after mount,
   // so it can just setState and persist. Mastered merges as a union; deck and
   // language are single values, so the server's copy wins on Load.
-  async pullProgress() {
+  async pullProgress(quiet) {
     if (!okSyncReady() || !this.state.userEmail || this.state.authBusy) return;
     this.setState({ authBusy: true });
     try {
@@ -1680,9 +1858,12 @@ class Component extends DCLogic {
       this.persistMastered(merged);
       this.rememberPrefs(deck, lang);
       this._savedSig = this.saveSig(merged, deck, lang);
-      this.setState({ mastered: merged, deck: deck, uiLang: lang });
+      this._loaded = true;
+      this.setState({ mastered: merged, deck: deck, uiLang: lang, sync: "synced" });
       setLang(lang || "EN"); // the confirmation reads in the language just loaded
-      this.flashMsg(added > 0 ? T("loaded_plus", { n: added }) : T("already_up_to_date"));
+      if (!quiet || added > 0) this.flashMsg(added > 0 ? T("loaded_plus", { n: added }) : T("already_up_to_date"));
+      // Local progress the account did not have yet goes up straight away.
+      if (Object.keys(merged).length !== Object.keys(row.mastered || {}).length) this.scheduleSync();
     } catch (e) { this.flashMsg(T("load_failed")); }
     this.setState({ authBusy: false });
   }
@@ -2477,6 +2658,7 @@ class Component extends DCLogic {
     this.flashSave();
 
     this.setState({ mastered: m, quiz: next ? st.quiz.filter(q => q !== key) : st.quiz });
+    this.scheduleSync();
   }
 
   // Row rules kept hairline-consistent by snapping every horizontal edge to a whole
@@ -2967,53 +3149,131 @@ class Component extends DCLogic {
         this._gAnswer = null; this._gIdx = undefined;
         this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: WSET });
       },
-      // The set pager. One set is on screen; the map in its popover shows
-      // them all, a row per hundred words so fifty sets read as ten rows of
-      // five rather than a wall of fifty cells.
+      // ---- The two screens, the focus view and the account ----
       ...(() => {
         const nSets = wordBatchCount(st.deck);
         const cells = Array.from({ length: nSets }, (_, b) => {
           const keys = wordsOf(b, st.deck).map(e => e.w[3]);
           const done = keys.filter(x => st.mastered[x]).length;
-          const on = b === WSET;
-          const full = keys.length > 0 && done === keys.length;
-          return {
-            label: (b * WORDN + 1) + "-" + (b * WORDN + keys.length),
-            frac: T("learned_of", { d: done, n: keys.length }),
-            pct: (keys.length ? Math.round(done / keys.length * 100) : 0) + "%",
-            done, n: keys.length,
-            border: on ? "var(--accent)" : "var(--cyan-a28)",
-            bg: on ? "rgba(8,145,178,.10)" : "transparent",
-            fg: on || full ? "var(--text-accent)" : "var(--text-muted)",
-            pick: () => this.setState({ wset: b, setsOpen: false })
-          };
+          return { b, done, n: keys.length, full: keys.length > 0 && done === keys.length };
         });
-        const rows = [];
-        for (let i = 0; i < cells.length; i += 5) {
-          const rc = cells.slice(i, i + 5);
-          rows.push({ label: (i * WORDN + 1) + "-" + ((i + rc.length - 1) * WORDN + rc[rc.length - 1].n), cells: rc });
+        const cur = cells[WSET] || { b: WSET, done: 0, n: 0, full: false };
+        const totalDone = cells.reduce((s, c) => s + c.done, 0);
+        const totalN = cells.reduce((s, c) => s + c.n, 0);
+        // Continue: the set in hand, unless it is finished, then the next
+        // unfinished one after it, then the first unfinished one anywhere.
+        let cont = WSET;
+        if (cur.full) {
+          const nx = cells.findIndex((c, i) => i > WSET && !c.full);
+          const any = cells.findIndex(c => !c.full);
+          cont = nx >= 0 ? nx : any >= 0 ? any : WSET;
         }
-        const cur = cells[WSET] || { done: 0, n: 0, pct: "0%", frac: "" };
-        const totalDone = cells.reduce((a, c) => a + c.done, 0);
-        const totalN = cells.reduce((a, c) => a + c.n, 0);
-        const goto = (b) => { if (b >= 0 && b < nSets) this.setState({ wset: b, setsOpen: false }); };
+        const cc = cells[cont] || cur;
+        const setName = (b) => T("set") + " " + (b + 1);
+        const range = (c) => T("words_range", { a: c.b * WORDN + 1, b: c.b * WORDN + c.n });
+        const pct = (c) => (c.n ? Math.round(c.done / c.n * 100) : 0);
+        const signedIn = okSyncReady() && !!st.userEmail;
+        const sync = st.sync || "local";
+        const syncText = !okSyncReady() ? T("sync_unavailable") : !signedIn ? T("on_this_device")
+          : sync === "saving" ? T("saving") : sync === "failed" ? T("save_failed") : T("synced");
+        const dot = !okSyncReady() || !signedIn ? "#b8bcc2" : sync === "saving" ? "#f59e0b" : sync === "failed" ? "#e11d48" : "#10b981";
+        const recall = !!st.conceal;
+        const f = st.focus != null ? WORDS[st.focus] : null;
+        const fx = f ? (EX_JA[f.w[3]] || [])[0] : null;
+        const fHidden = !!(f && recall && !st.focusShown);
+        const fDone = !!(f && st.mastered[f.w[3]]);
+        const segOn = "background:#ffffff;color:var(--ok-ink);box-shadow:0 1px 2px rgba(20,24,30,.10)";
+        const segOff = "background:transparent;color:var(--ok-mute)";
         return {
-          setRows: rows,
-          setCounter: T("set") + " " + (WSET + 1) + " / " + nSets,
-          setFrac: cur.frac,
-          setPctW: cur.pct,
-          setsSummary: T("sets_learned", { d: totalDone, n: totalN }),
-          setsOpen: !!st.setsOpen,
-          setsBg: st.setsOpen ? "var(--accent-soft)" : "transparent",
-          setsCaret: st.setsOpen ? "rotate(180deg)" : "none",
-          toggleSets: () => this.setState(s => ({ setsOpen: !s.setsOpen })),
-          closeSets: () => this.setState({ setsOpen: false }),
-          prevSet: () => goto(WSET - 1),
-          nextSet: () => goto(WSET + 1),
-          prevFg: WSET > 0 ? "var(--text-accent)" : "#b9c6ce",
-          prevCursor: WSET > 0 ? "pointer" : "default",
-          nextFg: WSET < nSets - 1 ? "var(--text-accent)" : "#b9c6ce",
-          nextCursor: WSET < nSets - 1 ? "pointer" : "default"
+          onMap: (st.zoom || "map") === "map",
+          onSet: st.zoom === "set",
+          deckName: st.deck || DEFAULT_DECK,
+          deckSummary: T("sets_learned", { d: totalDone, n: totalN }),
+          deckPct: (totalN ? Math.round(totalDone / totalN * 100) : 0) + "%",
+          heroEyebrow: cc.full ? T("all_done") : totalDone ? T("continue") : T("start_here"),
+          heroTitle: setName(cont),
+          heroSub: T("learned_of", { d: cc.done, n: cc.n }) + " · " + range(cc),
+          heroCta: totalDone ? T("continue") : T("start"),
+          continueSet: () => this.gotoSet(cont),
+          setsLegend: nSets + " " + T("sets_of_twenty"),
+          setTiles: cells.map((c) => ({
+            n: c.b + 1,
+            frac: setName(c.b) + " · " + T("learned_of", { d: c.done, n: c.n }),
+            pct: pct(c) + "%",
+            fillOpacity: c.full ? 0 : 1,
+            bg: c.full ? "var(--ok-acc)" : "var(--ok-card)",
+            fg: c.full ? "#ffffff" : c.done ? "var(--ok-acc)" : "var(--ok-ink)",
+            ring: c.b === WSET ? "0 0 0 2px var(--ok-bg), 0 0 0 4px var(--ok-acc)" : "none",
+            done: c.full,
+            pick: () => this.gotoSet(c.b)
+          })),
+          goMap: () => this.setState({ zoom: "map", focus: null, focusShown: false, acctOpen: false, hoverWord: null }),
+          setTitle: setName(WSET),
+          setSub: T("learned_of", { d: cur.done, n: cur.n }) + " · " + range(cur),
+          setCounter: (WSET + 1) + " / " + nSets,
+          modeLearn: () => this.setState({ conceal: false }),
+          modeRecall: () => this.setState({ conceal: true }),
+          toggleMode: () => this.setState(s => ({ conceal: !s.conceal })),
+          modeLabel: recall ? T("recall") : T("learn"),
+          learnStyle: recall ? segOff : segOn,
+          recallStyle: recall ? segOn : segOff,
+          prevSet: () => this.stepSet(-1),
+          nextSet: () => this.stepSet(1),
+          prevVis: WSET > 0 ? "visible" : "hidden",
+          nextVis: WSET < nSets - 1 ? "visible" : "hidden",
+          prevLabel: setName(WSET - 1),
+          nextLabel: setName(WSET + 1),
+          // focus
+          focusOn: !!f,
+          closeFocus: () => this.setState({ focus: null, focusShown: false }),
+          focusCounter: f ? setName(WSET) + " · " + (st.focus + 1) + " / " + WORDS.length : "",
+          focusRuby: f ? this.wordRuby(f.w[0], f.w[1]) : OK_EMPTY,
+          focusRubyOpacity: fHidden || !st.allFuri ? 0 : 1,
+          focusWordSize: f ? (f.w[0].length <= 2 ? "5rem" : f.w[0].length <= 4 ? "4rem" : "3rem") : "4rem",
+          focusAns: fHidden ? 0 : 1,
+          focusReading: f ? f.w[1] : "",
+          // The reading line only earns its place when the furigana is off.
+          focusShowReading: !st.allFuri,
+          focusGloss: f ? f.w[2] : "",
+          focusHasEx: !!fx,
+          focusExParts: fx ? okExParts(fx, f.w[0]) : OK_EMPTY,
+          focusExEn: f && fx ? exTr(f.w[3], 0, "") : "",
+          focusHidden: fHidden,
+          revealFocus: () => this.setState({ focusShown: true }),
+          focusPillStyle: okPill(fDone),
+          focusPillLabel: fDone ? T("learned") : T("got_it"),
+          focusMaster: () => { if (f) this.toggleMasteredWord(f.w[3]); },
+          focusPrev: () => this.focusStep(-1),
+          focusNext: () => this.focusStep(1),
+          focusPrevVis: f && st.focus > 0 ? "visible" : "hidden",
+          focusNextVis: f && st.focus < WORDS.length - 1 ? "visible" : "hidden",
+          // account
+          acctOpen: !!st.acctOpen,
+          toggleAcct: () => this.setState(s => ({ acctOpen: !s.acctOpen })),
+          closeAcct: () => this.setState({ acctOpen: false }),
+          acctIn: signedIn, acctNotIn: !signedIn,
+          acctOut: okSyncReady() && !signedIn,
+          acctSyncOff: !okSyncReady(),
+          avatarInitial: signedIn ? String(st.userEmail).charAt(0).toUpperCase() : "",
+          avatarBg: signedIn ? "var(--ok-acc)" : "var(--ok-card)",
+          avatarFg: signedIn ? "#ffffff" : "var(--ok-mute)",
+          acctTitle: signedIn ? st.userEmail + " · " + syncText : syncText,
+          syncDot: dot,
+          syncText: syncText,
+          userEmail: st.userEmail || "",
+          signOutNow: () => { this._loaded = false; this.signOut(); this.setState({ acctOpen: false, sync: "local" }); },
+          sendLinkNow: () => this.sendMagicLink(this.state.emailDraft),
+          onAcctEmailKey: (e) => { if (e && e.key === "Enter") this.sendMagicLink(this.state.emailDraft); },
+          langChips: LANGS.map(l => [l[0], l[1], l[3]]).filter(l => !l[2]).map(l => ({
+            name: l[1],
+            chip: okChip((st.uiLang || "EN") === l[0]),
+            pick: () => { this.rememberPrefs(undefined, l[0]); this.setState({ uiLang: l[0] }); this.scheduleSync(); }
+          })),
+          furiOnStyle: okChip(!!st.allFuri),
+          furiOffStyle: okChip(!st.allFuri),
+          furiOn: () => this.setFuri(true),
+          furiOff: () => this.setFuri(false),
+          toastOn: !!st.authMsg
         };
       })(),
       setPct: (WORDKEYS.length ? Math.round(WORDKEYS.filter(kx => st.mastered[kx]).length / WORDKEYS.length * 100) : 0) + "%",
@@ -3313,45 +3573,6 @@ class Component extends DCLogic {
       answerGap: st.conceal ? "0rem" : ".5rem",
       emailDraft: st.emailDraft,
       onEmail: (e) => this.setState({ emailDraft: e && e.target ? e.target.value : "" }),
-      // Enter in the save popover's email field sends the link and closes the
-      // popover; the flash message in the bar reports what happened.
-      onSaveEmailKey: (e) => { if (e && e.key === "Enter") { this.sendMagicLink(this.state.emailDraft); this.setState({ saveOpen: false }); } },
-      loadFill: okSyncReady() && st.userEmail ? "var(--accent)" : "#9aabb6",
-      loadCursor: okSyncReady() && st.userEmail ? "pointer" : "default",
-      loadNow: () => { if (okSyncReady() && st.userEmail) this.pullProgress(); else this.flashMsg(T(okSyncReady() ? "sign_in_first" : "sync_unavailable")); },
-      saveDirty: this.isDirty(st),
-      saveGlow: st.saveFlash ? "0 0 0 1px rgba(8,145,178,.30), 0 0 10px rgba(8,145,178,.40)" : "none",
-      saveCursor: (this.isDirty(st) || this.hasProgress(st)) ? "pointer" : "default",
-      saveFill: (this.isDirty(st) || this.hasProgress(st)) ? "var(--accent)" : "#9aabb6",
-      saveTipBody: !okSyncReady() ? T("sync_unavailable") : st.userEmail ? T("save_to_account") : T("sync_signed_out"),
-      saved: st.saved, notSaved: !st.saved,
-      saveLabel: st.saved ? T("saved") : T("save"),
-      // The icon has one job when signed in (save) and a different one when
-      // not (there is no account yet, so it opens the email prompt instead of
-      // silently sending whatever -- possibly nothing -- happens to be typed).
-      saveOpen: !!st.saveOpen,
-      closeSaveOpen: () => this.setState({ saveOpen: false }),
-      saveNow: () => {
-        // Read live state, not the captured `st` snapshot: what gets written to
-        // disk, uploaded, and recorded in _savedSig must be the same map, and
-        // must be the current one.
-        const cur = this.state;
-        if (okSyncReady() && !(cur.userEmail || this.props.userEmail)) {
-          this.setState(s => ({ saveOpen: !s.saveOpen }));
-          return;
-        }
-        // Progress always lands in localStorage; the account is what carries
-        // it to another device.
-        this.persistMastered(cur.mastered);
-        this.persist(cur.seen);
-        if (!okSyncReady() || !cur.userEmail) { this.flashMsg(T(okSyncReady() ? "sign_in_first" : "sync_unavailable")); return; }
-        if (!this.isDirty(cur)) return;
-        this.pushProgress(cur);
-        this._savedSig = this.saveSig(cur.mastered, cur.deck, cur.uiLang);
-        if (this._saveT) clearTimeout(this._saveT);
-        this.setState({ saved: true });
-        this._saveT = setTimeout(() => this.setState({ saved: false }), 1600);
-      },
       intro: (() => {
         const a = Object.keys(st.chatSel).length
           ? T("make_any_sentence")
@@ -3487,58 +3708,35 @@ class Component extends DCLogic {
         const w = e.w;
         const key = w[3];
         const id = "L" + key;
-        // The sentence comes from the corpus by word id. EXTRA, the old
-        // hand-written table, covered eleven words of six thousand.
         const x = (EX_JA[key] || [])[0];
         const done = !!st.mastered[key];
         const hot = st.hoverWord === id;
-        const flip = hot && !!x;
+        // Recall hides the answers -- meaning, translation, furigana -- and
+        // pointing at a card shows that card's.
+        const hidden = !!st.conceal && !hot;
         return {
           num: WSET * WORDN + i + 1,
           word: w[0],
-          // A four-character compound at 2.6rem would be clipped; step the size
-          // down rather than let the word wrap or scroll out of its card.
-          wordSize: w[0].length <= 2 ? "2.6rem" : w[0].length === 3 ? "2.2rem" : w[0].length === 4 ? "1.85rem" : "1.55rem",
-          wordFg: done ? "var(--text-accent)" : "var(--text-body)",
-          bg: done ? "rgba(8,145,178,.07)" : (hot ? "rgba(8,145,178,.045)" : "transparent"),
+          wordSize: w[0].length <= 2 ? "2.4rem" : w[0].length === 3 ? "2.1rem" : w[0].length === 4 ? "1.8rem" : "1.5rem",
+          wordFg: done ? "var(--ok-acc)" : "var(--ok-ink)",
+          bg: done ? "#f1f9fb" : "var(--ok-card)",
+          border: done ? "rgba(8,145,178,.35)" : "var(--ok-line)",
           ruby: this.wordRuby(w[0], w[1]),
-          rubySize: w[0].length <= 2 ? ".875rem" : w[0].length === 3 ? ".8125rem" : ".75rem",
+          rubyOpacity: hidden || !st.allFuri ? 0 : 1,
           gloss: w[2],
-          // At rest the word and its meaning are centred as a block; on hover
-          // the word rises to the top of the card and hands the space to the
-          // sentence. Animating a spacer is what lets the word travel rather
-          // than cross-fade -- it is the thing being learned, so it stays one
-          // object and only changes position.
-          //
-          // Half the card, less half the block: a card is 155px of usable
-          // height at 1280x800 and 217px at 1680x1050, so a flat percentage
-          // leaves the big card bottom-heavy. The subtracted rem is half the
-          // word block (its ruby, the glyph at this size, and the meaning).
-          padTop: flip ? "calc(33.333% - 2.2rem)" : ("calc(50% - " + (w[0].length <= 2 ? "2.86" : w[0].length === 3 ? "2.66" : w[0].length === 4 ? "2.49" : "2.34") + "rem)"),
-          faceOpacity: flip ? 0 : 1,
-          faceShift: flip ? "translateY(-.55rem)" : "translateY(0)",
-          exOpacity: flip ? 1 : 0,
-          exShift: flip ? "translateY(0)" : "translateY(.55rem)",
+          ansOpacity: hidden ? 0 : 1,
+          hasEx: !!x,
+          exParts: okExParts(x, w[0]),
+          exEn: x ? exTr(key, 0, "") : "",
           enter: () => this.setState({ hoverWord: id }),
           leave: () => { if (this.state.hoverWord === id) this.setState({ hoverWord: null }); },
           markDone: done,
           markOpen: !done,
           markTitle: done ? T("completed") : T("not_completed"),
-          markOpacity: (hot || done) ? 1 : 0,
-          markShift: (hot || done) ? "translateY(0)" : "translateY(-.35rem)",
-          markPointer: (hot || done) ? "auto" : "none",
+          pillStyle: okPill(done),
+          pillLabel: done ? T("learned") : T("got_it"),
           master: (ev) => { ev.stopPropagation(); this.toggleMasteredWord(key); },
-          exParts: (() => {
-            if (!x) return EMPTY;
-            if (x.indexOf(w[0]) < 0) return [{ text: x, plain: true, hit: false }];
-            const out = [];
-            x.split(w[0]).forEach((piece, n) => {
-              if (n > 0) out.push({ text: w[0], plain: false, hit: true });
-              if (piece) out.push({ text: piece, plain: true, hit: false });
-            });
-            return out;
-          })(),
-          exEn: x ? exTr(key, 0, "") : ""
+          open: () => this.setState({ focus: i, focusShown: false })
         };
       }),
       writeOn: st.write, tableOn: true,

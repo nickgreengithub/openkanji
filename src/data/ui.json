@@ -470,5 +470,113 @@
   "sets_learned": {
     "en": "{d} of {n} words learned",
     "es": "{d} de {n} palabras aprendidas"
+  },
+  "map": {
+    "en": "Map",
+    "es": "Mapa"
+  },
+  "continue": {
+    "en": "Continue",
+    "es": "Continuar"
+  },
+  "start": {
+    "en": "Start",
+    "es": "Empezar"
+  },
+  "start_here": {
+    "en": "Start here",
+    "es": "Empieza aquí"
+  },
+  "all_done": {
+    "en": "All sets learned",
+    "es": "Todos los grupos aprendidos"
+  },
+  "your_progress": {
+    "en": "Your progress",
+    "es": "Tu progreso"
+  },
+  "all_sets": {
+    "en": "All sets",
+    "es": "Todos los grupos"
+  },
+  "sets_of_twenty": {
+    "en": "sets of twenty",
+    "es": "grupos de veinte"
+  },
+  "words_range": {
+    "en": "words {a}–{b}",
+    "es": "palabras {a}–{b}"
+  },
+  "learn": {
+    "en": "Learn",
+    "es": "Aprender"
+  },
+  "recall": {
+    "en": "Recall",
+    "es": "Recordar"
+  },
+  "practice": {
+    "en": "Practice",
+    "es": "Practicar"
+  },
+  "got_it": {
+    "en": "Got it",
+    "es": "Lo sé"
+  },
+  "learned": {
+    "en": "Learned",
+    "es": "Aprendida"
+  },
+  "show_answer": {
+    "en": "Show answer",
+    "es": "Mostrar respuesta"
+  },
+  "keep_progress": {
+    "en": "Keep your progress everywhere",
+    "es": "Guarda tu progreso en todos tus dispositivos"
+  },
+  "keep_progress_body": {
+    "en": "We email you a sign-in link. No password, nothing to remember.",
+    "es": "Te enviamos un enlace de acceso por correo. Sin contraseña."
+  },
+  "email_placeholder": {
+    "en": "you@example.com",
+    "es": "tu@ejemplo.com"
+  },
+  "send_link": {
+    "en": "Send sign-in link",
+    "es": "Enviar enlace"
+  },
+  "sign_out": {
+    "en": "Sign out",
+    "es": "Cerrar sesión"
+  },
+  "synced": {
+    "en": "Synced",
+    "es": "Sincronizado"
+  },
+  "saving": {
+    "en": "Saving…",
+    "es": "Guardando…"
+  },
+  "on_this_device": {
+    "en": "Progress is saved on this device only",
+    "es": "El progreso se guarda solo en este dispositivo"
+  },
+  "language": {
+    "en": "Language",
+    "es": "Idioma"
+  },
+  "furigana": {
+    "en": "Furigana",
+    "es": "Furigana"
+  },
+  "on": {
+    "en": "On",
+    "es": "Sí"
+  },
+  "off": {
+    "en": "Off",
+    "es": "No"
   }
 }

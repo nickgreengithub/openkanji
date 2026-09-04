@@ -257,6 +257,20 @@ await test("a save from a device that never loaded cannot erase progress", async
   assert.equal(got.lang, "ES");
 });
 
+await test("a device that loaded first can replace, so un-mastering sticks", async () => {
+  const env = makeEnv();
+  const cookie = await signedIn(env);
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: { w0001: true, w0002: true }, deck: "JLPT N4", lang: "EN" } });
+  // Loaded, un-mastered w0002, saved with replace: the server takes the copy as given.
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: { w0001: true }, deck: "JLPT N4", lang: "EN", replace: true } });
+  let got = await (await call(env, "GET", "/api/progress", { cookie })).json();
+  assert.deepEqual(got.mastered, { w0001: true }, "replace does not union");
+  // Anything but exactly `true` is still a union.
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: { w0003: true }, replace: "yes" } });
+  got = await (await call(env, "GET", "/api/progress", { cookie })).json();
+  assert.deepEqual(got.mastered, { w0001: true, w0003: true }, "a truthy non-boolean is not a replace");
+});
+
 await test("rejects keys that are not word ids", async () => {
   const env = makeEnv();
   const cookie = await signedIn(env);

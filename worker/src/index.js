@@ -268,12 +268,14 @@ async function handlePutProgress(request, env, userId) {
   const incoming = cleanMastered(body.mastered);
   if (!incoming) return json({ error: "bad_mastered" }, 400);
 
-  // Union on the server as well as the client: a device that saves without
-  // having loaded first can only ever add progress, never erase another
-  // device's. (The flip side, by design: un-mastering does not propagate.)
+  // Union by default: a device that saves without having loaded first can
+  // only ever add progress, never erase another device's. A device that has
+  // loaded says so (`replace: true`) and its copy is then the whole truth,
+  // which is what lets un-mastering a word stick instead of coming back on
+  // the next load.
   const row = await env.DB.prepare("select mastered from progress where user_id = ?").bind(userId).first();
   let merged = incoming;
-  if (row) {
+  if (row && body.replace !== true) {
     try {
       merged = Object.assign({}, JSON.parse(row.mastered), incoming);
     } catch (e) {}
