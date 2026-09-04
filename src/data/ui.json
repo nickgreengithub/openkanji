@@ -686,5 +686,13 @@
   "listen": {
     "en": "Listen",
     "es": "Escuchar"
+  },
+  "settings": {
+    "en": "Settings",
+    "es": "Ajustes"
+  },
+  "close": {
+    "en": "Close",
+    "es": "Cerrar"
   }
 }

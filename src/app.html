@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>OpenKanji — JLPT kanji and vocabulary</title>
 <meta name="description" content="Study JLPT kanji and vocabulary by reading group, with example sentences and progress tracking.">
 <script src="16cd733a-bdca-4fef-89fe-ef51a54bd1f9"></script>
@@ -439,18 +439,6 @@ a:hover{color:var(--text-accent-hover)}
 @keyframes ok-fade{from{opacity:0}to{opacity:1}}
 @keyframes ok-rise{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
 .ok-bottombar{display:none}
-@media (max-width:640px){
-  .ok-top{padding-left:.75rem;padding-right:3.5rem;gap:.5rem}
-  .ok-top-set .ok-seg,.ok-top-set .ok-practice,.ok-set-sub{display:none}
-  .ok-tiles{grid-template-columns:repeat(5,minmax(0,1fr))}
-  .ok-cards{grid-template-columns:1fr;padding:1rem .9rem 0}
-  .ok-setnav{padding-bottom:5rem}
-  .ok-hero{flex-direction:column;align-items:flex-start}
-  .ok-focus{padding:2rem 2.25rem 1.5rem}
-  .ok-bottombar{position:fixed;left:0;right:0;bottom:0;z-index:65;display:flex;align-items:stretch;height:3.5rem;background:rgba(244,244,241,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
-  .ok-bb-b{flex:1 1 0;display:flex;align-items:center;justify-content:center;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);cursor:pointer;user-select:none}
-  .ok-bb-primary{color:var(--ok-acc)}
-}
 
 /* Practice: a sheet over the set, same surfaces, one accent. */
 .ok-veil-p{align-items:flex-end;padding:0}
@@ -590,15 +578,90 @@ a:hover{color:var(--text-accent-hover)}
 .ok-w-input:focus-within{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
 .ok-w-send{flex:0 0 auto;width:3rem;height:3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 140ms ease,color 140ms ease}
 @media (max-width:640px){
-  .ok-rings{grid-template-columns:1fr 1fr}
+  .ok-rings{grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem}
+  .ok-ring{flex-direction:column;align-items:flex-start;gap:.5rem;padding:.8rem .85rem}
+  .ok-ring svg{width:46px;height:46px}
+  .ok-ring-lab{font-size:.6875rem;letter-spacing:.05em}
+  .ok-ring-big{font-size:1.375rem}
+  .ok-ring-sub{font-size:.75rem}
   .ok-card{flex-direction:column;gap:.5rem}
   .ok-card-l{flex:0 0 auto}
   .ok-card-r{padding-left:0;padding-right:0;border-left:0;padding-top:.6rem;border-top:1px solid var(--ok-line)}
   .ok-card-l{padding-right:2.4rem}
   .ok-continue{display:none}
 }
+
+/* ===== Phone: every overlay is a page, not a dialog =====
+   Pushed pages come in from the right and leave the same way, the back or
+   close control sits in the page's own header, and the primary action sits
+   at the bottom where a thumb is. Safe areas are honoured on every edge. */
+.ok-root{height:100vh;height:100dvh}
+.ok-pop-x,.ok-pop-head{display:none}
+@media (max-width:640px){
+  html,body{overscroll-behavior-y:contain}
+  *{-webkit-tap-highlight-color:transparent}
+  .ok-top{padding-left:max(.75rem,env(safe-area-inset-left));padding-right:calc(3.5rem + env(safe-area-inset-right));gap:.5rem}
+  .ok-top-set .ok-seg,.ok-top-set .ok-practice,.ok-set-sub{display:none}
+  .ok-tiles{grid-template-columns:repeat(5,minmax(0,1fr));gap:.5rem}
+  .ok-cards{grid-template-columns:1fr;padding:1rem .9rem 0}
+  .ok-wrap{padding:1.25rem max(1.1rem,env(safe-area-inset-left)) 1.5rem;gap:1.4rem}
+  .ok-setnav{padding:1.5rem 1.1rem 1.25rem}
+  .ok-continue{display:none}
+  .ok-acct{top:.55rem;right:max(.9rem,env(safe-area-inset-right))}
+
+  /* pages that were dialogs */
+  .ok-veil{position:fixed;inset:0;z-index:95;display:block;padding:0;background:var(--ok-bg);backdrop-filter:none;-webkit-backdrop-filter:none;animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
+  .ok-veil-out{animation:ok-push-out 200ms cubic-bezier(.4,0,1,1) forwards!important}
+  .ok-sheet,.ok-sheet-fixed{width:100%;height:100%;max-height:none;border-radius:0;box-shadow:none;animation:none}
+  .ok-sheet-out{animation:none!important}
+  .ok-sheet-top{padding-left:max(.6rem,env(safe-area-inset-left));padding-right:max(.9rem,env(safe-area-inset-right));padding-top:env(safe-area-inset-top)}
+  .ok-pmenu,.ok-quiz,.ok-pdone{padding-bottom:calc(2rem + env(safe-area-inset-bottom))}
+
+  /* the word, opened: a page with a close, a title, and an action bar */
+  .ok-focus{width:100%;height:100%;max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:center;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
+  .ok-focus-out{animation:none!important}
+  .ok-x{top:calc(.5rem + env(safe-area-inset-top));left:.6rem;right:auto;width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border-radius:50%}
+  .ok-focus-n{position:absolute;top:calc(1.35rem + env(safe-area-inset-top));left:3.5rem;right:3.5rem;text-align:center}
+  .ok-focus-actions{position:fixed;left:0;right:0;bottom:0;margin:0;gap:.5rem;justify-content:center;padding:.7rem 4.2rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(244,244,241,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
+  .ok-focus-arrow{position:fixed;top:auto;transform:none;z-index:2;width:2.9rem;height:2.9rem;bottom:calc(.65rem + env(safe-area-inset-bottom))}
+  .ok-focus-arrow-l{left:.4rem}
+  .ok-focus-arrow-r{right:.4rem}
+
+  /* settings: the popover becomes the page */
+  .ok-pop{position:fixed;inset:0;padding:0;z-index:96;background:var(--ok-bg);animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
+  .ok-pop-in{width:100%;height:100%;border:0;border-radius:0;box-shadow:none;overflow-y:auto;gap:.9rem;padding:calc(4.2rem + env(safe-area-inset-top)) 1.25rem calc(1.5rem + env(safe-area-inset-bottom))}
+  .ok-pop-x{display:flex;position:absolute;top:calc(.5rem + env(safe-area-inset-top));left:.6rem;width:2.75rem;height:2.75rem;align-items:center;justify-content:center;border-radius:50%;font-size:1.7rem;line-height:1;color:var(--ok-mute);cursor:pointer;user-select:none}
+  .ok-pop-head{display:block;position:absolute;top:calc(1.35rem + env(safe-area-inset-top));left:3.5rem;right:3.5rem;text-align:center;font-family:var(--font-2);font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ok-mute)}
+  .ok-input,.ok-chip,.ok-link,.ok-btn{min-height:2.75rem}
+  .ok-chip{display:inline-flex;align-items:center}
+
+  /* thumbs, not cursors */
+  .ok-tick{width:2.75rem;height:2.75rem;top:.5rem;right:.5rem}
+  .ok-play{width:2.75rem;height:2.75rem;right:.45rem;bottom:.35rem;top:auto}
+  .ok-card{padding-bottom:.7rem}
+  .ok-card-l{position:static;padding-right:3rem;padding-bottom:0}
+  .ok-card-r{padding-right:3rem}
+  .ok-round-btn{width:2.75rem;height:2.75rem}
+  .ok-mini{width:2.5rem;height:2.5rem}
+  .ok-back{padding:.5rem .7rem .5rem .35rem}
+
+  /* the bottom bar: one job per page */
+  .ok-bottombar{position:fixed;left:0;right:0;bottom:0;z-index:65;display:flex;align-items:center;gap:.6rem;padding:.6rem max(.9rem,env(safe-area-inset-left)) calc(.6rem + env(safe-area-inset-bottom)) max(.9rem,env(safe-area-inset-right));background:rgba(244,244,241,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
+  .ok-bb-seg{flex:0 0 auto}
+  .ok-bb-seg .ok-seg-b{padding:.5rem .9rem}
+  .ok-bb-cta{flex:1 1 auto;height:2.75rem;justify-content:center}
+  .ok-page-map .ok-wrap,.ok-set-body{padding-bottom:5.5rem}
+  .ok-set-body .ok-setnav{padding-bottom:1rem}
+
+  /* map and set push and pop rather than zoom */
+  .ok-page-set{animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
+  .ok-page-map{animation:ok-push-back 220ms ease}
+}
+@keyframes ok-push-in{from{transform:translateX(100%)}to{transform:none}}
+@keyframes ok-push-out{from{transform:none}to{transform:translateX(100%)}}
+@keyframes ok-push-back{from{opacity:.6;transform:translateX(-22%)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
-  .ok-page-set,.ok-page-map,.ok-focus,.ok-sheet,.ok-card,.ok-cards,.ok-set-check,.ok-toast,.ok-veil,.ok-view,.ok-veil-out,.ok-sheet-out,.ok-focus-out{animation:none!important}
+  .ok-page-set,.ok-page-map,.ok-focus,.ok-sheet,.ok-card,.ok-cards,.ok-set-check,.ok-toast,.ok-veil,.ok-view,.ok-veil-out,.ok-sheet-out,.ok-focus-out,.ok-pop{animation:none!important}
   .ok-card,.ok-tile,.ok-hero,.ok-pmode,.ok-qtile{transition:none!important}
   .ok-play,.ok-focus-actions .ok-btn{animation:none!important}
 }
@@ -614,7 +677,7 @@ html[data-ok-ready] #ok-boot{display:none}
 </helmet>
 
 <div id="ok-boot"><i>開</i></div>
-<div style="height:100vh;display:flex;flex-direction:column;background:var(--surface-page);color:var(--text-body);font-family:var(--font-1);font-weight:300">
+<div class="ok-root" style="display:flex;flex-direction:column;background:var(--surface-page);color:var(--text-body);font-family:var(--font-1);font-weight:300">
 
 
 
@@ -773,6 +836,9 @@ html[data-ok-ready] #ok-boot{display:none}
           </div>
         </div>
       </section>
+      <nav class="ok-bottombar">
+        <span sc-camel-on-click="{{ continueSet }}" class="ok-btn ok-btn-primary ok-bb-cta">{{ heroBtn }}</span>
+      </nav>
     </main>
   </sc-if>
 
@@ -827,9 +893,11 @@ html[data-ok-ready] #ok-boot{display:none}
         </div>
       </div>
       <nav class="ok-bottombar">
-        <span sc-camel-on-click="{{ goMap }}" class="ok-bb-b">{{ t_map }}</span>
-        <span sc-camel-on-click="{{ toggleMode }}" class="ok-bb-b">{{ modeLabel }}</span>
-        <span sc-camel-on-click="{{ studyNow }}" class="ok-bb-b ok-bb-primary">{{ t_practice }}</span>
+        <div class="ok-seg ok-bb-seg">
+          <span sc-camel-on-click="{{ modeLearn }}" class="ok-seg-b" style="{{ learnStyle }}">{{ t_learn }}</span>
+          <span sc-camel-on-click="{{ modeRecall }}" class="ok-seg-b" style="{{ recallStyle }}">{{ t_recall }}</span>
+        </div>
+        <span sc-camel-on-click="{{ studyNow }}" class="ok-btn ok-btn-primary ok-bb-cta">{{ t_practice }}</span>
       </nav>
     </main>
   </sc-if>
@@ -842,8 +910,10 @@ html[data-ok-ready] #ok-boot{display:none}
       <span class="ok-dot" style="background:{{ syncDot }}"></span>
     </span>
     <sc-if value="{{ acctOpen }}" hint-placeholder-val="{{ false }}">
-      <div sc-camel-on-mouse-leave="{{ closeAcct }}" sc-camel-on-click="{{ stop }}" class="ok-pop">
+      <div sc-camel-on-mouse-leave="{{ leaveAcct }}" sc-camel-on-click="{{ stop }}" class="ok-pop">
         <div class="ok-pop-in">
+          <span sc-camel-on-click="{{ closeAcct }}" class="ok-pop-x" title="{{ t_close }}">×</span>
+          <span class="ok-pop-head">{{ t_settings }}</span>
           <sc-if value="{{ acctIn }}" hint-placeholder-val="{{ false }}">
             <span class="ok-pop-title" title="{{ userEmail }}">{{ userEmail }}</span>
             <span class="ok-muted">{{ syncText }}</span>
@@ -1518,6 +1588,7 @@ async function okComplete(req) {
 }
 // Speech: the browser's own Japanese voice, the word then the sentence. Free
 // and instant; the voice varies by platform, which is the trade for that.
+const okPhone = () => typeof window !== "undefined" && !!window.matchMedia && window.matchMedia("(max-width:640px)").matches;
 const okCanSpeak = () => typeof window !== "undefined" && !!window.speechSynthesis && typeof window.SpeechSynthesisUtterance === "function";
 let _okVoice = null;
 const okVoice = () => {
@@ -1585,6 +1656,7 @@ class Component extends DCLogic {
     if (s) this.persist(s);
     if (m) this.persistMastered(m);
     this.bindKeys();
+    this.bindPages();
     // Leaving _savedSig null when mastered could not be read keeps isDirty()
     // false, which disables save. Refusing to write is the safe failure: the
     // alternative overwrites unreadable-but-present progress with {}.
@@ -1703,6 +1775,9 @@ class Component extends DCLogic {
   componentWillUnmount() {
     if (this._onKey) window.removeEventListener("keydown", this._onKey);
     if (this._onResize) window.removeEventListener("resize", this._onResize);
+    if (this._onPop) window.removeEventListener("popstate", this._onPop);
+    if (this._onTouchStart) window.removeEventListener("touchstart", this._onTouchStart);
+    if (this._onTouchEnd) window.removeEventListener("touchend", this._onTouchEnd);
   }
 
   bindKeys() {
@@ -1992,6 +2067,16 @@ class Component extends DCLogic {
   }
   closeFocusView() {
     if (this.state.focus == null || this.state.focusClosing) return;
+    if (this.leavePage("focus")) return;
+    this.closeFocusNow();
+  }
+  closeAcctView() {
+    if (!this.state.acctOpen) return;
+    if (this.leavePage("acct")) return;
+    this.setState({ acctOpen: false });
+  }
+  closeFocusNow() {
+    if (this.state.focus == null) return;
     this.setState({ focusClosing: true });
     setTimeout(() => this.setState({ focus: null, focusShown: false, focusClosing: false }), 160);
   }
@@ -1999,9 +2084,73 @@ class Component extends DCLogic {
     if (this._gAdvT) clearTimeout(this._gAdvT);
     this._gAnswer = null; this._gIdx = undefined;
     if (this.state.gameClosing || this.state.cardsClosing) return;
+    if (this.leavePage("practice")) return;
+    this.closePracticeNow();
+  }
+  closePracticeNow() {
     this.setState({ gameClosing: true, cardsClosing: true });
     setTimeout(() => this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, gMode: null, gFinished: false, dlgSeamless: false }), 200);
   }
+  // A pushed page gets a history entry, so the phone's Back button (and the
+  // browser's) closes it rather than leaving the app. Where pushState is not
+  // allowed -- file:// in some browsers -- the close still happens directly.
+  openPage(name, close) {
+    this._pages = this._pages || [];
+    if (this._pages.some(p => p.name === name)) return;
+    const entry = { name: name, close: close, pushed: false };
+    try { history.pushState({ okPage: name }, ""); entry.pushed = true; } catch (e) {}
+    this._pages.push(entry);
+  }
+  // The UI's own back or close: unwind through history when we pushed, so
+  // there is one path in and one path out.
+  leavePage(name) {
+    this._pages = this._pages || [];
+    const top = this._pages[this._pages.length - 1];
+    if (top && top.name === name && top.pushed) { history.back(); return true; }
+    return this.dropPage(name);
+  }
+  dropPage(name) {
+    this._pages = this._pages || [];
+    const i = this._pages.map(p => p.name).lastIndexOf(name);
+    if (i < 0) return false;
+    const entry = this._pages.splice(i, 1)[0];
+    entry.close();
+    return true;
+  }
+  bindPages() {
+    if (this._onPop) return;
+    this._onPop = () => {
+      const entry = (this._pages || []).pop();
+      if (entry) entry.close();
+    };
+    window.addEventListener("popstate", this._onPop);
+    // A horizontal swipe walks the sets on a set page and the words in a word
+    // page -- the gesture a phone expects for "next".
+    let x0 = 0, y0 = 0, live = false;
+    this._onTouchStart = (e) => {
+      const t = e.touches && e.touches[0];
+      live = false;
+      if (!t || e.touches.length !== 1) return;
+      const el = e.target;
+      if (el && el.closest && el.closest("input,textarea,[contenteditable],.ok-bottombar,.ok-sheet,.ok-pop,.ok-tick,.ok-play")) return;
+      if (!(el && el.closest && (el.closest(".ok-set-body") || el.closest(".ok-focus")))) return;
+      x0 = t.clientX; y0 = t.clientY; live = true;
+    };
+    this._onTouchEnd = (e) => {
+      if (!live) return;
+      live = false;
+      const t = e.changedTouches && e.changedTouches[0];
+      if (!t) return;
+      const dx = t.clientX - x0, dy = t.clientY - y0;
+      if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.6) return;
+      const d = dx < 0 ? 1 : -1;
+      if (this.state.focus != null) this.focusStep(d);
+      else if (this.state.zoom === "set") this.stepSet(d);
+    };
+    window.addEventListener("touchstart", this._onTouchStart, { passive: true });
+    window.addEventListener("touchend", this._onTouchEnd, { passive: true });
+  }
+
   // Say a word, then its sentence; the button stays lit until the voice stops.
   speakWord(key, word, sentence) {
     if (!okCanSpeak()) return;
@@ -3342,6 +3491,7 @@ class Component extends DCLogic {
       studyNow: () => {
         this._gAnswer = null; this._gIdx = undefined;
         this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: WSET });
+        this.openPage("practice", () => this.closePracticeNow());
       },
       // ---- The two screens, the focus view and the account ----
       ...(() => {
@@ -3447,8 +3597,15 @@ class Component extends DCLogic {
           focusNextVis: f && st.focus < WORDS.length - 1 ? "visible" : "hidden",
           // account
           acctOpen: !!st.acctOpen,
-          toggleAcct: () => this.setState(s => ({ acctOpen: !s.acctOpen })),
-          closeAcct: () => this.setState({ acctOpen: false }),
+          toggleAcct: () => {
+            if (this.state.acctOpen) { this.closeAcctView(); return; }
+            this.setState({ acctOpen: true });
+            this.openPage("acct", () => this.setState({ acctOpen: false }));
+          },
+          closeAcct: () => this.closeAcctView(),
+          // On a phone the panel is a page, so a stray mouseleave must not
+          // dismiss it; on a pointer device leaving it is the natural close.
+          leaveAcct: () => { if (!okPhone()) this.closeAcctView(); },
           acctIn: signedIn, acctNotIn: !signedIn,
           acctOut: okSyncReady() && !signedIn,
           acctSyncOff: !okSyncReady(),
@@ -3504,6 +3661,7 @@ class Component extends DCLogic {
           wVeilOut: st.writeClosing ? "ok-veil-out" : "",
           wSheetOut: st.writeClosing ? "ok-sheet-out" : "",
           wBack: () => { if (this.state.writeFromStudy) this.setState({ dlgSeamless: true, write: false, writeClosing: false, writeFromStudy: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); else this.closeWrite(); },
+          t_settings: T("settings"), t_close: T("close"),
           jaSeg: st.lang === "ja" ? segOn : segOff,
           enSeg: st.lang !== "ja" ? segOn : segOff,
           // completion: the set's own next step takes the primary slot
@@ -4045,6 +4203,7 @@ class Component extends DCLogic {
             const r = ev && ev.currentTarget && ev.currentTarget.getBoundingClientRect ? ev.currentTarget.getBoundingClientRect() : null;
             const from = r ? [Math.round(r.left + r.width / 2 - window.innerWidth / 2), Math.round(r.top + r.height / 2 - window.innerHeight / 2)] : [0, 0];
             this.setState({ focus: i, focusShown: false, focusFrom: from });
+            this.openPage("focus", () => this.closeFocusNow());
           }
         };
       }),

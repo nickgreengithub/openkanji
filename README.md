@@ -104,11 +104,23 @@ was tapped; the completion check pops once; sheets and the focus view leave with
 short fade rather than a cut, and views inside a sheet cross-fade.
 Everything is under 250ms and honours `prefers-reduced-motion`.
 
+**On a phone there are no dialogs -- everything is a page.** Practice, a
+word opened large, Write and Settings each take the whole screen, arriving
+from the right with their own header: a close or back control top-left, the
+title centred, and the primary action in a bar at the foot where a thumb
+is. Each pushed page takes a history entry, so the phone's own Back button
+closes it instead of leaving the app. The map's foot carries Continue; the
+set's carries the Learn / Recall switch and Practice. Swiping left or right
+moves a set on the set page and a word on the word page. Touch targets are
+44px, the layout honours the notch and the home indicator on every edge,
+and the app is sized to the dynamic viewport so the keyboard cannot push
+the composer off-screen. The map is five tiles across with the four rings
+two by two; cards are one column, word over sentence, with the speaker at
+the card's bottom-right.
+
 **Visually**: one accent, reserved for progress and the primary action;
 everything else neutral. Cards and tiles are rounded surfaces with a faint
-shadow; there are no hairlines between things. On a phone the map is five
-tiles across, the cards are one column, and a bottom bar carries Map, the
-mode and Practice.
+shadow; there are no hairlines between things.
 
 Sentences live in `words.json` as `sentences: [{ ja, t: { en, es } }]` and are
 keyed by word id, so a word can be corrected without invalidating anyone's
