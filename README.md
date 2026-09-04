@@ -41,8 +41,10 @@ shows the word with furigana, its meaning, the example sentence with the
 word lit, and its translation -- all at once, no hover. The learned control
 is a visible "Got it" pill. Tapping a card opens it large, with arrow keys
 to walk the set, Enter to mark, Escape to close. At the foot of the cards,
-where reading finishes, are Previous set and Next set; the arrow keys do the
-same. Recall hides the answers -- meaning, translation, furigana -- and
+where reading finishes, are Previous set and Next set; small chevrons either
+side of the set's name and the arrow keys do the same. When the twentieth
+Got it lands the name takes a check, the subtitle says Set complete, and Next
+set becomes the primary button. Recall hides the answers -- meaning, translation, furigana -- and
 pointing at a card shows that card's; opened large in Recall, a card is a
 flashcard with a Show answer button (or Space).
 
@@ -54,6 +56,38 @@ screen shows who is signed in and, by its dot, the sync state: green synced,
 amber saving, red failed, grey local. Its panel holds sign-in (a magic link
 by email, no password), sign-out, and the two settings -- interface language
 and furigana on or off.
+
+**Practice** is a sheet over the set with three modes, each explained in a
+line: Flashcards (see the word, recall the meaning; seeing a card's back
+twice marks it), Quiz (pick the word for the meaning -- ten rounds, the
+first half easy, the second with confusable distractors), and Write (use the
+words in sentences, checked by AI). A finished set is still worth a run: with
+nothing left unlearned, practice covers the whole set. The quiz ends on a
+results screen with what was missed and a Got it pill on each, so a miss can
+be dealt with where it is noticed.
+
+**What it is worth.** Under the deck's progress bar the map shows three
+domains -- TV & film, anime & manga, books & news -- each with the share of
+everyday words the learner would now recognise and the share this deck
+would reach when done. Each word carries `cov: [tv, manga, news]`, its share
+of the running content words of each domain in parts per million, from
+wordfreq (real token proportions; OpenSubtitles is the film and TV signal
+inside it), JPDB and BCCWJ (ranks, given proportions by the wordfreq curve),
+with every token folded to its dictionary form so 言っ and いう count for
+言う. Coverage is over content words: particles, auxiliaries, symbols,
+numerals, interjections and proper nouns are a baseline every learner gets
+elsewhere, and counting them would make every number smaller and no more
+true. The three bars share one axis sized to the largest ceiling so they read
+against each other; the numbers carry the absolute truth. JLPT N4's 451 words
+are worth about 10-18% of a domain; the whole JLPT range roughly half. The
+gap is the highest-frequency words of all -- する, いる, ある, ない, いい,
+こと -- which are kana-only and sit in no kanji deck.
+
+**Motion** only explains where you are or confirms what changed: the set
+zooms in from the map and the map zooms back out; cards slide in the
+direction of travel between sets; the focus view grows out of the card that
+was tapped; the completion check pops once. Everything is under 250ms and
+honours `prefers-reduced-motion`.
 
 **Visually**: one accent, reserved for progress and the primary action;
 everything else neutral. Cards and tiles are rounded surfaces with a faint

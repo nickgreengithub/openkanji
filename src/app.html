@@ -451,6 +451,84 @@ a:hover{color:var(--text-accent-hover)}
   .ok-bb-b{flex:1 1 0;display:flex;align-items:center;justify-content:center;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);cursor:pointer;user-select:none}
   .ok-bb-primary{color:var(--ok-acc)}
 }
+
+/* Practice: a sheet over the set, same surfaces, one accent. */
+.ok-veil-p{align-items:flex-end;padding:0}
+.ok-sheet{position:relative;width:100%;height:100%;display:flex;flex-direction:column;background:var(--ok-bg);animation:ok-sheet-up 240ms cubic-bezier(.2,.7,.3,1)}
+.ok-sheet-top{flex:0 0 auto;display:flex;align-items:center;gap:.9rem;height:3.5rem;padding:0 1rem;border-bottom:1px solid var(--ok-line);background:rgba(244,244,241,.92)}
+.ok-round-btn{flex:0 0 auto;width:2.3rem;height:2.3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ok-mute);cursor:pointer;user-select:none;transition:background 140ms ease,color 140ms ease}
+.ok-round-btn:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
+.ok-sheet-title{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;line-height:1.15}
+.ok-sheet-h{font-size:1.125rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ok-sheet-count{font-variant-numeric:tabular-nums;white-space:nowrap}
+.ok-sheet-body{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column}
+.ok-pmenu{width:100%;max-width:34rem;margin:0 auto;padding:1.5rem 1.25rem 2rem;display:flex;flex-direction:column;gap:.75rem}
+.ok-pmode{display:flex;align-items:center;gap:1rem;padding:1.05rem 1.15rem;border-radius:14px;border:1px solid var(--ok-line);background:var(--ok-card);box-shadow:var(--ok-shadow);cursor:pointer;user-select:none;transition:box-shadow 160ms ease,transform 160ms ease}
+.ok-pmode:hover{box-shadow:var(--ok-shadow-h);transform:translateY(-1px)}
+.ok-pmode-ico{flex:0 0 2.6rem;width:2.6rem;height:2.6rem;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--ok-acc-s);color:var(--ok-acc)}
+.ok-pmode-txt{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.15rem}
+.ok-pmode-t{font-size:1.0625rem}
+.ok-pmode-chev{color:var(--ok-mute)}
+.ok-quiz{width:100%;max-width:38rem;margin:0 auto;padding:1.25rem 1.25rem 2rem;display:flex;flex-direction:column;gap:1rem}
+.ok-dots{display:flex;justify-content:center;gap:.4rem}
+.ok-dot-q{width:.6rem;height:.6rem;border-radius:50%;border:1.5px solid var(--ok-line);transition:background 200ms ease,border-color 200ms ease,transform 200ms ease}
+.ok-qprompt{display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:1.4rem 1.25rem;border-radius:16px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow);text-align:center}
+.ok-qprompt-t{font-family:var(--font-2);font-size:1.6rem;line-height:1.25;color:var(--ok-ink);text-wrap:pretty}
+.ok-qtiles{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.ok-qtile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;min-height:6.5rem;padding:1rem;border-radius:14px;border:1.5px solid var(--ok-line);background:var(--ok-card);box-shadow:var(--ok-shadow);user-select:none;transition:background 200ms ease,border-color 200ms ease,color 200ms ease,opacity 200ms ease,transform 120ms ease}
+.ok-qtile[data-live]:hover{border-color:var(--ok-acc);transform:translateY(-1px)}
+.ok-qtile-big{line-height:1.15;text-align:center;white-space:nowrap}
+.ok-qtile-sub{font-family:var(--font-2);font-size:.9375rem;text-align:center}
+.ok-qreveal{text-align:center;min-height:1.4em;transition:opacity 200ms ease}
+.ok-pdone{width:100%;max-width:34rem;margin:0 auto;padding:2rem 1.25rem;display:flex;flex-direction:column;align-items:center;gap:.9rem;text-align:center}
+.ok-pdone-score{font-size:2rem;line-height:1.15}
+.ok-pmissed{width:100%;display:flex;flex-direction:column;gap:.5rem}
+.ok-pmiss{display:flex;align-items:center;gap:.9rem;padding:.7rem .9rem;border-radius:12px;background:var(--ok-card);border:1px solid var(--ok-line);text-align:left}
+.ok-pmiss-w{font-size:1.5rem;line-height:1.1;flex:0 0 auto}
+.ok-pmiss .ok-muted{flex:1 1 auto;min-width:0}
+.ok-pmiss .ok-pill{margin-top:0;flex:0 0 auto}
+.ok-pactions{display:flex;gap:.6rem;margin-top:.5rem}
+.ok-fc{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:1.5rem 1.25rem;cursor:pointer;user-select:none}
+.ok-fc-card{width:min(30rem,100%);min-height:18rem;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;border-radius:20px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow-h);text-align:center}
+.ok-fc-front{line-height:1.15;color:var(--ok-ink)}
+.ok-fc-back{overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.ok-fc-reading{font-size:1.75rem;color:var(--ok-acc);white-space:nowrap}
+.ok-fc-gloss{font-family:var(--font-2);font-size:1.25rem;color:var(--ok-body);text-wrap:pretty}
+@media (min-width:641px){
+  .ok-veil-p{align-items:center;padding:1.5rem}
+  .ok-sheet{width:min(44rem,100%);height:auto;max-height:min(42rem,100%);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(20,24,30,.35);animation:ok-rise 220ms cubic-bezier(.2,.7,.3,1)}
+  .ok-quiz{min-height:30rem}
+  .ok-fc{min-height:28rem}
+}
+/* Map: what the words are worth */
+.ok-cov{display:flex;flex-direction:column;gap:.55rem}
+.ok-cov-row{display:grid;grid-template-columns:8.5rem 1fr auto;align-items:center;gap:.9rem}
+.ok-cov-bar{position:relative;height:.45rem;border-radius:999px;background:#e6e6e1;overflow:hidden}
+.ok-cov-ceil{position:absolute;left:0;top:0;bottom:0;background:var(--ok-acc-t);border-radius:999px;transition:width 400ms cubic-bezier(.3,.7,.3,1)}
+.ok-cov-now{position:absolute;left:0;top:0;bottom:0;background:var(--ok-acc);border-radius:999px;transition:width 400ms cubic-bezier(.3,.7,.3,1)}
+.ok-cov-txt{font-variant-numeric:tabular-nums;white-space:nowrap}
+/* Set header: chevrons and the completed state */
+.ok-set-titlerow{display:flex;align-items:center;gap:.3rem}
+.ok-mini{width:1.6rem;height:1.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ok-mute);cursor:pointer;user-select:none;transition:background 140ms ease,color 140ms ease}
+.ok-mini:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
+.ok-set-check{display:inline-flex;align-items:center;justify-content:center;width:1.3rem;height:1.3rem;border-radius:50%;background:var(--ok-acc);color:#fff;animation:ok-pop 260ms cubic-bezier(.2,.7,.3,1)}
+/* Motion: only what explains where you are or confirms what changed */
+.ok-page-set{animation:ok-zoom-in 220ms cubic-bezier(.2,.7,.3,1)}
+.ok-page-map{animation:ok-zoom-out 200ms ease}
+.ok-focus{animation:ok-focus-in 220ms cubic-bezier(.2,.7,.3,1)}
+@keyframes ok-zoom-in{from{opacity:0;transform:scale(.965)}to{opacity:1;transform:none}}
+@keyframes ok-zoom-out{from{opacity:0;transform:scale(1.025)}to{opacity:1;transform:none}}
+@keyframes ok-focus-in{from{opacity:0;transform:translate(var(--fx,0px),var(--fy,0px)) scale(.55)}to{opacity:1;transform:none}}
+@keyframes ok-slide-la{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes ok-slide-lb{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes ok-slide-ra{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+@keyframes ok-slide-rb{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+@keyframes ok-pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+@keyframes ok-sheet-up{from{transform:translateY(100%)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .ok-page-set,.ok-page-map,.ok-focus,.ok-sheet,.ok-card,.ok-set-check,.ok-toast,.ok-veil{animation:none!important}
+  .ok-card,.ok-tile,.ok-hero,.ok-pmode,.ok-qtile{transition:none!important}
+}
 </style>
 
 <style>
@@ -468,131 +546,111 @@ html[data-ok-ready] #ok-boot{display:none}
 
 
 
-  <sc-if value="{{ cardsOn }}" hint-placeholder-val="{{ false }}">
-    <div sc-camel-on-click="{{ closeCards }}" style="position:fixed;inset:0;z-index:90;background:rgba(16,26,34,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:2.5rem;animation:{{ cardVeilAnim }}">
-      <div sc-camel-on-click="{{ stop }}" style="animation:{{ cardPanelAnim }};width:min(46rem,100%);height:min(36rem,100%);display:flex;flex-direction:column;background:var(--surface-page);border:{{ ruleH }} solid var(--cyan-a45);box-shadow:0 24px 70px rgba(22,35,44,.30)">
-        <div style="flex:0 0 3rem;display:flex;align-items:center;gap:.8rem;padding:0 .6rem;background:#eef3f6;border-bottom:1px solid #9fb4c0">
-          <span sc-camel-on-click="{{ cardsBackToMenu }}" style="flex:0 0 auto;width:2rem;height:2rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#ffffff;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--text-accent-hover)">
-            <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 5 L7 12 L14 19"></path></svg>
+  <!-- ===== Practice: a sheet over the set. Flashcards, Quiz, Write. ===== -->
+  <sc-if value="{{ pOn }}" hint-placeholder-val="{{ false }}">
+    <div sc-camel-on-click="{{ pClose }}" class="ok-veil ok-veil-p">
+      <div sc-camel-on-click="{{ stop }}" class="ok-sheet">
+        <div class="ok-sheet-top">
+          <span sc-camel-on-click="{{ pBack }}" class="ok-round-btn" title="{{ t_back }}">
+            <sc-if value="{{ pAtMenu }}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6 L18 18"></path><path d="M18 6 L6 18"></path></svg></sc-if>
+            <sc-if value="{{ pNotAtMenu }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></sc-if>
           </span>
-          <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted)">{{ gHeadTitle }}</span>
-          <span style="margin-left:auto;font-family:var(--font-2);font-size:1rem;font-variant-numeric:tabular-nums;color:var(--text-muted);white-space:nowrap">{{ cardProgress }}</span>
+          <div class="ok-sheet-title"><span class="ok-eyebrow">{{ pEyebrow }}</span><span class="ok-sheet-h">{{ pTitle }}</span></div>
+          <span class="ok-muted ok-sheet-count">{{ pCount }}</span>
         </div>
-        <sc-if value="{{ cardPlayOn }}" hint-placeholder-val="{{ true }}">
-          <div sc-camel-on-click="{{ cardTap }}" style="user-select:none;-webkit-user-select:none;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;cursor:pointer">
-            <div style="flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 1.5rem 1.5rem;animation:{{ cardAnim }}">
-              <span style="font-size:{{ cardFrontSize }};line-height:1.15;color:var(--text-body);text-align:center">{{ cardFront }}</span>
-              <div style="overflow:hidden;max-height:{{ cardBackMax }};display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-top:{{ cardBackGap }};opacity:{{ cardBackOpacity }};transform:translateY({{ cardBackShift }});transition:{{ cardBackTrans }}">
-                <span style="font-size:1.875rem;line-height:1.2;color:var(--text-accent);text-align:center;white-space:nowrap">{{ cardReading }}</span>
-                <span style="font-family:var(--font-2);font-size:1.25rem;line-height:1.4;color:var(--text-muted);text-align:center;text-wrap:pretty">{{ cardGloss }}</span>
+        <div class="ok-sheet-body ok-scroll">
+
+          <sc-if value="{{ gMenuOn }}" hint-placeholder-val="{{ true }}">
+            <div class="ok-pmenu">
+              <div sc-camel-on-click="{{ gCards }}" class="ok-pmode">
+                <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="3.5" width="13" height="14" rx="2"></rect><path d="M13.5 20.5 H5.5 A1.5 1.5 0 0 1 4 19 V9"></path></svg></span>
+                <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_flashcards }}</span><span class="ok-muted">{{ t_flashcards_desc }}</span></div>
+                <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
+              </div>
+              <div sc-camel-on-click="{{ quizStart }}" class="ok-pmode">
+                <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><path d="M14.5 17 L16.5 19 L20.5 14.5"></path></svg></span>
+                <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_quiz }}</span><span class="ok-muted">{{ t_quiz_desc }}</span></div>
+                <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
+              </div>
+              <div sc-camel-on-click="{{ gChat }}" class="ok-pmode">
+                <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 L8 19 L19 8 A2.1 2.1 0 0 0 16 5 L5 16 Z"></path><path d="M14 7 L17 10"></path></svg></span>
+                <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_write_title }}</span><span class="ok-muted">{{ t_write_desc }}</span></div>
+                <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
               </div>
             </div>
-          </div>
-        </sc-if>
+          </sc-if>
 
-        <sc-if value="{{ cardDoneOn }}" hint-placeholder-val="{{ false }}">
-          <div sc-camel-on-click="{{ cardRestart }}" style="user-select:none;-webkit-user-select:none;flex:1 1 auto;display:flex;align-items:center;justify-content:center;padding:1.5rem;cursor:pointer;animation:{{ cardAnim }}">
-            <span style="display:flex;align-items:center;justify-content:center;padding:1.25rem 2.5rem;background:var(--accent);font-size:3.5rem;line-height:1.15;color:#ffffff">終わり</span>
-          </div>
-        </sc-if>
-      </div>
-    </div>
-  </sc-if>
-
-  <sc-if value="{{ gameOn }}" hint-placeholder-val="{{ false }}">
-    <div sc-camel-on-click="{{ closeGame }}" style="position:fixed;inset:0;z-index:90;background:rgba(16,26,34,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:2.5rem;animation:{{ gameVeilAnim }}">
-      <div sc-camel-on-click="{{ stop }}" style="animation:{{ gamePanelAnim }};width:{{ gPanelW }};height:{{ gPanelH }};transition:width 300ms cubic-bezier(.3,.7,.3,1),height 300ms cubic-bezier(.3,.7,.3,1);display:flex;flex-direction:column;background:var(--surface-page);border:{{ ruleH }} solid var(--cyan-a45);box-shadow:0 24px 70px rgba(22,35,44,.30)">
-        <div style="flex:0 0 3rem;display:flex;align-items:center;gap:.8rem;padding:0 .6rem;background:#eef3f6;border-bottom:1px solid #9fb4c0">
-          <span sc-camel-on-click="{{ gHeadBack }}" style="flex:0 0 auto;width:2rem;height:2rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#ffffff;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--text-accent-hover)">
-            <sc-if value="{{ gMenuOn }}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6 L18 18"></path><path d="M18 6 L6 18"></path></svg></sc-if>
-            <sc-if value="{{ gNotMenuOn }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 5 L7 12 L14 19"></path></svg></sc-if>
-          </span>
-          <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted)">{{ gHeadTitle }}</span>
-          <span style="margin-left:auto;font-family:var(--font-2);font-size:1rem;font-variant-numeric:tabular-nums;color:var(--text-muted);white-space:nowrap">{{ gScopeWords }} {{ gScopeUnit }}</span>
-        </div>
-
-        <sc-if value="{{ gMenuOn }}" hint-placeholder-val="{{ true }}">
-          <div style="flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;animation:ok-game-b 340ms cubic-bezier(.2,.7,.3,1);opacity:{{ gMorphFade }};transition:opacity 150ms ease">
-            <div sc-camel-on-click="{{ gStart1 }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;border-right:1px solid #9fb4c0;border-bottom:1px solid #9fb4c0;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_game }}</span>
-              <span style="font-family:var(--font-2);font-size:2.8rem;line-height:1;color:var(--text-accent)">01</span>
-              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">{{ t_lang_to_kanji }} <span style="color:var(--text-muted)">{{ t_easy }}</span></span>
-            </div>
-            <div sc-camel-on-click="{{ gStart2 }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;border-bottom:1px solid #9fb4c0;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_game }}</span>
-              <span style="font-family:var(--font-2);font-size:2.8rem;line-height:1;color:var(--text-accent)">02</span>
-              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">{{ t_lang_to_kanji }} <span style="color:var(--text-muted)">{{ t_hard }}</span></span>
-            </div>
-            <div sc-camel-on-click="{{ gStart3 }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;border-right:1px solid #9fb4c0;border-bottom:1px solid #9fb4c0;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_game }}</span>
-              <span style="font-family:var(--font-2);font-size:2.8rem;line-height:1;color:var(--text-accent)">03</span>
-              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">{{ t_select_fake_word }}</span>
-            </div>
-            <div sc-camel-on-click="{{ gStart4 }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;border-bottom:1px solid #9fb4c0;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_game }}</span>
-              <span style="font-family:var(--font-2);font-size:2.8rem;line-height:1;color:var(--text-accent)">04</span>
-              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">単語 → ひらがな</span>
-            </div>
-            <div sc-camel-on-click="{{ gCards }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;border-right:1px solid #9fb4c0;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_memorise }}</span>
-              <span style="height:2.8rem;display:flex;align-items:center;color:var(--text-accent)"><svg width="36" height="36" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6.5" y="3.5" width="14" height="14"></rect><path d="M14 20.5 H3.5 V9"></path></svg></span>
-              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">{{ t_flashcards }}</span>
-            </div>
-            <div sc-camel-on-click="{{ gChat }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_write }}</span>
-              <span style="height:2.8rem;display:flex;align-items:center;color:var(--text-accent)"><svg width="36" height="36" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5 H20 V17 H12 L7 21 V17 H4 Z"></path></svg></span>
-              <span style="font-family:var(--font-2);font-size:1.125rem;color:var(--text-body);white-space:nowrap">{{ t_ai_writing_practice }}</span>
-            </div>
-          </div>
-        </sc-if>
-
-        <sc-if value="{{ gPlayOn }}" hint-placeholder-val="{{ false }}">
-          <div style="flex:1 1 auto;min-height:0;display:flex;flex-direction:column;animation:{{ gQAnim }}">
-            <div style="flex:0 0 9.5rem;display:flex;align-items:stretch;padding:1rem;background:#eef3f6;border-bottom:1px solid #9fb4c0">
-              <div style="position:relative;flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;padding:1rem 1.25rem;background:#ffffff;border:1px solid #9fb4c0">
-                <span style="font-size:2rem;line-height:1.25;color:var(--text-body);text-align:center;text-wrap:pretty">{{ gPrompt }}</span>
+          <sc-if value="{{ gPlayOn }}" hint-placeholder-val="{{ false }}">
+            <div class="ok-quiz">
+              <div class="ok-dots"><sc-for list="{{ gFooter }}" as="gf" hint-placeholder-count="10"><span class="ok-dot-q" style="background:{{ gf.bg }};border-color:{{ gf.border }};transform:{{ gf.scale }}"></span></sc-for></div>
+              <div class="ok-qprompt" style="animation:{{ gQAnim }}">
+                <span class="ok-eyebrow">{{ t_which_word }}</span>
+                <span class="ok-qprompt-t">{{ gPrompt }}</span>
               </div>
+              <div class="ok-qtiles">
+                <sc-for list="{{ gTiles }}" as="gt" hint-placeholder-count="4">
+                  <div sc-camel-on-click="{{ gt.pick }}" class="ok-qtile" data-live="{{ gt.live }}" style="background:{{ gt.bg }};border-color:{{ gt.border }};color:{{ gt.fg }};opacity:{{ gt.opacity }};cursor:{{ gt.cursor }}">
+                    <span class="ok-qtile-big" style="font-size:{{ gt.bigSize }};text-decoration:{{ gt.strike }}">{{ gt.big }}</span>
+                    <sc-if value="{{ gt.hasSub }}" hint-placeholder-val="{{ false }}"><span class="ok-qtile-sub" style="color:{{ gt.subFg }}">{{ gt.sub }}</span></sc-if>
+                  </div>
+                </sc-for>
+              </div>
+              <span class="ok-muted ok-qreveal" style="opacity:{{ gRevealOpacity }}">{{ gRevealLine }}</span>
             </div>
-            <div style="flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr">
-              <sc-for list="{{ gTiles }}" as="gt" hint-placeholder-count="4">
-                <div sc-camel-on-click="{{ gt.pick }}" style="user-select:none;min-width:0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;padding:1rem;border-right:{{ gt.ruleR }};border-bottom:{{ gt.ruleB }};background:{{ gt.bg }};opacity:{{ gt.opacity }};cursor:{{ gt.cursor }};transition:background 240ms ease,opacity 240ms ease" style-hover="background:{{ gt.hoverBg }}">
-                  <span style="font-size:{{ gt.bigSize }};line-height:1.1;color:{{ gt.fg }};text-decoration:{{ gt.strike }};text-align:center;white-space:nowrap;transition:color 240ms ease">{{ gt.big }}</span>
-                  <sc-if value="{{ gt.hasSub }}" hint-placeholder-val="{{ false }}">
-                    <span style="font-family:var(--font-2);font-size:1.125rem;line-height:1.3;color:{{ gt.subFg }};text-decoration:{{ gt.strike }};text-align:center">{{ gt.sub }}</span>
-                  </sc-if>
-                </div>
-              </sc-for>
-            </div>
-            <div style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:.4rem;padding:1.1rem 1.5rem;background:#eef3f6;border-top:1px solid #9fb4c0">
-              <sc-for list="{{ gFooter }}" as="gf" hint-placeholder-count="10">
-                <span style="width:2.1rem;height:2.1rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ gf.border }};background:{{ gf.bg }};color:{{ gf.fg }};opacity:{{ gf.opacity }};font-family:var(--font-2);font-size:1.15rem;transition:border-color 200ms ease,color 200ms ease,opacity 200ms ease">{{ gf.sym }}</span>
-              </sc-for>
-            </div>
-          </div>
-        </sc-if>
+          </sc-if>
 
-        <sc-if value="{{ gDoneOn }}" hint-placeholder-val="{{ false }}">
-          <div style="flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.25rem;padding:1.5rem">
-            <div style="display:flex;align-items:center;gap:.4rem">
-              <sc-for list="{{ gFooter }}" as="gf" hint-placeholder-count="10">
-                <span style="width:1.9rem;height:1.9rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ gf.border }};background:{{ gf.bg }};color:{{ gf.fg }};opacity:{{ gf.opacity }};font-family:var(--font-2);font-size:1.05rem">{{ gf.sym }}</span>
-              </sc-for>
-            </div>
-            <sc-for list="{{ gSummary }}" as="gs" hint-placeholder-count="2">
-              <span style="font-family:var(--font-2);font-size:1.125rem;line-height:1.6;color:var(--text-body);text-align:center;text-wrap:pretty">{{ gs.t }}</span>
-            </sc-for>
-            <sc-if value="{{ gMissedOn }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;flex-direction:column;align-items:center;gap:.7rem;padding-top:.5rem">
-                <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)">{{ t_review }}</span>
-                <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem">
-                  <sc-for list="{{ gMissed }}" as="gm" hint-placeholder-count="3">
-                    <span style="width:4rem;height:4rem;display:flex;align-items:center;justify-content:center;border:1px solid #e8a3b0;background:#f8e4e8;font-size:2.5rem;line-height:1;color:#8c3a4a">{{ gm.c }}</span>
+          <sc-if value="{{ gDoneOn }}" hint-placeholder-val="{{ false }}">
+            <div class="ok-pdone">
+              <div class="ok-dots"><sc-for list="{{ gFooter }}" as="gf" hint-placeholder-count="10"><span class="ok-dot-q" style="background:{{ gf.bg }};border-color:{{ gf.border }};transform:{{ gf.scale }}"></span></sc-for></div>
+              <span class="ok-pdone-score">{{ pScore }}</span>
+              <span class="ok-muted">{{ pFirstTry }}</span>
+              <sc-if value="{{ gMissedOn }}" hint-placeholder-val="{{ false }}">
+                <span class="ok-h2" style="margin-top:.5rem">{{ t_missed }}</span>
+                <div class="ok-pmissed">
+                  <sc-for list="{{ pMissed }}" as="pm" hint-placeholder-count="3">
+                    <div class="ok-pmiss">
+                      <span class="ok-pmiss-w">{{ pm.w }}</span>
+                      <span class="ok-muted">{{ pm.g }}</span>
+                      <sc-if value="{{ pm.hasKey }}" hint-placeholder-val="{{ true }}"><span sc-camel-on-click="{{ pm.master }}" class="ok-pill" style="{{ pm.pill }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg><span>{{ pm.label }}</span></span></sc-if>
+                    </div>
                   </sc-for>
                 </div>
+              </sc-if>
+              <div class="ok-pactions">
+                <span sc-camel-on-click="{{ quizStart }}" class="ok-btn">{{ t_again }}</span>
+                <span sc-camel-on-click="{{ pClose }}" class="ok-btn ok-btn-primary">{{ t_done }}</span>
               </div>
-            </sc-if>
-          </div>
-        </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ cardPlayOn }}" hint-placeholder-val="{{ false }}">
+            <div sc-camel-on-click="{{ cardTap }}" class="ok-fc">
+              <div class="ok-fc-card" style="animation:{{ cardAnim }}">
+                <span class="ok-fc-front" style="font-size:{{ cardFrontSize }}">{{ cardFront }}</span>
+                <div class="ok-fc-back" style="max-height:{{ cardBackMax }};margin-top:{{ cardBackGap }};opacity:{{ cardBackOpacity }};transform:translateY({{ cardBackShift }});transition:{{ cardBackTrans }}">
+                  <span class="ok-fc-reading">{{ cardReading }}</span>
+                  <span class="ok-fc-gloss">{{ cardGloss }}</span>
+                </div>
+              </div>
+              <span class="ok-muted">{{ fcHint }}</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ cardDoneOn }}" hint-placeholder-val="{{ false }}">
+            <div class="ok-pdone">
+              <span class="ok-pdone-score">{{ t_all_seen }}</span>
+              <span class="ok-muted">{{ cardSummary }}</span>
+              <sc-if value="{{ cardMasteredOn }}" hint-placeholder-val="{{ false }}">
+                <span class="ok-h2" style="margin-top:.5rem">{{ t_learned }}</span>
+                <span class="ok-muted"><sc-for list="{{ cardMastered }}" as="cm" hint-placeholder-count="2">{{ cm.w }}　</sc-for></span>
+              </sc-if>
+              <div class="ok-pactions">
+                <span sc-camel-on-click="{{ cardRestart }}" class="ok-btn">{{ t_again }}</span>
+                <span sc-camel-on-click="{{ pClose }}" class="ok-btn ok-btn-primary">{{ t_done }}</span>
+              </div>
+            </div>
+          </sc-if>
+
+        </div>
       </div>
     </div>
   </sc-if>
@@ -604,7 +662,7 @@ html[data-ok-ready] #ok-boot{display:none}
 
   <!-- ===== Map: the whole deck at a glance, and the way into a set ===== -->
   <sc-if value="{{ onMap }}" hint-placeholder-val="{{ true }}">
-    <main class="ok-page ok-scroll">
+    <main class="ok-page ok-page-map ok-scroll">
       <header class="ok-top">
         <div class="ok-top-l">
           <span class="ok-mark" title="OpenKanji.org">开</span>
@@ -615,6 +673,18 @@ html[data-ok-ready] #ok-boot{display:none}
         <div class="ok-overall">
           <div class="ok-row"><span class="ok-h2">{{ t_your_progress }}</span><span class="ok-muted">{{ deckSummary }}</span></div>
           <div class="ok-bar"><div class="ok-bar-fill" style="width:{{ deckPct }}"></div></div>
+        </div>
+        <div class="ok-overall">
+          <div class="ok-row"><span class="ok-h2">{{ t_what_worth }}</span><span class="ok-muted">{{ t_coverage_note }}</span></div>
+          <div class="ok-cov">
+            <sc-for list="{{ covRows }}" as="cv" hint-placeholder-count="3">
+              <div class="ok-cov-row" title="{{ cv.title }}">
+                <span class="ok-muted">{{ cv.label }}</span>
+                <div class="ok-cov-bar"><div class="ok-cov-ceil" style="width:{{ cv.ceilW }}"></div><div class="ok-cov-now" style="width:{{ cv.nowW }}"></div></div>
+                <span class="ok-muted ok-cov-txt">{{ cv.text }}</span>
+              </div>
+            </sc-for>
+          </div>
         </div>
         <div sc-camel-on-click="{{ continueSet }}" class="ok-hero">
           <div class="ok-hero-l">
@@ -642,13 +712,18 @@ html[data-ok-ready] #ok-boot{display:none}
 
   <!-- ===== Set: twenty words, read through, marked as they land ===== -->
   <sc-if value="{{ onSet }}" hint-placeholder-val="{{ false }}">
-    <main class="ok-page">
+    <main class="ok-page ok-page-set">
       <header class="ok-top ok-top-set">
         <div class="ok-top-l">
           <span sc-camel-on-click="{{ goMap }}" class="ok-back"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg><span>{{ t_map }}</span></span>
         </div>
         <div class="ok-top-c">
-          <span class="ok-set-title">{{ setTitle }}</span>
+          <div class="ok-set-titlerow">
+            <span sc-camel-on-click="{{ prevSet }}" class="ok-mini" title="{{ t_prev_set }}" style="visibility:{{ prevVis }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span>
+            <span class="ok-set-title">{{ setTitle }}</span>
+            <sc-if value="{{ setFull }}" hint-placeholder-val="{{ false }}"><span class="ok-set-check"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span></sc-if>
+            <span sc-camel-on-click="{{ nextSet }}" class="ok-mini" title="{{ t_next_set }}" style="visibility:{{ nextVis }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
+          </div>
           <span class="ok-muted ok-set-sub">{{ setSub }}</span>
         </div>
         <div class="ok-top-r">
@@ -656,13 +731,14 @@ html[data-ok-ready] #ok-boot{display:none}
             <span sc-camel-on-click="{{ modeLearn }}" class="ok-seg-b" style="{{ learnStyle }}">{{ t_learn }}</span>
             <span sc-camel-on-click="{{ modeRecall }}" class="ok-seg-b" style="{{ recallStyle }}">{{ t_recall }}</span>
           </div>
-          <span sc-camel-on-click="{{ studyNow }}" class="ok-btn ok-btn-primary ok-practice">{{ t_practice }}</span>
+          <span sc-camel-on-click="{{ studyNow }}" class="ok-btn ok-practice" style="{{ practiceStyle }}">{{ t_practice }}</span>
+          <sc-if value="{{ setFullNext }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ nextSet }}" class="ok-btn ok-btn-primary ok-practice">{{ t_next_set }}</span></sc-if>
         </div>
       </header>
       <div class="ok-set-body ok-scroll">
         <div class="ok-cards">
           <sc-for list="{{ listWords }}" as="lr" hint-placeholder-count="20">
-            <div sc-camel-on-click="{{ lr.open }}" sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" class="ok-card" style="background:{{ lr.bg }};border-color:{{ lr.border }}">
+            <div sc-camel-on-click="{{ lr.open }}" sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" class="ok-card" style="background:{{ lr.bg }};border-color:{{ lr.border }};animation:{{ lr.anim }};animation-delay:{{ lr.delay }}">
               <span class="ok-card-word" style="font-size:{{ lr.wordSize }};color:{{ lr.wordFg }}"><sc-for list="{{ lr.ruby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ lr.rubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
               <span class="ok-card-gloss" style="opacity:{{ lr.ansOpacity }}">{{ lr.gloss }}</span>
               <sc-if value="{{ lr.hasEx }}" hint-placeholder-val="{{ true }}">
@@ -727,7 +803,7 @@ html[data-ok-ready] #ok-boot{display:none}
   <!-- ===== Focus: one word, large; in Recall it is a flashcard ===== -->
   <sc-if value="{{ focusOn }}" hint-placeholder-val="{{ false }}">
     <div sc-camel-on-click="{{ closeFocus }}" class="ok-veil">
-      <div sc-camel-on-click="{{ stop }}" class="ok-focus">
+      <div sc-camel-on-click="{{ stop }}" class="ok-focus" style="--fx:{{ focusFx }};--fy:{{ focusFy }}">
         <span sc-camel-on-click="{{ closeFocus }}" class="ok-x">×</span>
         <span class="ok-focus-n">{{ focusCounter }}</span>
         <span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
@@ -752,8 +828,8 @@ html[data-ok-ready] #ok-boot{display:none}
   <sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}"><div class="ok-toast">{{ authMsg }}</div></sc-if>
 
       <sc-if value="{{ writeOn }}" hint-placeholder-val="{{ false }}">
-      <div sc-camel-on-click="{{ closeWrite }}" style="position:fixed;inset:0;z-index:80;background:rgba(16,26,34,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:2.5rem;animation:{{ veilAnim }}">
-      <div sc-camel-on-click="{{ stop }}" style="animation:{{ panelAnim }};width:{{ wPanelW }};height:{{ wPanelH }};transition:width 300ms cubic-bezier(.3,.7,.3,1),height 300ms cubic-bezier(.3,.7,.3,1);display:flex;flex-direction:column;background:var(--surface-page);border:{{ ruleH }} solid var(--cyan-a45);box-shadow:0 18px 48px rgba(22,35,44,.28)">
+      <div sc-camel-on-click="{{ closeWrite }}" style="position:fixed;inset:0;z-index:80;background:rgba(20,24,30,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:2.5rem;animation:{{ veilAnim }}">
+      <div sc-camel-on-click="{{ stop }}" style="animation:{{ panelAnim }};width:{{ wPanelW }};height:{{ wPanelH }};transition:width 300ms cubic-bezier(.3,.7,.3,1),height 300ms cubic-bezier(.3,.7,.3,1);display:flex;flex-direction:column;background:var(--ok-card);border:1px solid var(--ok-line);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(20,24,30,.35)">
         <sc-if value="{{ writeFromStudy }}" hint-placeholder-val="{{ false }}">
           <div style="flex:0 0 3rem;display:flex;align-items:center;gap:.8rem;padding:0 .6rem;background:#eef3f6;border-bottom:1px solid #9fb4c0">
             <span sc-camel-on-click="{{ writeBackToMenu }}" style="flex:0 0 auto;width:2rem;height:2rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#ffffff;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--text-accent-hover)">
@@ -939,6 +1015,13 @@ const langName = () => (LANGS.find(l => l[0] === CURRENT_LANG) || LANGS[0])[1];
 const EX_T = __EX_TRANSLATIONS__;
 // Example sentences by word id: { w0001: ["..."] }. The card shows the first.
 const EX_JA = __EX_JA__;
+// Each word's share of the running content words of three domains, in parts
+// per million: [tv & film, anime & manga, books & news]. Summed over what the
+// learner knows, that is the coverage bar; summed over a deck, its ceiling.
+const COV = __COV__;
+const SURF = {};
+DATA.forEach(k => k.g.forEach(g => g.w.forEach(w => { SURF[w[3]] = w[0]; })));
+const COV_LABELS = ["tv_film", "anime_manga", "books_news"];
 // nth translation of word `id` in the current language, falling back to the
 // English baked into EXTRA.
 const exTr = (id, n, fallback) => {
@@ -1823,11 +1906,14 @@ class Component extends DCLogic {
   stepSet(d) {
     const n = wordBatchCount(this.state.deck);
     const b = Math.min(n - 1, Math.max(0, (this.state.wset || 0) + d));
-    this.gotoSet(b);
+    if (b !== (this.state.wset || 0)) this.gotoSet(b, d);
   }
-  gotoSet(b) {
+  gotoSet(b, dir) {
     lsSet(OK_SET_KEY, String(b));
-    this.setState({ wset: b, zoom: "set", focus: null, focusShown: false, hoverWord: null, acctOpen: false });
+    // Cards slide in the direction of travel between sets; from the map they
+    // arrive with the screen, so no slide.
+    const slide = dir ? { dir: dir > 0 ? "l" : "r", n: ((this.state.slide || {}).n || 0) + 1 } : null;
+    this.setState({ wset: b, zoom: "set", focus: null, focusShown: false, hoverWord: null, acctOpen: false, slide: slide });
     requestAnimationFrame(() => { const el = document.querySelector(".ok-set-body"); if (el) el.scrollTop = 0; });
   }
   focusStep(d) {
@@ -2341,6 +2427,7 @@ class Component extends DCLogic {
         this.persistMastered(m);
         mastered.push(c.w);
         this.setState({ mastered: m });
+        this.scheduleSync();
       }
       this.setState({ cShown: true, cMove: "flip", cFlip: !st.cFlip, cMastered: mastered, cDone: (st.cDone || 0) + (first ? 1 : 0) });
       return;
@@ -2356,6 +2443,15 @@ class Component extends DCLogic {
   }
 
   gameKeys() { return this.gameWords().map(e => e.w[3]); }
+
+  // What a practice round is over: the words of the set not yet learned, or
+  // the whole set once they all are -- a finished set is still worth a run.
+  practiceWords() {
+    const m = this.state.mastered || {};
+    const all = this.gameWords();
+    const left = all.filter(e => !m[e.w[3]]);
+    return left.length ? left : all;
+  }
 
   // The kanji behind those words, for the two rounds that still need one.
   gamePool() {
@@ -2592,7 +2688,8 @@ class Component extends DCLogic {
       gPicked: i,
       gScore: (prev.gScore || 0) + (ok ? 1 : 0),
       gFirstOk: Object.assign({}, prev.gFirstOk, ok ? { [idx]: true } : {}),
-      gWrong: ok ? prev.gWrong : (prev.gWrong || []).concat([q.kanji])
+      gWrong: ok ? prev.gWrong : (prev.gWrong || []).concat([q.kanji]),
+      gWrongW: ok ? prev.gWrongW : (prev.gWrongW || []).concat([{ w: q.word || q.kanji, g: q.gloss || "", key: q.key || null }])
     }));
     this.forceUpdate();
     if (this._gAdvT) clearTimeout(this._gAdvT);
@@ -2613,13 +2710,17 @@ class Component extends DCLogic {
   startGame(mode) {
     const rounds = [];
     const seen = {};
-    const wordMode = mode === 1 || mode === 2;
+    // "quiz" is the ladder: the first half of the round is the easy form of
+    // the question, the second half the hard one with confusable distractors.
+    const wordMode = mode === 1 || mode === 2 || mode === "quiz";
     if (wordMode) {
       const pool = [];
-      this.gameWords().forEach(e => { if (!this.state.mastered[e.w[3]]) pool.push({ kk: e.k, w: e.w }); });
+      this.practiceWords().forEach(e => pool.push({ kk: e.k, w: e.w }));
       this.shuffleA(pool).forEach(p => {
-        const q = this.buildWordQ(mode, p.kk, p.w);
+        const m = mode === "quiz" ? (rounds.length < 5 ? 1 : 2) : mode;
+        const q = this.buildWordQ(m, p.kk, p.w);
         if (!q) return;
+        q.word = p.w[0]; q.gloss = p.w[2]; q.key = p.w[3];
         const sig = q.mode + "|" + q.tiles.map(t => t.ok ? t.big : "").join("");
         if (seen[sig]) return;
         seen[sig] = true;
@@ -2634,7 +2735,7 @@ class Component extends DCLogic {
       rounds.push(q);
     });
     this._gAnswer = null; this._gIdx = 0; this._gResults = {};
-    this.setState({ gMode: mode, gRounds: rounds.slice(0, 10), gIdx: 0, gPicked: -1, gScore: 0, gWrong: [], gFinished: false });
+    this.setState({ gMode: mode, gRounds: rounds.slice(0, 10), gIdx: 0, gPicked: -1, gScore: 0, gWrong: [], gWrongW: [], gFinished: false });
     this.forceUpdate();
   }
 
@@ -3209,7 +3310,7 @@ class Component extends DCLogic {
           })),
           goMap: () => this.setState({ zoom: "map", focus: null, focusShown: false, acctOpen: false, hoverWord: null }),
           setTitle: setName(WSET),
-          setSub: T("learned_of", { d: cur.done, n: cur.n }) + " · " + range(cur),
+          setSub: (cur.full ? T("set_complete") : T("learned_of", { d: cur.done, n: cur.n })) + " · " + range(cur),
           setCounter: (WSET + 1) + " / " + nSets,
           modeLearn: () => this.setState({ conceal: false }),
           modeRecall: () => this.setState({ conceal: true }),
@@ -3273,7 +3374,66 @@ class Component extends DCLogic {
           furiOffStyle: okChip(!st.allFuri),
           furiOn: () => this.setFuri(true),
           furiOff: () => this.setFuri(false),
-          toastOn: !!st.authMsg
+          toastOn: !!st.authMsg,
+          // completion: the set's own next step takes the primary slot
+          setFull: cur.full,
+          setFullNext: cur.full && WSET < nSets - 1,
+          practiceStyle: cur.full ? "" : "background:var(--ok-acc);border-color:var(--ok-acc);color:#ffffff",
+          // focus opens from the card that was tapped
+          focusFx: (st.focusFrom ? st.focusFrom[0] : 0) + "px",
+          focusFy: (st.focusFrom ? st.focusFrom[1] : 0) + "px",
+          // what the words are worth: coverage now, and with this deck done
+          covRows: (() => {
+            const seen = {};
+            const add = (id, into) => {
+              const c = COV[id]; if (!c) return;
+              const s = SURF[id] || id; if (seen[s]) return; seen[s] = 1;
+              for (let i = 0; i < 3; i++) into[i] += c[i];
+            };
+            const now = [0, 0, 0];
+            Object.keys(st.mastered || {}).forEach(id => { if (st.mastered[id]) add(id, now); });
+            const ceil = now.slice();
+            deckWords(st.deck).forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], ceil); });
+            const pc = (ppm) => { const v = ppm / 1e4; return v >= 10 ? String(Math.round(v)) : v.toFixed(1).replace(/\.0$/, ""); };
+            // The bars share one axis, sized to the largest ceiling: the rows
+            // stay comparable with each other and the fills stay legible. The
+            // numbers carry the absolute truth.
+            const axis = Math.max(10, Math.max.apply(null, ceil) / 1e4 * 1.15);
+            return COV_LABELS.map((k, i) => ({
+              label: T(k),
+              nowW: Math.min(100, now[i] / 1e4 / axis * 100) + "%",
+              ceilW: Math.min(100, ceil[i] / 1e4 / axis * 100) + "%",
+              text: T("now_deck", { a: pc(now[i]), b: pc(ceil[i]) }),
+              title: T(k) + ": " + T("now_deck", { a: pc(now[i]), b: pc(ceil[i]) })
+            }));
+          })(),
+          // the practice sheet
+          pOn: !!st.gameOpen || !!st.cardsOn,
+          pAtMenu: !st.cardsOn && !st.gMode,
+          pNotAtMenu: !!st.cardsOn || !!st.gMode,
+          pBack: () => {
+            if (this.state.cardsOn) { this.setState({ dlgSeamless: true, cardsOn: false, cardsClosing: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); return; }
+            if (this._gAdvT) clearTimeout(this._gAdvT);
+            this._gAnswer = null; this._gIdx = undefined;
+            if (!this.state.gMode) { this.setState({ gameOpen: false, gameClosing: false, dlgSeamless: false }); return; }
+            this.setState({ gMode: null, gFinished: false, gPicked: -1 });
+          },
+          pClose: () => { if (this._gAdvT) clearTimeout(this._gAdvT); this._gAnswer = null; this._gIdx = undefined; this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, gMode: null, gFinished: false, dlgSeamless: false }); },
+          pEyebrow: st.cardsOn ? T("flashcards") : st.gMode ? T("quiz") : T("practice"),
+          pTitle: setName(st.gBatch != null ? st.gBatch : WSET),
+          pCount: st.cardsOn ? (st.cIdx < (st.cQueue || []).length ? Math.min(st.cIdx + 1, (st.cQueue || []).length) + " / " + (st.cQueue || []).length : "")
+            : st.gMode ? (st.gFinished ? "" : (gIdxEff + 1) + " / " + (st.gRounds || []).length)
+            : T("to_practise", { n: this.practiceWords().length }),
+          quizStart: () => { this.setState({ gFirstOk: {} }); this.startGame("quiz"); },
+          pScore: T("correct_of", { s: st.gScore || 0, n: (st.gRounds || []).length }),
+          pFirstTry: T("first_try", { n: Object.keys(st.gFirstOk || {}).length }),
+          pMissed: (st.gWrongW || []).filter((v, i, a) => a.findIndex(x => x.w === v.w) === i).map(m => ({
+            w: m.w, g: m.g, hasKey: !!m.key,
+            pill: okPill(!!(m.key && st.mastered[m.key])),
+            label: m.key && st.mastered[m.key] ? T("learned") : T("got_it"),
+            master: () => { if (m.key) this.toggleMasteredWord(m.key); }
+          })),
+          fcHint: st.cShown ? T("tap_next") : T("tap_reveal")
         };
       })(),
       setPct: (WORDKEYS.length ? Math.round(WORDKEYS.filter(kx => st.mastered[kx]).length / WORDKEYS.length * 100) : 0) + "%",
@@ -3417,7 +3577,7 @@ class Component extends DCLogic {
       gDoneOn: !!st.gameOpen && !!st.gMode && !!st.gFinished,
       gStart1: () => { this.setState({ gFirstOk: {} }); this.startGame(1); },
       gChat: () => {
-        const ks = this.gameKeys().filter(x => !this.state.mastered[x]);
+        const ks = this.practiceWords().map(e => e.w[3]);
         if (!ks.length) return;
         const sel = {}; ks.forEach(x => { sel[x] = true; });
         this.setState({ gMorph: true });
@@ -3427,7 +3587,7 @@ class Component extends DCLogic {
         }, 300);
       },
       gCards: () => {
-        const q = this.cardsFromKeys(this.shuffleA(this.gameKeys().filter(x => !this.state.mastered[x])));
+        const q = this.cardsFromKeys(this.shuffleA(this.practiceWords().map(e => e.w[3])));
         if (!q.length) return;
         this.setState({ dlgSeamless: true, gameOpen: false, gameClosing: false, cardsOn: true, cardsClosing: false, cQueue: q, cIdx: 0, cShown: false, cDone: 0, cMastered: [], cFlip: false, cMove: "next" });
       },
@@ -3439,9 +3599,10 @@ class Component extends DCLogic {
         const current = i === gIdxEff && !st.gFinished;
         return {
           sym: r === true ? "\u2713" : r === false ? "\u2715" : "",
-          border: current ? "var(--accent)" : r === true ? "var(--accent)" : r === false ? "#e8a3b0" : "#c3ced6",
-          bg: r === true ? "var(--accent)" : r === false ? "#f2c4cd" : "transparent",
-          fg: r === true ? "#ffffff" : r === false ? "#8c3a4a" : "var(--text-muted)",
+          border: current ? "var(--ok-acc)" : r === true ? "var(--ok-acc)" : r === false ? "#fda4af" : "var(--ok-line)",
+          bg: r === true ? "var(--ok-acc)" : r === false ? "#fda4af" : "transparent",
+          fg: r === true ? "#ffffff" : r === false ? "#be123c" : "var(--ok-mute)",
+          scale: current ? "scale(1.35)" : "none",
           opacity: 1
         };
       }),
@@ -3492,14 +3653,14 @@ class Component extends DCLogic {
           ruleR: i % 2 === 0 ? "1px solid #9fb4c0" : "0",
           ruleB: i < 2 ? "1px solid #9fb4c0" : "0",
           bigSize: t.kana ? "1.75rem" : (q.mode === 3 ? "2.5rem" : "3rem"),
-          bg: done && t.ok ? "var(--accent)" : "transparent",
-          fg: done && t.ok ? "#ffffff" : "var(--text-body)",
-          subFg: done && t.ok ? "rgba(255,255,255,.85)" : "var(--text-muted)",
-          border: done && t.ok ? "var(--accent)" : (done && i === picked ? "var(--cyan-a45)" : "var(--cyan-a28)"),
+          bg: done && t.ok ? "var(--ok-acc)" : (done && i === picked ? "#fff1f3" : "var(--ok-card)"),
+          fg: done && t.ok ? "#ffffff" : (done && i === picked ? "#be123c" : "var(--ok-ink)"),
+          subFg: done && t.ok ? "rgba(255,255,255,.85)" : "var(--ok-mute)",
+          border: done && t.ok ? "var(--ok-acc)" : (done && i === picked ? "#fda4af" : "var(--ok-line)"),
           opacity: done && !t.ok && i !== picked ? .45 : 1,
           strike: done && i === picked && !t.ok ? "line-through" : "none",
           cursor: done ? "default" : "pointer",
-          hoverBg: done ? "transparent" : "var(--accent-soft)",
+          live: done ? "" : "1",
           pick: () => this.gamePick(i)
         }));
       })(),
@@ -3736,7 +3897,13 @@ class Component extends DCLogic {
           pillStyle: okPill(done),
           pillLabel: done ? T("learned") : T("got_it"),
           master: (ev) => { ev.stopPropagation(); this.toggleMasteredWord(key); },
-          open: () => this.setState({ focus: i, focusShown: false })
+          anim: st.slide ? "ok-slide-" + st.slide.dir + (st.slide.n % 2 ? "a" : "b") + " 240ms cubic-bezier(.2,.7,.3,1) both" : "none",
+          delay: st.slide ? (i * 14) + "ms" : "0ms",
+          open: (ev) => {
+            const r = ev && ev.currentTarget && ev.currentTarget.getBoundingClientRect ? ev.currentTarget.getBoundingClientRect() : null;
+            const from = r ? [Math.round(r.left + r.width / 2 - window.innerWidth / 2), Math.round(r.top + r.height / 2 - window.innerHeight / 2)] : [0, 0];
+            this.setState({ focus: i, focusShown: false, focusFrom: from });
+          }
         };
       }),
       writeOn: st.write, tableOn: true,

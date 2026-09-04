@@ -578,5 +578,97 @@
   "off": {
     "en": "Off",
     "es": "No"
+  },
+  "quiz": {
+    "en": "Quiz",
+    "es": "Cuestionario"
+  },
+  "flashcards_desc": {
+    "en": "See the word, recall the meaning",
+    "es": "Ve la palabra, recuerda el significado"
+  },
+  "quiz_desc": {
+    "en": "Pick the word for the meaning; it gets harder as you go",
+    "es": "Elige la palabra para el significado; se vuelve más difícil"
+  },
+  "write_desc": {
+    "en": "Use the words in sentences, checked by AI",
+    "es": "Usa las palabras en frases, revisadas por IA"
+  },
+  "to_practise": {
+    "en": "{n} words to practise",
+    "es": "{n} palabras para practicar"
+  },
+  "again": {
+    "en": "Again",
+    "es": "Otra vez"
+  },
+  "done": {
+    "en": "Done",
+    "es": "Listo"
+  },
+  "back": {
+    "en": "Back",
+    "es": "Atrás"
+  },
+  "correct_of": {
+    "en": "{s} of {n} correct",
+    "es": "{s} de {n} correctas"
+  },
+  "first_try": {
+    "en": "{n} first try",
+    "es": "{n} a la primera"
+  },
+  "missed": {
+    "en": "Missed",
+    "es": "Falladas"
+  },
+  "all_seen": {
+    "en": "All cards seen",
+    "es": "Todas las tarjetas vistas"
+  },
+  "tap_reveal": {
+    "en": "Tap to reveal",
+    "es": "Toca para ver"
+  },
+  "tap_next": {
+    "en": "Tap for the next card",
+    "es": "Toca para la siguiente"
+  },
+  "set_complete": {
+    "en": "Set complete",
+    "es": "Grupo completado"
+  },
+  "what_worth": {
+    "en": "What it is worth",
+    "es": "Lo que vale"
+  },
+  "tv_film": {
+    "en": "TV & film",
+    "es": "TV y cine"
+  },
+  "anime_manga": {
+    "en": "Anime & manga",
+    "es": "Anime y manga"
+  },
+  "books_news": {
+    "en": "Books & news",
+    "es": "Libros y noticias"
+  },
+  "coverage_note": {
+    "en": "Share of everyday words you would recognise, grammar aside",
+    "es": "Parte de las palabras cotidianas que reconocerías, gramática aparte"
+  },
+  "now_deck": {
+    "en": "{a}% now · {b}% with this deck",
+    "es": "{a}% ahora · {b}% con este mazo"
+  },
+  "which_word": {
+    "en": "Which word means…",
+    "es": "¿Qué palabra significa…?"
+  },
+  "write_title": {
+    "en": "Write",
+    "es": "Escribir"
   }
 }
