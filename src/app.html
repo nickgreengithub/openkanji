@@ -525,8 +525,63 @@ a:hover{color:var(--text-accent-hover)}
 @keyframes ok-slide-rb{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
 @keyframes ok-pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
 @keyframes ok-sheet-up{from{transform:translateY(100%)}to{transform:none}}
+
+/* Map: rings, one honest axis */
+.ok-rings{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem}
+.ok-ring{display:flex;align-items:center;gap:.9rem;padding:.9rem 1rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
+.ok-ring svg{flex:0 0 auto;transform:rotate(-90deg)}
+.ok-ring-c{stroke:var(--ok-acc);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
+.ok-ring-ceil{stroke:var(--ok-acc-t);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
+.ok-ring-txt{display:flex;flex-direction:column;gap:.15rem;min-width:0}
+.ok-ring-big{font-size:1.5rem;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ok-ring-lab{font-family:var(--font-2);font-size:.8125rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ok-ring-sub{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ok-continue{margin-left:auto}
+/* Cards: word left, sentence right, so the sentence gets a line to itself */
+.ok-cards{grid-template-columns:repeat(auto-fill,minmax(31rem,1fr))}
+.ok-card{flex-direction:row;align-items:stretch;gap:1.1rem;padding:1rem 1.1rem}
+.ok-card-l{flex:0 0 11.5rem;min-width:0;display:flex;flex-direction:column;gap:.4rem}
+.ok-card-r{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding-left:1.1rem;border-left:1px solid var(--ok-line)}
+.ok-card-ex{margin-top:0;padding-top:0;border-top:0;font-size:1.125rem;line-height:1.55}
+.ok-card-tr{font-size:1rem}
+.ok-card-l .ok-pill{margin-top:auto}
+/* Sheet views and their exits */
+.ok-view{animation:ok-fade 180ms ease}
+.ok-veil-out{animation:ok-fade-out 180ms ease forwards!important}
+.ok-sheet-out{animation:ok-sheet-down 200ms cubic-bezier(.4,0,1,1) forwards!important}
+.ok-focus-out{animation:ok-focus-out 160ms ease forwards!important}
+@keyframes ok-fade-out{from{opacity:1}to{opacity:0}}
+@keyframes ok-sheet-down{from{transform:none;opacity:1}to{transform:translateY(24px);opacity:0}}
+@keyframes ok-focus-out{from{opacity:1;transform:none}to{opacity:0;transform:scale(.96)}}
+/* Write: the sheet again -- word pills, a thread, a composer */
+.ok-w-pills{display:flex;flex-wrap:wrap;gap:.4rem;padding:.9rem 1.25rem 0}
+.ok-w-pill{display:inline-flex;align-items:center;gap:.45rem;padding:.3rem .7rem .3rem .5rem;border-radius:999px;border:1px solid var(--ok-line);background:var(--ok-card);font-size:1.0625rem;line-height:1.2;user-select:none}
+.ok-w-pill .ok-w-chk{width:1rem;height:1rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--ok-line);color:#fff;font-size:0}
+.ok-w-pill .ok-w-f{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute)}
+.ok-w-thread{flex:1 1 auto;min-height:0;overflow-y:auto;padding:1rem 1.25rem;display:flex;flex-direction:column;gap:.7rem}
+.ok-w-msg{max-width:86%;padding:.8rem 1rem;border-radius:16px;font-size:1.125rem;line-height:1.55;text-wrap:pretty}
+.ok-w-in{align-self:flex-start;background:var(--ok-card);border:1px solid var(--ok-line);color:var(--ok-body);border-bottom-left-radius:6px}
+.ok-w-out{align-self:flex-end;background:var(--ok-acc);color:#fff;border-bottom-right-radius:6px}
+.ok-w-eg{display:flex;gap:.5rem;color:var(--ok-body)}
+.ok-w-eg i{font-style:normal;color:var(--ok-acc)}
+.ok-w-verdict{font-family:var(--font-2);font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase}
+.ok-w-cands{display:flex;gap:.4rem;padding:0 1.25rem .5rem;overflow-x:auto}
+.ok-w-cand{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .8rem;border-radius:999px;border:1px solid var(--ok-line);background:var(--ok-card);font-size:1.125rem;cursor:pointer;user-select:none}
+.ok-w-cand:hover{border-color:var(--ok-acc)}
+.ok-w-cand i{font-style:normal;font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute)}
+.ok-w-bar{flex:0 0 auto;display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem 1rem;border-top:1px solid var(--ok-line);background:var(--ok-bg)}
+.ok-w-input{flex:1 1 auto;min-width:0;display:flex;align-items:stretch;height:3rem;border-radius:14px;border:1px solid #d5d5cf;background:#fff;overflow:hidden}
+.ok-w-input:focus-within{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
+.ok-w-send{flex:0 0 auto;width:3rem;height:3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 140ms ease,color 140ms ease}
+@media (max-width:640px){
+  .ok-rings{grid-template-columns:1fr 1fr}
+  .ok-card{flex-direction:column;gap:.5rem}
+  .ok-card-l{flex:0 0 auto}
+  .ok-card-r{padding-left:0;border-left:0;padding-top:.6rem;border-top:1px solid var(--ok-line)}
+  .ok-continue{display:none}
+}
 @media (prefers-reduced-motion:reduce){
-  .ok-page-set,.ok-page-map,.ok-focus,.ok-sheet,.ok-card,.ok-set-check,.ok-toast,.ok-veil{animation:none!important}
+  .ok-page-set,.ok-page-map,.ok-focus,.ok-sheet,.ok-card,.ok-set-check,.ok-toast,.ok-veil,.ok-view,.ok-veil-out,.ok-sheet-out,.ok-focus-out{animation:none!important}
   .ok-card,.ok-tile,.ok-hero,.ok-pmode,.ok-qtile{transition:none!important}
 }
 </style>
@@ -548,8 +603,8 @@ html[data-ok-ready] #ok-boot{display:none}
 
   <!-- ===== Practice: a sheet over the set. Flashcards, Quiz, Write. ===== -->
   <sc-if value="{{ pOn }}" hint-placeholder-val="{{ false }}">
-    <div sc-camel-on-click="{{ pClose }}" class="ok-veil ok-veil-p">
-      <div sc-camel-on-click="{{ stop }}" class="ok-sheet">
+    <div sc-camel-on-click="{{ pClose }}" class="ok-veil ok-veil-p {{ pVeilOut }}">
+      <div sc-camel-on-click="{{ stop }}" class="ok-sheet {{ pSheetOut }}">
         <div class="ok-sheet-top">
           <span sc-camel-on-click="{{ pBack }}" class="ok-round-btn" title="{{ t_back }}">
             <sc-if value="{{ pAtMenu }}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6 L18 18"></path><path d="M18 6 L6 18"></path></svg></sc-if>
@@ -561,7 +616,7 @@ html[data-ok-ready] #ok-boot{display:none}
         <div class="ok-sheet-body ok-scroll">
 
           <sc-if value="{{ gMenuOn }}" hint-placeholder-val="{{ true }}">
-            <div class="ok-pmenu">
+            <div class="ok-view ok-pmenu">
               <div sc-camel-on-click="{{ gCards }}" class="ok-pmode">
                 <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="3.5" width="13" height="14" rx="2"></rect><path d="M13.5 20.5 H5.5 A1.5 1.5 0 0 1 4 19 V9"></path></svg></span>
                 <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_flashcards }}</span><span class="ok-muted">{{ t_flashcards_desc }}</span></div>
@@ -581,10 +636,9 @@ html[data-ok-ready] #ok-boot{display:none}
           </sc-if>
 
           <sc-if value="{{ gPlayOn }}" hint-placeholder-val="{{ false }}">
-            <div class="ok-quiz">
+            <div class="ok-view ok-quiz">
               <div class="ok-dots"><sc-for list="{{ gFooter }}" as="gf" hint-placeholder-count="10"><span class="ok-dot-q" style="background:{{ gf.bg }};border-color:{{ gf.border }};transform:{{ gf.scale }}"></span></sc-for></div>
               <div class="ok-qprompt" style="animation:{{ gQAnim }}">
-                <span class="ok-eyebrow">{{ t_which_word }}</span>
                 <span class="ok-qprompt-t">{{ gPrompt }}</span>
               </div>
               <div class="ok-qtiles">
@@ -600,7 +654,7 @@ html[data-ok-ready] #ok-boot{display:none}
           </sc-if>
 
           <sc-if value="{{ gDoneOn }}" hint-placeholder-val="{{ false }}">
-            <div class="ok-pdone">
+            <div class="ok-view ok-pdone">
               <div class="ok-dots"><sc-for list="{{ gFooter }}" as="gf" hint-placeholder-count="10"><span class="ok-dot-q" style="background:{{ gf.bg }};border-color:{{ gf.border }};transform:{{ gf.scale }}"></span></sc-for></div>
               <span class="ok-pdone-score">{{ pScore }}</span>
               <span class="ok-muted">{{ pFirstTry }}</span>
@@ -624,7 +678,7 @@ html[data-ok-ready] #ok-boot{display:none}
           </sc-if>
 
           <sc-if value="{{ cardPlayOn }}" hint-placeholder-val="{{ false }}">
-            <div sc-camel-on-click="{{ cardTap }}" class="ok-fc">
+            <div sc-camel-on-click="{{ cardTap }}" class="ok-view ok-fc">
               <div class="ok-fc-card" style="animation:{{ cardAnim }}">
                 <span class="ok-fc-front" style="font-size:{{ cardFrontSize }}">{{ cardFront }}</span>
                 <div class="ok-fc-back" style="max-height:{{ cardBackMax }};margin-top:{{ cardBackGap }};opacity:{{ cardBackOpacity }};transform:translateY({{ cardBackShift }});transition:{{ cardBackTrans }}">
@@ -632,11 +686,10 @@ html[data-ok-ready] #ok-boot{display:none}
                   <span class="ok-fc-gloss">{{ cardGloss }}</span>
                 </div>
               </div>
-              <span class="ok-muted">{{ fcHint }}</span>
             </div>
           </sc-if>
           <sc-if value="{{ cardDoneOn }}" hint-placeholder-val="{{ false }}">
-            <div class="ok-pdone">
+            <div class="ok-view ok-pdone">
               <span class="ok-pdone-score">{{ t_all_seen }}</span>
               <span class="ok-muted">{{ cardSummary }}</span>
               <sc-if value="{{ cardMasteredOn }}" hint-placeholder-val="{{ false }}">
@@ -668,34 +721,30 @@ html[data-ok-ready] #ok-boot{display:none}
           <span class="ok-mark" title="OpenKanji.org">开</span>
           <span class="ok-deck">{{ deckName }}</span>
         </div>
+        <span sc-camel-on-click="{{ continueSet }}" class="ok-btn ok-btn-primary ok-continue">{{ heroBtn }}</span>
       </header>
       <section class="ok-wrap">
         <div class="ok-overall">
-          <div class="ok-row"><span class="ok-h2">{{ t_your_progress }}</span><span class="ok-muted">{{ deckSummary }}</span></div>
-          <div class="ok-bar"><div class="ok-bar-fill" style="width:{{ deckPct }}"></div></div>
-        </div>
-        <div class="ok-overall">
-          <div class="ok-row"><span class="ok-h2">{{ t_what_worth }}</span><span class="ok-muted">{{ t_coverage_note }}</span></div>
-          <div class="ok-cov">
-            <sc-for list="{{ covRows }}" as="cv" hint-placeholder-count="3">
-              <div class="ok-cov-row" title="{{ cv.title }}">
-                <span class="ok-muted">{{ cv.label }}</span>
-                <div class="ok-cov-bar"><div class="ok-cov-ceil" style="width:{{ cv.ceilW }}"></div><div class="ok-cov-now" style="width:{{ cv.nowW }}"></div></div>
-                <span class="ok-muted ok-cov-txt">{{ cv.text }}</span>
+          <div class="ok-row"><span class="ok-h2" title="{{ t_coverage_note }}">{{ t_your_progress }}</span></div>
+          <div class="ok-rings">
+            <sc-for list="{{ rings }}" as="rg" hint-placeholder-count="4">
+              <div class="ok-ring" title="{{ rg.title }}">
+                <svg width="60" height="60" sc-camel-view-box="0 0 60 60">
+                  <circle cx="30" cy="30" r="25" fill="none" stroke="#e6e6e1" stroke-width="7"></circle>
+                  <circle class="ok-ring-ceil" cx="30" cy="30" r="25" fill="none" stroke-width="7" stroke-dasharray="{{ rg.ceilDash }}"></circle>
+                  <circle class="ok-ring-c" cx="30" cy="30" r="25" fill="none" stroke-width="7" stroke-linecap="round" stroke-dasharray="{{ rg.nowDash }}"></circle>
+                </svg>
+                <div class="ok-ring-txt">
+                  <span class="ok-ring-lab">{{ rg.label }}</span>
+                  <span class="ok-ring-big">{{ rg.big }}</span>
+                  <span class="ok-ring-sub">{{ rg.sub }}</span>
+                </div>
               </div>
             </sc-for>
           </div>
         </div>
-        <div sc-camel-on-click="{{ continueSet }}" class="ok-hero">
-          <div class="ok-hero-l">
-            <span class="ok-eyebrow">{{ heroEyebrow }}</span>
-            <span class="ok-hero-title">{{ heroTitle }}</span>
-            <span class="ok-muted">{{ heroSub }}</span>
-          </div>
-          <span class="ok-btn ok-btn-primary">{{ heroCta }} <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg></span>
-        </div>
         <div class="ok-overall">
-          <div class="ok-row"><span class="ok-h2">{{ t_all_sets }}</span><span class="ok-muted">{{ setsLegend }}</span></div>
+          <div class="ok-row"><span class="ok-h2">{{ t_all_sets }}</span></div>
           <div class="ok-tiles">
             <sc-for list="{{ setTiles }}" as="tl" hint-placeholder-count="10">
               <div sc-camel-on-click="{{ tl.pick }}" title="{{ tl.frac }}" class="ok-tile" style="background:{{ tl.bg }};color:{{ tl.fg }};box-shadow:{{ tl.ring }}">
@@ -739,13 +788,17 @@ html[data-ok-ready] #ok-boot{display:none}
         <div class="ok-cards">
           <sc-for list="{{ listWords }}" as="lr" hint-placeholder-count="20">
             <div sc-camel-on-click="{{ lr.open }}" sc-camel-on-mouse-enter="{{ lr.enter }}" sc-camel-on-mouse-leave="{{ lr.leave }}" class="ok-card" style="background:{{ lr.bg }};border-color:{{ lr.border }};animation:{{ lr.anim }};animation-delay:{{ lr.delay }}">
+              <div class="ok-card-l">
               <span class="ok-card-word" style="font-size:{{ lr.wordSize }};color:{{ lr.wordFg }}"><sc-for list="{{ lr.ruby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ lr.rubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
               <span class="ok-card-gloss" style="opacity:{{ lr.ansOpacity }}">{{ lr.gloss }}</span>
+              <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-pill" title="{{ lr.markTitle }}" style="{{ lr.pillStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg><span>{{ lr.pillLabel }}</span></span>
+              </div>
               <sc-if value="{{ lr.hasEx }}" hint-placeholder-val="{{ true }}">
+                <div class="ok-card-r">
                 <span class="ok-card-ex"><sc-for list="{{ lr.exParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok-acc)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
                 <span class="ok-card-tr" style="opacity:{{ lr.ansOpacity }}">{{ lr.exEn }}</span>
+                </div>
               </sc-if>
-              <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-pill" title="{{ lr.markTitle }}" style="{{ lr.pillStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg><span>{{ lr.pillLabel }}</span></span>
             </div>
           </sc-for>
         </div>
@@ -802,8 +855,8 @@ html[data-ok-ready] #ok-boot{display:none}
 
   <!-- ===== Focus: one word, large; in Recall it is a flashcard ===== -->
   <sc-if value="{{ focusOn }}" hint-placeholder-val="{{ false }}">
-    <div sc-camel-on-click="{{ closeFocus }}" class="ok-veil">
-      <div sc-camel-on-click="{{ stop }}" class="ok-focus" style="--fx:{{ focusFx }};--fy:{{ focusFy }}">
+    <div sc-camel-on-click="{{ closeFocus }}" class="ok-veil {{ focusVeilOut }}">
+      <div sc-camel-on-click="{{ stop }}" class="ok-focus {{ focusOut }}" style="--fx:{{ focusFx }};--fy:{{ focusFy }}">
         <span sc-camel-on-click="{{ closeFocus }}" class="ok-x">×</span>
         <span class="ok-focus-n">{{ focusCounter }}</span>
         <span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
@@ -828,112 +881,56 @@ html[data-ok-ready] #ok-boot{display:none}
   <sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}"><div class="ok-toast">{{ authMsg }}</div></sc-if>
 
       <sc-if value="{{ writeOn }}" hint-placeholder-val="{{ false }}">
-      <div sc-camel-on-click="{{ closeWrite }}" style="position:fixed;inset:0;z-index:80;background:rgba(20,24,30,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:2.5rem;animation:{{ veilAnim }}">
-      <div sc-camel-on-click="{{ stop }}" style="animation:{{ panelAnim }};width:{{ wPanelW }};height:{{ wPanelH }};transition:width 300ms cubic-bezier(.3,.7,.3,1),height 300ms cubic-bezier(.3,.7,.3,1);display:flex;flex-direction:column;background:var(--ok-card);border:1px solid var(--ok-line);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(20,24,30,.35)">
-        <sc-if value="{{ writeFromStudy }}" hint-placeholder-val="{{ false }}">
-          <div style="flex:0 0 3rem;display:flex;align-items:center;gap:.8rem;padding:0 .6rem;background:#eef3f6;border-bottom:1px solid #9fb4c0">
-            <span sc-camel-on-click="{{ writeBackToMenu }}" style="flex:0 0 auto;width:2rem;height:2rem;box-sizing:border-box;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#ffffff;cursor:pointer;transition:background 140ms ease" style-hover="background:var(--text-accent-hover)">
-              <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 5 L7 12 L14 19"></path></svg>
+      <div sc-camel-on-click="{{ closeWrite }}" class="ok-veil ok-veil-p {{ wVeilOut }}">
+      <div sc-camel-on-click="{{ stop }}" class="ok-sheet {{ wSheetOut }}">
+        <div class="ok-sheet-top">
+          <span sc-camel-on-click="{{ wBack }}" class="ok-round-btn" title="{{ t_back }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span>
+          <div class="ok-sheet-title"><span class="ok-eyebrow">{{ t_write_title }}</span><span class="ok-sheet-h">{{ pTitle }}</span></div>
+          <div class="ok-seg">
+            <span sc-camel-on-click="{{ setLangJa }}" class="ok-seg-b" style="{{ jaSeg }}">日本語</span>
+            <span sc-camel-on-click="{{ setLangEn }}" class="ok-seg-b" style="{{ enSeg }}">{{ langCode }}</span>
+          </div>
+        </div>
+        <div class="ok-view ok-w-pills">
+          <sc-for list="{{ usedWords }}" as="u" hint-placeholder-count="5">
+            <span class="ok-w-pill" title="{{ u.f }}">
+              <span class="ok-w-chk" style="{{ u.chk }}"><svg width="10" height="10" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span>
+              <span><span style="color:{{ u.fg }}">{{ u.pre }}</span><span style="color:var(--ok-acc)">{{ u.hit }}</span><span style="color:{{ u.fg }}">{{ u.post }}</span></span>
+              <span class="ok-w-f">{{ u.f }}</span>
             </span>
-            <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted)">{{ gHeadTitle }}</span>
-            <span style="margin-left:auto;font-family:var(--font-2);font-size:1rem;font-variant-numeric:tabular-nums;color:var(--text-muted);white-space:nowrap">{{ gScopeWords }} {{ gScopeUnit }}</span>
-          </div>
-        </sc-if>
-        <div style="flex:1 1 auto;min-height:0;display:flex;align-items:stretch;opacity:{{ wMorphFade }};transition:opacity 150ms ease">
-
-        <div style="flex:0 0 15rem;min-height:0;overflow:hidden;background:var(--surface-input);border-right:{{ ruleH }} solid var(--cyan-a45);display:flex;flex-direction:column">
-          <div style="flex:0 0 auto;display:flex;align-items:center;padding:.85rem 1.1rem">
-            <span style="font-family:var(--font-2);font-size:.9rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted)">{{ t_words_list }}</span>
-          </div>
-          <div class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow:auto;display:flex;flex-direction:column">
-            <sc-for list="{{ usedWords }}" as="u" hint-placeholder-count="5">
-              <div style="flex:0 0 auto;display:flex;align-items:center;gap:1.25rem;padding:.6rem 1.1rem;border-top:1px solid var(--cyan-a28)">
-                <span style="flex:0 0 1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);background:{{ u.boxBg }};color:#ffffff">
-                  <sc-if value="{{ u.done }}" hint-placeholder-val="{{ false }}">
-                    <svg width="11" height="11" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path d="M5 13 L10 18 L19 6"></path></svg>
-                  </sc-if>
-                </span>
-                <span style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.15rem">
-                  <span style="font-family:var(--font-2);font-size:1.125rem;line-height:1.2;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ u.f }}</span>
-                  <span style="font-size:1.75rem;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"><span style="color:{{ u.fg }}">{{ u.pre }}</span><span style="color:var(--text-accent)">{{ u.hit }}</span><span style="color:{{ u.fg }}">{{ u.post }}</span></span>
-                </span>
-              </div>
+          </sc-for>
+        </div>
+        <div ref="{{ chatRef }}" class="ok-w-thread ok-scroll">
+          <div class="ok-w-msg ok-w-in">
+            <span>{{ intro.a }}</span>
+            <sc-for list="{{ intro.egs }}" as="eg" hint-placeholder-count="2">
+              <span class="ok-w-eg"><i>·</i><span>{{ eg.t }}</span></span>
             </sc-for>
           </div>
-          <div style="flex:0 0 4rem;display:flex;align-items:stretch;border-top:{{ ruleH }} solid var(--cyan-a45)">
-            <div sc-camel-on-click="{{ setLangJa }}" style="user-select:none;flex:1 1 0;display:flex;align-items:center;justify-content:center;background:{{ jaBg }};color:{{ jaFg }};cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-size:1.375rem;line-height:1">日本語</span>
-            </div>
-            <div sc-camel-on-click="{{ setLangEn }}" style="user-select:none;flex:1 1 0;display:flex;align-items:center;justify-content:center;border-left:{{ ruleH }} solid var(--cyan-a45);background:{{ enBg }};color:{{ enFg }};cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-              <span style="font-family:var(--font-2);font-size:1.125rem;letter-spacing:.1em">{{ langCode }}</span>
-            </div>
-          </div>
-        </div>
-
-        <div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column">
-          <div ref="{{ chatRef }}" class="ok-scroll" style="flex:1 1 auto;min-height:0;overflow:auto;padding:1.1rem;display:flex;flex-direction:column;gap:.85rem">
-            <div style="display:flex;justify-content:flex-start">
-              <div style="max-width:88%;padding:.85rem 1.1rem;font-size:1.25rem;line-height:1.55;text-wrap:pretty;background:var(--accent-soft);color:var(--text-body);display:flex;flex-direction:column;gap:.55rem">
-                <span>{{ intro.a }}</span>
-                <sc-if value="{{ intro.showEg }}" hint-placeholder-val="{{ true }}">
-                  <span style="color:var(--text-body)">{{ t_for_example }}</span>
-                </sc-if>
-                <sc-for list="{{ intro.egs }}" as="eg" hint-placeholder-count="2">
-                  <span style="display:flex;gap:.6rem"><span style="flex:0 0 auto;color:var(--cyan-a55)">•</span><span style="min-width:0">{{ eg.t }}</span></span>
-                </sc-for>
-              </div>
-            </div>
-            <sc-if value="{{ hasSent }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;justify-content:flex-end">
-                <div style="max-width:88%;padding:.85rem 1.1rem;font-size:1.25rem;line-height:1.55;text-wrap:pretty;background:var(--accent);color:#ffffff">{{ sent }}</div>
-              </div>
-            </sc-if>
-            <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;justify-content:flex-start">
-                <div style="max-width:88%;padding:.85rem 1.1rem;font-size:1.25rem;line-height:1.55;text-wrap:pretty;background:var(--surface-input);color:var(--text-muted)">…</div>
-              </div>
-            </sc-if>
-            <sc-if value="{{ hasResult }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;justify-content:flex-start">
-                <div style="max-width:88%;padding:.85rem 1.1rem;font-size:1.25rem;line-height:1.55;text-wrap:pretty;background:var(--surface-input);color:var(--text-body);display:flex;flex-direction:column;gap:.7rem">
-                  <sc-if value="{{ r.hasVerdict }}" hint-placeholder-val="{{ false }}">
-                    <span style="color:{{ r.verdictColor }}">{{ r.verdictLine }}</span>
-                  </sc-if>
-                  <span>{{ r.noteTyped }}</span>
-                  <span style="color:var(--text-accent)">{{ r.betterTyped }}</span>
-                </div>
-              </div>
-            </sc-if>
-          </div>
-          <sc-if value="{{ candOpen }}" hint-placeholder-val="{{ false }}">
-            <div style="flex:0 0 auto;height:4rem;display:flex;align-items:stretch;border-top:{{ ruleH }} solid var(--cyan-a45);background:var(--surface-input);overflow-x:auto">
-              <sc-for list="{{ candList }}" as="c" hint-placeholder-count="2">
-                <div sc-camel-on-click="{{ c.pick }}" style="user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:.55rem;padding:0 1.1rem;border-right:{{ ruleH }} solid var(--cyan-a45);background:{{ c.bg }};color:{{ c.fg }};cursor:pointer;white-space:nowrap">
-                  <span style="font-family:var(--font-2);font-size:1rem;opacity:.7">{{ c.n }}</span>
-                  <span style="font-size:1.375rem;line-height:1.2">{{ c.w }}</span>
-                </div>
-              </sc-for>
+          <sc-if value="{{ hasSent }}" hint-placeholder-val="{{ false }}"><div class="ok-w-msg ok-w-out">{{ sent }}</div></sc-if>
+          <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><div class="ok-w-msg ok-w-in ok-muted">…</div></sc-if>
+          <sc-if value="{{ hasResult }}" hint-placeholder-val="{{ false }}">
+            <div class="ok-w-msg ok-w-in" style="display:flex;flex-direction:column;gap:.45rem">
+              <sc-if value="{{ r.hasVerdict }}" hint-placeholder-val="{{ false }}"><span class="ok-w-verdict" style="color:{{ r.verdictColor }}">{{ r.verdictLine }}</span></sc-if>
+              <span>{{ r.noteTyped }}</span>
+              <span style="color:var(--ok-acc)">{{ r.betterTyped }}</span>
             </div>
           </sc-if>
-          <div style="flex:0 0 auto;display:flex;align-items:stretch;padding:0;border-top:{{ ruleH }} solid var(--cyan-a45)">
-            <div style="--text-base:1.375rem;--border-default:transparent;--pad-editor:0 1.1rem;--leading-relaxed:3.6rem;flex:1 1 auto;min-width:0;height:4rem;display:flex;align-items:stretch">
-              <x-import component-from-global-scope="PasteToFileDesignSystem_0eb22b.PasteArea" placeholder="{{ inputHint }}" value="{{ draft }}" sc-camel-on-change="{{ onDraft }}" sc-camel-on-key-down="{{ onDraftKey }}" rows="{{ oneRow }}" style="width:100%;height:100%;resize:none;overflow:hidden;white-space:nowrap" hint-size="100%,100%"></x-import>
-            </div>
-            <div sc-camel-on-click="{{ submit }}" style="user-select:none;flex:0 0 auto;width:4.5rem;height:4rem;display:flex;align-items:center;justify-content:center;cursor:pointer">
-              <sc-if value="{{ canSend }}" hint-placeholder-val="{{ false }}">
-                <span style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#ffffff;transition:background 140ms ease" style-hover="background:var(--text-accent-hover)"><svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3.5 12 L20.5 4 L15.5 20 L12 13.5 Z"></path></svg></span>
-              </sc-if>
-              <sc-if value="{{ cannotSend }}" hint-placeholder-val="{{ true }}">
-                <span style="display:flex;color:var(--cyan-a35)"><svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3.5 12 L20.5 4 L15.5 20 L12 13.5 Z"></path></svg></span>
-              </sc-if>
-            </div>
-          </div>
         </div>
-
+        <sc-if value="{{ candOpen }}" hint-placeholder-val="{{ false }}">
+          <div class="ok-w-cands">
+            <sc-for list="{{ candList }}" as="c" hint-placeholder-count="2">
+              <span sc-camel-on-click="{{ c.pick }}" class="ok-w-cand" style="{{ c.chip }}"><i>{{ c.n }}</i>{{ c.w }}</span>
+            </sc-for>
+          </div>
+        </sc-if>
+        <div class="ok-w-bar">
+          <div class="ok-w-input" style="--text-base:1.125rem;--border-default:transparent;--pad-editor:0 .9rem;--leading-relaxed:2.9rem">
+            <x-import component-from-global-scope="PasteToFileDesignSystem_0eb22b.PasteArea" placeholder="{{ inputHint }}" value="{{ draft }}" sc-camel-on-change="{{ onDraft }}" sc-camel-on-key-down="{{ onDraftKey }}" rows="{{ oneRow }}" style="width:100%;height:100%;resize:none;overflow:hidden;white-space:nowrap" hint-size="100%,100%"></x-import>
+          </div>
+          <span sc-camel-on-click="{{ submit }}" class="ok-w-send" style="{{ sendStyle }}"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 L20 4 L14 20 L11.5 13 Z"></path></svg></span>
+        </div>
       </div>
-      </div>
-      
-
     <sc-if value="{{ dlgOpen }}" hint-placeholder-val="{{ false }}">
       <div sc-camel-on-click="{{ closeDlg }}" style="position:fixed;inset:0;z-index:90;background:rgba(22,35,44,.5);display:flex;align-items:center;justify-content:center;padding:2rem">
         <div sc-camel-on-click="{{ stop }}" style="width:min(62rem,100%);max-height:86vh;display:flex;flex-direction:column;background:var(--surface-panel);border:1px solid #16232c;border-top:3px solid var(--border-active);box-shadow:0 18px 48px rgba(22,35,44,.32)">
@@ -1640,7 +1637,7 @@ class Component extends DCLogic {
     if (this._onKey) return;
     this._onKey = (e) => {
       if (e.key === "Escape") {
-        if (this.state.focus != null) { this.setState({ focus: null, focusShown: false }); return; }
+        if (this.state.focus != null) { this.closeFocusView(); return; }
         if (this.state.acctOpen) { this.setState({ acctOpen: false }); return; }
         if (this.state.about) { this.setState({ about: false }); return; }
         if (this.state.write) { this.closeWrite(); return; }
@@ -1648,10 +1645,10 @@ class Component extends DCLogic {
         if (this.state.gameOpen) {
           if (this._gAdvT) clearTimeout(this._gAdvT);
           if (this.state.gMode) { this._gAnswer = null; this._gIdx = undefined; this.setState({ gMode: null, gFinished: false, gPicked: -1 }); return; }
-          this.setState({ gameOpen: false, gameClosing: false });
+          this.closePractice();
           return;
         }
-        if (this.state.cardsOn) { this.setState({ cardsOn: false, cardsClosing: false }); return; }
+        if (this.state.cardsOn) { this.closePractice(); return; }
         if (this.state.studyMenu) { this.setState({ studyMenu: false }); return; }
         if (this.state.langMenu) { this.setState({ langMenu: false }); return; }
       }
@@ -1915,6 +1912,18 @@ class Component extends DCLogic {
     const slide = dir ? { dir: dir > 0 ? "l" : "r", n: ((this.state.slide || {}).n || 0) + 1 } : null;
     this.setState({ wset: b, zoom: "set", focus: null, focusShown: false, hoverWord: null, acctOpen: false, slide: slide });
     requestAnimationFrame(() => { const el = document.querySelector(".ok-set-body"); if (el) el.scrollTop = 0; });
+  }
+  closeFocusView() {
+    if (this.state.focus == null || this.state.focusClosing) return;
+    this.setState({ focusClosing: true });
+    setTimeout(() => this.setState({ focus: null, focusShown: false, focusClosing: false }), 160);
+  }
+  closePractice() {
+    if (this._gAdvT) clearTimeout(this._gAdvT);
+    this._gAnswer = null; this._gIdx = undefined;
+    if (this.state.gameClosing || this.state.cardsClosing) return;
+    this.setState({ gameClosing: true, cardsClosing: true });
+    setTimeout(() => this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, gMode: null, gFinished: false, dlgSeamless: false }), 200);
   }
   focusStep(d) {
     const n = wordsOf(this.state.wset, this.state.deck).length;
@@ -3295,6 +3304,7 @@ class Component extends DCLogic {
           heroTitle: setName(cont),
           heroSub: T("learned_of", { d: cc.done, n: cc.n }) + " · " + range(cc),
           heroCta: totalDone ? T("continue") : T("start"),
+          heroBtn: (totalDone ? T("continue") : T("start")) + " · " + setName(cont),
           continueSet: () => this.gotoSet(cont),
           setsLegend: nSets + " " + T("sets_of_twenty"),
           setTiles: cells.map((c) => ({
@@ -3326,7 +3336,7 @@ class Component extends DCLogic {
           nextLabel: setName(WSET + 1),
           // focus
           focusOn: !!f,
-          closeFocus: () => this.setState({ focus: null, focusShown: false }),
+          closeFocus: () => this.closeFocusView(),
           focusCounter: f ? setName(WSET) + " · " + (st.focus + 1) + " / " + WORDS.length : "",
           focusRuby: f ? this.wordRuby(f.w[0], f.w[1]) : OK_EMPTY,
           focusRubyOpacity: fHidden || !st.allFuri ? 0 : 1,
@@ -3375,6 +3385,40 @@ class Component extends DCLogic {
           furiOn: () => this.setFuri(true),
           furiOff: () => this.setFuri(false),
           toastOn: !!st.authMsg,
+          // the map's four rings on one honest 0-100 axis: the deck, then the
+          // three domains with the deck's ceiling as the lighter arc
+          rings: (() => {
+            const C = 2 * Math.PI * 25;
+            const dash = (pctv) => (C * Math.max(0, Math.min(100, pctv)) / 100).toFixed(1) + " " + C.toFixed(1);
+            const rows = (this._covRows = (() => {
+              const seen = {};
+              const add = (id, into) => { const c = COV[id]; if (!c) return; const s = SURF[id] || id; if (seen[s]) return; seen[s] = 1; for (let i = 0; i < 3; i++) into[i] += c[i]; };
+              const now = [0, 0, 0];
+              Object.keys(st.mastered || {}).forEach(id => { if (st.mastered[id]) add(id, now); });
+              const ceil = now.slice();
+              deckWords(st.deck).forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], ceil); });
+              return { now, ceil };
+            })());
+            const pc = (ppm) => { const v = ppm / 1e4; return v >= 10 ? String(Math.round(v)) : v.toFixed(1).replace(/\.0$/, ""); };
+            const deckP = totalN ? totalDone / totalN * 100 : 0;
+            return [{
+              label: T("deck"), big: Math.round(deckP) + "%", sub: T("words_learned", { d: totalDone, n: totalN }),
+              nowDash: dash(deckP), ceilDash: dash(100), title: T("sets_learned", { d: totalDone, n: totalN })
+            }].concat(COV_LABELS.map((k, i) => ({
+              label: T(k), big: pc(rows.now[i]) + "%", sub: T("with_deck", { b: pc(rows.ceil[i]) }),
+              nowDash: dash(rows.now[i] / 1e4), ceilDash: dash(rows.ceil[i] / 1e4),
+              title: T(k) + ": " + T("now_deck", { a: pc(rows.now[i]), b: pc(rows.ceil[i]) }) + ". " + T("coverage_note")
+            })));
+          })(),
+          pVeilOut: (st.gameClosing || st.cardsClosing) ? "ok-veil-out" : "",
+          pSheetOut: (st.gameClosing || st.cardsClosing) ? "ok-sheet-out" : "",
+          focusVeilOut: st.focusClosing ? "ok-veil-out" : "",
+          focusOut: st.focusClosing ? "ok-focus-out" : "",
+          wVeilOut: st.writeClosing ? "ok-veil-out" : "",
+          wSheetOut: st.writeClosing ? "ok-sheet-out" : "",
+          wBack: () => { if (this.state.writeFromStudy) this.setState({ dlgSeamless: true, write: false, writeClosing: false, writeFromStudy: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); else this.closeWrite(); },
+          jaSeg: st.lang === "ja" ? segOn : segOff,
+          enSeg: st.lang !== "ja" ? segOn : segOff,
           // completion: the set's own next step takes the primary slot
           setFull: cur.full,
           setFullNext: cur.full && WSET < nSets - 1,
@@ -3418,7 +3462,7 @@ class Component extends DCLogic {
             if (!this.state.gMode) { this.setState({ gameOpen: false, gameClosing: false, dlgSeamless: false }); return; }
             this.setState({ gMode: null, gFinished: false, gPicked: -1 });
           },
-          pClose: () => { if (this._gAdvT) clearTimeout(this._gAdvT); this._gAnswer = null; this._gIdx = undefined; this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, gMode: null, gFinished: false, dlgSeamless: false }); },
+          pClose: () => this.closePractice(),
           pEyebrow: st.cardsOn ? T("flashcards") : st.gMode ? T("quiz") : T("practice"),
           pTitle: setName(st.gBatch != null ? st.gBatch : WSET),
           pCount: st.cardsOn ? (st.cIdx < (st.cQueue || []).length ? Math.min(st.cIdx + 1, (st.cQueue || []).length) + " / " + (st.cQueue || []).length : "")
@@ -3664,6 +3708,7 @@ class Component extends DCLogic {
           pick: () => this.gamePick(i)
         }));
       })(),
+      sendStyle: (() => { const on = !!(st.draft || "").trim() && !st.loading; return on ? "background:var(--ok-acc);color:#ffffff" : "background:#e6e6e1;color:#9aa0a6;cursor:default"; })(),
       gRevealOn: (() => { const q = (st.gRounds || [])[gIdxEff]; return !!q && gAns >= 0; })(),
       gReveal: (() => {
         const q = (st.gRounds || [])[gIdxEff];
@@ -3796,8 +3841,9 @@ class Component extends DCLogic {
             pre: at < 0 ? w[0] : w[0].slice(0, at),
             hit: at < 0 ? "" : k.c,
             post: at < 0 ? "" : w[0].slice(at + k.c.length),
-            boxBg: done ? "var(--accent)" : "transparent",
-            fg: done ? "var(--text-accent)" : "var(--text-body)"
+            boxBg: done ? "var(--ok-acc)" : "transparent",
+            chk: done ? "background:var(--ok-acc);border-color:var(--ok-acc)" : "",
+            fg: done ? "var(--ok-acc)" : "var(--ok-ink)"
           };
         });
       })(),
@@ -4027,8 +4073,9 @@ class Component extends DCLogic {
       candList: st.cand ? st.cand.list.map((w, i) => ({
         w: w,
         n: String(i + 1),
-        bg: i === st.candIdx ? "var(--accent)" : "transparent",
-        fg: i === st.candIdx ? "#ffffff" : "var(--text-body)",
+        bg: i === st.candIdx ? "var(--ok-acc)" : "transparent",
+        fg: i === st.candIdx ? "#ffffff" : "var(--ok-ink)",
+        chip: i === st.candIdx ? "background:var(--ok-acc);border-color:var(--ok-acc);color:#ffffff" : "",
         pick: () => this.commitCandidate(i)
       })) : [],
       submit: () => this.ask(),

@@ -25,10 +25,10 @@ impractical and every diff reads as "1 line changed".
 
 Two screens, one metaphor: zoom out to the map, zoom in to a set.
 
-**The map** is the home screen. The deck's name, one progress bar for the
-whole deck, a "Continue" card naming the set in hand (or the next unfinished
-one once that is done), and every set of the deck as a numbered tile, ten to
-a row -- fifty for a thousand-word deck. A tile fills with accent as its
+**The map** is the home screen. The deck's name, a Continue button in the
+header naming the set in hand (or the next unfinished one once that is
+done), four progress rings, and every set of the deck as a numbered tile,
+ten to a row -- fifty for a thousand-word deck. A tile fills with accent as its
 twenty words are learned, turns solid when they all are, and the set in hand
 wears a ring. Tapping a tile opens it. There is no other navigation: the map
 is the only place that needs to list the sets, and it scales to fifty without
@@ -37,8 +37,12 @@ a trick.
 **The set** is twenty cards under a quiet header: back to the map, the set's
 name and count, a Learn / Recall switch, and one primary button, Practice
 (the games and flashcards, scoped to these twenty). Nothing else. A card
-shows the word with furigana, its meaning, the example sentence with the
-word lit, and its translation -- all at once, no hover. The learned control
+is two columns: the word with furigana, its meaning and the Got it pill on
+the left; the example sentence with the word lit, and its translation, on
+the right, where a Japanese sentence gets a line long enough to hold it
+(the earlier word-over-sentence card had to keep the sentence small to
+avoid wrapping; that was a width problem). Two across on desktop, stacked
+on a phone. Everything shows at once, no hover. The learned control
 is a visible "Got it" pill. Tapping a card opens it large, with arrow keys
 to walk the set, Enter to mark, Escape to close. At the foot of the cards,
 where reading finishes, are Previous set and Next set; small chevrons either
@@ -58,18 +62,24 @@ by email, no password), sign-out, and the two settings -- interface language
 and furigana on or off.
 
 **Practice** is a sheet over the set with three modes, each explained in a
-line: Flashcards (see the word, recall the meaning; seeing a card's back
+few words (captions tell you what is, never what to do -- nothing says "tap
+to reveal"): Flashcards (see the word, recall the meaning; seeing a card's back
 twice marks it), Quiz (pick the word for the meaning -- ten rounds, the
-first half easy, the second with confusable distractors), and Write (use the
-words in sentences, checked by AI). A finished set is still worth a run: with
+first half easy, the second with confusable distractors), and Write (sentences,
+checked by AI) -- the same sheet: the set's words as pills that tick as
+they are used, a thread, verdicts as cards, a composer pinned to the foot. A finished set is still worth a run: with
 nothing left unlearned, practice covers the whole set. The quiz ends on a
 results screen with what was missed and a Got it pill on each, so a miss can
 be dealt with where it is noticed.
 
-**What it is worth.** Under the deck's progress bar the map shows three
-domains -- TV & film, anime & manga, books & news -- each with the share of
-everyday words the learner would now recognise and the share this deck
-would reach when done. Each word carries `cov: [tv, manga, news]`, its share
+**What it is worth.** The top of the map is four rings on one honest 0-100
+axis: this deck, then TV & film, anime & manga, books & news, each domain
+with the share of everyday words the learner would now recognise as the
+solid arc and the share this deck reaches when done as the lighter arc
+behind it. A ring shows an 11% ceiling as a real slice where a bar showed a
+sliver, which is why they are rings. There is no Continue card: the ringed
+tile already says where you are, and a small Continue button in the header
+is the one-tap resume. Each word carries `cov: [tv, manga, news]`, its share
 of the running content words of each domain in parts per million, from
 wordfreq (real token proportions; OpenSubtitles is the film and TV signal
 inside it), JPDB and BCCWJ (ranks, given proportions by the wordfreq curve),
@@ -77,8 +87,7 @@ with every token folded to its dictionary form so 言っ and いう count for
 言う. Coverage is over content words: particles, auxiliaries, symbols,
 numerals, interjections and proper nouns are a baseline every learner gets
 elsewhere, and counting them would make every number smaller and no more
-true. The three bars share one axis sized to the largest ceiling so they read
-against each other; the numbers carry the absolute truth. JLPT N4's 451 words
+true. JLPT N4's 451 words
 are worth about 10-18% of a domain; the whole JLPT range roughly half. The
 gap is the highest-frequency words of all -- する, いる, ある, ない, いい,
 こと -- which are kana-only and sit in no kanji deck.
@@ -86,8 +95,9 @@ gap is the highest-frequency words of all -- する, いる, ある, ない, い
 **Motion** only explains where you are or confirms what changed: the set
 zooms in from the map and the map zooms back out; cards slide in the
 direction of travel between sets; the focus view grows out of the card that
-was tapped; the completion check pops once. Everything is under 250ms and
-honours `prefers-reduced-motion`.
+was tapped; the completion check pops once; sheets and the focus view leave with a
+short fade rather than a cut, and views inside a sheet cross-fade.
+Everything is under 250ms and honours `prefers-reduced-motion`.
 
 **Visually**: one accent, reserved for progress and the primary action;
 everything else neutral. Cards and tiles are rounded surfaces with a faint
