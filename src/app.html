@@ -502,13 +502,46 @@ html[data-ok-ready] #ok-boot{display:none}
       <div style="position:relative;z-index:60;flex:0 0 auto;display:flex;align-items:stretch;height:3.25rem;border-bottom:{{ ruleH }} solid var(--cyan-a45)">
         <span title="OpenKanji.org" style="flex:0 0 auto;display:flex;align-items:center;padding:0 1.1rem;border-right:{{ ruleH }} solid var(--cyan-a45);font-size:1.4rem;line-height:1;color:var(--accent)">开</span>
 
-        <sc-for list="{{ wordSets }}" as="ws" hint-placeholder-count="5">
-          <div sc-camel-on-click="{{ ws.pick }}" title="{{ ws.frac }}" style="position:relative;user-select:none;flex:0 0 6.75rem;min-width:0;display:flex;align-items:center;justify-content:center;border-right:{{ ruleH }} solid var(--cyan-a45);background:{{ ws.bg }};cursor:pointer;overflow:hidden;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
-            <div style="position:absolute;left:0;top:0;bottom:0;width:{{ ws.pct }};background:rgba(8,145,178,.16);transition:width 300ms cubic-bezier(.3,.7,.3,1)"></div>
-            <div style="position:absolute;left:0;right:0;bottom:0;height:{{ ws.barH }};background:var(--accent);transition:height 160ms ease"></div>
-            <span style="position:relative;font-family:var(--font-2);font-size:1.0625rem;letter-spacing:.05em;color:{{ ws.fg }};white-space:nowrap;transition:color 140ms ease">{{ ws.label }}</span>
-          </div>
-        </sc-for>
+        <!-- The set pager: previous, the set in hand (which opens the map of all
+             sets), next. A deck is up to fifty sets, which is too many to lay
+             out as tabs, so the bar shows one and the popover shows them all. -->
+        <span sc-camel-on-click="{{ prevSet }}" title="{{ t_prev_set }}" style="user-select:none;flex:0 0 auto;width:2.6rem;display:flex;align-items:center;justify-content:center;border-right:{{ ruleH }} solid var(--cyan-a45);color:{{ prevFg }};cursor:{{ prevCursor }};transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent-soft)">
+          <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg>
+        </span>
+        <div sc-camel-on-click="{{ toggleSets }}" title="{{ setFrac }}" style="position:relative;user-select:none;flex:0 0 auto;display:flex;align-items:center;gap:.75rem;padding:0 1.1rem;border-right:{{ ruleH }} solid var(--cyan-a45);background:{{ setsBg }};cursor:pointer;transition:background 140ms ease" style-hover="background:var(--accent-soft)">
+          <div style="position:absolute;left:0;top:0;bottom:0;width:{{ setPctW }};background:rgba(8,145,178,.16);transition:width 300ms cubic-bezier(.3,.7,.3,1);pointer-events:none"></div>
+          <div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--accent);pointer-events:none"></div>
+          <span style="position:relative;font-family:var(--font-2);font-size:1.0625rem;letter-spacing:.05em;color:var(--text-accent);white-space:nowrap">{{ listRange }}</span>
+          <span style="position:relative;font-family:var(--font-2);font-size:.875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap">{{ setCounter }}</span>
+          <svg width="12" height="12" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position:relative;transform:{{ setsCaret }};transition:transform 160ms ease"><path d="M5 9 L12 16 L19 9"></path></svg>
+          <sc-if value="{{ setsOpen }}" hint-placeholder-val="{{ false }}">
+            <div sc-camel-on-mouse-leave="{{ closeSets }}" sc-camel-on-click="{{ stop }}" style="position:absolute;top:100%;left:-2.6rem;padding-top:.4rem;z-index:80;cursor:default">
+              <div style="background:var(--surface-panel);border:1px solid #16232c;box-shadow:0 14px 36px rgba(22,35,44,.28);display:flex;flex-direction:column">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:2rem;padding:.75rem 1rem;border-bottom:1px solid var(--cyan-a28)">
+                  <span style="font-family:var(--font-2);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-accent);white-space:nowrap">{{ t_word_sets }}</span>
+                  <span style="font-family:var(--font-2);font-size:.9375rem;color:var(--text-muted);white-space:nowrap">{{ setsSummary }}</span>
+                </div>
+                <!-- one row per hundred words, five sets of twenty across -->
+                <div style="display:flex;flex-direction:column;padding:.6rem .75rem .75rem">
+                  <sc-for list="{{ setRows }}" as="row" hint-placeholder-count="2">
+                    <div style="display:flex;align-items:stretch;gap:.35rem;padding:.175rem 0">
+                      <span style="flex:0 0 4.6rem;display:flex;align-items:center;font-family:var(--font-2);font-size:.8125rem;letter-spacing:.06em;font-variant-numeric:tabular-nums;color:var(--text-muted);white-space:nowrap">{{ row.label }}</span>
+                      <sc-for list="{{ row.cells }}" as="ws" hint-placeholder-count="5">
+                        <div sc-camel-on-click="{{ ws.pick }}" title="{{ ws.frac }}" style="position:relative;flex:0 0 4.9rem;height:2.3rem;display:flex;align-items:center;justify-content:center;border:1px solid {{ ws.border }};background:{{ ws.bg }};cursor:pointer;overflow:hidden;transition:border-color 140ms ease,background 140ms ease" style-hover="border-color:var(--accent)">
+                          <div style="position:absolute;left:0;top:0;bottom:0;width:{{ ws.pct }};background:rgba(8,145,178,.18);pointer-events:none"></div>
+                          <span style="position:relative;font-family:var(--font-2);font-size:.9375rem;letter-spacing:.03em;font-variant-numeric:tabular-nums;color:{{ ws.fg }};white-space:nowrap">{{ ws.label }}</span>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <span sc-camel-on-click="{{ nextSet }}" title="{{ t_next_set }}" style="user-select:none;flex:0 0 auto;width:2.6rem;display:flex;align-items:center;justify-content:center;border-right:{{ ruleH }} solid var(--cyan-a45);color:{{ nextFg }};cursor:{{ nextCursor }};transition:background 140ms ease,color 140ms ease" style-hover="background:var(--accent-soft)">
+          <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg>
+        </span>
 
         <div style="flex:1 1 auto;min-width:0;display:flex;align-items:center;padding:0 1rem;overflow:hidden">
           <span style="min-width:0;font-family:var(--font-2);font-size:1rem;color:var(--text-accent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:{{ authMsgOpacity }};transition:opacity 200ms ease">{{ authMsg }}</span>
@@ -821,7 +854,9 @@ const localizeData = (code) => {
     const e = t[k.c];
     if (!e) return k;
     return { c: k.c, deck: k.deck, meaning: e.meaning || k.meaning, sentence: e.sentence || k.sentence,
-      g: k.g.map(g => ({ r: g.r, w: g.w.map(w => [w[0], w[1], (e.words && e.words[w[3]]) || w[2], w[3]]) })) };
+      // Only the gloss is translated; category and frequency ride along, so
+      // the set spread is the same in every language.
+      g: k.g.map(g => ({ r: g.r, w: g.w.map(w => [w[0], w[1], (e.words && e.words[w[3]]) || w[2], w[3]].concat(w.slice(4))) })) };
   });
 };
 
@@ -926,10 +961,10 @@ const SECTION = 100;
 const sectionCount = (deck) => Math.max(1, Math.ceil(deckData(deck).length / SECTION));
 const sectionOf = (deck, sec) => deckData(deck).slice(sec * SECTION, sec * SECTION + SECTION);
 const pad3 = (n) => String(n).padStart(3, "0");
-// The list is vocabulary, twenty words at a time. Twenty is a sitting; the
-// hundred-word ceiling is temporary, until the deck gets a real word order.
+// The list is vocabulary, twenty words at a time. Twenty is a sitting; a deck
+// runs to a thousand words, fifty sets, which is what the set pager is for.
 const WORDN = 20;
-const WORDMAX = 100;
+const WORDMAX = 1000;
 
 // Every word of a deck, once each, in the order its kanji appear. Kanji are
 // how the corpus is stored, not how it is studied, so this flattens them away.
@@ -961,11 +996,15 @@ const deckWords = (deck) => {
 // turn, commonest first -- and each set gets the widest spread the deck can
 // give while still front-loading the words worth knowing first.
 //
-// Applied only when the whole set is tagged; a partly tagged deck keeps the
-// order it had rather than sorting the tagged words to the front.
+// Tagged words are dealt first; whatever is untagged follows in the order the
+// deck had, so a partly tagged deck still opens on its best-spread sets and
+// the tail simply waits for its tags.
 const CAT = 4, FREQ = 5;
 const spreadByCategory = (list) => {
-  if (!list.length || list.some((e) => e.w[CAT] === undefined)) return list;
+  const tagged = list.filter((e) => e.w[CAT] !== undefined);
+  const rest = list.filter((e) => e.w[CAT] === undefined);
+  if (!tagged.length) return list;
+  if (rest.length) return spreadByCategory(tagged).concat(rest);
   const bins = {};
   for (const e of list.slice().sort((a, b) => b.w[FREQ] - a.w[FREQ])) {
     (bins[e.w[CAT]] = bins[e.w[CAT]] || []).push(e);
@@ -1256,7 +1295,7 @@ const okMerge = (a, b) => {
 class Component extends DCLogic {
   state = {
     screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
-    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, langOpen: false, saveOpen: false, meanings: null, quiz: [], quizOpen: false, partsPage: 0
+    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, langOpen: false, saveOpen: false, setsOpen: false, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
   get furiDefault() { return this.props.startFurigana ?? true; }
@@ -2928,24 +2967,55 @@ class Component extends DCLogic {
         this._gAnswer = null; this._gIdx = undefined;
         this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gFinished: false, gBatch: WSET });
       },
-      wordSets: Array.from({ length: wordBatchCount(st.deck) }, (_, b) => {
-        const keys = wordsOf(b, st.deck).map(e => e.w[3]);
-        const done = keys.filter(x => st.mastered[x]).length;
-        const on = b === WSET;
+      // The set pager. One set is on screen; the map in its popover shows
+      // them all, a row per hundred words so fifty sets read as ten rows of
+      // five rather than a wall of fifty cells.
+      ...(() => {
+        const nSets = wordBatchCount(st.deck);
+        const cells = Array.from({ length: nSets }, (_, b) => {
+          const keys = wordsOf(b, st.deck).map(e => e.w[3]);
+          const done = keys.filter(x => st.mastered[x]).length;
+          const on = b === WSET;
+          const full = keys.length > 0 && done === keys.length;
+          return {
+            label: (b * WORDN + 1) + "-" + (b * WORDN + keys.length),
+            frac: T("learned_of", { d: done, n: keys.length }),
+            pct: (keys.length ? Math.round(done / keys.length * 100) : 0) + "%",
+            done, n: keys.length,
+            border: on ? "var(--accent)" : "var(--cyan-a28)",
+            bg: on ? "rgba(8,145,178,.10)" : "transparent",
+            fg: on || full ? "var(--text-accent)" : "var(--text-muted)",
+            pick: () => this.setState({ wset: b, setsOpen: false })
+          };
+        });
+        const rows = [];
+        for (let i = 0; i < cells.length; i += 5) {
+          const rc = cells.slice(i, i + 5);
+          rows.push({ label: (i * WORDN + 1) + "-" + ((i + rc.length - 1) * WORDN + rc[rc.length - 1].n), cells: rc });
+        }
+        const cur = cells[WSET] || { done: 0, n: 0, pct: "0%", frac: "" };
+        const totalDone = cells.reduce((a, c) => a + c.done, 0);
+        const totalN = cells.reduce((a, c) => a + c.n, 0);
+        const goto = (b) => { if (b >= 0 && b < nSets) this.setState({ wset: b, setsOpen: false }); };
         return {
-          label: (b * WORDN + 1) + "-" + (b * WORDN + keys.length),
-          frac: done + " / " + keys.length,
-          pct: (keys.length ? Math.round(done / keys.length * 100) : 0) + "%",
-          bg: on ? "rgba(8,145,178,.10)" : "transparent",
-          fg: on ? "var(--text-accent)" : "var(--text-muted)",
-          barH: on ? "3px" : "0px",
-          // The count is noise until you are looking at that row.
-          fracOpacity: (on || st.hoverSet === b) ? 1 : 0,
-          enter: () => this.setState({ hoverSet: b }),
-          leave: () => { if (this.state.hoverSet === b) this.setState({ hoverSet: null }); },
-          pick: () => this.setState({ wset: b })
+          setRows: rows,
+          setCounter: T("set") + " " + (WSET + 1) + " / " + nSets,
+          setFrac: cur.frac,
+          setPctW: cur.pct,
+          setsSummary: T("sets_learned", { d: totalDone, n: totalN }),
+          setsOpen: !!st.setsOpen,
+          setsBg: st.setsOpen ? "var(--accent-soft)" : "transparent",
+          setsCaret: st.setsOpen ? "rotate(180deg)" : "none",
+          toggleSets: () => this.setState(s => ({ setsOpen: !s.setsOpen })),
+          closeSets: () => this.setState({ setsOpen: false }),
+          prevSet: () => goto(WSET - 1),
+          nextSet: () => goto(WSET + 1),
+          prevFg: WSET > 0 ? "var(--text-accent)" : "#b9c6ce",
+          prevCursor: WSET > 0 ? "pointer" : "default",
+          nextFg: WSET < nSets - 1 ? "var(--text-accent)" : "#b9c6ce",
+          nextCursor: WSET < nSets - 1 ? "pointer" : "default"
         };
-      }),
+      })(),
       setPct: (WORDKEYS.length ? Math.round(WORDKEYS.filter(kx => st.mastered[kx]).length / WORDKEYS.length * 100) : 0) + "%",
       setDone: WORDKEYS.filter(kx => st.mastered[kx]).length,
       setTotal: WORDKEYS.length,

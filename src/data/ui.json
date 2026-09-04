@@ -446,5 +446,29 @@
   "tip_core_1000": {
     "en": "The 1000 most frequent kanji, level-agnostic. Progress is shared with the level decks.",
     "es": "Los 1000 kanji más frecuentes, sin importar el nivel. El progreso se comparte con los mazos por nivel."
+  },
+  "word_sets": {
+    "en": "Word sets",
+    "es": "Grupos de palabras"
+  },
+  "set": {
+    "en": "Set",
+    "es": "Grupo"
+  },
+  "prev_set": {
+    "en": "Previous set",
+    "es": "Grupo anterior"
+  },
+  "next_set": {
+    "en": "Next set",
+    "es": "Grupo siguiente"
+  },
+  "learned_of": {
+    "en": "{d} of {n} learned",
+    "es": "{d} de {n} aprendidas"
+  },
+  "sets_learned": {
+    "en": "{d} of {n} words learned",
+    "es": "{d} de {n} palabras aprendidas"
   }
 }

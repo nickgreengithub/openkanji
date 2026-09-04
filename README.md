@@ -30,17 +30,25 @@ the set of words you have marked mastered, and nothing else.
 
 The chrome is a single bar across the top, so almost all of the window is
 cards -- no rail, no footer, nothing else competing for an edge of the screen.
-Left to right: the mark; the sets as tabs, each filling with accent as its
-twenty words are learned; any sign-in or sync message; total progress as a
-ring; a solid, accent-filled Study button (the set in hand is in its
-tooltip, not repeated in the label); then a visually separate toolbar --
-its own panel background sets it off from the tabs -- holding the reading
+Left to right: the mark; the set pager -- previous, the set in hand ("1-20
+· Set 1 / 23", filling with accent as its twenty words are learned), next;
+any sign-in or sync message; total progress as a ring; a solid,
+accent-filled Study button (the set in hand is in its tooltip, not repeated
+in the label); then a visually separate toolbar -- its own panel background
+sets it off from the pager -- holding the reading
 toggle, the current interface language as its own two-letter icon with a
 popover to change it, load and save. There is no separate account icon:
 signed out, clicking Save opens a small popover to collect an email and
 send a sign-in link; signed in, Save just saves. Account identity is not
 displayed anywhere in the chrome -- the only visible signal of being signed
 in is that Save no longer prompts.
+
+A deck runs to a thousand words, fifty sets, which is too many for a tab
+strip. Clicking the set in hand opens a map of all of them: one row per
+hundred words, five sets of twenty across, each cell filling with accent as
+it is learned and the active one outlined. Clicking a cell jumps there and
+closes the map; the arrows either side step one set at a time and dim at
+the ends. The header of the map says how much of the whole deck is learned.
 
 A card at rest is the word with furigana over it and its meaning underneath.
 Hovering raises the word, swaps the meaning for the example sentence and its
@@ -80,8 +88,10 @@ tokenisation artefact -- 研究室 splits into 研究 + 室 -- not evidence of r
 30%  BCCWJ         books, newspapers, magazines, government, web
 ```
 
-Both fields are optional and only meaningful together; a deck that is not
-fully tagged keeps the order it had.
+Both fields are optional and only meaningful together. Tagged words are dealt
+first; whatever is untagged follows in the order the deck had, so a partly
+tagged deck still opens on its best-spread sets and the tail waits for its
+tags. Today the first hundred words of each deck are tagged.
 
 There is deliberately no per-kanji lesson. A kanji does not have a meaning so
 much as a distribution of them, so an English gloss under a glyph (`連 = take
@@ -94,9 +104,9 @@ the part of a kanji that does generalise, and ruby is how every Japanese
 textbook says it. Where the split is not certain the ruby covers the whole
 run instead, which is also the correct answer for a jukujikun like 大人 おとな.
 
-The list is capped at the first hundred words of a deck, and the deck is
-whichever one was last saved: word ordering and deck choice are open
-questions, not settled ones.
+The list runs to the first thousand words of a deck (JLPT N4 has 451, N1
+about 3,000), and the deck is whichever one was last saved: deck choice, and
+the order of the untagged tail, are open questions, not settled ones.
 
 ## Kanji data
 
