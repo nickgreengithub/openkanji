@@ -1523,15 +1523,12 @@ const READING_INDEX = (() => {
   return m;
 })();
 
-// --- email-only progress sync (Supabase REST, no SDK) ---
-// Fill these in from Supabase -> Settings -> API. The anon key is public by
-// design; RLS is what protects the data. Never put the service_role key here.
-// The sync API (worker/) served from this site's own origin, so the session
-// cookie is first-party and there is nothing to store in the browser. Empty
-// disables sync: progress then stays in localStorage, as it always has.
-// Same-origin: the Worker serves both the site and /api, so no base URL and
-// no CORS. Empty string means "this origin", not "disabled".
-const API_BASE = "";
+// --- email-only progress sync (worker/, same origin) ---
+// The Worker serves both this page and its API, so the session cookie is
+// first-party and there is no CORS. Its endpoints live under /api, and that
+// prefix is what reaches them: with "" the calls land on /login, /me and
+// /ask, which the Worker 404s -- sign-in and Write are dead until it is set.
+const API_BASE = "/api";
 // Last deck and language, kept locally and synced with the mastered set.
 const OK_DECK_KEY = "openkanji.deck";
 const OK_LANG_KEY = "openkanji.lang";

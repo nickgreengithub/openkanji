@@ -1,8 +1,7 @@
 # Email-only accounts + progress sync — design
 
-Status: **implemented and tested, not yet deployed.** The API lives in
-`worker/`; the client half is in `src/app.html`. Sync is inert until
-`API_BASE` is filled in (see *Deploying* below).
+Status: **deployed.** The API lives in `worker/`; the client half is in
+`src/app.html`, which points at it through `API_BASE = "/api"`.
 
 Everything runs on Cloudflare: Pages for the site, a Worker for the API, D1 for
 the data, Email Service for the sign-in mail. One vendor, one dashboard, and
@@ -134,9 +133,11 @@ in `worker/`. They exercise the real SQL against an in-memory SQLite.
 
 5. **Site** — deploy `index.html` to Cloudflare Pages on the same domain.
 
-6. **Switch it on** — set `API_BASE = "/api"` in `src/app.html`, rebuild,
-   commit. Until then the app runs exactly as it does today, with progress in
-   `localStorage`.
+6. **Switch it on** — `API_BASE` in `src/app.html` must be `"/api"`, the
+   prefix the Worker routes under. An empty string is not "same origin": the
+   page then calls `/login`, `/me` and `/ask`, which the Worker 404s, and
+   sign-in and Write fail with a generic error. The end-to-end suite asserts
+   the built page carries `/api`.
 
 ## Privacy
 

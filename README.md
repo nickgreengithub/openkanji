@@ -319,5 +319,7 @@ security notes and deployment steps.
 cd worker && npm test     # 24 tests, real SQL against an in-memory SQLite
 ```
 
-Sync is inert until `API_BASE` is set in `src/app.html`; until then the app
-keeps progress on the device, exactly as it does now.
+`API_BASE` in `src/app.html` is `/api` -- the prefix the Worker routes its
+endpoints under. It has to be that: with an empty string the page calls
+`/login`, `/me` and `/ask`, the Worker 404s them, and sign-in and Write both
+fail with a generic error.
