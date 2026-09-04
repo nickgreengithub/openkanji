@@ -15,4 +15,7 @@ jobs:
         run: |
           curl -sS -i -X POST https://openkanji.org/api/login \
             -H "Content-Type: application/json" \
-            -d '{"email":"openkanji-debug-probe@example.com","lang":"en"}'
+            -d '{"email":"delivered@resend.dev","lang":"en"}'
+          # delivered@resend.dev is Resend's own sandbox recipient: it accepts
+          # whenever the key and sending domain are good, and reaches nobody.
+          # A failure here is the key or its permissions, not the address.
