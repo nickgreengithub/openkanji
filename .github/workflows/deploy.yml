@@ -26,6 +26,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          # The Worker's one dependency (the Anthropic SDK) took ~7 minutes to
+          # install on a cold runner, twice per deploy. Cache ~/.npm.
+          cache: 'npm'
+          cache-dependency-path: worker/package-lock.json
 
       # Catches a src/ change committed without rebuilding: index.html is the
       # GitHub Pages target and is committed, so it must match src/.
@@ -49,6 +53,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          # The Worker's one dependency (the Anthropic SDK) took ~7 minutes to
+          # install on a cold runner, twice per deploy. Cache ~/.npm.
+          cache: 'npm'
+          cache-dependency-path: worker/package-lock.json
 
       # Writes index.html and dist/index.html. dist/ is what wrangler uploads.
       - name: Build
