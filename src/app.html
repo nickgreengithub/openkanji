@@ -419,18 +419,19 @@ a:hover{color:var(--text-accent-hover)}
 .ok-chips{display:flex;flex-wrap:wrap;gap:.4rem}
 .ok-chip{padding:.3rem .75rem;border-radius:999px;border:1px solid var(--ok-line);font-family:var(--font-2);font-size:.9375rem;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease}
 .ok-veil{position:fixed;inset:0;z-index:95;background:rgba(20,24,30,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;animation:ok-fade 160ms ease}
-.ok-focus{position:relative;width:min(40rem,100%);height:min(30rem,82vh);justify-content:center;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:2.5rem 3.75rem 2rem;overflow-y:auto;border-radius:20px;background:var(--ok-card);box-shadow:0 30px 80px rgba(20,24,30,.35);text-align:center;animation:ok-rise 200ms cubic-bezier(.2,.7,.3,1)}
+.ok-focus{position:relative;width:min(40rem,100%);height:min(30rem,82vh);justify-content:flex-start;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:2.5rem 3.75rem 2rem;overflow-y:auto;border-radius:20px;background:var(--ok-card);box-shadow:0 30px 80px rgba(20,24,30,.35);text-align:center;animation:ok-rise 200ms cubic-bezier(.2,.7,.3,1)}
 .ok-x{position:absolute;top:.55rem;right:.95rem;font-size:1.7rem;line-height:1;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-x:hover{color:var(--ok-ink)}
 .ok-focus-n{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-mute)}
+.ok-focus-wordbox{flex:0 0 auto;height:7rem;display:flex;align-items:center;justify-content:center}
 .ok-focus-word{line-height:1.15;white-space:nowrap}
 .ok-focus-word rt{font-family:var(--font-2);font-size:.42em;color:var(--ok-acc);transition:opacity 160ms ease}
-.ok-focus-ans{display:flex;flex-direction:column;gap:.2rem;transition:opacity 160ms ease}
+.ok-focus-ans{flex:0 0 auto;min-height:3rem;display:flex;flex-direction:column;justify-content:center;gap:.2rem;transition:opacity 160ms ease}
 .ok-focus-reading{font-size:1.5rem;color:var(--ok-acc)}
 .ok-focus-gloss{font-family:var(--font-2);font-size:1.25rem;color:var(--ok-body)}
 .ok-focus-ex{font-size:1.25rem;line-height:1.5;color:var(--ok-body);padding-top:.9rem;border-top:1px solid var(--ok-line);width:100%;text-wrap:pretty}
 .ok-focus-tr{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-mute);transition:opacity 160ms ease;text-wrap:pretty}
-.ok-focus-actions{display:flex;gap:.6rem;margin-top:.6rem}
+.ok-focus-actions{display:flex;gap:.6rem;margin-top:auto;padding-top:.6rem}
 .ok-focus-arrow{position:absolute;top:50%;transform:translateY(-50%);width:2.6rem;height:2.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-focus-arrow:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
 .ok-focus-arrow-l{left:.6rem}.ok-focus-arrow-r{right:.6rem}
@@ -633,7 +634,7 @@ a:hover{color:var(--text-accent-hover)}
   .ok-pmenu,.ok-quiz,.ok-pdone{padding-bottom:calc(2rem + env(safe-area-inset-bottom))}
 
   /* the word, opened: a page with a close, a title, and an action bar */
-  .ok-focus{width:100%;height:100%;max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:center;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
+  .ok-focus{width:100%;height:100%;max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:flex-start;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
   .ok-focus-out{animation:none!important}
   .ok-x{top:calc(.5rem + env(safe-area-inset-top));left:.6rem;right:auto;width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border-radius:50%}
   .ok-focus-n{position:absolute;top:calc(1.35rem + env(safe-area-inset-top));left:3.5rem;right:3.5rem;text-align:center}
@@ -980,7 +981,7 @@ html[data-ok-ready] #ok-boot{display:none}
       <div sc-camel-on-click="{{ stop }}" class="ok-focus {{ focusOut }}" style="--fx:{{ focusFx }};--fy:{{ focusFy }}">
         <span sc-camel-on-click="{{ closeFocus }}" class="ok-x">×</span>
         <span class="ok-focus-n">{{ focusCounter }}</span>
-        <span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
+        <div class="ok-focus-wordbox"><span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span></div>
         <div class="ok-focus-ans" style="opacity:{{ focusAns }}">
           <sc-if value="{{ focusShowReading }}" hint-placeholder-val="{{ false }}"><span class="ok-focus-reading">{{ focusReading }}</span></sc-if>
           <span class="ok-focus-gloss">{{ focusGloss }}</span>
