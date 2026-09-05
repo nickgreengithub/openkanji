@@ -434,7 +434,7 @@ a:hover{color:var(--text-accent-hover)}
 /* The same ring the cards carry, named -- a caption to the button that
    changes it, not a panel wedged into the middle of the reading. */
 .ok-focus-str{flex:0 0 auto;margin-top:auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem;line-height:1}
-.ok-focus-ring{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;flex:0 0 auto}
+.ok-focus-ring{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;flex:0 0 auto;border:1.5px solid var(--ok-line);border-radius:50%;padding:1px}
 .ok-focus-ring svg{width:100%;height:100%;display:block;overflow:visible}
 .ok-focus-str-lvl{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);white-space:nowrap}
 .ok-focus-str-sub{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);white-space:nowrap}
@@ -560,7 +560,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-cardbtns{position:absolute;right:.85rem;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
 /* Both controls are the same button: one size, one border, one background.
    Only what sits inside them differs. */
-.ok-tick,.ok-play{position:static;width:2.35rem;height:2.35rem;border-radius:50%;border:1.5px solid #d3d3cc;background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#b6b6ae;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
+.ok-tick,.ok-play{position:static;width:2.35rem;height:2.35rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
 .ok-tick:hover,.ok-play:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
 @keyframes ok-speak{0%,100%{opacity:1}50%{opacity:.45}}
 /* One control, two meanings: the quarters fill as practice finds the word
@@ -930,7 +930,7 @@ html[data-ok-ready] #ok-boot{display:none}
                 <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}">
                   <svg sc-camel-view-box="0 0 24 24">
                     <sc-for list="{{ lr.pie }}" as="pw" hint-placeholder-count="4"><path d="{{ pw.d }}" fill="{{ pw.fill }}" class="ok-pie-w"></path></sc-for>
-                    <path d="M12 1 V23 M1 12 H23" stroke="{{ lr.pieGrid }}" stroke-width="1.1"></path>
+                    <path d="M12 1 V23 M1 12 H23" stroke="var(--ok-line)" stroke-width="1.1"></path>
                     <sc-if value="{{ lr.pieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M7.6 12.2 L10.7 15.3 L16.4 8.9" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
                   </svg>
                 </span>
@@ -1019,7 +1019,7 @@ html[data-ok-ready] #ok-boot{display:none}
           <span class="ok-focus-ring">
             <svg sc-camel-view-box="0 0 24 24">
               <sc-for list="{{ focusPie }}" as="fp" hint-placeholder-count="4"><path d="{{ fp.d }}" fill="{{ fp.fill }}" class="ok-pie-w"></path></sc-for>
-              <path d="M12 1 V23 M1 12 H23" stroke="{{ focusPieGrid }}" stroke-width="1.1"></path>
+              <path d="M12 1 V23 M1 12 H23" stroke="var(--ok-line)" stroke-width="1.1"></path>
               <sc-if value="{{ focusPieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M7.6 12.2 L10.7 15.3 L16.4 8.9" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
             </svg>
           </span>
@@ -3963,7 +3963,7 @@ class Component extends DCLogic {
             const key = f ? f.w[3] : null;
             const rec = key ? (st.strength || {})[key] : null;
             const marked = !!(key && st.mastered[key]);
-            const lvl = strLevel(rec);
+            const lvl = marked ? 4 : strLevel(rec);
             const n = rec ? rec[1] : 0;
             const days = n ? Math.max(0, okDay() - rec[2]) : null;
             // the last six answers, oldest first, so they read left to right
@@ -3974,10 +3974,9 @@ class Component extends DCLogic {
               dots.push({ bg: right ? "var(--ok-acc)" : "#e11d48", title: right ? T("str_right") : T("str_wrong") });
             }
             return {
-              focusPie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#edede8" })),
-              focusPieGrid: marked ? "transparent" : "#ffffff",
+              focusPie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "transparent" })),
               focusPieTick: marked,
-              focusLvlName: T("str_" + lvl) + (marked ? " · " + T("marked_learned") : ""),
+              focusLvlName: marked ? T("marked_learned") : T("str_" + lvl),
               focusStrSub: !n ? T("str_never_sub")
                 : (days === 0 ? T("str_seen_today_long") : days === 1 ? T("str_seen_yesterday") : T("str_seen_days_long", { n: days }))
                   + " · " + T("str_answers_long", { n: n }),
@@ -4612,7 +4611,7 @@ class Component extends DCLogic {
             const earned = T("str_" + strLevel(rec));
             const days = rec && rec[1] ? Math.max(0, okDay() - rec[2]) : null;
             const seen = days == null ? "" : " · " + (days === 0 ? T("str_seen_today") : T("str_seen_days", { n: days }));
-            return done ? T("marked_learned") + " · " + earned + seen + " · " + T("click_to_undo")
+            return done ? T("marked_learned") + seen + " · " + T("click_to_undo")
                         : earned + seen + " · " + T("click_to_mark");
           })(),
           pillStyle: okPill(done),
@@ -4623,15 +4622,12 @@ class Component extends DCLogic {
           // shows all four and a tick; the earned level underneath is left
           // alone, so pressing again drops back to it rather than to nothing.
           ...(() => {
-            const lvl = strLevel((st.strength || {})[key]);
+            const lvl = done ? 4 : strLevel((st.strength || {})[key]);
             return {
               // Four arcs at the rim, gapped so they read as four. The unlit
               // ones stay a visible grey: an empty control still has to say
               // how many steps it has.
-              pie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#edede8" })),
-              // the dividers read over both the pale quarters and the lit ones,
-              // but step out of the way of the tick rather than crossing it
-              pieGrid: done ? "transparent" : "#ffffff",
+              pie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "transparent" })),
               pieTick: !!done
             };
           })(),
