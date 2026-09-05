@@ -603,6 +603,42 @@
     "en": "click to undo",
     "es": "pulsa para deshacer"
   },
+  "str_seen_today_long": {
+    "en": "Practised today",
+    "es": "Practicada hoy"
+  },
+  "str_seen_days_long": {
+    "en": "Practised {n} days ago",
+    "es": "Practicada hace {n} días"
+  },
+  "str_seen_yesterday": {
+    "en": "Practised yesterday",
+    "es": "Practicada ayer"
+  },
+  "str_answers_long": {
+    "en": "{n} answers so far",
+    "es": "{n} respuestas hasta ahora"
+  },
+  "str_never_sub": {
+    "en": "It will come up in Practice",
+    "es": "Aparecerá al practicar"
+  },
+  "str_answers": {
+    "en": "{n} answered",
+    "es": "{n} respuestas"
+  },
+  "str_right": {
+    "en": "right",
+    "es": "acierto"
+  },
+  "str_wrong": {
+    "en": "wrong",
+    "es": "fallo"
+  },
+  "str_recent": {
+    "en": "Most recent answers, oldest first",
+    "es": "Respuestas recientes, de la más antigua a la más nueva"
+  },
   "str_0": {
     "en": "Not practised yet",
     "es": "Sin practicar"
