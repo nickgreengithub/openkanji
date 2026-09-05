@@ -499,12 +499,6 @@ a:hover{color:var(--text-accent-hover)}
   .ok-fc{min-height:28rem}
 }
 /* Map: what the words are worth */
-.ok-cov{display:flex;flex-direction:column;gap:.55rem}
-.ok-cov-row{display:grid;grid-template-columns:8.5rem 1fr auto;align-items:center;gap:.9rem}
-.ok-cov-bar{position:relative;height:.45rem;border-radius:999px;background:#e6e6e1;overflow:hidden}
-.ok-cov-ceil{position:absolute;left:0;top:0;bottom:0;background:var(--ok-acc-t);border-radius:999px;transition:width 400ms cubic-bezier(.3,.7,.3,1)}
-.ok-cov-now{position:absolute;left:0;top:0;bottom:0;background:var(--ok-acc);border-radius:999px;transition:width 400ms cubic-bezier(.3,.7,.3,1)}
-.ok-cov-txt{font-variant-numeric:tabular-nums;white-space:nowrap}
 /* Set header: chevrons and the completed state */
 .ok-set-titlerow{display:flex;align-items:center;gap:.3rem}
 .ok-mini{width:1.6rem;height:1.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ok-mute);cursor:pointer;user-select:none;transition:background 140ms ease,color 140ms ease}
@@ -525,13 +519,13 @@ a:hover{color:var(--text-accent-hover)}
 @keyframes ok-sheet-up{from{transform:translateY(100%)}to{transform:none}}
 
 /* Map: rings, one honest axis */
-.ok-rings{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem}
-.ok-ring{display:flex;align-items:center;gap:.9rem;padding:.9rem 1rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
+.ok-rings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+.ok-ring{display:flex;align-items:center;gap:1.1rem;padding:1.1rem 1.25rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
 .ok-ring svg{flex:0 0 auto;transform:rotate(-90deg)}
 .ok-ring-c{stroke:var(--ok-acc);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
 .ok-ring-ceil{stroke:var(--ok-acc-t);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
 .ok-ring-txt{display:flex;flex-direction:column;gap:.15rem;min-width:0}
-.ok-ring-big{font-size:1.5rem;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ok-ring-big{font-size:1.75rem;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
 .ok-ja{letter-spacing:.01em;text-transform:none}
 /* A tier's heading: its medal, its name, and how much of it is behind you. */
 .ok-tier-head{display:flex;align-items:center;gap:.65rem;transition:opacity 200ms ease}
@@ -842,7 +836,7 @@ html[data-ok-ready] #ok-boot{display:none}
           <div class="ok-rings">
             <sc-for list="{{ rings }}" as="rg" hint-placeholder-count="4">
               <div class="ok-ring" title="{{ rg.title }}">
-                <svg width="60" height="60" sc-camel-view-box="0 0 60 60">
+                <svg width="72" height="72" sc-camel-view-box="0 0 60 60">
                   <circle cx="30" cy="30" r="25" fill="none" stroke="#e6e6e1" stroke-width="7"></circle>
                   <circle class="ok-ring-ceil" cx="30" cy="30" r="25" fill="none" stroke-width="7" stroke-dasharray="{{ rg.ceilDash }}"></circle>
                   <circle class="ok-ring-c" cx="30" cy="30" r="25" fill="none" stroke-width="7" stroke-linecap="round" stroke-dasharray="{{ rg.nowDash }}"></circle>
@@ -1146,14 +1140,18 @@ const EX_JA = __EX_JA__;
 const COV = __COV__;
 const SURF = {};
 DATA.forEach(k => k.g.forEach(g => g.w.forEach(w => { SURF[w[3]] = w[0]; })));
-const COV_LABELS = ["tv_film", "anime_manga", "books_news"];
+// cov[] is [tv, manga, news] in ppm of running words. A word's media figure
+// is the mean of the three -- the ppm it would have in a corpus that is equal
+// parts television, manga and print, which is the mixture the three rings
+// were asking the reader to average in their head.
+const covMedia = (c) => (c[0] + c[1] + c[2]) / 3;
 // The headings read in Japanese, with the learner's own language on hover.
 // This is a Japanese course and these are short, familiar shapes -- seeing
 // them every session is free reading practice, and the tooltip is the
 // safety net for anyone who does not know them yet.
 const JA_LABEL = {
   your_progress: "学習状況", all_sets: "セット一覧", deck: "学習ずみ",
-  tv_film: "テレビ・映画", anime_manga: "アニメ・漫画", books_news: "本・ニュース"
+  media: "メディア"
 };
 const TJ = (key) => JA_LABEL[key] || T(key);
 // nth translation of word `id` in the current language, falling back to the
@@ -3839,26 +3837,32 @@ class Component extends DCLogic {
           rings: (() => {
             const C = 2 * Math.PI * 25;
             const dash = (pctv) => (C * Math.max(0, Math.min(100, pctv)) / 100).toFixed(1) + " " + C.toFixed(1);
-            const rows = (this._covRows = (() => {
+            // Counted per surface form, so a word spelled one way is worth
+            // its ppm once however many entries carry it.
+            const rows = (() => {
               const seen = {};
-              const add = (id, into) => { const c = COV[id]; if (!c) return; const s = SURF[id] || id; if (seen[s]) return; seen[s] = 1; for (let i = 0; i < 3; i++) into[i] += c[i]; };
-              const now = [0, 0, 0];
-              Object.keys(st.mastered || {}).forEach(id => { if (st.mastered[id]) add(id, now); });
-              const ceil = now.slice();
-              deckWords().forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], ceil); });
+              let now = 0, ceil = 0;
+              const add = (id, learned) => {
+                const c = COV[id]; if (!c) return;
+                const s = SURF[id] || id; if (seen[s]) return; seen[s] = 1;
+                const v = covMedia(c);
+                ceil += v; if (learned) now += v;
+              };
+              Object.keys(st.mastered || {}).forEach(id => { if (st.mastered[id]) add(id, true); });
+              deckWords().forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], false); });
               return { now, ceil };
-            })());
+            })();
             const pc = (ppm) => { const v = ppm / 1e4; return v >= 10 ? String(Math.round(v)) : v.toFixed(1).replace(/\.0$/, ""); };
             const deckP = totalN ? totalDone / totalN * 100 : 0;
             return [{
               label: TJ("deck"), labelOwn: T("deck"), big: Math.round(deckP) + "%", sub: T("words_learned", { d: totalDone, n: totalN }),
               nowDash: dash(deckP), ceilDash: dash(100),
               title: T("deck") + " — " + T("sets_learned", { d: totalDone, n: totalN })
-            }].concat(COV_LABELS.map((k, i) => ({
-              label: TJ(k), labelOwn: T(k), big: pc(rows.now[i]) + "%", sub: T("with_deck", { b: pc(rows.ceil[i]) }),
-              nowDash: dash(rows.now[i] / 1e4), ceilDash: dash(rows.ceil[i] / 1e4),
-              title: T(k) + ": " + T("now_deck", { a: pc(rows.now[i]), b: pc(rows.ceil[i]) }) + ". " + T("coverage_note")
-            })));
+            }, {
+              label: TJ("media"), labelOwn: T("media"), big: pc(rows.now) + "%", sub: T("with_deck", { b: pc(rows.ceil) }),
+              nowDash: dash(rows.now / 1e4), ceilDash: dash(rows.ceil / 1e4),
+              title: T("media") + ": " + T("now_deck", { a: pc(rows.now), b: pc(rows.ceil) }) + ". " + T("coverage_note")
+            }];
           })(),
           pVeilOut: (st.gameClosing || st.cardsClosing) ? "ok-veil-out" : "",
           pSheetOut: (st.gameClosing || st.cardsClosing) ? "ok-sheet-out" : "",
@@ -3880,30 +3884,6 @@ class Component extends DCLogic {
           focusFx: (st.focusFrom ? st.focusFrom[0] : 0) + "px",
           focusFy: (st.focusFrom ? st.focusFrom[1] : 0) + "px",
           // what the words are worth: coverage now, and with this deck done
-          covRows: (() => {
-            const seen = {};
-            const add = (id, into) => {
-              const c = COV[id]; if (!c) return;
-              const s = SURF[id] || id; if (seen[s]) return; seen[s] = 1;
-              for (let i = 0; i < 3; i++) into[i] += c[i];
-            };
-            const now = [0, 0, 0];
-            Object.keys(st.mastered || {}).forEach(id => { if (st.mastered[id]) add(id, now); });
-            const ceil = now.slice();
-            deckWords().forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], ceil); });
-            const pc = (ppm) => { const v = ppm / 1e4; return v >= 10 ? String(Math.round(v)) : v.toFixed(1).replace(/\.0$/, ""); };
-            // The bars share one axis, sized to the largest ceiling: the rows
-            // stay comparable with each other and the fills stay legible. The
-            // numbers carry the absolute truth.
-            const axis = Math.max(10, Math.max.apply(null, ceil) / 1e4 * 1.15);
-            return COV_LABELS.map((k, i) => ({
-              label: T(k),
-              nowW: Math.min(100, now[i] / 1e4 / axis * 100) + "%",
-              ceilW: Math.min(100, ceil[i] / 1e4 / axis * 100) + "%",
-              text: T("now_deck", { a: pc(now[i]), b: pc(ceil[i]) }),
-              title: T(k) + ": " + T("now_deck", { a: pc(now[i]), b: pc(ceil[i]) })
-            }));
-          })(),
           // the practice sheet
           pOn: !!st.gameOpen || !!st.cardsOn,
           pAtMenu: !st.cardsOn && !st.gMode,
