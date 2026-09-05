@@ -14,6 +14,11 @@ create table if not exists users (
 create table if not exists progress (
   user_id    integer primary key references users(id) on delete cascade,
   mastered   text    not null default '{}',  -- JSON: { "w0226": true, ... }
+  -- How well practice has found each word to be known, as
+  -- { "w0226": [str, n, day, hist] } -- see "strength" in worker/src/index.js.
+  -- Added after the fact, so the Worker also adds it at runtime on a database
+  -- that predates this line (see ensureStrength).
+  strength   text    not null default '{}',
   deck       text,                           -- e.g. "JLPT N3"
   lang       text,                           -- e.g. "ES"
   updated_at integer not null

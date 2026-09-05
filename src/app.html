@@ -399,7 +399,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-card-word{line-height:1.1;white-space:nowrap;overflow:hidden;transition:color 200ms ease}
 .ok-card-word rt{font-family:var(--font-2);font-size:.5em;line-height:1.2;letter-spacing:.02em;color:var(--ok-acc);transition:opacity 140ms ease}
 .ok-card-gloss{font-family:var(--font-2);font-size:1.0625rem;line-height:1.35;color:var(--ok-body);transition:opacity 140ms ease}
-.ok-card-ex{margin-top:.2rem;padding-top:.65rem;border-top:1px solid var(--ok-line);font-size:1rem;line-height:1.5;color:var(--ok-body);text-wrap:pretty}
+.ok-card-ex{margin-top:.2rem;padding-top:.65rem;border-top:1px solid var(--ok-line);font-size:1.125rem;line-height:1.55;color:var(--ok-body);text-wrap:pretty}
 .ok-card-tr{font-family:var(--font-2);font-size:.9375rem;line-height:1.4;color:var(--ok-mute);transition:opacity 140ms ease}
 .ok-pill{margin-top:.55rem;align-self:flex-start;display:inline-flex;align-items:center;gap:.35rem;height:1.95rem;padding:0 .8rem 0 .6rem;border-radius:999px;border:1px solid var(--ok-line);font-family:var(--font-2);font-size:.9375rem;letter-spacing:.03em;user-select:none;cursor:pointer;transition:background 140ms ease,border-color 140ms ease,color 140ms ease}
 .ok-pill:hover{border-color:var(--ok-acc);color:var(--ok-acc)}
@@ -419,18 +419,28 @@ a:hover{color:var(--text-accent-hover)}
 .ok-chips{display:flex;flex-wrap:wrap;gap:.4rem}
 .ok-chip{padding:.3rem .75rem;border-radius:999px;border:1px solid var(--ok-line);font-family:var(--font-2);font-size:.9375rem;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease}
 .ok-veil{position:fixed;inset:0;z-index:95;background:rgba(20,24,30,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;animation:ok-fade 160ms ease}
-.ok-focus{position:relative;width:min(40rem,100%);height:min(30rem,82vh);justify-content:center;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:2.5rem 3.75rem 2rem;overflow-y:auto;border-radius:20px;background:var(--ok-card);box-shadow:0 30px 80px rgba(20,24,30,.35);text-align:center;animation:ok-rise 200ms cubic-bezier(.2,.7,.3,1)}
+.ok-focus{position:relative;width:min(40rem,100%);height:min(32rem,86vh);justify-content:flex-start;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:2.5rem 3.75rem 2rem;overflow-y:auto;border-radius:20px;background:var(--ok-card);box-shadow:0 30px 80px rgba(20,24,30,.35);text-align:center;animation:ok-rise 200ms cubic-bezier(.2,.7,.3,1)}
 .ok-x{position:absolute;top:.55rem;right:.95rem;font-size:1.7rem;line-height:1;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-x:hover{color:var(--ok-ink)}
 .ok-focus-n{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-mute)}
+.ok-focus-wordbox{flex:0 0 auto;height:7rem;display:flex;align-items:center;justify-content:center}
 .ok-focus-word{line-height:1.15;white-space:nowrap}
 .ok-focus-word rt{font-family:var(--font-2);font-size:.42em;color:var(--ok-acc);transition:opacity 160ms ease}
-.ok-focus-ans{display:flex;flex-direction:column;gap:.2rem;transition:opacity 160ms ease}
+.ok-focus-ans{flex:0 0 auto;min-height:3rem;display:flex;flex-direction:column;justify-content:center;gap:.2rem;transition:opacity 160ms ease}
 .ok-focus-reading{font-size:1.5rem;color:var(--ok-acc)}
 .ok-focus-gloss{font-family:var(--font-2);font-size:1.25rem;color:var(--ok-body)}
 .ok-focus-ex{font-size:1.25rem;line-height:1.5;color:var(--ok-body);padding-top:.9rem;border-top:1px solid var(--ok-line);width:100%;text-wrap:pretty}
 .ok-focus-tr{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-mute);transition:opacity 160ms ease;text-wrap:pretty}
-.ok-focus-actions{display:flex;gap:.6rem;margin-top:.6rem}
+/* The same ring the cards carry, named -- a caption to the button that
+   changes it, not a panel wedged into the middle of the reading. */
+.ok-focus-str{flex:0 0 auto;margin-top:auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem;line-height:1}
+.ok-focus-ring{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;flex:0 0 auto}
+.ok-focus-ring svg{width:100%;height:100%;display:block;overflow:visible}
+.ok-focus-str-lvl{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);white-space:nowrap}
+.ok-focus-str-sub{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);white-space:nowrap}
+.ok-focus-dots{display:inline-flex;align-items:center;gap:4px;flex:0 0 auto}
+.ok-focus-dot{width:7px;height:7px;border-radius:50%}
+.ok-focus-actions{display:flex;gap:.6rem;padding-top:.15rem}
 .ok-focus-arrow{position:absolute;top:50%;transform:translateY(-50%);width:2.6rem;height:2.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-focus-arrow:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
 .ok-focus-arrow-l{left:.6rem}.ok-focus-arrow-r{right:.6rem}
@@ -499,12 +509,6 @@ a:hover{color:var(--text-accent-hover)}
   .ok-fc{min-height:28rem}
 }
 /* Map: what the words are worth */
-.ok-cov{display:flex;flex-direction:column;gap:.55rem}
-.ok-cov-row{display:grid;grid-template-columns:8.5rem 1fr auto;align-items:center;gap:.9rem}
-.ok-cov-bar{position:relative;height:.45rem;border-radius:999px;background:#e6e6e1;overflow:hidden}
-.ok-cov-ceil{position:absolute;left:0;top:0;bottom:0;background:var(--ok-acc-t);border-radius:999px;transition:width 400ms cubic-bezier(.3,.7,.3,1)}
-.ok-cov-now{position:absolute;left:0;top:0;bottom:0;background:var(--ok-acc);border-radius:999px;transition:width 400ms cubic-bezier(.3,.7,.3,1)}
-.ok-cov-txt{font-variant-numeric:tabular-nums;white-space:nowrap}
 /* Set header: chevrons and the completed state */
 .ok-set-titlerow{display:flex;align-items:center;gap:.3rem}
 .ok-mini{width:1.6rem;height:1.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ok-mute);cursor:pointer;user-select:none;transition:background 140ms ease,color 140ms ease}
@@ -525,34 +529,46 @@ a:hover{color:var(--text-accent-hover)}
 @keyframes ok-sheet-up{from{transform:translateY(100%)}to{transform:none}}
 
 /* Map: rings, one honest axis */
-.ok-rings{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem}
-.ok-ring{display:flex;align-items:center;gap:.9rem;padding:.9rem 1rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
+.ok-rings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+.ok-ring{display:flex;align-items:center;gap:1.1rem;padding:1.1rem 1.25rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
 .ok-ring svg{flex:0 0 auto;transform:rotate(-90deg)}
 .ok-ring-c{stroke:var(--ok-acc);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
 .ok-ring-ceil{stroke:var(--ok-acc-t);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
 .ok-ring-txt{display:flex;flex-direction:column;gap:.15rem;min-width:0}
-.ok-ring-big{font-size:1.5rem;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ok-ring-big{font-size:1.75rem;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
 .ok-ja{letter-spacing:.01em;text-transform:none}
+/* A tier's heading: its medal, its name, and how much of it is behind you. */
+.ok-tier-head{display:flex;align-items:center;gap:.65rem;transition:opacity 200ms ease}
+.ok-tier-count{margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
 /* the learner's own language, second and quieter, next to the Japanese */
 .ok-h2-own{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok-mute);opacity:.6}
 .ok-ring-own{font-family:var(--font-2);font-size:.875rem;color:var(--ok-mute);opacity:.65;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ok-ring-lab{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ok-ring-sub{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* the ceiling line grew when it stopped naming a deck, so let it wrap
+   rather than trail off mid-number */
+.ok-ring-sub{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);line-height:1.3;text-wrap:pretty}
 .ok-continue{margin-left:auto}
 /* Cards: word left, sentence right, so the sentence gets a line to itself */
 .ok-cards{grid-template-columns:repeat(auto-fill,minmax(31rem,1fr))}
 .ok-card{flex-direction:row;align-items:stretch;gap:1.1rem;padding:1rem 1.1rem}
 .ok-card-l{flex:0 0 11.5rem;min-width:0;display:flex;flex-direction:column;gap:.4rem}
 .ok-card-r{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding-left:1.1rem;border-left:1px solid var(--ok-line)}
-.ok-card-ex{margin-top:0;padding-top:0;border-top:0;font-size:1.125rem;line-height:1.55}
+.ok-card-ex{margin-top:0;padding-top:0;border-top:0;font-size:1.25rem;line-height:1.6}
 .ok-card-tr{font-size:1rem}
-/* Play sits on the card's right edge, directly under the tick and built the
-   same way, so the two read as one column of controls. */
-.ok-play{position:absolute;top:3.35rem;right:.85rem;width:2rem;height:2rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
-.ok-play:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
+/* The card's two controls, centred as a pair on its right edge rather than
+   pinned near the top, where they read as having drifted up. */
+.ok-cardbtns{position:absolute;right:.85rem;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+/* Both controls are the same button: one size, one border, one background.
+   Only what sits inside them differs. */
+.ok-tick,.ok-play{position:static;width:2.35rem;height:2.35rem;border-radius:50%;border:1.5px solid #d3d3cc;background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#b6b6ae;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
+.ok-tick:hover,.ok-play:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
 @keyframes ok-speak{0%,100%{opacity:1}50%{opacity:.45}}
-.ok-tick{position:absolute;top:.85rem;right:.85rem;width:2rem;height:2rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
-.ok-tick:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
+/* One control, two meanings: the quarters fill as practice finds the word
+   known, and pressing it says so yourself. The pressed state sits on top of
+   what practice worked out rather than replacing it, so letting go returns
+   the word to whatever it had actually earned. */
+.ok-tick svg{width:2.05rem;height:2.05rem;display:block}
+.ok-pie-w{transition:fill 260ms ease}
 /* room for the tick and the play button stacked beneath it */
 .ok-card-r{padding-right:3rem}
 .ok-card{min-height:6.2rem}
@@ -634,7 +650,7 @@ a:hover{color:var(--text-accent-hover)}
   .ok-pmenu,.ok-quiz,.ok-pdone{padding-bottom:calc(2rem + env(safe-area-inset-bottom))}
 
   /* the word, opened: a page with a close, a title, and an action bar */
-  .ok-focus{width:100%;height:100%;max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:center;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
+  .ok-focus{width:100%;height:100%;max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:flex-start;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
   .ok-focus-out{animation:none!important}
   .ok-x{top:calc(.5rem + env(safe-area-inset-top));left:.6rem;right:auto;width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border-radius:50%}
   .ok-focus-n{position:absolute;top:calc(1.35rem + env(safe-area-inset-top));left:3.5rem;right:3.5rem;text-align:center}
@@ -652,8 +668,9 @@ a:hover{color:var(--text-accent-hover)}
   .ok-chip{display:inline-flex;align-items:center}
 
   /* thumbs, not cursors */
-  .ok-tick{width:2.75rem;height:2.75rem;top:.5rem;right:.5rem}
-  .ok-play{width:2.75rem;height:2.75rem;right:.5rem;top:3.6rem;bottom:auto}
+  .ok-tick,.ok-play{width:2.75rem;height:2.75rem}
+  .ok-tick svg{width:2.4rem;height:2.4rem}
+  .ok-cardbtns{right:.5rem;gap:.4rem}
   .ok-card{padding-bottom:.7rem}
   .ok-card-l{position:static;padding-right:3rem;padding-bottom:0}
   .ok-card-r{padding-right:3rem}
@@ -827,7 +844,7 @@ html[data-ok-ready] #ok-boot{display:none}
       <header class="ok-top">
         <div class="ok-top-l">
           <span class="ok-mark" title="OpenKanji.org">开</span>
-          <span class="ok-deck">{{ deckName }}</span>
+          <span class="ok-deck">{{ t_the_ladder }}</span>
         </div>
         <span sc-camel-on-click="{{ continueSet }}" class="ok-btn ok-btn-primary ok-continue">{{ heroBtn }}</span>
       </header>
@@ -837,7 +854,7 @@ html[data-ok-ready] #ok-boot{display:none}
           <div class="ok-rings">
             <sc-for list="{{ rings }}" as="rg" hint-placeholder-count="4">
               <div class="ok-ring" title="{{ rg.title }}">
-                <svg width="60" height="60" sc-camel-view-box="0 0 60 60">
+                <svg width="72" height="72" sc-camel-view-box="0 0 60 60">
                   <circle cx="30" cy="30" r="25" fill="none" stroke="#e6e6e1" stroke-width="7"></circle>
                   <circle class="ok-ring-ceil" cx="30" cy="30" r="25" fill="none" stroke-width="7" stroke-dasharray="{{ rg.ceilDash }}"></circle>
                   <circle class="ok-ring-c" cx="30" cy="30" r="25" fill="none" stroke-width="7" stroke-linecap="round" stroke-dasharray="{{ rg.nowDash }}"></circle>
@@ -852,18 +869,23 @@ html[data-ok-ready] #ok-boot{display:none}
             </sc-for>
           </div>
         </div>
-        <div class="ok-overall">
-          <div class="ok-row"><span class="ok-h2 ok-ja">{{ ja_all_sets }} <span class="ok-h2-own">{{ t_all_sets }}</span></span></div>
-          <div class="ok-tiles">
-            <sc-for list="{{ setTiles }}" as="tl" hint-placeholder-count="10">
-              <div sc-camel-on-click="{{ tl.pick }}" title="{{ tl.frac }}" class="ok-tile" style="background:{{ tl.bg }};color:{{ tl.fg }};box-shadow:{{ tl.ring }}">
-                <div class="ok-tile-fill" style="width:{{ tl.pct }};opacity:{{ tl.fillOpacity }}"></div>
-                <span class="ok-tile-n">{{ tl.n }}</span>
-                <sc-if value="{{ tl.done }}" hint-placeholder-val="{{ false }}"><span class="ok-tile-check"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span></sc-if>
-              </div>
-            </sc-for>
+        <sc-for list="{{ tiers }}" as="tr" hint-placeholder-count="5">
+          <div class="ok-overall">
+            <div class="ok-tier-head" style="opacity:{{ tr.headOpacity }}" title="{{ tr.title }}">
+              <span class="ok-h2 ok-ja" style="color:{{ tr.nameFg }}">{{ tr.name }} <span class="ok-h2-own">{{ tr.own }}</span></span>
+              <span class="ok-muted ok-tier-count">{{ tr.count }}</span>
+            </div>
+            <div class="ok-tiles">
+              <sc-for list="{{ tr.tiles }}" as="tl" hint-placeholder-count="20">
+                <div sc-camel-on-click="{{ tl.pick }}" title="{{ tl.frac }}" class="ok-tile" style="background:{{ tl.bg }};color:{{ tl.fg }};box-shadow:{{ tl.ring }};opacity:{{ tl.opacity }};cursor:{{ tl.cursor }}">
+                  <div class="ok-tile-fill" style="width:{{ tl.pct }};opacity:{{ tl.fillOpacity }}"></div>
+                  <span class="ok-tile-n">{{ tl.n }}</span>
+                  <sc-if value="{{ tl.done }}" hint-placeholder-val="{{ false }}"><span class="ok-tile-check"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span></sc-if>
+                </div>
+              </sc-for>
+            </div>
           </div>
-        </div>
+        </sc-for>
       </section>
       <nav class="ok-bottombar">
         <span sc-camel-on-click="{{ continueSet }}" class="ok-btn ok-btn-primary ok-bb-cta">{{ heroBtn }}</span>
@@ -904,8 +926,16 @@ html[data-ok-ready] #ok-boot{display:none}
               <span class="ok-card-word" style="font-size:{{ lr.wordSize }};color:{{ lr.wordFg }}"><sc-for list="{{ lr.ruby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ lr.rubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
               <span class="ok-card-gloss" style="opacity:{{ lr.ansOpacity }}">{{ lr.gloss }}</span>
               </div>
-              <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span>
-              <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
+              <div class="ok-cardbtns">
+                <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}">
+                  <svg sc-camel-view-box="0 0 24 24">
+                    <sc-for list="{{ lr.pie }}" as="pw" hint-placeholder-count="4"><path d="{{ pw.d }}" fill="{{ pw.fill }}" class="ok-pie-w"></path></sc-for>
+                    <path d="M12 1 V23 M1 12 H23" stroke="{{ lr.pieGrid }}" stroke-width="1.1"></path>
+                    <sc-if value="{{ lr.pieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M7.6 12.2 L10.7 15.3 L16.4 8.9" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+                  </svg>
+                </span>
+                <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
+              </div>
               <sc-if value="{{ lr.hasEx }}" hint-placeholder-val="{{ true }}">
                 <div class="ok-card-r">
                 <span class="ok-card-ex"><sc-for list="{{ lr.exParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok-acc)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
@@ -976,7 +1006,7 @@ html[data-ok-ready] #ok-boot{display:none}
       <div sc-camel-on-click="{{ stop }}" class="ok-focus {{ focusOut }}" style="--fx:{{ focusFx }};--fy:{{ focusFy }}">
         <span sc-camel-on-click="{{ closeFocus }}" class="ok-x">×</span>
         <span class="ok-focus-n">{{ focusCounter }}</span>
-        <span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
+        <div class="ok-focus-wordbox"><span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span></div>
         <div class="ok-focus-ans" style="opacity:{{ focusAns }}">
           <sc-if value="{{ focusShowReading }}" hint-placeholder-val="{{ false }}"><span class="ok-focus-reading">{{ focusReading }}</span></sc-if>
           <span class="ok-focus-gloss">{{ focusGloss }}</span>
@@ -985,6 +1015,20 @@ html[data-ok-ready] #ok-boot{display:none}
           <span class="ok-focus-ex"><sc-for list="{{ focusExParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok-acc)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
           <span class="ok-focus-tr" style="opacity:{{ focusAns }}">{{ focusExEn }}</span>
         </sc-if>
+        <div class="ok-focus-str">
+          <span class="ok-focus-ring">
+            <svg sc-camel-view-box="0 0 24 24">
+              <sc-for list="{{ focusPie }}" as="fp" hint-placeholder-count="4"><path d="{{ fp.d }}" fill="{{ fp.fill }}" class="ok-pie-w"></path></sc-for>
+              <path d="M12 1 V23 M1 12 H23" stroke="{{ focusPieGrid }}" stroke-width="1.1"></path>
+              <sc-if value="{{ focusPieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M7.6 12.2 L10.7 15.3 L16.4 8.9" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+            </svg>
+          </span>
+          <span class="ok-focus-str-lvl">{{ focusLvlName }}</span>
+          <span class="ok-focus-str-sub">{{ focusStrSub }}</span>
+          <sc-if value="{{ focusDotsOn }}" hint-placeholder-val="{{ false }}">
+            <span class="ok-focus-dots" title="{{ t_str_recent }}"><sc-for list="{{ focusDots }}" as="fd" hint-placeholder-count="6"><span class="ok-focus-dot" style="background:{{ fd.bg }}" title="{{ fd.title }}"></span></sc-for></span>
+          </sc-if>
+        </div>
         <div class="ok-focus-actions">
           <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ focusPlay }}" class="ok-btn" title="{{ t_listen }}" style="{{ focusPlayStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
           <sc-if value="{{ focusHidden }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ revealFocus }}" class="ok-btn">{{ t_show_answer }}</span></sc-if>
@@ -1136,14 +1180,27 @@ const EX_JA = __EX_JA__;
 const COV = __COV__;
 const SURF = {};
 DATA.forEach(k => k.g.forEach(g => g.w.forEach(w => { SURF[w[3]] = w[0]; })));
-const COV_LABELS = ["tv_film", "anime_manga", "books_news"];
+// cov[] is [tv, manga, news] in ppm of running words. A word's media figure
+// is the mean of the three -- the ppm it would have in a corpus that is equal
+// parts television, manga and print, which is the mixture the three rings
+// were asking the reader to average in their head.
+const covMedia = (c) => (c[0] + c[1] + c[2]) / 3;
+// Four quarters filling the circle, clockwise from the top. Unlit ones are
+// drawn too, in a pale fill, so the control is always a whole disc and the
+// lines that divide it are always there to be counted.
+const PIE_ARCS = [
+  "M12 12 L12.00 1.00 A11 11 0 0 1 23.00 12.00 Z",
+  "M12 12 L23.00 12.00 A11 11 0 0 1 12.00 23.00 Z",
+  "M12 12 L12.00 23.00 A11 11 0 0 1 1.00 12.00 Z",
+  "M12 12 L1.00 12.00 A11 11 0 0 1 12.00 1.00 Z"
+];
 // The headings read in Japanese, with the learner's own language on hover.
 // This is a Japanese course and these are short, familiar shapes -- seeing
 // them every session is free reading practice, and the tooltip is the
 // safety net for anyone who does not know them yet.
 const JA_LABEL = {
-  your_progress: "学習状況", all_sets: "セット一覧", deck: "この教材",
-  tv_film: "テレビ・映画", anime_manga: "アニメ・漫画", books_news: "本・ニュース"
+  your_progress: "学習状況", all_sets: "セット一覧", deck: "学習ずみ",
+  media: "メディア"
 };
 const TJ = (key) => JA_LABEL[key] || T(key);
 // nth translation of word `id` in the current language, falling back to the
@@ -1273,16 +1330,27 @@ const pad3 = (n) => String(n).padStart(3, "0");
 // The list is vocabulary, twenty words at a time. Twenty is a sitting; a deck
 // runs to a thousand words, fifty sets, which is what the set pager is for.
 const WORDN = 20;
-const WORDMAX = 1000;
+// One ladder, not six decks. The JLPT levels were never a syllabus a learner
+// picks between -- they are a difficulty order, so they read better end to
+// end: N5's words first, then N4, and on up. 2000 words is where it stops,
+// which is the whole of the five tiers below, and about where a learner can
+// read most of what they meet.
+const WORDMAX = 2000;
+const TIER = 400;
+const TIERS = 5;
+// Five hundred-set climbs of four hundred words. The names are the ordinary
+// Japanese level words, so the ladder reads as one climb with five landings
+// rather than a hundred numbered sets running off the bottom of the screen.
+const TIER_JA = ["入門", "初級", "中級", "中上級", "上級"];
 
-// Every word of a deck, once each, in the order its kanji appear. Kanji are
-// how the corpus is stored, not how it is studied, so this flattens them away.
+// Every word in the corpus, once each, in the order its kanji appear. Kanji
+// are how it is stored, not how it is studied, so this flattens them away.
 const _WORDS = {};
-const deckWords = (deck) => {
-  const key = CURRENT_LANG + "|" + (deck || DEFAULT_DECK);
+const deckWords = () => {
+  const key = CURRENT_LANG;
   if (_WORDS[key]) return _WORDS[key];
   const seen = {}, out = [];
-  const pool = deckData(deck);
+  const pool = corpusFor(CURRENT_LANG).data;
   for (let i = 0; i < pool.length && out.length < WORDMAX; i++) {
     const k = pool[i];
     for (const g of k.g) {
@@ -1334,8 +1402,15 @@ const spreadByCategory = (list) => {
   return out;
 };
 
-const wordBatchCount = (deck) => Math.max(1, Math.ceil(deckWords(deck).length / WORDN));
-const wordsOf = (b, deck) => deckWords(deck).slice(b * WORDN, b * WORDN + WORDN);
+// The ladder is always its full height: every set of the five tiers is on the
+// map whether or not the corpus reaches it yet. The ones past the end are
+// drawn dim and refuse the click, so the shape of the thing is honest about
+// both what is here and what is coming.
+const SETS_TOTAL = (TIER * TIERS) / WORDN;
+const wordBatchCount = () => SETS_TOTAL;
+const setsFilled = () => Math.ceil(deckWords().length / WORDN);
+const setIsReady = (b) => b < setsFilled();
+const wordsOf = (b) => deckWords().slice(b * WORDN, b * WORDN + WORDN);
 
 const sectionLabel = (deck, sec) =>
   pad3(sec * SECTION + 1) + "-" + pad3(Math.min((sec + 1) * SECTION, deckData(deck).length));
@@ -1663,6 +1738,81 @@ const okSpeak = (parts) => new Promise((resolve) => {
 });
 const okAiReady = () => (typeof window !== "undefined" && !!(window.claude && window.claude.complete)) || okSyncReady();
 // mastered is a { "word|reading": true } map. Union merge: local OR server wins.
+// ---- How well a word is known -----------------------------------------
+// The tick is what the learner says about a word; this is what practice has
+// found out. They are kept apart on purpose: the tick is intent ("I have
+// studied this"), and overruling it with a score is what makes these systems
+// feel like they are arguing with you.
+//
+// Four numbers per word, so two thousand of them still fit in one sync body:
+//   [str, n, day, hist]
+//   str   0-100, strength as of `day`
+//   n     graded answers, capped at 255
+//   day   the day it was last graded, in days since the epoch
+//   hist  the last six results as bits, bit 0 newest, 1 = right
+const OK_STR_KEY = "openkanji.strength";
+const STR_HIST = 6;
+// Producing a reading from nothing is much stronger evidence than picking one
+// tile of four, where a blind guess is right a quarter of the time.
+const STR_MODE_W = { 1: 1, 2: 1.2, type: 2 };
+const STR_GAIN = 0.22;
+const STR_LOSS = 0.45;
+const okDay = () => Math.floor(Date.now() / 86400000);
+// A mode worth W counts as the same answer given W times, which saturates
+// instead of running past certainty: at W=2 a miss costs 70% of what is
+// there, not 90%, and never all of it.
+const strRate = (rate, w) => 1 - Math.pow(1 - rate, w);
+// Forgetting. Two things lengthen the half-life: how well the word is known,
+// and how many times it has been round -- the second is the one that makes
+// this an SRS rather than a decaying score. A word answered right five times
+// holds for a month; one seen twice and half-remembered fades inside the
+// week. Applied when read rather than written, so nothing has to run in the
+// background to keep the numbers honest.
+const strHalflife = (rec) => 3 * (1 + rec[0] / 25) * (1 + Math.min(rec[1] || 0, 10) * 0.2);
+const strShown = (rec) => {
+  if (!rec || !rec[1]) return 0;
+  const days = Math.max(0, okDay() - rec[2]);
+  return rec[0] * Math.pow(0.5, days / strHalflife(rec));
+};
+// New · Shaky · Getting there · Solid · Known
+const strLevel = (rec) => {
+  if (!rec || !rec[1]) return 0;
+  const v = strShown(rec);
+  return v < 40 ? 1 : v < 70 ? 2 : v < 90 ? 3 : 4;
+};
+const strGrade = (rec, ok, mode) => {
+  const w = STR_MODE_W[mode] || 1;
+  const cur = strShown(rec); // what it is worth now, then the answer moves it
+  const next = ok ? cur + (100 - cur) * strRate(STR_GAIN, w) : cur - cur * strRate(STR_LOSS, w);
+  return [
+    Math.max(0, Math.min(100, Math.round(next))),
+    Math.min(255, (rec ? rec[1] : 0) + 1),
+    okDay(),
+    ((((rec ? rec[3] : 0) << 1) | (ok ? 1 : 0)) & ((1 << STR_HIST) - 1))
+  ];
+};
+// What practice deals next: weak words come up more, and so do ones that have
+// been left long enough to have faded. A word never asked about is worth a
+// full share, so new material still arrives.
+const strWeight = (rec) => {
+  if (!rec || !rec[1]) return 1;
+  const due = 1 + Math.max(0, okDay() - rec[2]) / strHalflife(rec);
+  return Math.max(0.05, Math.min(1, (100 - strShown(rec)) / 100)) * due;
+};
+// Two devices, one word: the later grading is the true one. Union is wrong
+// here -- it is what forces `replace` on the mastered set -- because a word
+// can genuinely get worse, and that has to survive the merge.
+const strMerge = (a, b) => {
+  const out = Object.assign({}, a || {});
+  const o = b || {};
+  for (const k of Object.keys(o)) {
+    const mine = out[k], theirs = o[k];
+    if (!Array.isArray(theirs) || theirs.length !== 4) continue;
+    if (!mine || theirs[2] > mine[2] || (theirs[2] === mine[2] && theirs[1] > mine[1])) out[k] = theirs;
+  }
+  return out;
+};
+
 const okMerge = (a, b) => {
   const out = Object.assign({}, a || {});
   const o = b || {};
@@ -1673,7 +1823,7 @@ const okMerge = (a, b) => {
 class Component extends DCLogic {
   state = {
     screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
-    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, zoom: "map", focus: null, focusShown: false, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
+    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, zoom: "map", focus: null, focusShown: false, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
   get furiDefault() { return this.props.startFurigana ?? true; }
@@ -1688,6 +1838,17 @@ class Component extends DCLogic {
     };
     const s = this.migrateKeys(read("openkanji.seen"));
     const m = this.migrateKeys(read("openkanji.mastered"));
+    // Only well-formed records survive the read: a corrupted one would
+    // otherwise sit there scoring a word forever.
+    const str = (() => {
+      const raw = read(OK_STR_KEY) || {};
+      const out = {};
+      for (const k of Object.keys(raw)) {
+        const v = raw[k];
+        if (Array.isArray(v) && v.length === 4 && v.every(x => typeof x === "number" && isFinite(x))) out[k] = v;
+      }
+      return out;
+    })();
     // Write the upgraded keys straight back so the migration happens once.
     if (s) this.persist(s);
     if (m) this.persistMastered(m);
@@ -1698,10 +1859,10 @@ class Component extends DCLogic {
     // alternative overwrites unreadable-but-present progress with {}.
     const deck0 = okDeck(lsGet(OK_DECK_KEY));
     const lang0 = okLang(lsGet(OK_LANG_KEY));
-    this._savedSig = m ? this.saveSig(m, deck0, lang0) : null;
+    this._savedSig = m ? this.saveSig(m, deck0, lang0, str) : null;
     const wset0 = Math.max(0, parseInt(lsGet(OK_SET_KEY) || "0", 10) || 0);
     const furi0 = lsGet(OK_FURI_KEY);
-    this.setState({ seen: s || {}, mastered: m || {}, deck: deck0, uiLang: lang0 || undefined, allFuri: furi0 == null ? this.furiDefault : furi0 === "1", wset: wset0 });
+    this.setState({ seen: s || {}, mastered: m || {}, strength: str, deck: deck0, uiLang: lang0 || undefined, allFuri: furi0 == null ? this.furiDefault : furi0 === "1", wset: wset0 });
     // A sync still in its debounce window when the tab goes must not be lost.
     this._onHide = () => { if (this._syncT) { clearTimeout(this._syncT); this._syncT = null; this.pushProgress(this.state); } };
     window.addEventListener("pagehide", this._onHide);
@@ -1861,7 +2022,7 @@ class Component extends DCLogic {
         if (e.key === "ArrowRight") { e.preventDefault(); this.focusStep(1); return; }
         if (e.key === "ArrowLeft") { e.preventDefault(); this.focusStep(-1); return; }
         if (e.key === " " || e.key === "Spacebar") { e.preventDefault(); this.setState({ focusShown: true }); return; }
-        if (e.key === "Enter") { e.preventDefault(); const w = wordsOf(this.state.wset, this.state.deck)[this.state.focus]; if (w) this.toggleMasteredWord(w.w[3]); return; }
+        if (e.key === "Enter") { e.preventDefault(); const w = wordsOf(this.state.wset)[this.state.focus]; if (w) this.toggleMasteredWord(w.w[3]); return; }
         return;
       }
       if (this.state.zoom === "set") {
@@ -2069,10 +2230,10 @@ class Component extends DCLogic {
         keepalive: true,
         // Having loaded first is what earns the right to replace: only then
         // is this copy the whole truth, un-masterings included.
-        body: JSON.stringify({ mastered: cur.mastered || {}, deck: cur.deck || null, lang: cur.uiLang || null, replace: !!this._loaded })
+        body: JSON.stringify({ mastered: cur.mastered || {}, strength: cur.strength || {}, deck: cur.deck || null, lang: cur.uiLang || null, replace: !!this._loaded })
       });
       if (!r.ok) { this.setState({ sync: "failed" }); this.flashMsg(T("save_failed")); if (r.status === 401) this.setState({ userEmail: null }); return; }
-      this._savedSig = this.saveSig(cur.mastered, cur.deck, cur.uiLang);
+      this._savedSig = this.saveSig(cur.mastered, cur.deck, cur.uiLang, cur.strength);
       this.setState({ sync: "synced" });
     } catch (e) { this.setState({ sync: "failed" }); this.flashMsg(T("save_failed")); }
   }
@@ -2095,7 +2256,7 @@ class Component extends DCLogic {
   // Between sets the grid leaves as one piece in the direction of travel
   // and the next arrives from the other side: a swipe, not a cut.
   stepSet(d) {
-    const n = wordBatchCount(this.state.deck);
+    const n = wordBatchCount();
     const b = Math.min(n - 1, Math.max(0, (this.state.wset || 0) + d));
     if (b === (this.state.wset || 0) || this._swipeT) return;
     const k = ((this.state.swipe || {}).n || 0) + 1;
@@ -2221,7 +2382,7 @@ class Component extends DCLogic {
     okSpeak([{ text: word, rate: 0.82 }, sentence ? { text: sentence, rate: 0.95 } : null]).then(() => { if (this.state.speaking === key) this.setState({ speaking: null }); });
   }
   focusStep(d) {
-    const n = wordsOf(this.state.wset, this.state.deck).length;
+    const n = wordsOf(this.state.wset).length;
     const i = Math.min(n - 1, Math.max(0, (this.state.focus || 0) + d));
     this.setState({ focus: i, focusShown: false });
   }
@@ -2242,14 +2403,16 @@ class Component extends DCLogic {
       }
       const row = (await r.json()) || {};
       const merged = okMerge(this.state.mastered, row.mastered || {});
+      const str = strMerge(this.state.strength, row.strength || {});
       const added = Object.keys(merged).length - Object.keys(this.state.mastered || {}).length;
       const deck = okDeck(row.deck) || this.state.deck;
       const lang = okLang(row.lang) || this.state.uiLang;
       this.persistMastered(merged);
+      this.persistStrength(str);
       this.rememberPrefs(deck, lang);
-      this._savedSig = this.saveSig(merged, deck, lang);
+      this._savedSig = this.saveSig(merged, deck, lang, str);
       this._loaded = true;
-      this.setState({ mastered: merged, deck: deck, uiLang: lang, sync: "synced" });
+      this.setState({ mastered: merged, strength: str, deck: deck, uiLang: lang, sync: "synced" });
       setLang(lang || "EN"); // the confirmation reads in the language just loaded
       if (!quiet || added > 0) this.flashMsg(added > 0 ? T("loaded_plus", { n: added }) : T("already_up_to_date"));
       // Local progress the account did not have yet goes up straight away.
@@ -2289,11 +2452,18 @@ class Component extends DCLogic {
   // Save lights up when the mastered set, the deck or the language moved
   // since the last save or load.
   isDirty(st) {
-    return this._savedSig != null && this.saveSig(st.mastered, st.deck, st.uiLang) !== this._savedSig;
+    return this._savedSig != null && this.saveSig(st.mastered, st.deck, st.uiLang, st.strength) !== this._savedSig;
   }
 
-  saveSig(m, deck, lang) {
-    return this.masterSig(m) + "\n" + (deck || "") + "\n" + (lang || "");
+  saveSig(m, deck, lang, str) {
+    return this.masterSig(m) + "\n" + (deck || "") + "\n" + (lang || "") + "\n" + this.strSig(str);
+  }
+
+  // Enough of each record to notice a grading: the score and the day it was
+  // given. Everything else about a record follows from those.
+  strSig(str) {
+    const o = str || {};
+    return Object.keys(o).sort().map(k => k + ":" + o[k][0] + ":" + o[k][2]).join("|");
   }
 
   masterSig(m) {
@@ -2303,6 +2473,34 @@ class Component extends DCLogic {
 
   persistMastered(m) {
     try { localStorage.setItem("openkanji.mastered", JSON.stringify(m)); } catch (e) {}
+  }
+
+  persistStrength(m) {
+    try { localStorage.setItem(OK_STR_KEY, JSON.stringify(m)); } catch (e) {}
+  }
+
+  // One graded answer. Flashcards and Write do not call this: neither knows
+  // whether a particular word was right, and a score is only worth having if
+  // everything in it was actually earned.
+  recordAnswer(key, ok, mode) {
+    if (!key) return;
+    const cur = this.state.strength || {};
+    const next = Object.assign({}, cur, { [key]: strGrade(cur[key], ok, mode) });
+    this.persistStrength(next);
+    this.setState({ strength: next });
+    this.scheduleSync();
+  }
+
+  // Deal the pool so the weak and the stale come up first, without ever
+  // shutting the rest out: each word draws random^(1/weight) and the list
+  // sorts on that, which samples by weight in one pass instead of scanning
+  // the pool once per pick.
+  weightedOrder(list, keyOf) {
+    const st = this.state.strength || {};
+    return list
+      .map((item) => ({ item, r: Math.pow(Math.random() || 1e-9, 1 / Math.max(0.05, strWeight(st[keyOf(item)]))) }))
+      .sort((a, b) => b.r - a.r)
+      .map((x) => x.item);
   }
 
   async ask() {
@@ -2740,7 +2938,7 @@ class Component extends DCLogic {
   // whole list when the game was opened without one.
   gameWords() {
     const st = this.state;
-    return st.gBatch != null ? wordsOf(st.gBatch, st.deck) : deckWords(st.deck);
+    return st.gBatch != null ? wordsOf(st.gBatch) : deckWords();
   }
 
   gameKeys() { return this.gameWords().map(e => e.w[3]); }
@@ -3023,6 +3221,7 @@ class Component extends DCLogic {
     const said = s.gTypeDraft || "";
     if (!said.trim()) return;
     const ok = (q.answers || [q.answer]).some(a => this.sameReading(said, a));
+    this.recordAnswer(q.key, ok, q.mode);
     this._gAnswer = { idx: idx, picked: ok ? 1 : 0 };
     this._gResults = Object.assign({}, this._gResults, { [idx]: ok });
     this.setState(prev => ({
@@ -3053,6 +3252,7 @@ class Component extends DCLogic {
     if (!q) return;
     if (this._gAnswer && this._gAnswer.idx === idx) return;
     const ok = q.tiles[i].ok;
+    this.recordAnswer(q.key, ok, q.mode);
     this._gAnswer = { idx: idx, picked: i };
     this._gResults = Object.assign({}, this._gResults, { [idx]: ok });
     this.setState(prev => ({
@@ -3088,7 +3288,7 @@ class Component extends DCLogic {
     if (mode === "type") {
       const pool = [];
       this.practiceWords().forEach(e => pool.push({ kk: e.k, w: e.w }));
-      this.shuffleA(pool).forEach(p => {
+      this.weightedOrder(pool, (p) => p.w[3]).forEach(p => {
         const q = this.buildTypeQ(p.kk, p.w);
         if (!q) return;
         q.word = p.w[0]; q.gloss = p.w[2]; q.key = p.w[3];
@@ -3099,7 +3299,7 @@ class Component extends DCLogic {
     } else if (wordMode) {
       const pool = [];
       this.practiceWords().forEach(e => pool.push({ kk: e.k, w: e.w }));
-      this.shuffleA(pool).forEach(p => {
+      this.weightedOrder(pool, (p) => p.w[3]).forEach(p => {
         const m = mode === "quiz" ? (rounds.length < 5 ? 1 : 2) : mode;
         const q = this.buildWordQ(m, p.kk, p.w);
         if (!q) return;
@@ -3360,10 +3560,10 @@ class Component extends DCLogic {
     const SEC_BASE = SEC_I * (SECTION / SETN);
     const SET = setOf(st.batch, st.deck);
     // The deck as vocabulary: every word once, in sets of twenty.
-    const WORDLIST = deckWords(st.deck);
+    const WORDLIST = deckWords();
     const WORDKEYS = WORDLIST.map(e => e.w[3]);
-    const WSET = Math.min(Math.max(0, st.wset || 0), wordBatchCount(st.deck) - 1);
-    const WORDS = wordsOf(WSET, st.deck);
+    const WSET = Math.min(Math.max(0, st.wset || 0), wordBatchCount() - 1);
+    const WORDS = wordsOf(WSET);
     const k = SET[st.sel] || SET[0];
     const seenN = Object.keys(st.seen).filter(c => st.seen[c]).length;
 
@@ -3650,9 +3850,9 @@ class Component extends DCLogic {
       },
       // ---- The two screens, the focus view and the account ----
       ...(() => {
-        const nSets = wordBatchCount(st.deck);
+        const nSets = wordBatchCount();
         const cells = Array.from({ length: nSets }, (_, b) => {
-          const keys = wordsOf(b, st.deck).map(e => e.w[3]);
+          const keys = wordsOf(b).map(e => e.w[3]);
           const done = keys.filter(x => st.mastered[x]).length;
           return { b, done, n: keys.length, full: keys.length > 0 && done === keys.length };
         });
@@ -3696,17 +3896,39 @@ class Component extends DCLogic {
           heroBtn: (totalDone ? T("continue") : T("start")) + " · " + setName(cont),
           continueSet: () => this.gotoSet(cont),
           setsLegend: nSets + " " + T("sets_of_twenty"),
-          setTiles: cells.map((c) => ({
-            n: c.b + 1,
-            frac: setName(c.b) + " · " + T("learned_of", { d: c.done, n: c.n }),
-            pct: pct(c) + "%",
-            fillOpacity: c.full ? 0 : 1,
-            bg: c.full ? "var(--ok-acc)" : "var(--ok-card)",
-            fg: c.full ? "#ffffff" : c.done ? "var(--ok-acc)" : "var(--ok-ink)",
-            ring: c.b === WSET ? "0 0 0 2px var(--ok-bg), 0 0 0 4px var(--ok-acc)" : "none",
-            done: c.full,
-            pick: () => this.gotoSet(c.b)
-          })),
+          // The sets, in their five tiers. A tier's medal fills as its words
+          // are learned and goes solid when every one of them is; the sets the
+          // corpus has not reached yet are dim and refuse the click.
+          tiers: Array.from({ length: TIERS }, (_, ti) => {
+            const per = TIER / WORDN;
+            const mine = cells.slice(ti * per, ti * per + per);
+            const done = mine.reduce((a, c) => a + c.done, 0);
+            const earned = done >= TIER;
+            const ready = mine.some(c => setIsReady(c.b));
+            return {
+              n: ti + 1, name: TIER_JA[ti], own: T("tier_" + (ti + 1)),
+              count: T("words_learned", { d: done, n: TIER }),
+              title: earned ? T("tier_earned", { t: T("tier_" + (ti + 1)), n: TIER }) : T("words_learned", { d: done, n: TIER }),
+              nameFg: earned ? "var(--ok-acc)" : "var(--ok-mute)",
+              headOpacity: ready ? "1" : ".45",
+              tiles: mine.map((c) => {
+                const live = setIsReady(c.b);
+                return {
+                  n: c.b + 1,
+                  frac: live ? setName(c.b) + " · " + T("learned_of", { d: c.done, n: c.n }) : setName(c.b) + " · " + T("coming_soon"),
+                  pct: pct(c) + "%",
+                  fillOpacity: c.full ? 0 : 1,
+                  bg: c.full ? "var(--ok-acc)" : "var(--ok-card)",
+                  fg: c.full ? "#ffffff" : c.done ? "var(--ok-acc)" : "var(--ok-ink)",
+                  ring: c.b === WSET && live ? "0 0 0 2px var(--ok-bg), 0 0 0 4px var(--ok-acc)" : "none",
+                  opacity: live ? "1" : ".38",
+                  cursor: live ? "pointer" : "default",
+                  done: c.full,
+                  pick: () => { if (live) this.gotoSet(c.b); }
+                };
+              })
+            };
+          }),
           goMap: () => this.setState({ zoom: "map", focus: null, focusShown: false, acctOpen: false, hoverWord: null }),
           setTitle: setName(WSET),
           setSub: (cur.full ? T("set_complete") : T("learned_of", { d: cur.done, n: cur.n })) + " · " + range(cur),
@@ -3735,6 +3957,34 @@ class Component extends DCLogic {
           // The reading line only earns its place when the furigana is off.
           focusShowReading: !st.allFuri,
           focusGloss: f ? f.w[2] : "",
+          // The dialog is where the dial on the card gets explained: the same
+          // shape, named, with the answers behind it and when they were given.
+          ...(() => {
+            const key = f ? f.w[3] : null;
+            const rec = key ? (st.strength || {})[key] : null;
+            const marked = !!(key && st.mastered[key]);
+            const lvl = strLevel(rec);
+            const n = rec ? rec[1] : 0;
+            const days = n ? Math.max(0, okDay() - rec[2]) : null;
+            // the last six answers, oldest first, so they read left to right
+            const shown = Math.min(n, STR_HIST);
+            const dots = [];
+            for (let i = shown - 1; i >= 0; i--) {
+              const right = ((rec[3] >> i) & 1) === 1;
+              dots.push({ bg: right ? "var(--ok-acc)" : "#e11d48", title: right ? T("str_right") : T("str_wrong") });
+            }
+            return {
+              focusPie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#edede8" })),
+              focusPieGrid: marked ? "transparent" : "#ffffff",
+              focusPieTick: marked,
+              focusLvlName: T("str_" + lvl) + (marked ? " · " + T("marked_learned") : ""),
+              focusStrSub: !n ? T("str_never_sub")
+                : (days === 0 ? T("str_seen_today_long") : days === 1 ? T("str_seen_yesterday") : T("str_seen_days_long", { n: days }))
+                  + " · " + T("str_answers_long", { n: n }),
+              focusDots: dots,
+              focusDotsOn: dots.length > 0
+            };
+          })(),
           focusHasEx: !!fx,
           focusExParts: fx ? okExParts(fx, f.w[0]) : OK_EMPTY,
           focusExEn: f && fx ? exTr(f.w[3], 0, "") : "",
@@ -3789,26 +4039,32 @@ class Component extends DCLogic {
           rings: (() => {
             const C = 2 * Math.PI * 25;
             const dash = (pctv) => (C * Math.max(0, Math.min(100, pctv)) / 100).toFixed(1) + " " + C.toFixed(1);
-            const rows = (this._covRows = (() => {
+            // Counted per surface form, so a word spelled one way is worth
+            // its ppm once however many entries carry it.
+            const rows = (() => {
               const seen = {};
-              const add = (id, into) => { const c = COV[id]; if (!c) return; const s = SURF[id] || id; if (seen[s]) return; seen[s] = 1; for (let i = 0; i < 3; i++) into[i] += c[i]; };
-              const now = [0, 0, 0];
-              Object.keys(st.mastered || {}).forEach(id => { if (st.mastered[id]) add(id, now); });
-              const ceil = now.slice();
-              deckWords(st.deck).forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], ceil); });
+              let now = 0, ceil = 0;
+              const add = (id, learned) => {
+                const c = COV[id]; if (!c) return;
+                const s = SURF[id] || id; if (seen[s]) return; seen[s] = 1;
+                const v = covMedia(c);
+                ceil += v; if (learned) now += v;
+              };
+              Object.keys(st.mastered || {}).forEach(id => { if (st.mastered[id]) add(id, true); });
+              deckWords().forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], false); });
               return { now, ceil };
-            })());
+            })();
             const pc = (ppm) => { const v = ppm / 1e4; return v >= 10 ? String(Math.round(v)) : v.toFixed(1).replace(/\.0$/, ""); };
             const deckP = totalN ? totalDone / totalN * 100 : 0;
             return [{
               label: TJ("deck"), labelOwn: T("deck"), big: Math.round(deckP) + "%", sub: T("words_learned", { d: totalDone, n: totalN }),
               nowDash: dash(deckP), ceilDash: dash(100),
               title: T("deck") + " — " + T("sets_learned", { d: totalDone, n: totalN })
-            }].concat(COV_LABELS.map((k, i) => ({
-              label: TJ(k), labelOwn: T(k), big: pc(rows.now[i]) + "%", sub: T("with_deck", { b: pc(rows.ceil[i]) }),
-              nowDash: dash(rows.now[i] / 1e4), ceilDash: dash(rows.ceil[i] / 1e4),
-              title: T(k) + ": " + T("now_deck", { a: pc(rows.now[i]), b: pc(rows.ceil[i]) }) + ". " + T("coverage_note")
-            })));
+            }, {
+              label: TJ("media"), labelOwn: T("media"), big: pc(rows.now) + "%", sub: T("with_deck", { b: pc(rows.ceil) }),
+              nowDash: dash(rows.now / 1e4), ceilDash: dash(rows.ceil / 1e4),
+              title: T("media") + ": " + T("now_deck", { a: pc(rows.now), b: pc(rows.ceil) }) + ". " + T("coverage_note")
+            }];
           })(),
           pVeilOut: (st.gameClosing || st.cardsClosing) ? "ok-veil-out" : "",
           pSheetOut: (st.gameClosing || st.cardsClosing) ? "ok-sheet-out" : "",
@@ -3830,30 +4086,6 @@ class Component extends DCLogic {
           focusFx: (st.focusFrom ? st.focusFrom[0] : 0) + "px",
           focusFy: (st.focusFrom ? st.focusFrom[1] : 0) + "px",
           // what the words are worth: coverage now, and with this deck done
-          covRows: (() => {
-            const seen = {};
-            const add = (id, into) => {
-              const c = COV[id]; if (!c) return;
-              const s = SURF[id] || id; if (seen[s]) return; seen[s] = 1;
-              for (let i = 0; i < 3; i++) into[i] += c[i];
-            };
-            const now = [0, 0, 0];
-            Object.keys(st.mastered || {}).forEach(id => { if (st.mastered[id]) add(id, now); });
-            const ceil = now.slice();
-            deckWords(st.deck).forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], ceil); });
-            const pc = (ppm) => { const v = ppm / 1e4; return v >= 10 ? String(Math.round(v)) : v.toFixed(1).replace(/\.0$/, ""); };
-            // The bars share one axis, sized to the largest ceiling: the rows
-            // stay comparable with each other and the fills stay legible. The
-            // numbers carry the absolute truth.
-            const axis = Math.max(10, Math.max.apply(null, ceil) / 1e4 * 1.15);
-            return COV_LABELS.map((k, i) => ({
-              label: T(k),
-              nowW: Math.min(100, now[i] / 1e4 / axis * 100) + "%",
-              ceilW: Math.min(100, ceil[i] / 1e4 / axis * 100) + "%",
-              text: T("now_deck", { a: pc(now[i]), b: pc(ceil[i]) }),
-              title: T(k) + ": " + T("now_deck", { a: pc(now[i]), b: pc(ceil[i]) })
-            }));
-          })(),
           // the practice sheet
           pOn: !!st.gameOpen || !!st.cardsOn,
           pAtMenu: !st.cardsOn && !st.gMode,
@@ -4375,11 +4607,34 @@ class Component extends DCLogic {
           leave: () => { if (this.state.hoverWord === id) this.setState({ hoverWord: null }); },
           markDone: done,
           markOpen: !done,
-          markTitle: done ? T("completed") : T("not_completed"),
+          markTitle: (() => {
+            const rec = (st.strength || {})[key];
+            const earned = T("str_" + strLevel(rec));
+            const days = rec && rec[1] ? Math.max(0, okDay() - rec[2]) : null;
+            const seen = days == null ? "" : " · " + (days === 0 ? T("str_seen_today") : T("str_seen_days", { n: days }));
+            return done ? T("marked_learned") + " · " + earned + seen + " · " + T("click_to_undo")
+                        : earned + seen + " · " + T("click_to_mark");
+          })(),
           pillStyle: okPill(done),
           pillLabel: done ? T("learned") : T("got_it"),
           master: (ev) => { ev.stopPropagation(); this.toggleMasteredWord(key); },
-          tickStyle: done ? "background:var(--ok-acc);border-color:var(--ok-acc);color:#ffffff" : "",
+          tickStyle: "",
+          // Quarters, filling clockwise from the top. Pressing the control
+          // shows all four and a tick; the earned level underneath is left
+          // alone, so pressing again drops back to it rather than to nothing.
+          ...(() => {
+            const lvl = strLevel((st.strength || {})[key]);
+            return {
+              // Four arcs at the rim, gapped so they read as four. The unlit
+              // ones stay a visible grey: an empty control still has to say
+              // how many steps it has.
+              pie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#edede8" })),
+              // the dividers read over both the pale quarters and the lit ones,
+              // but step out of the way of the tick rather than crossing it
+              pieGrid: done ? "transparent" : "#ffffff",
+              pieTick: !!done
+            };
+          })(),
           play: (ev) => { if (ev && ev.stopPropagation) ev.stopPropagation(); this.speakWord(key, w[0], x || ""); },
           playStyle: st.speaking === key ? "color:var(--ok-acc);background:var(--ok-acc-s);animation:ok-speak 1.1s ease-in-out infinite" : "",
           open: (ev) => {

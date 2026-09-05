@@ -11,11 +11,11 @@ the auth is reusable by the next app on the same account.
 
 | Decision | Choice |
 |---|---|
-| What syncs | `mastered`, plus the last `deck` and `lang` — not `seen`, not `gamewins` |
+| What syncs | `mastered` and `strength`, plus the last `deck` and `lang` — not `seen` |
 | Timestamps | None per word. Booleans only; `updated_at` on the row is informational |
 | Sync trigger | Explicit **Save** / **Load**, plus one automatic Load on return from a sign-in link |
-| Load semantics | `mastered`: **merge** (union). `deck`/`lang`: server wins |
-| Save semantics | `mastered`: union, **server-side too**. `deck`/`lang`: last writer wins |
+| Load semantics | `mastered`: **merge** (union). `strength`: **per word, later grading wins**. `deck`/`lang`: server wins |
+| Save semantics | `mastered`: union, **server-side too**. `strength`: per-word merge, server-side too. `deck`/`lang`: last writer wins |
 | Auth | Magic link by email. No password, no third-party identity |
 | Session | HttpOnly cookie, HMAC-signed, 180 days |
 | Progress files | None. Signed out, progress stays in `localStorage` |
@@ -46,8 +46,8 @@ but costs a CORS preflight on every call and a `SameSite=None` cookie.
 | `POST /api/login` | `{email, lang}` → sends a sign-in link. Uniform reply: never reveals whether an address has an account |
 | `GET /api/callback?token=` | verifies, sets the cookie, redirects to `/#signed-in` (or `/#sign-in-failed`) |
 | `GET /api/me` | `{email}` — **`{email: null}` with a 200 when signed out**, because the app asks on every page load and an error there is console noise |
-| `GET /api/progress` | `{mastered, deck, lang}` |
-| `PUT /api/progress` | `{mastered, deck, lang}` — unions `mastered` into the stored set |
+| `GET /api/progress` | `{mastered, strength, deck, lang}` |
+| `PUT /api/progress` | `{mastered, strength, deck, lang}` — unions `mastered`, merges `strength` per word |
 | `POST /api/logout` | clears the cookie |
 | `DELETE /api/account` | erases the account, its progress and its sign-in rows |
 
@@ -62,6 +62,7 @@ create table users (
 create table progress (
   user_id integer primary key references users(id) on delete cascade,
   mastered text not null default '{}',   -- JSON { "w0226": true }
+  strength text not null default '{}',   -- JSON { "w0226": [str, n, day, hist] }
   deck text, lang text,
   updated_at integer not null
 );
@@ -71,6 +72,42 @@ create table login_tokens (
   created_at integer not null, expires_at integer not null, used_at integer
 );
 ```
+
+## How well a word is known
+
+`mastered` is the tick: what the learner says about a word. `strength` is what
+practice found out, and the two are deliberately separate — a score that
+overrules the tick is a system arguing with its user.
+
+Each record is four numbers, so two thousand of them still fit in one save:
+
+    "w0226": [str, n, day, hist]
+              │    │  │    └─ last six results as bits, bit 0 newest, 1 = right
+              │    │  └─ the day it was last graded (days since the epoch)
+              │    └─ graded answers, capped at 255
+              └─ strength 0-100, as of `day`
+
+Only the modes that know whether a particular word was right feed it: the
+tile quiz and typing. Flashcards and Write do not, because neither produces a
+per-word verdict, and a score is only worth having if all of it was earned.
+Typing counts double a tile answer, where a blind guess is right one time in
+four.
+
+Forgetting is applied when the number is read, never written, so nothing has
+to run in the background: strength decays by a half-life that lengthens both
+with the score and with the number of times the word has come round. That is
+what makes it a spaced-repetition system rather than a decaying score — and
+the same weight decides what practice deals next, so weak and stale words
+come up first while a word never asked about keeps a full share.
+
+`strength` merges **per word, later grading wins**, ties going to whichever
+has seen more answers. This is why it needs no `replace` flag the way
+`mastered` does: a word can genuinely get worse, and a union would lose that.
+
+The column arrived after the table did, so the Worker adds it at runtime on a
+database that predates it (`ensureStrength`), once per binding — the same
+trick the AI meter's table uses, and for the same reason: no migration to run
+before a deploy.
 
 `mastered` is keyed by **stable word id**, so correcting a reading or a gloss
 never invalidates anyone's progress. The full schema, with indexes, is

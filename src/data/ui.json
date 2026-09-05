@@ -591,6 +591,114 @@
     "en": "Pick the word for the meaning",
     "es": "Elige la palabra para el significado"
   },
+  "marked_learned": {
+    "en": "Marked learned",
+    "es": "Marcada como aprendida"
+  },
+  "click_to_mark": {
+    "en": "click to mark learned",
+    "es": "pulsa para marcarla aprendida"
+  },
+  "click_to_undo": {
+    "en": "click to undo",
+    "es": "pulsa para deshacer"
+  },
+  "str_seen_today_long": {
+    "en": "Practised today",
+    "es": "Practicada hoy"
+  },
+  "str_seen_days_long": {
+    "en": "Practised {n} days ago",
+    "es": "Practicada hace {n} días"
+  },
+  "str_seen_yesterday": {
+    "en": "Practised yesterday",
+    "es": "Practicada ayer"
+  },
+  "str_answers_long": {
+    "en": "{n} answers so far",
+    "es": "{n} respuestas hasta ahora"
+  },
+  "str_never_sub": {
+    "en": "It will come up in Practice",
+    "es": "Aparecerá al practicar"
+  },
+  "str_answers": {
+    "en": "{n} answered",
+    "es": "{n} respuestas"
+  },
+  "str_right": {
+    "en": "right",
+    "es": "acierto"
+  },
+  "str_wrong": {
+    "en": "wrong",
+    "es": "fallo"
+  },
+  "str_recent": {
+    "en": "Most recent answers, oldest first",
+    "es": "Respuestas recientes, de la más antigua a la más nueva"
+  },
+  "str_0": {
+    "en": "Not practised yet",
+    "es": "Sin practicar"
+  },
+  "str_1": {
+    "en": "Shaky",
+    "es": "Flojo"
+  },
+  "str_2": {
+    "en": "Getting there",
+    "es": "Va bien"
+  },
+  "str_3": {
+    "en": "Solid",
+    "es": "Firme"
+  },
+  "str_4": {
+    "en": "Known",
+    "es": "Dominado"
+  },
+  "str_seen_today": {
+    "en": "practised today",
+    "es": "practicado hoy"
+  },
+  "str_seen_days": {
+    "en": "practised {n}d ago",
+    "es": "practicado hace {n}d"
+  },
+  "media": {
+    "en": "Media",
+    "es": "Medios"
+  },
+  "tier_1": {
+    "en": "Beginner",
+    "es": "Principiante"
+  },
+  "tier_2": {
+    "en": "Elementary",
+    "es": "Elemental"
+  },
+  "tier_3": {
+    "en": "Intermediate",
+    "es": "Intermedio"
+  },
+  "tier_4": {
+    "en": "Upper intermediate",
+    "es": "Intermedio alto"
+  },
+  "tier_5": {
+    "en": "Advanced",
+    "es": "Avanzado"
+  },
+  "tier_earned": {
+    "en": "{t} earned — {n} words",
+    "es": "{t} conseguido — {n} palabras"
+  },
+  "the_ladder": {
+    "en": "2,000 words",
+    "es": "2000 palabras"
+  },
   "typing": {
     "en": "Typing",
     "es": "Escritura"
@@ -680,8 +788,8 @@
     "es": "Parte de las palabras cotidianas que reconocerías, gramática aparte"
   },
   "now_deck": {
-    "en": "{a}% now · {b}% with this deck",
-    "es": "{a}% ahora · {b}% con este mazo"
+    "en": "{a}% now · {b}% at 2,000 words",
+    "es": "{a}% ahora · {b}% con 2000 palabras"
   },
   "which_word": {
     "en": "Which word means…",
@@ -692,16 +800,16 @@
     "es": "Escribir"
   },
   "with_deck": {
-    "en": "{b}% with this deck",
-    "es": "{b}% con este mazo"
+    "en": "{b}% at 2,000 words",
+    "es": "{b}% con 2000 palabras"
   },
   "words_learned": {
     "en": "{d} of {n} words",
     "es": "{d} de {n} palabras"
   },
   "deck": {
-    "en": "This deck",
-    "es": "Este mazo"
+    "en": "Learned",
+    "es": "Aprendidas"
   },
   "listen": {
     "en": "Listen",

@@ -176,6 +176,54 @@ function cleanMastered(v) {
   return out;
 }
 
+// [str, n, day, hist] per word: strength 0-100, graded answers, the day it was
+// last graded, and the last six results as bits. Anything else is dropped
+// rather than rejected -- one malformed record should not cost a learner the
+// save of everything else in the body.
+function cleanStrength(v) {
+  if (v === undefined || v === null) return null;
+  if (typeof v !== "object" || Array.isArray(v)) return null;
+  const keys = Object.keys(v);
+  if (keys.length > MAX_WORDS) return null;
+  const int = (x, lo, hi) => typeof x === "number" && isFinite(x) && x >= lo && x <= hi;
+  const out = {};
+  for (const k of keys) {
+    if (!/^w\d{1,7}$/.test(k)) continue;
+    const r = v[k];
+    if (!Array.isArray(r) || r.length !== 4) continue;
+    if (!int(r[0], 0, 100) || !int(r[1], 0, 255) || !int(r[2], 0, 1e6) || !int(r[3], 0, 63)) continue;
+    out[k] = [Math.round(r[0]), Math.round(r[1]), Math.round(r[2]), Math.round(r[3])];
+  }
+  return out;
+}
+
+// Per word, the later grading is the true one -- ties going to whichever has
+// seen more answers. This is why strength needs no `replace` flag the way
+// mastered does: a word can genuinely get worse, and a union would lose that.
+function mergeStrength(mine, theirs) {
+  const out = Object.assign({}, mine || {});
+  const o = theirs || {};
+  for (const k of Object.keys(o)) {
+    const a = out[k], b = o[k];
+    if (!a || b[2] > a[2] || (b[2] === a[2] && b[1] > a[1])) out[k] = b;
+  }
+  return out;
+}
+
+// The column arrived after the table did, so a database made before it exists
+// gets it here, once per binding. Same shape as the AI meter's table: no
+// migration to run before a deploy.
+const strengthReady = new WeakSet();
+async function ensureStrength(db) {
+  if (strengthReady.has(db)) return;
+  try {
+    await db.prepare("alter table progress add column strength text not null default '{}'").run();
+  } catch (e) {
+    // already there, which is the normal case
+  }
+  strengthReady.add(db);
+}
+
 const cleanLabel = (v, max) => (typeof v === "string" && v.length && v.length <= max ? v : null);
 
 async function readJson(request) {
@@ -356,12 +404,16 @@ async function handleCallback(request, env, url) {
 }
 
 async function handleGetProgress(env, userId) {
-  const row = await env.DB.prepare("select mastered, deck, lang from progress where user_id = ?").bind(userId).first();
-  let mastered = {};
+  await ensureStrength(env.DB);
+  const row = await env.DB.prepare("select mastered, strength, deck, lang from progress where user_id = ?").bind(userId).first();
+  let mastered = {}, strength = {};
   try {
     mastered = row ? JSON.parse(row.mastered) : {};
   } catch (e) {}
-  return json({ mastered, deck: (row && row.deck) || null, lang: (row && row.lang) || null });
+  try {
+    strength = row && row.strength ? JSON.parse(row.strength) : {};
+  } catch (e) {}
+  return json({ mastered, strength, deck: (row && row.deck) || null, lang: (row && row.lang) || null });
 }
 
 async function handlePutProgress(request, env, userId) {
@@ -369,24 +421,35 @@ async function handlePutProgress(request, env, userId) {
   if (!body) return json({ error: "bad_body" }, 400);
   const incoming = cleanMastered(body.mastered);
   if (!incoming) return json({ error: "bad_mastered" }, 400);
+  const incomingStr = cleanStrength(body.strength);
+  if (body.strength !== undefined && incomingStr === null) return json({ error: "bad_strength" }, 400);
+  await ensureStrength(env.DB);
 
   // Union by default: a device that saves without having loaded first can
   // only ever add progress, never erase another device's. A device that has
   // loaded says so (`replace: true`) and its copy is then the whole truth,
   // which is what lets un-mastering a word stick instead of coming back on
   // the next load.
-  const row = await env.DB.prepare("select mastered from progress where user_id = ?").bind(userId).first();
+  const row = await env.DB.prepare("select mastered, strength from progress where user_id = ?").bind(userId).first();
   let merged = incoming;
   if (row && body.replace !== true) {
     try {
       merged = Object.assign({}, JSON.parse(row.mastered), incoming);
     } catch (e) {}
   }
+  // Strength always merges per word, whether or not this device loaded first:
+  // recency decides, so there is nothing for `replace` to rescue.
+  let mergedStr = incomingStr || {};
+  if (row && row.strength) {
+    try {
+      mergedStr = mergeStrength(JSON.parse(row.strength), incomingStr || {});
+    } catch (e) {}
+  }
 
   await env.DB.prepare(
-    "insert into progress (user_id, mastered, deck, lang, updated_at) values (?1, ?2, ?3, ?4, ?5)" +
-    " on conflict(user_id) do update set mastered = ?2, deck = ?3, lang = ?4, updated_at = ?5"
-  ).bind(userId, JSON.stringify(merged), cleanLabel(body.deck, 40), cleanLabel(body.lang, 8), now()).run();
+    "insert into progress (user_id, mastered, strength, deck, lang, updated_at) values (?1, ?2, ?3, ?4, ?5, ?6)" +
+    " on conflict(user_id) do update set mastered = ?2, strength = ?3, deck = ?4, lang = ?5, updated_at = ?6"
+  ).bind(userId, JSON.stringify(merged), JSON.stringify(mergedStr), cleanLabel(body.deck, 40), cleanLabel(body.lang, 8), now()).run();
 
   return json({ ok: true, count: Object.keys(merged).length });
 }
