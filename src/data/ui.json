@@ -591,6 +591,34 @@
     "en": "Pick the word for the meaning",
     "es": "Elige la palabra para el significado"
   },
+  "str_0": {
+    "en": "Not practised yet",
+    "es": "Sin practicar"
+  },
+  "str_1": {
+    "en": "Shaky",
+    "es": "Flojo"
+  },
+  "str_2": {
+    "en": "Getting there",
+    "es": "Va bien"
+  },
+  "str_3": {
+    "en": "Solid",
+    "es": "Firme"
+  },
+  "str_4": {
+    "en": "Known",
+    "es": "Dominado"
+  },
+  "str_seen_today": {
+    "en": "practised today",
+    "es": "practicado hoy"
+  },
+  "str_seen_days": {
+    "en": "practised {n}d ago",
+    "es": "practicado hace {n}d"
+  },
   "media": {
     "en": "Media",
     "es": "Medios"

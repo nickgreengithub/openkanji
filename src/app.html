@@ -543,6 +543,10 @@ a:hover{color:var(--text-accent-hover)}
 .ok-cards{grid-template-columns:repeat(auto-fill,minmax(31rem,1fr))}
 .ok-card{flex-direction:row;align-items:stretch;gap:1.1rem;padding:1rem 1.1rem}
 .ok-card-l{flex:0 0 11.5rem;min-width:0;display:flex;flex-direction:column;gap:.4rem}
+/* How well the word is known, as practice has found it -- four steps, so it
+   reads at a glance without asking anyone to interpret a number. */
+.ok-str{display:flex;gap:3px;margin-top:.1rem}
+.ok-str-seg{width:1rem;height:4px;border-radius:2px;transition:background 220ms ease}
 .ok-card-r{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding-left:1.1rem;border-left:1px solid var(--ok-line)}
 .ok-card-ex{margin-top:0;padding-top:0;border-top:0;font-size:1.125rem;line-height:1.55}
 .ok-card-tr{font-size:1rem}
@@ -908,6 +912,7 @@ html[data-ok-ready] #ok-boot{display:none}
               <div class="ok-card-l">
               <span class="ok-card-word" style="font-size:{{ lr.wordSize }};color:{{ lr.wordFg }}"><sc-for list="{{ lr.ruby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ lr.rubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
               <span class="ok-card-gloss" style="opacity:{{ lr.ansOpacity }}">{{ lr.gloss }}</span>
+              <span class="ok-str" title="{{ lr.strTitle }}"><sc-for list="{{ lr.strBars }}" as="sb" hint-placeholder-count="4"><span class="ok-str-seg" style="background:{{ sb.bg }}"></span></sc-for></span>
               </div>
               <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span>
               <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
@@ -1690,6 +1695,81 @@ const okSpeak = (parts) => new Promise((resolve) => {
 });
 const okAiReady = () => (typeof window !== "undefined" && !!(window.claude && window.claude.complete)) || okSyncReady();
 // mastered is a { "word|reading": true } map. Union merge: local OR server wins.
+// ---- How well a word is known -----------------------------------------
+// The tick is what the learner says about a word; this is what practice has
+// found out. They are kept apart on purpose: the tick is intent ("I have
+// studied this"), and overruling it with a score is what makes these systems
+// feel like they are arguing with you.
+//
+// Four numbers per word, so two thousand of them still fit in one sync body:
+//   [str, n, day, hist]
+//   str   0-100, strength as of `day`
+//   n     graded answers, capped at 255
+//   day   the day it was last graded, in days since the epoch
+//   hist  the last six results as bits, bit 0 newest, 1 = right
+const OK_STR_KEY = "openkanji.strength";
+const STR_HIST = 6;
+// Producing a reading from nothing is much stronger evidence than picking one
+// tile of four, where a blind guess is right a quarter of the time.
+const STR_MODE_W = { 1: 1, 2: 1.2, type: 2 };
+const STR_GAIN = 0.22;
+const STR_LOSS = 0.45;
+const okDay = () => Math.floor(Date.now() / 86400000);
+// A mode worth W counts as the same answer given W times, which saturates
+// instead of running past certainty: at W=2 a miss costs 70% of what is
+// there, not 90%, and never all of it.
+const strRate = (rate, w) => 1 - Math.pow(1 - rate, w);
+// Forgetting. Two things lengthen the half-life: how well the word is known,
+// and how many times it has been round -- the second is the one that makes
+// this an SRS rather than a decaying score. A word answered right five times
+// holds for a month; one seen twice and half-remembered fades inside the
+// week. Applied when read rather than written, so nothing has to run in the
+// background to keep the numbers honest.
+const strHalflife = (rec) => 3 * (1 + rec[0] / 25) * (1 + Math.min(rec[1] || 0, 10) * 0.2);
+const strShown = (rec) => {
+  if (!rec || !rec[1]) return 0;
+  const days = Math.max(0, okDay() - rec[2]);
+  return rec[0] * Math.pow(0.5, days / strHalflife(rec));
+};
+// New · Shaky · Getting there · Solid · Known
+const strLevel = (rec) => {
+  if (!rec || !rec[1]) return 0;
+  const v = strShown(rec);
+  return v < 40 ? 1 : v < 70 ? 2 : v < 90 ? 3 : 4;
+};
+const strGrade = (rec, ok, mode) => {
+  const w = STR_MODE_W[mode] || 1;
+  const cur = strShown(rec); // what it is worth now, then the answer moves it
+  const next = ok ? cur + (100 - cur) * strRate(STR_GAIN, w) : cur - cur * strRate(STR_LOSS, w);
+  return [
+    Math.max(0, Math.min(100, Math.round(next))),
+    Math.min(255, (rec ? rec[1] : 0) + 1),
+    okDay(),
+    ((((rec ? rec[3] : 0) << 1) | (ok ? 1 : 0)) & ((1 << STR_HIST) - 1))
+  ];
+};
+// What practice deals next: weak words come up more, and so do ones that have
+// been left long enough to have faded. A word never asked about is worth a
+// full share, so new material still arrives.
+const strWeight = (rec) => {
+  if (!rec || !rec[1]) return 1;
+  const due = 1 + Math.max(0, okDay() - rec[2]) / strHalflife(rec);
+  return Math.max(0.05, Math.min(1, (100 - strShown(rec)) / 100)) * due;
+};
+// Two devices, one word: the later grading is the true one. Union is wrong
+// here -- it is what forces `replace` on the mastered set -- because a word
+// can genuinely get worse, and that has to survive the merge.
+const strMerge = (a, b) => {
+  const out = Object.assign({}, a || {});
+  const o = b || {};
+  for (const k of Object.keys(o)) {
+    const mine = out[k], theirs = o[k];
+    if (!Array.isArray(theirs) || theirs.length !== 4) continue;
+    if (!mine || theirs[2] > mine[2] || (theirs[2] === mine[2] && theirs[1] > mine[1])) out[k] = theirs;
+  }
+  return out;
+};
+
 const okMerge = (a, b) => {
   const out = Object.assign({}, a || {});
   const o = b || {};
@@ -1700,7 +1780,7 @@ const okMerge = (a, b) => {
 class Component extends DCLogic {
   state = {
     screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
-    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, zoom: "map", focus: null, focusShown: false, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
+    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, zoom: "map", focus: null, focusShown: false, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
   get furiDefault() { return this.props.startFurigana ?? true; }
@@ -1715,6 +1795,17 @@ class Component extends DCLogic {
     };
     const s = this.migrateKeys(read("openkanji.seen"));
     const m = this.migrateKeys(read("openkanji.mastered"));
+    // Only well-formed records survive the read: a corrupted one would
+    // otherwise sit there scoring a word forever.
+    const str = (() => {
+      const raw = read(OK_STR_KEY) || {};
+      const out = {};
+      for (const k of Object.keys(raw)) {
+        const v = raw[k];
+        if (Array.isArray(v) && v.length === 4 && v.every(x => typeof x === "number" && isFinite(x))) out[k] = v;
+      }
+      return out;
+    })();
     // Write the upgraded keys straight back so the migration happens once.
     if (s) this.persist(s);
     if (m) this.persistMastered(m);
@@ -1725,10 +1816,10 @@ class Component extends DCLogic {
     // alternative overwrites unreadable-but-present progress with {}.
     const deck0 = okDeck(lsGet(OK_DECK_KEY));
     const lang0 = okLang(lsGet(OK_LANG_KEY));
-    this._savedSig = m ? this.saveSig(m, deck0, lang0) : null;
+    this._savedSig = m ? this.saveSig(m, deck0, lang0, str) : null;
     const wset0 = Math.max(0, parseInt(lsGet(OK_SET_KEY) || "0", 10) || 0);
     const furi0 = lsGet(OK_FURI_KEY);
-    this.setState({ seen: s || {}, mastered: m || {}, deck: deck0, uiLang: lang0 || undefined, allFuri: furi0 == null ? this.furiDefault : furi0 === "1", wset: wset0 });
+    this.setState({ seen: s || {}, mastered: m || {}, strength: str, deck: deck0, uiLang: lang0 || undefined, allFuri: furi0 == null ? this.furiDefault : furi0 === "1", wset: wset0 });
     // A sync still in its debounce window when the tab goes must not be lost.
     this._onHide = () => { if (this._syncT) { clearTimeout(this._syncT); this._syncT = null; this.pushProgress(this.state); } };
     window.addEventListener("pagehide", this._onHide);
@@ -2096,10 +2187,10 @@ class Component extends DCLogic {
         keepalive: true,
         // Having loaded first is what earns the right to replace: only then
         // is this copy the whole truth, un-masterings included.
-        body: JSON.stringify({ mastered: cur.mastered || {}, deck: cur.deck || null, lang: cur.uiLang || null, replace: !!this._loaded })
+        body: JSON.stringify({ mastered: cur.mastered || {}, strength: cur.strength || {}, deck: cur.deck || null, lang: cur.uiLang || null, replace: !!this._loaded })
       });
       if (!r.ok) { this.setState({ sync: "failed" }); this.flashMsg(T("save_failed")); if (r.status === 401) this.setState({ userEmail: null }); return; }
-      this._savedSig = this.saveSig(cur.mastered, cur.deck, cur.uiLang);
+      this._savedSig = this.saveSig(cur.mastered, cur.deck, cur.uiLang, cur.strength);
       this.setState({ sync: "synced" });
     } catch (e) { this.setState({ sync: "failed" }); this.flashMsg(T("save_failed")); }
   }
@@ -2269,14 +2360,16 @@ class Component extends DCLogic {
       }
       const row = (await r.json()) || {};
       const merged = okMerge(this.state.mastered, row.mastered || {});
+      const str = strMerge(this.state.strength, row.strength || {});
       const added = Object.keys(merged).length - Object.keys(this.state.mastered || {}).length;
       const deck = okDeck(row.deck) || this.state.deck;
       const lang = okLang(row.lang) || this.state.uiLang;
       this.persistMastered(merged);
+      this.persistStrength(str);
       this.rememberPrefs(deck, lang);
-      this._savedSig = this.saveSig(merged, deck, lang);
+      this._savedSig = this.saveSig(merged, deck, lang, str);
       this._loaded = true;
-      this.setState({ mastered: merged, deck: deck, uiLang: lang, sync: "synced" });
+      this.setState({ mastered: merged, strength: str, deck: deck, uiLang: lang, sync: "synced" });
       setLang(lang || "EN"); // the confirmation reads in the language just loaded
       if (!quiet || added > 0) this.flashMsg(added > 0 ? T("loaded_plus", { n: added }) : T("already_up_to_date"));
       // Local progress the account did not have yet goes up straight away.
@@ -2316,11 +2409,18 @@ class Component extends DCLogic {
   // Save lights up when the mastered set, the deck or the language moved
   // since the last save or load.
   isDirty(st) {
-    return this._savedSig != null && this.saveSig(st.mastered, st.deck, st.uiLang) !== this._savedSig;
+    return this._savedSig != null && this.saveSig(st.mastered, st.deck, st.uiLang, st.strength) !== this._savedSig;
   }
 
-  saveSig(m, deck, lang) {
-    return this.masterSig(m) + "\n" + (deck || "") + "\n" + (lang || "");
+  saveSig(m, deck, lang, str) {
+    return this.masterSig(m) + "\n" + (deck || "") + "\n" + (lang || "") + "\n" + this.strSig(str);
+  }
+
+  // Enough of each record to notice a grading: the score and the day it was
+  // given. Everything else about a record follows from those.
+  strSig(str) {
+    const o = str || {};
+    return Object.keys(o).sort().map(k => k + ":" + o[k][0] + ":" + o[k][2]).join("|");
   }
 
   masterSig(m) {
@@ -2330,6 +2430,34 @@ class Component extends DCLogic {
 
   persistMastered(m) {
     try { localStorage.setItem("openkanji.mastered", JSON.stringify(m)); } catch (e) {}
+  }
+
+  persistStrength(m) {
+    try { localStorage.setItem(OK_STR_KEY, JSON.stringify(m)); } catch (e) {}
+  }
+
+  // One graded answer. Flashcards and Write do not call this: neither knows
+  // whether a particular word was right, and a score is only worth having if
+  // everything in it was actually earned.
+  recordAnswer(key, ok, mode) {
+    if (!key) return;
+    const cur = this.state.strength || {};
+    const next = Object.assign({}, cur, { [key]: strGrade(cur[key], ok, mode) });
+    this.persistStrength(next);
+    this.setState({ strength: next });
+    this.scheduleSync();
+  }
+
+  // Deal the pool so the weak and the stale come up first, without ever
+  // shutting the rest out: each word draws random^(1/weight) and the list
+  // sorts on that, which samples by weight in one pass instead of scanning
+  // the pool once per pick.
+  weightedOrder(list, keyOf) {
+    const st = this.state.strength || {};
+    return list
+      .map((item) => ({ item, r: Math.pow(Math.random() || 1e-9, 1 / Math.max(0.05, strWeight(st[keyOf(item)]))) }))
+      .sort((a, b) => b.r - a.r)
+      .map((x) => x.item);
   }
 
   async ask() {
@@ -3050,6 +3178,7 @@ class Component extends DCLogic {
     const said = s.gTypeDraft || "";
     if (!said.trim()) return;
     const ok = (q.answers || [q.answer]).some(a => this.sameReading(said, a));
+    this.recordAnswer(q.key, ok, q.mode);
     this._gAnswer = { idx: idx, picked: ok ? 1 : 0 };
     this._gResults = Object.assign({}, this._gResults, { [idx]: ok });
     this.setState(prev => ({
@@ -3080,6 +3209,7 @@ class Component extends DCLogic {
     if (!q) return;
     if (this._gAnswer && this._gAnswer.idx === idx) return;
     const ok = q.tiles[i].ok;
+    this.recordAnswer(q.key, ok, q.mode);
     this._gAnswer = { idx: idx, picked: i };
     this._gResults = Object.assign({}, this._gResults, { [idx]: ok });
     this.setState(prev => ({
@@ -3115,7 +3245,7 @@ class Component extends DCLogic {
     if (mode === "type") {
       const pool = [];
       this.practiceWords().forEach(e => pool.push({ kk: e.k, w: e.w }));
-      this.shuffleA(pool).forEach(p => {
+      this.weightedOrder(pool, (p) => p.w[3]).forEach(p => {
         const q = this.buildTypeQ(p.kk, p.w);
         if (!q) return;
         q.word = p.w[0]; q.gloss = p.w[2]; q.key = p.w[3];
@@ -3126,7 +3256,7 @@ class Component extends DCLogic {
     } else if (wordMode) {
       const pool = [];
       this.practiceWords().forEach(e => pool.push({ kk: e.k, w: e.w }));
-      this.shuffleA(pool).forEach(p => {
+      this.weightedOrder(pool, (p) => p.w[3]).forEach(p => {
         const m = mode === "quiz" ? (rounds.length < 5 ? 1 : 2) : mode;
         const q = this.buildWordQ(m, p.kk, p.w);
         if (!q) return;
@@ -4399,6 +4529,15 @@ class Component extends DCLogic {
           rubyOpacity: hidden || !st.allFuri ? 0 : 1,
           gloss: w[2],
           ansOpacity: hidden ? 0 : 1,
+          ...(() => {
+            const rec = (st.strength || {})[w[3]];
+            const lvl = strLevel(rec);
+            const days = rec && rec[1] ? Math.max(0, okDay() - rec[2]) : null;
+            return {
+              strBars: [1, 2, 3, 4].map(i => ({ bg: i <= lvl ? (lvl === 1 ? "#e11d48" : "var(--ok-acc)") : "#e6e6e1" })),
+              strTitle: T("str_" + lvl) + (days == null ? "" : " · " + (days === 0 ? T("str_seen_today") : T("str_seen_days", { n: days })))
+            };
+          })(),
           hasEx: !!x,
           exParts: okExParts(x, w[0]),
           exEn: x ? exTr(key, 0, "") : "",

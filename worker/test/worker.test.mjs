@@ -283,13 +283,89 @@ await test("progress starts empty and round-trips", async () => {
   const env = makeEnv();
   const cookie = await signedIn(env);
   let r = await call(env, "GET", "/api/progress", { cookie });
-  assert.deepEqual(await r.json(), { mastered: {}, deck: null, lang: null });
+  assert.deepEqual(await r.json(), { mastered: {}, strength: {}, deck: null, lang: null });
 
   r = await call(env, "PUT", "/api/progress", { cookie, body: { mastered: { w0001: true, w0226: true }, deck: "JLPT N3", lang: "ES" } });
   assert.equal(r.status, 200);
 
   r = await call(env, "GET", "/api/progress", { cookie });
-  assert.deepEqual(await r.json(), { mastered: { w0001: true, w0226: true }, deck: "JLPT N3", lang: "ES" });
+  assert.deepEqual(await r.json(), { mastered: { w0001: true, w0226: true }, strength: {}, deck: "JLPT N3", lang: "ES" });
+});
+
+// --- strength: how well practice has found each word to be known ---
+
+await test("strength round-trips per word", async () => {
+  const env = makeEnv();
+  const cookie = await signedIn(env);
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: {}, strength: { w0001: [86, 4, 20700, 15] } } });
+  const r = await call(env, "GET", "/api/progress", { cookie });
+  assert.deepEqual((await r.json()).strength, { w0001: [86, 4, 20700, 15] });
+});
+
+await test("the later grading wins, even when the word got worse", async () => {
+  const env = makeEnv();
+  const cookie = await signedIn(env);
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: {}, strength: { w0001: [90, 5, 20700, 31] } } });
+  // a second device, a day later, having missed it
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: {}, strength: { w0001: [27, 6, 20701, 62] } } });
+  let r = await call(env, "GET", "/api/progress", { cookie });
+  assert.deepEqual((await r.json()).strength, { w0001: [27, 6, 20701, 62] }, "a drop must survive the merge");
+  // and a stale device saving the old record does not undo it
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: {}, strength: { w0001: [90, 5, 20700, 31] } } });
+  r = await call(env, "GET", "/api/progress", { cookie });
+  assert.deepEqual((await r.json()).strength, { w0001: [27, 6, 20701, 62] }, "older gradings lose");
+});
+
+await test("strength from two devices joins rather than replaces", async () => {
+  const env = makeEnv();
+  const cookie = await signedIn(env);
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: {}, strength: { w0001: [50, 2, 20700, 3] } } });
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: {}, strength: { w0002: [70, 3, 20700, 7] }, replace: true } });
+  const got = (await (await call(env, "GET", "/api/progress", { cookie })).json()).strength;
+  assert.deepEqual(got, { w0001: [50, 2, 20700, 3], w0002: [70, 3, 20700, 7] }, "replace is for mastered, not for this");
+});
+
+await test("a malformed record is dropped, not the whole save", async () => {
+  const env = makeEnv();
+  const cookie = await signedIn(env);
+  const r = await call(env, "PUT", "/api/progress", { cookie, body: { mastered: {}, strength: {
+    w0001: [50, 2, 20700, 3],
+    w0002: [500, 2, 20700, 3],        // out of range
+    w0003: [50, 2, 20700],            // wrong shape
+    "drop table": [50, 2, 20700, 3],  // not a word id
+    w0004: "nonsense"
+  } } });
+  assert.equal(r.status, 200);
+  assert.deepEqual((await (await call(env, "GET", "/api/progress", { cookie })).json()).strength, { w0001: [50, 2, 20700, 3] });
+});
+
+await test("a database made before the strength column gets it on first use", async () => {
+  // The production path: the table exists from an earlier deploy, without the
+  // column. Nothing runs a migration, so the Worker has to add it itself.
+  const env = makeEnv();
+  env._db.exec("drop table progress");
+  env._db.exec("create table progress (user_id integer primary key references users(id) on delete cascade, mastered text not null default '{}', deck text, lang text, updated_at integer not null)");
+  const cols0 = env._db.prepare("select name from pragma_table_info('progress')").all().map(r => r.name);
+  assert.ok(!cols0.includes("strength"), "starts without the column");
+
+  const cookie = await signedIn(env);
+  const r = await call(env, "PUT", "/api/progress", { cookie, body: { mastered: { w0001: true }, strength: { w0001: [50, 2, 20700, 3] } } });
+  assert.equal(r.status, 200);
+  const cols1 = env._db.prepare("select name from pragma_table_info('progress')").all().map(r => r.name);
+  assert.ok(cols1.includes("strength"), "and has it afterwards");
+  const got = await (await call(env, "GET", "/api/progress", { cookie })).json();
+  assert.deepEqual(got.mastered, { w0001: true });
+  assert.deepEqual(got.strength, { w0001: [50, 2, 20700, 3] });
+});
+
+await test("strength is optional: an old client saves without it", async () => {
+  const env = makeEnv();
+  const cookie = await signedIn(env);
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: {}, strength: { w0001: [50, 2, 20700, 3] } } });
+  const r = await call(env, "PUT", "/api/progress", { cookie, body: { mastered: { w0009: true } } });
+  assert.equal(r.status, 200);
+  const got = (await (await call(env, "GET", "/api/progress", { cookie })).json()).strength;
+  assert.deepEqual(got, { w0001: [50, 2, 20700, 3] }, "and what is already there is kept");
 });
 
 await test("a save from a device that never loaded cannot erase progress", async () => {
