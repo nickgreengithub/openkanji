@@ -447,7 +447,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-focus-arrow{position:absolute;top:50%;transform:translateY(-50%);width:2.6rem;height:2.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-focus-arrow:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
 .ok-focus-arrow-l{left:.6rem}.ok-focus-arrow-r{right:.6rem}
-.ok-toast{position:fixed;left:50%;bottom:1.5rem;transform:translateX(-50%);z-index:120;padding:.7rem 1.15rem;border-radius:10px;background:#1b1f24;color:#fff;font-family:var(--font-2);font-size:1rem;box-shadow:0 10px 30px rgba(0,0,0,.25);white-space:nowrap;animation:ok-toast-in 200ms ease}
+.ok-toast{position:fixed;left:50%;bottom:calc(1.5rem + var(--ok-kb,0px));transform:translateX(-50%);z-index:120;padding:.7rem 1.15rem;border-radius:10px;background:#1b1f24;color:#fff;font-family:var(--font-2);font-size:1rem;box-shadow:0 10px 30px rgba(0,0,0,.25);white-space:nowrap;animation:ok-toast-in 200ms ease}
 @keyframes ok-toast-in{from{opacity:0;transform:translate(-50%,.5rem)}to{opacity:1;transform:translate(-50%,0)}}
 @keyframes ok-fade{from{opacity:0}to{opacity:1}}
 @keyframes ok-rise{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
@@ -635,30 +635,44 @@ a:hover{color:var(--text-accent-hover)}
 @media (max-width:640px){
   html,body{overscroll-behavior-y:contain}
   *{-webkit-tap-highlight-color:transparent}
-  .ok-top{padding-left:max(.75rem,env(safe-area-inset-left));padding-right:calc(3.5rem + env(safe-area-inset-right));gap:.5rem}
+  /* the height the phone can really show, keyboard and browser chrome and all */
+  .ok-root{height:var(--ok-vh,100dvh)}
+  /* viewport-fit=cover puts the page under the status bar and the address
+     bar, so every header pays for its own top inset rather than starting
+     underneath them. */
+  .ok-top{height:auto;min-height:3.5rem;padding-left:max(.75rem,env(safe-area-inset-left));padding-right:calc(3.5rem + env(safe-area-inset-right));padding-top:env(safe-area-inset-top);gap:.5rem}
   .ok-top-set .ok-seg,.ok-top-set .ok-practice,.ok-set-sub{display:none}
   .ok-tiles{grid-template-columns:repeat(5,minmax(0,1fr));gap:.5rem}
   .ok-cards{grid-template-columns:1fr;padding:1rem .9rem 0}
   .ok-wrap{padding:1.25rem max(1.1rem,env(safe-area-inset-left)) 1.5rem;gap:1.4rem}
   .ok-setnav{padding:1.5rem 1.1rem 1.25rem}
   .ok-continue{display:none}
-  .ok-acct{top:.55rem;right:max(.9rem,env(safe-area-inset-right))}
+  .ok-acct{right:max(.9rem,env(safe-area-inset-right))}
 
   /* pages that were dialogs */
   .ok-veil{position:fixed;inset:0;z-index:95;display:block;padding:0;background:var(--ok-bg);backdrop-filter:none;-webkit-backdrop-filter:none;animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
   .ok-veil-out{animation:ok-push-out 200ms cubic-bezier(.4,0,1,1) forwards!important}
+  .ok-veil{height:var(--ok-vh,100dvh)}
   .ok-sheet,.ok-sheet-fixed{width:100%;height:100%;max-height:none;border-radius:0;box-shadow:none;animation:none}
   .ok-sheet-out{animation:none!important}
   .ok-sheet-top{padding-left:max(.6rem,env(safe-area-inset-left));padding-right:max(.9rem,env(safe-area-inset-right));padding-top:env(safe-area-inset-top)}
   .ok-pmenu,.ok-quiz,.ok-pdone{padding-bottom:calc(2rem + env(safe-area-inset-bottom))}
 
   /* the word, opened: a page with a close, a title, and an action bar */
-  .ok-focus{width:100%;height:100%;max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:flex-start;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
+  .ok-focus{width:100%;height:var(--ok-vh,100dvh);max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:center;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
+  /* the caption travels with the content it describes rather than being
+     pushed to the floor, now that the block is centred */
+  .ok-focus-str{margin-top:1.1rem}
+  /* Centring only holds still if the block is the same height every time.
+     Every gloss and every example sentence in the corpus fits one line at
+     this width; six translations out of 520 take two, so that line pair is
+     always reserved and nothing below the word ever moves as you walk a set. */
+  .ok-focus-tr{min-height:2.4rem}
   .ok-focus-out{animation:none!important}
   .ok-x{top:calc(.5rem + env(safe-area-inset-top));left:.6rem;right:auto;width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border-radius:50%}
   .ok-focus-n{position:absolute;top:calc(1.35rem + env(safe-area-inset-top));left:3.5rem;right:3.5rem;text-align:center}
-  .ok-focus-actions{position:fixed;left:0;right:0;bottom:0;margin:0;gap:.5rem;justify-content:center;padding:.7rem 4.2rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(244,244,241,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
-  .ok-focus-arrow{position:fixed;top:auto;transform:none;z-index:2;width:2.9rem;height:2.9rem;bottom:calc(.65rem + env(safe-area-inset-bottom))}
+  .ok-focus-actions{position:fixed;left:0;right:0;bottom:var(--ok-kb,0px);margin:0;gap:.5rem;justify-content:center;padding:.7rem 4.2rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(244,244,241,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
+  .ok-focus-arrow{position:fixed;top:auto;transform:none;z-index:2;width:2.9rem;height:2.9rem;bottom:calc(.65rem + env(safe-area-inset-bottom) + var(--ok-kb,0px))}
   .ok-focus-arrow-l{left:.4rem}
   .ok-focus-arrow-r{right:.4rem}
 
@@ -673,21 +687,38 @@ a:hover{color:var(--text-accent-hover)}
   /* thumbs, not cursors */
   .ok-tick,.ok-play{width:2.75rem;height:2.75rem}
   .ok-tick svg{width:2.4rem;height:2.4rem}
-  .ok-cardbtns{right:.5rem;gap:.4rem}
+  /* A stacked card is read top to bottom, and its rule runs the full width,
+     so the pair sits along the top edge instead of down the side where it
+     would straddle that rule. */
+  .ok-cardbtns{top:.6rem;bottom:auto;right:.6rem;flex-direction:row;align-items:center;gap:.5rem}
   .ok-card{padding-bottom:.7rem}
-  .ok-card-l{position:static;padding-right:3rem;padding-bottom:0}
-  .ok-card-r{padding-right:3rem}
+  .ok-card-l{position:static;padding-right:6.6rem;padding-bottom:0}
+  .ok-card-r{padding-right:0}
   .ok-round-btn{width:2.75rem;height:2.75rem}
   .ok-mini{width:2.5rem;height:2.5rem}
   .ok-back{padding:.5rem .7rem .5rem .35rem;min-height:2.75rem}
   .ok-avatar{width:2.75rem;height:2.75rem}
-  .ok-acct{top:.375rem}
+  .ok-acct{top:calc(.375rem + env(safe-area-inset-top))}
   .ok-seg-b{display:inline-flex;align-items:center;justify-content:center;min-height:2.4rem;padding:.4rem 1rem}
   .ok-focus-actions .ok-btn{min-height:2.75rem}
 
   /* quiz tiles: a long word shrinks before it wraps, and wraps before it leaves */
   .ok-qtile{padding:.9rem .6rem;min-width:0}
   .ok-qtile-big{white-space:normal;overflow-wrap:anywhere}
+
+  /* A round sits in the middle of the page, not against its top. auto
+     margins rather than justify-content so a round taller than the screen
+     can still be scrolled to from both ends. */
+  .ok-sheet-body{justify-content:flex-start}
+  .ok-quiz,.ok-pmenu,.ok-pdone{margin:auto}
+  .ok-quiz{width:100%}
+  /* Typing keeps the word it is asking about above the keyboard: the sheet
+     is already only as tall as the visible area, so the field sits at its
+     foot and the prompt takes the space that is left. */
+  .ok-quiz-type{margin:0;width:100%;padding-bottom:calc(1rem + env(safe-area-inset-bottom))}
+  .ok-quiz-type .ok-qprompt{margin-top:auto;margin-bottom:auto;padding:1rem 1.25rem}
+  .ok-quiz-type .ok-dots{flex:0 0 auto}
+  .ok-quiz-type .ok-qtype{flex:0 0 auto}
 
   /* the word, opened: its caption becomes two lines beside the ring rather
      than one line that would run off a phone */
@@ -703,14 +734,14 @@ a:hover{color:var(--text-accent-hover)}
   .ok-w-pills{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;gap:.4rem;padding:.7rem 1rem 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .ok-w-pills::-webkit-scrollbar{display:none}
   .ok-w-pill{flex:0 0 auto;min-height:2.4rem}
-  .ok-w-thread{padding:.9rem 1rem}
+  .ok-w-thread{padding:.9rem 1rem;min-height:0}
   .ok-w-msg{max-width:92%}
   .ok-w-cands{padding:0 1rem}
   .ok-w-cand{min-height:2.5rem}
   .ok-w-bar{padding-bottom:calc(.8rem + env(safe-area-inset-bottom))}
 
   /* the bottom bar: one job per page */
-  .ok-bottombar{position:fixed;left:0;right:0;bottom:0;z-index:65;display:flex;align-items:center;gap:.6rem;padding:.6rem max(.9rem,env(safe-area-inset-left)) calc(.6rem + env(safe-area-inset-bottom)) max(.9rem,env(safe-area-inset-right));background:rgba(244,244,241,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
+  .ok-bottombar{position:fixed;left:0;right:0;bottom:var(--ok-kb,0px);z-index:65;display:flex;align-items:center;gap:.6rem;padding:.6rem max(.9rem,env(safe-area-inset-left)) calc(.6rem + env(safe-area-inset-bottom)) max(.9rem,env(safe-area-inset-right));background:rgba(244,244,241,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
   .ok-bb-seg{flex:0 0 auto}
   .ok-bb-seg .ok-seg-b{padding:.5rem .9rem}
   .ok-bb-cta{flex:1 1 auto;height:2.75rem;justify-content:center}
@@ -989,6 +1020,7 @@ html[data-ok-ready] #ok-boot{display:none}
                 <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}">
                   <svg sc-camel-view-box="0 0 24 24">
                     <sc-if value="{{ lr.pieOn }}" hint-placeholder-val="{{ false }}"><path d="{{ lr.pieD }}" fill="var(--ok-acc)" class="ok-pie-w"></path></sc-if>
+                    <sc-if value="{{ lr.pieFull }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M8.5 12.2 L10.9 14.6 L15.5 9.5" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
                   </svg>
                 </span>
                 <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
@@ -1076,6 +1108,7 @@ html[data-ok-ready] #ok-boot{display:none}
           <span class="ok-focus-ring">
             <svg sc-camel-view-box="0 0 24 24">
               <sc-if value="{{ focusPieOn }}" hint-placeholder-val="{{ false }}"><path d="{{ focusPieD }}" fill="var(--ok-acc)" class="ok-pie-w"></path></sc-if>
+              <sc-if value="{{ focusPieFull }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M8.5 12.2 L10.9 14.6 L15.5 9.5" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
             </svg>
           </span>
           <span class="ok-focus-str-top">
@@ -1766,6 +1799,29 @@ async function okComplete(req) {
 // Speech: the browser's own Japanese voice, the word then the sentence. Free
 // and instant; the voice varies by platform, which is the trade for that.
 const okPhone = () => typeof window !== "undefined" && !!window.matchMedia && window.matchMedia("(max-width:640px)").matches;
+// What the phone can actually show. 100dvh is the viewport the browser would
+// like to have, not the one left over once its own chrome is on screen, and
+// it does not shrink at all for the keyboard on iOS -- so the top of the page
+// hides behind the address bar, and a focused field pushes what it is about
+// off the bottom. visualViewport knows the truth; everything that fills the
+// screen measures itself against this instead.
+const okTrackViewport = () => {
+  if (typeof window === "undefined" || !window.visualViewport) return null;
+  const vv = window.visualViewport;
+  const set = () => {
+    const h = Math.round(vv.height);
+    const root = document.documentElement;
+    root.style.setProperty("--ok-vh", h + "px");
+    // How much of the window the keyboard is covering, for anything anchored
+    // to the bottom of the screen rather than to a box we have resized.
+    const kb = Math.max(0, Math.round(window.innerHeight - vv.height - vv.offsetTop));
+    root.style.setProperty("--ok-kb", kb + "px");
+  };
+  set();
+  vv.addEventListener("resize", set);
+  vv.addEventListener("scroll", set);
+  return () => { vv.removeEventListener("resize", set); vv.removeEventListener("scroll", set); };
+};
 // A quiz tile is half a phone wide, so a word's size there follows its length;
 // a desktop tile has room for six characters at full size.
 const okTileSize = (text, kana, mode) => {
@@ -1985,6 +2041,7 @@ class Component extends DCLogic {
     this.restoreSession();
     this._onResize = () => this.scheduleMeasure();
     window.addEventListener("resize", this._onResize);
+    this._untrackVv = okTrackViewport();
   }
 
   // refs keep one identity for the component's lifetime so React never re-attaches them
@@ -2097,6 +2154,7 @@ class Component extends DCLogic {
     if (this._onPop) window.removeEventListener("popstate", this._onPop);
     if (this._onTouchStart) window.removeEventListener("touchstart", this._onTouchStart);
     if (this._onTouchEnd) window.removeEventListener("touchend", this._onTouchEnd);
+    if (this._untrackVv) this._untrackVv();
   }
 
   bindKeys() {
@@ -4093,6 +4151,7 @@ class Component extends DCLogic {
             }
             return {
               focusPieOn: lvl > 0,
+              focusPieFull: lvl >= 4,
               focusPieD: okPiePath(lvl),
               focusLvlName: marked ? T("marked_learned") : T("str_" + lvl),
               focusStrSub: !n ? T("str_never_sub")
@@ -4743,6 +4802,7 @@ class Component extends DCLogic {
             const lvl = done ? 4 : strLevel((st.strength || {})[key]);
             return {
               pieOn: lvl > 0,
+              pieFull: lvl >= 4,
               pieD: okPiePath(lvl)
             };
           })(),

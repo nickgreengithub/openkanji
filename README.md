@@ -248,6 +248,26 @@ Error: unknown language code 'klingon' -- add it to data/langs.json
   note: 'es' is incomplete and will not ship
 ```
 
+## On a phone
+
+Every overlay is a page rather than a dialog, and two rules keep it honest:
+
+- **Height comes from `visualViewport`, not `100dvh`.** `dvh` is the viewport
+  the browser would like to have, not what is left once its own chrome is on
+  screen, and on iOS it does not shrink for the keyboard at all -- so the top
+  of the page hides behind the address bar and a focused field pushes the
+  thing it is about off the bottom. A listener publishes `--ok-vh` (what is
+  visible) and `--ok-kb` (what the keyboard covers); everything full-screen
+  measures against the first, and everything pinned to the bottom offsets by
+  the second.
+- **The page is drawn under the notch** (`viewport-fit=cover`), so every
+  header pays for its own `env(safe-area-inset-top)`.
+
+The word page centres its content, which only holds still because the block
+is the same height every time: all 6112 glosses and all 520 example
+sentences fit one line at phone width, and the six translations that take
+two lines have that second line reserved for them.
+
 ## Build
 
 ```sh
