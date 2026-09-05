@@ -419,7 +419,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-chips{display:flex;flex-wrap:wrap;gap:.4rem}
 .ok-chip{padding:.3rem .75rem;border-radius:999px;border:1px solid var(--ok-line);font-family:var(--font-2);font-size:.9375rem;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease}
 .ok-veil{position:fixed;inset:0;z-index:95;background:rgba(20,24,30,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;animation:ok-fade 160ms ease}
-.ok-focus{position:relative;width:min(40rem,100%);height:min(30rem,82vh);justify-content:flex-start;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:2.5rem 3.75rem 2rem;overflow-y:auto;border-radius:20px;background:var(--ok-card);box-shadow:0 30px 80px rgba(20,24,30,.35);text-align:center;animation:ok-rise 200ms cubic-bezier(.2,.7,.3,1)}
+.ok-focus{position:relative;width:min(40rem,100%);height:min(32rem,86vh);justify-content:flex-start;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:2.5rem 3.75rem 2rem;overflow-y:auto;border-radius:20px;background:var(--ok-card);box-shadow:0 30px 80px rgba(20,24,30,.35);text-align:center;animation:ok-rise 200ms cubic-bezier(.2,.7,.3,1)}
 .ok-x{position:absolute;top:.55rem;right:.95rem;font-size:1.7rem;line-height:1;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-x:hover{color:var(--ok-ink)}
 .ok-focus-n{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-mute)}
@@ -431,20 +431,16 @@ a:hover{color:var(--text-accent-hover)}
 .ok-focus-gloss{font-family:var(--font-2);font-size:1.25rem;color:var(--ok-body)}
 .ok-focus-ex{font-size:1.25rem;line-height:1.5;color:var(--ok-body);padding-top:.9rem;border-top:1px solid var(--ok-line);width:100%;text-wrap:pretty}
 .ok-focus-tr{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-mute);transition:opacity 160ms ease;text-wrap:pretty}
-/* The dial from the cards, named and explained. This is where someone works
-   out what the quarters on a card mean, so the shape is identical and the
-   words sit beside it -- with the answers behind it on the right. */
-.ok-focus-str{flex:0 0 auto;width:100%;display:flex;align-items:center;gap:.75rem;padding:.7rem .9rem;border-radius:12px;background:var(--ok-bg);text-align:left}
-.ok-focus-pie{flex:0 0 auto;width:2.6rem;height:2.6rem;cursor:default}
-.ok-focus-pie:hover{transform:none;border-color:var(--ok-line)}
-.ok-focus-pie[style*="--ok-acc"]:hover{border-color:var(--ok-acc)}
-.ok-focus-pie svg{width:1.7rem;height:1.7rem}
-.ok-focus-str-txt{display:flex;flex-direction:column;gap:.1rem;min-width:0}
-.ok-focus-str-lvl{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-ink);white-space:nowrap}
-.ok-focus-str-sub{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ok-focus-dots{margin-left:auto;display:flex;gap:5px;flex:0 0 auto}
-.ok-focus-dot{width:8px;height:8px;border-radius:50%}
-.ok-focus-actions{display:flex;gap:.6rem;margin-top:auto;padding-top:.6rem}
+/* The same ring the cards carry, named -- a caption to the button that
+   changes it, not a panel wedged into the middle of the reading. */
+.ok-focus-str{flex:0 0 auto;margin-top:auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem;line-height:1}
+.ok-focus-ring{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;flex:0 0 auto}
+.ok-focus-ring svg{width:100%;height:100%;display:block;overflow:visible}
+.ok-focus-str-lvl{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);white-space:nowrap}
+.ok-focus-str-sub{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);white-space:nowrap}
+.ok-focus-dots{display:inline-flex;align-items:center;gap:4px;flex:0 0 auto}
+.ok-focus-dot{width:7px;height:7px;border-radius:50%}
+.ok-focus-actions{display:flex;gap:.6rem;padding-top:.15rem}
 .ok-focus-arrow{position:absolute;top:50%;transform:translateY(-50%);width:2.6rem;height:2.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-focus-arrow:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
 .ok-focus-arrow-l{left:.6rem}.ok-focus-arrow-r{right:.6rem}
@@ -571,7 +567,7 @@ a:hover{color:var(--text-accent-hover)}
    known, and pressing it says so yourself. The pressed state sits on top of
    what practice worked out rather than replacing it, so letting go returns
    the word to whatever it had actually earned. */
-.ok-tick svg{width:1.55rem;height:1.55rem;display:block}
+.ok-tick svg{width:1.95rem;height:1.95rem;display:block;overflow:visible}
 .ok-pie-w{transition:fill 260ms ease}
 /* room for the tick and the play button stacked beneath it */
 .ok-card-r{padding-right:3rem}
@@ -673,7 +669,7 @@ a:hover{color:var(--text-accent-hover)}
 
   /* thumbs, not cursors */
   .ok-tick,.ok-play{width:2.75rem;height:2.75rem}
-  .ok-tick svg{width:1.8rem;height:1.8rem}
+  .ok-tick svg{width:2.15rem;height:2.15rem}
   .ok-cardbtns{right:.5rem;gap:.4rem}
   .ok-card{padding-bottom:.7rem}
   .ok-card-l{position:static;padding-right:3rem;padding-bottom:0}
@@ -933,9 +929,8 @@ html[data-ok-ready] #ok-boot{display:none}
               <div class="ok-cardbtns">
                 <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}">
                   <svg sc-camel-view-box="0 0 24 24">
-                    <sc-for list="{{ lr.pie }}" as="pw" hint-placeholder-count="4"><path d="{{ pw.d }}" fill="{{ pw.fill }}" stroke="{{ pw.fill }}" stroke-width="0.6" class="ok-pie-w"></path></sc-for>
-                    <path d="M12 2.5 V6 M21.5 12 H18 M12 21.5 V18 M2.5 12 H6" stroke="{{ lr.pieGrid }}" stroke-width="1.3" stroke-linecap="round"></path>
-                    <sc-if value="{{ lr.pieTick }}" hint-placeholder-val="{{ false }}"><path d="M7.5 12.3 L10.6 15.4 L16.6 8.8" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+                    <sc-for list="{{ lr.pie }}" as="pw" hint-placeholder-count="4"><path d="{{ pw.d }}" fill="none" stroke="{{ pw.fill }}" stroke-width="3" class="ok-pie-w"></path></sc-for>
+                    <sc-if value="{{ lr.pieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M8.2 12.2 L10.8 14.8 L15.8 9.2" fill="none" stroke="var(--ok-acc)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
                   </svg>
                 </span>
                 <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
@@ -1015,26 +1010,23 @@ html[data-ok-ready] #ok-boot{display:none}
           <sc-if value="{{ focusShowReading }}" hint-placeholder-val="{{ false }}"><span class="ok-focus-reading">{{ focusReading }}</span></sc-if>
           <span class="ok-focus-gloss">{{ focusGloss }}</span>
         </div>
-        <div class="ok-focus-str">
-          <span class="ok-tick ok-focus-pie" style="{{ focusPieStyle }}">
-            <svg sc-camel-view-box="0 0 24 24">
-              <sc-for list="{{ focusPie }}" as="fp" hint-placeholder-count="4"><path d="{{ fp.d }}" fill="{{ fp.fill }}" stroke="{{ fp.fill }}" stroke-width="0.6" class="ok-pie-w"></path></sc-for>
-              <path d="M12 2.5 V6 M21.5 12 H18 M12 21.5 V18 M2.5 12 H6" stroke="{{ focusPieGrid }}" stroke-width="1.3" stroke-linecap="round"></path>
-              <sc-if value="{{ focusPieTick }}" hint-placeholder-val="{{ false }}"><path d="M7.5 12.3 L10.6 15.4 L16.6 8.8" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
-            </svg>
-          </span>
-          <div class="ok-focus-str-txt">
-            <span class="ok-focus-str-lvl">{{ focusLvlName }}</span>
-            <span class="ok-focus-str-sub">{{ focusStrSub }}</span>
-          </div>
-          <sc-if value="{{ focusDotsOn }}" hint-placeholder-val="{{ false }}">
-            <div class="ok-focus-dots" title="{{ t_str_recent }}"><sc-for list="{{ focusDots }}" as="fd" hint-placeholder-count="6"><span class="ok-focus-dot" style="background:{{ fd.bg }}" title="{{ fd.title }}"></span></sc-for></div>
-          </sc-if>
-        </div>
         <sc-if value="{{ focusHasEx }}" hint-placeholder-val="{{ true }}">
           <span class="ok-focus-ex"><sc-for list="{{ focusExParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok-acc)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
           <span class="ok-focus-tr" style="opacity:{{ focusAns }}">{{ focusExEn }}</span>
         </sc-if>
+        <div class="ok-focus-str">
+          <span class="ok-focus-ring">
+            <svg sc-camel-view-box="0 0 24 24">
+              <sc-for list="{{ focusPie }}" as="fp" hint-placeholder-count="4"><path d="{{ fp.d }}" fill="none" stroke="{{ fp.fill }}" stroke-width="3" class="ok-pie-w"></path></sc-for>
+              <sc-if value="{{ focusPieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M8.2 12.2 L10.8 14.8 L15.8 9.2" fill="none" stroke="var(--ok-acc)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+            </svg>
+          </span>
+          <span class="ok-focus-str-lvl">{{ focusLvlName }}</span>
+          <span class="ok-focus-str-sub">{{ focusStrSub }}</span>
+          <sc-if value="{{ focusDotsOn }}" hint-placeholder-val="{{ false }}">
+            <span class="ok-focus-dots" title="{{ t_str_recent }}"><sc-for list="{{ focusDots }}" as="fd" hint-placeholder-count="6"><span class="ok-focus-dot" style="background:{{ fd.bg }}" title="{{ fd.title }}"></span></sc-for></span>
+          </sc-if>
+        </div>
         <div class="ok-focus-actions">
           <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ focusPlay }}" class="ok-btn" title="{{ t_listen }}" style="{{ focusPlayStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
           <sc-if value="{{ focusHidden }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ revealFocus }}" class="ok-btn">{{ t_show_answer }}</span></sc-if>
@@ -1191,6 +1183,14 @@ DATA.forEach(k => k.g.forEach(g => g.w.forEach(w => { SURF[w[3]] = w[0]; })));
 // parts television, manga and print, which is the mixture the three rings
 // were asking the reader to average in their head.
 const covMedia = (c) => (c[0] + c[1] + c[2]) / 3;
+// The four arcs of the level ring, clockwise from the top, with a gap between
+// each so four steps read as four rather than as one circle.
+const PIE_ARCS = [
+  "M13.15 2.67 A9.4 9.4 0 0 1 21.33 10.85",
+  "M21.33 13.15 A9.4 9.4 0 0 1 13.15 21.33",
+  "M10.85 21.33 A9.4 9.4 0 0 1 2.67 13.15",
+  "M2.67 10.85 A9.4 9.4 0 0 1 10.85 2.67"
+];
 // The headings read in Japanese, with the learner's own language on hover.
 // This is a Japanese course and these are short, familiar shapes -- seeing
 // them every session is free reading practice, and the tooltip is the
@@ -3960,15 +3960,9 @@ class Component extends DCLogic {
             const key = f ? f.w[3] : null;
             const rec = key ? (st.strength || {})[key] : null;
             const marked = !!(key && st.mastered[key]);
-            const lvl = marked ? 4 : strLevel(rec);
+            const lvl = strLevel(rec);
             const n = rec ? rec[1] : 0;
             const days = n ? Math.max(0, okDay() - rec[2]) : null;
-            const wedges = [
-              "M12 12 L12 2 A10 10 0 0 1 22 12 Z",
-              "M12 12 L22 12 A10 10 0 0 1 12 22 Z",
-              "M12 12 L12 22 A10 10 0 0 1 2 12 Z",
-              "M12 12 L2 12 A10 10 0 0 1 12 2 Z"
-            ];
             // the last six answers, oldest first, so they read left to right
             const shown = Math.min(n, STR_HIST);
             const dots = [];
@@ -3977,11 +3971,9 @@ class Component extends DCLogic {
               dots.push({ bg: right ? "var(--ok-acc)" : "#e11d48", title: right ? T("str_right") : T("str_wrong") });
             }
             return {
-              focusPie: wedges.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "transparent" })),
-              focusPieGrid: lvl >= 4 ? "transparent" : "#d9d9d3",
-              focusPieStyle: lvl ? "border-color:var(--ok-acc)" : "",
+              focusPie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#dcdcd6" })),
               focusPieTick: marked,
-              focusLvlName: marked ? T("marked_learned") : T("str_" + lvl),
+              focusLvlName: T("str_" + lvl) + (marked ? " · " + T("marked_learned") : ""),
               focusStrSub: !n ? T("str_never_sub")
                 : (days === 0 ? T("str_seen_today_long") : days === 1 ? T("str_seen_yesterday") : T("str_seen_days_long", { n: days }))
                   + " · " + T("str_answers_long", { n: n }),
@@ -4627,20 +4619,12 @@ class Component extends DCLogic {
           // shows all four and a tick; the earned level underneath is left
           // alone, so pressing again drops back to it rather than to nothing.
           ...(() => {
-            const lvl = done ? 4 : strLevel((st.strength || {})[key]);
-            const wedges = [
-              "M12 12 L12 2 A10 10 0 0 1 22 12 Z",
-              "M12 12 L22 12 A10 10 0 0 1 12 22 Z",
-              "M12 12 L12 22 A10 10 0 0 1 2 12 Z",
-              "M12 12 L2 12 A10 10 0 0 1 12 2 Z"
-            ];
+            const lvl = strLevel((st.strength || {})[key]);
             return {
-              // Solid, because at this size a tint is unreadable: the count of
-              // quarters is the signal, the way bars of reception are.
-              pie: wedges.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "transparent" })),
-              // the quarters stay visible at rest, so the control says how
-              // many steps there are before anything has filled one
-              pieGrid: done || lvl >= 4 ? "transparent" : "#d9d9d3",
+              // Four arcs at the rim, gapped so they read as four. The unlit
+              // ones stay a visible grey: an empty control still has to say
+              // how many steps it has.
+              pie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#dcdcd6" })),
               pieTick: !!done
             };
           })(),
