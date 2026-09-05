@@ -135,6 +135,7 @@ await test("a returning address gets its progress, in Japanese and its own langu
   await call(env, "POST", "/api/login", { body: { email: "back@example.com", lang: "es" }, ip: "203.0.113.9" });
   const m = env._sent[0];
   assert.match(m.html, /これまでに3語おぼえました。/);
+  assert.match(m.html, /がんばってください！/, "and a word of encouragement after it");
   assert.match(m.html, /3 palabras aprendidas hasta ahora\./);
   assert.match(m.text, /これまでに3語おぼえました。/, "the plain part carries it too");
 });

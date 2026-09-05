@@ -591,6 +591,26 @@
     "en": "Pick the word for the meaning",
     "es": "Elige la palabra para el significado"
   },
+  "typing": {
+    "en": "Typing",
+    "es": "Escritura"
+  },
+  "typing_desc": {
+    "en": "Read the kanji, type the reading",
+    "es": "Lee el kanji, escribe la lectura"
+  },
+  "type_placeholder": {
+    "en": "type the reading",
+    "es": "escribe la lectura"
+  },
+  "type_check": {
+    "en": "Check",
+    "es": "Comprobar"
+  },
+  "type_answer": {
+    "en": "Answer: {a}",
+    "es": "Respuesta: {a}"
+  },
   "write_desc": {
     "en": "Sentences, checked by AI",
     "es": "Frases, revisadas por IA"

@@ -235,8 +235,8 @@ const MAIL = {
 // the learner reads the rest of the mail in -- that is the point: a line of
 // the language they are here for, with their own underneath it.
 const MAIL_JA = {
-  progress: "これまでに{n}語おぼえました。",
-  welcome: "さいしょのセットが待っています。",
+  progress: "これまでに{n}語おぼえました。がんばってください！",
+  welcome: "さいしょのセットが待っています。がんばってください！",
 };
 
 // How far along the account is, for that line. Unknown addresses count zero,
