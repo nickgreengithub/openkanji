@@ -543,20 +543,22 @@ a:hover{color:var(--text-accent-hover)}
 .ok-cards{grid-template-columns:repeat(auto-fill,minmax(31rem,1fr))}
 .ok-card{flex-direction:row;align-items:stretch;gap:1.1rem;padding:1rem 1.1rem}
 .ok-card-l{flex:0 0 11.5rem;min-width:0;display:flex;flex-direction:column;gap:.4rem}
-/* How well the word is known, as practice has found it -- four steps, so it
-   reads at a glance without asking anyone to interpret a number. */
-.ok-str{display:flex;gap:3px;margin-top:.1rem}
-.ok-str-seg{width:1rem;height:4px;border-radius:2px;transition:background 220ms ease}
 .ok-card-r{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding-left:1.1rem;border-left:1px solid var(--ok-line)}
 .ok-card-ex{margin-top:0;padding-top:0;border-top:0;font-size:1.125rem;line-height:1.55}
 .ok-card-tr{font-size:1rem}
-/* Play sits on the card's right edge, directly under the tick and built the
-   same way, so the two read as one column of controls. */
-.ok-play{position:absolute;top:3.35rem;right:.85rem;width:2rem;height:2rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
+/* The card's two controls, centred as a pair on its right edge rather than
+   pinned near the top, where they read as having drifted up. */
+.ok-cardbtns{position:absolute;right:.85rem;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem}
+.ok-play{position:static;width:2rem;height:2rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
 .ok-play:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
 @keyframes ok-speak{0%,100%{opacity:1}50%{opacity:.45}}
-.ok-tick{position:absolute;top:.85rem;right:.85rem;width:2rem;height:2rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
-.ok-tick:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
+/* One control, two meanings: the quarters fill as practice finds the word
+   known, and pressing it says so yourself. The pressed state sits on top of
+   what practice worked out rather than replacing it, so letting go returns
+   the word to whatever it had actually earned. */
+.ok-tick{position:static;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;transition:transform 120ms ease}
+.ok-tick:hover{transform:scale(1.08)}
+.ok-pie-w{transition:fill 260ms ease}
 /* room for the tick and the play button stacked beneath it */
 .ok-card-r{padding-right:3rem}
 .ok-card{min-height:6.2rem}
@@ -656,8 +658,9 @@ a:hover{color:var(--text-accent-hover)}
   .ok-chip{display:inline-flex;align-items:center}
 
   /* thumbs, not cursors */
-  .ok-tick{width:2.75rem;height:2.75rem;top:.5rem;right:.5rem}
-  .ok-play{width:2.75rem;height:2.75rem;right:.5rem;top:3.6rem;bottom:auto}
+  .ok-tick{width:2.75rem;height:2.75rem}
+  .ok-play{width:2.75rem;height:2.75rem}
+  .ok-cardbtns{right:.5rem;gap:.4rem}
   .ok-card{padding-bottom:.7rem}
   .ok-card-l{position:static;padding-right:3rem;padding-bottom:0}
   .ok-card-r{padding-right:3rem}
@@ -912,10 +915,18 @@ html[data-ok-ready] #ok-boot{display:none}
               <div class="ok-card-l">
               <span class="ok-card-word" style="font-size:{{ lr.wordSize }};color:{{ lr.wordFg }}"><sc-for list="{{ lr.ruby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ lr.rubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
               <span class="ok-card-gloss" style="opacity:{{ lr.ansOpacity }}">{{ lr.gloss }}</span>
-              <span class="ok-str" title="{{ lr.strTitle }}"><sc-for list="{{ lr.strBars }}" as="sb" hint-placeholder-count="4"><span class="ok-str-seg" style="background:{{ sb.bg }}"></span></sc-for></span>
               </div>
-              <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span>
-              <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
+              <div class="ok-cardbtns">
+                <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}">
+                  <svg width="26" height="26" sc-camel-view-box="0 0 24 24">
+                    <sc-for list="{{ lr.pie }}" as="pw" hint-placeholder-count="4"><path d="{{ pw.d }}" fill="{{ pw.fill }}" class="ok-pie-w"></path></sc-for>
+                    <path d="M12 2 V22 M2 12 H22" stroke="{{ lr.pieGrid }}" stroke-width="1"></path>
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="{{ lr.pieRing }}" stroke-width="1.4"></circle>
+                    <sc-if value="{{ lr.pieTick }}" hint-placeholder-val="{{ false }}"><path d="M7.5 12.3 L10.6 15.4 L16.6 8.8" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+                  </svg>
+                </span>
+                <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
+              </div>
               <sc-if value="{{ lr.hasEx }}" hint-placeholder-val="{{ true }}">
                 <div class="ok-card-r">
                 <span class="ok-card-ex"><sc-for list="{{ lr.exParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok-acc)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
@@ -4529,15 +4540,6 @@ class Component extends DCLogic {
           rubyOpacity: hidden || !st.allFuri ? 0 : 1,
           gloss: w[2],
           ansOpacity: hidden ? 0 : 1,
-          ...(() => {
-            const rec = (st.strength || {})[w[3]];
-            const lvl = strLevel(rec);
-            const days = rec && rec[1] ? Math.max(0, okDay() - rec[2]) : null;
-            return {
-              strBars: [1, 2, 3, 4].map(i => ({ bg: i <= lvl ? (lvl === 1 ? "#e11d48" : "var(--ok-acc)") : "#e6e6e1" })),
-              strTitle: T("str_" + lvl) + (days == null ? "" : " · " + (days === 0 ? T("str_seen_today") : T("str_seen_days", { n: days })))
-            };
-          })(),
           hasEx: !!x,
           exParts: okExParts(x, w[0]),
           exEn: x ? exTr(key, 0, "") : "",
@@ -4545,11 +4547,40 @@ class Component extends DCLogic {
           leave: () => { if (this.state.hoverWord === id) this.setState({ hoverWord: null }); },
           markDone: done,
           markOpen: !done,
-          markTitle: done ? T("completed") : T("not_completed"),
+          markTitle: (() => {
+            const rec = (st.strength || {})[key];
+            const earned = T("str_" + strLevel(rec));
+            const days = rec && rec[1] ? Math.max(0, okDay() - rec[2]) : null;
+            const seen = days == null ? "" : " · " + (days === 0 ? T("str_seen_today") : T("str_seen_days", { n: days }));
+            return done ? T("marked_learned") + " · " + earned + seen + " · " + T("click_to_undo")
+                        : earned + seen + " · " + T("click_to_mark");
+          })(),
           pillStyle: okPill(done),
           pillLabel: done ? T("learned") : T("got_it"),
           master: (ev) => { ev.stopPropagation(); this.toggleMasteredWord(key); },
-          tickStyle: done ? "background:var(--ok-acc);border-color:var(--ok-acc);color:#ffffff" : "",
+          tickStyle: "",
+          // Quarters, filling clockwise from the top. Pressing the control
+          // shows all four and a tick; the earned level underneath is left
+          // alone, so pressing again drops back to it rather than to nothing.
+          ...(() => {
+            const lvl = done ? 4 : strLevel((st.strength || {})[key]);
+            const wedges = [
+              "M12 12 L12 2 A10 10 0 0 1 22 12 Z",
+              "M12 12 L22 12 A10 10 0 0 1 12 22 Z",
+              "M12 12 L12 22 A10 10 0 0 1 2 12 Z",
+              "M12 12 L2 12 A10 10 0 0 1 12 2 Z"
+            ];
+            return {
+              // Solid, because at this size a tint is unreadable: the count of
+              // quarters is the signal, the way bars of reception are.
+              pie: wedges.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "transparent" })),
+              pieRing: done || lvl ? "var(--ok-acc)" : "var(--ok-line)",
+              // the quarters stay visible at rest, so the control says how
+              // many steps there are before anything has filled one
+              pieGrid: done || lvl >= 4 ? "transparent" : "var(--ok-line)",
+              pieTick: !!done
+            };
+          })(),
           play: (ev) => { if (ev && ev.stopPropagation) ev.stopPropagation(); this.speakWord(key, w[0], x || ""); },
           playStyle: st.speaking === key ? "color:var(--ok-acc);background:var(--ok-acc-s);animation:ok-speak 1.1s ease-in-out infinite" : "",
           open: (ev) => {

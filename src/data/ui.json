@@ -591,6 +591,18 @@
     "en": "Pick the word for the meaning",
     "es": "Elige la palabra para el significado"
   },
+  "marked_learned": {
+    "en": "Marked learned",
+    "es": "Marcada como aprendida"
+  },
+  "click_to_mark": {
+    "en": "click to mark learned",
+    "es": "pulsa para marcarla aprendida"
+  },
+  "click_to_undo": {
+    "en": "click to undo",
+    "es": "pulsa para deshacer"
+  },
   "str_0": {
     "en": "Not practised yet",
     "es": "Sin practicar"
