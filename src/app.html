@@ -533,11 +533,16 @@ a:hover{color:var(--text-accent-hover)}
 .ok-ring-txt{display:flex;flex-direction:column;gap:.15rem;min-width:0}
 .ok-ring-big{font-size:1.5rem;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
 .ok-ja{letter-spacing:.01em;text-transform:none}
+/* A tier's heading: its medal, its name, and how much of it is behind you. */
+.ok-tier-head{display:flex;align-items:center;gap:.65rem;transition:opacity 200ms ease}
+.ok-tier-count{margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
 /* the learner's own language, second and quieter, next to the Japanese */
 .ok-h2-own{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok-mute);opacity:.6}
 .ok-ring-own{font-family:var(--font-2);font-size:.875rem;color:var(--ok-mute);opacity:.65;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ok-ring-lab{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ok-ring-sub{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* the ceiling line grew when it stopped naming a deck, so let it wrap
+   rather than trail off mid-number */
+.ok-ring-sub{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);line-height:1.3;text-wrap:pretty}
 .ok-continue{margin-left:auto}
 /* Cards: word left, sentence right, so the sentence gets a line to itself */
 .ok-cards{grid-template-columns:repeat(auto-fill,minmax(31rem,1fr))}
@@ -827,7 +832,7 @@ html[data-ok-ready] #ok-boot{display:none}
       <header class="ok-top">
         <div class="ok-top-l">
           <span class="ok-mark" title="OpenKanji.org">开</span>
-          <span class="ok-deck">{{ deckName }}</span>
+          <span class="ok-deck">{{ t_the_ladder }}</span>
         </div>
         <span sc-camel-on-click="{{ continueSet }}" class="ok-btn ok-btn-primary ok-continue">{{ heroBtn }}</span>
       </header>
@@ -852,18 +857,23 @@ html[data-ok-ready] #ok-boot{display:none}
             </sc-for>
           </div>
         </div>
-        <div class="ok-overall">
-          <div class="ok-row"><span class="ok-h2 ok-ja">{{ ja_all_sets }} <span class="ok-h2-own">{{ t_all_sets }}</span></span></div>
-          <div class="ok-tiles">
-            <sc-for list="{{ setTiles }}" as="tl" hint-placeholder-count="10">
-              <div sc-camel-on-click="{{ tl.pick }}" title="{{ tl.frac }}" class="ok-tile" style="background:{{ tl.bg }};color:{{ tl.fg }};box-shadow:{{ tl.ring }}">
-                <div class="ok-tile-fill" style="width:{{ tl.pct }};opacity:{{ tl.fillOpacity }}"></div>
-                <span class="ok-tile-n">{{ tl.n }}</span>
-                <sc-if value="{{ tl.done }}" hint-placeholder-val="{{ false }}"><span class="ok-tile-check"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span></sc-if>
-              </div>
-            </sc-for>
+        <sc-for list="{{ tiers }}" as="tr" hint-placeholder-count="5">
+          <div class="ok-overall">
+            <div class="ok-tier-head" style="opacity:{{ tr.headOpacity }}" title="{{ tr.title }}">
+              <span class="ok-h2 ok-ja" style="color:{{ tr.nameFg }}">{{ tr.name }} <span class="ok-h2-own">{{ tr.own }}</span></span>
+              <span class="ok-muted ok-tier-count">{{ tr.count }}</span>
+            </div>
+            <div class="ok-tiles">
+              <sc-for list="{{ tr.tiles }}" as="tl" hint-placeholder-count="20">
+                <div sc-camel-on-click="{{ tl.pick }}" title="{{ tl.frac }}" class="ok-tile" style="background:{{ tl.bg }};color:{{ tl.fg }};box-shadow:{{ tl.ring }};opacity:{{ tl.opacity }};cursor:{{ tl.cursor }}">
+                  <div class="ok-tile-fill" style="width:{{ tl.pct }};opacity:{{ tl.fillOpacity }}"></div>
+                  <span class="ok-tile-n">{{ tl.n }}</span>
+                  <sc-if value="{{ tl.done }}" hint-placeholder-val="{{ false }}"><span class="ok-tile-check"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span></sc-if>
+                </div>
+              </sc-for>
+            </div>
           </div>
-        </div>
+        </sc-for>
       </section>
       <nav class="ok-bottombar">
         <span sc-camel-on-click="{{ continueSet }}" class="ok-btn ok-btn-primary ok-bb-cta">{{ heroBtn }}</span>
@@ -1142,7 +1152,7 @@ const COV_LABELS = ["tv_film", "anime_manga", "books_news"];
 // them every session is free reading practice, and the tooltip is the
 // safety net for anyone who does not know them yet.
 const JA_LABEL = {
-  your_progress: "学習状況", all_sets: "セット一覧", deck: "この教材",
+  your_progress: "学習状況", all_sets: "セット一覧", deck: "学習ずみ",
   tv_film: "テレビ・映画", anime_manga: "アニメ・漫画", books_news: "本・ニュース"
 };
 const TJ = (key) => JA_LABEL[key] || T(key);
@@ -1273,16 +1283,27 @@ const pad3 = (n) => String(n).padStart(3, "0");
 // The list is vocabulary, twenty words at a time. Twenty is a sitting; a deck
 // runs to a thousand words, fifty sets, which is what the set pager is for.
 const WORDN = 20;
-const WORDMAX = 1000;
+// One ladder, not six decks. The JLPT levels were never a syllabus a learner
+// picks between -- they are a difficulty order, so they read better end to
+// end: N5's words first, then N4, and on up. 2000 words is where it stops,
+// which is the whole of the five tiers below, and about where a learner can
+// read most of what they meet.
+const WORDMAX = 2000;
+const TIER = 400;
+const TIERS = 5;
+// Five hundred-set climbs of four hundred words. The names are the ordinary
+// Japanese level words, so the ladder reads as one climb with five landings
+// rather than a hundred numbered sets running off the bottom of the screen.
+const TIER_JA = ["入門", "初級", "中級", "中上級", "上級"];
 
-// Every word of a deck, once each, in the order its kanji appear. Kanji are
-// how the corpus is stored, not how it is studied, so this flattens them away.
+// Every word in the corpus, once each, in the order its kanji appear. Kanji
+// are how it is stored, not how it is studied, so this flattens them away.
 const _WORDS = {};
-const deckWords = (deck) => {
-  const key = CURRENT_LANG + "|" + (deck || DEFAULT_DECK);
+const deckWords = () => {
+  const key = CURRENT_LANG;
   if (_WORDS[key]) return _WORDS[key];
   const seen = {}, out = [];
-  const pool = deckData(deck);
+  const pool = corpusFor(CURRENT_LANG).data;
   for (let i = 0; i < pool.length && out.length < WORDMAX; i++) {
     const k = pool[i];
     for (const g of k.g) {
@@ -1334,8 +1355,15 @@ const spreadByCategory = (list) => {
   return out;
 };
 
-const wordBatchCount = (deck) => Math.max(1, Math.ceil(deckWords(deck).length / WORDN));
-const wordsOf = (b, deck) => deckWords(deck).slice(b * WORDN, b * WORDN + WORDN);
+// The ladder is always its full height: every set of the five tiers is on the
+// map whether or not the corpus reaches it yet. The ones past the end are
+// drawn dim and refuse the click, so the shape of the thing is honest about
+// both what is here and what is coming.
+const SETS_TOTAL = (TIER * TIERS) / WORDN;
+const wordBatchCount = () => SETS_TOTAL;
+const setsFilled = () => Math.ceil(deckWords().length / WORDN);
+const setIsReady = (b) => b < setsFilled();
+const wordsOf = (b) => deckWords().slice(b * WORDN, b * WORDN + WORDN);
 
 const sectionLabel = (deck, sec) =>
   pad3(sec * SECTION + 1) + "-" + pad3(Math.min((sec + 1) * SECTION, deckData(deck).length));
@@ -1861,7 +1889,7 @@ class Component extends DCLogic {
         if (e.key === "ArrowRight") { e.preventDefault(); this.focusStep(1); return; }
         if (e.key === "ArrowLeft") { e.preventDefault(); this.focusStep(-1); return; }
         if (e.key === " " || e.key === "Spacebar") { e.preventDefault(); this.setState({ focusShown: true }); return; }
-        if (e.key === "Enter") { e.preventDefault(); const w = wordsOf(this.state.wset, this.state.deck)[this.state.focus]; if (w) this.toggleMasteredWord(w.w[3]); return; }
+        if (e.key === "Enter") { e.preventDefault(); const w = wordsOf(this.state.wset)[this.state.focus]; if (w) this.toggleMasteredWord(w.w[3]); return; }
         return;
       }
       if (this.state.zoom === "set") {
@@ -2095,7 +2123,7 @@ class Component extends DCLogic {
   // Between sets the grid leaves as one piece in the direction of travel
   // and the next arrives from the other side: a swipe, not a cut.
   stepSet(d) {
-    const n = wordBatchCount(this.state.deck);
+    const n = wordBatchCount();
     const b = Math.min(n - 1, Math.max(0, (this.state.wset || 0) + d));
     if (b === (this.state.wset || 0) || this._swipeT) return;
     const k = ((this.state.swipe || {}).n || 0) + 1;
@@ -2221,7 +2249,7 @@ class Component extends DCLogic {
     okSpeak([{ text: word, rate: 0.82 }, sentence ? { text: sentence, rate: 0.95 } : null]).then(() => { if (this.state.speaking === key) this.setState({ speaking: null }); });
   }
   focusStep(d) {
-    const n = wordsOf(this.state.wset, this.state.deck).length;
+    const n = wordsOf(this.state.wset).length;
     const i = Math.min(n - 1, Math.max(0, (this.state.focus || 0) + d));
     this.setState({ focus: i, focusShown: false });
   }
@@ -2740,7 +2768,7 @@ class Component extends DCLogic {
   // whole list when the game was opened without one.
   gameWords() {
     const st = this.state;
-    return st.gBatch != null ? wordsOf(st.gBatch, st.deck) : deckWords(st.deck);
+    return st.gBatch != null ? wordsOf(st.gBatch) : deckWords();
   }
 
   gameKeys() { return this.gameWords().map(e => e.w[3]); }
@@ -3360,10 +3388,10 @@ class Component extends DCLogic {
     const SEC_BASE = SEC_I * (SECTION / SETN);
     const SET = setOf(st.batch, st.deck);
     // The deck as vocabulary: every word once, in sets of twenty.
-    const WORDLIST = deckWords(st.deck);
+    const WORDLIST = deckWords();
     const WORDKEYS = WORDLIST.map(e => e.w[3]);
-    const WSET = Math.min(Math.max(0, st.wset || 0), wordBatchCount(st.deck) - 1);
-    const WORDS = wordsOf(WSET, st.deck);
+    const WSET = Math.min(Math.max(0, st.wset || 0), wordBatchCount() - 1);
+    const WORDS = wordsOf(WSET);
     const k = SET[st.sel] || SET[0];
     const seenN = Object.keys(st.seen).filter(c => st.seen[c]).length;
 
@@ -3650,9 +3678,9 @@ class Component extends DCLogic {
       },
       // ---- The two screens, the focus view and the account ----
       ...(() => {
-        const nSets = wordBatchCount(st.deck);
+        const nSets = wordBatchCount();
         const cells = Array.from({ length: nSets }, (_, b) => {
-          const keys = wordsOf(b, st.deck).map(e => e.w[3]);
+          const keys = wordsOf(b).map(e => e.w[3]);
           const done = keys.filter(x => st.mastered[x]).length;
           return { b, done, n: keys.length, full: keys.length > 0 && done === keys.length };
         });
@@ -3696,17 +3724,39 @@ class Component extends DCLogic {
           heroBtn: (totalDone ? T("continue") : T("start")) + " · " + setName(cont),
           continueSet: () => this.gotoSet(cont),
           setsLegend: nSets + " " + T("sets_of_twenty"),
-          setTiles: cells.map((c) => ({
-            n: c.b + 1,
-            frac: setName(c.b) + " · " + T("learned_of", { d: c.done, n: c.n }),
-            pct: pct(c) + "%",
-            fillOpacity: c.full ? 0 : 1,
-            bg: c.full ? "var(--ok-acc)" : "var(--ok-card)",
-            fg: c.full ? "#ffffff" : c.done ? "var(--ok-acc)" : "var(--ok-ink)",
-            ring: c.b === WSET ? "0 0 0 2px var(--ok-bg), 0 0 0 4px var(--ok-acc)" : "none",
-            done: c.full,
-            pick: () => this.gotoSet(c.b)
-          })),
+          // The sets, in their five tiers. A tier's medal fills as its words
+          // are learned and goes solid when every one of them is; the sets the
+          // corpus has not reached yet are dim and refuse the click.
+          tiers: Array.from({ length: TIERS }, (_, ti) => {
+            const per = TIER / WORDN;
+            const mine = cells.slice(ti * per, ti * per + per);
+            const done = mine.reduce((a, c) => a + c.done, 0);
+            const earned = done >= TIER;
+            const ready = mine.some(c => setIsReady(c.b));
+            return {
+              n: ti + 1, name: TIER_JA[ti], own: T("tier_" + (ti + 1)),
+              count: T("words_learned", { d: done, n: TIER }),
+              title: earned ? T("tier_earned", { t: T("tier_" + (ti + 1)), n: TIER }) : T("words_learned", { d: done, n: TIER }),
+              nameFg: earned ? "var(--ok-acc)" : "var(--ok-mute)",
+              headOpacity: ready ? "1" : ".45",
+              tiles: mine.map((c) => {
+                const live = setIsReady(c.b);
+                return {
+                  n: c.b + 1,
+                  frac: live ? setName(c.b) + " · " + T("learned_of", { d: c.done, n: c.n }) : setName(c.b) + " · " + T("coming_soon"),
+                  pct: pct(c) + "%",
+                  fillOpacity: c.full ? 0 : 1,
+                  bg: c.full ? "var(--ok-acc)" : "var(--ok-card)",
+                  fg: c.full ? "#ffffff" : c.done ? "var(--ok-acc)" : "var(--ok-ink)",
+                  ring: c.b === WSET && live ? "0 0 0 2px var(--ok-bg), 0 0 0 4px var(--ok-acc)" : "none",
+                  opacity: live ? "1" : ".38",
+                  cursor: live ? "pointer" : "default",
+                  done: c.full,
+                  pick: () => { if (live) this.gotoSet(c.b); }
+                };
+              })
+            };
+          }),
           goMap: () => this.setState({ zoom: "map", focus: null, focusShown: false, acctOpen: false, hoverWord: null }),
           setTitle: setName(WSET),
           setSub: (cur.full ? T("set_complete") : T("learned_of", { d: cur.done, n: cur.n })) + " · " + range(cur),
@@ -3795,7 +3845,7 @@ class Component extends DCLogic {
               const now = [0, 0, 0];
               Object.keys(st.mastered || {}).forEach(id => { if (st.mastered[id]) add(id, now); });
               const ceil = now.slice();
-              deckWords(st.deck).forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], ceil); });
+              deckWords().forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], ceil); });
               return { now, ceil };
             })());
             const pc = (ppm) => { const v = ppm / 1e4; return v >= 10 ? String(Math.round(v)) : v.toFixed(1).replace(/\.0$/, ""); };
@@ -3840,7 +3890,7 @@ class Component extends DCLogic {
             const now = [0, 0, 0];
             Object.keys(st.mastered || {}).forEach(id => { if (st.mastered[id]) add(id, now); });
             const ceil = now.slice();
-            deckWords(st.deck).forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], ceil); });
+            deckWords().forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], ceil); });
             const pc = (ppm) => { const v = ppm / 1e4; return v >= 10 ? String(Math.round(v)) : v.toFixed(1).replace(/\.0$/, ""); };
             // The bars share one axis, sized to the largest ceiling: the rows
             // stay comparable with each other and the fills stay legible. The
