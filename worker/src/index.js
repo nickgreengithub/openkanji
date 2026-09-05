@@ -215,6 +215,9 @@ const MAIL = {
     button: "Sign in to OpenKanji",
     expiry: "This link works once and expires in 15 minutes.",
     ignore: "If you did not ask to sign in, ignore this email.",
+    progress: "{n} words learned so far.",
+    progressOne: "1 word learned so far.",
+    welcome: "Your first set is waiting.",
   },
   es: {
     subject: "Tu enlace de acceso a OpenKanji",
@@ -222,14 +225,45 @@ const MAIL = {
     button: "Acceder a OpenKanji",
     expiry: "El enlace funciona una sola vez y caduca en 15 minutos.",
     ignore: "Si no has pedido acceder, ignora este correo.",
+    progress: "{n} palabras aprendidas hasta ahora.",
+    progressOne: "1 palabra aprendida hasta ahora.",
+    welcome: "Tu primer grupo te espera.",
   },
 };
 
-async function sendLink(env, email, link, lang) {
+// The Japanese half of the progress line. It is the same sentence whatever
+// the learner reads the rest of the mail in -- that is the point: a line of
+// the language they are here for, with their own underneath it.
+const MAIL_JA = {
+  progress: "これまでに{n}語おぼえました。",
+  welcome: "さいしょのセットが待っています。",
+};
+
+// How far along the account is, for that line. Unknown addresses count zero,
+// which is what a new learner sees anyway.
+async function learnedCount(db, email) {
+  const row = await db.prepare(
+    "select p.mastered as m from users u join progress p on p.user_id = u.id where u.email = ?"
+  ).bind(email).first();
+  if (!row || !row.m) return 0;
+  try {
+    const o = JSON.parse(row.m);
+    return Object.keys(o).filter((k) => o[k]).length;
+  } catch (e) {
+    return 0;
+  }
+}
+
+async function sendLink(env, email, link, lang, learned) {
   const t = MAIL[(lang || "en").toLowerCase()] || MAIL.en;
+  const n = Number(learned) > 0 ? Number(learned) : 0;
+  const ja = (n ? MAIL_JA.progress : MAIL_JA.welcome).replace("{n}", n);
+  const own = n ? (n === 1 ? t.progressOne : t.progress).replace("{n}", n) : t.welcome;
   const html =
     '<div style="font:16px/1.6 -apple-system,BlinkMacSystemFont,sans-serif;color:#16232c">' +
     '<p style="font-size:22px;margin:0 0 18px">開 OpenKanji</p>' +
+    '<p style="font-size:18px;margin:0 0 2px">' + ja + "</p>" +
+    '<p style="color:#5f7384;font-size:14px;margin:0 0 22px">' + own + "</p>" +
     "<p>" + t.lead + "</p>" +
     '<p style="margin:26px 0"><a href="' + link + '" style="background:#0891b2;color:#fff;padding:12px 20px;text-decoration:none">' + t.button + "</a></p>" +
     '<p style="color:#5f7384;font-size:14px">' + t.expiry + " " + t.ignore + "</p></div>";
@@ -238,7 +272,7 @@ async function sendLink(env, email, link, lang) {
     from: env.MAIL_FROM,
     subject: t.subject,
     html,
-    text: t.lead + "\n\n" + link + "\n\n" + t.expiry + " " + t.ignore,
+    text: ja + "\n" + own + "\n\n" + t.lead + "\n\n" + link + "\n\n" + t.expiry + " " + t.ignore,
   });
 }
 
@@ -285,7 +319,7 @@ async function handleLogin(request, env) {
 
   const link = env.SITE_URL.replace(/\/$/, "") + "/api/callback?token=" + encodeURIComponent(token);
   try {
-    await sendLink(env, email, link, body.lang);
+    await sendLink(env, email, link, body.lang, await learnedCount(env.DB, email));
   } catch (e) {
     return json({ error: "send_failed" }, 502);
   }

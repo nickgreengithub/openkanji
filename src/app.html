@@ -523,6 +523,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-ring-ceil{stroke:var(--ok-acc-t);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
 .ok-ring-txt{display:flex;flex-direction:column;gap:.15rem;min-width:0}
 .ok-ring-big{font-size:1.5rem;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ok-ja{letter-spacing:.01em;text-transform:none}
 .ok-ring-lab{font-family:var(--font-2);font-size:.8125rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ok-ring-sub{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ok-continue{margin-left:auto}
@@ -533,13 +534,16 @@ a:hover{color:var(--text-accent-hover)}
 .ok-card-r{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding-left:1.1rem;border-left:1px solid var(--ok-line)}
 .ok-card-ex{margin-top:0;padding-top:0;border-top:0;font-size:1.125rem;line-height:1.55}
 .ok-card-tr{font-size:1rem}
-.ok-card-l{position:relative;padding-bottom:1.9rem}
-.ok-play{position:absolute;right:.35rem;bottom:0;width:1.9rem;height:1.9rem;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ok-mute);cursor:pointer;user-select:none;transition:background 140ms ease,color 140ms ease}
-.ok-play:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
+/* Play sits on the card's right edge, directly under the tick and built the
+   same way, so the two read as one column of controls. */
+.ok-play{position:absolute;top:3.35rem;right:.85rem;width:2rem;height:2rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
+.ok-play:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
 @keyframes ok-speak{0%,100%{opacity:1}50%{opacity:.45}}
 .ok-tick{position:absolute;top:.85rem;right:.85rem;width:2rem;height:2rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
 .ok-tick:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
-.ok-card-r{padding-right:2.4rem}
+/* room for the tick and the play button stacked beneath it */
+.ok-card-r{padding-right:3rem}
+.ok-card{min-height:6.2rem}
 .ok-cards{will-change:transform}
 @keyframes ok-swipe-out-la{from{opacity:1;transform:none}to{opacity:0;transform:translateX(-48px)}}
 @keyframes ok-swipe-out-lb{from{opacity:1;transform:none}to{opacity:0;transform:translateX(-48px)}}
@@ -637,7 +641,7 @@ a:hover{color:var(--text-accent-hover)}
 
   /* thumbs, not cursors */
   .ok-tick{width:2.75rem;height:2.75rem;top:.5rem;right:.5rem}
-  .ok-play{width:2.75rem;height:2.75rem;right:.45rem;bottom:.35rem;top:auto}
+  .ok-play{width:2.75rem;height:2.75rem;right:.5rem;top:3.6rem;bottom:auto}
   .ok-card{padding-bottom:.7rem}
   .ok-card-l{position:static;padding-right:3rem;padding-bottom:0}
   .ok-card-r{padding-right:3rem}
@@ -805,7 +809,7 @@ html[data-ok-ready] #ok-boot{display:none}
       </header>
       <section class="ok-wrap">
         <div class="ok-overall">
-          <div class="ok-row"><span class="ok-h2" title="{{ t_coverage_note }}">{{ t_your_progress }}</span></div>
+          <div class="ok-row"><span class="ok-h2 ok-ja" title="{{ yourProgressTitle }}">{{ ja_your_progress }}</span></div>
           <div class="ok-rings">
             <sc-for list="{{ rings }}" as="rg" hint-placeholder-count="4">
               <div class="ok-ring" title="{{ rg.title }}">
@@ -815,7 +819,7 @@ html[data-ok-ready] #ok-boot{display:none}
                   <circle class="ok-ring-c" cx="30" cy="30" r="25" fill="none" stroke-width="7" stroke-linecap="round" stroke-dasharray="{{ rg.nowDash }}"></circle>
                 </svg>
                 <div class="ok-ring-txt">
-                  <span class="ok-ring-lab">{{ rg.label }}</span>
+                  <span class="ok-ring-lab ok-ja">{{ rg.label }}</span>
                   <span class="ok-ring-big">{{ rg.big }}</span>
                   <span class="ok-ring-sub">{{ rg.sub }}</span>
                 </div>
@@ -824,7 +828,7 @@ html[data-ok-ready] #ok-boot{display:none}
           </div>
         </div>
         <div class="ok-overall">
-          <div class="ok-row"><span class="ok-h2">{{ t_all_sets }}</span></div>
+          <div class="ok-row"><span class="ok-h2 ok-ja" title="{{ t_all_sets }}">{{ ja_all_sets }}</span></div>
           <div class="ok-tiles">
             <sc-for list="{{ setTiles }}" as="tl" hint-placeholder-count="10">
               <div sc-camel-on-click="{{ tl.pick }}" title="{{ tl.frac }}" class="ok-tile" style="background:{{ tl.bg }};color:{{ tl.fg }};box-shadow:{{ tl.ring }}">
@@ -874,9 +878,9 @@ html[data-ok-ready] #ok-boot{display:none}
               <div class="ok-card-l">
               <span class="ok-card-word" style="font-size:{{ lr.wordSize }};color:{{ lr.wordFg }}"><sc-for list="{{ lr.ruby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ lr.rubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span>
               <span class="ok-card-gloss" style="opacity:{{ lr.ansOpacity }}">{{ lr.gloss }}</span>
-              <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
               </div>
               <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span>
+              <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
               <sc-if value="{{ lr.hasEx }}" hint-placeholder-val="{{ true }}">
                 <div class="ok-card-r">
                 <span class="ok-card-ex"><sc-for list="{{ lr.exParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok-acc)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
@@ -910,7 +914,7 @@ html[data-ok-ready] #ok-boot{display:none}
       <span class="ok-dot" style="background:{{ syncDot }}"></span>
     </span>
     <sc-if value="{{ acctOpen }}" hint-placeholder-val="{{ false }}">
-      <div sc-camel-on-mouse-leave="{{ leaveAcct }}" sc-camel-on-click="{{ stop }}" class="ok-pop">
+      <div sc-camel-on-click="{{ stop }}" class="ok-pop">
         <div class="ok-pop-in">
           <span sc-camel-on-click="{{ closeAcct }}" class="ok-pop-x" title="{{ t_close }}">×</span>
           <span class="ok-pop-head">{{ t_settings }}</span>
@@ -1108,6 +1112,15 @@ const COV = __COV__;
 const SURF = {};
 DATA.forEach(k => k.g.forEach(g => g.w.forEach(w => { SURF[w[3]] = w[0]; })));
 const COV_LABELS = ["tv_film", "anime_manga", "books_news"];
+// The headings read in Japanese, with the learner's own language on hover.
+// This is a Japanese course and these are short, familiar shapes -- seeing
+// them every session is free reading practice, and the tooltip is the
+// safety net for anyone who does not know them yet.
+const JA_LABEL = {
+  your_progress: "学習状況", all_sets: "セット一覧", deck: "この教材",
+  tv_film: "テレビ・映画", anime_manga: "アニメ・漫画", books_news: "本・ニュース"
+};
+const TJ = (key) => JA_LABEL[key] || T(key);
 // nth translation of word `id` in the current language, falling back to the
 // English baked into EXTRA.
 const exTr = (id, n, fallback) => {
@@ -1705,6 +1718,15 @@ class Component extends DCLogic {
     setTimeout(() => this.focusComposer(tries + 1), 50);
   }
 
+  // Signing in starts with typing, so the caret belongs in the field. The
+  // panel mounts on the next render, so poll briefly for it as the composer does.
+  focusAcctEmail(tries) {
+    if (!this.state.acctOpen || tries > 24) return;
+    const el = document.querySelector(".ok-pop .ok-input");
+    if (el) { el.focus(); return; }
+    setTimeout(() => this.focusAcctEmail(tries + 1), 40);
+  }
+
   // an explicit tween, since native smooth scrolling is not always honoured
   tweenScroll(to) {
     const el = this._listBox;
@@ -1783,7 +1805,7 @@ class Component extends DCLogic {
     this._onKey = (e) => {
       if (e.key === "Escape") {
         if (this.state.focus != null) { this.closeFocusView(); return; }
-        if (this.state.acctOpen) { this.setState({ acctOpen: false }); return; }
+        if (this.state.acctOpen) { this.closeAcctView(); return; }
         if (this.state.about) { this.setState({ about: false }); return; }
         if (this.state.write) { this.closeWrite(); return; }
         if (this.state.dlg) { this.setState({ dlg: false }); return; }
@@ -2122,6 +2144,23 @@ class Component extends DCLogic {
       if (entry) entry.close();
     };
     window.addEventListener("popstate", this._onPop);
+    // The account panel used to close on mouse-leave, which snatched it away
+    // mid-typing. It closes on a click outside instead -- and on Escape, or
+    // its own x, both of which are handled elsewhere.
+    //
+    // The click is swallowed here rather than passed through. Letting it land
+    // would open whatever sits underneath, and that handler pushes its own
+    // history entry, which then races the pop this close is waiting on -- the
+    // panel stays up and the wrong page closes instead. One click, one effect.
+    this._onDocClick = (e) => {
+      if (!this.state.acctOpen) return;
+      const el = e.target;
+      if (el && el.closest && el.closest(".ok-acct")) return;
+      e.preventDefault();
+      e.stopPropagation();
+      this.closeAcctView();
+    };
+    document.addEventListener("click", this._onDocClick, true);
     // A horizontal swipe walks the sets on a set page and the words in a word
     // page -- the gesture a phone expects for "next".
     let x0 = 0, y0 = 0, live = false;
@@ -3103,6 +3142,18 @@ class Component extends DCLogic {
       rya:"りゃ",ryu:"りゅ",ryo:"りょ",gya:"ぎゃ",gyu:"ぎゅ",gyo:"ぎょ",jya:"じゃ",jyu:"じゅ",jyo:"じょ",
       ja:"じゃ",ju:"じゅ",jo:"じょ",bya:"びゃ",byu:"びゅ",byo:"びょ",pya:"ぴゃ",pyu:"ぴゅ",pyo:"ぴょ",
       shi:"し",chi:"ち",tsu:"つ",fu:"ふ",ji:"じ",
+      // Kunrei and wapuro spellings a real IME accepts: si/ti/tu/hu/zi and
+      // their y-glides, so nobody is punished for the romanisation they learnt.
+      si:"し",ti:"ち",tu:"つ",hu:"ふ",zi:"じ",
+      sya:"しゃ",syu:"しゅ",syo:"しょ",tya:"ちゃ",tyu:"ちゅ",tyo:"ちょ",
+      zya:"じゃ",zyu:"じゅ",zyo:"じょ",cya:"ちゃ",cyu:"ちゅ",cyo:"ちょ",
+      dya:"ぢゃ",dyu:"ぢゅ",dyo:"ぢょ",
+      // sounds that only exist in loanwords, and the escapes for the rest
+      fa:"ふぁ",fi:"ふぃ",fe:"ふぇ",fo:"ふぉ",she:"しぇ",che:"ちぇ",je:"じぇ",
+      va:"ゔぁ",vi:"ゔぃ",vu:"ゔ",ve:"ゔぇ",vo:"ゔぉ",wi:"うぃ",we:"うぇ",
+      xtu:"っ",ltu:"っ",xtsu:"っ",xa:"ぁ",xi:"ぃ",xu:"ぅ",xe:"ぇ",xo:"ぉ",
+      la:"ぁ",li:"ぃ",lu:"ぅ",le:"ぇ",lo:"ぉ",xya:"ゃ",xyu:"ゅ",xyo:"ょ",
+      "n'":"ん",
       ka:"か",ki:"き",ku:"く",ke:"け",ko:"こ",sa:"さ",su:"す",se:"せ",so:"そ",
       ta:"た",te:"て",to:"と",na:"な",ni:"に",nu:"ぬ",ne:"ね",no:"の",
       ha:"は",hi:"ひ",he:"へ",ho:"ほ",ma:"ま",mi:"み",mu:"む",me:"め",mo:"も",
@@ -3116,12 +3167,12 @@ class Component extends DCLogic {
     let out = "", i = 0;
     while (i < input.length) {
       const ch = input[i];
-      if (!/[a-z\-.,?!]/i.test(ch)) { out += ch; i++; continue; }
+      if (!/[a-z\-.,?!']/i.test(ch)) { out += ch; i++; continue; }
       const low = input.slice(i).toLowerCase();
       // small tsu: doubled consonant
       if (/^([bcdfghjkmpqrstvwyz])\1/.test(low)) { out += "っ"; i++; continue; }
       let hit = null;
-      for (let len = 3; len >= 1; len--) {
+      for (let len = 4; len >= 1; len--) {
         const seg = low.slice(0, len);
         if (M[seg]) { hit = { seg, kana: M[seg] }; break; }
       }
@@ -3133,8 +3184,9 @@ class Component extends DCLogic {
       if (low[0] === "n") {
         const next = low[1];
         // a trailing "n" stays romaji — the next keystroke may still make な/の/に
-        // "nn" commits the first n only; the second may still start な/に/の
-        if (next === "n") { out += "ん"; i += 1; continue; }
+        // "nn" is how a keyboard commits ん. It eats both n's, unless a vowel
+        // follows, where the second one starts its own mora: nna -> んな.
+        if (next === "n") { out += "ん"; i += /^[aiueoy]/.test(low[2] || "") ? 1 : 2; continue; }
         if (next && !/[aiueoy]/.test(next)) { out += "ん"; i++; continue; }
       }
       out += input[i]; i++;
@@ -3595,11 +3647,11 @@ class Component extends DCLogic {
             if (this.state.acctOpen) { this.closeAcctView(); return; }
             this.setState({ acctOpen: true });
             this.openPage("acct", () => this.setState({ acctOpen: false }));
+            this.focusAcctEmail(0);
           },
           closeAcct: () => this.closeAcctView(),
           // On a phone the panel is a page, so a stray mouseleave must not
           // dismiss it; on a pointer device leaving it is the natural close.
-          leaveAcct: () => { if (!okPhone()) this.closeAcctView(); },
           acctIn: signedIn, acctNotIn: !signedIn,
           acctOut: okSyncReady() && !signedIn,
           acctSyncOff: !okSyncReady(),
@@ -3640,10 +3692,11 @@ class Component extends DCLogic {
             const pc = (ppm) => { const v = ppm / 1e4; return v >= 10 ? String(Math.round(v)) : v.toFixed(1).replace(/\.0$/, ""); };
             const deckP = totalN ? totalDone / totalN * 100 : 0;
             return [{
-              label: T("deck"), big: Math.round(deckP) + "%", sub: T("words_learned", { d: totalDone, n: totalN }),
-              nowDash: dash(deckP), ceilDash: dash(100), title: T("sets_learned", { d: totalDone, n: totalN })
+              label: TJ("deck"), big: Math.round(deckP) + "%", sub: T("words_learned", { d: totalDone, n: totalN }),
+              nowDash: dash(deckP), ceilDash: dash(100),
+              title: T("deck") + " — " + T("sets_learned", { d: totalDone, n: totalN })
             }].concat(COV_LABELS.map((k, i) => ({
-              label: T(k), big: pc(rows.now[i]) + "%", sub: T("with_deck", { b: pc(rows.ceil[i]) }),
+              label: TJ(k), big: pc(rows.now[i]) + "%", sub: T("with_deck", { b: pc(rows.ceil[i]) }),
               nowDash: dash(rows.now[i] / 1e4), ceilDash: dash(rows.ceil[i] / 1e4),
               title: T(k) + ": " + T("now_deck", { a: pc(rows.now[i]), b: pc(rows.ceil[i]) }) + ". " + T("coverage_note")
             })));
@@ -3656,6 +3709,8 @@ class Component extends DCLogic {
           wSheetOut: st.writeClosing ? "ok-sheet-out" : "",
           wBack: () => { if (this.state.writeFromStudy) this.setState({ dlgSeamless: true, write: false, writeClosing: false, writeFromStudy: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); else this.closeWrite(); },
           t_settings: T("settings"), t_close: T("close"),
+          ja_your_progress: TJ("your_progress"), ja_all_sets: TJ("all_sets"),
+          yourProgressTitle: T("your_progress") + " — " + T("coverage_note"),
           jaSeg: st.lang === "ja" ? segOn : segOff,
           enSeg: st.lang !== "ja" ? segOn : segOff,
           // completion: the set's own next step takes the primary slot
@@ -3862,7 +3917,7 @@ class Component extends DCLogic {
       gChat: () => {
         // Write needs the model, and the model needs an account behind it.
         if (!okAiReady()) { this.flashMsg(T("sync_unavailable")); return; }
-        if (!(window.claude && window.claude.complete) && !this.state.userEmail) { this.closePractice(); this.flashMsg(T("sign_in_first")); setTimeout(() => this.setState({ acctOpen: true }), 220); return; }
+        if (!(window.claude && window.claude.complete) && !this.state.userEmail) { this.closePractice(); this.flashMsg(T("sign_in_first")); setTimeout(() => { this.setState({ acctOpen: true }); this.focusAcctEmail(0); }, 220); return; }
         const ks = this.practiceWords().map(e => e.w[3]);
         if (!ks.length) return;
         const sel = {}; ks.forEach(x => { sel[x] = true; });

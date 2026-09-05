@@ -118,6 +118,36 @@ await test("sends the email in the requested language", async () => {
   assert.match(env._sent[1].subject, /sign-in/);
 });
 
+await test("a new address gets the welcome line, in Japanese and its own language", async () => {
+  const env = makeEnv();
+  await call(env, "POST", "/api/login", { body: { email: "new@example.com", lang: "en" } });
+  const m = env._sent[0];
+  assert.match(m.html, /さいしょのセットが待っています。/);
+  assert.match(m.html, /Your first set is waiting\./);
+  assert.ok(!/語おぼえました/.test(m.html), "nothing learned yet, so no count");
+});
+
+await test("a returning address gets its progress, in Japanese and its own language", async () => {
+  const env = makeEnv();
+  const cookie = await signedIn(env, "back@example.com");
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: { w0001: true, w0002: true, w0003: true } } });
+  env._sent.length = 0;
+  await call(env, "POST", "/api/login", { body: { email: "back@example.com", lang: "es" }, ip: "203.0.113.9" });
+  const m = env._sent[0];
+  assert.match(m.html, /これまでに3語おぼえました。/);
+  assert.match(m.html, /3 palabras aprendidas hasta ahora\./);
+  assert.match(m.text, /これまでに3語おぼえました。/, "the plain part carries it too");
+});
+
+await test("one word learned reads as one, not as a plural", async () => {
+  const env = makeEnv();
+  const cookie = await signedIn(env, "solo@example.com");
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: { w0001: true } } });
+  env._sent.length = 0;
+  await call(env, "POST", "/api/login", { body: { email: "solo@example.com", lang: "en" }, ip: "203.0.113.8" });
+  assert.match(env._sent[0].html, /1 word learned so far\./);
+});
+
 await test("rate limits per email", async () => {
   const env = makeEnv();
   for (let i = 0; i < 5; i++) {
