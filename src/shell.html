@@ -215,6 +215,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     const uuids = Object.keys(manifest);
     setStatus('Unpacking ' + uuids.length + ' assets...');
 
+    // Nothing in the bundle should need decompressing (see tools/build.js),
+    // because DecompressionStream only arrived in Safari 16.4 and an older
+    // iPhone would otherwise mint the runtime's compressed bytes as a script
+    // and sit on a blank page. If that ever changes, say so where it shows.
+    if (typeof DecompressionStream === 'undefined' &&
+        uuids.some(function (u) { return manifest[u].compressed; })) {
+      throw new Error('this browser cannot unpack compressed assets ' +
+        '(no DecompressionStream: Safari 16.4 or newer is needed)');
+    }
+
     await Promise.all(uuids.map(async (uuid) => {
       const entry = manifest[uuid];
       try {
@@ -241,8 +251,6 @@ document.addEventListener('DOMContentLoaded', async function() {
             finalBytes = new Uint8Array(totalLen);
             let offset = 0;
             for (const chunk of chunks) { finalBytes.set(chunk, offset); offset += chunk.length; }
-          } else {
-            console.warn('DecompressionStream not available, asset ' + uuid + ' may not render');
           }
         }
 

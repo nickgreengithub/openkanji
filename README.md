@@ -258,6 +258,16 @@ npm run serve     # serve locally on :8080
 
 No dependencies -- `build.js` is plain Node.
 
+The page carries its fonts and its runtime inside itself, base64'd in an
+asset manifest. **Those assets ship uncompressed on purpose.** Gzipping them
+means the browser has to undo it with `DecompressionStream`, which Safari
+only got in 16.4 -- an iPhone older than that mints the runtime's compressed
+bytes as a script, the parser rejects it, and the app boots to a blank page
+with nothing on screen to say why. It costs about 20KB over the wire, since
+the response is compressed anyway and base64-of-gzip does not compress
+twice. `e2e.mjs` fails if any asset in the built page is marked compressed,
+and again if the page does not boot with `DecompressionStream` removed.
+
 ## Deploying
 
 Cloudflare Worker `openkanji`, serving both the site and the API at

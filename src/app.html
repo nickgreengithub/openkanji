@@ -571,7 +571,7 @@ a:hover{color:var(--text-accent-hover)}
    what practice worked out rather than replacing it, so letting go returns
    the word to whatever it had actually earned. */
 .ok-tick svg{width:2.05rem;height:2.05rem;display:block}
-.ok-pie-w{transition:fill 260ms ease}
+.ok-pie-w{transition:d 260ms ease}
 /* room for the tick and the play button stacked beneath it */
 .ok-card-r{padding-right:3rem}
 .ok-card{min-height:6.2rem}
@@ -988,9 +988,7 @@ html[data-ok-ready] #ok-boot{display:none}
               <div class="ok-cardbtns">
                 <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}">
                   <svg sc-camel-view-box="0 0 24 24">
-                    <sc-for list="{{ lr.pie }}" as="pw" hint-placeholder-count="4"><path d="{{ pw.d }}" fill="{{ pw.fill }}" class="ok-pie-w"></path></sc-for>
-                    <path d="M12 1 V23 M1 12 H23" stroke="var(--ok-line)" stroke-width="1.1"></path>
-                    <sc-if value="{{ lr.pieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M7.6 12.2 L10.7 15.3 L16.4 8.9" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+                    <sc-if value="{{ lr.pieOn }}" hint-placeholder-val="{{ false }}"><path d="{{ lr.pieD }}" fill="var(--ok-acc)" class="ok-pie-w"></path></sc-if>
                   </svg>
                 </span>
                 <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
@@ -1077,9 +1075,7 @@ html[data-ok-ready] #ok-boot{display:none}
         <div class="ok-focus-str">
           <span class="ok-focus-ring">
             <svg sc-camel-view-box="0 0 24 24">
-              <sc-for list="{{ focusPie }}" as="fp" hint-placeholder-count="4"><path d="{{ fp.d }}" fill="{{ fp.fill }}" class="ok-pie-w"></path></sc-for>
-              <path d="M12 1 V23 M1 12 H23" stroke="var(--ok-line)" stroke-width="1.1"></path>
-              <sc-if value="{{ focusPieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M7.6 12.2 L10.7 15.3 L16.4 8.9" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+              <sc-if value="{{ focusPieOn }}" hint-placeholder-val="{{ false }}"><path d="{{ focusPieD }}" fill="var(--ok-acc)" class="ok-pie-w"></path></sc-if>
             </svg>
           </span>
           <span class="ok-focus-str-top">
@@ -1249,12 +1245,21 @@ const covMedia = (c) => (c[0] + c[1] + c[2]) / 3;
 // Four quarters filling the circle, clockwise from the top. Unlit ones are
 // drawn too, in a pale fill, so the control is always a whole disc and the
 // lines that divide it are always there to be counted.
-const PIE_ARCS = [
-  "M12 12 L12.00 1.00 A11 11 0 0 1 23.00 12.00 Z",
-  "M12 12 L23.00 12.00 A11 11 0 0 1 12.00 23.00 Z",
-  "M12 12 L12.00 23.00 A11 11 0 0 1 1.00 12.00 Z",
-  "M12 12 L1.00 12.00 A11 11 0 0 1 12.00 1.00 Z"
-];
+// How much of a word is known, drawn as one solid pie inside the control's
+// circle: a quarter for each level, no divisions and no crosshair, and at
+// the top a whole filled circle. Small enough that the ring around it still
+// reads as the button.
+const PIE_R = 7.5;
+const okPiePath = (lvl) => {
+  const n = Math.max(0, Math.min(4, lvl | 0));
+  if (!n) return "";
+  if (n === 4) return "M12 " + (12 - PIE_R) + " A" + PIE_R + " " + PIE_R + " 0 1 1 12 " + (12 + PIE_R) +
+    " A" + PIE_R + " " + PIE_R + " 0 1 1 12 " + (12 - PIE_R) + " Z";
+  const a = (n / 4) * 2 * Math.PI;
+  const x = (12 + PIE_R * Math.sin(a)).toFixed(2);
+  const y = (12 - PIE_R * Math.cos(a)).toFixed(2);
+  return "M12 12 L12 " + (12 - PIE_R) + " A" + PIE_R + " " + PIE_R + " 0 " + (n > 2 ? 1 : 0) + " 1 " + x + " " + y + " Z";
+};
 // The headings read in Japanese, with the learner's own language on hover.
 // This is a Japanese course and these are short, familiar shapes -- seeing
 // them every session is free reading practice, and the tooltip is the
@@ -1789,28 +1794,60 @@ const okVoice = () => {
   return byName || ja.find(v => v.localService) || ja[0];
 };
 if (okCanSpeak() && window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener("voiceschanged", () => { _okVoice = okVoice(); });
-// -> a promise that settles when the last utterance ends (or fails)
+// Utterances have to outlive this call: an engine that collects one before
+// it is spoken simply goes quiet, with no error to catch.
+let _okUtter = [];
+let _okPump = null;
+// -> a promise that settles when the last utterance ends (or fails), with
+//    `false` when the engine never made a sound
 const okSpeak = (parts) => new Promise((resolve) => {
   if (!okCanSpeak()) return resolve(false);
   const synth = window.speechSynthesis;
-  try { synth.cancel(); } catch (e) {}
   const voice = _okVoice || (_okVoice = okVoice());
   const list = parts.filter(Boolean);
   if (!list.length) return resolve(false);
-  let left = list.length, done = false;
-  const finish = () => { if (!done) { done = true; resolve(true); } };
-  list.forEach((p, i) => {
-    const u = new SpeechSynthesisUtterance(p.text);
-    u.lang = "ja-JP";
-    if (voice) u.voice = voice;
-    u.rate = p.rate || 0.9;
-    u.pitch = 1;
-    u.onend = () => { if (--left <= 0) finish(); };
-    u.onerror = () => { if (--left <= 0) finish(); };
-    synth.speak(u);
-  });
+  let left = list.length, done = false, started = false;
+  const stopPump = () => { if (_okPump) { clearInterval(_okPump); _okPump = null; } };
+  const finish = (ok) => {
+    if (done) return;
+    done = true; stopPump(); _okUtter = [];
+    resolve(ok !== false && started);
+  };
+  const queue = () => {
+    _okUtter = list.map((p) => {
+      const u = new SpeechSynthesisUtterance(p.text);
+      u.lang = "ja-JP";
+      if (voice) u.voice = voice;
+      u.rate = p.rate || 0.9;
+      u.pitch = 1;
+      u.onstart = () => { started = true; };
+      u.onend = () => { started = true; if (--left <= 0) finish(true); };
+      u.onerror = () => { if (--left <= 0) finish(false); };
+      return u;
+    });
+    for (const u of _okUtter) synth.speak(u);
+    // Long text stops by itself on some engines unless it is nudged.
+    stopPump();
+    _okPump = setInterval(() => {
+      if (done) return stopPump();
+      try { if (synth.paused) synth.resume(); } catch (e) {}
+      if (!synth.speaking && !synth.pending && started) finish(true);
+    }, 1000);
+  };
+  // Cancelling and speaking in the same tick loses the new utterance on
+  // some engines, so only cancel when something is actually playing -- and
+  // then let that land before queueing. Nothing playing means we can speak
+  // straight from the click, which is what iOS requires.
+  let playing = false;
+  try { playing = !!(synth.speaking || synth.pending); } catch (e) {}
+  if (playing) {
+    try { synth.cancel(); } catch (e) {}
+    setTimeout(queue, 60);
+  } else {
+    queue();
+  }
   // some engines never fire onend; never leave the button lit
-  setTimeout(finish, 12000);
+  setTimeout(() => finish(started), 20000);
 });
 const okAiReady = () => (typeof window !== "undefined" && !!(window.claude && window.claude.complete)) || okSyncReady();
 // mastered is a { "word|reading": true } map. Union merge: local OR server wins.
@@ -2455,7 +2492,12 @@ class Component extends DCLogic {
     if (!okCanSpeak()) return;
     if (this.state.speaking === key) { try { window.speechSynthesis.cancel(); } catch (e) {} this.setState({ speaking: null }); return; }
     this.setState({ speaking: key });
-    okSpeak([{ text: word, rate: 0.82 }, sentence ? { text: sentence, rate: 0.95 } : null]).then(() => { if (this.state.speaking === key) this.setState({ speaking: null }); });
+    okSpeak([{ text: word, rate: 0.82 }, sentence ? { text: sentence, rate: 0.95 } : null]).then((heard) => {
+      if (this.state.speaking === key) this.setState({ speaking: null });
+      // A device with no Japanese voice installed makes no sound and raises
+      // nothing: say so, rather than leaving a button that looks broken.
+      if (!heard && !okVoice()) this.flashMsg(T("no_voice"));
+    });
   }
   focusStep(d) {
     const n = wordsOf(this.state.wset).length;
@@ -4050,8 +4092,8 @@ class Component extends DCLogic {
               dots.push({ bg: right ? "var(--ok-acc)" : "#e11d48", title: right ? T("str_right") : T("str_wrong") });
             }
             return {
-              focusPie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "transparent" })),
-              focusPieTick: marked,
+              focusPieOn: lvl > 0,
+              focusPieD: okPiePath(lvl),
               focusLvlName: marked ? T("marked_learned") : T("str_" + lvl),
               focusStrSub: !n ? T("str_never_sub")
                 : (days === 0 ? T("str_seen_today_long") : days === 1 ? T("str_seen_yesterday") : T("str_seen_days_long", { n: days }))
@@ -4700,11 +4742,8 @@ class Component extends DCLogic {
           ...(() => {
             const lvl = done ? 4 : strLevel((st.strength || {})[key]);
             return {
-              // Four arcs at the rim, gapped so they read as four. The unlit
-              // ones stay a visible grey: an empty control still has to say
-              // how many steps it has.
-              pie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "transparent" })),
-              pieTick: !!done
+              pieOn: lvl > 0,
+              pieD: okPiePath(lvl)
             };
           })(),
           play: (ev) => { if (ev && ev.stopPropagation) ev.stopPropagation(); this.speakWord(key, w[0], x || ""); },

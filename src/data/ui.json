@@ -822,5 +822,9 @@
   "close": {
     "en": "Close",
     "es": "Cerrar"
+  },
+  "no_voice": {
+    "en": "This browser has no Japanese voice installed",
+    "es": "Este navegador no tiene una voz japonesa instalada"
   }
 }
