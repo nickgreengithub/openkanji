@@ -48,7 +48,33 @@ const state = await p.evaluate(() => {
   };
 });
 
-const out = { url: URL_, nav, state, logs };
+// And again as an iPhone before iOS 16.4, which has no DecompressionStream:
+// the case that left the site blank on a phone.
+const oldLogs = [];
+const old = await b.newPage({ ...devices["iPhone 13"], hasTouch: true, isMobile: true });
+old.on("console", (m) => oldLogs.push(m.type().toUpperCase() + ": " + m.text().slice(0, 300)));
+old.on("pageerror", (e) => oldLogs.push("PAGEERROR: " + String(e.message).slice(0, 300)));
+await old.addInitScript(() => {
+  Object.defineProperty(window, "DecompressionStream", { value: undefined, configurable: true });
+});
+let pre164 = {};
+try {
+  await old.goto(URL_, { waitUntil: "load", timeout: 60000 });
+  await old.waitForTimeout(8000);
+  pre164 = await old.evaluate(() => ({
+    hasDecompressionStream: typeof DecompressionStream !== "undefined",
+    tiles: document.querySelectorAll(".ok-tile").length,
+    placeholdersLeft: /\{\{ /.test(document.body.innerText || ""),
+    bodyTextStart: (document.body.innerText || "").slice(0, 120),
+  }));
+} catch (e) {
+  pre164 = { error: e.message };
+}
+await old.screenshot({ path: "probe/phone-pre-16-4.png" });
+pre164.logs = oldLogs;
+await old.close();
+
+const out = { url: URL_, nav, state, logs, pre164 };
 writeFileSync("probe/report.json", JSON.stringify(out, null, 2));
 await p.screenshot({ path: "probe/phone.png", fullPage: false });
 console.log(JSON.stringify(out, null, 2));
