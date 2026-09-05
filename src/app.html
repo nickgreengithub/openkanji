@@ -439,6 +439,9 @@ a:hover{color:var(--text-accent-hover)}
 .ok-focus-str-lvl{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);white-space:nowrap}
 .ok-focus-str-sub{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);white-space:nowrap}
 .ok-focus-dots{display:inline-flex;align-items:center;gap:4px;flex:0 0 auto}
+/* the level and its dots travel together on a phone; on a desk the wrapper
+   dissolves into the row */
+.ok-focus-str-top{display:contents}
 .ok-focus-dot{width:7px;height:7px;border-radius:50%}
 .ok-focus-actions{display:flex;gap:.6rem;padding-top:.15rem}
 .ok-focus-arrow{position:absolute;top:50%;transform:translateY(-50%);width:2.6rem;height:2.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ok-mute);cursor:pointer;user-select:none}
@@ -676,7 +679,35 @@ a:hover{color:var(--text-accent-hover)}
   .ok-card-r{padding-right:3rem}
   .ok-round-btn{width:2.75rem;height:2.75rem}
   .ok-mini{width:2.5rem;height:2.5rem}
-  .ok-back{padding:.5rem .7rem .5rem .35rem}
+  .ok-back{padding:.5rem .7rem .5rem .35rem;min-height:2.75rem}
+  .ok-avatar{width:2.75rem;height:2.75rem}
+  .ok-acct{top:.375rem}
+  .ok-seg-b{display:inline-flex;align-items:center;justify-content:center;min-height:2.4rem;padding:.4rem 1rem}
+  .ok-focus-actions .ok-btn{min-height:2.75rem}
+
+  /* quiz tiles: a long word shrinks before it wraps, and wraps before it leaves */
+  .ok-qtile{padding:.9rem .6rem;min-width:0}
+  .ok-qtile-big{white-space:normal;overflow-wrap:anywhere}
+
+  /* the word, opened: its caption becomes two lines beside the ring rather
+     than one line that would run off a phone */
+  .ok-focus-str{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:.7rem;row-gap:.3rem;align-items:center;justify-content:start;width:100%;line-height:1.2;text-align:left}
+  .ok-focus-ring{grid-row:1/3;width:1.6rem;height:1.6rem}
+  .ok-focus-str-top{display:flex;align-items:center;gap:.6rem;grid-column:2;grid-row:1;min-width:0}
+  .ok-focus-str-lvl{white-space:normal}
+  .ok-focus-str-sub{grid-column:2;grid-row:2;white-space:normal}
+
+  /* write: the word pills are one strip you scroll sideways, so the thread
+     keeps the page; the language toggle is a thumb's size */
+  .ok-sheet-top .ok-seg-b{padding:.4rem .75rem}
+  .ok-w-pills{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;gap:.4rem;padding:.7rem 1rem 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .ok-w-pills::-webkit-scrollbar{display:none}
+  .ok-w-pill{flex:0 0 auto;min-height:2.4rem}
+  .ok-w-thread{padding:.9rem 1rem}
+  .ok-w-msg{max-width:92%}
+  .ok-w-cands{padding:0 1rem}
+  .ok-w-cand{min-height:2.5rem}
+  .ok-w-bar{padding-bottom:calc(.8rem + env(safe-area-inset-bottom))}
 
   /* the bottom bar: one job per page */
   .ok-bottombar{position:fixed;left:0;right:0;bottom:0;z-index:65;display:flex;align-items:center;gap:.6rem;padding:.6rem max(.9rem,env(safe-area-inset-left)) calc(.6rem + env(safe-area-inset-bottom)) max(.9rem,env(safe-area-inset-right));background:rgba(244,244,241,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
@@ -689,6 +720,34 @@ a:hover{color:var(--text-accent-hover)}
   /* map and set push and pop rather than zoom */
   .ok-page-set{animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
   .ok-page-map{animation:ok-push-back 220ms ease}
+}
+/* A phone on its side: too wide for the page layout, too short for the
+   dialog. The dialog gives up its fixed height and scrolls, and the set's
+   header sizes its ends to their contents so nothing overlaps the title. */
+@media (min-width:641px) and (max-height:520px){
+  .ok-focus{height:auto;max-height:calc(100vh - 1.5rem);gap:.6rem;padding:2rem 3.5rem 1.25rem}
+  .ok-focus-wordbox{height:5rem}
+  .ok-focus-word{font-size:3rem!important}
+  .ok-focus-str{margin-top:.5rem}
+  .ok-quiz,.ok-fc{min-height:0}
+}
+@media (min-width:641px) and (max-width:900px){
+  .ok-top-l,.ok-top-r{flex:1 1 auto}
+  .ok-set-sub{display:none}
+}
+/* Fingers do not hover: nothing lifts or tints on a tap, and a press shows
+   as a press instead. */
+@media (hover:none){
+  .ok-card:hover,.ok-tile:hover,.ok-pmode:hover,.ok-hero:hover{transform:none;box-shadow:var(--ok-shadow)}
+  .ok-qtile[data-live]:hover{transform:none;border-color:var(--ok-line)}
+  .ok-tick:hover,.ok-play:hover{transform:none;border-color:var(--ok-line);color:#c9c9c2}
+  .ok-btn:hover{border-color:var(--ok-line);background:var(--ok-card)}
+  .ok-btn-primary:hover{background:var(--ok-acc);border-color:var(--ok-acc)}
+  .ok-round-btn:hover,.ok-mini:hover,.ok-focus-arrow:hover,.ok-back:hover{background:transparent;color:var(--ok-mute)}
+  .ok-pill:hover,.ok-w-cand:hover{border-color:var(--ok-line);color:inherit}
+  .ok-card:active,.ok-pmode:active{transform:scale(.99)}
+  .ok-tile:active,.ok-qtile[data-live]:active{transform:scale(.97)}
+  .ok-btn:active,.ok-tick:active,.ok-play:active,.ok-round-btn:active,.ok-seg-b:active,.ok-chip:active,.ok-w-cand:active{opacity:.75}
 }
 @keyframes ok-push-in{from{transform:translateX(100%)}to{transform:none}}
 @keyframes ok-push-out{from{transform:none}to{transform:translateX(100%)}}
@@ -1023,11 +1082,13 @@ html[data-ok-ready] #ok-boot{display:none}
               <sc-if value="{{ focusPieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M7.6 12.2 L10.7 15.3 L16.4 8.9" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
             </svg>
           </span>
-          <span class="ok-focus-str-lvl">{{ focusLvlName }}</span>
+          <span class="ok-focus-str-top">
+            <span class="ok-focus-str-lvl">{{ focusLvlName }}</span>
+            <sc-if value="{{ focusDotsOn }}" hint-placeholder-val="{{ false }}">
+              <span class="ok-focus-dots" title="{{ t_str_recent }}"><sc-for list="{{ focusDots }}" as="fd" hint-placeholder-count="6"><span class="ok-focus-dot" style="background:{{ fd.bg }}" title="{{ fd.title }}"></span></sc-for></span>
+            </sc-if>
+          </span>
           <span class="ok-focus-str-sub">{{ focusStrSub }}</span>
-          <sc-if value="{{ focusDotsOn }}" hint-placeholder-val="{{ false }}">
-            <span class="ok-focus-dots" title="{{ t_str_recent }}"><sc-for list="{{ focusDots }}" as="fd" hint-placeholder-count="6"><span class="ok-focus-dot" style="background:{{ fd.bg }}" title="{{ fd.title }}"></span></sc-for></span>
-          </sc-if>
         </div>
         <div class="ok-focus-actions">
           <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ focusPlay }}" class="ok-btn" title="{{ t_listen }}" style="{{ focusPlayStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
@@ -1700,6 +1761,21 @@ async function okComplete(req) {
 // Speech: the browser's own Japanese voice, the word then the sentence. Free
 // and instant; the voice varies by platform, which is the trade for that.
 const okPhone = () => typeof window !== "undefined" && !!window.matchMedia && window.matchMedia("(max-width:640px)").matches;
+// A quiz tile is half a phone wide, so a word's size there follows its length;
+// a desktop tile has room for six characters at full size.
+const okTileSize = (text, kana, mode) => {
+  if (kana) return "1.75rem";
+  if (!okPhone()) return mode === 3 ? "2.5rem" : "3rem";
+  const n = [...String(text || "")].length;
+  return n <= 3 ? "2.5rem" : n === 4 ? "2rem" : n === 5 ? "1.6rem" : n === 6 ? "1.4rem" : "1.25rem";
+};
+// The flashcard face, likewise: five characters at 5rem would leave the card.
+const okFrontSize = (text, kanji) => {
+  if (!kanji) return "3.5rem";
+  if (!okPhone()) return "5rem";
+  const n = [...String(text || "")].length;
+  return n <= 3 ? "5rem" : n <= 5 ? "3.5rem" : "2.75rem";
+};
 const okCanSpeak = () => typeof window !== "undefined" && !!window.speechSynthesis && typeof window.SpeechSynthesisUtterance === "function";
 let _okVoice = null;
 const okVoice = () => {
@@ -4236,7 +4312,7 @@ class Component extends DCLogic {
       cardTap: () => this.cardAdvance(1),
       cardProgress: st.cardsOn ? Math.min(st.cIdx + 1, (st.cQueue || []).length) + " / " + (st.cQueue || []).length : "",
       cardFront: (() => { const c = (st.cQueue || [])[st.cIdx]; return c ? c.w : ""; })(),
-      cardFrontSize: (() => { const c = (st.cQueue || [])[st.cIdx]; return c && c.kanji ? "5rem" : "3.5rem"; })(),
+      cardFrontSize: (() => { const c = (st.cQueue || [])[st.cIdx]; return c ? okFrontSize(c.w, c.kanji) : "3.5rem"; })(),
       cardReading: (() => { const c = (st.cQueue || [])[st.cIdx]; return c ? c.r : "\u00a0"; })(),
       cardGloss: (() => { const c = (st.cQueue || [])[st.cIdx]; return c ? c.g : "\u00a0"; })(),
       cardBackOpacity: st.cShown ? 1 : 0,
@@ -4356,7 +4432,7 @@ class Component extends DCLogic {
           big: t.big, sub: t.sub, hasSub: q.mode === 3 && !!t.sub,
           ruleR: i % 2 === 0 ? "1px solid #9fb4c0" : "0",
           ruleB: i < 2 ? "1px solid #9fb4c0" : "0",
-          bigSize: t.kana ? "1.75rem" : (q.mode === 3 ? "2.5rem" : "3rem"),
+          bigSize: okTileSize(t.big, t.kana, q.mode),
           bg: done && t.ok ? "var(--ok-acc)" : (done && i === picked ? "#fff1f3" : "var(--ok-card)"),
           fg: done && t.ok ? "#ffffff" : (done && i === picked ? "#be123c" : "var(--ok-ink)"),
           subFg: done && t.ok ? "rgba(255,255,255,.85)" : "var(--ok-mute)",

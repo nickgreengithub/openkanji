@@ -302,7 +302,7 @@ function build() {
     .replace("__BUNDLER_TEMPLATE__", () => encodeTemplate(template));
 
   // Fail loudly rather than shipping a blank page.
-  const line = out.split("\n")[381];
+  const line = out.split("\n")[shell.split("\n").findIndex((l) => l === "__BUNDLER_TEMPLATE__")];
   if (JSON.parse(line) !== template) throw new Error("template did not round-trip");
   if (line.includes("</script>")) throw new Error("unescaped </script> in template");
 
