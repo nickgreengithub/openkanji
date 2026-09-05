@@ -560,14 +560,14 @@ a:hover{color:var(--text-accent-hover)}
 .ok-cardbtns{position:absolute;right:.85rem;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
 /* Both controls are the same button: one size, one border, one background.
    Only what sits inside them differs. */
-.ok-tick,.ok-play{position:static;width:2.35rem;height:2.35rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
+.ok-tick,.ok-play{position:static;width:2.35rem;height:2.35rem;border-radius:50%;border:1.5px solid #d3d3cc;background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#b6b6ae;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
 .ok-tick:hover,.ok-play:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
 @keyframes ok-speak{0%,100%{opacity:1}50%{opacity:.45}}
 /* One control, two meanings: the quarters fill as practice finds the word
    known, and pressing it says so yourself. The pressed state sits on top of
    what practice worked out rather than replacing it, so letting go returns
    the word to whatever it had actually earned. */
-.ok-tick svg{width:1.95rem;height:1.95rem;display:block;overflow:visible}
+.ok-tick svg{width:2.05rem;height:2.05rem;display:block}
 .ok-pie-w{transition:fill 260ms ease}
 /* room for the tick and the play button stacked beneath it */
 .ok-card-r{padding-right:3rem}
@@ -669,7 +669,7 @@ a:hover{color:var(--text-accent-hover)}
 
   /* thumbs, not cursors */
   .ok-tick,.ok-play{width:2.75rem;height:2.75rem}
-  .ok-tick svg{width:2.15rem;height:2.15rem}
+  .ok-tick svg{width:2.4rem;height:2.4rem}
   .ok-cardbtns{right:.5rem;gap:.4rem}
   .ok-card{padding-bottom:.7rem}
   .ok-card-l{position:static;padding-right:3rem;padding-bottom:0}
@@ -929,8 +929,9 @@ html[data-ok-ready] #ok-boot{display:none}
               <div class="ok-cardbtns">
                 <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}">
                   <svg sc-camel-view-box="0 0 24 24">
-                    <sc-for list="{{ lr.pie }}" as="pw" hint-placeholder-count="4"><path d="{{ pw.d }}" fill="none" stroke="{{ pw.fill }}" stroke-width="3" class="ok-pie-w"></path></sc-for>
-                    <sc-if value="{{ lr.pieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M8.2 12.2 L10.8 14.8 L15.8 9.2" fill="none" stroke="var(--ok-acc)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+                    <sc-for list="{{ lr.pie }}" as="pw" hint-placeholder-count="4"><path d="{{ pw.d }}" fill="{{ pw.fill }}" class="ok-pie-w"></path></sc-for>
+                    <path d="M12 1 V23 M1 12 H23" stroke="{{ lr.pieGrid }}" stroke-width="1.1"></path>
+                    <sc-if value="{{ lr.pieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M7.6 12.2 L10.7 15.3 L16.4 8.9" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
                   </svg>
                 </span>
                 <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
@@ -1017,8 +1018,9 @@ html[data-ok-ready] #ok-boot{display:none}
         <div class="ok-focus-str">
           <span class="ok-focus-ring">
             <svg sc-camel-view-box="0 0 24 24">
-              <sc-for list="{{ focusPie }}" as="fp" hint-placeholder-count="4"><path d="{{ fp.d }}" fill="none" stroke="{{ fp.fill }}" stroke-width="3" class="ok-pie-w"></path></sc-for>
-              <sc-if value="{{ focusPieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M8.2 12.2 L10.8 14.8 L15.8 9.2" fill="none" stroke="var(--ok-acc)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+              <sc-for list="{{ focusPie }}" as="fp" hint-placeholder-count="4"><path d="{{ fp.d }}" fill="{{ fp.fill }}" class="ok-pie-w"></path></sc-for>
+              <path d="M12 1 V23 M1 12 H23" stroke="{{ focusPieGrid }}" stroke-width="1.1"></path>
+              <sc-if value="{{ focusPieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M7.6 12.2 L10.7 15.3 L16.4 8.9" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
             </svg>
           </span>
           <span class="ok-focus-str-lvl">{{ focusLvlName }}</span>
@@ -1183,13 +1185,14 @@ DATA.forEach(k => k.g.forEach(g => g.w.forEach(w => { SURF[w[3]] = w[0]; })));
 // parts television, manga and print, which is the mixture the three rings
 // were asking the reader to average in their head.
 const covMedia = (c) => (c[0] + c[1] + c[2]) / 3;
-// The four arcs of the level ring, clockwise from the top, with a gap between
-// each so four steps read as four rather than as one circle.
+// Four quarters filling the circle, clockwise from the top. Unlit ones are
+// drawn too, in a pale fill, so the control is always a whole disc and the
+// lines that divide it are always there to be counted.
 const PIE_ARCS = [
-  "M13.15 2.67 A9.4 9.4 0 0 1 21.33 10.85",
-  "M21.33 13.15 A9.4 9.4 0 0 1 13.15 21.33",
-  "M10.85 21.33 A9.4 9.4 0 0 1 2.67 13.15",
-  "M2.67 10.85 A9.4 9.4 0 0 1 10.85 2.67"
+  "M12 12 L12.00 1.00 A11 11 0 0 1 23.00 12.00 Z",
+  "M12 12 L23.00 12.00 A11 11 0 0 1 12.00 23.00 Z",
+  "M12 12 L12.00 23.00 A11 11 0 0 1 1.00 12.00 Z",
+  "M12 12 L1.00 12.00 A11 11 0 0 1 12.00 1.00 Z"
 ];
 // The headings read in Japanese, with the learner's own language on hover.
 // This is a Japanese course and these are short, familiar shapes -- seeing
@@ -3971,7 +3974,8 @@ class Component extends DCLogic {
               dots.push({ bg: right ? "var(--ok-acc)" : "#e11d48", title: right ? T("str_right") : T("str_wrong") });
             }
             return {
-              focusPie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#dcdcd6" })),
+              focusPie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#edede8" })),
+              focusPieGrid: marked ? "transparent" : "#ffffff",
               focusPieTick: marked,
               focusLvlName: T("str_" + lvl) + (marked ? " · " + T("marked_learned") : ""),
               focusStrSub: !n ? T("str_never_sub")
@@ -4614,7 +4618,7 @@ class Component extends DCLogic {
           pillStyle: okPill(done),
           pillLabel: done ? T("learned") : T("got_it"),
           master: (ev) => { ev.stopPropagation(); this.toggleMasteredWord(key); },
-          tickStyle: done || strLevel((st.strength || {})[key]) ? "border-color:var(--ok-acc)" : "",
+          tickStyle: "",
           // Quarters, filling clockwise from the top. Pressing the control
           // shows all four and a tick; the earned level underneath is left
           // alone, so pressing again drops back to it rather than to nothing.
@@ -4624,7 +4628,10 @@ class Component extends DCLogic {
               // Four arcs at the rim, gapped so they read as four. The unlit
               // ones stay a visible grey: an empty control still has to say
               // how many steps it has.
-              pie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#dcdcd6" })),
+              pie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#edede8" })),
+              // the dividers read over both the pale quarters and the lit ones,
+              // but step out of the way of the tick rather than crossing it
+              pieGrid: done ? "transparent" : "#ffffff",
               pieTick: !!done
             };
           })(),
