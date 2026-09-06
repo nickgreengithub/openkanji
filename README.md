@@ -159,6 +159,96 @@ has quietly stopped carrying one of its set's twenty words.
 
 ## How a set of twenty is chosen
 
+The ladder is the two thousand commonest words the corpus has, and nothing
+else decides which two thousand. Every word carries a score:
+
+```
+"freq":  3.774   log10 of the word's share of running content words, in ppm
+"cat":   1-20    a semantic category from src/data/categories.json (optional)
+```
+
+`freq` is computed for the whole corpus by `tools/freq.js` from the `cov`
+figures each word already carries -- its share of television and film, of
+anime and manga, and of books and news, averaged. Three cases are scored from
+the median of the word's JLPT level instead, each flagged on the word so a
+weak number is never mistaken for a measured one:
+
+```
+freqEst   the corpus has no figure at all (numbers and place names, mostly:
+          一 二 三 日本 東京 -- a floor would bury them under 頗梨)
+freqVar   a rarer spelling of a word the corpus counted under one reading, so
+          the figure is not this spelling's: 見る 観る 診る 看る all carry the
+          whole 5,941ppm of みる
+freqKana  a word Japanese writes in kana. する is the commonest word in the
+          language and nobody writes it 為る, so the figure belongs to a form
+          this entry is not. A short hand-kept list -- data, to be argued with
+```
+
+The sets are then dealt from that order: each set of twenty takes the
+commonest word whose category it has not used yet, and simply the commonest
+one left when every category is spoken for or the word has no category. **The
+order is the frequency order; categories only choose between words of similar
+standing.** A set should be twenty unrelated words rather than twenty ways of
+saying the same thing -- 音, 足音 and 音色 in one sitting is one lesson
+pretending to be three -- but diversity is not worth teaching 漢語 before 私.
+
+Two spellings of one word are one card: 開く is ひらく and あく, 市 is いち and
+し, and the commoner reading stands for the spelling while the other keeps its
+entry for lookup.
+
+This was got wrong once, in a way worth recording. The ladder used to be
+whichever words the first kanji of the deck happened to carry, taken in deck
+order until there were two thousand, and only a hand-tagged hundred were ever
+dealt by category at all -- so 漢語, the 5,296th commonest word of 5,876, was
+taught in the fifth session while する, なる, 僕 and 姿 were not on the ladder
+at all. The dealing was right and the pool it dealt from was not. Ordering by
+score took the first hundred words from 2.3% of running content words to
+20.5%, and the whole ladder from 39% to 49%.
+
+There is deliberately no per-kanji lesson. A kanji does not have a meaning so
+much as a distribution of them, so an English gloss under a glyph (`連 = take
+along, connect`) is an editorial summary rather than a fact a learner can be
+tested on -- and it misdirects when the compound sense dominates. The corpus is
+still stored by kanji, because that is how the readings hang together; the app
+flattens it into words at load, and sets each kanji's reading above it as
+furigana -- おん over 音, がく over 楽. Which sound belongs to which character is
+the part of a kanji that does generalise, and ruby is how every Japanese
+textbook says it. Where the split is not certain the ruby covers the whole
+run instead, which is also the correct answer for a jukujikun like 大人 おとな.
+
+## The story of a set
+
+Twenty words drilled one at a time are twenty things to remember. The same
+twenty inside a story are one thing, and the story is what pulls them back out
+later. So a set can carry one, in `src/data/stories.json`:
+
+```json
+{ "0": {
+    "title": { "ja": "音の味", "en": "The Taste of Sound", "es": "El sabor del sonido" },
+    "pages": [ [ { "ja": "田中先生は不思議な学者です。",
+                   "t": { "en": "Professor Tanaka is a strange scholar.",
+                          "es": "El profesor Tanaka es un erudito peculiar." } } ] ],
+    "words": { "不思議": { "r": "ふしぎ", "en": "strange, curious", "es": "extraño, curioso" },
+               "使って":  { "of": "使う" } } } }
+```
+
+A story is written to read like a story, not to stay inside the twenty words a
+learner has -- at set 1 that vocabulary is nearly empty, and prose written out
+of it comes out as a list wearing a plot. Anything past the set is glossed
+instead, under `words`, keyed by the span **as it appears in the line** so no
+stemming is needed to recognise it. A conjugated form of one of the set's own
+words points home with `of`, and the reader who taps 使って is told about 使う.
+
+Each translation belongs to one sentence rather than a paragraph, so the eye
+can fall to the line under the one it is reading and come back.
+
+The build (`tools/build.js`, `buildStories`) splits every line into spans
+against that table and refuses the story if a gloss is never used, if a line
+holds anything that is not Japanese, or -- the one that matters -- if the story
+has quietly stopped carrying one of its set's twenty words.
+
+## How a set of twenty is chosen
+
 A set should be twenty unrelated words, not twenty ways of saying the same
 thing -- 音, 足音 and 音色 in one sitting is one lesson pretending to be three.
 So a word carries two more fields:

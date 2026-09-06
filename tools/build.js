@@ -73,13 +73,27 @@ function loadData() {
     if (!w || w.id !== id) throw new Error(at + ": `id` must match its key");
     if (!w.w || !w.reading) throw new Error(at + ": needs `w` and `reading`");
     track(w.gloss, at, "gloss");
-    // Optional, and only meaningful in pairs: `cat` is a semantic category from
-    // categories.json, `freq` a blended corpus frequency (higher = commoner).
-    // The app orders a set of words by them, so half of one is no use.
-    if ((w.cat === undefined) !== (w.freq === undefined)) throw new Error(at + ": `cat` and `freq` go together");
+    // `freq` is how common the word is, higher meaning commoner, and every
+    // word carries one (tools/freq.js). It used to be hand-tagged in pairs
+    // with `cat` and so was required to travel with it; now it is computed
+    // for the whole corpus and `cat` is the one still being filled in.
+    if (w.freq !== undefined && typeof w.freq !== "number") throw new Error(at + ": `freq` must be a number");
+    // `freqEst` says the score came from the word's level because the corpus
+    // had no figure for it; `freqVar` that it is a rarer spelling of a word
+    // the corpus counted under one reading; `freqKana` that Japanese writes
+    // the word in kana, so the figure belongs to a form this entry is not.
+    // All three are the tool's own record of where a number is weaker than it
+    // looks, and all three are scored the same way.
+    for (const flag of ["freqEst", "freqVar", "freqKana"]) {
+      if (w[flag] !== undefined && w[flag] !== true) throw new Error(at + ": `" + flag + "` is true or absent");
+      if (w[flag] && w.freq === undefined) throw new Error(at + ": `" + flag + "` without a `freq` to qualify");
+    }
+    // `cat` is a semantic category from categories.json. The app deals a set
+    // of twenty one word per category, commonest first, so a word without one
+    // waits in the tail until it is tagged.
     if (w.cat !== undefined) {
       if (!catIds.has(w.cat)) throw new Error(at + ": unknown category " + w.cat);
-      if (typeof w.freq !== "number") throw new Error(at + ": `freq` must be a number");
+      if (w.freq === undefined) throw new Error(at + ": a categorised word needs a `freq` to be dealt by");
     }
     // Optional: `cov` is [tv, manga, news], the word's share of the running
     // content words of each domain, in parts per million. The map sums them.
@@ -191,7 +205,9 @@ function loadData() {
 const pick = (v, lang) => v[lang] || v[DEFAULT_LANG];
 
 // Join into the shape the app consumes. A word tuple is
-// [surface, reading, gloss, id] -- the id is what progress is keyed on.
+// [surface, reading, gloss, id, freq, cat?] -- the id is what progress is
+// keyed on, freq how common the word is (every word has one), and cat its
+// semantic category where one has been assigned.
 function flatten(kanji, words, lang) {
   return kanji.map((k) => ({
     id: k.id,
@@ -203,10 +219,10 @@ function flatten(kanji, words, lang) {
       r: g.r,
       w: g.w.map((id) => {
         const w = words[id];
-        // [surface, reading, gloss, id, category, frequency]
-        return w.cat === undefined
-          ? [w.w, w.reading, pick(w.gloss, lang), id]
-          : [w.w, w.reading, pick(w.gloss, lang), id, w.cat, w.freq];
+        // [surface, reading, gloss, id, frequency, category]
+        const t = [w.w, w.reading, pick(w.gloss, lang), id, w.freq];
+        if (w.cat !== undefined) t.push(w.cat);
+        return t;
       }),
     })),
   }));

@@ -1535,57 +1535,62 @@ const TIER_JA = ["入門", "初級", "中級", "中上級", "上級"];
 // Every word in the corpus, once each, in the order its kanji appear. Kanji
 // are how it is stored, not how it is studied, so this flattens them away.
 const _WORDS = {};
+// The two thousand words of the ladder are the two thousand commonest the
+// corpus has, and nothing else decides it.
+//
+// They used to be whichever words the first kanji of the deck happened to
+// carry, taken in deck order until there were two thousand. That is how 漢語
+// -- the 5,296th commonest word of 5,876 -- came to be taught in the fifth
+// session while する, なる, 僕 and 姿 were not on the ladder at all. Which
+// kanji introduced a word is an accident of how the corpus is filed; how
+// often the word is used is the thing a learner is served by.
 const deckWords = () => {
   const key = CURRENT_LANG;
   if (_WORDS[key]) return _WORDS[key];
-  const seen = {}, out = [];
-  const pool = corpusFor(CURRENT_LANG).data;
-  for (let i = 0; i < pool.length && out.length < WORDMAX; i++) {
-    const k = pool[i];
+  const seen = {}, all = [];
+  for (const k of corpusFor(CURRENT_LANG).data) {
     for (const g of k.g) {
       for (const w of g.w) {
         if (seen[w[3]]) continue;
         seen[w[3]] = 1;
-        out.push({ w: w, k: k, r: g.r });
-        if (out.length >= WORDMAX) break;
+        all.push({ w: w, k: k, r: g.r });
       }
-      if (out.length >= WORDMAX) break;
     }
   }
-  _WORDS[key] = spreadByCategory(out);
+  all.sort((a, b) => (b.w[FREQ] || 0) - (a.w[FREQ] || 0));
+  // Two entries can share a spelling -- 開く is ひらく and あく, 市 is いち and
+  // し -- and as cards they are the same card twice. The commoner reading
+  // stands for the spelling; the other keeps its entry for lookup.
+  const spelt = {};
+  const once = all.filter((e) => (spelt[e.w[0]] ? false : (spelt[e.w[0]] = 1)));
+  _WORDS[key] = spreadByCategory(once.slice(0, WORDMAX));
   return _WORDS[key];
 };
 // A set of twenty should be twenty unrelated words, not twenty ways of saying
 // the same thing: studying 音 next to 足音 next to 音色 is one lesson pretending
-// to be three. Every word carries a semantic category and a blended corpus
-// frequency, so deal the words out like cards -- one from each category in
-// turn, commonest first -- and each set gets the widest spread the deck can
-// give while still front-loading the words worth knowing first.
+// to be three. Every word carries a semantic category, so each set is filled
+// by walking the words in order and taking the commonest one whose category
+// this set has not used yet -- and, when every category is spoken for or the
+// word has no category, simply the commonest one left.
 //
-// Tagged words are dealt first; whatever is untagged follows in the order the
-// deck had, so a partly tagged deck still opens on its best-spread sets and
-// the tail simply waits for its tags.
-const CAT = 4, FREQ = 5;
+// The order is the frequency order; the categories only choose between words
+// of similar standing. An earlier version dealt every categorised word before
+// every uncategorised one, which made a hundred hand-tagged words outrank the
+// two thousand commonest words in the language: 荷物 and 世の中 filled the
+// first sets while 私, 見る and 行く waited until the sixth. Tagging more
+// words should sharpen the spread, never reorder the ladder.
+const FREQ = 4, CAT = 5;
 const spreadByCategory = (list) => {
-  const tagged = list.filter((e) => e.w[CAT] !== undefined);
-  const rest = list.filter((e) => e.w[CAT] === undefined);
-  if (!tagged.length) return list;
-  if (rest.length) return spreadByCategory(tagged).concat(rest);
-  const bins = {};
-  for (const e of list.slice().sort((a, b) => b.w[FREQ] - a.w[FREQ])) {
-    (bins[e.w[CAT]] = bins[e.w[CAT]] || []).push(e);
-  }
-  const keys = Object.keys(bins).sort((a, b) => a - b);
+  const left = list.slice();
   const out = [];
-  while (out.length < list.length) {
-    const before = out.length;
-    // one from each category, in category order: the diverse pass
-    for (const k of keys) if (bins[k].length && out.length - before < WORDN) out.push(bins[k].shift());
-    // a short set is topped up from whichever category has most left, which
-    // keeps the repeat as far from the rest of its category as it can be
-    while (out.length - before < WORDN && out.length < list.length) {
-      const k = keys.reduce((a, b) => (bins[b].length > bins[a].length ? b : a));
-      out.push(bins[k].shift());
+  while (left.length) {
+    const used = {};
+    for (let n = 0; n < WORDN && left.length; n++) {
+      let at = left.findIndex((e) => e.w[CAT] === undefined || !used[e.w[CAT]]);
+      if (at < 0) at = 0; // every category already in this set: take the commonest
+      const e = left.splice(at, 1)[0];
+      if (e.w[CAT] !== undefined) used[e.w[CAT]] = 1;
+      out.push(e);
     }
   }
   return out;
