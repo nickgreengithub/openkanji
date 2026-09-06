@@ -184,6 +184,41 @@ freqKana  a word Japanese writes in kana. する is the commonest word in the
           this entry is not. A short hand-kept list -- data, to be argued with
 ```
 
+### The twenty categories
+
+`src/data/categories.json` is the list; this is what each one is taken to mean
+when a word is tagged, so the same word lands in the same place every time.
+Ten noun categories, five verb, two adjective, two feeling and one for the
+rest -- the shape follows what a set of twenty needs to feel varied, not any
+outside taxonomy.
+
+| # | kind | name | what goes here |
+|---|---|---|---|
+| 1 | noun | Food & drink | anything eaten or drunk, and the meals themselves: 肉, 米, 昼ご飯, 酒 |
+| 2 | noun | Body & health | body parts, illness, medicine, the physical self: 顔, 血, 病気, 薬 |
+| 3 | noun | Home, objects & clothing | things you own, wear or keep: 服, 紙, 道具, 電池 |
+| 4 | noun | Places, buildings & directions | where something is, and what stands there: 駅, 建物, 中, 港 |
+| 5 | noun | Nature, weather & living things | outside and alive: 雪, 木, 鳥, 海 |
+| 6 | noun | People, family & roles | who someone is: 人, 母, 医者, 友達 |
+| 7 | noun | Work, school, money & shopping | the day's business: 仕事, 学校, 円, 店 |
+| 8 | noun | Time, calendar & quantity | when and how much: 時, 年, 月, 半分 |
+| 9 | noun | Society, events & situations | what happens between people: 事故, 会議, 場合, 政治 |
+| 10 | noun | Ideas, information & communication | what is thought, said or recorded: 意味, 話, 問題, 情報 |
+| 11 | verb | Movement | going, coming, carrying something there: 行く, 来る, 走る, 運ぶ |
+| 12 | verb | Body & domestic | what a body does, and what is done at home: 食べる, 寝る, 洗う, 着る |
+| 13 | verb | Handling & making | acting on a thing: 持つ, 作る, 使う, 開ける |
+| 14 | verb | Speech, thought & social | acting on a person or an idea: 言う, 思う, 教える, 会う |
+| 15 | verb | Change & occurrence | what happens rather than what is done: 起こる, 変わる, 始まる, 増える |
+| 16 | adjective | Physical | measurable of a thing: 大きい, 重い, 暑い, 速い |
+| 17 | adjective | Evaluative & character | a judgement of it: 良い, 難しい, 大切, 正しい |
+| 18 | feeling | Positive states | 好き, 楽しい, 安心, 幸せ |
+| 19 | feeling | Negative states | 怖い, 寂しい, 心配, 悲しい |
+| 20 | other | Adverbs & degree | everything that modifies rather than names: 少し, とても, 主に, 必ず |
+
+A word gets the category a learner would file it under, not the one its kanji
+suggests: 用事 is Society rather than Handling, 気分 is a feeling rather than a
+noun about the body. Where two fit, the commoner sense wins.
+
 The sets are then dealt from that order: each set of twenty takes the
 commonest word whose category it has not used yet, and simply the commonest
 one left when every category is spoken for or the word has no category. **The
