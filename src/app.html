@@ -635,8 +635,11 @@ a:hover{color:var(--text-accent-hover)}
 @media (max-width:640px){
   html,body{overscroll-behavior-y:contain}
   *{-webkit-tap-highlight-color:transparent}
-  /* the height the phone can really show, keyboard and browser chrome and all */
-  .ok-root{height:var(--ok-vh,100dvh)}
+  /* The page's own height comes from svh -- the viewport with the browser's
+     chrome showing -- so the header can never start underneath the address
+     bar. Only the surfaces a keyboard can cover follow --ok-vh, and they
+     fall back to the same thing if it is ever missing. */
+  .ok-root{height:100svh;height:100dvh;height:var(--ok-vh,100svh)}
   /* viewport-fit=cover puts the page under the status bar and the address
      bar, so every header pays for its own top inset rather than starting
      underneath them. */
@@ -652,14 +655,14 @@ a:hover{color:var(--text-accent-hover)}
   /* pages that were dialogs */
   .ok-veil{position:fixed;inset:0;z-index:95;display:block;padding:0;background:var(--ok-bg);backdrop-filter:none;-webkit-backdrop-filter:none;animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
   .ok-veil-out{animation:ok-push-out 200ms cubic-bezier(.4,0,1,1) forwards!important}
-  .ok-veil{height:var(--ok-vh,100dvh)}
+  .ok-veil{height:var(--ok-vh,100svh)}
   .ok-sheet,.ok-sheet-fixed{width:100%;height:100%;max-height:none;border-radius:0;box-shadow:none;animation:none}
   .ok-sheet-out{animation:none!important}
   .ok-sheet-top{padding-left:max(.6rem,env(safe-area-inset-left));padding-right:max(.9rem,env(safe-area-inset-right));padding-top:env(safe-area-inset-top)}
   .ok-pmenu,.ok-quiz,.ok-pdone{padding-bottom:calc(2rem + env(safe-area-inset-bottom))}
 
   /* the word, opened: a page with a close, a title, and an action bar */
-  .ok-focus{width:100%;height:var(--ok-vh,100dvh);max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:center;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
+  .ok-focus{width:100%;height:var(--ok-vh,100svh);max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:center;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
   /* the caption travels with the content it describes rather than being
      pushed to the floor, now that the block is centred */
   .ok-focus-str{margin-top:1.1rem}
@@ -1809,13 +1812,18 @@ const okTrackViewport = () => {
   if (typeof window === "undefined" || !window.visualViewport) return null;
   const vv = window.visualViewport;
   const set = () => {
-    const h = Math.round(vv.height);
     const root = document.documentElement;
-    root.style.setProperty("--ok-vh", h + "px");
+    const h = Math.round(vv.height);
+    // A number this drives the whole app's height by is worth doubting. A
+    // browser that reports nothing useful -- mid-load, or while its own
+    // chrome is animating -- must leave the CSS fallback in place rather
+    // than collapse the page to nothing.
+    if (h > 240 && h < 4000) root.style.setProperty("--ok-vh", h + "px");
+    else root.style.removeProperty("--ok-vh");
     // How much of the window the keyboard is covering, for anything anchored
     // to the bottom of the screen rather than to a box we have resized.
-    const kb = Math.max(0, Math.round(window.innerHeight - vv.height - vv.offsetTop));
-    root.style.setProperty("--ok-kb", kb + "px");
+    const kb = Math.round(window.innerHeight - vv.height - vv.offsetTop);
+    root.style.setProperty("--ok-kb", (kb > 0 && kb < window.innerHeight ? kb : 0) + "px");
   };
   set();
   vv.addEventListener("resize", set);

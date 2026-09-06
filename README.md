@@ -252,14 +252,20 @@ Error: unknown language code 'klingon' -- add it to data/langs.json
 
 Every overlay is a page rather than a dialog, and two rules keep it honest:
 
-- **Height comes from `visualViewport`, not `100dvh`.** `dvh` is the viewport
-  the browser would like to have, not what is left once its own chrome is on
-  screen, and on iOS it does not shrink for the keyboard at all -- so the top
-  of the page hides behind the address bar and a focused field pushes the
-  thing it is about off the bottom. A listener publishes `--ok-vh` (what is
-  visible) and `--ok-kb` (what the keyboard covers); everything full-screen
-  measures against the first, and everything pinned to the bottom offsets by
-  the second.
+- **The page's own height is `100svh`** -- the viewport with the browser's
+  chrome showing -- so a header can never begin underneath the address bar.
+  `dvh` is the viewport the browser would like to have, which is not the same
+  thing.
+- **Surfaces a keyboard can cover follow `visualViewport`,** because on iOS
+  neither `dvh` nor `svh` shrinks for the keyboard, and a focused field
+  otherwise pushes the thing it is about off the bottom. A listener publishes
+  `--ok-vh` (what is visible) and `--ok-kb` (what the keyboard covers); the
+  sheets measure against the first, and everything pinned to the bottom
+  offsets by the second. `--ok-vh` is published only when it looks sane, and
+  every rule that reads it falls back to `100svh`: a browser that reports
+  nonsense for its own viewport must not be able to collapse the page to
+  nothing. `e2e.mjs` feeds it 0, 1, nothing, and an absurd number, and
+  requires the map to stay readable through all four.
 - **The page is drawn under the notch** (`viewport-fit=cover`), so every
   header pays for its own `env(safe-area-inset-top)`.
 
