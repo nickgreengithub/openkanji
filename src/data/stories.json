@@ -1,1 +1,389 @@
-{}
+{
+ "0": {
+  "title": {
+   "ja": "月の約束",
+   "en": "The Promise and the Moon",
+   "es": "La promesa y la luna"
+  },
+  "words": {
+   "毎晩": {
+    "r": "まいばん",
+    "en": "every night",
+    "es": "cada noche"
+   },
+   "一人": {
+    "r": "ひとり",
+    "en": "one person, alone",
+    "es": "una persona, solo"
+   },
+   "男": {
+    "r": "おとこ",
+    "en": "man",
+    "es": "hombre"
+   },
+   "家": {
+    "r": "いえ",
+    "en": "house, home",
+    "es": "casa"
+   },
+   "出て": {
+    "r": "でて",
+    "en": "goes out, leaves",
+    "es": "sale de"
+   },
+   "川": {
+    "r": "かわ",
+    "en": "river",
+    "es": "río"
+   },
+   "行きます": {
+    "of": "行く"
+   },
+   "上": {
+    "r": "うえ",
+    "en": "on, above",
+    "es": "encima, sobre"
+   },
+   "うつる": {
+    "r": "うつる",
+    "en": "to be reflected",
+    "es": "reflejarse"
+   },
+   "とても": {
+    "r": "とても",
+    "en": "very",
+    "es": "muy"
+   },
+   "手": {
+    "r": "て",
+    "en": "hand",
+    "es": "mano"
+   },
+   "いつも": {
+    "r": "いつも",
+    "en": "always",
+    "es": "siempre"
+   },
+   "古い": {
+    "r": "ふるい",
+    "en": "old",
+    "es": "viejo"
+   },
+   "一まい": {
+    "r": "いちまい",
+    "en": "one (flat thing)",
+    "es": "una (hoja)"
+   },
+   "近所": {
+    "r": "きんじょ",
+    "en": "neighbourhood",
+    "es": "vecindario"
+   },
+   "話": {
+    "r": "はなし",
+    "en": "story, talk",
+    "es": "historia, charla"
+   },
+   "でも": {
+    "r": "でも",
+    "en": "but",
+    "es": "pero"
+   },
+   "本当": {
+    "r": "ほんとう",
+    "en": "truth, real",
+    "es": "verdad"
+   },
+   "知る": {
+    "r": "しる",
+    "en": "to know",
+    "es": "saber"
+   },
+   "子ども": {
+    "r": "こども",
+    "en": "child",
+    "es": "niño"
+   },
+   "少し": {
+    "r": "すこし",
+    "en": "a little",
+    "es": "un poco"
+   },
+   "ある": {
+    "r": "ある",
+    "en": "a certain, one",
+    "es": "cierto, un"
+   },
+   "夜": {
+    "r": "よる",
+    "en": "night",
+    "es": "noche"
+   },
+   "自分": {
+    "r": "じぶん",
+    "en": "oneself",
+    "es": "uno mismo"
+   },
+   "聞いて": {
+    "r": "きいて",
+    "en": "to ask",
+    "es": "preguntar"
+   },
+   "どうして": {
+    "r": "どうして",
+    "en": "why",
+    "es": "por qué"
+   },
+   "ここ": {
+    "r": "ここ",
+    "en": "here",
+    "es": "aquí"
+   },
+   "来る": {
+    "r": "くる",
+    "en": "to come",
+    "es": "venir"
+   },
+   "考えて": {
+    "r": "かんがえて",
+    "en": "thinking",
+    "es": "pensando"
+   },
+   "静かに": {
+    "r": "しずかに",
+    "en": "quietly",
+    "es": "en voz baja"
+   },
+   "言いました": {
+    "of": "言う"
+   },
+   "若い": {
+    "r": "わかい",
+    "en": "young",
+    "es": "joven"
+   },
+   "時": {
+    "r": "とき",
+    "en": "time, when",
+    "es": "cuando"
+   },
+   "友達": {
+    "r": "ともだち",
+    "en": "friend",
+    "es": "amigo"
+   },
+   "約束": {
+    "r": "やくそく",
+    "en": "promise",
+    "es": "promesa"
+   },
+   "十": {
+    "r": "じゅう",
+    "en": "ten",
+    "es": "diez"
+   },
+   "後": {
+    "r": "ご",
+    "en": "after, later",
+    "es": "después"
+   },
+   "同じ": {
+    "r": "おなじ",
+    "en": "the same",
+    "es": "el mismo"
+   },
+   "また": {
+    "r": "また",
+    "en": "again",
+    "es": "otra vez"
+   },
+   "会おう": {
+    "r": "あおう",
+    "en": "let's meet",
+    "es": "veámonos"
+   },
+   "遠く": {
+    "r": "とおく",
+    "en": "far away",
+    "es": "lejos"
+   },
+   "行った": {
+    "of": "行く"
+   },
+   "まま": {
+    "r": "まま",
+    "en": "and stayed that way",
+    "es": "y así se quedó"
+   },
+   "二十": {
+    "r": "にじゅう",
+    "en": "twenty",
+    "es": "veinte"
+   },
+   "過ぎて": {
+    "r": "すぎて",
+    "en": "passed by",
+    "es": "pasaron"
+   },
+   "来ない": {
+    "r": "こない",
+    "en": "does not come",
+    "es": "no viene"
+   },
+   "待ちます": {
+    "r": "まちます",
+    "en": "to wait",
+    "es": "esperar"
+   },
+   "第一に": {
+    "of": "第"
+   },
+   "守る": {
+    "r": "まもる",
+    "en": "to keep, to protect",
+    "es": "cumplir, proteger"
+   },
+   "もの": {
+    "r": "もの",
+    "en": "thing",
+    "es": "cosa"
+   },
+   "思い出": {
+    "r": "おもいで",
+    "en": "memory",
+    "es": "recuerdo"
+   },
+   "持って": {
+    "of": "持つ"
+   },
+   "幸せ": {
+    "r": "しあわせ",
+    "en": "happy, fortunate",
+    "es": "feliz, afortunado"
+   },
+   "白くて": {
+    "r": "しろくて",
+    "en": "white",
+    "es": "blanca"
+   },
+   "丸い": {
+    "r": "まるい",
+    "en": "round",
+    "es": "redondo"
+   }
+  },
+  "pages": [
+   [
+    {
+     "ja": "毎晩、一人の男が家を出て、川へ行きます。",
+     "t": {
+      "en": "Every night a man leaves his house and walks down to the river.",
+      "es": "Cada noche, un hombre sale de su casa y baja al río."
+     }
+    },
+    {
+     "ja": "水の上にうつる月の顔を見るのが、とても好きなのです。",
+     "t": {
+      "en": "What he loves is the face of the moon, there on the water.",
+      "es": "Lo que le encanta es la cara de la luna reflejada en el agua."
+     }
+    },
+    {
+     "ja": "男の手には、いつも古い写真が一まいあります。",
+     "t": {
+      "en": "In his hand there is always one old photograph.",
+      "es": "En la mano lleva siempre una fotografía antigua."
+     }
+    },
+    {
+     "ja": "近所には、その写真の話が多いです。",
+     "t": {
+      "en": "In the neighbourhood there are many stories about that photograph.",
+      "es": "En el vecindario hay muchas historias sobre esa fotografía."
+     }
+    },
+    {
+     "ja": "でも本当の事を知る人はいなくて、子どもは少し心配になりました。",
+     "t": {
+      "en": "But nobody knew the truth of it, and one child began to worry a little.",
+      "es": "Pero nadie sabía la verdad, y un niño empezó a preocuparse un poco."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "ある夜、子どもは自分で聞いてみる事にしました。",
+     "t": {
+      "en": "One night, the child decided to ask him for himself.",
+      "es": "Una noche, el niño decidió preguntárselo él mismo."
+     }
+    },
+    {
+     "ja": "「どうして毎晩ここに来るのですか。」",
+     "t": {
+      "en": "“Why do you come here every night?”",
+      "es": "“¿Por qué vienes aquí cada noche?”"
+     }
+    },
+    {
+     "ja": "男は少し考えてから、静かに言いました。",
+     "t": {
+      "en": "The man thought for a moment, then answered quietly.",
+      "es": "El hombre pensó un momento y respondió en voz baja."
+     }
+    },
+    {
+     "ja": "「私が若い時、ここで友達と約束をしたのです。」",
+     "t": {
+      "en": "“When I was young, I made a promise here with a friend.”",
+      "es": "“Cuando era joven, hice aquí una promesa con un amigo.”"
+     }
+    },
+    {
+     "ja": "「十年後の同じ月の夜に、また会おう、と。」",
+     "t": {
+      "en": "“On a night with the same moon, ten years later, we would meet again.”",
+      "es": "“En una noche con la misma luna, diez años después, nos volveríamos a ver.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「でも友達は遠くへ行ったまま、気が付くと二十年が過ぎていました。」",
+     "t": {
+      "en": "“But my friend went far away, and before I knew it twenty years had passed.”",
+      "es": "“Pero mi amigo se fue lejos, y cuando me di cuenta habían pasado veinte años.”"
+     }
+    },
+    {
+     "ja": "「友達が来ない場合も、私はここで待ちます。」",
+     "t": {
+      "en": "“Even in the case that he never comes, I will wait here.”",
+      "es": "“Incluso en el caso de que no venga, yo esperaré aquí.”"
+     }
+    },
+    {
+     "ja": "「第一に、約束は守るものですから。」",
+     "t": {
+      "en": "“First of all, because a promise is a thing you keep.”",
+      "es": "“En primer lugar, porque una promesa está para cumplirse.”"
+     }
+    },
+    {
+     "ja": "「良い思い出を持っている人は、幸せです。」",
+     "t": {
+      "en": "“And whoever holds a good memory is a fortunate person.”",
+      "es": "“Y quien guarda un buen recuerdo es una persona afortunada.”"
+     }
+    },
+    {
+     "ja": "水の中の月は、白くて丸い円になっていました。",
+     "t": {
+      "en": "In the water, the moon had become a white and perfect circle.",
+      "es": "En el agua, la luna se había vuelto un círculo blanco y perfecto."
+     }
+    }
+   ]
+  ]
+ }
+}

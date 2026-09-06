@@ -219,6 +219,15 @@ A word gets the category a learner would file it under, not the one its kanji
 suggests: 用事 is Society rather than Handling, 気分 is a feeling rather than a
 noun about the body. Where two fit, the commoner sense wins.
 
+All two thousand words of the ladder are filed, in batches through
+`tools/categorise.js`, which takes `{ "<word id>": <1-20> }`, applies a batch
+whole or not at all, refuses to overwrite a judgement already made without
+`--force`, and reports which categories the ladder is thin on -- a set can
+only be spread as widely as the words there are to fill it. Food & drink is
+the thinnest at 23 words, which is what it means for a set of twenty to draw
+one word from each: the first set takes 水, the commonest word the corpus has
+in that category, and the twenty-third set takes what is left.
+
 The sets are then dealt from that order: each set of twenty takes the
 commonest word whose category it has not used yet, and simply the commonest
 one left when every category is spoken for or the word has no category. **The
