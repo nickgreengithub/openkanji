@@ -47,7 +47,14 @@ for (const [id, s] of Object.entries(batch)) {
   if (!s.ja.includes(w.w) && !(stem && s.ja.includes(stem))) {
     problems.push(at + ": the word is not in the sentence -- " + s.ja);
   }
-  if (/[A-Za-z]/.test(s.ja)) problems.push(at + ": latin letters in the Japanese -- " + s.ja);
+  // Only Japanese belongs in the Japanese. Checking for latin letters alone
+  // let a hangul character through in a batch of eighty -- 회社 for 会社 --
+  // which reads as Japanese at a glance and is not. So name what is allowed
+  // and reject everything else: kana, kanji, and the punctuation they use.
+  const stray = [...s.ja].filter((c) => !/[\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\u3005\u3001\u3002\u30FB\u30FC\uFF01\uFF1F\uFF08\uFF09\u300C\u300D]/.test(c));
+  if (stray.length) {
+    problems.push(at + ": not Japanese -- " + JSON.stringify(stray.join("")) + " in " + s.ja);
+  }
 }
 
 if (problems.length) {
