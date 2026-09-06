@@ -434,17 +434,20 @@ a:hover{color:var(--text-accent-hover)}
 /* The same ring the cards carry, named -- a caption to the button that
    changes it, not a panel wedged into the middle of the reading. */
 .ok-focus-str{flex:0 0 auto;margin-top:auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem;line-height:1}
-.ok-focus-ring{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;flex:0 0 auto}
+.ok-focus-ring{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;flex:0 0 auto;border:1.5px solid var(--ok-line);border-radius:50%;padding:1px}
 .ok-focus-ring svg{width:100%;height:100%;display:block;overflow:visible}
 .ok-focus-str-lvl{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);white-space:nowrap}
 .ok-focus-str-sub{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);white-space:nowrap}
 .ok-focus-dots{display:inline-flex;align-items:center;gap:4px;flex:0 0 auto}
+/* the level and its dots travel together on a phone; on a desk the wrapper
+   dissolves into the row */
+.ok-focus-str-top{display:contents}
 .ok-focus-dot{width:7px;height:7px;border-radius:50%}
 .ok-focus-actions{display:flex;gap:.6rem;padding-top:.15rem}
 .ok-focus-arrow{position:absolute;top:50%;transform:translateY(-50%);width:2.6rem;height:2.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-focus-arrow:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
 .ok-focus-arrow-l{left:.6rem}.ok-focus-arrow-r{right:.6rem}
-.ok-toast{position:fixed;left:50%;bottom:1.5rem;transform:translateX(-50%);z-index:120;padding:.7rem 1.15rem;border-radius:10px;background:#1b1f24;color:#fff;font-family:var(--font-2);font-size:1rem;box-shadow:0 10px 30px rgba(0,0,0,.25);white-space:nowrap;animation:ok-toast-in 200ms ease}
+.ok-toast{position:fixed;left:50%;bottom:calc(1.5rem + var(--ok-kb,0px));transform:translateX(-50%);z-index:120;padding:.7rem 1.15rem;border-radius:10px;background:#1b1f24;color:#fff;font-family:var(--font-2);font-size:1rem;box-shadow:0 10px 30px rgba(0,0,0,.25);white-space:nowrap;animation:ok-toast-in 200ms ease}
 @keyframes ok-toast-in{from{opacity:0;transform:translate(-50%,.5rem)}to{opacity:1;transform:translate(-50%,0)}}
 @keyframes ok-fade{from{opacity:0}to{opacity:1}}
 @keyframes ok-rise{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
@@ -560,7 +563,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-cardbtns{position:absolute;right:.85rem;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
 /* Both controls are the same button: one size, one border, one background.
    Only what sits inside them differs. */
-.ok-tick,.ok-play{position:static;width:2.35rem;height:2.35rem;border-radius:50%;border:1.5px solid #d3d3cc;background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#b6b6ae;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
+.ok-tick,.ok-play{position:static;width:2.35rem;height:2.35rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
 .ok-tick:hover,.ok-play:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
 @keyframes ok-speak{0%,100%{opacity:1}50%{opacity:.45}}
 /* One control, two meanings: the quarters fill as practice finds the word
@@ -568,7 +571,7 @@ a:hover{color:var(--text-accent-hover)}
    what practice worked out rather than replacing it, so letting go returns
    the word to whatever it had actually earned. */
 .ok-tick svg{width:2.05rem;height:2.05rem;display:block}
-.ok-pie-w{transition:fill 260ms ease}
+.ok-pie-w{transition:d 260ms ease}
 /* room for the tick and the play button stacked beneath it */
 .ok-card-r{padding-right:3rem}
 .ok-card{min-height:6.2rem}
@@ -632,30 +635,47 @@ a:hover{color:var(--text-accent-hover)}
 @media (max-width:640px){
   html,body{overscroll-behavior-y:contain}
   *{-webkit-tap-highlight-color:transparent}
-  .ok-top{padding-left:max(.75rem,env(safe-area-inset-left));padding-right:calc(3.5rem + env(safe-area-inset-right));gap:.5rem}
+  /* The page's own height comes from svh -- the viewport with the browser's
+     chrome showing -- so the header can never start underneath the address
+     bar. Only the surfaces a keyboard can cover follow --ok-vh, and they
+     fall back to the same thing if it is ever missing. */
+  .ok-root{height:100svh;height:100dvh;height:var(--ok-vh,100svh)}
+  /* viewport-fit=cover puts the page under the status bar and the address
+     bar, so every header pays for its own top inset rather than starting
+     underneath them. */
+  .ok-top{height:auto;min-height:3.5rem;padding-left:max(.75rem,env(safe-area-inset-left));padding-right:calc(3.5rem + env(safe-area-inset-right));padding-top:env(safe-area-inset-top);gap:.5rem}
   .ok-top-set .ok-seg,.ok-top-set .ok-practice,.ok-set-sub{display:none}
   .ok-tiles{grid-template-columns:repeat(5,minmax(0,1fr));gap:.5rem}
   .ok-cards{grid-template-columns:1fr;padding:1rem .9rem 0}
   .ok-wrap{padding:1.25rem max(1.1rem,env(safe-area-inset-left)) 1.5rem;gap:1.4rem}
   .ok-setnav{padding:1.5rem 1.1rem 1.25rem}
   .ok-continue{display:none}
-  .ok-acct{top:.55rem;right:max(.9rem,env(safe-area-inset-right))}
+  .ok-acct{right:max(.9rem,env(safe-area-inset-right))}
 
   /* pages that were dialogs */
   .ok-veil{position:fixed;inset:0;z-index:95;display:block;padding:0;background:var(--ok-bg);backdrop-filter:none;-webkit-backdrop-filter:none;animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
   .ok-veil-out{animation:ok-push-out 200ms cubic-bezier(.4,0,1,1) forwards!important}
+  .ok-veil{height:var(--ok-vh,100svh)}
   .ok-sheet,.ok-sheet-fixed{width:100%;height:100%;max-height:none;border-radius:0;box-shadow:none;animation:none}
   .ok-sheet-out{animation:none!important}
   .ok-sheet-top{padding-left:max(.6rem,env(safe-area-inset-left));padding-right:max(.9rem,env(safe-area-inset-right));padding-top:env(safe-area-inset-top)}
   .ok-pmenu,.ok-quiz,.ok-pdone{padding-bottom:calc(2rem + env(safe-area-inset-bottom))}
 
   /* the word, opened: a page with a close, a title, and an action bar */
-  .ok-focus{width:100%;height:100%;max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:flex-start;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
+  .ok-focus{width:100%;height:var(--ok-vh,100svh);max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:center;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
+  /* the caption travels with the content it describes rather than being
+     pushed to the floor, now that the block is centred */
+  .ok-focus-str{margin-top:1.1rem}
+  /* Centring only holds still if the block is the same height every time.
+     Every gloss and every example sentence in the corpus fits one line at
+     this width; six translations out of 520 take two, so that line pair is
+     always reserved and nothing below the word ever moves as you walk a set. */
+  .ok-focus-tr{min-height:2.4rem}
   .ok-focus-out{animation:none!important}
   .ok-x{top:calc(.5rem + env(safe-area-inset-top));left:.6rem;right:auto;width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border-radius:50%}
   .ok-focus-n{position:absolute;top:calc(1.35rem + env(safe-area-inset-top));left:3.5rem;right:3.5rem;text-align:center}
-  .ok-focus-actions{position:fixed;left:0;right:0;bottom:0;margin:0;gap:.5rem;justify-content:center;padding:.7rem 4.2rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(244,244,241,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
-  .ok-focus-arrow{position:fixed;top:auto;transform:none;z-index:2;width:2.9rem;height:2.9rem;bottom:calc(.65rem + env(safe-area-inset-bottom))}
+  .ok-focus-actions{position:fixed;left:0;right:0;bottom:var(--ok-kb,0px);margin:0;gap:.5rem;justify-content:center;padding:.7rem 4.2rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(244,244,241,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
+  .ok-focus-arrow{position:fixed;top:auto;transform:none;z-index:2;width:2.9rem;height:2.9rem;bottom:calc(.65rem + env(safe-area-inset-bottom) + var(--ok-kb,0px))}
   .ok-focus-arrow-l{left:.4rem}
   .ok-focus-arrow-r{right:.4rem}
 
@@ -670,16 +690,61 @@ a:hover{color:var(--text-accent-hover)}
   /* thumbs, not cursors */
   .ok-tick,.ok-play{width:2.75rem;height:2.75rem}
   .ok-tick svg{width:2.4rem;height:2.4rem}
-  .ok-cardbtns{right:.5rem;gap:.4rem}
+  /* A stacked card is read top to bottom, and its rule runs the full width,
+     so the pair sits along the top edge instead of down the side where it
+     would straddle that rule. */
+  .ok-cardbtns{top:.6rem;bottom:auto;right:.6rem;flex-direction:row;align-items:center;gap:.5rem}
   .ok-card{padding-bottom:.7rem}
-  .ok-card-l{position:static;padding-right:3rem;padding-bottom:0}
-  .ok-card-r{padding-right:3rem}
+  .ok-card-l{position:static;padding-right:6.6rem;padding-bottom:0}
+  .ok-card-r{padding-right:0}
   .ok-round-btn{width:2.75rem;height:2.75rem}
   .ok-mini{width:2.5rem;height:2.5rem}
-  .ok-back{padding:.5rem .7rem .5rem .35rem}
+  .ok-back{padding:.5rem .7rem .5rem .35rem;min-height:2.75rem}
+  .ok-avatar{width:2.75rem;height:2.75rem}
+  .ok-acct{top:calc(.375rem + env(safe-area-inset-top))}
+  .ok-seg-b{display:inline-flex;align-items:center;justify-content:center;min-height:2.4rem;padding:.4rem 1rem}
+  .ok-focus-actions .ok-btn{min-height:2.75rem}
+
+  /* quiz tiles: a long word shrinks before it wraps, and wraps before it leaves */
+  .ok-qtile{padding:.9rem .6rem;min-width:0}
+  .ok-qtile-big{white-space:normal;overflow-wrap:anywhere}
+
+  /* A round sits in the middle of the page, not against its top. auto
+     margins rather than justify-content so a round taller than the screen
+     can still be scrolled to from both ends. */
+  .ok-sheet-body{justify-content:flex-start}
+  .ok-quiz,.ok-pmenu,.ok-pdone{margin:auto}
+  .ok-quiz{width:100%}
+  /* Typing keeps the word it is asking about above the keyboard: the sheet
+     is already only as tall as the visible area, so the field sits at its
+     foot and the prompt takes the space that is left. */
+  .ok-quiz-type{margin:0;width:100%;padding-bottom:calc(1rem + env(safe-area-inset-bottom))}
+  .ok-quiz-type .ok-qprompt{margin-top:auto;margin-bottom:auto;padding:1rem 1.25rem}
+  .ok-quiz-type .ok-dots{flex:0 0 auto}
+  .ok-quiz-type .ok-qtype{flex:0 0 auto}
+
+  /* the word, opened: its caption becomes two lines beside the ring rather
+     than one line that would run off a phone */
+  .ok-focus-str{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:.7rem;row-gap:.3rem;align-items:center;justify-content:start;width:100%;line-height:1.2;text-align:left}
+  .ok-focus-ring{grid-row:1/3;width:1.6rem;height:1.6rem}
+  .ok-focus-str-top{display:flex;align-items:center;gap:.6rem;grid-column:2;grid-row:1;min-width:0}
+  .ok-focus-str-lvl{white-space:normal}
+  .ok-focus-str-sub{grid-column:2;grid-row:2;white-space:normal}
+
+  /* write: the word pills are one strip you scroll sideways, so the thread
+     keeps the page; the language toggle is a thumb's size */
+  .ok-sheet-top .ok-seg-b{padding:.4rem .75rem}
+  .ok-w-pills{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;gap:.4rem;padding:.7rem 1rem 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .ok-w-pills::-webkit-scrollbar{display:none}
+  .ok-w-pill{flex:0 0 auto;min-height:2.4rem}
+  .ok-w-thread{padding:.9rem 1rem;min-height:0}
+  .ok-w-msg{max-width:92%}
+  .ok-w-cands{padding:0 1rem}
+  .ok-w-cand{min-height:2.5rem}
+  .ok-w-bar{padding-bottom:calc(.8rem + env(safe-area-inset-bottom))}
 
   /* the bottom bar: one job per page */
-  .ok-bottombar{position:fixed;left:0;right:0;bottom:0;z-index:65;display:flex;align-items:center;gap:.6rem;padding:.6rem max(.9rem,env(safe-area-inset-left)) calc(.6rem + env(safe-area-inset-bottom)) max(.9rem,env(safe-area-inset-right));background:rgba(244,244,241,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
+  .ok-bottombar{position:fixed;left:0;right:0;bottom:var(--ok-kb,0px);z-index:65;display:flex;align-items:center;gap:.6rem;padding:.6rem max(.9rem,env(safe-area-inset-left)) calc(.6rem + env(safe-area-inset-bottom)) max(.9rem,env(safe-area-inset-right));background:rgba(244,244,241,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
   .ok-bb-seg{flex:0 0 auto}
   .ok-bb-seg .ok-seg-b{padding:.5rem .9rem}
   .ok-bb-cta{flex:1 1 auto;height:2.75rem;justify-content:center}
@@ -689,6 +754,34 @@ a:hover{color:var(--text-accent-hover)}
   /* map and set push and pop rather than zoom */
   .ok-page-set{animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
   .ok-page-map{animation:ok-push-back 220ms ease}
+}
+/* A phone on its side: too wide for the page layout, too short for the
+   dialog. The dialog gives up its fixed height and scrolls, and the set's
+   header sizes its ends to their contents so nothing overlaps the title. */
+@media (min-width:641px) and (max-height:520px){
+  .ok-focus{height:auto;max-height:calc(100vh - 1.5rem);gap:.6rem;padding:2rem 3.5rem 1.25rem}
+  .ok-focus-wordbox{height:5rem}
+  .ok-focus-word{font-size:3rem!important}
+  .ok-focus-str{margin-top:.5rem}
+  .ok-quiz,.ok-fc{min-height:0}
+}
+@media (min-width:641px) and (max-width:900px){
+  .ok-top-l,.ok-top-r{flex:1 1 auto}
+  .ok-set-sub{display:none}
+}
+/* Fingers do not hover: nothing lifts or tints on a tap, and a press shows
+   as a press instead. */
+@media (hover:none){
+  .ok-card:hover,.ok-tile:hover,.ok-pmode:hover,.ok-hero:hover{transform:none;box-shadow:var(--ok-shadow)}
+  .ok-qtile[data-live]:hover{transform:none;border-color:var(--ok-line)}
+  .ok-tick:hover,.ok-play:hover{transform:none;border-color:var(--ok-line);color:#c9c9c2}
+  .ok-btn:hover{border-color:var(--ok-line);background:var(--ok-card)}
+  .ok-btn-primary:hover{background:var(--ok-acc);border-color:var(--ok-acc)}
+  .ok-round-btn:hover,.ok-mini:hover,.ok-focus-arrow:hover,.ok-back:hover{background:transparent;color:var(--ok-mute)}
+  .ok-pill:hover,.ok-w-cand:hover{border-color:var(--ok-line);color:inherit}
+  .ok-card:active,.ok-pmode:active{transform:scale(.99)}
+  .ok-tile:active,.ok-qtile[data-live]:active{transform:scale(.97)}
+  .ok-btn:active,.ok-tick:active,.ok-play:active,.ok-round-btn:active,.ok-seg-b:active,.ok-chip:active,.ok-w-cand:active{opacity:.75}
 }
 @keyframes ok-push-in{from{transform:translateX(100%)}to{transform:none}}
 @keyframes ok-push-out{from{transform:none}to{transform:translateX(100%)}}
@@ -929,9 +1022,8 @@ html[data-ok-ready] #ok-boot{display:none}
               <div class="ok-cardbtns">
                 <span sc-camel-on-click="{{ lr.master }}" class="ok-cellbtn ok-tick" title="{{ lr.markTitle }}" style="{{ lr.tickStyle }}">
                   <svg sc-camel-view-box="0 0 24 24">
-                    <sc-for list="{{ lr.pie }}" as="pw" hint-placeholder-count="4"><path d="{{ pw.d }}" fill="{{ pw.fill }}" class="ok-pie-w"></path></sc-for>
-                    <path d="M12 1 V23 M1 12 H23" stroke="{{ lr.pieGrid }}" stroke-width="1.1"></path>
-                    <sc-if value="{{ lr.pieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M7.6 12.2 L10.7 15.3 L16.4 8.9" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+                    <sc-if value="{{ lr.pieOn }}" hint-placeholder-val="{{ false }}"><path d="{{ lr.pieD }}" fill="var(--ok-acc)" class="ok-pie-w"></path></sc-if>
+                    <sc-if value="{{ lr.pieFull }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M8.5 12.2 L10.9 14.6 L15.5 9.5" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
                   </svg>
                 </span>
                 <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ lr.play }}" class="ok-play" title="{{ t_listen }}" style="{{ lr.playStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
@@ -1018,16 +1110,17 @@ html[data-ok-ready] #ok-boot{display:none}
         <div class="ok-focus-str">
           <span class="ok-focus-ring">
             <svg sc-camel-view-box="0 0 24 24">
-              <sc-for list="{{ focusPie }}" as="fp" hint-placeholder-count="4"><path d="{{ fp.d }}" fill="{{ fp.fill }}" class="ok-pie-w"></path></sc-for>
-              <path d="M12 1 V23 M1 12 H23" stroke="{{ focusPieGrid }}" stroke-width="1.1"></path>
-              <sc-if value="{{ focusPieTick }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M7.6 12.2 L10.7 15.3 L16.4 8.9" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+              <sc-if value="{{ focusPieOn }}" hint-placeholder-val="{{ false }}"><path d="{{ focusPieD }}" fill="var(--ok-acc)" class="ok-pie-w"></path></sc-if>
+              <sc-if value="{{ focusPieFull }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M8.5 12.2 L10.9 14.6 L15.5 9.5" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
             </svg>
           </span>
-          <span class="ok-focus-str-lvl">{{ focusLvlName }}</span>
+          <span class="ok-focus-str-top">
+            <span class="ok-focus-str-lvl">{{ focusLvlName }}</span>
+            <sc-if value="{{ focusDotsOn }}" hint-placeholder-val="{{ false }}">
+              <span class="ok-focus-dots" title="{{ t_str_recent }}"><sc-for list="{{ focusDots }}" as="fd" hint-placeholder-count="6"><span class="ok-focus-dot" style="background:{{ fd.bg }}" title="{{ fd.title }}"></span></sc-for></span>
+            </sc-if>
+          </span>
           <span class="ok-focus-str-sub">{{ focusStrSub }}</span>
-          <sc-if value="{{ focusDotsOn }}" hint-placeholder-val="{{ false }}">
-            <span class="ok-focus-dots" title="{{ t_str_recent }}"><sc-for list="{{ focusDots }}" as="fd" hint-placeholder-count="6"><span class="ok-focus-dot" style="background:{{ fd.bg }}" title="{{ fd.title }}"></span></sc-for></span>
-          </sc-if>
         </div>
         <div class="ok-focus-actions">
           <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ focusPlay }}" class="ok-btn" title="{{ t_listen }}" style="{{ focusPlayStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
@@ -1188,12 +1281,21 @@ const covMedia = (c) => (c[0] + c[1] + c[2]) / 3;
 // Four quarters filling the circle, clockwise from the top. Unlit ones are
 // drawn too, in a pale fill, so the control is always a whole disc and the
 // lines that divide it are always there to be counted.
-const PIE_ARCS = [
-  "M12 12 L12.00 1.00 A11 11 0 0 1 23.00 12.00 Z",
-  "M12 12 L23.00 12.00 A11 11 0 0 1 12.00 23.00 Z",
-  "M12 12 L12.00 23.00 A11 11 0 0 1 1.00 12.00 Z",
-  "M12 12 L1.00 12.00 A11 11 0 0 1 12.00 1.00 Z"
-];
+// How much of a word is known, drawn as one solid pie inside the control's
+// circle: a quarter for each level, no divisions and no crosshair, and at
+// the top a whole filled circle. Small enough that the ring around it still
+// reads as the button.
+const PIE_R = 7.5;
+const okPiePath = (lvl) => {
+  const n = Math.max(0, Math.min(4, lvl | 0));
+  if (!n) return "";
+  if (n === 4) return "M12 " + (12 - PIE_R) + " A" + PIE_R + " " + PIE_R + " 0 1 1 12 " + (12 + PIE_R) +
+    " A" + PIE_R + " " + PIE_R + " 0 1 1 12 " + (12 - PIE_R) + " Z";
+  const a = (n / 4) * 2 * Math.PI;
+  const x = (12 + PIE_R * Math.sin(a)).toFixed(2);
+  const y = (12 - PIE_R * Math.cos(a)).toFixed(2);
+  return "M12 12 L12 " + (12 - PIE_R) + " A" + PIE_R + " " + PIE_R + " 0 " + (n > 2 ? 1 : 0) + " 1 " + x + " " + y + " Z";
+};
 // The headings read in Japanese, with the learner's own language on hover.
 // This is a Japanese course and these are short, familiar shapes -- seeing
 // them every session is free reading practice, and the tooltip is the
@@ -1700,6 +1802,49 @@ async function okComplete(req) {
 // Speech: the browser's own Japanese voice, the word then the sentence. Free
 // and instant; the voice varies by platform, which is the trade for that.
 const okPhone = () => typeof window !== "undefined" && !!window.matchMedia && window.matchMedia("(max-width:640px)").matches;
+// What the phone can actually show. 100dvh is the viewport the browser would
+// like to have, not the one left over once its own chrome is on screen, and
+// it does not shrink at all for the keyboard on iOS -- so the top of the page
+// hides behind the address bar, and a focused field pushes what it is about
+// off the bottom. visualViewport knows the truth; everything that fills the
+// screen measures itself against this instead.
+const okTrackViewport = () => {
+  if (typeof window === "undefined" || !window.visualViewport) return null;
+  const vv = window.visualViewport;
+  const set = () => {
+    const root = document.documentElement;
+    const h = Math.round(vv.height);
+    // A number this drives the whole app's height by is worth doubting. A
+    // browser that reports nothing useful -- mid-load, or while its own
+    // chrome is animating -- must leave the CSS fallback in place rather
+    // than collapse the page to nothing.
+    if (h > 240 && h < 4000) root.style.setProperty("--ok-vh", h + "px");
+    else root.style.removeProperty("--ok-vh");
+    // How much of the window the keyboard is covering, for anything anchored
+    // to the bottom of the screen rather than to a box we have resized.
+    const kb = Math.round(window.innerHeight - vv.height - vv.offsetTop);
+    root.style.setProperty("--ok-kb", (kb > 0 && kb < window.innerHeight ? kb : 0) + "px");
+  };
+  set();
+  vv.addEventListener("resize", set);
+  vv.addEventListener("scroll", set);
+  return () => { vv.removeEventListener("resize", set); vv.removeEventListener("scroll", set); };
+};
+// A quiz tile is half a phone wide, so a word's size there follows its length;
+// a desktop tile has room for six characters at full size.
+const okTileSize = (text, kana, mode) => {
+  if (kana) return "1.75rem";
+  if (!okPhone()) return mode === 3 ? "2.5rem" : "3rem";
+  const n = [...String(text || "")].length;
+  return n <= 3 ? "2.5rem" : n === 4 ? "2rem" : n === 5 ? "1.6rem" : n === 6 ? "1.4rem" : "1.25rem";
+};
+// The flashcard face, likewise: five characters at 5rem would leave the card.
+const okFrontSize = (text, kanji) => {
+  if (!kanji) return "3.5rem";
+  if (!okPhone()) return "5rem";
+  const n = [...String(text || "")].length;
+  return n <= 3 ? "5rem" : n <= 5 ? "3.5rem" : "2.75rem";
+};
 const okCanSpeak = () => typeof window !== "undefined" && !!window.speechSynthesis && typeof window.SpeechSynthesisUtterance === "function";
 let _okVoice = null;
 const okVoice = () => {
@@ -1713,28 +1858,60 @@ const okVoice = () => {
   return byName || ja.find(v => v.localService) || ja[0];
 };
 if (okCanSpeak() && window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener("voiceschanged", () => { _okVoice = okVoice(); });
-// -> a promise that settles when the last utterance ends (or fails)
+// Utterances have to outlive this call: an engine that collects one before
+// it is spoken simply goes quiet, with no error to catch.
+let _okUtter = [];
+let _okPump = null;
+// -> a promise that settles when the last utterance ends (or fails), with
+//    `false` when the engine never made a sound
 const okSpeak = (parts) => new Promise((resolve) => {
   if (!okCanSpeak()) return resolve(false);
   const synth = window.speechSynthesis;
-  try { synth.cancel(); } catch (e) {}
   const voice = _okVoice || (_okVoice = okVoice());
   const list = parts.filter(Boolean);
   if (!list.length) return resolve(false);
-  let left = list.length, done = false;
-  const finish = () => { if (!done) { done = true; resolve(true); } };
-  list.forEach((p, i) => {
-    const u = new SpeechSynthesisUtterance(p.text);
-    u.lang = "ja-JP";
-    if (voice) u.voice = voice;
-    u.rate = p.rate || 0.9;
-    u.pitch = 1;
-    u.onend = () => { if (--left <= 0) finish(); };
-    u.onerror = () => { if (--left <= 0) finish(); };
-    synth.speak(u);
-  });
+  let left = list.length, done = false, started = false;
+  const stopPump = () => { if (_okPump) { clearInterval(_okPump); _okPump = null; } };
+  const finish = (ok) => {
+    if (done) return;
+    done = true; stopPump(); _okUtter = [];
+    resolve(ok !== false && started);
+  };
+  const queue = () => {
+    _okUtter = list.map((p) => {
+      const u = new SpeechSynthesisUtterance(p.text);
+      u.lang = "ja-JP";
+      if (voice) u.voice = voice;
+      u.rate = p.rate || 0.9;
+      u.pitch = 1;
+      u.onstart = () => { started = true; };
+      u.onend = () => { started = true; if (--left <= 0) finish(true); };
+      u.onerror = () => { if (--left <= 0) finish(false); };
+      return u;
+    });
+    for (const u of _okUtter) synth.speak(u);
+    // Long text stops by itself on some engines unless it is nudged.
+    stopPump();
+    _okPump = setInterval(() => {
+      if (done) return stopPump();
+      try { if (synth.paused) synth.resume(); } catch (e) {}
+      if (!synth.speaking && !synth.pending && started) finish(true);
+    }, 1000);
+  };
+  // Cancelling and speaking in the same tick loses the new utterance on
+  // some engines, so only cancel when something is actually playing -- and
+  // then let that land before queueing. Nothing playing means we can speak
+  // straight from the click, which is what iOS requires.
+  let playing = false;
+  try { playing = !!(synth.speaking || synth.pending); } catch (e) {}
+  if (playing) {
+    try { synth.cancel(); } catch (e) {}
+    setTimeout(queue, 60);
+  } else {
+    queue();
+  }
   // some engines never fire onend; never leave the button lit
-  setTimeout(finish, 12000);
+  setTimeout(() => finish(started), 20000);
 });
 const okAiReady = () => (typeof window !== "undefined" && !!(window.claude && window.claude.complete)) || okSyncReady();
 // mastered is a { "word|reading": true } map. Union merge: local OR server wins.
@@ -1872,6 +2049,7 @@ class Component extends DCLogic {
     this.restoreSession();
     this._onResize = () => this.scheduleMeasure();
     window.addEventListener("resize", this._onResize);
+    this._untrackVv = okTrackViewport();
   }
 
   // refs keep one identity for the component's lifetime so React never re-attaches them
@@ -1984,6 +2162,7 @@ class Component extends DCLogic {
     if (this._onPop) window.removeEventListener("popstate", this._onPop);
     if (this._onTouchStart) window.removeEventListener("touchstart", this._onTouchStart);
     if (this._onTouchEnd) window.removeEventListener("touchend", this._onTouchEnd);
+    if (this._untrackVv) this._untrackVv();
   }
 
   bindKeys() {
@@ -2379,7 +2558,12 @@ class Component extends DCLogic {
     if (!okCanSpeak()) return;
     if (this.state.speaking === key) { try { window.speechSynthesis.cancel(); } catch (e) {} this.setState({ speaking: null }); return; }
     this.setState({ speaking: key });
-    okSpeak([{ text: word, rate: 0.82 }, sentence ? { text: sentence, rate: 0.95 } : null]).then(() => { if (this.state.speaking === key) this.setState({ speaking: null }); });
+    okSpeak([{ text: word, rate: 0.82 }, sentence ? { text: sentence, rate: 0.95 } : null]).then((heard) => {
+      if (this.state.speaking === key) this.setState({ speaking: null });
+      // A device with no Japanese voice installed makes no sound and raises
+      // nothing: say so, rather than leaving a button that looks broken.
+      if (!heard && !okVoice()) this.flashMsg(T("no_voice"));
+    });
   }
   focusStep(d) {
     const n = wordsOf(this.state.wset).length;
@@ -3963,7 +4147,7 @@ class Component extends DCLogic {
             const key = f ? f.w[3] : null;
             const rec = key ? (st.strength || {})[key] : null;
             const marked = !!(key && st.mastered[key]);
-            const lvl = strLevel(rec);
+            const lvl = marked ? 4 : strLevel(rec);
             const n = rec ? rec[1] : 0;
             const days = n ? Math.max(0, okDay() - rec[2]) : null;
             // the last six answers, oldest first, so they read left to right
@@ -3974,10 +4158,10 @@ class Component extends DCLogic {
               dots.push({ bg: right ? "var(--ok-acc)" : "#e11d48", title: right ? T("str_right") : T("str_wrong") });
             }
             return {
-              focusPie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#edede8" })),
-              focusPieGrid: marked ? "transparent" : "#ffffff",
-              focusPieTick: marked,
-              focusLvlName: T("str_" + lvl) + (marked ? " · " + T("marked_learned") : ""),
+              focusPieOn: lvl > 0,
+              focusPieFull: lvl >= 4,
+              focusPieD: okPiePath(lvl),
+              focusLvlName: marked ? T("marked_learned") : T("str_" + lvl),
               focusStrSub: !n ? T("str_never_sub")
                 : (days === 0 ? T("str_seen_today_long") : days === 1 ? T("str_seen_yesterday") : T("str_seen_days_long", { n: days }))
                   + " · " + T("str_answers_long", { n: n }),
@@ -4237,7 +4421,7 @@ class Component extends DCLogic {
       cardTap: () => this.cardAdvance(1),
       cardProgress: st.cardsOn ? Math.min(st.cIdx + 1, (st.cQueue || []).length) + " / " + (st.cQueue || []).length : "",
       cardFront: (() => { const c = (st.cQueue || [])[st.cIdx]; return c ? c.w : ""; })(),
-      cardFrontSize: (() => { const c = (st.cQueue || [])[st.cIdx]; return c && c.kanji ? "5rem" : "3.5rem"; })(),
+      cardFrontSize: (() => { const c = (st.cQueue || [])[st.cIdx]; return c ? okFrontSize(c.w, c.kanji) : "3.5rem"; })(),
       cardReading: (() => { const c = (st.cQueue || [])[st.cIdx]; return c ? c.r : "\u00a0"; })(),
       cardGloss: (() => { const c = (st.cQueue || [])[st.cIdx]; return c ? c.g : "\u00a0"; })(),
       cardBackOpacity: st.cShown ? 1 : 0,
@@ -4357,7 +4541,7 @@ class Component extends DCLogic {
           big: t.big, sub: t.sub, hasSub: q.mode === 3 && !!t.sub,
           ruleR: i % 2 === 0 ? "1px solid #9fb4c0" : "0",
           ruleB: i < 2 ? "1px solid #9fb4c0" : "0",
-          bigSize: t.kana ? "1.75rem" : (q.mode === 3 ? "2.5rem" : "3rem"),
+          bigSize: okTileSize(t.big, t.kana, q.mode),
           bg: done && t.ok ? "var(--ok-acc)" : (done && i === picked ? "#fff1f3" : "var(--ok-card)"),
           fg: done && t.ok ? "#ffffff" : (done && i === picked ? "#be123c" : "var(--ok-ink)"),
           subFg: done && t.ok ? "rgba(255,255,255,.85)" : "var(--ok-mute)",
@@ -4612,7 +4796,7 @@ class Component extends DCLogic {
             const earned = T("str_" + strLevel(rec));
             const days = rec && rec[1] ? Math.max(0, okDay() - rec[2]) : null;
             const seen = days == null ? "" : " · " + (days === 0 ? T("str_seen_today") : T("str_seen_days", { n: days }));
-            return done ? T("marked_learned") + " · " + earned + seen + " · " + T("click_to_undo")
+            return done ? T("marked_learned") + seen + " · " + T("click_to_undo")
                         : earned + seen + " · " + T("click_to_mark");
           })(),
           pillStyle: okPill(done),
@@ -4623,16 +4807,11 @@ class Component extends DCLogic {
           // shows all four and a tick; the earned level underneath is left
           // alone, so pressing again drops back to it rather than to nothing.
           ...(() => {
-            const lvl = strLevel((st.strength || {})[key]);
+            const lvl = done ? 4 : strLevel((st.strength || {})[key]);
             return {
-              // Four arcs at the rim, gapped so they read as four. The unlit
-              // ones stay a visible grey: an empty control still has to say
-              // how many steps it has.
-              pie: PIE_ARCS.map((d, i) => ({ d: d, fill: i < lvl ? "var(--ok-acc)" : "#edede8" })),
-              // the dividers read over both the pale quarters and the lit ones,
-              // but step out of the way of the tick rather than crossing it
-              pieGrid: done ? "transparent" : "#ffffff",
-              pieTick: !!done
+              pieOn: lvl > 0,
+              pieFull: lvl >= 4,
+              pieD: okPiePath(lvl)
             };
           })(),
           play: (ev) => { if (ev && ev.stopPropagation) ev.stopPropagation(); this.speakWord(key, w[0], x || ""); },

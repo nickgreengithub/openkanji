@@ -2,7 +2,7 @@
 // Rebuilds index.html (the GitHub Pages deploy target) from src/.
 //
 // The deployed file is a self-contained bundle: a bootstrap shell plus two
-// generated lines -- an asset manifest (gzip+base64) and the app document
+// generated lines -- an asset manifest (base64) and the app document
 // (JSON-encoded). src/shell.html carries placeholders for those two lines.
 //
 // Usage: node tools/build.js [--check]
@@ -249,6 +249,12 @@ function build() {
   const manifest = {};
   for (const [uuid, info] of Object.entries(meta)) {
     const bytes = fs.readFileSync(path.join(SRC, "assets", info.file));
+    // Assets ship as they are. Gzipping them here needs DecompressionStream
+    // in the browser to undo, which Safari only got in 16.4 -- an older
+    // iPhone would mint the runtime's gzip bytes as a script and boot to a
+    // blank page. The transport already compresses the response, and
+    // base64-of-gzip does not compress twice, so this is also smaller on
+    // the wire than it looks.
     const packed = info.compressed ? zlib.gzipSync(bytes, { level: 9 }) : bytes;
     manifest[uuid] = {
       mime: info.mime,
@@ -302,7 +308,7 @@ function build() {
     .replace("__BUNDLER_TEMPLATE__", () => encodeTemplate(template));
 
   // Fail loudly rather than shipping a blank page.
-  const line = out.split("\n")[381];
+  const line = out.split("\n")[shell.split("\n").findIndex((l) => l === "__BUNDLER_TEMPLATE__")];
   if (JSON.parse(line) !== template) throw new Error("template did not round-trip");
   if (line.includes("</script>")) throw new Error("unescaped </script> in template");
 

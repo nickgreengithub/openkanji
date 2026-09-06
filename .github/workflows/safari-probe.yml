@@ -1,0 +1,34 @@
+name: Safari probe
+
+# A phone shows a blank page where every desktop browser is fine, and this
+# sandbox has no WebKit to reproduce it in. A macOS runner does: it loads the
+# deployed site in the same engine an iPhone runs and reports what it sees.
+# Manual only -- this is a diagnostic, not part of the deploy.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  safari:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright WebKit
+        run: |
+          npm i -D playwright@1.49.1
+          npx playwright install webkit
+
+      - name: Load openkanji.org in WebKit at iPhone size
+        run: node tools/safari-probe.mjs
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: safari-probe
+          path: probe/

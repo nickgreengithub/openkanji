@@ -248,6 +248,32 @@ Error: unknown language code 'klingon' -- add it to data/langs.json
   note: 'es' is incomplete and will not ship
 ```
 
+## On a phone
+
+Every overlay is a page rather than a dialog, and two rules keep it honest:
+
+- **The page's own height is `100svh`** -- the viewport with the browser's
+  chrome showing -- so a header can never begin underneath the address bar.
+  `dvh` is the viewport the browser would like to have, which is not the same
+  thing.
+- **Surfaces a keyboard can cover follow `visualViewport`,** because on iOS
+  neither `dvh` nor `svh` shrinks for the keyboard, and a focused field
+  otherwise pushes the thing it is about off the bottom. A listener publishes
+  `--ok-vh` (what is visible) and `--ok-kb` (what the keyboard covers); the
+  sheets measure against the first, and everything pinned to the bottom
+  offsets by the second. `--ok-vh` is published only when it looks sane, and
+  every rule that reads it falls back to `100svh`: a browser that reports
+  nonsense for its own viewport must not be able to collapse the page to
+  nothing. `e2e.mjs` feeds it 0, 1, nothing, and an absurd number, and
+  requires the map to stay readable through all four.
+- **The page is drawn under the notch** (`viewport-fit=cover`), so every
+  header pays for its own `env(safe-area-inset-top)`.
+
+The word page centres its content, which only holds still because the block
+is the same height every time: all 6112 glosses and all 520 example
+sentences fit one line at phone width, and the six translations that take
+two lines have that second line reserved for them.
+
 ## Build
 
 ```sh
@@ -257,6 +283,16 @@ npm run serve     # serve locally on :8080
 ```
 
 No dependencies -- `build.js` is plain Node.
+
+The page carries its fonts and its runtime inside itself, base64'd in an
+asset manifest. **Those assets ship uncompressed on purpose.** Gzipping them
+means the browser has to undo it with `DecompressionStream`, which Safari
+only got in 16.4 -- an iPhone older than that mints the runtime's compressed
+bytes as a script, the parser rejects it, and the app boots to a blank page
+with nothing on screen to say why. It costs about 20KB over the wire, since
+the response is compressed anyway and base64-of-gzip does not compress
+twice. `e2e.mjs` fails if any asset in the built page is marked compressed,
+and again if the page does not boot with `DecompressionStream` removed.
 
 ## Deploying
 
