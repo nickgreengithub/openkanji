@@ -272,6 +272,10 @@ It skips anything already recorded, so a re-run costs nothing and a wider
 on a runner from a `GOOGLE_TTS_KEY` secret and commits the result; it is
 manual-dispatch only, because it spends money on that key.
 
+The workflow deploys what it recorded itself, rather than leaving it to the
+push: a commit made with `GITHUB_TOKEN` starts no workflow, so the clips
+would otherwise sit on `main` until something unrelated happened to push.
+
 A big run will meet rate limits whatever the pacing -- neural voices are
 quota'd by characters per minute -- so clips retry with a long backoff, and
 **a run that still loses some keeps the ones it got**. They are committed

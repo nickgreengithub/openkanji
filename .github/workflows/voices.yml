@@ -59,12 +59,28 @@ jobs:
           git commit -m "Record ${{ inputs.words }} words with ${{ inputs.voice }}"
           git push
 
+      # A push made with GITHUB_TOKEN starts no workflow, so the commit above
+      # would sit on main undeployed until something else happened to push.
+      # dist/ was built from these very files a step ago, so ship it here
+      # rather than asking another workflow to work out which commit to take.
+      - name: Check the page is in step with src/
+        run: npm run check
+
+      - name: Deploy Worker and assets
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.128.0'
+
+      # Last, so that everything recorded is committed and live before the
+      # run goes red over the few that are not.
       - name: Say if any are still missing
         run: |
           if [ -f src/audio/.incomplete ]; then
             n=$(cat src/audio/.incomplete)
             echo "::error::$n clip(s) did not record, most likely rate limits."
-            echo "Everything else is committed. Run this workflow again to pick up the rest."
+            echo "Everything else is committed and deployed. Run this again to pick up the rest."
             exit 1
           fi
           echo "every clip recorded"
