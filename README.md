@@ -250,7 +250,31 @@ Error: unknown language code 'klingon' -- add it to data/langs.json
 
 ## Listening
 
-Words are read by the browser's own speech engine. Not every Japanese voice
+Words are read from a recording where one exists, and by the browser's own
+speech engine where one does not.
+
+Recordings win because they are the same on every machine and start at once.
+`tools/voices.js` makes them with Google Cloud Text-to-Speech, reading each
+word from its **kana reading** -- so the learner hears the reading the app
+teaches, rather than whichever one an engine guesses for a kanji standing
+alone -- and each example sentence as written, where context settles the
+reading by itself. Clips land in `src/audio/<word id>.mp3` (and `.s.mp3` for
+the sentence), the build copies them to `dist/audio/` and embeds the list of
+what exists so a word without a clip never waits on a 404, and
+`src/data/ladder.json` fixes which words come first.
+
+```sh
+GOOGLE_TTS_KEY=... npm run voices -- --words 400
+```
+
+It skips anything already recorded, so a re-run costs nothing and a wider
+`--words` only adds the new ones. The `Record voices` workflow does the same
+on a runner from a `GOOGLE_TTS_KEY` secret and commits the result; it is
+manual-dispatch only, because it spends money on that key.
+
+### When there is no recording
+
+Not every Japanese voice
 a browser lists is on the machine: Chrome offers Google's network voices,
 whose audio is fetched from Google's servers when you press play. That fetch
 is the wait, and when it does not arrive the utterance ends instantly having

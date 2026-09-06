@@ -5,6 +5,7 @@
   "scripts": {
     "build": "node tools/build.js",
     "check": "node tools/build.js --check",
-    "serve": "python3 -m http.server 8080"
+    "serve": "python3 -m http.server 8080",
+    "voices": "node tools/voices.js"
   }
 }

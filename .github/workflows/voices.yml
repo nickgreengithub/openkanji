@@ -1,0 +1,54 @@
+name: Record voices
+
+# Turns the first words of the ladder into audio files, once, using Google
+# Cloud Text-to-Speech, and commits them. Manual only: it spends money on the
+# key it is given, so it should never fire by itself.
+#
+# Needs a repository secret GOOGLE_TTS_KEY (a Cloud API key with the
+# Text-to-Speech API enabled). Clips already recorded are skipped, so a
+# second run costs nothing and a wider `words` simply adds the new ones.
+on:
+  workflow_dispatch:
+    inputs:
+      words:
+        description: How many words from the top of the ladder
+        default: "400"
+      voice:
+        description: Google voice name
+        default: ja-JP-Neural2-B
+
+permissions:
+  contents: write
+
+concurrency:
+  group: voices
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Record
+        env:
+          GOOGLE_TTS_KEY: ${{ secrets.GOOGLE_TTS_KEY }}
+        run: node tools/voices.js --words "${{ inputs.words }}" --voice "${{ inputs.voice }}"
+
+      - name: Rebuild the page around them
+        run: npm run build
+
+      - name: Commit the recordings
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/audio index.html
+          if git diff --cached --quiet; then
+            echo "nothing new to record"
+            exit 0
+          fi
+          git commit -m "Record ${{ inputs.words }} words with ${{ inputs.voice }}"
+          git push

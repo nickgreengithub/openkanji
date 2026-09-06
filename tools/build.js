@@ -243,6 +243,18 @@ function loadKanjiAndLangs() {
   return { data: flatten(kanji, words, DEFAULT_LANG), exT, exJa, cov, i18n, uiT, langs, available, partial, coverage, fields, deckOrder };
 }
 
+// The recorded clips that shipped, if any have been made yet.
+function readVoices() {
+  const man = path.join(SRC, "audio", "manifest.json");
+  if (!fs.existsSync(man)) return { words: [], sentences: [] };
+  try {
+    const m = JSON.parse(fs.readFileSync(man, "utf8"));
+    return { words: m.words || [], sentences: m.sentences || [] };
+  } catch (e) {
+    throw new Error("src/audio/manifest.json: " + e.message);
+  }
+}
+
 function build() {
   const meta = JSON.parse(fs.readFileSync(path.join(SRC, "assets/manifest.json"), "utf8"));
 
@@ -268,6 +280,10 @@ function build() {
   let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
   const tokens = {
     __KANJI_DATA__: JSON.stringify(data),
+    // Which words have a recording (tools/voices.js). The page checks this
+    // list rather than probing for files, so a word without a clip goes
+    // straight to the browser's voice instead of waiting on a 404.
+    __VOICES__: JSON.stringify(readVoices()),
     // [name, ui.json tip key, kanji count] in rail order, so adding a deck or
     // reordering the rail is a decks.json edit and nothing else.
     __DECKS__: JSON.stringify(deckOrder),
@@ -332,6 +348,23 @@ if (process.argv.includes("--check")) {
   const dist = path.join(ROOT, "dist");
   fs.mkdirSync(dist, { recursive: true });
   fs.writeFileSync(path.join(dist, "index.html"), out);
+  // Recordings travel with the site, not inside the page: they are served
+  // as ordinary files so the browser can cache and reuse them. dist mirrors
+  // src rather than accumulating -- a clip removed from src must stop being
+  // deployed, and one left behind would be a voice nobody asked for.
+  const audioSrc = path.join(SRC, "audio");
+  const audioOut = path.join(dist, "audio");
+  fs.rmSync(audioOut, { recursive: true, force: true });
+  if (fs.existsSync(audioSrc)) {
+    fs.mkdirSync(audioOut, { recursive: true });
+    let n = 0;
+    for (const f of fs.readdirSync(audioSrc)) {
+      if (!/\.(mp3|json)$/.test(f)) continue;
+      fs.copyFileSync(path.join(audioSrc, f), path.join(audioOut, f));
+      n++;
+    }
+    if (n) console.log("copied " + n + " voice files into dist/audio");
+  }
   const cname = path.join(ROOT, "CNAME");
   if (fs.existsSync(cname)) fs.copyFileSync(cname, path.join(dist, "CNAME"));
   console.log("built index.html + dist/index.html (" + out.length + " bytes)");

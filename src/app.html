@@ -1238,6 +1238,10 @@ html[data-ok-ready] #ok-boot{display:none}
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;startFurigana&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;showTileMeanings&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;userEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Account&quot;}}">
 // Injected by tools/build.js from src/data/*.json -- edit those, not this.
 const DATA = __KANJI_DATA__;
+// Words we have a recording for. A recording is the same on every machine
+// and starts at once; the browser's own voice is the fallback for anything
+// not yet recorded (see tools/voices.js).
+const VOICES = __VOICES__;
 // Non-default languages, keyed by code: { "ES": { "楽": {meaning, sentence, words} } }.
 // Empty until a src/data/lang/<dir>/ folder exists.
 const I18N = __KANJI_I18N__;
@@ -1968,6 +1972,38 @@ const okSpeak = (parts) => new Promise((resolve) => {
   // some engines never fire onend; never leave the button lit
   setTimeout(() => finish(started), 20000);
 });
+const _okVoiceSet = { w: null, s: null };
+const okHasClip = (id, kind) => {
+  if (!id) return false;
+  const which = kind === "s" ? "s" : "w";
+  if (!_okVoiceSet[which]) _okVoiceSet[which] = new Set((VOICES && (which === "s" ? VOICES.sentences : VOICES.words)) || []);
+  return _okVoiceSet[which].has(id);
+};
+// -> true once the clip has played to its end, false if it could not
+const okPlayClip = (id, kind) => new Promise((resolve) => {
+  if (!okHasClip(id, kind)) return resolve(false);
+  try {
+    const el = new Audio("/audio/" + id + (kind === "s" ? ".s" : "") + ".mp3");
+    el.preload = "auto";
+    let settled = false;
+    const done = (ok) => { if (!settled) { settled = true; resolve(ok); } };
+    el.onended = () => done(true);
+    el.onerror = () => done(false);
+    _okClips.push(el);
+    if (_okClips.length > 4) _okClips.shift();
+    const p = el.play();
+    if (p && p.catch) p.catch(() => done(false));
+    // a clip that never reports its end must not hold the button lit
+    setTimeout(() => done(!!el.currentTime), 20000);
+  } catch (e) { resolve(false); }
+});
+// Playing elements are held so the browser cannot collect one mid-sentence.
+const _okClips = [];
+// Stop whatever is playing, however it is being played.
+const okStopClips = () => {
+  for (const el of _okClips) { try { el.pause(); el.onended = el.onerror = null; } catch (e) {} }
+  _okClips.length = 0;
+};
 const okAiReady = () => (typeof window !== "undefined" && !!(window.claude && window.claude.complete)) || okSyncReady();
 // mastered is a { "word|reading": true } map. Union merge: local OR server wins.
 // ---- How well a word is known -----------------------------------------
@@ -2101,6 +2137,10 @@ class Component extends DCLogic {
     this.measureList();
     // Real content exists now, so the boot cover can go.
     try { document.documentElement.setAttribute("data-ok-ready", "1"); } catch (e) {}
+    // The ladder in the order a learner meets it, published so the voice
+    // generator can record exactly those words rather than guess at the
+    // order (tools/voices.mjs, via src/data/ladder.json).
+    try { window.__okLadder = deckWords().map((x) => x.w[3]); } catch (e) {}
     this.restoreSession();
     this._onResize = () => this.scheduleMeasure();
     window.addEventListener("resize", this._onResize);
@@ -2609,9 +2649,34 @@ class Component extends DCLogic {
   }
 
   // Say a word, then its sentence; the button stays lit until the voice stops.
-  speakWord(key, word, sentence) {
+  speakWord(key, word, sentence, id) {
+    const recorded = okHasClip(id, "w");
+    if (!recorded && !okCanSpeak()) return;
+    if (this.state.speaking === key) {
+      okStopClips();
+      try { window.speechSynthesis.cancel(); } catch (e) {}
+      this.setState({ speaking: null });
+      return;
+    }
+    this.setState({ speaking: key });
+    // A recording, where we have one: it sounds the same for everybody and
+    // begins at once, rather than depending on what this machine can say.
+    if (recorded) {
+      okStopClips();
+      return okPlayClip(id, "w")
+        .then((ok) => (ok && sentence && okHasClip(id, "s") ? okPlayClip(id, "s") : ok))
+        .then((ok) => {
+          if (this.state.speaking === key) this.setState({ speaking: null });
+          // A clip that will not play falls back rather than failing.
+          if (!ok && okCanSpeak()) this.speakAloud(key, word, sentence);
+        });
+    }
+    this.speakAloud(key, word, sentence);
+  }
+
+  // The browser's own voice, for anything not recorded yet.
+  speakAloud(key, word, sentence) {
     if (!okCanSpeak()) return;
-    if (this.state.speaking === key) { try { window.speechSynthesis.cancel(); } catch (e) {} this.setState({ speaking: null }); return; }
     this.setState({ speaking: key });
     okSpeak([{ text: word, rate: 0.82 }, sentence ? { text: sentence, rate: 0.95 } : null]).then((heard) => {
       if (this.state.speaking === key) this.setState({ speaking: null });
@@ -4241,9 +4306,10 @@ class Component extends DCLogic {
           focusExEn: f && fx ? exTr(f.w[3], 0, "") : "",
           focusHidden: fHidden,
           revealFocus: () => this.setState({ focusShown: true }),
-          focusPlay: () => { if (f) this.speakWord("F" + f.w[3], f.w[0], fx || ""); },
+          focusPlay: () => { if (f) this.speakWord("F" + f.w[3], f.w[0], fx || "", f.w[3]); },
           focusPlayStyle: f && st.speaking === "F" + f.w[3] ? "border-color:var(--ok-acc);color:var(--ok-acc);animation:ok-speak 1.1s ease-in-out infinite" : "",
-          canSpeak: okCanSpeak(),
+          // A machine with no speech engine still has the recordings.
+          canSpeak: okCanSpeak() || (VOICES.words || []).length > 0,
           focusPillStyle: okPill(fDone),
           focusPillLabel: fDone ? T("learned") : T("got_it"),
           focusMaster: () => { if (f) this.toggleMasteredWord(f.w[3]); },
@@ -4881,7 +4947,7 @@ class Component extends DCLogic {
               pieD: okPiePath(lvl)
             };
           })(),
-          play: (ev) => { if (ev && ev.stopPropagation) ev.stopPropagation(); this.speakWord(key, w[0], x || ""); },
+          play: (ev) => { if (ev && ev.stopPropagation) ev.stopPropagation(); this.speakWord(key, w[0], x || "", key); },
           playStyle: st.speaking === key ? "color:var(--ok-acc);background:var(--ok-acc-s);animation:ok-speak 1.1s ease-in-out infinite" : "",
           open: (ev) => {
             const r = ev && ev.currentTarget && ev.currentTarget.getBoundingClientRect ? ev.currentTarget.getBoundingClientRect() : null;
