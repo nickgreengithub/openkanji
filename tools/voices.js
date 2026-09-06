@@ -107,13 +107,21 @@ async function main() {
   // What the page is allowed to reach for. A clip missing from here is never
   // requested, so a learner never waits on a 404 before the fallback voice.
   const have = fs.readdirSync(OUT).filter((f) => f.endsWith(".mp3"));
-  const ids = [...new Set(have.map((f) => f.replace(/\.s?\.mp3$/, "")))].sort();
+  // "<id>.mp3" and "<id>.s.mp3" both reduce to the id. The suffix is
+  // optional, not the dot before it -- get that wrong and every word without
+  // a sentence drops out of the manifest and its recording never plays.
+  const ids = [...new Set(have.map((f) => f.replace(/\.(s\.)?mp3$/, "")))].sort();
   const manifest = {
     voice: VOICE,
     rate: RATE,
     words: ids.filter((id) => have.includes(id + ".mp3")),
     sentences: ids.filter((id) => have.includes(id + ".s.mp3")),
   };
+  const clips = manifest.words.length + manifest.sentences.length;
+  if (clips !== have.length) {
+    throw new Error("manifest lists " + clips + " clips but " + have.length + " are on disk -- " +
+      "every recording must be reachable or it is dead weight");
+  }
   fs.writeFileSync(path.join(OUT, "manifest.json"), JSON.stringify(manifest, null, 0) + "\n");
   const bytes = have.reduce((n, f) => n + fs.statSync(path.join(OUT, f)).size, 0);
   console.log("recorded " + done + ", failed " + failed + "; " + have.length + " clips on disk (" +
