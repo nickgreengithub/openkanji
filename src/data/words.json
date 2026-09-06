@@ -49432,7 +49432,16 @@
       91
     ],
     "freq": 1.979,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "父は古い杯を大切にする。",
+        "t": {
+          "en": "My father treasures an old cup.",
+          "es": "Mi padre guarda con cariño una copa antigua."
+        }
+      }
+    ]
   },
   "w2004": {
     "id": "w2004",
@@ -49464,7 +49473,16 @@
       168
     ],
     "freq": 2.195,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "今日は歩きすぎて疲れた。",
+        "t": {
+          "en": "I walked too much today and got tired.",
+          "es": "Hoy caminé demasiado y me cansé."
+        }
+      }
+    ]
   },
   "w2006": {
     "id": "w2006",
@@ -49650,7 +49668,16 @@
       60
     ],
     "freq": 1.847,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "暗い道で悲鳴が聞こえた。",
+        "t": {
+          "en": "A scream was heard on the dark road.",
+          "es": "Se oyó un grito en el camino oscuro."
+        }
+      }
+    ]
   },
   "w2018": {
     "id": "w2018",
@@ -49666,7 +49693,16 @@
       198
     ],
     "freq": 2.251,
-    "cat": 2
+    "cat": 2,
+    "sentences": [
+      {
+        "ja": "食べすぎて腹が痛い。",
+        "t": {
+          "en": "I ate too much and my stomach hurts.",
+          "es": "Comí demasiado y me duele la barriga."
+        }
+      }
+    ]
   },
   "w2019": {
     "id": "w2019",
@@ -49907,7 +49943,16 @@
       257
     ],
     "freq": 2.581,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "この映画は少し怖いです。",
+        "t": {
+          "en": "This film is a little scary.",
+          "es": "Esta película da un poco de miedo."
+        }
+      }
+    ]
   },
   "w2035": {
     "id": "w2035",
@@ -49998,7 +50043,16 @@
       125
     ],
     "freq": 2.186,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "この箱の中は空です。",
+        "t": {
+          "en": "This box is empty inside.",
+          "es": "Esta caja está vacía por dentro."
+        }
+      }
+    ]
   },
   "w2041": {
     "id": "w2041",
@@ -50076,7 +50130,16 @@
       198
     ],
     "freq": 2.392,
-    "cat": 2
+    "cat": 2,
+    "sentences": [
+      {
+        "ja": "姉は髪が長いです。",
+        "t": {
+          "en": "My older sister has long hair.",
+          "es": "Mi hermana mayor tiene el pelo largo."
+        }
+      }
+    ]
   },
   "w2046": {
     "id": "w2046",
@@ -50137,7 +50200,16 @@
       147
     ],
     "freq": 2.244,
-    "cat": 17
+    "cat": 17,
+    "sentences": [
+      {
+        "ja": "今週はとても忙しいです。",
+        "t": {
+          "en": "I am very busy this week.",
+          "es": "Esta semana estoy muy ocupado."
+        }
+      }
+    ]
   },
   "w2050": {
     "id": "w2050",
@@ -50215,7 +50287,16 @@
       119
     ],
     "freq": 2.056,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "玄関で靴を脱ぎます。",
+        "t": {
+          "en": "You take your shoes off at the entrance.",
+          "es": "Los zapatos se quitan en la entrada."
+        }
+      }
+    ]
   },
   "w2055": {
     "id": "w2055",
@@ -50261,7 +50342,16 @@
       108
     ],
     "freq": 2.273,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "道で転んで恥ずかしかった。",
+        "t": {
+          "en": "I fell over in the street and felt embarrassed.",
+          "es": "Me caí en la calle y me dio vergüenza."
+        }
+      }
+    ]
   },
   "w2058": {
     "id": "w2058",
@@ -50460,7 +50550,16 @@
       208
     ],
     "freq": 2.386,
-    "cat": 5
+    "cat": 5,
+    "sentences": [
+      {
+        "ja": "白い猫が窓の外にいる。",
+        "t": {
+          "en": "A white cat is outside the window.",
+          "es": "Hay un gato blanco fuera de la ventana."
+        }
+      }
+    ]
   },
   "w2071": {
     "id": "w2071",
@@ -52906,7 +53005,16 @@
       502
     ],
     "freq": 2.376,
-    "cat": 14
+    "cat": 14,
+    "sentences": [
+      {
+        "ja": "会議で意見を述べた。",
+        "t": {
+          "en": "I stated my opinion at the meeting.",
+          "es": "Expresé mi opinión en la reunión."
+        }
+      }
+    ]
   },
   "w2180": {
     "id": "w2180",
@@ -53005,7 +53113,16 @@
       78
     ],
     "freq": 2.125,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "その国は武器を作らない。",
+        "t": {
+          "en": "That country does not make weapons.",
+          "es": "Ese país no fabrica armas."
+        }
+      }
+    ]
   },
   "w2187": {
     "id": "w2187",
@@ -53160,7 +53277,16 @@
       936
     ],
     "freq": 2.661,
-    "cat": 4
+    "cat": 4,
+    "sentences": [
+      {
+        "ja": "この地域は雨が多い。",
+        "t": {
+          "en": "It rains a lot in this region.",
+          "es": "En esta región llueve mucho."
+        }
+      }
+    ]
   },
   "w2197": {
     "id": "w2197",
@@ -53176,7 +53302,16 @@
       474
     ],
     "freq": 2.405,
-    "cat": 8
+    "cat": 8,
+    "sentences": [
+      {
+        "ja": "かかった額を教えてください。",
+        "t": {
+          "en": "Please tell me the amount it came to.",
+          "es": "Dime cuánto ha costado, por favor."
+        }
+      }
+    ]
   },
   "w2198": {
     "id": "w2198",
@@ -53501,7 +53636,16 @@
       299
     ],
     "freq": 2.359,
-    "cat": 4
+    "cat": 4,
+    "sentences": [
+      {
+        "ja": "駅の辺りは店が多い。",
+        "t": {
+          "en": "There are many shops around the station.",
+          "es": "Cerca de la estación hay muchas tiendas."
+        }
+      }
+    ]
   },
   "w2219": {
     "id": "w2219",
@@ -53733,7 +53877,16 @@
       412
     ],
     "freq": 2.462,
-    "cat": 16
+    "cat": 16,
+    "sentences": [
+      {
+        "ja": "この机は少し低いです。",
+        "t": {
+          "en": "This desk is a little low.",
+          "es": "Esta mesa es un poco baja."
+        }
+      }
+    ]
   },
   "w2234": {
     "id": "w2234",
@@ -53935,7 +54088,16 @@
       403
     ],
     "freq": 2.511,
-    "cat": 6
+    "cat": 6,
+    "sentences": [
+      {
+        "ja": "これは個人の意見です。",
+        "t": {
+          "en": "This is a personal opinion.",
+          "es": "Esta es una opinión personal."
+        }
+      }
+    ]
   },
   "w2247": {
     "id": "w2247",
@@ -53998,7 +54160,16 @@
       290
     ],
     "freq": 2.338,
-    "cat": 7
+    "cat": 7,
+    "sentences": [
+      {
+        "ja": "彼女の専門は歴史です。",
+        "t": {
+          "en": "Her speciality is history.",
+          "es": "Su especialidad es la historia."
+        }
+      }
+    ]
   },
   "w2251": {
     "id": "w2251",
@@ -54144,7 +54315,16 @@
       292
     ],
     "freq": 2.16,
-    "cat": 20
+    "cat": 20,
+    "sentences": [
+      {
+        "ja": "この問題は極めて難しい。",
+        "t": {
+          "en": "This problem is extremely difficult.",
+          "es": "Este problema es sumamente difícil."
+        }
+      }
+    ]
   },
   "w2261": {
     "id": "w2261",
@@ -54190,7 +54370,16 @@
       679
     ],
     "freq": 2.585,
-    "cat": 13
+    "cat": 13,
+    "sentences": [
+      {
+        "ja": "この値段は税を含む。",
+        "t": {
+          "en": "This price includes tax.",
+          "es": "Este precio incluye impuestos."
+        }
+      }
+    ]
   },
   "w2264": {
     "id": "w2264",
@@ -54206,7 +54395,16 @@
       328
     ],
     "freq": 2.359,
-    "cat": 13
+    "cat": 13,
+    "sentences": [
+      {
+        "ja": "この値段は送料を含めている。",
+        "t": {
+          "en": "This price includes postage.",
+          "es": "Este precio incluye los gastos de envío."
+        }
+      }
+    ]
   },
   "w2265": {
     "id": "w2265",
@@ -54778,7 +54976,16 @@
       509
     ],
     "freq": 2.51,
-    "cat": 9
+    "cat": 9,
+    "sentences": [
+      {
+        "ja": "この山は国が管理している。",
+        "t": {
+          "en": "This mountain is managed by the state.",
+          "es": "Esta montaña la gestiona el Estado."
+        }
+      }
+    ]
   },
   "w2303": {
     "id": "w2303",
@@ -55534,7 +55741,16 @@
       212
     ],
     "freq": 2.298,
-    "cat": 4
+    "cat": 4,
+    "sentences": [
+      {
+        "ja": "家の周囲に木が多い。",
+        "t": {
+          "en": "There are many trees around the house.",
+          "es": "Hay muchos árboles alrededor de la casa."
+        }
+      }
+    ]
   },
   "w2353": {
     "id": "w2353",
@@ -55550,7 +55766,16 @@
       313
     ],
     "freq": 2.445,
-    "cat": 4
+    "cat": 4,
+    "sentences": [
+      {
+        "ja": "家の周りを歩きました。",
+        "t": {
+          "en": "I walked around the house.",
+          "es": "Caminé alrededor de la casa."
+        }
+      }
+    ]
   },
   "w2354": {
     "id": "w2354",
@@ -56006,7 +56231,16 @@
       273
     ],
     "freq": 2.341,
-    "cat": 11
+    "cat": 11,
+    "sentences": [
+      {
+        "ja": "店の前に人が並んでいる。",
+        "t": {
+          "en": "People are lining up in front of the shop.",
+          "es": "La gente hace cola delante de la tienda."
+        }
+      }
+    ]
   },
   "w2384": {
     "id": "w2384",
@@ -56022,7 +56256,16 @@
       336
     ],
     "freq": 2.262,
-    "cat": 2
+    "cat": 2,
+    "sentences": [
+      {
+        "ja": "この町の医療は良い。",
+        "t": {
+          "en": "Medical care in this town is good.",
+          "es": "La atención médica de esta ciudad es buena."
+        }
+      }
+    ]
   },
   "w2385": {
     "id": "w2385",
@@ -56202,7 +56445,16 @@
       331
     ],
     "freq": 2.489,
-    "cat": 10
+    "cat": 10,
+    "sentences": [
+      {
+        "ja": "友達を家族に紹介した。",
+        "t": {
+          "en": "I introduced my friend to my family.",
+          "es": "Presenté a mi amigo a mi familia."
+        }
+      }
+    ]
   },
   "w2397": {
     "id": "w2397",
@@ -56321,7 +56573,16 @@
       299
     ],
     "freq": 2.407,
-    "cat": 7
+    "cat": 7,
+    "sentences": [
+      {
+        "ja": "この本は駅でも販売している。",
+        "t": {
+          "en": "This book is sold at the station too.",
+          "es": "Este libro también se vende en la estación."
+        }
+      }
+    ]
   },
   "w2404": {
     "id": "w2404",
@@ -56520,7 +56781,16 @@
       597
     ],
     "freq": 2.558,
-    "cat": 17
+    "cat": 17,
+    "sentences": [
+      {
+        "ja": "一般の人も入れます。",
+        "t": {
+          "en": "Members of the public can enter too.",
+          "es": "El público general también puede entrar."
+        }
+      }
+    ]
   },
   "w2417": {
     "id": "w2417",
@@ -57225,7 +57495,16 @@
       336
     ],
     "freq": 2.487,
-    "cat": 17
+    "cat": 17,
+    "sentences": [
+      {
+        "ja": "駅は逆の方向にある。",
+        "t": {
+          "en": "The station is in the opposite direction.",
+          "es": "La estación está en la dirección contraria."
+        }
+      }
+    ]
   },
   "w2463": {
     "id": "w2463",
@@ -57376,7 +57655,16 @@
       120
     ],
     "freq": 2.095,
-    "cat": 20
+    "cat": 20,
+    "sentences": [
+      {
+        "ja": "久しぶりに友達と会った。",
+        "t": {
+          "en": "I met my friend for the first time in a while.",
+          "es": "Vi a mi amigo después de mucho tiempo."
+        }
+      }
+    ]
   },
   "w2473": {
     "id": "w2473",
@@ -57439,7 +57727,16 @@
       89
     ],
     "freq": 1.822,
-    "cat": 1
+    "cat": 1,
+    "sentences": [
+      {
+        "ja": "この油は魚に使います。",
+        "t": {
+          "en": "This oil is for cooking fish.",
+          "es": "Este aceite se usa para el pescado."
+        }
+      }
+    ]
   },
   "w2477": {
     "id": "w2477",
@@ -57653,7 +57950,16 @@
       345
     ],
     "freq": 2.187,
-    "cat": 15
+    "cat": 15,
+    "sentences": [
+      {
+        "ja": "この仕事は一日を占める。",
+        "t": {
+          "en": "This job takes up a whole day.",
+          "es": "Este trabajo ocupa todo un día."
+        }
+      }
+    ]
   },
   "w2491": {
     "id": "w2491",
@@ -58324,7 +58630,16 @@
       146
     ],
     "freq": 2.037,
-    "cat": 1
+    "cat": 1,
+    "sentences": [
+      {
+        "ja": "朝は玉子を二つ食べた。",
+        "t": {
+          "en": "I ate two eggs this morning.",
+          "es": "Esta mañana me comí dos huevos."
+        }
+      }
+    ]
   },
   "w2536": {
     "id": "w2536",
@@ -58692,7 +59007,16 @@
       193
     ],
     "freq": 2.125,
-    "cat": 16
+    "cat": 16,
+    "sentences": [
+      {
+        "ja": "この肉は少し固いです。",
+        "t": {
+          "en": "This meat is a little tough.",
+          "es": "Esta carne está un poco dura."
+        }
+      }
+    ]
   },
   "w2560": {
     "id": "w2560",
@@ -59779,7 +60103,16 @@
       276
     ],
     "freq": 2.473,
-    "cat": 10
+    "cat": 10,
+    "sentences": [
+      {
+        "ja": "着いたら連絡してください。",
+        "t": {
+          "en": "Please contact me when you arrive.",
+          "es": "Avísame cuando llegues."
+        }
+      }
+    ]
   },
   "w2631": {
     "id": "w2631",
@@ -60795,7 +61128,16 @@
       165
     ],
     "freq": 2.063,
-    "cat": 5
+    "cat": 5,
+    "sentences": [
+      {
+        "ja": "台所からお茶の香りがする。",
+        "t": {
+          "en": "The scent of tea comes from the kitchen.",
+          "es": "Desde la cocina llega el aroma del té."
+        }
+      }
+    ]
   },
   "w2697": {
     "id": "w2697",
@@ -61048,7 +61390,16 @@
       141
     ],
     "freq": 2.138,
-    "cat": 5
+    "cat": 5,
+    "sentences": [
+      {
+        "ja": "宇宙には星が多い。",
+        "t": {
+          "en": "There are many stars in the universe.",
+          "es": "En el universo hay muchas estrellas."
+        }
+      }
+    ]
   },
   "w2714": {
     "id": "w2714",
@@ -61125,7 +61476,16 @@
       95
     ],
     "freq": 1.964,
-    "cat": 12
+    "cat": 12,
+    "sentences": [
+      {
+        "ja": "寒くて手が震えている。",
+        "t": {
+          "en": "My hands are shaking with cold.",
+          "es": "Me tiemblan las manos de frío."
+        }
+      }
+    ]
   },
   "w2719": {
     "id": "w2719",
@@ -61197,7 +61557,16 @@
       299
     ],
     "freq": 2.414,
-    "cat": 13
+    "cat": 13,
+    "sentences": [
+      {
+        "ja": "古い写真に手を触れた。",
+        "t": {
+          "en": "I touched the old photograph.",
+          "es": "Toqué la vieja fotografía."
+        }
+      }
+    ]
   },
   "w2724": {
     "id": "w2724",
@@ -61239,7 +61608,16 @@
       100
     ],
     "freq": 2.095,
-    "cat": 12
+    "cat": 12,
+    "sentences": [
+      {
+        "ja": "その絵に触らないでください。",
+        "t": {
+          "en": "Please do not touch that picture.",
+          "es": "No toques ese cuadro, por favor."
+        }
+      }
+    ]
   },
   "w2727": {
     "id": "w2727",
@@ -61939,7 +62317,16 @@
       262
     ],
     "freq": 2.381,
-    "cat": 15
+    "cat": 15,
+    "sentences": [
+      {
+        "ja": "手紙が昨日届きました。",
+        "t": {
+          "en": "The letter arrived yesterday.",
+          "es": "La carta llegó ayer."
+        }
+      }
+    ]
   },
   "w2773": {
     "id": "w2773",
@@ -62568,7 +62955,16 @@
       193
     ],
     "freq": 2.217,
-    "cat": 12
+    "cat": 12,
+    "sentences": [
+      {
+        "ja": "母は魚を焼いています。",
+        "t": {
+          "en": "My mother is grilling fish.",
+          "es": "Mi madre está asando pescado."
+        }
+      }
+    ]
   },
   "w2814": {
     "id": "w2814",
@@ -62630,7 +63026,16 @@
       478
     ],
     "freq": 2.715,
-    "cat": 17
+    "cat": 17,
+    "sentences": [
+      {
+        "ja": "この料理は簡単に作れる。",
+        "t": {
+          "en": "This dish is simple to make.",
+          "es": "Este plato es fácil de preparar."
+        }
+      }
+    ]
   },
   "w2818": {
     "id": "w2818",
@@ -62952,7 +63357,16 @@
       189
     ],
     "freq": 2.239,
-    "cat": 16
+    "cat": 16,
+    "sentences": [
+      {
+        "ja": "この紙はとても薄い。",
+        "t": {
+          "en": "This paper is very thin.",
+          "es": "Este papel es muy fino."
+        }
+      }
+    ]
   },
   "w2839": {
     "id": "w2839",
@@ -63120,7 +63534,16 @@
       264
     ],
     "freq": 2.37,
-    "cat": 4
+    "cat": 4,
+    "sentences": [
+      {
+        "ja": "店の奥に古い机がある。",
+        "t": {
+          "en": "There is an old desk at the back of the shop.",
+          "es": "Al fondo de la tienda hay una mesa vieja."
+        }
+      }
+    ]
   },
   "w2850": {
     "id": "w2850",
@@ -63183,7 +63606,16 @@
       243
     ],
     "freq": 2.187,
-    "cat": 12
+    "cat": 12,
+    "sentences": [
+      {
+        "ja": "子どもは月を見詰めていた。",
+        "t": {
+          "en": "The child was gazing at the moon.",
+          "es": "El niño miraba fijamente la luna."
+        }
+      }
+    ]
   },
   "w2854": {
     "id": "w2854",
@@ -63576,7 +64008,16 @@
       176
     ],
     "freq": 2.23,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "進路のことで悩んでいる。",
+        "t": {
+          "en": "I am troubled about which path to take.",
+          "es": "Me preocupa qué camino tomar."
+        }
+      }
+    ]
   },
   "w2880": {
     "id": "w2880",
@@ -63592,7 +64033,16 @@
       86
     ],
     "freq": 1.901,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "友達に悩みを話した。",
+        "t": {
+          "en": "I told my friend my troubles.",
+          "es": "Le conté mis preocupaciones a mi amigo."
+        }
+      }
+    ]
   },
   "w2881": {
     "id": "w2881",
@@ -64286,7 +64736,16 @@
       150
     ],
     "freq": 2.068,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "店で紙の袋をもらった。",
+        "t": {
+          "en": "I was given a paper bag at the shop.",
+          "es": "Me dieron una bolsa de papel en la tienda."
+        }
+      }
+    ]
   },
   "w2927": {
     "id": "w2927",
@@ -64527,7 +64986,16 @@
       93
     ],
     "freq": 1.903,
-    "cat": 12
+    "cat": 12,
+    "sentences": [
+      {
+        "ja": "朝は水を浴びます。",
+        "t": {
+          "en": "I shower in the morning.",
+          "es": "Por la mañana me ducho."
+        }
+      }
+    ]
   },
   "w2943": {
     "id": "w2943",
@@ -64723,7 +65191,16 @@
       338
     ],
     "freq": 2.488,
-    "cat": 2
+    "cat": 2,
+    "sentences": [
+      {
+        "ja": "走ったので胸が苦しい。",
+        "t": {
+          "en": "My chest hurts because I ran.",
+          "es": "Me duele el pecho por haber corrido."
+        }
+      }
+    ]
   },
   "w2956": {
     "id": "w2956",
@@ -64780,7 +65257,16 @@
       80
     ],
     "freq": 1.743,
-    "cat": 1
+    "cat": 1,
+    "sentences": [
+      {
+        "ja": "コーヒーに砂糖を入れる。",
+        "t": {
+          "en": "I put sugar in my coffee.",
+          "es": "Le pongo azúcar al café."
+        }
+      }
+    ]
   },
   "w2960": {
     "id": "w2960",
@@ -64917,7 +65403,16 @@
       141
     ],
     "freq": 1.976,
-    "cat": 1
+    "cat": 1,
+    "sentences": [
+      {
+        "ja": "スープに塩を少し入れる。",
+        "t": {
+          "en": "Add a little salt to the soup.",
+          "es": "Añade un poco de sal a la sopa."
+        }
+      }
+    ]
   },
   "w2969": {
     "id": "w2969",
@@ -64979,7 +65474,16 @@
       254
     ],
     "freq": 2.415,
-    "cat": 2
+    "cat": 2,
+    "sentences": [
+      {
+        "ja": "重い荷物で腕が痛い。",
+        "t": {
+          "en": "My arms hurt from the heavy luggage.",
+          "es": "Me duelen los brazos por el equipaje pesado."
+        }
+      }
+    ]
   },
   "w2973": {
     "id": "w2973",
@@ -65186,7 +65690,16 @@
       180
     ],
     "freq": 2.164,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "子どもが床に座っている。",
+        "t": {
+          "en": "The child is sitting on the floor.",
+          "es": "El niño está sentado en el suelo."
+        }
+      }
+    ]
   },
   "w2987": {
     "id": "w2987",
@@ -65787,7 +66300,16 @@
       260
     ],
     "freq": 2.36,
-    "cat": 2
+    "cat": 2,
+    "sentences": [
+      {
+        "ja": "父の肩をたたきました。",
+        "t": {
+          "en": "I patted my father on the shoulder.",
+          "es": "Le di unas palmadas en el hombro a mi padre."
+        }
+      }
+    ]
   },
   "w3027": {
     "id": "w3027",
@@ -66088,7 +66610,16 @@
       150
     ],
     "freq": 2.287,
-    "cat": 16
+    "cat": 16,
+    "sentences": [
+      {
+        "ja": "この菓子は少し甘い。",
+        "t": {
+          "en": "These sweets are a little sweet.",
+          "es": "Estos dulces son un poco dulces."
+        }
+      }
+    ]
   },
   "w3047": {
     "id": "w3047",
@@ -66364,7 +66895,16 @@
       232
     ],
     "freq": 2.393,
-    "cat": 13
+    "cat": 13,
+    "sentences": [
+      {
+        "ja": "古い新聞を捨てました。",
+        "t": {
+          "en": "I threw the old newspapers away.",
+          "es": "Tiré los periódicos viejos."
+        }
+      }
+    ]
   },
   "w3065": {
     "id": "w3065",
@@ -66608,7 +67148,16 @@
       65
     ],
     "freq": 1.643,
-    "cat": 1
+    "cat": 1,
+    "sentences": [
+      {
+        "ja": "朝は牛乳を一杯飲む。",
+        "t": {
+          "en": "I drink a glass of milk in the morning.",
+          "es": "Por la mañana bebo un vaso de leche."
+        }
+      }
+    ]
   },
   "w3081": {
     "id": "w3081",
@@ -66714,7 +67263,16 @@
       77
     ],
     "freq": 2.017,
-    "cat": 18
+    "cat": 18,
+    "sentences": [
+      {
+        "ja": "その本は恋愛の話です。",
+        "t": {
+          "en": "That book is a love story.",
+          "es": "Ese libro es una historia de amor."
+        }
+      }
+    ]
   },
   "w3088": {
     "id": "w3088",
@@ -66760,7 +67318,16 @@
       119
     ],
     "freq": 2.194,
-    "cat": 18
+    "cat": 18,
+    "sentences": [
+      {
+        "ja": "それは初めての恋でした。",
+        "t": {
+          "en": "That was my first love.",
+          "es": "Aquel fue mi primer amor."
+        }
+      }
+    ]
   },
   "w3091": {
     "id": "w3091",
@@ -66896,7 +67463,16 @@
       261
     ],
     "freq": 2.335,
-    "cat": 2
+    "cat": 2,
+    "sentences": [
+      {
+        "ja": "荷物を持って腰が痛い。",
+        "t": {
+          "en": "My back hurts from carrying the luggage.",
+          "es": "Me duele la espalda de cargar el equipaje."
+        }
+      }
+    ]
   },
   "w3100": {
     "id": "w3100",
@@ -66987,7 +67563,16 @@
       100
     ],
     "freq": 1.984,
-    "cat": 12
+    "cat": 12,
+    "sentences": [
+      {
+        "ja": "祭で子どもが踊っている。",
+        "t": {
+          "en": "Children are dancing at the festival.",
+          "es": "Los niños bailan en la fiesta."
+        }
+      }
+    ]
   },
   "w3106": {
     "id": "w3106",
@@ -67145,7 +67730,16 @@
       91
     ],
     "freq": 1.965,
-    "cat": 18
+    "cat": 18,
+    "sentences": [
+      {
+        "ja": "聞くには勇気が要ります。",
+        "t": {
+          "en": "It takes courage to ask.",
+          "es": "Hace falta valor para preguntar."
+        }
+      }
+    ]
   },
   "w3117": {
     "id": "w3117",
@@ -67206,7 +67800,16 @@
       172
     ],
     "freq": 2.273,
-    "cat": 17
+    "cat": 17,
+    "sentences": [
+      {
+        "ja": "この町では雪が珍しい。",
+        "t": {
+          "en": "Snow is rare in this town.",
+          "es": "La nieve es rara en esta ciudad."
+        }
+      }
+    ]
   },
   "w3121": {
     "id": "w3121",
@@ -67572,7 +68175,16 @@
       104
     ],
     "freq": 1.863,
-    "cat": 1
+    "cat": 1,
+    "sentences": [
+      {
+        "ja": "湯を沸かしてお茶を作る。",
+        "t": {
+          "en": "I boil hot water and make tea.",
+          "es": "Hiervo agua y preparo té."
+        }
+      }
+    ]
   },
   "w3146": {
     "id": "w3146",
@@ -67708,7 +68320,16 @@
       212
     ],
     "freq": 2.3,
-    "cat": 2
+    "cat": 2,
+    "sentences": [
+      {
+        "ja": "その話を聞いて涙が出た。",
+        "t": {
+          "en": "Hearing that story brought tears to my eyes.",
+          "es": "Al oír esa historia se me saltaron las lágrimas."
+        }
+      }
+    ]
   },
   "w3155": {
     "id": "w3155",
@@ -70142,7 +70763,16 @@
       111
     ],
     "freq": 2.016,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "机の上に本を置いた。",
+        "t": {
+          "en": "I put the book on the desk.",
+          "es": "Dejé el libro sobre la mesa."
+        }
+      }
+    ]
   },
   "w3317": {
     "id": "w3317",
@@ -70391,7 +71021,16 @@
       95
     ],
     "freq": 1.797,
-    "cat": 1
+    "cat": 1,
+    "sentences": [
+      {
+        "ja": "お茶と菓子を用意した。",
+        "t": {
+          "en": "I set out tea and sweets.",
+          "es": "Preparé té y dulces."
+        }
+      }
+    ]
   },
   "w3334": {
     "id": "w3334",
@@ -73860,7 +74499,16 @@
       654
     ],
     "freq": 2.872,
-    "cat": 2
+    "cat": 2,
+    "sentences": [
+      {
+        "ja": "父の後ろ姿が見えた。",
+        "t": {
+          "en": "I could see my father's figure from behind.",
+          "es": "Vi la figura de mi padre por detrás."
+        }
+      }
+    ]
   },
   "w3513": {
     "id": "w3513",
@@ -74058,7 +74706,16 @@
       137
     ],
     "freq": 2.111,
-    "cat": 5
+    "cat": 5,
+    "sentences": [
+      {
+        "ja": "木の影で少し休んだ。",
+        "t": {
+          "en": "I rested a little in the shade of a tree.",
+          "es": "Descansé un poco a la sombra de un árbol."
+        }
+      }
+    ]
   },
   "w3526": {
     "id": "w3526",
@@ -74105,7 +74762,16 @@
       503
     ],
     "freq": 2.553,
-    "cat": 9
+    "cat": 9,
+    "sentences": [
+      {
+        "ja": "天気は仕事に影響する。",
+        "t": {
+          "en": "The weather affects the work.",
+          "es": "El tiempo influye en el trabajo."
+        }
+      }
+    ]
   },
   "w3529": {
     "id": "w3529",
@@ -74722,7 +75388,16 @@
       193
     ],
     "freq": 2.166,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "大きな器に汁を注いだ。",
+        "t": {
+          "en": "I poured the soup into a large bowl.",
+          "es": "Serví la sopa en un cuenco grande."
+        }
+      }
+    ]
   },
   "w3569": {
     "id": "w3569",
@@ -75035,7 +75710,16 @@
       232
     ],
     "freq": 2.408,
-    "cat": 9
+    "cat": 9,
+    "sentences": [
+      {
+        "ja": "来月、大会を開催します。",
+        "t": {
+          "en": "We will hold the tournament next month.",
+          "es": "Celebraremos el torneo el mes que viene."
+        }
+      }
+    ]
   },
   "w3590": {
     "id": "w3590",
@@ -75127,7 +75811,16 @@
       1555
     ],
     "freq": 2.802,
-    "cat": 20
+    "cat": 20,
+    "sentences": [
+      {
+        "ja": "水及び食べ物を用意した。",
+        "t": {
+          "en": "We prepared water as well as food.",
+          "es": "Preparamos agua y también comida."
+        }
+      }
+    ]
   },
   "w3596": {
     "id": "w3596",
@@ -75281,7 +75974,16 @@
       273
     ],
     "freq": 2.344,
-    "cat": 17
+    "cat": 17,
+    "sentences": [
+      {
+        "ja": "昨日の雨は激しかった。",
+        "t": {
+          "en": "Yesterday's rain was violent.",
+          "es": "La lluvia de ayer fue violenta."
+        }
+      }
+    ]
   },
   "w3606": {
     "id": "w3606",
@@ -75388,7 +76090,16 @@
       412
     ],
     "freq": 2.736,
-    "cat": 10
+    "cat": 10,
+    "sentences": [
+      {
+        "ja": "彼は理科系の学生です。",
+        "t": {
+          "en": "He is a science student.",
+          "es": "Es un estudiante de ciencias."
+        }
+      }
+    ]
   },
   "w3613": {
     "id": "w3613",
@@ -75617,7 +76328,16 @@
       447
     ],
     "freq": 2.387,
-    "cat": 14
+    "cat": 14,
+    "sentences": [
+      {
+        "ja": "店の決まりに従います。",
+        "t": {
+          "en": "I will follow the shop's rules.",
+          "es": "Seguiré las normas de la tienda."
+        }
+      }
+    ]
   },
   "w3628": {
     "id": "w3628",
@@ -75907,7 +76627,16 @@
       166
     ],
     "freq": 2.095,
-    "cat": 11
+    "cat": 11,
+    "sentences": [
+      {
+        "ja": "名前を呼ばれて振り返った。",
+        "t": {
+          "en": "I turned around when my name was called.",
+          "es": "Me di la vuelta al oír mi nombre."
+        }
+      }
+    ]
   },
   "w3647": {
     "id": "w3647",
@@ -76074,7 +76803,16 @@
       423
     ],
     "freq": 2.348,
-    "cat": 15
+    "cat": 15,
+    "sentences": [
+      {
+        "ja": "二人の意見は異なる。",
+        "t": {
+          "en": "The two of them hold different opinions.",
+          "es": "Los dos tienen opiniones distintas."
+        }
+      }
+    ]
   },
   "w3658": {
     "id": "w3658",
@@ -76211,7 +76949,16 @@
       313
     ],
     "freq": 2.362,
-    "cat": 17
+    "cat": 17,
+    "sentences": [
+      {
+        "ja": "今年の冬は厳しいです。",
+        "t": {
+          "en": "This winter is a hard one.",
+          "es": "Este invierno es duro."
+        }
+      }
+    ]
   },
   "w3667": {
     "id": "w3667",
@@ -76777,7 +77524,16 @@
       111
     ],
     "freq": 2.195,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "試験の前は緊張します。",
+        "t": {
+          "en": "I get nervous before an exam.",
+          "es": "Me pongo nervioso antes de un examen."
+        }
+      }
+    ]
   },
   "w3704": {
     "id": "w3704",
@@ -77397,7 +78153,16 @@
       70
     ],
     "freq": 2.041,
-    "cat": 18
+    "cat": 18,
+    "sentences": [
+      {
+        "ja": "子どもは興奮して眠れない。",
+        "t": {
+          "en": "The child is too excited to sleep.",
+          "es": "El niño está tan emocionado que no duerme."
+        }
+      }
+    ]
   },
   "w3746": {
     "id": "w3746",
@@ -77443,7 +78208,16 @@
       328
     ],
     "freq": 2.384,
-    "cat": 13
+    "cat": 13,
+    "sentences": [
+      {
+        "ja": "新しい店で町を興す。",
+        "t": {
+          "en": "A new shop will revive the town.",
+          "es": "Una tienda nueva revitalizará el pueblo."
+        }
+      }
+    ]
   },
   "w3749": {
     "id": "w3749",
@@ -77919,7 +78693,16 @@
       235
     ],
     "freq": 2.336,
-    "cat": 13
+    "cat": 13,
+    "sentences": [
+      {
+        "ja": "雨を避けて店に入った。",
+        "t": {
+          "en": "I went into a shop to get out of the rain.",
+          "es": "Entré en una tienda para evitar la lluvia."
+        }
+      }
+    ]
   },
   "w3780": {
     "id": "w3780",
@@ -78011,7 +78794,16 @@
       412
     ],
     "freq": 2.355,
-    "cat": 2
+    "cat": 2,
+    "sentences": [
+      {
+        "ja": "毎日歩くのは健康に良い。",
+        "t": {
+          "en": "Walking every day is good for your health.",
+          "es": "Caminar cada día es bueno para la salud."
+        }
+      }
+    ]
   },
   "w3786": {
     "id": "w3786",
@@ -78177,7 +78969,16 @@
       153
     ],
     "freq": 2.147,
-    "cat": 11
+    "cat": 11,
+    "sentences": [
+      {
+        "ja": "約束の時間が迫っている。",
+        "t": {
+          "en": "The appointed time is drawing near.",
+          "es": "Se acerca la hora acordada."
+        }
+      }
+    ]
   },
   "w3797": {
     "id": "w3797",
@@ -78422,7 +79223,16 @@
       78
     ],
     "freq": 1.943,
-    "cat": 12
+    "cat": 12,
+    "sentences": [
+      {
+        "ja": "家では靴を脱ぎます。",
+        "t": {
+          "en": "We take our shoes off indoors.",
+          "es": "En casa nos quitamos los zapatos."
+        }
+      }
+    ]
   },
   "w3813": {
     "id": "w3813",
@@ -79012,7 +79822,16 @@
       654
     ],
     "freq": 2.741,
-    "cat": 15
+    "cat": 15,
+    "sentences": [
+      {
+        "ja": "その話は新聞に載った。",
+        "t": {
+          "en": "That story appeared in the newspaper.",
+          "es": "Esa historia salió en el periódico."
+        }
+      }
+    ]
   },
   "w3852": {
     "id": "w3852",
@@ -79105,7 +79924,16 @@
       94
     ],
     "freq": 2.205,
-    "cat": 18
+    "cat": 18,
+    "sentences": [
+      {
+        "ja": "痛くても我慢しました。",
+        "t": {
+          "en": "It hurt, but I put up with it.",
+          "es": "Dolía, pero lo aguanté."
+        }
+      }
+    ]
   },
   "w3858": {
     "id": "w3858",
@@ -79169,7 +79997,16 @@
       718
     ],
     "freq": 2.563,
-    "cat": 20
+    "cat": 20,
+    "sentences": [
+      {
+        "ja": "我が家は駅の近くです。",
+        "t": {
+          "en": "Our house is near the station.",
+          "es": "Nuestra casa está cerca de la estación."
+        }
+      }
+    ]
   },
   "w3862": {
     "id": "w3862",
@@ -80210,7 +81047,16 @@
       442
     ],
     "freq": 2.567,
-    "cat": 13
+    "cat": 13,
+    "sentences": [
+      {
+        "ja": "弟は毎日絵を描く。",
+        "t": {
+          "en": "My little brother draws pictures every day.",
+          "es": "Mi hermano pequeño dibuja todos los días."
+        }
+      }
+    ]
   },
   "w3931": {
     "id": "w3931",
@@ -80439,7 +81285,16 @@
       401
     ],
     "freq": 2.285,
-    "cat": 15
+    "cat": 15,
+    "sentences": [
+      {
+        "ja": "この仕事は責任を伴う。",
+        "t": {
+          "en": "This work carries responsibility with it.",
+          "es": "Este trabajo conlleva responsabilidad."
+        }
+      }
+    ]
   },
   "w3946": {
     "id": "w3946",
@@ -81093,7 +81948,16 @@
       77
     ],
     "freq": 1.987,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "写真を木の枠に入れた。",
+        "t": {
+          "en": "I put the photograph in a wooden frame.",
+          "es": "Puse la foto en un marco de madera."
+        }
+      }
+    ]
   },
   "w3989": {
     "id": "w3989",
@@ -81629,7 +82493,16 @@
       250
     ],
     "freq": 2.24,
-    "cat": 7
+    "cat": 7,
+    "sentences": [
+      {
+        "ja": "新しい車を購入しました。",
+        "t": {
+          "en": "I purchased a new car.",
+          "es": "Compré un coche nuevo."
+        }
+      }
+    ]
   },
   "w4025": {
     "id": "w4025",
@@ -81676,7 +82549,16 @@
       154
     ],
     "freq": 1.926,
-    "cat": 18
+    "cat": 18,
+    "sentences": [
+      {
+        "ja": "毎日が充実しています。",
+        "t": {
+          "en": "My days are full and rewarding.",
+          "es": "Mis días son plenos."
+        }
+      }
+    ]
   },
   "w4028": {
     "id": "w4028",
@@ -82014,7 +82896,16 @@
       532
     ],
     "freq": 2.467,
-    "cat": 13
+    "cat": 13,
+    "sentences": [
+      {
+        "ja": "二つの店を併せて一つにした。",
+        "t": {
+          "en": "The two shops were combined into one.",
+          "es": "Unieron las dos tiendas en una."
+        }
+      }
+    ]
   },
   "w4050": {
     "id": "w4050",
@@ -82246,7 +83137,16 @@
       57
     ],
     "freq": 1.871,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "焦らずにゆっくり書こう。",
+        "t": {
+          "en": "Let's write slowly, without hurrying.",
+          "es": "Escribamos despacio, sin prisa."
+        }
+      }
+    ]
   },
   "w4065": {
     "id": "w4065",
@@ -82897,7 +83797,16 @@
       324
     ],
     "freq": 2.324,
-    "cat": 11
+    "cat": 11,
+    "sentences": [
+      {
+        "ja": "この道は海に至る。",
+        "t": {
+          "en": "This road leads to the sea.",
+          "es": "Este camino llega hasta el mar."
+        }
+      }
+    ]
   },
   "w4108": {
     "id": "w4108",
@@ -83465,7 +84374,16 @@
       193
     ],
     "freq": 2.222,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "携帯を家に忘れました。",
+        "t": {
+          "en": "I left my mobile phone at home.",
+          "es": "Me dejé el móvil en casa."
+        }
+      }
+    ]
   },
   "w4146": {
     "id": "w4146",
@@ -83907,7 +84825,16 @@
       252
     ],
     "freq": 2.289,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "壁に大きな写真がある。",
+        "t": {
+          "en": "There is a large photograph on the wall.",
+          "es": "Hay una fotografía grande en la pared."
+        }
+      }
+    ]
   },
   "w4175": {
     "id": "w4175",
@@ -85462,7 +86389,16 @@
       201
     ],
     "freq": 2.364,
-    "cat": 4
+    "cat": 4,
+    "sentences": [
+      {
+        "ja": "隣の家に猫がいる。",
+        "t": {
+          "en": "There is a cat in the house next door.",
+          "es": "En la casa de al lado hay un gato."
+        }
+      }
+    ]
   },
   "w4278": {
     "id": "w4278",
@@ -86788,7 +87724,16 @@
       69
     ],
     "freq": 1.996,
-    "cat": 18
+    "cat": 18,
+    "sentences": [
+      {
+        "ja": "彼の話は驚きでした。",
+        "t": {
+          "en": "His story was a surprise.",
+          "es": "Su historia fue una sorpresa."
+        }
+      }
+    ]
   },
   "w4367": {
     "id": "w4367",
@@ -87782,7 +88727,16 @@
       335
     ],
     "freq": 2.414,
-    "cat": 17
+    "cat": 17,
+    "sentences": [
+      {
+        "ja": "彼はこの町に詳しい。",
+        "t": {
+          "en": "He knows this town well.",
+          "es": "Conoce bien esta ciudad."
+        }
+      }
+    ]
   },
   "w4434": {
     "id": "w4434",
@@ -88263,7 +89217,16 @@
       49
     ],
     "freq": 1.979,
-    "cat": 5
+    "cat": 5,
+    "sentences": [
+      {
+        "ja": "古い話に竜が出てくる。",
+        "t": {
+          "en": "A dragon appears in the old tale.",
+          "es": "En la vieja historia aparece un dragón."
+        }
+      }
+    ]
   },
   "w4466": {
     "id": "w4466",
@@ -88472,7 +89435,16 @@
       212
     ],
     "freq": 2.45,
-    "cat": 6
+    "cat": 6,
+    "sentences": [
+      {
+        "ja": "彼らは強い敵でした。",
+        "t": {
+          "en": "They were strong opponents.",
+          "es": "Fueron unos rivales fuertes."
+        }
+      }
+    ]
   },
   "w4480": {
     "id": "w4480",
@@ -88564,7 +89536,16 @@
       368
     ],
     "freq": 2.595,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "野菜が嫌な子どもも多い。",
+        "t": {
+          "en": "Many children dislike vegetables.",
+          "es": "A muchos niños no les gustan las verduras."
+        }
+      }
+    ]
   },
   "w4486": {
     "id": "w4486",
@@ -88610,7 +89591,16 @@
       84
     ],
     "freq": 1.934,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "弟は野菜を嫌っている。",
+        "t": {
+          "en": "My little brother hates vegetables.",
+          "es": "Mi hermano pequeño odia la verdura."
+        }
+      }
+    ]
   },
   "w4489": {
     "id": "w4489",
@@ -89348,7 +90338,16 @@
       1487
     ],
     "freq": 3.028,
-    "cat": 6
+    "cat": 6,
+    "sentences": [
+      {
+        "ja": "僕は毎朝コーヒーを飲む。",
+        "t": {
+          "en": "I drink coffee every morning.",
+          "es": "Yo bebo café cada mañana."
+        }
+      }
+    ]
   },
   "w4538": {
     "id": "w4538",
@@ -89683,7 +90682,16 @@
       423
     ],
     "freq": 2.635,
-    "cat": 14
+    "cat": 14,
+    "sentences": [
+      {
+        "ja": "試験まで頑張ります。",
+        "t": {
+          "en": "I will do my best until the exam.",
+          "es": "Me esforzaré hasta el examen."
+        }
+      }
+    ]
   },
   "w4560": {
     "id": "w4560",
@@ -90270,7 +91278,16 @@
       193
     ],
     "freq": 2.393,
-    "cat": 8
+    "cat": 8,
+    "sentences": [
+      {
+        "ja": "その瞬間、音が止まった。",
+        "t": {
+          "en": "At that moment the sound stopped.",
+          "es": "En ese instante el sonido cesó."
+        }
+      }
+    ]
   },
   "w4599": {
     "id": "w4599",
@@ -90930,7 +91947,16 @@
       87
     ],
     "freq": 2.145,
-    "cat": 20
+    "cat": 20,
+    "sentences": [
+      {
+        "ja": "それが唯一の方法です。",
+        "t": {
+          "en": "That is the only way.",
+          "es": "Es la única manera."
+        }
+      }
+    ]
   },
   "w4643": {
     "id": "w4643",
@@ -91069,7 +92095,16 @@
       106
     ],
     "freq": 2.139,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "寒さに耐えて外で待った。",
+        "t": {
+          "en": "I endured the cold and waited outside.",
+          "es": "Aguanté el frío y esperé fuera."
+        }
+      }
+    ]
   },
   "w4652": {
     "id": "w4652",
@@ -91389,7 +92424,16 @@
       77
     ],
     "freq": 1.988,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "古い剣が壁にかけてある。",
+        "t": {
+          "en": "An old sword hangs on the wall.",
+          "es": "Una espada antigua cuelga de la pared."
+        }
+      }
+    ]
   },
   "w4673": {
     "id": "w4673",
@@ -92334,7 +93378,16 @@
       168
     ],
     "freq": 2.149,
-    "cat": 16
+    "cat": 16,
+    "sentences": [
+      {
+        "ja": "この道は少し狭い。",
+        "t": {
+          "en": "This road is a little narrow.",
+          "es": "Esta calle es un poco estrecha."
+        }
+      }
+    ]
   },
   "w4737": {
     "id": "w4737",
@@ -92749,7 +93802,16 @@
       408
     ],
     "freq": 2.549,
-    "cat": 15
+    "cat": 15,
+    "sentences": [
+      {
+        "ja": "町の人口が殖えている。",
+        "t": {
+          "en": "The town's population is increasing.",
+          "es": "La población del pueblo está aumentando."
+        }
+      }
+    ]
   },
   "w4765": {
     "id": "w4765",
@@ -92857,7 +93919,16 @@
       173
     ],
     "freq": 2.025,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "道に大きな穴がある。",
+        "t": {
+          "en": "There is a big hole in the road.",
+          "es": "Hay un agujero grande en la carretera."
+        }
+      }
+    ]
   },
   "w4772": {
     "id": "w4772",
@@ -92948,7 +94019,16 @@
       51
     ],
     "freq": 1.871,
-    "cat": 18
+    "cat": 18,
+    "sentences": [
+      {
+        "ja": "彼は料理を自慢している。",
+        "t": {
+          "en": "He is proud of his cooking.",
+          "es": "Presume de su cocina."
+        }
+      }
+    ]
   },
   "w4778": {
     "id": "w4778",
@@ -93338,7 +94418,16 @@
       217
     ],
     "freq": 2.387,
-    "cat": 12
+    "cat": 12,
+    "sentences": [
+      {
+        "ja": "小さな子が泣いている。",
+        "t": {
+          "en": "A small child is crying.",
+          "es": "Un niño pequeño está llorando."
+        }
+      }
+    ]
   },
   "w4804": {
     "id": "w4804",
@@ -94644,7 +95733,16 @@
       46
     ],
     "freq": 1.64,
-    "cat": 1
+    "cat": 1,
+    "sentences": [
+      {
+        "ja": "朝ご飯に豆を食べます。",
+        "t": {
+          "en": "I eat beans for breakfast.",
+          "es": "Desayuno alubias."
+        }
+      }
+    ]
   },
   "w4892": {
     "id": "w4892",
@@ -95741,7 +96839,16 @@
       44
     ],
     "freq": 2.045,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "言った事を後悔している。",
+        "t": {
+          "en": "I regret what I said.",
+          "es": "Me arrepiento de lo que dije."
+        }
+      }
+    ]
   },
   "w4965": {
     "id": "w4965",
@@ -95757,7 +96864,16 @@
       49
     ],
     "freq": 1.885,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "試合に負けて悔しい。",
+        "t": {
+          "en": "Losing the match is galling.",
+          "es": "Perder el partido me duele."
+        }
+      }
+    ]
   },
   "w4966": {
     "id": "w4966",
@@ -96772,7 +97888,16 @@
       82
     ],
     "freq": 2,
-    "cat": 18
+    "cat": 18,
+    "sentences": [
+      {
+        "ja": "懐かしい歌が聞こえた。",
+        "t": {
+          "en": "I heard a song I had missed.",
+          "es": "Oí una canción entrañable."
+        }
+      }
+    ]
   },
   "w5034": {
     "id": "w5034",
@@ -97386,7 +98511,16 @@
       66
     ],
     "freq": 2.192,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "弟が邪魔をして進まない。",
+        "t": {
+          "en": "My little brother keeps getting in the way.",
+          "es": "Mi hermano pequeño no deja de estorbar."
+        }
+      }
+    ]
   },
   "w5075": {
     "id": "w5075",
@@ -99656,7 +100790,16 @@
       122
     ],
     "freq": 2.196,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "一人の夜は寂しいです。",
+        "t": {
+          "en": "Nights alone are lonely.",
+          "es": "Las noches a solas son solitarias."
+        }
+      }
+    ]
   },
   "w5227": {
     "id": "w5227",
@@ -101623,7 +102766,16 @@
       92
     ],
     "freq": 2.003,
-    "cat": 12
+    "cat": 12,
+    "sentences": [
+      {
+        "ja": "船で気分が悪くて吐いた。",
+        "t": {
+          "en": "I felt ill on the boat and was sick.",
+          "es": "Me mareé en el barco y vomité."
+        }
+      }
+    ]
   },
   "w5359": {
     "id": "w5359",
@@ -102678,7 +103830,16 @@
       243
     ],
     "freq": 2.413,
-    "cat": 11
+    "cat": 11,
+    "sentences": [
+      {
+        "ja": "犬が川を跳んで渡った。",
+        "t": {
+          "en": "The dog leapt across the river.",
+          "es": "El perro cruzó el río de un salto."
+        }
+      }
+    ]
   },
   "w5430": {
     "id": "w5430",
@@ -103056,7 +104217,16 @@
       222
     ],
     "freq": 2.18,
-    "cat": 5
+    "cat": 5,
+    "sentences": [
+      {
+        "ja": "山の上の眺めが良い。",
+        "t": {
+          "en": "The view from the mountain is good.",
+          "es": "La vista desde la montaña es buena."
+        }
+      }
+    ]
   },
   "w5455": {
     "id": "w5455",
@@ -103072,7 +104242,16 @@
       222
     ],
     "freq": 2.18,
-    "cat": 12
+    "cat": 12,
+    "sentences": [
+      {
+        "ja": "窓から海を眺めていた。",
+        "t": {
+          "en": "I was gazing at the sea from the window.",
+          "es": "Contemplaba el mar desde la ventana."
+        }
+      }
+    ]
   },
   "w5456": {
     "id": "w5456",
@@ -103800,7 +104979,16 @@
       412
     ],
     "freq": 2.516,
-    "cat": 17
+    "cat": 17,
+    "sentences": [
+      {
+        "ja": "空がとても綺麗な夜だ。",
+        "t": {
+          "en": "It is a night with a very beautiful sky.",
+          "es": "Es una noche de cielo muy hermoso."
+        }
+      }
+    ]
   },
   "w5505": {
     "id": "w5505",
@@ -104565,7 +105753,16 @@
       51
     ],
     "freq": 1.888,
-    "cat": 19
+    "cat": 19,
+    "sentences": [
+      {
+        "ja": "同じ料理に飽きました。",
+        "t": {
+          "en": "I got tired of the same dish.",
+          "es": "Me cansé del mismo plato."
+        }
+      }
+    ]
   },
   "w5556": {
     "id": "w5556",
@@ -105818,7 +107015,16 @@
       64
     ],
     "freq": 1.732,
-    "cat": 1
+    "cat": 1,
+    "sentences": [
+      {
+        "ja": "朝は温かい汁を飲む。",
+        "t": {
+          "en": "In the morning I drink warm soup.",
+          "es": "Por la mañana tomo sopa caliente."
+        }
+      }
+    ]
   },
   "w5640": {
     "id": "w5640",
@@ -106435,7 +107641,16 @@
       110
     ],
     "freq": 2.077,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "古い家の扉が開いた。",
+        "t": {
+          "en": "The door of the old house opened.",
+          "es": "La puerta de la casa vieja se abrió."
+        }
+      }
+    ]
   },
   "w5682": {
     "id": "w5682",
@@ -109754,7 +110969,16 @@
       97
     ],
     "freq": 2,
-    "cat": 3
+    "cat": 3,
+    "sentences": [
+      {
+        "ja": "夜は風呂に入ります。",
+        "t": {
+          "en": "I take a bath at night.",
+          "es": "Por la noche me doy un baño."
+        }
+      }
+    ]
   },
   "w5907": {
     "id": "w5907",
@@ -110557,7 +111781,16 @@
       222
     ],
     "freq": 2.313,
-    "cat": 20
+    "cat": 20,
+    "sentences": [
+      {
+        "ja": "漸く雨が止みました。",
+        "t": {
+          "en": "The rain finally stopped.",
+          "es": "Por fin dejó de llover."
+        }
+      }
+    ]
   },
   "w5961": {
     "id": "w5961",
@@ -111595,7 +112828,16 @@
       389
     ],
     "freq": 2.519,
-    "cat": 18
+    "cat": 18,
+    "sentences": [
+      {
+        "ja": "手紙をもらって嬉しかった。",
+        "t": {
+          "en": "I was happy to get the letter.",
+          "es": "Me alegró recibir la carta."
+        }
+      }
+    ]
   },
   "w6031": {
     "id": "w6031",
