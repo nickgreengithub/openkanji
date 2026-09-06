@@ -9731,6 +9731,15 @@
       17,
       12,
       40
+    ],
+    "sentences": [
+      {
+        "ja": "彼は有名な画家です。",
+        "t": {
+          "en": "He is a famous painter.",
+          "es": "Él es un pintor famoso."
+        }
+      }
     ]
   },
   "w0406": {
@@ -9745,6 +9754,15 @@
       385,
       190,
       654
+    ],
+    "sentences": [
+      {
+        "ja": "旅行の計画を立てました。",
+        "t": {
+          "en": "I made a plan for the trip.",
+          "es": "He hecho el plan del viaje."
+        }
+      }
     ]
   },
   "w0407": {
@@ -9759,6 +9777,15 @@
       0,
       89,
       222
+    ],
+    "sentences": [
+      {
+        "ja": "週に一回運動します。",
+        "t": {
+          "en": "I exercise once a week.",
+          "es": "Hago ejercicio una vez por semana."
+        }
+      }
     ]
   },
   "w0408": {
@@ -9773,6 +9800,15 @@
       485,
       376,
       446
+    ],
+    "sentences": [
+      {
+        "ja": "今回は私が払います。",
+        "t": {
+          "en": "This time I'll pay.",
+          "es": "Esta vez pago yo."
+        }
+      }
     ]
   },
   "w0409": {
@@ -9787,6 +9823,15 @@
       182,
       238,
       273
+    ],
+    "sentences": [
+      {
+        "ja": "地球は太陽の周りを回る。",
+        "t": {
+          "en": "The earth turns around the sun.",
+          "es": "La Tierra gira alrededor del Sol."
+        }
+      }
     ]
   },
   "w0410": {
@@ -9801,6 +9846,15 @@
       313,
       69,
       203
+    ],
+    "sentences": [
+      {
+        "ja": "来年海外へ行きたいです。",
+        "t": {
+          "en": "I want to go abroad next year.",
+          "es": "El año que viene quiero ir al extranjero."
+        }
+      }
     ]
   },
   "w0411": {
@@ -9815,6 +9869,15 @@
       0,
       298,
       367
+    ],
+    "sentences": [
+      {
+        "ja": "夏に海で泳ぎました。",
+        "t": {
+          "en": "I swam in the sea in summer.",
+          "es": "En verano nadé en el mar."
+        }
+      }
     ]
   },
   "w0412": {
@@ -9829,6 +9892,15 @@
       33,
       23,
       63
+    ],
+    "sentences": [
+      {
+        "ja": "来月日本に帰国します。",
+        "t": {
+          "en": "I return to my country, Japan, next month.",
+          "es": "El mes que viene regreso a Japón."
+        }
+      }
     ]
   },
   "w0413": {
@@ -9843,6 +9915,15 @@
       524,
       1189,
       0
+    ],
+    "sentences": [
+      {
+        "ja": "早く家に帰りたいです。",
+        "t": {
+          "en": "I want to go home early.",
+          "es": "Quiero volver pronto a casa."
+        }
+      }
     ]
   },
   "w0414": {
@@ -9857,6 +9938,15 @@
       4,
       4,
       7
+    ],
+    "sentences": [
+      {
+        "ja": "全員起立してください。",
+        "t": {
+          "en": "Everyone please stand up.",
+          "es": "Que se levanten todos, por favor."
+        }
+      }
     ]
   },
   "w0415": {
@@ -9871,6 +9961,15 @@
       92,
       640,
       379
+    ],
+    "sentences": [
+      {
+        "ja": "毎朝六時に起きます。",
+        "t": {
+          "en": "I get up at six every morning.",
+          "es": "Me levanto a las seis cada mañana."
+        }
+      }
     ]
   },
   "w0416": {
@@ -9885,6 +9984,15 @@
       190,
       287,
       477
+    ],
+    "sentences": [
+      {
+        "ja": "駅で事故が起こりました。",
+        "t": {
+          "en": "An accident happened at the station.",
+          "es": "Ocurrió un accidente en la estación."
+        }
+      }
     ]
   },
   "w0417": {
@@ -9899,6 +10007,15 @@
       7,
       4,
       11
+    ],
+    "sentences": [
+      {
+        "ja": "初級の教科書を買った。",
+        "t": {
+          "en": "I bought a beginner's textbook.",
+          "es": "Compré un libro de nivel inicial."
+        }
+      }
     ]
   },
   "w0418": {
@@ -9913,6 +10030,15 @@
       44,
       17,
       34
+    ],
+    "sentences": [
+      {
+        "ja": "上級の試験に合格した。",
+        "t": {
+          "en": "I passed the advanced exam.",
+          "es": "Aprobé el examen de nivel superior."
+        }
+      }
     ]
   },
   "w0419": {
@@ -9927,6 +10053,15 @@
       328,
       255,
       292
+    ],
+    "sentences": [
+      {
+        "ja": "過去のことは忘れよう。",
+        "t": {
+          "en": "Let's forget the past.",
+          "es": "Olvidemos el pasado."
+        }
+      }
     ]
   },
   "w0420": {
@@ -9941,6 +10076,15 @@
       80,
       208,
       137
+    ],
+    "sentences": [
+      {
+        "ja": "彼は町を去りました。",
+        "t": {
+          "en": "He left the town.",
+          "es": "Se marchó del pueblo."
+        }
+      }
     ]
   },
   "w0421": {
@@ -9950,7 +10094,16 @@
     "gloss": {
       "en": "Tokyo",
       "es": "Tokio"
-    }
+    },
+    "sentences": [
+      {
+        "ja": "明日東京へ出張します。",
+        "t": {
+          "en": "I'm going to Tokyo on business tomorrow.",
+          "es": "Mañana viajo a Tokio por trabajo."
+        }
+      }
+    ]
   },
   "w0422": {
     "id": "w0422",
@@ -9959,7 +10112,16 @@
     "gloss": {
       "en": "Kyoto",
       "es": "Kioto"
-    }
+    },
+    "sentences": [
+      {
+        "ja": "京都の寺を見に行った。",
+        "t": {
+          "en": "I went to see the temples in Kyoto.",
+          "es": "Fui a ver los templos de Kioto."
+        }
+      }
+    ]
   },
   "w0423": {
     "id": "w0423",
@@ -9973,6 +10135,15 @@
       0,
       63,
       49
+    ],
+    "sentences": [
+      {
+        "ja": "この指輪は銀で作られた。",
+        "t": {
+          "en": "This ring is made of silver.",
+          "es": "Este anillo está hecho de plata."
+        }
+      }
     ]
   },
   "w0424": {
@@ -9987,6 +10158,15 @@
       86,
       29,
       212
+    ],
+    "sentences": [
+      {
+        "ja": "この地区は静かです。",
+        "t": {
+          "en": "This district is quiet.",
+          "es": "Este barrio es tranquilo."
+        }
+      }
     ]
   },
   "w0425": {
@@ -10001,6 +10181,15 @@
       5,
       1,
       20
+    ],
+    "sentences": [
+      {
+        "ja": "区役所で書類をもらう。",
+        "t": {
+          "en": "I get the forms at the ward office.",
+          "es": "Recojo los papeles en la oficina del distrito."
+        }
+      }
     ]
   },
   "w0426": {
@@ -10015,6 +10204,15 @@
       69,
       184,
       103
+    ],
+    "sentences": [
+      {
+        "ja": "両親は苦労して育てた。",
+        "t": {
+          "en": "My parents raised me through hardship.",
+          "es": "Mis padres me criaron con mucho esfuerzo."
+        }
+      }
     ]
   },
   "w0427": {
@@ -10029,6 +10227,15 @@
       65,
       227,
       110
+    ],
+    "sentences": [
+      {
+        "ja": "走ったので息が苦しい。",
+        "t": {
+          "en": "I ran, so it's hard to breathe.",
+          "es": "Corrí y me cuesta respirar."
+        }
+      }
     ]
   },
   "w0428": {
@@ -10043,6 +10250,15 @@
       11,
       46,
       24
+    ],
+    "sentences": [
+      {
+        "ja": "この薬は少し苦いです。",
+        "t": {
+          "en": "This medicine is a little bitter.",
+          "es": "Esta medicina es un poco amarga."
+        }
+      }
     ]
   },
   "w0429": {
@@ -10057,6 +10273,15 @@
       65,
       121,
       95
+    ],
+    "sentences": [
+      {
+        "ja": "掃除の道具を出します。",
+        "t": {
+          "en": "I'll get out the cleaning tools.",
+          "es": "Voy a sacar los utensilios de limpieza."
+        }
+      }
     ]
   },
   "w0430": {
@@ -10071,6 +10296,15 @@
       24,
       30,
       42
+    ],
+    "sentences": [
+      {
+        "ja": "新しい家具を買いました。",
+        "t": {
+          "en": "I bought new furniture.",
+          "es": "He comprado muebles nuevos."
+        }
+      }
     ]
   },
   "w0431": {
@@ -10085,6 +10319,15 @@
       10,
       4,
       21
+    ],
+    "sentences": [
+      {
+        "ja": "その国の君主は若い。",
+        "t": {
+          "en": "That country's monarch is young.",
+          "es": "El monarca de ese país es joven."
+        }
+      }
     ]
   },
   "w0432": {
@@ -10099,6 +10342,15 @@
       0,
       432,
       684
+    ],
+    "sentences": [
+      {
+        "ja": "君の意見が聞きたい。",
+        "t": {
+          "en": "I want to hear your opinion.",
+          "es": "Quiero oír tu opinión."
+        }
+      }
     ]
   },
   "w0433": {
@@ -10113,6 +10365,15 @@
       138,
       81,
       98
+    ],
+    "sentences": [
+      {
+        "ja": "兄弟が三人います。",
+        "t": {
+          "en": "I have three siblings.",
+          "es": "Tengo tres hermanos."
+        }
+      }
     ]
   },
   "w0434": {
@@ -10127,6 +10388,15 @@
       154,
       157,
       172
+    ],
+    "sentences": [
+      {
+        "ja": "兄は大学生です。",
+        "t": {
+          "en": "My older brother is a university student.",
+          "es": "Mi hermano mayor es universitario."
+        }
+      }
     ]
   },
   "w0435": {
@@ -10141,6 +10411,15 @@
       1,
       3,
       7
+    ],
+    "sentences": [
+      {
+        "ja": "学校は子弟を育てる。",
+        "t": {
+          "en": "Schools bring up the young.",
+          "es": "La escuela forma a los jóvenes."
+        }
+      }
     ]
   },
   "w0436": {
@@ -10155,6 +10434,15 @@
       0,
       143,
       137
+    ],
+    "sentences": [
+      {
+        "ja": "弟と公園で遊びました。",
+        "t": {
+          "en": "I played in the park with my little brother.",
+          "es": "Jugué en el parque con mi hermano menor."
+        }
+      }
     ]
   },
   "w0437": {
@@ -10169,6 +10457,15 @@
       61,
       54,
       41
+    ],
+    "sentences": [
+      {
+        "ja": "あの二人は姉妹です。",
+        "t": {
+          "en": "Those two are sisters.",
+          "es": "Esas dos son hermanas."
+        }
+      }
     ]
   },
   "w0438": {
@@ -10183,6 +10480,15 @@
       141,
       147,
       122
+    ],
+    "sentences": [
+      {
+        "ja": "姉は看護師です。",
+        "t": {
+          "en": "My older sister is a nurse.",
+          "es": "Mi hermana mayor es enfermera."
+        }
+      }
     ]
   },
   "w0439": {
@@ -10197,6 +10503,15 @@
       180,
       165,
       128
+    ],
+    "sentences": [
+      {
+        "ja": "妹はまだ小学生です。",
+        "t": {
+          "en": "My little sister is still in primary school.",
+          "es": "Mi hermana menor todavía va a primaria."
+        }
+      }
     ]
   },
   "w0440": {
@@ -10211,6 +10526,15 @@
       990,
       631,
       1305
+    ],
+    "sentences": [
+      {
+        "ja": "二人の関係は良いです。",
+        "t": {
+          "en": "The two get on well.",
+          "es": "La relación entre los dos es buena."
+        }
+      }
     ]
   },
   "w0441": {
@@ -10225,6 +10549,15 @@
       41,
       46,
       104
+    ],
+    "sentences": [
+      {
+        "ja": "受付の係に聞きました。",
+        "t": {
+          "en": "I asked the person at reception.",
+          "es": "Se lo pregunté al encargado de recepción."
+        }
+      }
     ]
   },
   "w0442": {
@@ -10239,6 +10572,15 @@
       3,
       5,
       3
+    ],
+    "sentences": [
+      {
+        "ja": "駅で軽食を取りました。",
+        "t": {
+          "en": "I had a light meal at the station.",
+          "es": "Tomé algo ligero en la estación."
+        }
+      }
     ]
   },
   "w0443": {
@@ -10253,6 +10595,15 @@
       136,
       359,
       293
+    ],
+    "sentences": [
+      {
+        "ja": "このかばんは軽いです。",
+        "t": {
+          "en": "This bag is light.",
+          "es": "Esta bolsa es ligera."
+        }
+      }
     ]
   },
   "w0444": {
@@ -10267,6 +10618,15 @@
       81,
       34,
       89
+    ],
+    "sentences": [
+      {
+        "ja": "病院で血液を調べます。",
+        "t": {
+          "en": "They test your blood at the hospital.",
+          "es": "En el hospital te analizan la sangre."
+        }
+      }
     ]
   },
   "w0445": {
@@ -10281,6 +10641,15 @@
       0,
       328,
       232
+    ],
+    "sentences": [
+      {
+        "ja": "指から血が出ました。",
+        "t": {
+          "en": "My finger bled.",
+          "es": "Me salió sangre del dedo."
+        }
+      }
     ]
   },
   "w0446": {
@@ -10295,6 +10664,15 @@
       8,
       1,
       7
+    ],
+    "sentences": [
+      {
+        "ja": "県庁は駅の近くです。",
+        "t": {
+          "en": "The prefectural office is near the station.",
+          "es": "La sede provincial está cerca de la estación."
+        }
+      }
     ]
   },
   "w0447": {
@@ -10309,6 +10687,15 @@
       1202,
       18,
       871
+    ],
+    "sentences": [
+      {
+        "ja": "隣の県に引っ越します。",
+        "t": {
+          "en": "I'm moving to the next prefecture.",
+          "es": "Me mudo a la provincia vecina."
+        }
+      }
     ]
   },
   "w0448": {
@@ -10346,6 +10733,15 @@
       97,
       70,
       51
+    ],
+    "sentences": [
+      {
+        "ja": "新しい家を建てました。",
+        "t": {
+          "en": "We built a new house.",
+          "es": "Hemos construido una casa nueva."
+        }
+      }
     ]
   },
   "w0450": {
@@ -10360,6 +10756,15 @@
       631,
       530,
       387
+    ],
+    "sentences": [
+      {
+        "ja": "元の場所に戻してね。",
+        "t": {
+          "en": "Put it back where it was.",
+          "es": "Devuélvelo a su sitio."
+        }
+      }
     ]
   },
   "w0451": {
@@ -10374,6 +10779,15 @@
       112,
       31,
       145
+    ],
+    "sentences": [
+      {
+        "ja": "彼女は三つの言語を話す。",
+        "t": {
+          "en": "She speaks three languages.",
+          "es": "Ella habla tres idiomas."
+        }
+      }
     ]
   },
   "w0452": {
@@ -10388,6 +10802,15 @@
       8947,
       10171,
       16642
+    ],
+    "sentences": [
+      {
+        "ja": "本当のことを言います。",
+        "t": {
+          "en": "I'll tell the truth.",
+          "es": "Voy a decir la verdad."
+        }
+      }
     ]
   },
   "w0453": {
@@ -10402,6 +10825,15 @@
       631,
       1569,
       1289
+    ],
+    "sentences": [
+      {
+        "ja": "難しい言葉を習いました。",
+        "t": {
+          "en": "I learned a difficult word.",
+          "es": "He aprendido una palabra difícil."
+        }
+      }
     ]
   },
   "w0454": {
@@ -10416,6 +10848,15 @@
       243,
       452,
       422
+    ],
+    "sentences": [
+      {
+        "ja": "火事の原因を調べます。",
+        "t": {
+          "en": "They are looking into the cause of the fire.",
+          "es": "Investigan la causa del incendio."
+        }
+      }
     ]
   },
   "w0455": {
@@ -10430,6 +10871,15 @@
       21,
       5,
       50
+    ],
+    "sentences": [
+      {
+        "ja": "この原料は外国産です。",
+        "t": {
+          "en": "This raw material is imported.",
+          "es": "Esta materia prima es de importación."
+        }
+      }
     ]
   },
   "w0456": {
@@ -10444,6 +10894,15 @@
       1,
       2,
       7
+    ],
+    "sentences": [
+      {
+        "ja": "戸外で食事をしました。",
+        "t": {
+          "en": "We ate outdoors.",
+          "es": "Comimos al aire libre."
+        }
+      }
     ]
   },
   "w0457": {
@@ -10458,6 +10917,15 @@
       43,
       52,
       48
+    ],
+    "sentences": [
+      {
+        "ja": "風で戸が閉まりました。",
+        "t": {
+          "en": "The door shut in the wind.",
+          "es": "La puerta se cerró con el viento."
+        }
+      }
     ]
   },
   "w0458": {
@@ -10472,6 +10940,15 @@
       146,
       108,
       166
+    ],
+    "sentences": [
+      {
+        "ja": "もう御飯を食べましたか。",
+        "t": {
+          "en": "Have you eaten yet?",
+          "es": "¿Ya has comido?"
+        }
+      }
     ]
   },
   "w0459": {
@@ -10486,6 +10963,15 @@
       180,
       22,
       180
+    ],
+    "sentences": [
+      {
+        "ja": "京都を観光しました。",
+        "t": {
+          "en": "We went sightseeing in Kyoto.",
+          "es": "Hicimos turismo en Kioto."
+        }
+      }
     ]
   },
   "w0460": {
@@ -10500,6 +10986,15 @@
       0,
       387,
       354
+    ],
+    "sentences": [
+      {
+        "ja": "窓から光が入ります。",
+        "t": {
+          "en": "Light comes in through the window.",
+          "es": "La luz entra por la ventana."
+        }
+      }
     ]
   },
   "w0461": {
@@ -10514,6 +11009,15 @@
       27,
       48,
       34
+    ],
+    "sentences": [
+      {
+        "ja": "彼の好意に感謝します。",
+        "t": {
+          "en": "I'm grateful for his kindness.",
+          "es": "Le agradezco su amabilidad."
+        }
+      }
     ]
   },
   "w0462": {
@@ -10528,6 +11032,15 @@
       1563,
       1190,
       752
+    ],
+    "sentences": [
+      {
+        "ja": "私は音楽が好きです。",
+        "t": {
+          "en": "I like music.",
+          "es": "Me gusta la música."
+        }
+      }
     ]
   },
   "w0463": {
@@ -10542,6 +11055,15 @@
       134,
       45,
       168
+    ],
+    "sentences": [
+      {
+        "ja": "父は工場で働いている。",
+        "t": {
+          "en": "My father works at a factory.",
+          "es": "Mi padre trabaja en una fábrica."
+        }
+      }
     ]
   },
   "w0464": {
@@ -10556,6 +11078,15 @@
       134,
       23,
       176
+    ],
+    "sentences": [
+      {
+        "ja": "道路の工事が始まった。",
+        "t": {
+          "en": "Work on the road has started.",
+          "es": "Han empezado las obras de la carretera."
+        }
+      }
     ]
   },
   "w0465": {
@@ -10570,6 +11101,15 @@
       168,
       12,
       114
+    ],
+    "sentences": [
+      {
+        "ja": "新聞に広告を出します。",
+        "t": {
+          "en": "We'll put an ad in the paper.",
+          "es": "Vamos a poner un anuncio en el periódico."
+        }
+      }
     ]
   },
   "w0466": {
@@ -10584,6 +11124,15 @@
       129,
       466,
       352
+    ],
+    "sentences": [
+      {
+        "ja": "この部屋は広いですね。",
+        "t": {
+          "en": "This room is spacious, isn't it?",
+          "es": "Esta habitación es amplia, ¿verdad?"
+        }
+      }
     ]
   },
   "w0467": {
@@ -10598,6 +11147,15 @@
       0,
       34,
       49
+    ],
+    "sentences": [
+      {
+        "ja": "船が港に入りました。",
+        "t": {
+          "en": "The ship came into the harbour.",
+          "es": "El barco entró en el puerto."
+        }
+      }
     ]
   },
   "w0468": {
@@ -10612,6 +11170,15 @@
       222,
       44,
       180
+    ],
+    "sentences": [
+      {
+        "ja": "電話番号を教えてください。",
+        "t": {
+          "en": "Please tell me your phone number.",
+          "es": "Dime tu número de teléfono, por favor."
+        }
+      }
     ]
   },
   "w0469": {
@@ -10626,6 +11193,15 @@
       80,
       24,
       65
+    ],
+    "sentences": [
+      {
+        "ja": "信号が青になりました。",
+        "t": {
+          "en": "The light turned green.",
+          "es": "El semáforo se puso en verde."
+        }
+      }
     ]
   },
   "w0470": {
@@ -10640,6 +11216,15 @@
       7,
       12,
       9
+    ],
+    "sentences": [
+      {
+        "ja": "先生が黒板に書きます。",
+        "t": {
+          "en": "The teacher writes on the blackboard.",
+          "es": "El profesor escribe en la pizarra."
+        }
+      }
     ]
   },
   "w0471": {
@@ -10654,6 +11239,15 @@
       84,
       279,
       193
+    ],
+    "sentences": [
+      {
+        "ja": "黒い犬を飼っています。",
+        "t": {
+          "en": "I keep a black dog.",
+          "es": "Tengo un perro negro."
+        }
+      }
     ]
   },
   "w0472": {
@@ -10668,6 +11262,15 @@
       685,
       524,
       502
+    ],
+    "sentences": [
+      {
+        "ja": "最近よく雨が降ります。",
+        "t": {
+          "en": "It rains a lot lately.",
+          "es": "Últimamente llueve mucho."
+        }
+      }
     ]
   },
   "w0473": {
@@ -10682,6 +11285,15 @@
       625,
       758,
       659
+    ],
+    "sentences": [
+      {
+        "ja": "最後まで頑張ります。",
+        "t": {
+          "en": "I'll try my best to the end.",
+          "es": "Me esforzaré hasta el final."
+        }
+      }
     ]
   },
   "w0474": {
@@ -10696,6 +11308,15 @@
       99,
       84,
       161
+    ],
+    "sentences": [
+      {
+        "ja": "毎日野菜を食べましょう。",
+        "t": {
+          "en": "Let's eat vegetables every day.",
+          "es": "Comamos verduras todos los días."
+        }
+      }
     ]
   },
   "w0475": {
@@ -10710,6 +11331,15 @@
       1191,
       1044,
       1149
+    ],
+    "sentences": [
+      {
+        "ja": "今週は仕事が忙しい。",
+        "t": {
+          "en": "Work is busy this week.",
+          "es": "Esta semana tengo mucho trabajo."
+        }
+      }
     ]
   },
   "w0476": {
@@ -10724,6 +11354,15 @@
       217,
       89,
       233
+    ],
+    "sentences": [
+      {
+        "ja": "仕方がないので帰った。",
+        "t": {
+          "en": "There was nothing for it, so I went home.",
+          "es": "No había remedio, así que volví a casa."
+        }
+      }
     ]
   },
   "w0477": {
@@ -10738,6 +11377,15 @@
       128,
       45,
       109
+    ],
+    "sentences": [
+      {
+        "ja": "事故で二人が死亡した。",
+        "t": {
+          "en": "Two people died in the accident.",
+          "es": "Dos personas murieron en el accidente."
+        }
+      }
     ]
   },
   "w0478": {
@@ -10752,6 +11400,15 @@
       786,
       1217,
       547
+    ],
+    "sentences": [
+      {
+        "ja": "金魚が死んでしまった。",
+        "t": {
+          "en": "The goldfish died.",
+          "es": "El pez de colores se ha muerto."
+        }
+      }
     ]
   },
   "w0479": {
@@ -10766,6 +11423,15 @@
       25,
       7,
       39
+    ],
+    "sentences": [
+      {
+        "ja": "妹は私立の学校に通う。",
+        "t": {
+          "en": "My sister goes to a private school.",
+          "es": "Mi hermana va a un colegio privado."
+        }
+      }
     ]
   },
   "w0480": {
@@ -10780,6 +11446,15 @@
       3588,
       8947,
       5715
+    ],
+    "sentences": [
+      {
+        "ja": "私も一緒に行きます。",
+        "t": {
+          "en": "I'll go with you too.",
+          "es": "Yo también voy contigo."
+        }
+      }
     ]
   },
   "w0481": {
@@ -10794,6 +11469,15 @@
       82,
       35,
       149
+    ],
+    "sentences": [
+      {
+        "ja": "彼の思想は新しいです。",
+        "t": {
+          "en": "His ideas are new.",
+          "es": "Su pensamiento es novedoso."
+        }
+      }
     ]
   },
   "w0482": {
@@ -10808,6 +11492,15 @@
       5099,
       14749,
       6089
+    ],
+    "sentences": [
+      {
+        "ja": "明日は晴れると思います。",
+        "t": {
+          "en": "I think it will be sunny tomorrow.",
+          "es": "Creo que mañana hará sol."
+        }
+      }
     ]
   },
   "w0483": {
@@ -10822,6 +11515,15 @@
       108,
       120,
       105
+    ],
+    "sentences": [
+      {
+        "ja": "楽しい思い出ができた。",
+        "t": {
+          "en": "I have happy memories of it.",
+          "es": "Me quedó un buen recuerdo."
+        }
+      }
     ]
   },
   "w0484": {
@@ -10836,6 +11538,15 @@
       15,
       10,
       19
+    ],
+    "sentences": [
+      {
+        "ja": "この用紙に記入します。",
+        "t": {
+          "en": "You fill in this form.",
+          "es": "Se rellena este formulario."
+        }
+      }
     ]
   },
   "w0485": {
@@ -10850,6 +11561,15 @@
       0,
       130,
       125
+    ],
+    "sentences": [
+      {
+        "ja": "紙に名前を書きます。",
+        "t": {
+          "en": "Write your name on the paper.",
+          "es": "Escribe tu nombre en el papel."
+        }
+      }
     ]
   },
   "w0486": {
@@ -10910,6 +11630,15 @@
       0,
       10,
       14
+    ],
+    "sentences": [
+      {
+        "ja": "来週卒業式があります。",
+        "t": {
+          "en": "The graduation ceremony is next week.",
+          "es": "La ceremonia de graduación es la semana que viene."
+        }
+      }
     ]
   },
   "w0489": {
@@ -10924,6 +11653,15 @@
       82,
       29,
       117
+    ],
+    "sentences": [
+      {
+        "ja": "この形式で書いてください。",
+        "t": {
+          "en": "Please write it in this format.",
+          "es": "Escríbalo en este formato, por favor."
+        }
+      }
     ]
   },
   "w0490": {
@@ -10938,6 +11676,15 @@
       701,
       222,
       663
+    ],
+    "sentences": [
+      {
+        "ja": "旅行の写真を見せます。",
+        "t": {
+          "en": "I'll show you the photos from the trip.",
+          "es": "Te enseño las fotos del viaje."
+        }
+      }
     ]
   },
   "w0491": {
@@ -10952,6 +11699,15 @@
       10,
       19,
       39
+    ],
+    "sentences": [
+      {
+        "ja": "黒板の字を写します。",
+        "t": {
+          "en": "I copy down what's on the blackboard.",
+          "es": "Copio lo que hay en la pizarra."
+        }
+      }
     ]
   },
   "w0492": {
@@ -10966,6 +11722,15 @@
       82,
       83,
       143
+    ],
+    "sentences": [
+      {
+        "ja": "公園に若者が集まる。",
+        "t": {
+          "en": "Young people gather in the park.",
+          "es": "Los jóvenes se reúnen en el parque."
+        }
+      }
     ]
   },
   "w0493": {
@@ -10980,6 +11745,15 @@
       0,
       431,
       5330
+    ],
+    "sentences": [
+      {
+        "ja": "希望する者は手を挙げて。",
+        "t": {
+          "en": "Anyone who wants to, raise your hand.",
+          "es": "Que levante la mano quien quiera."
+        }
+      }
     ]
   },
   "w0494": {
@@ -10994,6 +11768,15 @@
       53,
       40,
       72
+    ],
+    "sentences": [
+      {
+        "ja": "借金を全部返しました。",
+        "t": {
+          "en": "I paid back all the debt.",
+          "es": "He devuelto toda la deuda."
+        }
+      }
     ]
   },
   "w0495": {
@@ -11008,6 +11791,15 @@
       172,
       222,
       189
+    ],
+    "sentences": [
+      {
+        "ja": "図書館で本を借ります。",
+        "t": {
+          "en": "I borrow books at the library.",
+          "es": "Saco libros de la biblioteca."
+        }
+      }
     ]
   },
   "w0496": {
@@ -11022,6 +11814,15 @@
       23,
       45,
       21
+    ],
+    "sentences": [
+      {
+        "ja": "自分の弱点を知ろう。",
+        "t": {
+          "en": "Know your own weak points.",
+          "es": "Conoce tus puntos débiles."
+        }
+      }
     ]
   },
   "w0497": {
@@ -11036,6 +11837,15 @@
       134,
       237,
       193
+    ],
+    "sentences": [
+      {
+        "ja": "私は寒さに弱いです。",
+        "t": {
+          "en": "I don't cope well with the cold.",
+          "es": "Llevo mal el frío."
+        }
+      }
     ]
   },
   "w0498": {
@@ -11050,6 +11860,15 @@
       88,
       38,
       90
+    ],
+    "sentences": [
+      {
+        "ja": "記者が事件を取材する。",
+        "t": {
+          "en": "A reporter covers the incident.",
+          "es": "Un periodista cubre el suceso."
+        }
+      }
     ]
   },
   "w0499": {
@@ -11064,6 +11883,15 @@
       1190,
       735,
       1887
+    ],
+    "sentences": [
+      {
+        "ja": "棚から皿を取ります。",
+        "t": {
+          "en": "I take a plate from the shelf.",
+          "es": "Cojo un plato del estante."
+        }
+      }
     ]
   },
   "w0500": {
@@ -11078,6 +11906,15 @@
       0,
       4,
       20
+    ],
+    "sentences": [
+      {
+        "ja": "父は日本酒が好きです。",
+        "t": {
+          "en": "My father likes sake.",
+          "es": "A mi padre le gusta el sake."
+        }
+      }
     ]
   },
   "w0501": {
@@ -11092,6 +11929,15 @@
       0,
       144,
       232
+    ],
+    "sentences": [
+      {
+        "ja": "今夜は酒を飲みません。",
+        "t": {
+          "en": "I'm not drinking tonight.",
+          "es": "Esta noche no bebo alcohol."
+        }
+      }
     ]
   },
   "w0502": {
@@ -11106,6 +11952,15 @@
       50,
       23,
       68
+    ],
+    "sentences": [
+      {
+        "ja": "日本の首都は東京です。",
+        "t": {
+          "en": "The capital of Japan is Tokyo.",
+          "es": "La capital de Japón es Tokio."
+        }
+      }
     ]
   },
   "w0503": {
@@ -11120,6 +11975,15 @@
       188,
       313,
       350
+    ],
+    "sentences": [
+      {
+        "ja": "首が痛くて回りません。",
+        "t": {
+          "en": "My neck hurts and won't turn.",
+          "es": "Me duele el cuello y no puedo girarlo."
+        }
+      }
     ]
   },
   "w0504": {
@@ -11134,6 +11998,15 @@
       68,
       27,
       68
+    ],
+    "sentences": [
+      {
+        "ja": "兄は来年受験します。",
+        "t": {
+          "en": "My brother sits the entrance exam next year.",
+          "es": "Mi hermano se examina el año que viene."
+        }
+      }
     ]
   },
   "w0505": {
@@ -11148,6 +12021,15 @@
       817,
       892,
       1444
+    ],
+    "sentences": [
+      {
+        "ja": "来月試験を受けます。",
+        "t": {
+          "en": "I'm taking the exam next month.",
+          "es": "El mes que viene me examino."
+        }
+      }
     ]
   },
   "w0506": {
@@ -11162,6 +12044,15 @@
       97,
       36,
       111
+    ],
+    "sentences": [
+      {
+        "ja": "受付で名前を書きます。",
+        "t": {
+          "en": "You write your name at reception.",
+          "es": "Se escribe el nombre en recepción."
+        }
+      }
     ]
   },
   "w0507": {
@@ -11176,6 +12067,15 @@
       7,
       5,
       11
+    ],
+    "sentences": [
+      {
+        "ja": "電車の終点で降りた。",
+        "t": {
+          "en": "I got off at the last stop.",
+          "es": "Me bajé en la última parada."
+        }
+      }
     ]
   },
   "w0508": {
@@ -11190,6 +12090,15 @@
       659,
       935,
       625
+    ],
+    "sentences": [
+      {
+        "ja": "授業は三時に終わります。",
+        "t": {
+          "en": "Class ends at three.",
+          "es": "La clase termina a las tres."
+        }
+      }
     ]
   },
   "w0509": {
@@ -11204,6 +12113,15 @@
       72,
       40,
       68
+    ],
+    "sentences": [
+      {
+        "ja": "八時に駅前へ集合します。",
+        "t": {
+          "en": "We meet in front of the station at eight.",
+          "es": "Nos reunimos a las ocho frente a la estación."
+        }
+      }
     ]
   },
   "w0510": {
@@ -11218,6 +12136,15 @@
       227,
       233,
       254
+    ],
+    "sentences": [
+      {
+        "ja": "切手を集めています。",
+        "t": {
+          "en": "I collect stamps.",
+          "es": "Colecciono sellos."
+        }
+      }
     ]
   },
   "w0511": {
@@ -11232,6 +12159,15 @@
       151,
       475,
       254
+    ],
+    "sentences": [
+      {
+        "ja": "みんなが公園に集まった。",
+        "t": {
+          "en": "Everyone gathered in the park.",
+          "es": "Todos se reunieron en el parque."
+        }
+      }
     ]
   },
   "w0512": {
@@ -11246,6 +12182,15 @@
       67,
       31,
       128
+    ],
+    "sentences": [
+      {
+        "ja": "ここに住所を書いてね。",
+        "t": {
+          "en": "Write your address here.",
+          "es": "Escribe aquí tu dirección."
+        }
+      }
     ]
   },
   "w0513": {
@@ -11260,6 +12205,15 @@
       268,
       471,
       406
+    ],
+    "sentences": [
+      {
+        "ja": "私は東京に住んでいます。",
+        "t": {
+          "en": "I live in Tokyo.",
+          "es": "Vivo en Tokio."
+        }
+      }
     ]
   },
   "w0514": {
@@ -11274,6 +12228,15 @@
       31,
       12,
       52
+    ],
+    "sentences": [
+      {
+        "ja": "駅前のホテルに宿泊した。",
+        "t": {
+          "en": "We stayed at the hotel by the station.",
+          "es": "Nos alojamos en el hotel junto a la estación."
+        }
+      }
     ]
   },
   "w0515": {
@@ -11288,6 +12251,15 @@
       1,
       0,
       1
+    ],
+    "sentences": [
+      {
+        "ja": "春分の日は休みです。",
+        "t": {
+          "en": "The spring equinox is a holiday.",
+          "es": "El día del equinoccio de primavera es fiesta."
+        }
+      }
     ]
   },
   "w0516": {
@@ -11302,6 +12274,15 @@
       232,
       120,
       233
+    ],
+    "sentences": [
+      {
+        "ja": "春に桜が咲きます。",
+        "t": {
+          "en": "The cherry trees bloom in spring.",
+          "es": "Los cerezos florecen en primavera."
+        }
+      }
     ]
   },
   "w0517": {
@@ -11316,6 +12297,15 @@
       4,
       1,
       4
+    ],
+    "sentences": [
+      {
+        "ja": "夏期の講習に通います。",
+        "t": {
+          "en": "I attend the summer course.",
+          "es": "Voy al curso de verano."
+        }
+      }
     ]
   },
   "w0518": {
@@ -11330,6 +12320,15 @@
       360,
       190,
       292
+    ],
+    "sentences": [
+      {
+        "ja": "今年の夏は暑いです。",
+        "t": {
+          "en": "This summer is hot.",
+          "es": "Este verano hace calor."
+        }
+      }
     ]
   },
   "w0519": {
@@ -11344,6 +12343,15 @@
       43,
       55,
       56
+    ],
+    "sentences": [
+      {
+        "ja": "夏休みに海へ行きました。",
+        "t": {
+          "en": "I went to the sea in the summer holidays.",
+          "es": "En las vacaciones de verano fui al mar."
+        }
+      }
     ]
   },
   "w0520": {
@@ -11358,6 +12366,15 @@
       1,
       0,
       1
+    ],
+    "sentences": [
+      {
+        "ja": "秋分の日に墓参りする。",
+        "t": {
+          "en": "We visit the graves on the autumn equinox.",
+          "es": "En el equinoccio de otoño visitamos las tumbas."
+        }
+      }
     ]
   },
   "w0521": {
@@ -11372,6 +12389,15 @@
       168,
       84,
       225
+    ],
+    "sentences": [
+      {
+        "ja": "秋は果物がおいしい。",
+        "t": {
+          "en": "Fruit is delicious in autumn.",
+          "es": "En otoño la fruta está buena."
+        }
+      }
     ]
   },
   "w0522": {
@@ -11386,6 +12412,15 @@
       2,
       0,
       5
+    ],
+    "sentences": [
+      {
+        "ja": "冬期は雪が多いです。",
+        "t": {
+          "en": "There is a lot of snow in winter.",
+          "es": "En la temporada de invierno nieva mucho."
+        }
+      }
     ]
   },
   "w0523": {
@@ -11400,6 +12435,15 @@
       157,
       109,
       211
+    ],
+    "sentences": [
+      {
+        "ja": "冬は毎日寒いです。",
+        "t": {
+          "en": "It's cold every day in winter.",
+          "es": "En invierno hace frío todos los días."
+        }
+      }
     ]
   },
   "w0524": {
@@ -11414,6 +12458,15 @@
       625,
       1111,
       734
+    ],
+    "sentences": [
+      {
+        "ja": "待ち合わせの場所を決める。",
+        "t": {
+          "en": "We decide where to meet.",
+          "es": "Decidimos el lugar de la cita."
+        }
+      }
     ]
   },
   "w0525": {
@@ -11428,6 +12481,15 @@
       15,
       46,
       64
+    ],
+    "sentences": [
+      {
+        "ja": "母は台所にいます。",
+        "t": {
+          "en": "My mother is in the kitchen.",
+          "es": "Mi madre está en la cocina."
+        }
+      }
     ]
   },
   "w0526": {
@@ -11442,6 +12504,15 @@
       3,
       1,
       3
+    ],
+    "sentences": [
+      {
+        "ja": "今年は残暑が厳しい。",
+        "t": {
+          "en": "The late summer heat is harsh this year.",
+          "es": "Este año el calor de fin de verano aprieta."
+        }
+      }
     ]
   },
   "w0527": {
@@ -11456,6 +12527,15 @@
       128,
       100,
       115
+    ],
+    "sentences": [
+      {
+        "ja": "今日はとても暑いです。",
+        "t": {
+          "en": "It's very hot today.",
+          "es": "Hoy hace mucho calor."
+        }
+      }
     ]
   },
   "w0528": {
@@ -11470,6 +12550,15 @@
       5,
       24,
       7
+    ],
+    "sentences": [
+      {
+        "ja": "寒気がするので休みます。",
+        "t": {
+          "en": "I feel a chill, so I'm taking a rest.",
+          "es": "Tengo escalofríos, así que descanso."
+        }
+      }
     ]
   },
   "w0529": {
@@ -11484,6 +12573,15 @@
       134,
       189,
       161
+    ],
+    "sentences": [
+      {
+        "ja": "外はとても寒いですね。",
+        "t": {
+          "en": "It's very cold outside, isn't it?",
+          "es": "Fuera hace mucho frío, ¿verdad?"
+        }
+      }
     ]
   },
   "w0530": {
@@ -11498,6 +12596,15 @@
       29,
       3,
       146
+    ],
+    "sentences": [
+      {
+        "ja": "消防の訓練をしました。",
+        "t": {
+          "en": "We did a fire drill.",
+          "es": "Hicimos un simulacro de incendio."
+        }
+      }
     ]
   },
   "w0531": {
@@ -11512,6 +12619,15 @@
       119,
       206,
       147
+    ],
+    "sentences": [
+      {
+        "ja": "電気を消してください。",
+        "t": {
+          "en": "Please turn off the light.",
+          "es": "Apaga la luz, por favor."
+        }
+      }
     ]
   },
   "w0532": {
@@ -11526,6 +12642,15 @@
       262,
       684,
       285
+    ],
+    "sentences": [
+      {
+        "ja": "明かりが急に消えました。",
+        "t": {
+          "en": "The light suddenly went out.",
+          "es": "La luz se apagó de repente."
+        }
+      }
     ]
   },
   "w0533": {
@@ -11540,6 +12665,15 @@
       41,
       14,
       60
+    ],
+    "sentences": [
+      {
+        "ja": "この町は商業が盛んだ。",
+        "t": {
+          "en": "Trade thrives in this town.",
+          "es": "En esta ciudad el comercio es próspero."
+        }
+      }
     ]
   },
   "w0534": {
@@ -11554,6 +12688,15 @@
       40,
       12,
       68
+    ],
+    "sentences": [
+      {
+        "ja": "駅前に商店が並びます。",
+        "t": {
+          "en": "Shops line the street by the station.",
+          "es": "Frente a la estación se alinean las tiendas."
+        }
+      }
     ]
   },
   "w0535": {
@@ -11568,6 +12711,15 @@
       161,
       94,
       172
+    ],
+    "sentences": [
+      {
+        "ja": "会場は駅の隣です。",
+        "t": {
+          "en": "The venue is next to the station.",
+          "es": "El recinto está al lado de la estación."
+        }
+      }
     ]
   },
   "w0536": {
@@ -11582,6 +12734,15 @@
       903,
       591,
       3548
+    ],
+    "sentences": [
+      {
+        "ja": "雨の場合は中止です。",
+        "t": {
+          "en": "In case of rain it's cancelled.",
+          "es": "En caso de lluvia se cancela."
+        }
+      }
     ]
   },
   "w0537": {
@@ -11596,6 +12757,15 @@
       279,
       883,
       279
+    ],
+    "sentences": [
+      {
+        "ja": "体のことが心配です。",
+        "t": {
+          "en": "I'm worried about your health.",
+          "es": "Me preocupa tu salud."
+        }
+      }
     ]
   },
   "w0538": {
@@ -11610,6 +12780,15 @@
       0,
       866,
       1023
+    ],
+    "sentences": [
+      {
+        "ja": "彼は心が優しいです。",
+        "t": {
+          "en": "He is kind at heart.",
+          "es": "Él tiene buen corazón."
+        }
+      }
     ]
   },
   "w0539": {
@@ -11624,6 +12803,15 @@
       90,
       138,
       103
+    ],
+    "sentences": [
+      {
+        "ja": "真実を話してください。",
+        "t": {
+          "en": "Please tell the truth.",
+          "es": "Di la verdad, por favor."
+        }
+      }
     ]
   },
   "w0540": {
@@ -11633,7 +12821,16 @@
     "gloss": {
       "en": "the middle",
       "es": "el centro"
-    }
+    },
+    "sentences": [
+      {
+        "ja": "部屋の真中に机がある。",
+        "t": {
+          "en": "There's a desk in the middle of the room.",
+          "es": "Hay una mesa en medio de la habitación."
+        }
+      }
+    ]
   },
   "w0541": {
     "id": "w0541",
@@ -11647,6 +12844,15 @@
       119,
       48,
       51
+    ],
+    "sentences": [
+      {
+        "ja": "深夜まで働きました。",
+        "t": {
+          "en": "I worked until late at night.",
+          "es": "Trabajé hasta altas horas de la noche."
+        }
+      }
     ]
   },
   "w0542": {
@@ -11661,6 +12867,15 @@
       211,
       588,
       376
+    ],
+    "sentences": [
+      {
+        "ja": "この川はとても深いです。",
+        "t": {
+          "en": "This river is very deep.",
+          "es": "Este río es muy profundo."
+        }
+      }
     ]
   },
   "w0543": {
@@ -11675,6 +12890,15 @@
       35,
       24,
       57
+    ],
+    "sentences": [
+      {
+        "ja": "彼の日本語は進歩した。",
+        "t": {
+          "en": "His Japanese has improved.",
+          "es": "Su japonés ha progresado."
+        }
+      }
     ]
   },
   "w0544": {
@@ -11689,6 +12913,15 @@
       268,
       570,
       516
+    ],
+    "sentences": [
+      {
+        "ja": "工事は順調に進みました。",
+        "t": {
+          "en": "The work went ahead smoothly.",
+          "es": "Las obras avanzaron sin problemas."
+        }
+      }
     ]
   },
   "w0545": {
@@ -11703,6 +12936,15 @@
       29,
       47,
       44
+    ],
+    "sentences": [
+      {
+        "ja": "駅員はとても親切です。",
+        "t": {
+          "en": "The station staff are very kind.",
+          "es": "El personal de la estación es muy amable."
+        }
+      }
     ]
   },
   "w0546": {
@@ -11717,6 +12959,15 @@
       231,
       237,
       430
+    ],
+    "sentences": [
+      {
+        "ja": "親に手紙を書きます。",
+        "t": {
+          "en": "I write a letter to my parents.",
+          "es": "Escribo una carta a mis padres."
+        }
+      }
     ]
   },
   "w0547": {
@@ -11731,6 +12982,15 @@
       77,
       64,
       97
+    ],
+    "sentences": [
+      {
+        "ja": "地図で場所を調べます。",
+        "t": {
+          "en": "I look the place up on the map.",
+          "es": "Busco el sitio en el mapa."
+        }
+      }
     ]
   },
   "w0548": {
@@ -11745,6 +13005,15 @@
       72,
       101,
       41
+    ],
+    "sentences": [
+      {
+        "ja": "三番が正解でした。",
+        "t": {
+          "en": "Number three was the right answer.",
+          "es": "La tres era la respuesta correcta."
+        }
+      }
     ]
   },
   "w0549": {
@@ -11759,6 +13028,15 @@
       227,
       252,
       299
+    ],
+    "sentences": [
+      {
+        "ja": "正しい答えを選びます。",
+        "t": {
+          "en": "Choose the correct answer.",
+          "es": "Elige la respuesta correcta."
+        }
+      }
     ]
   },
   "w0550": {
@@ -11773,6 +13051,15 @@
       27,
       4,
       19
+    ],
+    "sentences": [
+      {
+        "ja": "会社が声明を出しました。",
+        "t": {
+          "en": "The company issued a statement.",
+          "es": "La empresa emitió un comunicado."
+        }
+      }
     ]
   },
   "w0551": {
@@ -11787,6 +13074,15 @@
       0,
       1923,
       1189
+    ],
+    "sentences": [
+      {
+        "ja": "大きな声で読みましょう。",
+        "t": {
+          "en": "Let's read in a loud voice.",
+          "es": "Leamos en voz alta."
+        }
+      }
     ]
   },
   "w0552": {
@@ -11801,6 +13097,15 @@
       38,
       67,
       107
+    ],
+    "sentences": [
+      {
+        "ja": "あの青年は学生です。",
+        "t": {
+          "en": "That young man is a student.",
+          "es": "Ese joven es estudiante."
+        }
+      }
     ]
   },
   "w0553": {
@@ -11815,6 +13120,15 @@
       68,
       139,
       117
+    ],
+    "sentences": [
+      {
+        "ja": "今日は空が青いです。",
+        "t": {
+          "en": "The sky is blue today.",
+          "es": "Hoy el cielo está azul."
+        }
+      }
     ]
   },
   "w0554": {
@@ -11829,6 +13143,15 @@
       3,
       1,
       5
+    ],
+    "sentences": [
+      {
+        "ja": "船が赤道を越えました。",
+        "t": {
+          "en": "The ship crossed the equator.",
+          "es": "El barco cruzó el ecuador."
+        }
+      }
     ]
   },
   "w0555": {
@@ -11843,6 +13166,15 @@
       110,
       331,
       227
+    ],
+    "sentences": [
+      {
+        "ja": "赤いりんごを買いました。",
+        "t": {
+          "en": "I bought a red apple.",
+          "es": "Compré una manzana roja."
+        }
+      }
     ]
   },
   "w0556": {
@@ -11857,6 +13189,15 @@
       14,
       3,
       24
+    ],
+    "sentences": [
+      {
+        "ja": "封筒に切手を貼ります。",
+        "t": {
+          "en": "I put a stamp on the envelope.",
+          "es": "Pego un sello en el sobre."
+        }
+      }
     ]
   },
   "w0557": {
@@ -11871,6 +13212,15 @@
       516,
       493,
       545
+    ],
+    "sentences": [
+      {
+        "ja": "包丁で野菜を切ります。",
+        "t": {
+          "en": "I cut the vegetables with a knife.",
+          "es": "Corto la verdura con el cuchillo."
+        }
+      }
     ]
   },
   "w0558": {
@@ -11885,6 +13235,15 @@
       172,
       61,
       152
+    ],
+    "sentences": [
+      {
+        "ja": "面白い小説を読みました。",
+        "t": {
+          "en": "I read an interesting novel.",
+          "es": "He leído una novela interesante."
+        }
+      }
     ]
   },
   "w0559": {
@@ -11899,6 +13258,15 @@
       63,
       38,
       73
+    ],
+    "sentences": [
+      {
+        "ja": "晴れた日に洗濯します。",
+        "t": {
+          "en": "I do the laundry on a sunny day.",
+          "es": "Lavo la ropa cuando hace sol."
+        }
+      }
     ]
   },
   "w0560": {
@@ -11913,6 +13281,15 @@
       81,
       128,
       162
+    ],
+    "sentences": [
+      {
+        "ja": "食事の前に手を洗おう。",
+        "t": {
+          "en": "Let's wash our hands before the meal.",
+          "es": "Lavémonos las manos antes de comer."
+        }
+      }
     ]
   },
   "w0561": {
@@ -11927,6 +13304,15 @@
       18,
       11,
       21
+    ],
+    "sentences": [
+      {
+        "ja": "線路を渡ってはいけない。",
+        "t": {
+          "en": "You must not cross the tracks.",
+          "es": "No se puede cruzar las vías."
+        }
+      }
     ]
   },
   "w0562": {
@@ -11941,6 +13327,15 @@
       65,
       7,
       42
+    ],
+    "sentences": [
+      {
+        "ja": "新幹線で大阪へ行きます。",
+        "t": {
+          "en": "I'm going to Osaka by bullet train.",
+          "es": "Voy a Osaka en tren bala."
+        }
+      }
     ]
   },
   "w0563": {
@@ -11955,6 +13350,15 @@
       52,
       6,
       49
+    ],
+    "sentences": [
+      {
+        "ja": "車の走行音がうるさい。",
+        "t": {
+          "en": "The noise of the passing cars is loud.",
+          "es": "El ruido de los coches al pasar molesta."
+        }
+      }
     ]
   },
   "w0564": {
@@ -11969,6 +13373,15 @@
       220,
       658,
       452
+    ],
+    "sentences": [
+      {
+        "ja": "毎朝公園を走ります。",
+        "t": {
+          "en": "I run in the park every morning.",
+          "es": "Corro por el parque cada mañana."
+        }
+      }
     ]
   },
   "w0565": {
@@ -11983,6 +13396,15 @@
       368,
       508,
       449
+    ],
+    "sentences": [
+      {
+        "ja": "家族と食事をしました。",
+        "t": {
+          "en": "I had a meal with my family.",
+          "es": "Comí con mi familia."
+        }
+      }
     ]
   },
   "w0566": {
@@ -11997,6 +13419,15 @@
       64,
       12,
       140
+    ],
+    "sentences": [
+      {
+        "ja": "この国には多くの民族がいる。",
+        "t": {
+          "en": "Many peoples live in this country.",
+          "es": "En este país viven muchas etnias."
+        }
+      }
     ]
   },
   "w0567": {
@@ -12011,6 +13442,15 @@
       102,
       116,
       143
+    ],
+    "sentences": [
+      {
+        "ja": "太陽が東から昇ります。",
+        "t": {
+          "en": "The sun rises in the east.",
+          "es": "El sol sale por el este."
+        }
+      }
     ]
   },
   "w0568": {
