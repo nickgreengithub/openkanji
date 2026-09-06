@@ -344,10 +344,6 @@ function loadKanjiAndLangs() {
     exJa[id] = w.sentences.map((s) => s.ja);
   }
 
-  // Coverage shares by word id, only for words some corpus knows.
-  const cov = {};
-  for (const [id, w] of Object.entries(words)) if (w.cov) cov[id] = w.cov;
-
   // Interface strings by language: { EN: { key: text }, ES: { ... } }.
   const uiT = {};
   for (const c of complete) {
@@ -356,7 +352,7 @@ function loadKanjiAndLangs() {
     uiT[c.toUpperCase()] = t;
   }
 
-  return { data: flatten(kanji, words, DEFAULT_LANG), exT, exJa, cov, i18n, uiT, langs, available, partial, coverage, fields, deckOrder,
+  return { data: flatten(kanji, words, DEFAULT_LANG), exT, exJa, i18n, uiT, langs, available, partial, coverage, fields, deckOrder,
     stories: buildStories(stories, words, complete) };
 }
 
@@ -392,7 +388,7 @@ function build() {
     };
   }
 
-  const { data, exT, exJa, cov, i18n, uiT, langs, available, partial, coverage, fields, deckOrder, stories } = loadKanjiAndLangs();
+  const { data, exT, exJa, i18n, uiT, langs, available, partial, coverage, fields, deckOrder, stories } = loadKanjiAndLangs();
 
   let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
   const tokens = {
@@ -412,7 +408,6 @@ function build() {
     __KANJI_I18N__: JSON.stringify(i18n),
     __EX_TRANSLATIONS__: JSON.stringify(exT),
     __EX_JA__: JSON.stringify(exJa),
-    __COV__: JSON.stringify(cov),
     __UI__: JSON.stringify(uiT),
     // code, display name, kanji label, and whether the language is complete.
     __LANGS__: JSON.stringify(

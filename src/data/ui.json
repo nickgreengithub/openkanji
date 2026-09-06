@@ -667,10 +667,6 @@
     "en": "practised {n}d ago",
     "es": "practicado hace {n}d"
   },
-  "media": {
-    "en": "Media",
-    "es": "Medios"
-  },
   "tier_1": {
     "en": "Beginner",
     "es": "Principiante"
@@ -783,14 +779,6 @@
     "en": "Books & news",
     "es": "Libros y noticias"
   },
-  "coverage_note": {
-    "en": "Share of everyday words you would recognise, grammar aside",
-    "es": "Parte de las palabras cotidianas que reconocerías, gramática aparte"
-  },
-  "now_deck": {
-    "en": "{a}% now · {b}% at 2,000 words",
-    "es": "{a}% ahora · {b}% con 2000 palabras"
-  },
   "which_word": {
     "en": "Which word means…",
     "es": "¿Qué palabra significa…?"
@@ -798,10 +786,6 @@
   "write_title": {
     "en": "Write",
     "es": "Escribir"
-  },
-  "with_deck": {
-    "en": "{b}% at 2,000 words",
-    "es": "{b}% con 2000 palabras"
   },
   "words_learned": {
     "en": "{d} of {n} words",

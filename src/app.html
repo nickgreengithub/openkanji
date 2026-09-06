@@ -562,7 +562,7 @@ a:hover{color:var(--text-accent-hover)}
 @keyframes ok-sheet-up{from{transform:translateY(100%)}to{transform:none}}
 
 /* Map: rings, one honest axis */
-.ok-rings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+.ok-rings{display:grid;grid-template-columns:1fr;gap:.75rem}
 .ok-ring{display:flex;align-items:center;gap:1.1rem;padding:1.1rem 1.25rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
 .ok-ring svg{flex:0 0 auto;transform:rotate(-90deg)}
 .ok-ring-c{stroke:var(--ok-acc);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
@@ -643,8 +643,8 @@ a:hover{color:var(--text-accent-hover)}
 .ok-w-input:focus-within{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
 .ok-w-send{flex:0 0 auto;width:3rem;height:3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 140ms ease,color 140ms ease}
 @media (max-width:640px){
-  .ok-rings{grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem}
-  .ok-ring{flex-direction:column;align-items:flex-start;gap:.5rem;padding:.8rem .85rem}
+  .ok-rings{gap:.55rem}
+  .ok-ring{gap:.9rem;padding:.85rem .9rem}
   .ok-ring svg{width:46px;height:46px}
   .ok-ring-lab{font-size:.875rem;letter-spacing:.05em}
   .ok-ring-big{font-size:1.375rem}
@@ -1030,7 +1030,7 @@ html[data-ok-ready] #ok-boot{display:none}
       </header>
       <section class="ok-wrap">
         <div class="ok-overall">
-          <div class="ok-row"><span class="ok-h2 ok-ja" title="{{ t_coverage_note }}">{{ ja_your_progress }} <span class="ok-h2-own">{{ t_your_progress }}</span></span></div>
+          <div class="ok-row"><span class="ok-h2 ok-ja">{{ ja_your_progress }} <span class="ok-h2-own">{{ t_your_progress }}</span></span></div>
           <div class="ok-rings">
             <sc-for list="{{ rings }}" as="rg" hint-placeholder-count="4">
               <div class="ok-ring" title="{{ rg.title }}">
@@ -1364,17 +1364,8 @@ const langName = () => (LANGS.find(l => l[0] === CURRENT_LANG) || LANGS[0])[1];
 const EX_T = __EX_TRANSLATIONS__;
 // Example sentences by word id: { w0001: ["..."] }. The card shows the first.
 const EX_JA = __EX_JA__;
-// Each word's share of the running content words of three domains, in parts
-// per million: [tv & film, anime & manga, books & news]. Summed over what the
-// learner knows, that is the coverage bar; summed over a deck, its ceiling.
-const COV = __COV__;
 const SURF = {};
 DATA.forEach(k => k.g.forEach(g => g.w.forEach(w => { SURF[w[3]] = w[0]; })));
-// cov[] is [tv, manga, news] in ppm of running words. A word's media figure
-// is the mean of the three -- the ppm it would have in a corpus that is equal
-// parts television, manga and print, which is the mixture the three rings
-// were asking the reader to average in their head.
-const covMedia = (c) => (c[0] + c[1] + c[2]) / 3;
 // Four quarters filling the circle, clockwise from the top. Unlit ones are
 // drawn too, in a pale fill, so the control is always a whole disc and the
 // lines that divide it are always there to be counted.
@@ -1398,8 +1389,7 @@ const okPiePath = (lvl) => {
 // them every session is free reading practice, and the tooltip is the
 // safety net for anyone who does not know them yet.
 const JA_LABEL = {
-  your_progress: "学習状況", all_sets: "セット一覧", deck: "学習ずみ",
-  media: "メディア"
+  your_progress: "学習状況", all_sets: "セット一覧", deck: "学習ずみ"
 };
 const TJ = (key) => JA_LABEL[key] || T(key);
 // nth translation of word `id` in the current language, falling back to the
@@ -4544,31 +4534,11 @@ class Component extends DCLogic {
           rings: (() => {
             const C = 2 * Math.PI * 25;
             const dash = (pctv) => (C * Math.max(0, Math.min(100, pctv)) / 100).toFixed(1) + " " + C.toFixed(1);
-            // Counted per surface form, so a word spelled one way is worth
-            // its ppm once however many entries carry it.
-            const rows = (() => {
-              const seen = {};
-              let now = 0, ceil = 0;
-              const add = (id, learned) => {
-                const c = COV[id]; if (!c) return;
-                const s = SURF[id] || id; if (seen[s]) return; seen[s] = 1;
-                const v = covMedia(c);
-                ceil += v; if (learned) now += v;
-              };
-              Object.keys(st.mastered || {}).forEach(id => { if (st.mastered[id]) add(id, true); });
-              deckWords().forEach(e => { if (!st.mastered[e.w[3]]) add(e.w[3], false); });
-              return { now, ceil };
-            })();
-            const pc = (ppm) => { const v = ppm / 1e4; return v >= 10 ? String(Math.round(v)) : v.toFixed(1).replace(/\.0$/, ""); };
             const deckP = totalN ? totalDone / totalN * 100 : 0;
             return [{
               label: TJ("deck"), labelOwn: T("deck"), big: Math.round(deckP) + "%", sub: T("words_learned", { d: totalDone, n: totalN }),
               nowDash: dash(deckP), ceilDash: dash(100),
               title: T("deck") + " — " + T("sets_learned", { d: totalDone, n: totalN })
-            }, {
-              label: TJ("media"), labelOwn: T("media"), big: pc(rows.now) + "%", sub: T("with_deck", { b: pc(rows.ceil) }),
-              nowDash: dash(rows.now / 1e4), ceilDash: dash(rows.ceil / 1e4),
-              title: T("media") + ": " + T("now_deck", { a: pc(rows.now), b: pc(rows.ceil) }) + ". " + T("coverage_note")
             }];
           })(),
           pVeilOut: (st.gameClosing || st.cardsClosing) ? "ok-veil-out" : "",
@@ -4580,7 +4550,6 @@ class Component extends DCLogic {
           wBack: () => { if (this.state.writeFromStudy) this.setState({ dlgSeamless: true, write: false, writeClosing: false, writeFromStudy: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); else this.closeWrite(); },
           t_settings: T("settings"), t_close: T("close"),
           ja_your_progress: TJ("your_progress"), ja_all_sets: TJ("all_sets"),
-          yourProgressTitle: T("your_progress") + " — " + T("coverage_note"),
           jaSeg: st.lang === "ja" ? segOn : segOff,
           enSeg: st.lang !== "ja" ? segOn : segOff,
           // completion: the set's own next step takes the primary slot
