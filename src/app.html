@@ -1864,6 +1864,26 @@ let _okUtter = [];
 let _okPump = null;
 // Why the last attempt made no sound, in the engine's own words.
 let okSpeakWhy = "";
+// Bluetooth output sleeps between sounds and takes a moment to wake. A word
+// is half a second of audio, so on AirPods the whole utterance can land
+// inside that gap: the engine reports it spoke, the headphones light up, and
+// nothing is heard. A scrap of silence through the ordinary audio path wakes
+// the device first, so the voice arrives after it is listening.
+let _okAudio = null;
+const okWakeOutput = () => {
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    if (!_okAudio) _okAudio = new AC();
+    if (_okAudio.state === "suspended") _okAudio.resume();
+    const src = _okAudio.createBufferSource();
+    src.buffer = _okAudio.createBuffer(1, Math.ceil(_okAudio.sampleRate * 0.25), _okAudio.sampleRate);
+    const gain = _okAudio.createGain();
+    gain.gain.value = 0.0001;
+    src.connect(gain).connect(_okAudio.destination);
+    src.start();
+  } catch (e) {}
+};
 // -> a promise that settles when the last utterance ends (or fails), with
 //    `false` when the engine never made a sound
 const okSpeak = (parts) => new Promise((resolve) => {
@@ -1880,9 +1900,12 @@ const okSpeak = (parts) => new Promise((resolve) => {
     done = true; stopPump(); _okUtter = [];
     resolve(ok !== false && started);
   };
+  let spokeAt = 0;
   const queue = () => {
     // A paused engine silently swallows everything queued after it.
     try { if (synth.paused) synth.resume(); } catch (e) {}
+    okWakeOutput();
+    spokeAt = Date.now();
     _okUtter = list.map((p) => {
       const u = new SpeechSynthesisUtterance(p.text);
       u.lang = "ja-JP";
@@ -1890,7 +1913,16 @@ const okSpeak = (parts) => new Promise((resolve) => {
       u.rate = p.rate || 0.9;
       u.pitch = 1;
       u.onstart = () => { started = true; };
-      u.onend = () => { started = true; if (--left <= 0) finish(true); };
+      u.onend = () => {
+        started = true;
+        if (--left > 0) return;
+        // A word at this rate is half a second of speech. Finishing the whole
+        // queue in a fraction of that means the audio never reached the
+        // speakers, whatever the engine says.
+        const tookMs = Date.now() - spokeAt;
+        if (tookMs < 250) { okSpeakWhy = "ended after " + tookMs + "ms, too fast to have been heard"; return finish(false); }
+        finish(true);
+      };
       // The engine says why it gave up. Keep it: a silent button with no
       // reason is what made this so hard to place.
       u.onerror = (e) => {
