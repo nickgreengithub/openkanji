@@ -1,0 +1,371 @@
+{
+  "0": {
+    "title": {
+      "ja": "月の約束",
+      "en": "The Promise and the Moon",
+      "es": "La promesa y la luna"
+    },
+    "pages": [
+      [
+        {
+          "ja": "毎晩、一人の男が家を出て、空の月を見ます。",
+          "t": {
+            "en": "Every night, a man leaves his house and looks at the moon.",
+            "es": "Cada noche, un hombre sale de casa y mira la luna."
+          }
+        },
+        {
+          "ja": "「あの人は何を待っているのだろう」と、近所の子どもは思いました。",
+          "t": {
+            "en": "\"What is that person waiting for?\" wondered a child from the neighbourhood.",
+            "es": "«¿Qué estará esperando ese hombre?», pensó un niño del barrio."
+          }
+        },
+        {
+          "ja": "ある夜、子どもは自分で聞いてみる事にしました。",
+          "t": {
+            "en": "One night, the child decided to ask for himself.",
+            "es": "Una noche, el niño decidió preguntárselo él mismo."
+          }
+        },
+        {
+          "ja": "「どうして毎晩ここに来るのですか。」",
+          "t": {
+            "en": "\"Why do you come here every night?\"",
+            "es": "«¿Por qué viene usted aquí todas las noches?»"
+          }
+        },
+        {
+          "ja": "男は少し考えてから、静かに言いました。",
+          "t": {
+            "en": "The man thought for a moment, then answered quietly.",
+            "es": "El hombre pensó un momento y respondió en voz baja."
+          }
+        }
+      ],
+      [
+        {
+          "ja": "「私が若い時、ここで友達と約束をしたのです。」",
+          "t": {
+            "en": "\"When I was young, I made a promise here with a friend.\"",
+            "es": "«Cuando era joven, hice aquí una promesa con un amigo»."
+          }
+        },
+        {
+          "ja": "「十年後の同じ月の夜に、また会おう、と。」",
+          "t": {
+            "en": "\"On a night with the same moon, ten years later, we would meet again.\"",
+            "es": "«Que nos veríamos otra vez diez años después, con esta misma luna»."
+          }
+        },
+        {
+          "ja": "「でもその友達は遠くへ行ったまま、もう来ません。」",
+          "t": {
+            "en": "\"But that friend went far away and never came back.\"",
+            "es": "«Pero aquel amigo se fue lejos y ya no volvió»."
+          }
+        },
+        {
+          "ja": "「今も待っているのですか」と子どもは聞きました。",
+          "t": {
+            "en": "\"Are you still waiting even now?\" asked the child.",
+            "es": "«¿Y todavía sigue esperando?», preguntó el niño."
+          }
+        },
+        {
+          "ja": "「いいえ。ただ、良い思い出を持っていたいのです。」",
+          "t": {
+            "en": "\"No. I would simply like to keep a good memory.\"",
+            "es": "«No. Solo quiero conservar un buen recuerdo»."
+          }
+        }
+      ],
+      [
+        {
+          "ja": "男は空を見て、それから子どもの顔を見ました。",
+          "t": {
+            "en": "The man looked at the sky, and then at the child's face.",
+            "es": "El hombre miró al cielo y después al rostro del niño."
+          }
+        },
+        {
+          "ja": "「人は大切な事を、心の中にずっと持っています。」",
+          "t": {
+            "en": "\"People carry the things that matter deep inside them.\"",
+            "es": "«Las personas guardan lo importante muy dentro de sí»."
+          }
+        },
+        {
+          "ja": "「それを知っている人は、幸せだと思いますよ。」",
+          "t": {
+            "en": "\"And someone who knows that is fortunate, I think.\"",
+            "es": "«Y quien lo sabe es afortunado, creo yo»."
+          }
+        },
+        {
+          "ja": "子どもは何も言わずに、男のとなりに座りました。",
+          "t": {
+            "en": "Without saying anything, the child sat down beside the man.",
+            "es": "Sin decir nada, el niño se sentó junto al hombre."
+          }
+        },
+        {
+          "ja": "二人は今、同じ月を見ています。",
+          "t": {
+            "en": "The two of them are looking at the same moon now.",
+            "es": "Los dos miran ahora la misma luna."
+          }
+        }
+      ]
+    ],
+    "words": {
+      "見ます": {
+        "of": "見る"
+      },
+      "思いました": {
+        "of": "思う"
+      },
+      "聞いて": {
+        "of": "聞く"
+      },
+      "来る": {
+        "of": "来る"
+      },
+      "考えて": {
+        "of": "考える"
+      },
+      "言いました": {
+        "of": "言う"
+      },
+      "行った": {
+        "of": "行く"
+      },
+      "聞きました": {
+        "of": "聞く"
+      },
+      "持って": {
+        "of": "持つ"
+      },
+      "見て": {
+        "of": "見る"
+      },
+      "見ました": {
+        "of": "見る"
+      },
+      "知って": {
+        "of": "知る"
+      },
+      "言わずに": {
+        "of": "言う"
+      },
+      "毎晩": {
+        "r": "まいばん",
+        "en": "every night",
+        "es": "cada noche"
+      },
+      "一人": {
+        "r": "ひとり",
+        "en": "one person, alone",
+        "es": "una persona, solo"
+      },
+      "男": {
+        "r": "おとこ",
+        "en": "man",
+        "es": "hombre"
+      },
+      "家": {
+        "r": "いえ",
+        "en": "house, home",
+        "es": "casa"
+      },
+      "出て": {
+        "of": "出る"
+      },
+      "空": {
+        "r": "そら",
+        "en": "sky",
+        "es": "cielo"
+      },
+      "何": {
+        "r": "なに",
+        "en": "what",
+        "es": "qué"
+      },
+      "待って": {
+        "r": "まって",
+        "en": "waiting",
+        "es": "esperando"
+      },
+      "近所": {
+        "r": "きんじょ",
+        "en": "neighbourhood",
+        "es": "vecindario"
+      },
+      "子ども": {
+        "r": "こども",
+        "en": "child",
+        "es": "niño"
+      },
+      "ある": {
+        "r": "ある",
+        "en": "a certain, one",
+        "es": "cierto, un"
+      },
+      "夜": {
+        "r": "よる",
+        "en": "night",
+        "es": "noche"
+      },
+      "どうして": {
+        "r": "どうして",
+        "en": "why",
+        "es": "por qué"
+      },
+      "ここ": {
+        "r": "ここ",
+        "en": "here",
+        "es": "aquí"
+      },
+      "少し": {
+        "r": "すこし",
+        "en": "a little",
+        "es": "un poco"
+      },
+      "静かに": {
+        "r": "しずかに",
+        "en": "quietly",
+        "es": "en voz baja"
+      },
+      "若い": {
+        "r": "わかい",
+        "en": "young",
+        "es": "joven"
+      },
+      "友達": {
+        "r": "ともだち",
+        "en": "friend",
+        "es": "amigo"
+      },
+      "約束": {
+        "r": "やくそく",
+        "en": "promise",
+        "es": "promesa"
+      },
+      "同じ": {
+        "r": "おなじ",
+        "en": "the same",
+        "es": "el mismo"
+      },
+      "また": {
+        "r": "また",
+        "en": "again",
+        "es": "otra vez"
+      },
+      "会おう": {
+        "r": "あおう",
+        "en": "let's meet",
+        "es": "veámonos"
+      },
+      "でも": {
+        "r": "でも",
+        "en": "but",
+        "es": "pero"
+      },
+      "遠く": {
+        "r": "とおく",
+        "en": "far away",
+        "es": "lejos"
+      },
+      "まま": {
+        "r": "まま",
+        "en": "and stayed that way",
+        "es": "y así se quedó"
+      },
+      "もう": {
+        "r": "もう",
+        "en": "no longer, already",
+        "es": "ya"
+      },
+      "いいえ": {
+        "r": "いいえ",
+        "en": "no",
+        "es": "no"
+      },
+      "ただ": {
+        "r": "ただ",
+        "en": "simply, only",
+        "es": "solo"
+      },
+      "思い出": {
+        "r": "おもいで",
+        "en": "memory",
+        "es": "recuerdo"
+      },
+      "それから": {
+        "r": "それから",
+        "en": "and then",
+        "es": "y luego"
+      },
+      "顔": {
+        "r": "かお",
+        "en": "face",
+        "es": "rostro"
+      },
+      "大切": {
+        "r": "たいせつ",
+        "en": "important, precious",
+        "es": "importante"
+      },
+      "心": {
+        "r": "こころ",
+        "en": "heart, mind",
+        "es": "corazón"
+      },
+      "ずっと": {
+        "r": "ずっと",
+        "en": "all along, the whole time",
+        "es": "todo el tiempo"
+      },
+      "それ": {
+        "r": "それ",
+        "en": "that",
+        "es": "eso"
+      },
+      "幸せ": {
+        "r": "しあわせ",
+        "en": "happy, fortunate",
+        "es": "feliz, afortunado"
+      },
+      "何も": {
+        "r": "なにも",
+        "en": "nothing at all",
+        "es": "nada"
+      },
+      "となり": {
+        "r": "となり",
+        "en": "next to, beside",
+        "es": "al lado de"
+      },
+      "座りました": {
+        "r": "すわりました",
+        "en": "sat down",
+        "es": "se sentó"
+      },
+      "二人": {
+        "r": "ふたり",
+        "en": "the two of them",
+        "es": "los dos"
+      },
+      "十": {
+        "r": "じゅう",
+        "en": "ten",
+        "es": "diez"
+      },
+      "後": {
+        "r": "ご",
+        "en": "after, later",
+        "es": "después"
+      }
+    }
+  }
+}

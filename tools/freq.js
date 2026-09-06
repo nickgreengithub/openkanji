@@ -65,6 +65,16 @@ decks.forEach((spec) => {
   }
 });
 
+// The automatic rule below catches a figure shared between spellings of one
+// reading. It cannot see a figure shared between different readings that
+// sound alike: 揚げ (deep-fried food) carries 1,011ppm because あげ also
+// counts 上げる, 挙げる and the 〜てあげる that ends a thousand sentences, which
+// put a niche food noun ahead of 水 in the first set of the ladder. Caught by
+// eye, listed here, scored from its level like the rest.
+const MISREAD = new Set([
+  "w4685", // 揚げ あげ -- the figure is 上げる / 挙げる / 〜てあげる
+]);
+
 // Written in kana in practice, by word id so a second reading of the same
 // spelling is judged separately -- 眼 as め is ordinary, 眼 as まなこ is not.
 const KANA = new Set([
@@ -119,7 +129,11 @@ const scored = [];
 for (const w of Object.values(words)) {
   let ppm = ppmOf(w);
   let flags = {};
-  if (KANA.has(w.id)) {
+  if (MISREAD.has(w.id)) {
+    ppm = null; // the figure belongs to a word that only sounds like this one
+    flags.freqVar = true;
+    varied++;
+  } else if (KANA.has(w.id)) {
     ppm = null; // the figure belongs to the kana form, not to this spelling
     flags.freqKana = true;
     kana++;
