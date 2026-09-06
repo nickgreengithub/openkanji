@@ -1,0 +1,180 @@
+{
+  "0": {
+    "title": { "ja": "音の味", "en": "The Taste of Sound", "es": "El sabor del sonido" },
+    "pages": [
+      [
+        {
+          "ja": "田中先生は不思議な学者です。",
+          "t": {
+            "en": "Professor Tanaka is a strange scholar.",
+            "es": "El profesor Tanaka es un erudito peculiar."
+          }
+        },
+        {
+          "ja": "「すべての音には味がある」と、先生はいつも真剣に言います。",
+          "t": {
+            "en": "\"Every sound has a taste,\" he always says, completely serious.",
+            "es": "«Todo sonido tiene un sabor», dice siempre muy serio."
+          }
+        },
+        {
+          "ja": "奥さんは笑いますが、主人の話を止めません。",
+          "t": {
+            "en": "His wife laughs, but she never stops her husband talking.",
+            "es": "Su mujer se ríe, pero no le corta la charla a su marido."
+          }
+        },
+        {
+          "ja": "明日、先生は自転車に乗って、大学の研究センターへ向かいます。",
+          "t": {
+            "en": "Tomorrow the professor will ride his bicycle to the university research centre.",
+            "es": "Mañana el profesor irá en bicicleta al centro de investigación de la universidad."
+          }
+        },
+        {
+          "ja": "その古い建物の中で、世界で初めての実験をするからです。",
+          "t": {
+            "en": "Because inside that old building he will run the first experiment in the world.",
+            "es": "Porque dentro de ese viejo edificio hará el primer experimento del mundo."
+          }
+        }
+      ],
+      [
+        {
+          "ja": "田中先生が実験を始めました。",
+          "t": {
+            "en": "Professor Tanaka began the experiment.",
+            "es": "El profesor Tanaka empezó el experimento."
+          }
+        },
+        {
+          "ja": "大きなグラスに、水を静かに注ぎます。",
+          "t": {
+            "en": "He quietly pours water into a large glass.",
+            "es": "Vierte agua despacio en un vaso grande."
+          }
+        },
+        {
+          "ja": "「よく聞いてください」と、先生は助手に説明します。",
+          "t": {
+            "en": "\"Listen carefully,\" he explains to his assistant.",
+            "es": "«Escuche con atención», le explica a su ayudante."
+          }
+        },
+        {
+          "ja": "コップの中で小さな泡が動くたびに、かすかな音が生まれます。",
+          "t": {
+            "en": "Every time a tiny bubble moves inside the cup, a faint sound is born.",
+            "es": "Cada vez que una burbuja diminuta se mueve en el vaso, nace un sonido tenue."
+          }
+        },
+        {
+          "ja": "「ほら、この音の意味が分かりますか。これは甘い音です」",
+          "t": {
+            "en": "\"There — do you understand the meaning of this sound? This one is sweet.\"",
+            "es": "«¿Lo ve? ¿Entiende el significado de este sonido? Este es dulce»."
+          }
+        },
+        {
+          "ja": "しかし助手は間違った道具を使ってしまい、床に水をこぼしました。",
+          "t": {
+            "en": "The assistant, though, used the wrong tool and spilled water on the floor.",
+            "es": "Pero el ayudante usó la herramienta equivocada y derramó el agua por el suelo."
+          }
+        }
+      ],
+      [
+        {
+          "ja": "先生は重い装置を運ぶ運動のせいで、腰を痛めてしまいました。",
+          "t": {
+            "en": "From the exercise of carrying the heavy equipment, the professor hurt his back.",
+            "es": "Del esfuerzo de cargar el pesado aparato, el profesor se lastimó la espalda."
+          }
+        },
+        {
+          "ja": "それでも、笑顔で「これは重要な発見だ」と言いました。",
+          "t": {
+            "en": "Even so, he smiled and said, \"This is an important discovery.\"",
+            "es": "Aun así, sonrió y dijo: «Este es un descubrimiento importante»."
+          }
+        },
+        {
+          "ja": "実は、先生の研究は主に、音はとても楽しいものだと教えるためのものです。",
+          "t": {
+            "en": "In truth, his research is mainly there to teach that sound is a delightful thing.",
+            "es": "En realidad, su investigación sirve sobre todo para enseñar que el sonido es algo muy divertido."
+          }
+        },
+        {
+          "ja": "その日から、家族はコーヒーを注ぐ音を聞くたびに、少しだけ甘い気分になりました。",
+          "t": {
+            "en": "From that day on, whenever the family heard coffee pouring, they felt a little sweeter.",
+            "es": "Desde ese día, cada vez que la familia oía servir el café, se sentía un poco más dulce."
+          }
+        }
+      ]
+    ],
+    "words": {
+      "注ぎます": { "of": "注ぐ" },
+      "使って": { "of": "使う" },
+      "始めました": { "of": "始める" },
+
+      "田中": { "r": "たなか", "en": "Tanaka (a surname)", "es": "Tanaka (apellido)" },
+      "先生": { "r": "せんせい", "en": "teacher, professor", "es": "profesor, maestro" },
+      "不思議": { "r": "ふしぎ", "en": "strange, curious", "es": "extraño, curioso" },
+      "学者": { "r": "がくしゃ", "en": "scholar", "es": "erudito" },
+      "すべて": { "r": "すべて", "en": "all, every", "es": "todo, cada" },
+      "いつも": { "r": "いつも", "en": "always", "es": "siempre" },
+      "真剣": { "r": "しんけん", "en": "serious, in earnest", "es": "serio, en serio" },
+      "言います": { "r": "いいます", "en": "says", "es": "dice" },
+      "奥さん": { "r": "おくさん", "en": "wife", "es": "esposa" },
+      "笑います": { "r": "わらいます", "en": "laughs", "es": "se ríe" },
+      "話": { "r": "はなし", "en": "talk, story", "es": "charla, historia" },
+      "止めません": { "r": "とめません", "en": "does not stop", "es": "no detiene" },
+      "乗って": { "r": "のって", "en": "riding, getting on", "es": "montando, subiendo" },
+      "大学": { "r": "だいがく", "en": "university", "es": "universidad" },
+      "センター": { "r": "せんたー", "en": "centre", "es": "centro" },
+      "向かいます": { "r": "むかいます", "en": "heads for", "es": "se dirige a" },
+      "古い": { "r": "ふるい", "en": "old", "es": "viejo" },
+      "初めて": { "r": "はじめて", "en": "for the first time", "es": "por primera vez" },
+      "実験": { "r": "じっけん", "en": "experiment", "es": "experimento" },
+      "大きな": { "r": "おおきな", "en": "big, large", "es": "grande" },
+      "グラス": { "r": "ぐらす", "en": "glass (drinking)", "es": "vaso" },
+      "水": { "r": "みず", "en": "water", "es": "agua" },
+      "静かに": { "r": "しずかに", "en": "quietly", "es": "en silencio" },
+      "聞いて": { "r": "きいて", "en": "listen", "es": "escucha" },
+      "助手": { "r": "じょしゅ", "en": "assistant", "es": "ayudante" },
+      "コップ": { "r": "こっぷ", "en": "cup, tumbler", "es": "vaso" },
+      "小さな": { "r": "ちいさな", "en": "small, tiny", "es": "pequeño" },
+      "泡": { "r": "あわ", "en": "bubble", "es": "burbuja" },
+      "たびに": { "r": "たびに", "en": "each time that", "es": "cada vez que" },
+      "かすかな": { "r": "かすかな", "en": "faint, slight", "es": "tenue, leve" },
+      "生まれます": { "r": "うまれます", "en": "is born, comes into being", "es": "nace, surge" },
+      "ほら": { "r": "ほら", "en": "there!, look!", "es": "¡mira!, ¿lo ves?" },
+      "分かります": { "r": "わかります", "en": "understand", "es": "entiende" },
+      "甘い": { "r": "あまい", "en": "sweet", "es": "dulce" },
+      "しかし": { "r": "しかし", "en": "however, but", "es": "sin embargo" },
+      "間違った": { "r": "まちがった", "en": "wrong, mistaken", "es": "equivocado" },
+      "道具": { "r": "どうぐ", "en": "tool", "es": "herramienta" },
+      "床": { "r": "ゆか", "en": "floor", "es": "suelo" },
+      "こぼしました": { "r": "こぼしました", "en": "spilled", "es": "derramó" },
+      "装置": { "r": "そうち", "en": "equipment, device", "es": "aparato, dispositivo" },
+      "運ぶ": { "r": "はこぶ", "en": "to carry", "es": "llevar, cargar" },
+      "せいで": { "r": "せいで", "en": "because of, owing to", "es": "a causa de" },
+      "腰": { "r": "こし", "en": "lower back, waist", "es": "espalda baja, cintura" },
+      "痛めて": { "r": "いためて", "en": "hurting, injuring", "es": "lastimando" },
+      "それでも": { "r": "それでも", "en": "even so", "es": "aun así" },
+      "笑顔": { "r": "えがお", "en": "smile", "es": "sonrisa" },
+      "発見": { "r": "はっけん", "en": "discovery", "es": "descubrimiento" },
+      "言いました": { "r": "いいました", "en": "said", "es": "dijo" },
+      "実は": { "r": "じつは", "en": "in fact, actually", "es": "en realidad" },
+      "とても": { "r": "とても", "en": "very", "es": "muy" },
+      "ため": { "r": "ため", "en": "for the sake of, in order to", "es": "para, con el fin de" },
+      "家族": { "r": "かぞく", "en": "family", "es": "familia" },
+      "コーヒー": { "r": "こーひー", "en": "coffee", "es": "café" },
+      "聞く": { "r": "きく", "en": "to hear, to listen", "es": "oír, escuchar" },
+      "少し": { "r": "すこし", "en": "a little", "es": "un poco" },
+      "気分": { "r": "きぶん", "en": "feeling, mood", "es": "ánimo, humor" }
+    }
+  }
+}

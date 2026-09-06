@@ -77,6 +77,7 @@ async function main() {
   }
   const ladder = readJson("src/data/ladder.json");
   const words = readJson("src/data/words.json");
+  const stories = readJson("src/data/stories.json");
   fs.mkdirSync(OUT, { recursive: true });
 
   const jobs = [];
@@ -87,6 +88,16 @@ async function main() {
     if (reading) jobs.push({ file: id + ".mp3", text: reading });
     const s = w.sentences && w.sentences[0];
     if (s && s.ja) jobs.push({ file: id + ".s.mp3", text: s.ja });
+  }
+
+  // A story is read line by line, so the page can light the line being read.
+  // The ids match what the build hands the page (tools/build.js buildStories).
+  for (const [set, story] of Object.entries(stories)) {
+    if (parseInt(set, 10) * 20 >= WORDS) continue; // its set is not in this run
+    let n = 0;
+    for (const page of story.pages) for (const line of page) {
+      jobs.push({ file: "story" + set + "-" + ++n + ".mp3", text: line.ja });
+    }
   }
 
   const todo = jobs.filter((j) => !fs.existsSync(path.join(OUT, j.file)));
@@ -116,13 +127,17 @@ async function main() {
   // optional, not the dot before it -- get that wrong and every word without
   // a sentence drops out of the manifest and its recording never plays.
   const ids = [...new Set(have.map((f) => f.replace(/\.(s\.)?mp3$/, "")))].sort();
+  // A story line is a clip of its own, not a word and not a word's sentence,
+  // so it is listed apart -- the page asks a different list for it.
+  const isStory = (id) => /^story\d+-\d+$/.test(id);
   const manifest = {
     voice: VOICE,
     rate: RATE,
-    words: ids.filter((id) => have.includes(id + ".mp3")),
+    words: ids.filter((id) => !isStory(id) && have.includes(id + ".mp3")),
     sentences: ids.filter((id) => have.includes(id + ".s.mp3")),
+    stories: ids.filter((id) => isStory(id) && have.includes(id + ".mp3")),
   };
-  const clips = manifest.words.length + manifest.sentences.length;
+  const clips = manifest.words.length + manifest.sentences.length + manifest.stories.length;
   if (clips !== have.length) {
     throw new Error("manifest lists " + clips + " clips but " + have.length + " are on disk -- " +
       "every recording must be reachable or it is dead weight");

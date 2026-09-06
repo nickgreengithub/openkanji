@@ -838,5 +838,37 @@
   "net_voice": {
     "en": "{name} is a network voice and it did not answer — install a Japanese voice on this machine",
     "es": "{name} es una voz de red y no respondió — instala una voz japonesa en este equipo"
+  },
+  "story": {
+    "en": "Story",
+    "es": "Historia"
+  },
+  "story_desc": {
+    "en": "The whole set as one tale",
+    "es": "Todo el grupo en un cuento"
+  },
+  "story_hint": {
+    "en": "Tap a line to hear it, a word for its meaning",
+    "es": "Toca una línea para oírla, una palabra para su significado"
+  },
+  "story_read": {
+    "en": "Read this page",
+    "es": "Leer esta página"
+  },
+  "story_prev": {
+    "en": "Previous page",
+    "es": "Página anterior"
+  },
+  "story_next": {
+    "en": "Next page",
+    "es": "Página siguiente"
+  },
+  "story_end": {
+    "en": "The end",
+    "es": "Fin"
+  },
+  "story_end_sub": {
+    "en": "Every word of this set was in there",
+    "es": "Todas las palabras del grupo estaban ahí"
   }
 }

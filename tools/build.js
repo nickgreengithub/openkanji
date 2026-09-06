@@ -159,6 +159,25 @@ function loadData() {
   const ui = readJson("data/ui.json");
   for (const [key, v] of Object.entries(ui)) track(v, "ui.json " + key, "text");
 
+  // Stories are translated too, and by the same rule: a language that cannot
+  // tell the story is not a complete language.
+  const stories = readJson("data/stories.json");
+  for (const [set, s] of Object.entries(stories)) {
+    const at = "stories.json " + set;
+    // `title.ja` is the story's own name in Japanese, not a translation of
+    // anything, so only the rest of it counts towards a language's coverage.
+    if (!s.title || !s.title.ja) throw new Error(at + ": needs a Japanese `title.ja`");
+    const { ja, ...titleT } = s.title;
+    track(titleT, at, "title");
+    s.pages.forEach((page, p) => page.forEach((line, i) => {
+      track(line.t, at + " page " + (p + 1) + " line " + (i + 1), "t");
+    }));
+    for (const [w, g] of Object.entries(s.words)) {
+      if (g.of) continue; // reading and meaning come from the corpus
+      track({ en: g.en, es: g.es }, at + " word " + w, "gloss");
+    }
+  }
+
   const orphans = Object.keys(words).filter((id) => !used.has(id));
   if (orphans.length) throw new Error("words.json: " + orphans.length + " word(s) referenced by no kanji: " + orphans.slice(0, 5).join(", "));
 
@@ -166,7 +185,7 @@ function loadData() {
   const partial = Object.keys(coverage).filter((c) => coverage[c] !== fields);
   if (!complete.includes(DEFAULT_LANG))
     throw new Error("default language '" + DEFAULT_LANG + "' is incomplete: " + (coverage[DEFAULT_LANG] || 0) + "/" + fields + " fields");
-  return { kanji, words, ui, complete, partial, coverage, fields, deckOrder };
+  return { kanji, words, ui, stories, complete, partial, coverage, fields, deckOrder };
 }
 
 const pick = (v, lang) => v[lang] || v[DEFAULT_LANG];
@@ -193,9 +212,106 @@ function flatten(kanji, words, lang) {
   }));
 }
 
+// A set is twenty words of the ladder, the same slice the app practises.
+const SET_WORDS = 20;
+// Only Japanese belongs in the Japanese, and "looks Japanese" is not the same
+// as "is Japanese" -- a hangul character sat unnoticed in an example sentence
+// until this list was written out (see tools/sentences.js).
+const JA_ONLY = /[぀-ゟ゠-ヿ㐀-䶿一-鿿々、。・ー！？（）「」]/;
+
+// Turns the hand-written stories into what the page renders: each line split
+// into spans, and a table of what every tappable span means.
+//
+// The split happens here rather than in the browser because it is where the
+// data can be checked. A story that quietly stopped carrying one of its set's
+// twenty words would still read perfectly well, and be worthless -- so that
+// is an error, as is a gloss written for a word the story never uses.
+function buildStories(raw, words, complete) {
+  const ladder = readJson("data/ladder.json");
+  const out = {};
+  for (const [set, s] of Object.entries(raw)) {
+    const at = "stories.json " + set;
+    if (!/^\d+$/.test(set)) throw new Error(at + ": the key is the number of the set the story belongs to");
+    const first = parseInt(set, 10) * SET_WORDS;
+    const ids = ladder.slice(first, first + SET_WORDS);
+    if (ids.length !== SET_WORDS) throw new Error(at + ": the ladder has no set " + set);
+    const targets = new Map(ids.map((id) => [words[id].w, words[id]]));
+
+    const langsOf = (v) => {
+      const t = {};
+      for (const c of complete) t[c.toUpperCase()] = pick(v, c);
+      return t;
+    };
+
+    const gloss = [];
+    const at_ = new Map();  // span as written -> its index in `gloss`
+    const carried = new Set();
+    const spanOf = (span) => {
+      if (at_.has(span)) return at_.get(span);
+      const note = (s.words || {})[span];
+      // A conjugated set word is written out as it appears and pointed back at
+      // its dictionary form, so the tip teaches 使う from 使って rather than
+      // leaving the reader to guess which word they just met.
+      const dict = note && note.of ? note.of : span;
+      const w = targets.get(dict);
+      let rec;
+      if (w) {
+        carried.add(dict);
+        rec = { w: w.w, r: w.reading, k: 1, t: langsOf(w.gloss) };
+      } else {
+        if (note && note.of) throw new Error(at + " word " + span + ": `of` names " + note.of + ", which is not one of this set's words");
+        if (!note.r) throw new Error(at + " word " + span + ": needs a reading `r`");
+        rec = { w: span, r: note.r, t: langsOf({ en: note.en, es: note.es }) };
+      }
+      at_.set(span, gloss.length);
+      gloss.push(rec);
+      return gloss.length - 1;
+    };
+
+    // Longest first, so 意味 is one word rather than 意 and the 味 of this
+    // set, and 注ぎます beats the bare 注ぐ it was written for.
+    const spans = [...new Set([...Object.keys(s.words || {}), ...targets.keys()])].sort((a, b) => b.length - a.length);
+    const longest = spans.reduce((n, x) => Math.max(n, x.length), 0);
+    const met = new Set();
+
+    let line = 0;
+    const pages = s.pages.map((page, p) => page.map((l, i) => {
+      const where = at + " page " + (p + 1) + " line " + (i + 1);
+      if (!l.ja || !l.ja.trim()) throw new Error(where + ": no Japanese");
+      const stray = [...l.ja].filter((c) => !JA_ONLY.test(c));
+      if (stray.length) throw new Error(where + ": not Japanese -- " + JSON.stringify(stray.join("")) + " in " + l.ja);
+      const parts = [];
+      let plain = "";
+      for (let c = 0; c < l.ja.length; ) {
+        let hit = "";
+        for (let n = Math.min(longest, l.ja.length - c); n > 0 && !hit; n--) {
+          const try_ = l.ja.slice(c, c + n);
+          if (spans.includes(try_)) hit = try_;
+        }
+        if (!hit) { plain += l.ja[c++]; continue; }
+        if (plain) { parts.push([plain]); plain = ""; }
+        met.add(hit);
+        parts.push([hit, spanOf(hit)]);
+        c += hit.length;
+      }
+      if (plain) parts.push([plain]);
+      return { id: "story" + set + "-" + ++line, p: parts, t: langsOf(l.t) };
+    }));
+
+    const unused = Object.keys(s.words || {}).filter((w) => !met.has(w));
+    if (unused.length) throw new Error(at + ": glossed but never used -- " + unused.join(", "));
+    const missed = [...targets.keys()].filter((w) => !carried.has(w));
+    if (missed.length) throw new Error(at + ": the story never uses " + missed.length + " of the set's words -- " + missed.join(", ") +
+      "\n  (a conjugated one is written out under `words` with `of`, e.g. \"使って\": { \"of\": \"使う\" })");
+
+    out[set] = { ja: s.title.ja, t: langsOf(s.title), g: gloss, pages: pages };
+  }
+  return out;
+}
+
 function loadKanjiAndLangs() {
   const langs = readJson("data/langs.json");
-  const { kanji, words, ui, complete, partial, coverage, fields, deckOrder } = loadData();
+  const { kanji, words, ui, stories, complete, partial, coverage, fields, deckOrder } = loadData();
 
   const known = new Set(langs.map((l) => l.code.toLowerCase()));
   for (const c of complete.concat(partial)) {
@@ -240,16 +356,17 @@ function loadKanjiAndLangs() {
     uiT[c.toUpperCase()] = t;
   }
 
-  return { data: flatten(kanji, words, DEFAULT_LANG), exT, exJa, cov, i18n, uiT, langs, available, partial, coverage, fields, deckOrder };
+  return { data: flatten(kanji, words, DEFAULT_LANG), exT, exJa, cov, i18n, uiT, langs, available, partial, coverage, fields, deckOrder,
+    stories: buildStories(stories, words, complete) };
 }
 
 // The recorded clips that shipped, if any have been made yet.
 function readVoices() {
   const man = path.join(SRC, "audio", "manifest.json");
-  if (!fs.existsSync(man)) return { words: [], sentences: [] };
+  if (!fs.existsSync(man)) return { words: [], sentences: [], stories: [] };
   try {
     const m = JSON.parse(fs.readFileSync(man, "utf8"));
-    return { words: m.words || [], sentences: m.sentences || [] };
+    return { words: m.words || [], sentences: m.sentences || [], stories: m.stories || [] };
   } catch (e) {
     throw new Error("src/audio/manifest.json: " + e.message);
   }
@@ -275,7 +392,7 @@ function build() {
     };
   }
 
-  const { data, exT, exJa, cov, i18n, uiT, langs, available, partial, coverage, fields, deckOrder } = loadKanjiAndLangs();
+  const { data, exT, exJa, cov, i18n, uiT, langs, available, partial, coverage, fields, deckOrder, stories } = loadKanjiAndLangs();
 
   let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
   const tokens = {
@@ -287,6 +404,9 @@ function build() {
     // [name, ui.json tip key, kanji count] in rail order, so adding a deck or
     // reordering the rail is a decks.json edit and nothing else.
     __DECKS__: JSON.stringify(deckOrder),
+    // A story per set, already split into the spans the reader can tap
+    // (tools/build.js buildStories). Sets without one simply have no key.
+    __STORIES__: JSON.stringify(stories),
     // Complete non-default languages ride along so the picker can switch
     // without a refetch. Incomplete ones are omitted entirely.
     __KANJI_I18N__: JSON.stringify(i18n),
@@ -304,6 +424,8 @@ function build() {
     template = template.replace(token, () => value);
   }
   console.log("  sentences: " + Object.keys(exJa).length + " of " + Object.keys(exT).length + " translated words");
+  const storyLines = Object.values(stories).reduce((n, s) => n + s.pages.reduce((m, p) => m + p.length, 0), 0);
+  console.log("  stories: " + Object.keys(stories).length + " (" + storyLines + " lines)");
   console.log(
     "  data: " + data.length + " kanji across " + new Set(data.map((k) => k.deck)).size +
     " decks | languages: " + available.join(", ") +

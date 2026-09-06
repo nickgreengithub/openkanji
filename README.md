@@ -126,6 +126,37 @@ Sentences live in `words.json` as `sentences: [{ ja, t: { en, es } }]` and are
 keyed by word id, so a word can be corrected without invalidating anyone's
 progress. A word without a sentence shows its meaning and nothing below it.
 
+## The story of a set
+
+Twenty words drilled one at a time are twenty things to remember. The same
+twenty inside a story are one thing, and the story is what pulls them back out
+later. So a set can carry one, in `src/data/stories.json`:
+
+```json
+{ "0": {
+    "title": { "ja": "音の味", "en": "The Taste of Sound", "es": "El sabor del sonido" },
+    "pages": [ [ { "ja": "田中先生は不思議な学者です。",
+                   "t": { "en": "Professor Tanaka is a strange scholar.",
+                          "es": "El profesor Tanaka es un erudito peculiar." } } ] ],
+    "words": { "不思議": { "r": "ふしぎ", "en": "strange, curious", "es": "extraño, curioso" },
+               "使って":  { "of": "使う" } } } }
+```
+
+A story is written to read like a story, not to stay inside the twenty words a
+learner has -- at set 1 that vocabulary is nearly empty, and prose written out
+of it comes out as a list wearing a plot. Anything past the set is glossed
+instead, under `words`, keyed by the span **as it appears in the line** so no
+stemming is needed to recognise it. A conjugated form of one of the set's own
+words points home with `of`, and the reader who taps 使って is told about 使う.
+
+Each translation belongs to one sentence rather than a paragraph, so the eye
+can fall to the line under the one it is reading and come back.
+
+The build (`tools/build.js`, `buildStories`) splits every line into spans
+against that table and refuses the story if a gloss is never used, if a line
+holds anything that is not Japanese, or -- the one that matters -- if the story
+has quietly stopped carrying one of its set's twenty words.
+
 ## How a set of twenty is chosen
 
 A set should be twenty unrelated words, not twenty ways of saying the same
@@ -205,6 +236,7 @@ src/data/decks.json          deck load order
 src/data/langs.json          language registry
 src/data/kanji/<deck>.json   the kanji, with every translation inline
 src/data/ui.json             interface strings, {key: {lang: text}}
+src/data/stories.json        a story per set, keyed by set number
 ```
 
 Each record holds everything about one kanji, translations included:
@@ -261,7 +293,8 @@ alone -- and each example sentence as written, where context settles the
 reading by itself. Clips land in `src/audio/<word id>.mp3` (and `.s.mp3` for
 the sentence), the build copies them to `dist/audio/` and embeds the list of
 what exists so a word without a clip never waits on a 404, and
-`src/data/ladder.json` fixes which words come first.
+`src/data/ladder.json` fixes which words come first. A story is recorded line
+by line, as `story<set>-<n>.mp3`, so the page can light the line being read.
 
 ```sh
 GOOGLE_TTS_KEY=... npm run voices -- --words 400

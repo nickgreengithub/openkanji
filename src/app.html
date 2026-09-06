@@ -470,6 +470,31 @@ a:hover{color:var(--text-accent-hover)}
 .ok-pmode-txt{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.15rem}
 .ok-pmode-t{font-size:1.0625rem}
 .ok-pmode-chev{color:var(--ok-mute)}
+/* The story: one page of it at a time, every line with its own translation
+   underneath so a reader can look down for a sentence and back up again
+   without losing the page. */
+.ok-story{flex:1 1 auto;min-height:0;width:100%;max-width:42rem;margin:0 auto;padding:1.1rem 1.25rem 1.25rem;display:flex;flex-direction:column;gap:.85rem}
+.ok-story-head{display:flex;flex-direction:column;align-items:center;gap:.1rem;text-align:center}
+.ok-story-title{font-size:1.375rem;color:var(--ok-ink)}
+.ok-story-sub{font-family:var(--font-2);font-size:.9375rem}
+.ok-story-page{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:.55rem;padding:1rem;border-radius:16px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
+.ok-story-line{display:flex;flex-direction:column;gap:.15rem;padding:.5rem .6rem;border-radius:10px;transition:background 240ms ease}
+.ok-story-ja{font-size:1.3125rem;line-height:1.75;color:var(--ok-ink);cursor:pointer;text-wrap:pretty}
+/* A word worth tapping says so quietly: the set's own words in the accent
+   colour, everything else with a hairline under it. Neither should shout
+   loudly enough to break the line up into a list of words. */
+.ok-story-w{border-bottom:1px dotted var(--ok-line);cursor:pointer}
+.ok-story-w:hover{background:var(--ok-acc-s);border-radius:4px}
+.ok-story-tr{font-family:var(--font-2);font-size:1.0625rem;line-height:1.45;color:var(--ok-mute);text-wrap:pretty}
+.ok-story-end{margin-top:.4rem;padding-top:.8rem;border-top:1px solid var(--ok-line);display:flex;flex-direction:column;align-items:center;gap:.15rem;text-align:center}
+.ok-story-end-t{font-size:1.125rem;color:var(--ok-acc)}
+.ok-story-foot{flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:.9rem}
+.ok-story-play{min-width:11rem}
+.ok-story-hint{flex:0 0 auto;font-family:var(--font-2);font-size:.875rem;text-align:center}
+/* what a tapped word means, floated by the tap that asked for it */
+.ok-sttip-w{font-size:1.125rem;color:var(--ok-ink);white-space:nowrap}
+.ok-sttip-r{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-acc);margin-left:.45rem}
+.ok-sttip-g{font-family:var(--font-2);font-size:1rem;color:var(--ok-body)}
 .ok-quiz{width:100%;max-width:38rem;margin:0 auto;padding:1.25rem 1.25rem 2rem;display:flex;flex-direction:column;gap:1rem}
 .ok-dots{display:flex;justify-content:center;gap:.4rem}
 .ok-dot-q{width:.6rem;height:.6rem;border-radius:50%;border:1.5px solid var(--ok-line);transition:background 200ms ease,border-color 200ms ease,transform 200ms ease}
@@ -508,8 +533,13 @@ a:hover{color:var(--text-accent-hover)}
   .ok-veil-p{align-items:center;padding:1.5rem}
   .ok-sheet{width:min(44rem,100%);height:auto;max-height:min(42rem,100%);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(20,24,30,.35);animation:ok-rise 220ms cubic-bezier(.2,.7,.3,1)}
   .ok-sheet-fixed{height:min(42rem,100%)}
+  /* A page of the story is five or six lines with a translation under each,
+     which wants more room than a quiz round -- and a page that has to be
+     scrolled to be finished is a page that looks broken. */
+  .ok-sheet-story{width:min(46rem,100%);max-height:min(54rem,100%)}
   .ok-quiz{min-height:30rem}
   .ok-fc{min-height:28rem}
+  .ok-story{min-height:32rem}
 }
 /* Map: what the words are worth */
 /* Set header: chevrons and the completed state */
@@ -660,6 +690,13 @@ a:hover{color:var(--text-accent-hover)}
   .ok-sheet-out{animation:none!important}
   .ok-sheet-top{padding-left:max(.6rem,env(safe-area-inset-left));padding-right:max(.9rem,env(safe-area-inset-right));padding-top:env(safe-area-inset-top)}
   .ok-pmenu,.ok-quiz,.ok-pdone{padding-bottom:calc(2rem + env(safe-area-inset-bottom))}
+  /* The story fills the phone page: the page of text scrolls, the controls
+     under it stay put, and the whole thing sits above the home bar. */
+  .ok-story{padding:.9rem 1rem calc(.9rem + env(safe-area-inset-bottom));gap:.7rem}
+  .ok-story-page{padding:.85rem .8rem}
+  .ok-story-ja{font-size:1.25rem;line-height:1.8}
+  .ok-story-tr{font-size:1rem}
+  .ok-story-play{min-width:0;flex:1 1 auto;max-width:16rem}
 
   /* the word, opened: a page with a close, a title, and an action bar */
   .ok-focus{width:100%;height:var(--ok-vh,100svh);max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:center;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
@@ -811,7 +848,7 @@ html[data-ok-ready] #ok-boot{display:none}
   <!-- ===== Practice: a sheet over the set. Flashcards, Quiz, Write. ===== -->
   <sc-if value="{{ pOn }}" hint-placeholder-val="{{ false }}">
     <div sc-camel-on-click="{{ pClose }}" class="ok-veil ok-veil-p {{ pVeilOut }}">
-      <div sc-camel-on-click="{{ stop }}" class="ok-sheet {{ pSheetOut }}">
+      <div sc-camel-on-click="{{ stop }}" class="ok-sheet {{ pSheetKind }} {{ pSheetOut }}">
         <div class="ok-sheet-top">
           <span sc-camel-on-click="{{ pBack }}" class="ok-round-btn" title="{{ t_back }}">
             <sc-if value="{{ pAtMenu }}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6 L18 18"></path><path d="M18 6 L6 18"></path></svg></sc-if>
@@ -824,6 +861,13 @@ html[data-ok-ready] #ok-boot{display:none}
 
           <sc-if value="{{ gMenuOn }}" hint-placeholder-val="{{ true }}">
             <div class="ok-view ok-pmenu">
+              <sc-if value="{{ storyHas }}" hint-placeholder-val="{{ true }}">
+                <div sc-camel-on-click="{{ gStory }}" class="ok-pmode">
+                  <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5 C10 4.8 7.5 4.4 4.5 4.8 V18 C7.5 17.6 10 18 12 19.6 C14 18 16.5 17.6 19.5 18 V4.8 C16.5 4.4 14 4.8 12 6.5 Z"></path><path d="M12 6.5 V19.6"></path></svg></span>
+                  <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_story }}</span><span class="ok-muted">{{ t_story_desc }}</span></div>
+                  <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
+                </div>
+              </sc-if>
               <div sc-camel-on-click="{{ gCards }}" class="ok-pmode">
                 <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="3.5" width="13" height="14" rx="2"></rect><path d="M13.5 20.5 H5.5 A1.5 1.5 0 0 1 4 19 V9"></path></svg></span>
                 <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_flashcards }}</span><span class="ok-muted">{{ t_flashcards_desc }}</span></div>
@@ -895,6 +939,41 @@ html[data-ok-ready] #ok-boot{display:none}
             </div>
           </sc-if>
 
+          <sc-if value="{{ storyOn }}" hint-placeholder-val="{{ false }}">
+            <div class="ok-view ok-story">
+              <div class="ok-story-head">
+                <span class="ok-story-title ok-ja">{{ storyTitleJa }}</span>
+                <span class="ok-muted ok-story-sub">{{ storyTitle }}</span>
+              </div>
+              <div class="ok-story-page ok-scroll" style="animation:{{ storyAnim }}">
+                <sc-for list="{{ storyLines }}" as="sl" hint-placeholder-count="5">
+                  <div class="ok-story-line" style="background:{{ sl.bg }}">
+                    <!-- one line, no line breaks: whitespace between the spans
+                         would be rendered, and the sentence would come out with
+                         a gap after every word -->
+                    <span sc-camel-on-click="{{ sl.play }}" class="ok-story-ja" title="{{ t_listen }}"><sc-for list="{{ sl.parts }}" as="sp" hint-placeholder-count="6"><sc-if value="{{ sp.tap }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ sp.tip }}" class="ok-story-w" style="color:{{ sp.fg }};border-bottom-color:{{ sp.line }}" title="{{ sp.title }}">{{ sp.text }}</span></sc-if><sc-if value="{{ sp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ sp.text }}</span></sc-if></sc-for></span>
+                    <span class="ok-story-tr">{{ sl.tr }}</span>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ storyLastPage }}" hint-placeholder-val="{{ false }}">
+                  <div class="ok-story-end">
+                    <span class="ok-story-end-t">{{ t_story_end }}</span>
+                    <span class="ok-muted">{{ t_story_end_sub }}</span>
+                  </div>
+                </sc-if>
+              </div>
+              <div class="ok-story-foot">
+                <span sc-camel-on-click="{{ storyPrev }}" class="ok-round-btn" style="opacity:{{ storyPrevOn }};cursor:{{ storyPrevCur }}" title="{{ t_story_prev }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span>
+                <span sc-camel-on-click="{{ storyRead }}" class="ok-btn ok-story-play" title="{{ t_story_read }}">
+                  <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="currentColor"><sc-if value="{{ storyPlaying }}" hint-placeholder-val="{{ false }}"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></sc-if><sc-if value="{{ storyIdle }}" hint-placeholder-val="{{ true }}"><path d="M8 5 L19 12 L8 19 Z"></path></sc-if></svg>
+                  <span>{{ t_story_read }}</span>
+                </span>
+                <span sc-camel-on-click="{{ storyNext }}" class="ok-round-btn" style="opacity:{{ storyNextOn }};cursor:{{ storyNextCur }}" title="{{ t_story_next }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
+              </div>
+              <span class="ok-muted ok-story-hint">{{ t_story_hint }}</span>
+            </div>
+          </sc-if>
+
           <sc-if value="{{ cardPlayOn }}" hint-placeholder-val="{{ false }}">
             <div sc-camel-on-click="{{ cardTap }}" class="ok-view ok-fc">
               <div class="ok-fc-card" style="animation:{{ cardAnim }}">
@@ -928,6 +1007,14 @@ html[data-ok-ready] #ok-boot{display:none}
 
   <sc-if value="{{ romaTipOpen }}" hint-placeholder-val="{{ false }}">
     <div style="{{ romaTipStyle }}">{{ romaTipText }}</div>
+  </sc-if>
+
+  <!-- what a word of the story means, for the tap that asked -->
+  <sc-if value="{{ stTipOpen }}" hint-placeholder-val="{{ false }}">
+    <div sc-camel-on-click="{{ stTipClose }}" style="{{ stTipStyle }}">
+      <span class="ok-sttip-w">{{ stTipWord }}<span class="ok-sttip-r">{{ stTipReading }}</span></span>
+      <span class="ok-sttip-g">{{ stTipGloss }}</span>
+    </div>
   </sc-if>
 
 
@@ -1242,6 +1329,12 @@ const DATA = __KANJI_DATA__;
 // and starts at once; the browser's own voice is the fallback for anything
 // not yet recorded (see tools/voices.js).
 const VOICES = __VOICES__;
+// A story per set, where one has been written: the set's twenty words carried
+// by one small tale, so they are met as language rather than as a list. Each
+// line arrives already split into spans, with a table of what the tappable
+// ones mean (tools/build.js buildStories). Sets without a story have no key.
+const STORIES = __STORIES__;
+const storyOf = (set) => STORIES[String(set)] || null;
 // Non-default languages, keyed by code: { "ES": { "楽": {meaning, sentence, words} } }.
 // Empty until a src/data/lang/<dir>/ folder exists.
 const I18N = __KANJI_I18N__;
@@ -1972,15 +2065,17 @@ const okSpeak = (parts) => new Promise((resolve) => {
   // some engines never fire onend; never leave the button lit
   setTimeout(() => finish(started), 20000);
 });
-const _okVoiceSet = { w: null, s: null };
+// "w" a word, "s" its example sentence, "t" a line of a story.
+const _okVoiceSet = { w: null, s: null, t: null };
+const _okVoiceList = { w: "words", s: "sentences", t: "stories" };
 const okHasClip = (id, kind) => {
   if (!id) return false;
   // Recordings are files the site serves. A page opened straight off disk
   // has nothing serving them, so there is no point asking -- the browser's
   // own voice reads the word instead.
   if (typeof location !== "undefined" && location.protocol === "file:") return false;
-  const which = kind === "s" ? "s" : "w";
-  if (!_okVoiceSet[which]) _okVoiceSet[which] = new Set((VOICES && (which === "s" ? VOICES.sentences : VOICES.words)) || []);
+  const which = _okVoiceList[kind] ? kind : "w";
+  if (!_okVoiceSet[which]) _okVoiceSet[which] = new Set((VOICES && VOICES[_okVoiceList[which]]) || []);
   return _okVoiceSet[which].has(id);
 };
 // -> true once the clip has played to its end, false if it could not
@@ -2280,6 +2375,7 @@ class Component extends DCLogic {
           return;
         }
         if (this.state.cardsOn) { this.closePractice(); return; }
+        if (this.state.storyOn) { if (this.state.stTip) { this.setState({ stTip: null }); return; } this.closeStory(true); return; }
         if (this.state.studyMenu) { this.setState({ studyMenu: false }); return; }
         if (this.state.langMenu) { this.setState({ langMenu: false }); return; }
       }
@@ -2572,8 +2668,9 @@ class Component extends DCLogic {
     this.closePracticeNow();
   }
   closePracticeNow() {
+    this.stopStory();
     this.setState({ gameClosing: true, cardsClosing: true });
-    setTimeout(() => this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, gMode: null, gFinished: false, dlgSeamless: false }), 200);
+    setTimeout(() => this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, storyOn: false, stTip: null, gMode: null, gFinished: false, dlgSeamless: false }), 200);
   }
   // A pushed page gets a history entry, so the phone's Back button (and the
   // browser's) closes it rather than leaving the app. Where pushState is not
@@ -2650,6 +2747,93 @@ class Component extends DCLogic {
     };
     window.addEventListener("touchstart", this._onTouchStart, { passive: true });
     window.addEventListener("touchend", this._onTouchEnd, { passive: true });
+  }
+
+  // ---- The story -------------------------------------------------------
+  // The lines of the page being read, or an empty list if there is no story.
+  storyPageLines() {
+    const st = this.state;
+    const s = storyOf(st.storySet);
+    if (!s) return [];
+    return s.pages[Math.min(Math.max(0, st.storyPage || 0), s.pages.length - 1)] || [];
+  }
+
+  // Read one line: the recording where there is one, the browser's voice
+  // where there is not. Tapping the line that is already being read stops it.
+  speakStoryLine(i, chained) {
+    const line = this.storyPageLines()[i];
+    if (!line) return Promise.resolve(false);
+    if (!chained && this.state.storyLine === i) { this.stopStory(); return Promise.resolve(false); }
+    if (!chained) { okStopClips(); try { window.speechSynthesis.cancel(); } catch (e) {} }
+    const text = line.p.map((p) => p[0]).join("");
+    this.setState({ storyLine: i, stTip: null });
+    const clear = (ok) => {
+      if (!chained && this.state.storyLine === i) this.setState({ storyLine: -1 });
+      return ok;
+    };
+    if (okHasClip(line.id, "t")) return okPlayClip(line.id, "t").then((ok) => (ok ? clear(true) : clear(this.storySpeak(text))));
+    return Promise.resolve(this.storySpeak(text)).then(clear);
+  }
+
+  // The fallback voice, which resolves when it has finished saying the line.
+  storySpeak(text) {
+    if (!okCanSpeak()) return false;
+    return okSpeak([{ text: text, rate: 0.95 }]).then((heard) => heard);
+  }
+
+  // Read the whole page, line by line, lighting each as it goes. Pressing it
+  // again stops -- so does turning the page or leaving the story.
+  storyReadPage() {
+    if (this.state.storyPlay) { this.stopStory(); return; }
+    const run = (this._storyRun = (this._storyRun || 0) + 1);
+    const lines = this.storyPageLines();
+    this.setState({ storyPlay: true });
+    const step = (i) => {
+      if (this._storyRun !== run || !this.state.storyOn) return;
+      if (i >= lines.length) { this.setState({ storyPlay: false, storyLine: -1 }); return; }
+      this.speakStoryLine(i, true).then(() => {
+        if (this._storyRun !== run) return;
+        // a small gap between lines, the way a reader would breathe
+        setTimeout(() => step(i + 1), 260);
+      });
+    };
+    step(0);
+  }
+
+  stopStory() {
+    this._storyRun = (this._storyRun || 0) + 1;
+    okStopClips();
+    try { window.speechSynthesis.cancel(); } catch (e) {}
+    this.setState({ storyPlay: false, storyLine: -1 });
+  }
+
+  storyTurn(d) {
+    const s = storyOf(this.state.storySet);
+    if (!s) return;
+    const next = (this.state.storyPage || 0) + d;
+    if (next < 0 || next >= s.pages.length) return;
+    this.stopStory();
+    this.setState({ storyPage: next, storyBack: d < 0, stTip: null });
+  }
+
+  // A word of the story, asked about. The tip is placed against the word
+  // itself so the answer arrives where the eye already is.
+  storyTip(ev, g) {
+    if (ev && ev.stopPropagation) ev.stopPropagation();
+    if (!g) return;
+    const el = ev && (ev.currentTarget || ev.target);
+    const r = el && el.getBoundingClientRect ? el.getBoundingClientRect() : null;
+    const t = (g.t && (g.t[CURRENT_LANG] || g.t.EN)) || "";
+    this.setState({ stTip: { w: g.w, r: g.r, g: t, rect: r } });
+  }
+
+  closeStory(toMenu) {
+    this.stopStory();
+    if (toMenu) {
+      this.setState({ dlgSeamless: true, storyOn: false, stTip: null, gameOpen: true, gameClosing: false, gMode: null, gFinished: false });
+      return;
+    }
+    this.setState({ storyOn: false, stTip: null });
   }
 
   // Say a word, then its sentence; the button stays lit until the voice stops.
@@ -4408,10 +4592,11 @@ class Component extends DCLogic {
           focusFy: (st.focusFrom ? st.focusFrom[1] : 0) + "px",
           // what the words are worth: coverage now, and with this deck done
           // the practice sheet
-          pOn: !!st.gameOpen || !!st.cardsOn,
-          pAtMenu: !st.cardsOn && !st.gMode,
-          pNotAtMenu: !!st.cardsOn || !!st.gMode,
+          pOn: !!st.gameOpen || !!st.cardsOn || !!st.storyOn,
+          pAtMenu: !st.cardsOn && !st.storyOn && !st.gMode,
+          pNotAtMenu: !!st.cardsOn || !!st.storyOn || !!st.gMode,
           pBack: () => {
+            if (this.state.storyOn) { this.closeStory(true); return; }
             if (this.state.cardsOn) { this.setState({ dlgSeamless: true, cardsOn: false, cardsClosing: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); return; }
             if (this._gAdvT) clearTimeout(this._gAdvT);
             this._gAnswer = null; this._gIdx = undefined;
@@ -4419,9 +4604,11 @@ class Component extends DCLogic {
             this.setState({ gMode: null, gFinished: false, gPicked: -1 });
           },
           pClose: () => this.closePractice(),
-          pEyebrow: st.cardsOn ? T("flashcards") : st.gMode === "type" ? T("typing") : st.gMode ? T("quiz") : T("practice"),
+          pSheetKind: st.storyOn ? "ok-sheet-story" : "",
+          pEyebrow: st.storyOn ? T("story") : st.cardsOn ? T("flashcards") : st.gMode === "type" ? T("typing") : st.gMode ? T("quiz") : T("practice"),
           pTitle: setName(st.gBatch != null ? st.gBatch : WSET),
-          pCount: st.cardsOn ? (st.cIdx < (st.cQueue || []).length ? Math.min(st.cIdx + 1, (st.cQueue || []).length) + " / " + (st.cQueue || []).length : "")
+          pCount: st.storyOn ? (st.storyPage + 1) + " / " + ((storyOf(st.storySet) || { pages: [] }).pages.length || 1)
+            : st.cardsOn ? (st.cIdx < (st.cQueue || []).length ? Math.min(st.cIdx + 1, (st.cQueue || []).length) + " / " + (st.cQueue || []).length : "")
             : st.gMode ? (st.gFinished ? "" : (gIdxEff + 1) + " / " + (st.gRounds || []).length)
             : T("to_practise", { n: this.practiceWords().length }),
           quizStart: () => { this.setState({ gFirstOk: {} }); this.startGame("quiz"); },
@@ -4615,6 +4802,79 @@ class Component extends DCLogic {
         if (!q.length) return;
         this.setState({ dlgSeamless: true, gameOpen: false, gameClosing: false, cardsOn: true, cardsClosing: false, cQueue: q, cIdx: 0, cShown: false, cDone: 0, cMastered: [], cFlip: false, cMove: "next" });
       },
+
+      // ---- The story ----------------------------------------------------
+      // Twenty words met as one small tale rather than twenty rows. Only the
+      // sets that have one written offer it.
+      ...(() => {
+        const set = st.storyOn ? st.storySet : (st.gBatch != null ? st.gBatch : WSET);
+        const story = storyOf(set);
+        const pages = story ? story.pages : [];
+        const page = Math.min(Math.max(0, st.storyPage || 0), Math.max(0, pages.length - 1));
+        const lines = pages[page] || [];
+        const tr = (v) => (v && (v[CURRENT_LANG] || v.EN)) || "";
+        return {
+          storyHas: !!story,
+          storyOn: !!st.storyOn && !!story,
+          storyTitleJa: story ? story.ja : "",
+          storyTitle: story ? tr(story.t) : "",
+          storyLastPage: !!st.storyOn && page === pages.length - 1,
+          storyAnim: (st.storyBack ? "ok-slide-ra" : "ok-slide-la") + " 240ms cubic-bezier(.2,.7,.3,1)",
+          storyLines: lines.map((l, i) => ({
+            // the line being read is lit, so an ear can follow an eye
+            bg: st.storyLine === i ? "var(--ok-acc-s)" : "transparent",
+            tr: tr(l.t),
+            play: () => this.speakStoryLine(i),
+            parts: l.p.map((p) => {
+              const g = p.length > 1 ? story.g[p[1]] : null;
+              return {
+                text: p[0],
+                plain: !g,
+                tap: !!g,
+                // the set's own words carry the accent; the rest are quieter
+                fg: g && g.k ? "var(--ok-acc)" : "var(--ok-ink)",
+                line: g && g.k ? "var(--ok-acc)" : "var(--ok-line)",
+                title: g ? g.w + " · " + g.r + " · " + tr(g.t) : "",
+                tip: (ev) => this.storyTip(ev, g),
+              };
+            }),
+          })),
+          storyPrevOn: page > 0 ? "1" : ".25",
+          storyPrevCur: page > 0 ? "pointer" : "default",
+          storyNextOn: page < pages.length - 1 ? "1" : ".25",
+          storyNextCur: page < pages.length - 1 ? "pointer" : "default",
+          storyPrev: () => this.storyTurn(-1),
+          storyNext: () => this.storyTurn(1),
+          storyRead: () => this.storyReadPage(),
+          storyPlaying: !!st.storyPlay,
+          storyIdle: !st.storyPlay,
+        };
+      })(),
+      gStory: () => {
+        const set = st.gBatch != null ? st.gBatch : WSET;
+        if (!storyOf(set)) return;
+        this.setState({
+          dlgSeamless: true, gameOpen: false, gameClosing: false,
+          storyOn: true, storySet: set, storyPage: 0, storyLine: -1, storyPlay: false, storyBack: false, stTip: null,
+        });
+      },
+      // What a tapped word means, floated where it was tapped. One at a time,
+      // and gone on the next tap or when the page turns.
+      stTipOpen: !!st.stTip,
+      stTipWord: st.stTip ? st.stTip.w : "",
+      stTipReading: st.stTip ? st.stTip.r : "",
+      stTipGloss: st.stTip ? st.stTip.g : "",
+      stTipClose: () => this.setState({ stTip: null }),
+      stTipStyle: (() => {
+        const b = st.stTip && st.stTip.rect;
+        const base = { position: "fixed", zIndex: 96, padding: ".55rem .8rem", borderRadius: "12px", background: "var(--ok-card)", border: "1px solid var(--ok-line)", boxShadow: "0 12px 30px rgba(22,35,44,.24)", display: "flex", flexDirection: "column", gap: ".15rem", cursor: "pointer", maxWidth: "min(20rem,86vw)" };
+        if (!b) return base;
+        const H = 76, M = 10;
+        return Object.assign(base, {
+          left: Math.max(M, Math.min(b.left, window.innerWidth - 220 - M)) + "px",
+          top: (b.bottom + H + M <= window.innerHeight ? b.bottom + 6 : Math.max(M, b.top - H - 6)) + "px",
+        });
+      })(),
       gStart2: () => { this.setState({ gFirstOk: {} }); this.startGame(2); },
       gStart3: () => { this.setState({ gFirstOk: {} }); this.startGame(3); },
       gStart4: () => { this.setState({ gFirstOk: {} }); this.startGame(4); },
