@@ -1975,6 +1975,10 @@ const okSpeak = (parts) => new Promise((resolve) => {
 const _okVoiceSet = { w: null, s: null };
 const okHasClip = (id, kind) => {
   if (!id) return false;
+  // Recordings are files the site serves. A page opened straight off disk
+  // has nothing serving them, so there is no point asking -- the browser's
+  // own voice reads the word instead.
+  if (typeof location !== "undefined" && location.protocol === "file:") return false;
   const which = kind === "s" ? "s" : "w";
   if (!_okVoiceSet[which]) _okVoiceSet[which] = new Set((VOICES && (which === "s" ? VOICES.sentences : VOICES.words)) || []);
   return _okVoiceSet[which].has(id);
@@ -1983,7 +1987,7 @@ const okHasClip = (id, kind) => {
 const okPlayClip = (id, kind) => new Promise((resolve) => {
   if (!okHasClip(id, kind)) return resolve(false);
   try {
-    const el = new Audio("/audio/" + id + (kind === "s" ? ".s" : "") + ".mp3");
+    const el = new Audio("audio/" + id + (kind === "s" ? ".s" : "") + ".mp3");
     el.preload = "auto";
     let settled = false;
     const done = (ok) => { if (!settled) { settled = true; resolve(ok); } };
