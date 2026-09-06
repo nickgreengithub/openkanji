@@ -36882,10 +36882,10 @@
     ],
     "sentences": [
       {
-        "ja": "椅子に座ってください。",
+        "ja": "床に座って話しました。",
         "t": {
-          "en": "Please sit on the chair.",
-          "es": "Siéntese en la silla, por favor."
+          "en": "We sat on the floor and talked.",
+          "es": "Nos sentamos en el suelo a hablar."
         }
       }
     ],
@@ -37172,10 +37172,10 @@
     ],
     "sentences": [
       {
-        "ja": "部屋を掃除しました。",
+        "ja": "毎朝、店の前を掃除する。",
         "t": {
-          "en": "I cleaned the room.",
-          "es": "He limpiado la habitación."
+          "en": "Every morning I clean in front of the shop.",
+          "es": "Cada mañana limpio delante de la tienda."
         }
       }
     ],
@@ -42768,10 +42768,10 @@
     ],
     "sentences": [
       {
-        "ja": "現金で払います。",
+        "ja": "本の代金を払いました。",
         "t": {
-          "en": "I'll pay in cash.",
-          "es": "Pago en efectivo."
+          "en": "I paid for the book.",
+          "es": "Pagué el importe del libro."
         }
       }
     ],
@@ -99952,10 +99952,10 @@
     "cat": 4,
     "sentences": [
       {
-        "ja": "玄関で靴を脱ぎます。",
+        "ja": "玄関に花を置きました。",
         "t": {
-          "en": "We take our shoes off at the entrance.",
-          "es": "En la entrada nos quitamos los zapatos."
+          "en": "I put flowers in the entrance hall.",
+          "es": "Puse flores en la entrada."
         }
       }
     ]
