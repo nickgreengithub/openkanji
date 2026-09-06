@@ -1847,15 +1847,21 @@ const okFrontSize = (text, kanji) => {
 };
 const okCanSpeak = () => typeof window !== "undefined" && !!window.speechSynthesis && typeof window.SpeechSynthesisUtterance === "function";
 let _okVoice = null;
+// Not every Japanese voice a browser lists is on the machine. Chrome offers
+// Google's network voices, whose audio is fetched from Google's servers when
+// you press play -- that is the wait, and when the fetch does not arrive the
+// utterance ends instantly having made no sound. So a voice that lives here
+// wins over a nicer-sounding one that does not, always.
 const okVoice = () => {
   if (!okCanSpeak()) return null;
   const vs = window.speechSynthesis.getVoices() || [];
   const ja = vs.filter(v => /^ja/i.test(v.lang));
   if (!ja.length) return null;
-  // the voices that sound like a person first, then whatever is Japanese
-  const pref = ["kyoko", "o-ren", "otoya", "nanami", "keita", "google 日本語", "ichiro", "ayumi", "haruka"];
-  const byName = ja.find(v => pref.some(n => v.name.toLowerCase().indexOf(n) >= 0));
-  return byName || ja.find(v => v.localService) || ja[0];
+  // voices that sound like a person, among the ones actually installed
+  const pref = ["kyoko", "o-ren", "otoya", "nanami", "keita", "ichiro", "ayumi", "haruka"];
+  const named = (list) => list.find(v => pref.some(n => v.name.toLowerCase().indexOf(n) >= 0));
+  const local = ja.filter(v => v.localService);
+  return named(local) || local[0] || named(ja) || ja[0];
 };
 if (okCanSpeak() && window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener("voiceschanged", () => { _okVoice = okVoice(); });
 // Utterances have to outlive this call: an engine that collects one before
@@ -2619,7 +2625,10 @@ class Component extends DCLogic {
           why: okSpeakWhy || "unknown", japaneseVoice: v ? v.name + " (" + v.lang + ")" : null, voicesAvailable: all,
         }));
       } catch (e) {}
+      // A network voice that fails is a different problem from a broken app,
+      // and the learner can act on it, so name it rather than hiding it.
       this.flashMsg(!v ? (all ? T("no_voice") : T("no_voices_at_all"))
+        : v.localService === false ? T("net_voice", { name: v.name })
         : T("no_audio", { why: okSpeakWhy || "silent" }));
     });
   }

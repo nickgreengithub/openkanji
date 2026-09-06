@@ -834,5 +834,9 @@
   "no_audio": {
     "en": "The voice made no sound ({why})",
     "es": "La voz no emitió sonido ({why})"
+  },
+  "net_voice": {
+    "en": "{name} is a network voice and it did not answer — install a Japanese voice on this machine",
+    "es": "{name} es una voz de red y no respondió — instala una voz japonesa en este equipo"
   }
 }

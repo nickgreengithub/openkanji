@@ -250,8 +250,16 @@ Error: unknown language code 'klingon' -- add it to data/langs.json
 
 ## Listening
 
-Words are read by the browser's own speech engine, which can fail in ways
-the page cannot see coming: no voices at all, voices but none Japanese, a
+Words are read by the browser's own speech engine. Not every Japanese voice
+a browser lists is on the machine: Chrome offers Google's network voices,
+whose audio is fetched from Google's servers when you press play. That fetch
+is the wait, and when it does not arrive the utterance ends instantly having
+made no sound -- which looks exactly like a broken button. So an installed
+voice always wins over a better-sounding one that is not, and when only a
+network voice exists and it fails, the page says which voice and what to do
+about it.
+
+The engine can fail in other ways the page cannot see coming: no voices at all, voices but none Japanese, a
 voice that refuses the language, or one that accepts the text and makes no
 sound. All four used to look identical -- a button that did nothing -- which
 made the difference between "your machine has no Japanese voice" and "the
