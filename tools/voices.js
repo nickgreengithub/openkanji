@@ -43,7 +43,7 @@ async function say(text) {
     voice: { languageCode: "ja-JP", name: VOICE },
     audioConfig: { audioEncoding: "MP3", speakingRate: RATE, sampleRateHertz: 24000 },
   };
-  for (let attempt = 0; attempt < 4; attempt++) {
+  for (let attempt = 0; attempt < 7; attempt++) {
     const res = await fetch(API + "?key=" + encodeURIComponent(KEY), {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -59,7 +59,12 @@ async function say(text) {
     if (res.status !== 429 && res.status < 500) {
       throw new Error("text-to-speech refused (" + res.status + "): " + (await res.text()).slice(0, 300));
     }
-    await new Promise((r) => setTimeout(r, 400 * Math.pow(2, attempt)));
+    // Neural voices are quota'd by characters per minute, so a big run will
+    // meet 429s no matter how it is paced. Wait as long as the service asks,
+    // or back off steeply, rather than burning the attempt.
+    const asked = parseFloat(res.headers.get("retry-after") || "0");
+    const wait = asked > 0 ? asked * 1000 : Math.min(30000, 700 * Math.pow(2, attempt));
+    await new Promise((r) => setTimeout(r, wait));
   }
   throw new Error("text-to-speech kept failing for " + JSON.stringify(text));
 }
@@ -90,7 +95,7 @@ async function main() {
     chars + " characters, about $" + ((chars / 1e6) * 16).toFixed(2) + ")");
 
   let done = 0, failed = 0;
-  const LANES = 4;
+  const LANES = parseInt(arg("lanes", "3"), 10);
   await Promise.all(Array.from({ length: LANES }, async () => {
     while (todo.length) {
       const job = todo.shift();
@@ -127,7 +132,17 @@ async function main() {
   console.log("recorded " + done + ", failed " + failed + "; " + have.length + " clips on disk (" +
     (bytes / 1048576).toFixed(1) + "MB)");
   console.log("now run: npm run build");
-  if (failed) process.exit(1);
+  // Every clip recorded is one already paid for. A run that loses some must
+  // still hand back the ones it got -- they are skipped next time, so a
+  // second run only picks up what is missing. Nothing recorded at all is the
+  // only outright failure.
+  if (failed) {
+    console.log(failed + " clip(s) did not record. Run this again to pick them up.");
+    fs.writeFileSync(path.join(OUT, ".incomplete"), String(failed) + "\n");
+  } else {
+    fs.rmSync(path.join(OUT, ".incomplete"), { force: true });
+  }
+  if (!done && failed) process.exit(1);
 }
 
 main().catch((e) => { console.error(e.message); process.exit(1); });

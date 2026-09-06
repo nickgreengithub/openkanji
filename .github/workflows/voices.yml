@@ -16,6 +16,9 @@ on:
       voice:
         description: Google voice name
         default: ja-JP-Neural2-B
+      lanes:
+        description: How many recordings at once (lower if the quota bites)
+        default: "3"
 
 permissions:
   contents: write
@@ -36,11 +39,14 @@ jobs:
       - name: Record
         env:
           GOOGLE_TTS_KEY: ${{ secrets.GOOGLE_TTS_KEY }}
-        run: node tools/voices.js --words "${{ inputs.words }}" --voice "${{ inputs.voice }}"
+        run: node tools/voices.js --words "${{ inputs.words }}" --voice "${{ inputs.voice }}" --lanes "${{ inputs.lanes }}"
 
       - name: Rebuild the page around them
         run: npm run build
 
+      # Committing comes before any complaint about what is missing: every
+      # clip recorded has been paid for, and a run that threw its work away
+      # because a few hit a rate limit is the expensive way to learn that.
       - name: Commit the recordings
         run: |
           git config user.name "github-actions[bot]"
@@ -52,3 +58,13 @@ jobs:
           fi
           git commit -m "Record ${{ inputs.words }} words with ${{ inputs.voice }}"
           git push
+
+      - name: Say if any are still missing
+        run: |
+          if [ -f src/audio/.incomplete ]; then
+            n=$(cat src/audio/.incomplete)
+            echo "::error::$n clip(s) did not record, most likely rate limits."
+            echo "Everything else is committed. Run this workflow again to pick up the rest."
+            exit 1
+          fi
+          echo "every clip recorded"

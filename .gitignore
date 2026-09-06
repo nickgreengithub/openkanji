@@ -3,3 +3,6 @@ dist/
 node_modules/
 .wrangler/
 .dev.vars
+
+# a partial recording run leaves this behind as a note to the next one
+src/audio/.incomplete

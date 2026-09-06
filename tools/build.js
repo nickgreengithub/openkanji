@@ -359,7 +359,7 @@ if (process.argv.includes("--check")) {
     fs.mkdirSync(audioOut, { recursive: true });
     let n = 0;
     for (const f of fs.readdirSync(audioSrc)) {
-      if (!/\.(mp3|json)$/.test(f)) continue;
+      if (!/\.(mp3|json)$/.test(f)) continue;   // .incomplete is a note to the next run, not an asset
       fs.copyFileSync(path.join(audioSrc, f), path.join(audioOut, f));
       n++;
     }

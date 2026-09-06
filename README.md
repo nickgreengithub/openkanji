@@ -272,6 +272,14 @@ It skips anything already recorded, so a re-run costs nothing and a wider
 on a runner from a `GOOGLE_TTS_KEY` secret and commits the result; it is
 manual-dispatch only, because it spends money on that key.
 
+A big run will meet rate limits whatever the pacing -- neural voices are
+quota'd by characters per minute -- so clips retry with a long backoff, and
+**a run that still loses some keeps the ones it got**. They are committed
+before anything complains, and the workflow then fails with a count so you
+know to run it again; the second run picks up only what is missing. Lower
+`--lanes` if the quota keeps biting. Losing a run's work because a handful
+of clips failed means paying for all of it twice.
+
 ### When there is no recording
 
 Not every Japanese voice
