@@ -826,5 +826,13 @@
   "no_voice": {
     "en": "This browser has no Japanese voice installed",
     "es": "Este navegador no tiene una voz japonesa instalada"
+  },
+  "no_voices_at_all": {
+    "en": "This browser offers no speech voices at all",
+    "es": "Este navegador no ofrece ninguna voz"
+  },
+  "no_audio": {
+    "en": "The voice made no sound ({why})",
+    "es": "La voz no emitió sonido ({why})"
   }
 }

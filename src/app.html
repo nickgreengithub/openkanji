@@ -1862,6 +1862,8 @@ if (okCanSpeak() && window.speechSynthesis.addEventListener) window.speechSynthe
 // it is spoken simply goes quiet, with no error to catch.
 let _okUtter = [];
 let _okPump = null;
+// Why the last attempt made no sound, in the engine's own words.
+let okSpeakWhy = "";
 // -> a promise that settles when the last utterance ends (or fails), with
 //    `false` when the engine never made a sound
 const okSpeak = (parts) => new Promise((resolve) => {
@@ -1871,6 +1873,7 @@ const okSpeak = (parts) => new Promise((resolve) => {
   const list = parts.filter(Boolean);
   if (!list.length) return resolve(false);
   let left = list.length, done = false, started = false;
+  okSpeakWhy = "";
   const stopPump = () => { if (_okPump) { clearInterval(_okPump); _okPump = null; } };
   const finish = (ok) => {
     if (done) return;
@@ -1878,6 +1881,8 @@ const okSpeak = (parts) => new Promise((resolve) => {
     resolve(ok !== false && started);
   };
   const queue = () => {
+    // A paused engine silently swallows everything queued after it.
+    try { if (synth.paused) synth.resume(); } catch (e) {}
     _okUtter = list.map((p) => {
       const u = new SpeechSynthesisUtterance(p.text);
       u.lang = "ja-JP";
@@ -1886,16 +1891,28 @@ const okSpeak = (parts) => new Promise((resolve) => {
       u.pitch = 1;
       u.onstart = () => { started = true; };
       u.onend = () => { started = true; if (--left <= 0) finish(true); };
-      u.onerror = () => { if (--left <= 0) finish(false); };
+      // The engine says why it gave up. Keep it: a silent button with no
+      // reason is what made this so hard to place.
+      u.onerror = (e) => {
+        okSpeakWhy = (e && e.error) || "error";
+        finish(false);
+      };
       return u;
     });
     for (const u of _okUtter) synth.speak(u);
     // Long text stops by itself on some engines unless it is nudged.
     stopPump();
+    let quiet = 0;
     _okPump = setInterval(() => {
       if (done) return stopPump();
       try { if (synth.paused) synth.resume(); } catch (e) {}
-      if (!synth.speaking && !synth.pending && started) finish(true);
+      if (started) { if (!synth.speaking && !synth.pending) finish(true); return; }
+      // Queued, no error, and still nothing after three seconds: the engine
+      // took the text and did nothing with it.
+      if (++quiet >= 3 && !synth.speaking && !synth.pending) {
+        okSpeakWhy = okSpeakWhy || "silent";
+        finish(false);
+      }
     }, 1000);
   };
   // Cancelling and speaking in the same tick loses the new utterance on
@@ -2560,9 +2577,18 @@ class Component extends DCLogic {
     this.setState({ speaking: key });
     okSpeak([{ text: word, rate: 0.82 }, sentence ? { text: sentence, rate: 0.95 } : null]).then((heard) => {
       if (this.state.speaking === key) this.setState({ speaking: null });
-      // A device with no Japanese voice installed makes no sound and raises
-      // nothing: say so, rather than leaving a button that looks broken.
-      if (!heard && !okVoice()) this.flashMsg(T("no_voice"));
+      if (heard) return;
+      // A button that does nothing and says nothing is impossible to report
+      // and impossible to fix. Every failure names itself.
+      const v = okVoice();
+      const all = (() => { try { return (window.speechSynthesis.getVoices() || []).length; } catch (e) { return 0; } })();
+      try {
+        console.warn("[openkanji] nothing was spoken:", JSON.stringify({
+          why: okSpeakWhy || "unknown", japaneseVoice: v ? v.name + " (" + v.lang + ")" : null, voicesAvailable: all,
+        }));
+      } catch (e) {}
+      this.flashMsg(!v ? (all ? T("no_voice") : T("no_voices_at_all"))
+        : T("no_audio", { why: okSpeakWhy || "silent" }));
     });
   }
   focusStep(d) {

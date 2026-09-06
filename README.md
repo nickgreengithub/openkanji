@@ -248,6 +248,17 @@ Error: unknown language code 'klingon' -- add it to data/langs.json
   note: 'es' is incomplete and will not ship
 ```
 
+## Listening
+
+Words are read by the browser's own speech engine, which can fail in ways
+the page cannot see coming: no voices at all, voices but none Japanese, a
+voice that refuses the language, or one that accepts the text and makes no
+sound. All four used to look identical -- a button that did nothing -- which
+made the difference between "your machine has no Japanese voice" and "the
+app is broken" impossible to tell from the outside. Every failure now names
+itself in a toast and logs the detail (`why`, the chosen voice, how many
+voices exist) to the console. A voice that works says nothing at all.
+
 ## On a phone
 
 Every overlay is a page rather than a dialog, and two rules keep it honest:
