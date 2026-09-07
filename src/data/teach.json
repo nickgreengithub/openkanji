@@ -1,0 +1,129 @@
+{
+ "0": {
+  "note": {
+   "en": "Twenty words in, a student answers in single words. Supply the grammar yourself and accept one word as a full answer.",
+   "es": "Con veinte palabras, el alumno responde con palabras sueltas. Aporta tú la gramática y acepta una palabra como respuesta completa."
+  },
+  "prompts": [
+   {
+    "kind": "do",
+    "en": "Point at things around you and ask 「これは何ですか」. You are fishing for 水, 写真, 顔 and 円 without prompting.",
+    "es": "Señala cosas a tu alrededor y pregunta 「これは何ですか」. Buscas 水, 写真, 顔 y 円 sin darles pistas."
+   },
+   {
+    "kind": "ask",
+    "ja": "水は好きですか。",
+    "en": "Do you like water?",
+    "es": "¿Te gusta el agua?"
+   },
+   {
+    "kind": "ask",
+    "ja": "何が好きですか。",
+    "en": "What do you like? (anything at all)",
+    "es": "¿Qué te gusta? (lo que sea)"
+   },
+   {
+    "kind": "do",
+    "en": "Show them the chapter's picture. Ask what they can see. Three words — 月, 水, 顔 — is a good answer at this level.",
+    "es": "Enséñales la imagen del capítulo. Pregunta qué ven. Tres palabras — 月, 水, 顔 — ya es una buena respuesta."
+   },
+   {
+    "kind": "ask",
+    "ja": "写真の中に何がありますか。",
+    "en": "What is inside the photograph?",
+    "es": "¿Qué hay dentro de la fotografía?"
+   },
+   {
+    "kind": "do",
+    "en": "Put some coins on the table and ask 「何円ですか」. Numbers are not on the ladder yet, so take the answer in English — the word you want is 円.",
+    "es": "Pon monedas sobre la mesa y pregunta 「何円ですか」. Los números aún no están en la escalera: acepta la cifra en su idioma; la palabra que buscas es 円."
+   },
+   {
+    "kind": "ask",
+    "ja": "今日、どこへ行きますか。",
+    "en": "Where are you going today?",
+    "es": "¿Adónde vas hoy?"
+   },
+   {
+    "kind": "do",
+    "en": "Say one sentence with 見る and one with 行く. Ask which one is about the eyes. Recognition is the win here, not production.",
+    "es": "Di una frase con 見る y otra con 行く. Pregunta cuál trata de los ojos. Aquí el logro es reconocer, no producir."
+   },
+   {
+    "kind": "ask",
+    "ja": "心配な事がありますか。",
+    "en": "Is there anything on your mind?",
+    "es": "¿Hay algo que te preocupe?"
+   },
+   {
+    "kind": "do",
+    "en": "Read page three of the chapter aloud together, then ask who the two people on the bench are. They have met both by now.",
+    "es": "Leed juntos en voz alta la página tres del capítulo y pregunta quiénes son los dos del banco. Ya los conocen."
+   }
+  ]
+ },
+ "1": {
+  "note": {
+   "en": "Forty words in. Expect two words joined together, and a first は. Anything longer is you doing the work.",
+   "es": "Cuarenta palabras. Espera dos palabras unidas y un primer は. Más largo que eso lo estás poniendo tú."
+  },
+  "prompts": [
+   {
+    "kind": "ask",
+    "ja": "お仕事は何ですか。",
+    "en": "What is your work?",
+    "es": "¿En qué trabajas?"
+   },
+   {
+    "kind": "ask",
+    "ja": "今、何が欲しいですか。",
+    "en": "What do you want right now?",
+    "es": "¿Qué quieres ahora mismo?"
+   },
+   {
+    "kind": "ask",
+    "ja": "時々、料理をしますか。",
+    "en": "Do you cook sometimes?",
+    "es": "¿Cocinas a veces?"
+   },
+   {
+    "kind": "do",
+    "en": "Put your phone on the table: 「これは何ですか」. Then ask when they last used it — you are after 使う, in any form they can manage.",
+    "es": "Pon tu teléfono sobre la mesa: 「これは何ですか」. Luego pregunta cuándo lo usaron por última vez: buscas 使う, en la forma que puedan."
+   },
+   {
+    "kind": "ask",
+    "ja": "日本語の言葉を少し知っていますか。",
+    "en": "Do you know a few Japanese words?",
+    "es": "¿Sabes algunas palabras en japonés?"
+   },
+   {
+    "kind": "do",
+    "en": "Knock on the table and ask 「何の音ですか」. Silly, and it gets 音 out of them unprompted.",
+    "es": "Golpea la mesa y pregunta 「何の音ですか」. Es una tontería, y les saca 音 sin ayuda."
+   },
+   {
+    "kind": "ask",
+    "ja": "困った時、だれに聞きますか。",
+    "en": "When you are stuck, who do you ask?",
+    "es": "Cuando te atascas, ¿a quién preguntas?"
+   },
+   {
+    "kind": "do",
+    "en": "Show the chapter's picture and ask which part is 高い. The stacks of boxes are; the lamp is not. Then ask what is 上 of what.",
+    "es": "Enseña la imagen del capítulo y pregunta qué parte es 高い. Las pilas de cajas sí; la lámpara no. Luego pregunta qué está 上 de qué."
+   },
+   {
+    "kind": "ask",
+    "ja": "何か問題がありますか。",
+    "en": "Is anything giving you trouble?",
+    "es": "¿Algo te está dando problemas?"
+   },
+   {
+    "kind": "do",
+    "en": "Read page four of the chapter aloud — the question about the friend — and ask what they would have asked instead. Let them answer in their own language and give them the Japanese for it.",
+    "es": "Leed en voz alta la página cuatro — la pregunta sobre el amigo — y pregunta qué habrían preguntado ellos. Que respondan en su idioma y dales el japonés."
+   }
+  ]
+ }
+}

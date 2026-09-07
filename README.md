@@ -160,6 +160,25 @@ has quietly stopped carrying one of its set's twenty words.
 The serial these chapters belong to -- its town, its three people, and the
 rules a chapter is written to -- is `docs/serial.md`.
 
+## The teacher's sheet
+
+A set can also be opened as something to teach from: `src/data/teach.json` holds
+ten prompts for it, and the app draws the rest of the sheet from the set itself
+-- the twenty words with their readings, meanings and example sentences, and the
+chapter they belong to. Nothing on it is written twice, so it cannot fall out of
+step with the set it describes.
+
+The prompts are questions, not answers, and that is the whole design: the teacher
+is a native speaker who can take any answer apart better live than we could write
+it down. Two kinds, `ask` (Japanese to put to the student, with a translation for
+a tutor who is not a native speaker) and `do` (something to do, in the teacher's
+own language). The build rejects English inside the Japanese, and reports the
+words a prompt leans on that the student has not met yet -- teacher's speech is
+allowed to run ahead, but not by much, and the number is worth watching.
+
+It prints. The print stylesheet drops the app's chrome and opens the sheet out
+flat, so `Cmd-P` is the PDF nobody has to maintain.
+
 ## How a set of twenty is chosen
 
 The ladder is the two thousand commonest words the corpus has, and nothing

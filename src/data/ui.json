@@ -870,5 +870,37 @@
   "story_begin": {
     "en": "Begin",
     "es": "Empezar"
+  },
+  "teach": {
+    "en": "Teach",
+    "es": "Enseñar"
+  },
+  "teach_desc": {
+    "en": "A sheet for a teacher: prompts, not answers",
+    "es": "Una hoja para el profesor: preguntas, no respuestas"
+  },
+  "teach_words": {
+    "en": "The twenty",
+    "es": "Las veinte"
+  },
+  "teach_prompts": {
+    "en": "Ask them",
+    "es": "Pregúntales"
+  },
+  "teach_chapter": {
+    "en": "The chapter",
+    "es": "El capítulo"
+  },
+  "teach_print": {
+    "en": "Print",
+    "es": "Imprimir"
+  },
+  "teach_ask": {
+    "en": "ask",
+    "es": "pregunta"
+  },
+  "teach_do": {
+    "en": "do",
+    "es": "haz"
   }
 }
