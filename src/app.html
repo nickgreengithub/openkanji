@@ -480,19 +480,29 @@ a:hover{color:var(--text-accent-hover)}
 /* The story: one page of it at a time, every line with its own translation
    underneath so a reader can look down for a sentence and back up again
    without losing the page. */
+/* --ok-st scales the reading matter to whatever height the box has: a short
+   window, an old phone, a browser with its own bars showing. Measured rather
+   than guessed at, because the height a media query can see is not the height
+   the reader is left with (see fitStory).
+   Only what is inside the page box scales. The box's own height must not
+   depend on the scale, or measuring it changes it and the two chase each
+   other from one frame to the next. */
 .ok-story{flex:1 1 auto;min-height:0;width:100%;max-width:42rem;margin:0 auto;padding:1.1rem 1.25rem 1.25rem;display:flex;flex-direction:column;gap:.85rem}
 .ok-story-head{display:flex;flex-direction:column;align-items:center;gap:.1rem;text-align:center}
 .ok-story-title{font-size:1.375rem;color:var(--ok-ink)}
 .ok-story-sub{font-family:var(--font-2);font-size:.9375rem}
-.ok-story-page{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:.55rem;padding:1rem;border-radius:16px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
-.ok-story-line{display:flex;flex-direction:column;gap:.15rem;padding:.5rem .6rem;border-radius:10px;transition:background 240ms ease}
-.ok-story-ja{font-size:1.3125rem;line-height:1.75;color:var(--ok-ink);cursor:pointer;text-wrap:pretty}
+/* Three lines to a page, which fits a phone and a desktop without scrolling.
+   The lines sit at the top of the box rather than spreading through it, so a
+   short page and a long one begin in the same place as they turn. */
+.ok-story-page{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column;justify-content:flex-start;gap:calc(.55rem * var(--ok-st,1));padding:1rem;border-radius:16px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow);will-change:transform,opacity;backface-visibility:hidden}
+.ok-story-line{display:flex;flex-direction:column;gap:.15rem;padding:calc(.5rem * var(--ok-st,1)) .6rem;border-radius:10px;transition:background 240ms ease}
+.ok-story-ja{font-size:calc(1.3125rem * var(--ok-st,1));line-height:1.75;color:var(--ok-ink);cursor:pointer;text-wrap:pretty}
 /* A word worth tapping says so quietly: the set's own words in the accent
    colour, everything else with a hairline under it. Neither should shout
    loudly enough to break the line up into a list of words. */
 .ok-story-w{border-bottom:1px dotted var(--ok-line);cursor:pointer}
 .ok-story-w:hover{background:var(--ok-acc-s);border-radius:4px}
-.ok-story-tr{font-family:var(--font-2);font-size:1.0625rem;line-height:1.45;color:var(--ok-mute);text-wrap:pretty}
+.ok-story-tr{font-family:var(--font-2);font-size:calc(1.0625rem * var(--ok-st,1));line-height:1.45;color:var(--ok-mute);text-wrap:pretty}
 .ok-story-end{margin-top:.4rem;padding-top:.8rem;border-top:1px solid var(--ok-line);display:flex;flex-direction:column;align-items:center;gap:.15rem;text-align:center}
 .ok-story-end-t{font-size:1.125rem;color:var(--ok-acc)}
 .ok-story-foot{flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:.9rem}
@@ -543,7 +553,10 @@ a:hover{color:var(--text-accent-hover)}
   /* A page of the story is five or six lines with a translation under each,
      which wants more room than a quiz round -- and a page that has to be
      scrolled to be finished is a page that looks broken. */
-  .ok-sheet-story{width:min(46rem,100%);max-height:min(54rem,100%)}
+  /* A dialog does not resize as you move about inside it: the story's box is
+     one height for every page of it, and a page that needs less simply has
+     air at the foot. Pages are short enough that none of them needs more. */
+  .ok-sheet-story{width:min(46rem,100%);height:min(40rem,100%);max-height:min(40rem,100%)}
   .ok-quiz{min-height:30rem}
   .ok-fc{min-height:28rem}
   .ok-story{min-height:32rem}
@@ -561,6 +574,8 @@ a:hover{color:var(--text-accent-hover)}
 @keyframes ok-zoom-in{from{opacity:0;transform:scale(.965)}to{opacity:1;transform:none}}
 @keyframes ok-zoom-out{from{opacity:0;transform:scale(1.025)}to{opacity:1;transform:none}}
 @keyframes ok-focus-in{from{opacity:0;transform:translate(var(--fx,0px),var(--fy,0px)) scale(.55)}to{opacity:1;transform:none}}
+@keyframes ok-story-fwd{from{opacity:0;transform:translate3d(18px,0,0)}to{opacity:1;transform:none}}
+@keyframes ok-story-back{from{opacity:0;transform:translate3d(-18px,0,0)}to{opacity:1;transform:none}}
 @keyframes ok-slide-la{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
 @keyframes ok-slide-lb{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
 @keyframes ok-slide-ra{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
@@ -701,8 +716,8 @@ a:hover{color:var(--text-accent-hover)}
      under it stay put, and the whole thing sits above the home bar. */
   .ok-story{padding:.9rem 1rem calc(.9rem + env(safe-area-inset-bottom));gap:.7rem}
   .ok-story-page{padding:.85rem .8rem}
-  .ok-story-ja{font-size:1.25rem;line-height:1.8}
-  .ok-story-tr{font-size:1rem}
+  .ok-story-ja{font-size:calc(1.25rem * var(--ok-st,1));line-height:1.8}
+  .ok-story-tr{font-size:calc(1rem * var(--ok-st,1))}
   .ok-story-play{min-width:0;flex:1 1 auto;max-width:16rem}
 
   /* the word, opened: a page with a close, a title, and an action bar */
@@ -947,7 +962,7 @@ html[data-ok-ready] #ok-boot{display:none}
           </sc-if>
 
           <sc-if value="{{ storyOn }}" hint-placeholder-val="{{ false }}">
-            <div class="ok-view ok-story">
+            <div class="ok-view ok-story" style="--ok-st:{{ storyFit }}">
               <div class="ok-story-head">
                 <span class="ok-story-title ok-ja">{{ storyTitleJa }}</span>
                 <span class="ok-muted ok-story-sub">{{ storyTitle }}</span>
@@ -2342,7 +2357,68 @@ class Component extends DCLogic {
     setTimeout(run, 32);
   }
 
+  // A page of the story must not scroll: it is a page of a book, and a book
+  // does not ask you to scroll one. Three lines fit any screen worth the
+  // name, but "any screen" includes a 640px-tall phone with the browser's own
+  // bars taking a fifth of it, and no media query can see the height that
+  // leaves -- so the type is measured against the box it has to sit in.
+  //
+  // Every page is measured, not just the one on screen, and they all take the
+  // size the tallest needs: a page that turns and finds the words a size
+  // smaller reads worse than one that was always a little smaller.
+  fitStory(force) {
+    const st = this.state;
+    if (!st.storyOn) return;
+    const box = document.querySelector(".ok-story-page");
+    const story = storyOf(st.storySet);
+    if (!box || !story) return;
+    const w = box.clientWidth, avail = box.clientHeight;
+    if (!w || !avail) return;
+    // the answer only changes when the box or the language does
+    const sig = st.storySet + "|" + w + "x" + avail + "|" + CURRENT_LANG;
+    if (!force && this._fitSig === sig) return;
+    this._fitSig = sig;
+
+    const esc = (x) => String(x).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const tr = (v) => (v && (v[CURRENT_LANG] || v.EN)) || "";
+    const end = '<div class="ok-story-end"><span class="ok-story-end-t">' + esc(T("story_end")) +
+      '</span><span class="ok-muted">' + esc(T("story_end_sub")) + "</span></div>";
+    const html = (page, last) => page.map((l) =>
+      '<div class="ok-story-line"><span class="ok-story-ja">' + esc(l.p.map((x) => x[0]).join("")) +
+      '</span><span class="ok-story-tr">' + esc(tr(l.t)) + "</span></div>").join("") + (last ? end : "");
+
+    // measured off screen, at the width the real box has, so nothing the
+    // reader can see moves while the size is being found
+    const probe = document.createElement("div");
+    probe.className = "ok-story-page";
+    probe.setAttribute("aria-hidden", "true");
+    probe.style.cssText = "position:absolute;left:-99999px;top:0;visibility:hidden;overflow:visible;height:auto;width:" + w + "px";
+    box.parentNode.appendChild(probe);
+    let scale = 1;
+    try {
+      for (let i = 0; i < 12; i++) {
+        probe.style.setProperty("--ok-st", String(scale));
+        let tall = 0;
+        story.pages.forEach((page, n) => {
+          probe.innerHTML = html(page, n === story.pages.length - 1);
+          tall = Math.max(tall, probe.scrollHeight);
+        });
+        if (tall <= avail) break;
+        if (scale <= 0.7) break; // smaller than this is squinting, not reading
+        scale = Math.round((scale - 0.04) * 100) / 100;
+      }
+    } finally {
+      box.parentNode.removeChild(probe);
+    }
+    if (scale !== (st.stFit === undefined ? 1 : st.stFit)) this.setState({ stFit: scale });
+  }
+
   componentDidUpdate() {
+    // after the browser has laid the page out, not during
+    if (this.state.storyOn) {
+      if (this._fitT) cancelAnimationFrame(this._fitT);
+      this._fitT = requestAnimationFrame(() => { this._fitT = null; this.fitStory(); });
+    }
     if (this.state.scrollTo && this._listBox) {
       const target = this._listBox.querySelector('[data-row="' + this.state.scrollTo + '"]');
       if (target) {
@@ -2407,6 +2483,14 @@ class Component extends DCLogic {
       if (this.state.screen !== "detail" || this.state.dlg || this.state.about || this.state.write) return;
       const t = e.target;
       if (t && (t.tagName === "TEXTAREA" || t.tagName === "INPUT" || t.isContentEditable)) return;
+      // The story is a book: the arrows turn its pages, as they walk the set
+      // everywhere else. It lives inside the practice sheet, so this has to
+      // come before the sheet swallows the key.
+      if (this.state.storyOn) {
+        if (e.key === "ArrowRight") { e.preventDefault(); this.storyTurn(1); return; }
+        if (e.key === "ArrowLeft") { e.preventDefault(); this.storyTurn(-1); return; }
+        return;
+      }
       if (this.state.gameOpen) return;
       // In the focus view the arrows walk the set, Space shows the answer,
       // Enter marks the word. On the set itself the arrows change set.
@@ -4834,7 +4918,11 @@ class Component extends DCLogic {
           storyTitleJa: story ? story.ja : "",
           storyTitle: story ? tr(story.t) : "",
           storyLastPage: !!st.storyOn && page === pages.length - 1,
-          storyAnim: (st.storyBack ? "ok-slide-ra" : "ok-slide-la") + " 240ms cubic-bezier(.2,.7,.3,1)",
+          // A page turn moves a shorter distance over a little longer, and
+          // eases out rather than stopping: at 28px in 240ms the text arrived
+          // with a jolt that reads as the box resizing even when it has not.
+          storyAnim: (st.storyBack ? "ok-story-back" : "ok-story-fwd") + " 320ms cubic-bezier(.22,.61,.36,1)",
+          storyFit: String(st.stFit === undefined ? 1 : st.stFit),
           storyLines: lines.map((l, i) => ({
             // the line being read is lit, so an ear can follow an eye
             bg: st.storyLine === i ? "var(--ok-acc-s)" : "transparent",
@@ -4870,7 +4958,7 @@ class Component extends DCLogic {
         if (!storyOf(set)) return;
         this.setState({
           dlgSeamless: true, gameOpen: false, gameClosing: false,
-          storyOn: true, storySet: set, storyPage: 0, storyLine: -1, storyPlay: false, storyBack: false, stTip: null,
+          storyOn: true, storySet: set, storyPage: 0, storyLine: -1, storyPlay: false, storyBack: false, stTip: null, stFit: 1,
         });
       },
       // What a tapped word means, floated where it was tapped. One at a time,

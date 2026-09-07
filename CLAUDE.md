@@ -13,3 +13,13 @@ When you actually finish, or need a decision, send the real state instead:
 
 `msg` stays one short line, not a sentence. If `$CLAUDE_CODE_REMOTE_SESSION_ID`
 is unset (local session, not the web), skip this silently.
+
+## Dialogs keep their size
+
+A dialog is a fixed box. Moving between pages, cards, words or steps inside
+one must never change its width or height — the content fits the box, the box
+does not grow to fit the content. A page with less in it has air at the foot;
+a page with more scrolls inside its own panel, or is split until it doesn't
+have to. Check this by measuring the dialog on every step, not by eye.
+
+(Said more than once. Written down so it stops being said.)

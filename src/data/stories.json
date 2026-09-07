@@ -294,7 +294,9 @@
       "en": "In his hand there is always one old photograph.",
       "es": "En la mano lleva siempre una fotografía antigua."
      }
-    },
+    }
+   ],
+   [
     {
      "ja": "近所には、その写真の話が多いです。",
      "t": {
@@ -308,16 +310,16 @@
       "en": "But nobody knew the truth of it, and one child began to worry a little.",
       "es": "Pero nadie sabía la verdad, y un niño empezó a preocuparse un poco."
      }
-    }
-   ],
-   [
+    },
     {
      "ja": "ある夜、子どもは自分で聞いてみる事にしました。",
      "t": {
       "en": "One night, the child decided to ask him for himself.",
       "es": "Una noche, el niño decidió preguntárselo él mismo."
      }
-    },
+    }
+   ],
+   [
     {
      "ja": "「どうして毎晩ここに来るのですか。」",
      "t": {
@@ -338,16 +340,16 @@
       "en": "“When I was young, I made a promise here with a friend.”",
       "es": "“Cuando era joven, hice aquí una promesa con un amigo.”"
      }
-    },
+    }
+   ],
+   [
     {
      "ja": "「十年後の同じ月の夜に、また会おう、と。」",
      "t": {
       "en": "“On a night with the same moon, ten years later, we would meet again.”",
       "es": "“En una noche con la misma luna, diez años después, nos volveríamos a ver.”"
      }
-    }
-   ],
-   [
+    },
     {
      "ja": "「でも友達は遠くへ行ったまま、気が付くと二十年が過ぎていました。」",
      "t": {
@@ -361,7 +363,9 @@
       "en": "“Even in the case that he never comes, I will wait here.”",
       "es": "“Incluso en el caso de que no venga, yo esperaré aquí.”"
      }
-    },
+    }
+   ],
+   [
     {
      "ja": "「第一に、約束は守るものですから。」",
      "t": {
