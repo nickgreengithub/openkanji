@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 // The Teacher's Kit: one page of A4 per set, as a PDF.
 //
+// NOT SHIPPED. The app offered this and no longer does -- the entry, the
+// rendered kits and the build's checks on them are gone. What is left is this
+// renderer and the prompts in src/data/teach.json, kept because they are
+// written work and the idea may come back. Wiring it up again means putting
+// the __TEACH__ and __KITS__ tokens, buildTeach and readKits back in
+// tools/build.js and the row back in the practice menu; git remembers all of
+// it. Until then nothing runs this but a person.
+//
 //   node tools/kit.mjs            every set that has prompts
 //   node tools/kit.mjs 2          just that set
 //

@@ -176,7 +176,6 @@ function loadData() {
   // Stories are translated too, and by the same rule: a language that cannot
   // tell the story is not a complete language.
   const stories = readJson("data/stories.json");
-  const teach = fs.existsSync(path.join(SRC, "data", "teach.json")) ? readJson("data/teach.json") : {};
   for (const [set, s] of Object.entries(stories)) {
     const at = "stories.json " + set;
     // `title.ja` is the story's own name in Japanese, not a translation of
@@ -200,7 +199,7 @@ function loadData() {
   const partial = Object.keys(coverage).filter((c) => coverage[c] !== fields);
   if (!complete.includes(DEFAULT_LANG))
     throw new Error("default language '" + DEFAULT_LANG + "' is incomplete: " + (coverage[DEFAULT_LANG] || 0) + "/" + fields + " fields");
-  return { kanji, words, ui, stories, teach, complete, partial, coverage, fields, deckOrder };
+  return { kanji, words, ui, stories, complete, partial, coverage, fields, deckOrder };
 }
 
 const pick = (v, lang) => v[lang] || v[DEFAULT_LANG];
@@ -229,55 +228,6 @@ function flatten(kanji, words, lang) {
   }));
 }
 
-// The prompts a teacher puts to a student, one set at a time. There are two
-// kinds: something to ask, in Japanese, and something to do, in the teacher's
-// own language. Only the asking has Japanese in it to get wrong.
-function buildTeach(raw, words, complete) {
-  const ladder = readJson("data/ladder.json");
-  const out = {};
-  const byWord = {};
-  for (const w of Object.values(words)) {
-    if (!byWord[w.w] || (w.freq || 0) > (byWord[w.w].freq || 0)) byWord[w.w] = w;
-  }
-  for (const [set, t] of Object.entries(raw || {})) {
-    const at = "teach.json " + set;
-    if (!/^\d+$/.test(set)) throw new Error(at + ": the key is the number of the set the sheet belongs to");
-    const first = parseInt(set, 10) * SET_WORDS;
-    if (!Array.isArray(t.prompts) || !t.prompts.length) throw new Error(at + ": no prompts");
-    const langsOf = (v) => {
-      const o = {};
-      for (const c of complete) o[c.toUpperCase()] = pick(v, c);
-      return o;
-    };
-    // A prompt the teacher cannot read is no use to them, and a prompt with
-    // English inside the Japanese is a typo nobody would catch by eye.
-    const ahead = [];
-    const prompts = t.prompts.map((q, i) => {
-      const where = at + " prompt " + (i + 1);
-      if (q.kind !== "ask" && q.kind !== "do") throw new Error(where + ": kind is `ask` or `do`");
-      if (q.kind === "ask" && !q.ja) throw new Error(where + ": something to ask needs its Japanese");
-      if (!q.en) throw new Error(where + ": no English");
-      if (q.ja) {
-        const stray = [...q.ja].filter((c) => !JA_ONLY.test(c));
-        if (stray.length) throw new Error(where + ": not Japanese -- " + JSON.stringify(stray.join("")) + " in " + q.ja);
-        // Words the student has not met are the teacher's to supply, not a
-        // fault -- but a prompt built on three of them is one they cannot
-        // answer, so they are counted and named.
-        for (let n = first + SET_WORDS; n < ladder.length; n++) {
-          const w = words[ladder[n]];
-          if (w && w.w.length > 1 && q.ja.includes(w.w)) ahead.push(w.w + " (set " + (Math.floor(n / SET_WORDS) + 1) + ")");
-        }
-      }
-      return { k: q.kind, ja: q.ja || "", t: langsOf(q) };
-    });
-    out[set] = { note: t.note ? langsOf(t.note) : null, prompts: prompts };
-    if (ahead.length) {
-      console.log("  set " + (parseInt(set, 10) + 1) + " asks with " + ahead.length +
-        " words the student has not met: " + [...new Set(ahead)].join(", "));
-    }
-  }
-  return out;
-}
 
 // A set is twenty words of the ladder, the same slice the app practises.
 const SET_WORDS = 20;
@@ -437,20 +387,10 @@ function readCovers() {
   return out;
 }
 
-// Which sets have a Teacher's Kit to open.
-function readKits() {
-  const dir = path.join(SRC, "kits");
-  if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir)
-    .map((f) => /^set-(\d+)\.pdf$/i.exec(f))
-    .filter(Boolean)
-    .map((m) => parseInt(m[1], 10) - 1)
-    .sort((a, b) => a - b);
-}
 
 function loadKanjiAndLangs() {
   const langs = readJson("data/langs.json");
-  const { kanji, words, ui, stories, teach, complete, partial, coverage, fields, deckOrder } = loadData();
+  const { kanji, words, ui, stories, complete, partial, coverage, fields, deckOrder } = loadData();
 
   const known = new Set(langs.map((l) => l.code.toLowerCase()));
   for (const c of complete.concat(partial)) {
@@ -492,7 +432,7 @@ function loadKanjiAndLangs() {
   }
 
   return { data: flatten(kanji, words, DEFAULT_LANG), exT, exJa, i18n, uiT, langs, available, partial, coverage, fields, deckOrder,
-    stories: buildStories(stories, words, complete), teach: buildTeach(teach, words, complete) };
+    stories: buildStories(stories, words, complete) };
 }
 
 // The recorded clips that shipped, if any have been made yet.
@@ -527,7 +467,7 @@ function build() {
     };
   }
 
-  const { data, exT, exJa, i18n, uiT, langs, available, partial, coverage, fields, deckOrder, stories, teach } = loadKanjiAndLangs();
+  const { data, exT, exJa, i18n, uiT, langs, available, partial, coverage, fields, deckOrder, stories } = loadKanjiAndLangs();
 
   let template = fs.readFileSync(path.join(SRC, "app.html"), "utf8");
   const tokens = {
@@ -537,16 +477,12 @@ function build() {
     // straight to the browser's voice instead of waiting on a 404.
     __VOICES__: JSON.stringify(readVoices()),
     __COVERS__: JSON.stringify(readCovers()),
-    __KITS__: JSON.stringify(readKits()),
     // [name, ui.json tip key, kanji count] in rail order, so adding a deck or
     // reordering the rail is a decks.json edit and nothing else.
     __DECKS__: JSON.stringify(deckOrder),
     // A story per set, already split into the spans the reader can tap
     // (tools/build.js buildStories). Sets without one simply have no key.
     __STORIES__: JSON.stringify(stories),
-    // What a teacher puts to a student for a set: prompts, not answers. Sets
-    // without a sheet simply have no key, the way sets without a story do.
-    __TEACH__: JSON.stringify(teach),
     // Complete non-default languages ride along so the picker can switch
     // without a refetch. Incomplete ones are omitted entirely.
     __KANJI_I18N__: JSON.stringify(i18n),
@@ -636,34 +572,6 @@ if (process.argv.includes("--check")) {
     }
     if (n) console.log("copied " + n + " voice files into dist/audio");
   }
-  // The Teacher's Kits, rendered by tools/kit.mjs and committed, because
-  // making a PDF needs a browser and a Japanese font and neither belongs in a
-  // deploy. What does belong here is noticing when one has been left behind by
-  // an edit to the words or the prompts it was made from.
-  const kitSrc = path.join(SRC, "kits");
-  const kitOut = path.join(dist, "kits");
-  fs.rmSync(kitOut, { recursive: true, force: true });
-  if (fs.existsSync(kitSrc)) {
-    const pdfs = fs.readdirSync(kitSrc).filter((f) => /\.pdf$/i.test(f));
-    if (pdfs.length) {
-      fs.mkdirSync(kitOut, { recursive: true });
-      for (const f of pdfs) fs.copyFileSync(path.join(kitSrc, f), path.join(kitOut, f));
-      console.log("copied " + pdfs.length + " teacher's kits into dist/kits");
-    }
-    const { kitStamp } = require("./kit-stamp.cjs");
-    const made = fs.existsSync(path.join(kitSrc, "made-from.json"))
-      ? JSON.parse(fs.readFileSync(path.join(kitSrc, "made-from.json"), "utf8")) : {};
-    const stale = [];
-    for (const set of Object.keys(readJson("data/teach.json"))) {
-      const file = "set-" + (Number(set) + 1) + ".pdf";
-      const now = kitStamp(Number(set), { words: readJson("data/words.json"), ladder: readJson("data/ladder.json"),
-        teach: readJson("data/teach.json"), stories: readJson("data/stories.json") });
-      if (!pdfs.includes(file)) stale.push(file + " (never made)");
-      else if (made[file] !== now) stale.push(file + " (made from something else)");
-    }
-    if (stale.length) console.log("  kits out of date: " + stale.join(", ") + " -- run tools/kit.mjs");
-  }
-
   // Chapter covers, one to a set, fetched when a chapter is opened rather
   // than carried by the page: a hundred of them would be twelve megabytes
   // nobody has read yet.
