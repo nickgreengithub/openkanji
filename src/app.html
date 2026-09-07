@@ -536,8 +536,11 @@ a:hover{color:var(--text-accent-hover)}
 .ok-story-w{border-bottom:1px dotted var(--ok-line);cursor:pointer}
 .ok-story-w:hover{background:var(--ok-acc-s);border-radius:4px}
 .ok-story-tr{font-family:var(--font-2);font-size:calc(1.0625rem * var(--ok-st,1));line-height:1.45;color:var(--ok-mute);text-wrap:pretty}
-.ok-story-end{margin-top:.4rem;padding-top:.8rem;border-top:1px solid var(--ok-line);display:flex;flex-direction:column;align-items:center;gap:.15rem;text-align:center}
-.ok-story-end-t{font-size:1.125rem;color:var(--ok-acc)}
+/* The end of a chapter is said where the next-page arrow would be, in the
+   language being learned, and it answers when asked like any other word.
+   Same box as the arrow it replaces, so the foot does not move. */
+.ok-story-owari{flex:0 0 auto;min-width:2.3rem;height:2.3rem;padding:0 .5rem;border-radius:1.15rem;display:flex;align-items:center;justify-content:center;font-size:.9375rem;color:var(--ok-acc);border-bottom:1px solid var(--ok-acc);cursor:pointer;user-select:none;white-space:nowrap}
+.ok-story-owari:hover{background:var(--ok-acc-s)}
 .ok-story-foot{flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:.9rem}
 .ok-story-play{min-width:11rem}
 .ok-story-hint{flex:0 0 auto;font-family:var(--font-2);font-size:.875rem;text-align:center}
@@ -913,6 +916,7 @@ html[data-ok-ready] #ok-boot{display:none}
             <sc-if value="{{ pNotAtMenu }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></sc-if>
           </span>
           <div class="ok-sheet-title"><span class="ok-eyebrow">{{ pEyebrow }}</span><span class="ok-sheet-h">{{ pTitle }}</span></div>
+          <sc-if value="{{ storyHasNext }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ storyNextChapter }}" class="ok-round-btn" title="{{ storyNextChTitle }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5 L13 12 L6 19"></path><path d="M17 5 V19"></path></svg></span></sc-if>
           <span class="ok-muted ok-sheet-count">{{ pCount }}</span>
         </div>
         <div class="ok-sheet-body ok-scroll">
@@ -1038,11 +1042,6 @@ html[data-ok-ready] #ok-boot{display:none}
                     <span class="ok-story-tr">{{ sl.tr }}</span>
                   </div>
                 </sc-for>
-                <sc-if value="{{ storyLastPage }}" hint-placeholder-val="{{ false }}">
-                  <div class="ok-story-end">
-                    <span class="ok-story-end-t">{{ t_story_end }}</span>
-                  </div>
-                </sc-if>
               </div>
               </sc-if>
               <div class="ok-story-foot">
@@ -1051,7 +1050,7 @@ html[data-ok-ready] #ok-boot{display:none}
                   <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="currentColor"><sc-if value="{{ storyPlaying }}" hint-placeholder-val="{{ false }}"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></sc-if><sc-if value="{{ storyIdle }}" hint-placeholder-val="{{ true }}"><path d="M8 5 L19 12 L8 19 Z"></path></sc-if></svg>
                   <span>{{ storyMainLabel }}</span>
                 </span>
-                <span sc-camel-on-click="{{ storyNext }}" class="ok-round-btn" style="opacity:{{ storyNextOn }};cursor:{{ storyNextCur }}" title="{{ t_story_next }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
+                <sc-if value="{{ storyNotAtEnd }}" hint-placeholder-val="{{ true }}"><span sc-camel-on-click="{{ storyNext }}" class="ok-round-btn" style="opacity:{{ storyNextOn }};cursor:{{ storyNextCur }}" title="{{ t_story_next }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span></sc-if><sc-if value="{{ storyAtEnd }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ storyOwari }}" class="ok-story-owari ok-ja" title="{{ storyOwariTitle }}">終わり</span></sc-if>
               </div>
               <span class="ok-muted ok-story-hint" style="visibility:{{ storyHeadOn }}">{{ t_story_hint }}</span>
             </div>
@@ -2464,10 +2463,9 @@ class Component extends DCLogic {
 
     const esc = (x) => String(x).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const tr = (v) => (v && (v[CURRENT_LANG] || v.EN)) || "";
-    const end = '<div class="ok-story-end"><span class="ok-story-end-t">' + esc(T("story_end")) + "</span></div>";
-    const html = (page, last) => page.map((l) =>
+    const html = (page) => page.map((l) =>
       '<div class="ok-story-line"><span class="ok-story-ja">' + esc(l.p.map((x) => x[0]).join("")) +
-      '</span><span class="ok-story-tr">' + esc(tr(l.t)) + "</span></div>").join("") + (last ? end : "");
+      '</span><span class="ok-story-tr">' + esc(tr(l.t)) + "</span></div>").join("");
 
     // measured off screen, at the width the real box has, so nothing the
     // reader can see moves while the size is being found
@@ -2481,8 +2479,8 @@ class Component extends DCLogic {
       for (let i = 0; i < 12; i++) {
         probe.style.setProperty("--ok-st", String(scale));
         let tall = 0;
-        story.pages.forEach((page, n) => {
-          probe.innerHTML = html(page, n === story.pages.length - 1);
+        story.pages.forEach((page) => {
+          probe.innerHTML = html(page);
           tall = Math.max(tall, probe.scrollHeight);
         });
         if (tall <= avail) break;
@@ -3027,6 +3025,19 @@ class Component extends DCLogic {
     const r = el && el.getBoundingClientRect ? el.getBoundingClientRect() : null;
     const t = (g.t && (g.t[CURRENT_LANG] || g.t.EN)) || "";
     this.setState({ stTip: { w: g.w, r: g.r, g: t, rect: r } });
+  }
+
+  // Open a chapter from inside another one. The set follows the book so the
+  // header, the practice sheet behind it and the set screen underneath are all
+  // the chapter being read; the fit is recomputed because the signature
+  // carries the set.
+  openChapter(set) {
+    if (!storyOf(set)) return;
+    this.stopStory();
+    this.setState({
+      wset: set, gBatch: set, zoom: "set", focus: null, focusShown: false, hoverWord: null,
+      storyOn: true, storySet: set, storyPage: 0, storyLine: -1, storyPlay: false, storyBack: false, stTip: null, stFit: 1,
+    });
   }
 
   closeStory(toMenu) {
@@ -5080,6 +5091,18 @@ class Component extends DCLogic {
               };
             }),
           })),
+          // The end of the chapter, said where the arrow that turns the page
+          // would be, and answered like any word in the story when tapped.
+          storyAtEnd: !!st.storyOn && page === pages.length,
+          storyNotAtEnd: !(!!st.storyOn && page === pages.length),
+          storyOwariTitle: "終わり · おわり · " + T("story_end"),
+          storyOwari: (ev) => this.storyTip(ev, { w: "終わり", r: "おわり", t: { [CURRENT_LANG]: T("story_end") } }),
+          // Straight on to the next chapter, for a reader going through the
+          // serial rather than a set: the set moves with the book, so closing
+          // it lands where the reading got to rather than where it started.
+          storyHasNext: !!st.storyOn && !!storyOf(set + 1),
+          storyNextChTitle: T("story_next_chapter", { n: set + 2 }),
+          storyNextChapter: () => this.openChapter(set + 1),
           storyPrevOn: page > 0 ? "1" : ".25",
           storyPrevCur: page > 0 ? "pointer" : "default",
           storyNextOn: page < pages.length ? "1" : ".25",

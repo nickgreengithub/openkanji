@@ -894,5 +894,9 @@
   "could_not_save": {
     "en": "Could not save that",
     "es": "No se pudo guardar"
+  },
+  "story_next_chapter": {
+    "en": "Read chapter {n}",
+    "es": "Leer el capítulo {n}"
   }
 }
