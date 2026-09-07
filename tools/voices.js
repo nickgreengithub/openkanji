@@ -19,6 +19,7 @@
 // interrupted run can simply be repeated.
 
 const fs = require("fs");
+const crypto = require("crypto");
 const path = require("path");
 
 const ROOT = path.join(__dirname, "..");
@@ -100,10 +101,31 @@ async function main() {
     }
   }
 
-  const todo = jobs.filter((j) => !fs.existsSync(path.join(OUT, j.file)));
+  // A clip is stale when the words it was made from have changed, and "the
+  // file is there" cannot tell you that: a rewritten story line kept its old
+  // recording twice before this was written, and read the reader a sentence
+  // that no longer existed. So each clip's text is fingerprinted alongside
+  // it, and a clip whose text no longer matches is recorded again.
+  const said = (() => {
+    try { return JSON.parse(fs.readFileSync(path.join(OUT, "said.json"), "utf8")); } catch (e) { return {}; }
+  })();
+  const stamp = (text) => crypto.createHash("sha1").update(text).digest("hex").slice(0, 10);
+  const stale = [];
+  const todo = jobs.filter((j) => {
+    if (!fs.existsSync(path.join(OUT, j.file))) return true;
+    const was = said[j.file];
+    if (was === stamp(j.text)) return false;
+    // no fingerprint at all is not proof of staleness -- it is a clip made
+    // before this file existed, and re-recording every one of those would be
+    // paying twice for what is already right
+    if (was === undefined) { said[j.file] = stamp(j.text); return false; }
+    stale.push(j.file);
+    return true;
+  });
   const chars = todo.reduce((n, j) => n + j.text.length, 0);
   console.log(WORDS + " words: " + jobs.length + " clips, " + todo.length + " still to record (" +
     chars + " characters, about $" + ((chars / 1e6) * 16).toFixed(2) + ")");
+  if (stale.length) console.log("  " + stale.length + " of those changed since they were recorded: " + stale.slice(0, 8).join(" ") + (stale.length > 8 ? " ..." : ""));
 
   let done = 0, failed = 0;
   const LANES = parseInt(arg("lanes", "3"), 10);
@@ -112,6 +134,7 @@ async function main() {
       const job = todo.shift();
       try {
         fs.writeFileSync(path.join(OUT, job.file), await say(job.text));
+        said[job.file] = stamp(job.text);
         if (++done % 50 === 0) console.log("  recorded " + done + "...");
       } catch (e) {
         failed++;
@@ -143,6 +166,11 @@ async function main() {
       "every recording must be reachable or it is dead weight");
   }
   fs.writeFileSync(path.join(OUT, "manifest.json"), JSON.stringify(manifest, null, 0) + "\n");
+  // Fingerprints for what is actually on disk, so a deleted clip does not
+  // leave a claim behind that its text was already said.
+  const kept = {};
+  for (const f of have) if (said[f]) kept[f] = said[f];
+  fs.writeFileSync(path.join(OUT, "said.json"), JSON.stringify(kept, null, 0) + "\n");
   const bytes = have.reduce((n, f) => n + fs.statSync(path.join(OUT, f)).size, 0);
   console.log("recorded " + done + ", failed " + failed + "; " + have.length + " clips on disk (" +
     (bytes / 1048576).toFixed(1) + "MB)");

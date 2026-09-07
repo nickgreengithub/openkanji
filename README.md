@@ -157,6 +157,9 @@ against that table and refuses the story if a gloss is never used, if a line
 holds anything that is not Japanese, or -- the one that matters -- if the story
 has quietly stopped carrying one of its set's twenty words.
 
+The serial these chapters belong to -- its town, its three people, and the
+rules a chapter is written to -- is `docs/serial.md`.
+
 ## How a set of twenty is chosen
 
 The ladder is the two thousand commonest words the corpus has, and nothing

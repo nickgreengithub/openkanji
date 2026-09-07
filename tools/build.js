@@ -245,6 +245,14 @@ const JA_ONLY = /[぀-ゟ゠-ヿ㐀-䶿一-鿿々、。・ー！？（）「」]
 function buildStories(raw, words, complete) {
   const ladder = readJson("data/ladder.json");
   const out = {};
+  const revision = [];
+  // the commonest spelling of each word, and the rarest thing the ladder
+  // teaches: the line below which a glossed word is rarer than the lesson
+  const byWord = {};
+  for (const w of Object.values(words)) {
+    if (!byWord[w.w] || (w.freq || 0) > (byWord[w.w].freq || 0)) byWord[w.w] = w;
+  }
+  const floor = Math.min(...ladder.map((id) => (words[id] && words[id].freq) || 0));
   for (const [set, s] of Object.entries(raw)) {
     const at = "stories.json " + set;
     if (!/^\d+$/.test(set)) throw new Error(at + ": the key is the number of the set the story belongs to");
@@ -316,11 +324,48 @@ function buildStories(raw, words, complete) {
 
     const unused = Object.keys(s.words || {}).filter((w) => !met.has(w));
     if (unused.length) throw new Error(at + ": glossed but never used -- " + unused.join(", "));
+
+    // Two numbers about the reading level, reported rather than enforced. A
+    // story leaning on a word from a later set is not the fault it first
+    // looks like: a word's position on the ladder is how common it is, so a
+    // set-40 word is commoner than most of the scenery a story needs, and
+    // glossing it costs the reader nothing. What does cost them is a word
+    // rarer than anything the ladder ever teaches -- 毎晩 sits below all two
+    // thousand -- and that is a judgement per chapter, not a rule. So: count
+    // them, name them, and let whoever is writing decide.
+    const rare = [];
+    for (const span of Object.keys(s.words || {})) {
+      const note = s.words[span];
+      const spelling = note && note.of ? note.of : span;
+      const w = byWord[spelling];
+      if (w && w.freq !== undefined && w.freq < floor) rare.push(spelling + " " + w.freq.toFixed(2));
+    }
+
+    // How much of the ladder behind it a story puts back in front of the
+    // reader. A serial that never revisits is a hundred separate exercises.
+    const revised = new Set();
+    for (const span of met) {
+      const note = (s.words || {})[span];
+      const spelling = note && note.of ? note.of : span;
+      const seen = ladder.findIndex((id) => words[id] && words[id].w === spelling);
+      if (seen >= 0 && seen < first) revised.add(spelling);
+    }
+    revision.push({ set: set, revised: revised.size, rare: rare });
     const missed = [...targets.keys()].filter((w) => !carried.has(w));
     if (missed.length) throw new Error(at + ": the story never uses " + missed.length + " of the set's words -- " + missed.join(", ") +
       "\n  (a conjugated one is written out under `words` with `of`, e.g. \"使って\": { \"of\": \"使う\" })");
 
     out[set] = { ja: s.title.ja, t: langsOf(s.title), g: gloss, pages: pages };
+  }
+  if (revision.length) {
+    const total = revision.reduce((n, r) => n + r.revised, 0);
+    console.log("  stories revise " + Math.round(total / revision.length) + " earlier ladder words each" +
+      (revision.length <= 8 ? " (" + revision.map((r) => "set " + (Number(r.set) + 1) + ": " + r.revised).join(", ") + ")" : ""));
+    const rare = revision.filter((r) => r.rare.length);
+    for (const r of rare) {
+      console.log("  set " + (Number(r.set) + 1) + " glosses " + r.rare.length +
+        " words rarer than the whole ladder: " + r.rare.join(", "));
+    }
   }
   return out;
 }
