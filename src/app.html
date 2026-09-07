@@ -429,6 +429,14 @@ a:hover{color:var(--text-accent-hover)}
 .ok-focus{position:relative;width:min(40rem,100%);height:min(32rem,86vh);justify-content:flex-start;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:2.5rem 3.75rem 2rem;overflow-y:auto;border-radius:20px;background:var(--ok-card);box-shadow:0 30px 80px rgba(20,24,30,.35);text-align:center;animation:ok-rise 200ms cubic-bezier(.2,.7,.3,1)}
 .ok-x{position:absolute;top:.55rem;right:.95rem;font-size:1.7rem;line-height:1;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-x:hover{color:var(--ok-ink)}
+/* Auto-play sits in the corner the close button is not in: top left on a
+   desk, top right on a phone, where the close button crosses over. Absolute,
+   so the dialog is the same box whether it is running or not. */
+.ok-focus-auto{position:absolute;top:.6rem;left:.95rem;display:flex;align-items:center;gap:.25rem;z-index:2}
+.ok-focus-autob{width:2.3rem;height:2.3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ok-mute);cursor:pointer;user-select:none;transition:background 140ms ease,color 140ms ease}
+.ok-focus-autob:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
+.ok-focus-speed{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute);border:1px solid var(--ok-line);border-radius:999px;padding:.1rem .45rem;cursor:pointer;user-select:none;line-height:1.4}
+.ok-focus-speed:hover{color:var(--ok-ink)}
 .ok-focus-n{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-mute)}
 .ok-focus-wordbox{flex:0 0 auto;height:7rem;display:flex;align-items:center;justify-content:center}
 .ok-focus-word{line-height:1.15;white-space:nowrap}
@@ -769,6 +777,8 @@ a:hover{color:var(--text-accent-hover)}
   .ok-focus-out{animation:none!important}
   .ok-x{top:calc(.5rem + env(safe-area-inset-top));left:.6rem;right:auto;width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border-radius:50%}
   .ok-focus-n{position:absolute;top:calc(1.35rem + env(safe-area-inset-top));left:3.5rem;right:3.5rem;text-align:center}
+  .ok-focus-auto{top:calc(.5rem + env(safe-area-inset-top));left:auto;right:.6rem}
+  .ok-focus-autob{width:2.75rem;height:2.75rem}
   /* the foot: the two controls, and the caption centred underneath them */
   .ok-focus-foot{position:fixed;left:0;right:0;bottom:var(--ok-kb,0px);margin:0;gap:.4rem;padding:.6rem 1rem calc(.6rem + env(safe-area-inset-bottom));background:rgba(244,244,241,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
   .ok-focus-actions{gap:.9rem}
@@ -1268,6 +1278,7 @@ html[data-ok-ready] #ok-boot{display:none}
     <div sc-camel-on-click="{{ closeFocus }}" class="ok-veil {{ focusVeilOut }}">
       <div sc-camel-on-click="{{ stop }}" class="ok-focus {{ focusOut }}" style="--fx:{{ focusFx }};--fy:{{ focusFy }}">
         <span sc-camel-on-click="{{ closeFocus }}" class="ok-x">×</span>
+        <div class="ok-focus-auto"><span sc-camel-on-click="{{ toggleAuto }}" class="ok-focus-autob" title="{{ autoTitle }}" style="{{ autoStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="currentColor"><sc-if value="{{ autoOn }}" hint-placeholder-val="{{ false }}"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></sc-if><sc-if value="{{ autoOff }}" hint-placeholder-val="{{ true }}"><path d="M8 5 L19 12 L8 19 Z"></path></sc-if></svg></span><span sc-camel-on-click="{{ cycleAutoSpeed }}" class="ok-focus-speed" title="{{ autoSpeedTitle }}">{{ autoSpeedLabel }}</span></div>
         <span class="ok-focus-n">{{ focusCounter }}</span>
         <div class="ok-focus-wordrow"><span sc-camel-on-click="{{ focusPrev }}" class="ok-focus-arrow ok-focus-arrow-l" title="{{ t_prev_word }}" style="visibility:{{ focusPrevVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span><div class="ok-focus-wordbox"><span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span></div><span sc-camel-on-click="{{ focusNext }}" class="ok-focus-arrow ok-focus-arrow-r" title="{{ t_next_word }}" style="visibility:{{ focusNextVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span></div>
         <div class="ok-focus-ans" style="opacity:{{ focusAns }}">
@@ -1934,6 +1945,12 @@ const OK_DECK_KEY = "openkanji.deck";
 const OK_LANG_KEY = "openkanji.lang";
 const OK_SET_KEY = "openkanji.set";
 const OK_FURI_KEY = "openkanji.furi";
+const OK_AUTO_KEY = "openkanji.autospeed";
+// How long to wait after a word has finished being said before turning to the
+// next one. Three speeds, because the useful range is "time to think about it"
+// down to "just keep going", and a slider for that is a decision nobody wants
+// to make twice.
+const AUTO_GAP = [2500, 1200, 400];
 const OK_EMPTY = [];
 // The learned control on a card and in the focus view.
 const okPill = (done) => done ? "background:var(--ok-acc);border-color:var(--ok-acc);color:#ffffff" : "background:transparent;color:var(--ok-mute)";
@@ -2301,7 +2318,7 @@ const okMerge = (a, b) => {
 class Component extends DCLogic {
   state = {
     screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
-    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, updates: false, updatesWant: okWantUpdates(), zoom: "map", focus: null, focusShown: false, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
+    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, updates: false, updatesWant: okWantUpdates(), zoom: "map", focus: null, focusShown: false, focusAuto: false, autoSpeed: 1, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
   get furiDefault() { return this.props.startFurigana ?? true; }
@@ -2340,7 +2357,9 @@ class Component extends DCLogic {
     this._savedSig = m ? this.saveSig(m, deck0, lang0, str) : null;
     const wset0 = Math.max(0, parseInt(lsGet(OK_SET_KEY) || "0", 10) || 0);
     const furi0 = lsGet(OK_FURI_KEY);
-    this.setState({ seen: s || {}, mastered: m || {}, strength: str, deck: deck0, uiLang: lang0 || undefined, allFuri: furi0 == null ? this.furiDefault : furi0 === "1", wset: wset0 });
+    const auto0 = parseInt(lsGet(OK_AUTO_KEY) || "1", 10);
+    this.setState({ seen: s || {}, mastered: m || {}, strength: str, deck: deck0, uiLang: lang0 || undefined, allFuri: furi0 == null ? this.furiDefault : furi0 === "1", wset: wset0,
+      autoSpeed: auto0 >= 0 && auto0 < AUTO_GAP.length ? auto0 : 1 });
     // A sync still in its debounce window when the tab goes must not be lost.
     this._onHide = () => { if (this._syncT) { clearTimeout(this._syncT); this._syncT = null; this.pushProgress(this.state); } };
     window.addEventListener("pagehide", this._onHide);
@@ -2854,6 +2873,7 @@ class Component extends DCLogic {
   }
   closeFocusNow() {
     if (this.state.focus == null) return;
+    this.stopAuto();
     this.setState({ focusClosing: true });
     setTimeout(() => this.setState({ focus: null, focusShown: false, focusClosing: false }), 160);
   }
@@ -3098,10 +3118,55 @@ class Component extends DCLogic {
         : T("no_audio", { why: okSpeakWhy || "silent" }));
     });
   }
+  // ---- Auto-play ------------------------------------------------------
+  // The set read to you, one word at a time: each card is said aloud, and the
+  // next arrives a beat after the voice stops rather than on a fixed clock --
+  // a long sentence would otherwise be cut off by the fast setting. It runs to
+  // the end of the set and stops there.
+  startAuto() {
+    if (this.state.focus == null) return;
+    this.setState({ focusAuto: true });
+    this.autoRun(true);
+  }
+
+  stopAuto(quiet) {
+    if (this._autoT) { clearTimeout(this._autoT); this._autoT = null; }
+    if (!quiet) { okStopClips(); try { window.speechSynthesis.cancel(); } catch (e) {} }
+    if (this.state.focusAuto || this.state.speaking) this.setState({ focusAuto: false, speaking: null });
+  }
+
+  // One card: say it, wait for the voice, wait the gap, turn the page.
+  autoRun(speak) {
+    if (this._autoT) { clearTimeout(this._autoT); this._autoT = null; }
+    if (!this.state.focusAuto || this.state.focus == null) return;
+    const words = wordsOf(this.state.wset);
+    const w = words[this.state.focus];
+    if (!w) { this.stopAuto(true); return; }
+    const key = "F" + w.w[3];
+    if (speak && this.state.speaking !== key) {
+      this.speakWord(key, w.w[0], (EX_JA[w.w[3]] || [])[0] || "", w.w[3]);
+    }
+    // A voice that is still going holds the card; only when the room is quiet
+    // does the gap the reader chose start counting.
+    const wait = () => {
+      if (!this.state.focusAuto) return;
+      if (this.state.speaking) { this._autoT = setTimeout(wait, 200); return; }
+      this._autoT = setTimeout(() => {
+        if (!this.state.focusAuto) return;
+        if (this.state.focus >= words.length - 1) { this.stopAuto(true); return; }
+        this.focusStep(1);   // which re-arms the run for the card it lands on
+      }, AUTO_GAP[this.state.autoSpeed || 0]);
+    };
+    this._autoT = setTimeout(wait, 120);
+  }
+
   focusStep(d) {
     const n = wordsOf(this.state.wset).length;
     const i = Math.min(n - 1, Math.max(0, (this.state.focus || 0) + d));
     this.setState({ focus: i, focusShown: false });
+    // Turning by hand while it is playing is not a fight: the new card is the
+    // one that gets said, and the gap starts again from there.
+    if (this.state.focusAuto) this.autoRun(true);
   }
 
   // Explicit user action (or the return from a magic link), long after mount,
@@ -4662,7 +4727,7 @@ class Component extends DCLogic {
               })
             };
           }),
-          goMap: () => this.setState({ zoom: "map", focus: null, focusShown: false, acctOpen: false, hoverWord: null }),
+          goMap: () => { this.stopAuto(true); this.setState({ zoom: "map", focus: null, focusShown: false, acctOpen: false, hoverWord: null }); },
           setTitle: setName(WSET),
           setSub: (cur.full ? T("set_complete") : T("learned_of", { d: cur.done, n: cur.n })) + " · " + range(cur),
           setCounter: (WSET + 1) + " / " + nSets,
@@ -4732,6 +4797,23 @@ class Component extends DCLogic {
           canSpeak: okCanSpeak() || (VOICES.words || []).length > 0,
           focusMarkTitle: fDone ? T("marked_learned") + " · " + T("click_to_undo") : T("click_to_mark"),
           focusMaster: () => { if (f) this.toggleMasteredWord(f.w[3]); },
+          // Auto-play: the set said to you, hands free. The speed is the gap
+          // between one word finishing and the next arriving, not the voice,
+          // and it is remembered because nobody wants to set it twice.
+          autoOn: !!st.focusAuto,
+          autoOff: !st.focusAuto,
+          autoTitle: st.focusAuto ? T("auto_stop") : T("auto_play"),
+          autoStyle: st.focusAuto ? "color:var(--ok-acc);background:var(--ok-acc-s)" : "",
+          toggleAuto: () => { if (this.state.focusAuto) this.stopAuto(); else this.startAuto(); },
+          autoSpeedLabel: "×" + ((st.autoSpeed || 0) + 1),
+          autoSpeedTitle: T("auto_speed"),
+          cycleAutoSpeed: () => {
+            const next = ((this.state.autoSpeed || 0) + 1) % AUTO_GAP.length;
+            lsSet(OK_AUTO_KEY, String(next));
+            this.setState({ autoSpeed: next });
+            // A speed changed mid-run takes effect on the card being waited on
+            if (this.state.focusAuto) this.autoRun(false);
+          },
           focusPrev: () => this.focusStep(-1),
           focusNext: () => this.focusStep(1),
           focusPrevVis: f && st.focus > 0 ? "visible" : "hidden",

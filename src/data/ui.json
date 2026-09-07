@@ -898,5 +898,17 @@
   "story_next_chapter": {
     "en": "Read chapter {n}",
     "es": "Leer el capítulo {n}"
+  },
+  "auto_play": {
+    "en": "Play the set",
+    "es": "Reproducir el grupo"
+  },
+  "auto_stop": {
+    "en": "Stop",
+    "es": "Detener"
+  },
+  "auto_speed": {
+    "en": "How fast the cards turn",
+    "es": "Velocidad de las tarjetas"
   }
 }
