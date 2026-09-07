@@ -685,5 +685,1794 @@
     }
    ]
   ]
+ },
+ "2": {
+  "title": {
+   "ja": "五十年前の道",
+   "en": "The Road Fifty Years Ago",
+   "es": "La calle de hace cincuenta años"
+  },
+  "words": {
+   "始めました": {
+    "of": "始める"
+   },
+   "出て": {
+    "of": "出る"
+   },
+   "知って": {
+    "of": "知る"
+   },
+   "知りたくて": {
+    "of": "知る"
+   },
+   "早く": {
+    "of": "早い"
+   },
+   "楽しかった": {
+    "of": "楽しい"
+   },
+   "朝": {
+    "r": "あさ",
+    "en": "morning",
+    "es": "mañana"
+   },
+   "暗い": {
+    "r": "くらい",
+    "en": "dark",
+    "es": "oscuro"
+   },
+   "部屋": {
+    "r": "へや",
+    "en": "room",
+    "es": "habitación"
+   },
+   "白い": {
+    "r": "しろい",
+    "en": "white",
+    "es": "blanco"
+   },
+   "紙": {
+    "r": "かみ",
+    "en": "paper",
+    "es": "papel"
+   },
+   "古い": {
+    "r": "ふるい",
+    "en": "old",
+    "es": "viejo"
+   },
+   "道": {
+    "r": "みち",
+    "en": "road, street",
+    "es": "calle"
+   },
+   "五十年前": {
+    "r": "ごじゅうねんまえ",
+    "en": "fifty years ago",
+    "es": "hace cincuenta años"
+   },
+   "たくさん": {
+    "r": "たくさん",
+    "en": "a great many",
+    "es": "muchísimos"
+   },
+   "みんな": {
+    "r": "みんな",
+    "en": "everyone",
+    "es": "todos"
+   },
+   "右": {
+    "r": "みぎ",
+    "en": "the right",
+    "es": "la derecha"
+   },
+   "大きな": {
+    "r": "おおきな",
+    "en": "big",
+    "es": "grande"
+   },
+   "切られた": {
+    "r": "きられた",
+    "en": "was cut down",
+    "es": "fue talado"
+   },
+   "分からない": {
+    "r": "わからない",
+    "en": "I don't know",
+    "es": "no lo sé"
+   },
+   "小さく": {
+    "r": "ちいさく",
+    "en": "smaller",
+    "es": "más pequeño"
+   },
+   "だけ": {
+    "r": "だけ",
+    "en": "only",
+    "es": "solo"
+   },
+   "一台": {
+    "r": "いちだい",
+    "en": "one (vehicle)",
+    "es": "uno (vehículo)"
+   },
+   "店": {
+    "r": "みせ",
+    "en": "shop",
+    "es": "tienda"
+   },
+   "止まって": {
+    "r": "とまって",
+    "en": "stopped, parked",
+    "es": "parado"
+   },
+   "海": {
+    "r": "うみ",
+    "en": "the sea",
+    "es": "el mar"
+   },
+   "閉じて": {
+    "r": "とじて",
+    "en": "closed (his eyes)",
+    "es": "cerrados"
+   }
+  },
+  "pages": [
+   [
+    {
+     "ja": "朝早く、正夫さんは暗い部屋で仕事を始めました。",
+     "t": {
+      "en": "Early in the morning, Masao began work in the dark room.",
+      "es": "Temprano por la mañana, Masao empezó a trabajar en el cuarto oscuro."
+     }
+    },
+    {
+     "ja": "「今、一枚だけ作るよ。」",
+     "t": {
+      "en": "“I will make just one now.”",
+      "es": "“Ahora haré solo una.”"
+     }
+    },
+    {
+     "ja": "白い紙の中から、古い市の道が出てきました。",
+     "t": {
+      "en": "Out of the white paper came an old city street.",
+      "es": "Del papel blanco salió una vieja calle de la ciudad."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "五十年前のその道には、人がたくさんいました。",
+     "t": {
+      "en": "On that street, fifty years ago, there were a great many people.",
+      "es": "En esa calle, hace cincuenta años, había muchísima gente."
+     }
+    },
+    {
+     "ja": "「この人たちを知っていますか。」とハルは聞きました。",
+     "t": {
+      "en": "“Do you know these people?” Haru asked.",
+      "es": "“¿Conoces a esta gente?”, preguntó Haru."
+     }
+    },
+    {
+     "ja": "「みんな知っていたよ。今は他の町にいる。」",
+     "t": {
+      "en": "“I knew every one of them. Now they are in other towns.”",
+      "es": "“A todos los conocía. Ahora están en otros pueblos.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "道の右に、大きな木がありました。",
+     "t": {
+      "en": "On the right of the road there was a big tree.",
+      "es": "A la derecha de la calle había un árbol grande."
+     }
+    },
+    {
+     "ja": "「あの木は、会社が来た時に切られた。」",
+     "t": {
+      "en": "“That tree was cut down when the company came.”",
+      "es": "“Ese árbol lo talaron cuando llegó la empresa.”"
+     }
+    },
+    {
+     "ja": "「それは悪い事ですか。」とハルは聞きました。",
+     "t": {
+      "en": "“Was that a bad thing?” Haru asked.",
+      "es": "“¿Eso fue algo malo?”, preguntó Haru."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「分からない。世界が大きくなって、町が小さくなっただけだ。」",
+     "t": {
+      "en": "“I don't know. The world got bigger and the town got smaller, that is all.”",
+      "es": "“No lo sé. El mundo se hizo más grande y el pueblo más pequeño, nada más.”"
+     }
+    },
+    {
+     "ja": "古い車が一台、店の前に止まっていました。",
+     "t": {
+      "en": "One old car was parked in front of a shop.",
+      "es": "Un coche viejo estaba parado frente a una tienda."
+     }
+    },
+    {
+     "ja": "「これは私の車で、海まで行くのが楽しかった。」",
+     "t": {
+      "en": "“That is my car. Driving it to the sea was a pleasure.”",
+      "es": "“Ese es mi coche. Ir hasta el mar con él era un placer.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「この人は目を閉じているね。」とハルが言いました。",
+     "t": {
+      "en": "“This person has his eyes closed,” said Haru.",
+      "es": "“Este tiene los ojos cerrados”, dijo Haru."
+     }
+    },
+    {
+     "ja": "「写真が嫌だった人でね、食事の時だけ笑ったよ。」",
+     "t": {
+      "en": "“He hated photographs. He only smiled at mealtimes.”",
+      "es": "“Odiaba las fotos. Solo sonreía a la hora de comer.”"
+     }
+    },
+    {
+     "ja": "ハルは意味が知りたくて、食べるのも早くなりました。",
+     "t": {
+      "en": "Haru wanted to know what it meant, and even her eating got quicker.",
+      "es": "Haru quería saber qué significaba, y hasta comía más deprisa."
+     }
+    }
+   ]
+  ]
+ },
+ "3": {
+  "title": {
+   "ja": "同じ時間の電話",
+   "en": "The Telephone at the Same Hour",
+   "es": "El teléfono a la misma hora"
+  },
+  "words": {
+   "考えました": {
+    "of": "考える"
+   },
+   "入って": {
+    "of": "入る"
+   },
+   "終わって": {
+    "of": "終わる"
+   },
+   "飲みました": {
+    "of": "飲む"
+   },
+   "笑いました": {
+    "of": "笑い"
+   },
+   "取って": {
+    "of": "取る"
+   },
+   "ミナ": {
+    "r": "みな",
+    "en": "Mina (a girl)",
+    "es": "Mina (una niña)"
+   },
+   "話": {
+    "r": "はなし",
+    "en": "a story, talk",
+    "es": "una historia"
+   },
+   "写真館": {
+    "r": "しゃしんかん",
+    "en": "photograph studio",
+    "es": "estudio de fotografía"
+   },
+   "あそこ": {
+    "r": "あそこ",
+    "en": "that place over there",
+    "es": "aquel lugar"
+   },
+   "分かる": {
+    "r": "わかる",
+    "en": "to understand",
+    "es": "entender"
+   },
+   "二人": {
+    "r": "ふたり",
+    "en": "the two of them",
+    "es": "los dos"
+   },
+   "お茶": {
+    "r": "おちゃ",
+    "en": "tea",
+    "es": "té"
+   },
+   "出して": {
+    "r": "だして",
+    "en": "brought out",
+    "es": "sacó"
+   },
+   "三人": {
+    "r": "さんにん",
+    "en": "the three of them",
+    "es": "los tres"
+   },
+   "百": {
+    "r": "ひゃく",
+    "en": "a hundred",
+    "es": "cien"
+   },
+   "箱": {
+    "r": "はこ",
+    "en": "box",
+    "es": "caja"
+   },
+   "毎日": {
+    "r": "まいにち",
+    "en": "every day",
+    "es": "cada día"
+   },
+   "同じ": {
+    "r": "おなじ",
+    "en": "the same",
+    "es": "el mismo"
+   },
+   "鳴る": {
+    "r": "なる",
+    "en": "rings",
+    "es": "suena"
+   },
+   "だれ": {
+    "r": "だれ",
+    "en": "anyone, who",
+    "es": "alguien, quién"
+   },
+   "変な": {
+    "r": "へんな",
+    "en": "strange",
+    "es": "extraño"
+   },
+   "若い": {
+    "r": "わかい",
+    "en": "young",
+    "es": "joven"
+   },
+   "着て": {
+    "r": "きて",
+    "en": "wearing",
+    "es": "vestido con"
+   },
+   "焼いて": {
+    "r": "やいて",
+    "en": "grilling",
+    "es": "asando"
+   },
+   "もう": {
+    "r": "もう",
+    "en": "no longer, already",
+    "es": "ya"
+   }
+  },
+  "pages": [
+   [
+    {
+     "ja": "ハルは学校でミナに写真館の話をしました。",
+     "t": {
+      "en": "At school, Haru told Mina about the photograph studio.",
+      "es": "En la escuela, Haru le contó a Mina lo del estudio de fotografía."
+     }
+    },
+    {
+     "ja": "「あそこは怖いよ。」とミナは大きい声で言いました。",
+     "t": {
+      "en": "“That place is frightening,” said Mina, loudly.",
+      "es": "“Ese sitio da miedo”, dijo Mina en voz alta."
+     }
+    },
+    {
+     "ja": "「入ってみれば分かる。」とハルは考えました。",
+     "t": {
+      "en": "“You would understand if you went in,” Haru thought.",
+      "es": "“Lo entenderías si entraras”, pensó Haru."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "学校が終わって、二人は写真館へ行きました。",
+     "t": {
+      "en": "When school ended, the two of them went to the studio.",
+      "es": "Al terminar la escuela, las dos fueron al estudio."
+     }
+    },
+    {
+     "ja": "正夫さんはお茶を出して、三人で飲みました。",
+     "t": {
+      "en": "Masao brought out tea, and the three of them drank it.",
+      "es": "Masao sacó té y los tres lo tomaron."
+     }
+    },
+    {
+     "ja": "ミナは初めて、その百の箱を見ました。",
+     "t": {
+      "en": "Mina saw the hundred boxes for the first time.",
+      "es": "Mina vio por primera vez las cien cajas."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「毎日、同じ時間に電話が鳴るんだ。」",
+     "t": {
+      "en": "“Every day, the telephone rings at the same hour.”",
+      "es": "“Cada día, el teléfono suena a la misma hora.”"
+     }
+    },
+    {
+     "ja": "「だれの声もしないよ。」と正夫さんは言いました。",
+     "t": {
+      "en": "“And there is no voice at all,” said Masao.",
+      "es": "“Y no se oye ninguna voz”, dijo Masao."
+     }
+    },
+    {
+     "ja": "「変な感じがする。」とミナは言いました。",
+     "t": {
+      "en": "“It gives me a strange feeling,” said Mina.",
+      "es": "“Me da una sensación extraña”, dijo Mina."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「電話と、この箱は関係がありますか。」",
+     "t": {
+      "en": "“Is there a connection between the telephone and these boxes?”",
+      "es": "“¿Hay relación entre el teléfono y estas cajas?”"
+     }
+    },
+    {
+     "ja": "「自然に鳴る事も可能かな。」とミナが言いました。",
+     "t": {
+      "en": "“Perhaps it just rings by itself,” said Mina.",
+      "es": "“Quizá suene solo”, dijo Mina."
+     }
+    },
+    {
+     "ja": "正夫さんは箱を一つ取って、笑いました。",
+     "t": {
+      "en": "Masao took down one box and laughed.",
+      "es": "Masao bajó una caja y se rió."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「この場所は、もうないんだよ。」",
+     "t": {
+      "en": "“This place does not exist any more.”",
+      "es": "“Este lugar ya no existe.”"
+     }
+    },
+    {
+     "ja": "「若い者は、みんな出て行った。」",
+     "t": {
+      "en": "“The young ones all left.”",
+      "es": "“Los jóvenes se fueron todos.”"
+     }
+    },
+    {
+     "ja": "写真の中の人は、白い服を着て、肉を焼いていました。",
+     "t": {
+      "en": "The people in the photograph wore white clothes and were grilling meat.",
+      "es": "La gente de la fotografía vestía de blanco y asaba carne."
+     }
+    }
+   ]
+  ]
+ },
+ "4": {
+  "title": {
+   "ja": "山田及び高木",
+   "en": "Yamada and Takagi",
+   "es": "Yamada y Takagi"
+  },
+  "words": {
+   "研究して": {
+    "of": "研究"
+   },
+   "生きて": {
+    "of": "生きる"
+   },
+   "続きます": {
+    "of": "続く"
+   },
+   "嬉しく": {
+    "of": "嬉しい"
+   },
+   "分からない": {
+    "of": "分かる"
+   },
+   "ミナ": {
+    "r": "みな",
+    "en": "Mina (a girl)",
+    "es": "Mina (una niña)"
+   },
+   "番号": {
+    "r": "ばんごう",
+    "en": "number",
+    "es": "número"
+   },
+   "本": {
+    "r": "ほん",
+    "en": "book, records",
+    "es": "libro, registros"
+   },
+   "山田": {
+    "r": "やまだ",
+    "en": "Yamada (a family name)",
+    "es": "Yamada (un apellido)"
+   },
+   "高木": {
+    "r": "たかぎ",
+    "en": "Takagi (a family name)",
+    "es": "Takagi (un apellido)"
+   },
+   "書いて": {
+    "r": "かいて",
+    "en": "written",
+    "es": "escrito"
+   },
+   "住んで": {
+    "r": "すんで",
+    "en": "lived",
+    "es": "vivía"
+   },
+   "静か": {
+    "r": "しずか",
+    "en": "quiet",
+    "es": "silencioso"
+   },
+   "外": {
+    "r": "そと",
+    "en": "outside",
+    "es": "fuera"
+   },
+   "木": {
+    "r": "き",
+    "en": "tree",
+    "es": "árbol"
+   },
+   "落ちました": {
+    "r": "おちました",
+    "en": "fell",
+    "es": "cayó"
+   },
+   "覚えて": {
+    "r": "おぼえて",
+    "en": "remember",
+    "es": "recuerdo"
+   },
+   "ばかり": {
+    "r": "ばかり",
+    "en": "nothing but",
+    "es": "solo, nada más que"
+   },
+   "これからも": {
+    "r": "これからも",
+    "en": "from now on as well",
+    "es": "también de ahora en adelante"
+   },
+   "冷たく": {
+    "r": "つめたく",
+    "en": "cold",
+    "es": "frío"
+   },
+   "お茶": {
+    "r": "おちゃ",
+    "en": "tea",
+    "es": "té"
+   }
+  },
+  "pages": [
+   [
+    {
+     "ja": "今日、ミナは電話の番号を研究してきました。",
+     "t": {
+      "en": "Today Mina came with what she had found out about the telephone number.",
+      "es": "Hoy Mina llegó con lo que había averiguado del número de teléfono."
+     }
+    },
+    {
+     "ja": "「この情報は、市の古い本から取りました。」",
+     "t": {
+      "en": "“I took this information from the city's old records.”",
+      "es": "“Saqué esta información de los registros antiguos de la ciudad.”"
+     }
+    },
+    {
+     "ja": "「本に、山田及び高木と書いてありました。」",
+     "t": {
+      "en": "“In the book it says ‘Yamada and Takagi’.”",
+      "es": "“En el libro pone ‘Yamada y Takagi’.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「その家に住んでいた方は、まだ生きていますか。」",
+     "t": {
+      "en": "“Is the person who lived in that house still alive?”",
+      "es": "“¿Sigue viva la persona que vivía en esa casa?”"
+     }
+    },
+    {
+     "ja": "「分からない。」と正夫さんは言い、長い間、部屋は静かでした。",
+     "t": {
+      "en": "“I don't know,” said Masao, and for a long while the room was quiet.",
+      "es": "“No lo sé”, dijo Masao, y durante un largo rato la habitación quedó en silencio."
+     }
+    },
+    {
+     "ja": "窓の外で、木の実が落ちました。",
+     "t": {
+      "en": "Outside the window, a seed fell from a tree.",
+      "es": "Fuera de la ventana cayó la semilla de un árbol."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「その人の姿を、まだ覚えていますか。」",
+     "t": {
+      "en": "“Do you still remember what he looked like?”",
+      "es": "“¿Aún recuerdas su figura?”"
+     }
+    },
+    {
+     "ja": "「覚えている。だが写真は普通の物ばかりだ。」",
+     "t": {
+      "en": "“I remember. But the photographs are nothing but ordinary things.”",
+      "es": "“Lo recuerdo. Pero las fotos no son más que cosas corrientes.”"
+     }
+    },
+    {
+     "ja": "「電話はこれからも続きますか。」とミナが聞きました。",
+     "t": {
+      "en": "“Will the telephone go on ringing?” asked Mina.",
+      "es": "“¿El teléfono seguirá sonando?”, preguntó Mina."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「続くよ。私が受けるまでね。」",
+     "t": {
+      "en": "“It will. Until I answer it.”",
+      "es": "“Seguirá. Hasta que lo coja.”"
+     }
+    },
+    {
+     "ja": "ミナは不安になり、ハルは少し嬉しくなりました。",
+     "t": {
+      "en": "Mina felt uneasy, and Haru felt a little glad.",
+      "es": "Mina se inquietó, y Haru se alegró un poco."
+     }
+    },
+    {
+     "ja": "「結果が分かる日が来る。」と正夫さんは言いました。",
+     "t": {
+      "en": "“A day will come when we know the answer,” said Masao.",
+      "es": "“Llegará un día en que sepamos el resultado”, dijo Masao."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "二人が写真館に戻ると、電話が鳴っていました。",
+     "t": {
+      "en": "When the two of them got back to the studio, the telephone was ringing.",
+      "es": "Cuando las dos volvieron al estudio, el teléfono estaba sonando."
+     }
+    },
+    {
+     "ja": "正夫さんは電話を取らないで、ただ聞いていました。",
+     "t": {
+      "en": "Masao did not pick it up. He only listened.",
+      "es": "Masao no lo cogió. Solo escuchó."
+     }
+    },
+    {
+     "ja": "お茶は冷たくなって、味がなくなっていました。",
+     "t": {
+      "en": "The tea had gone cold, and lost its taste.",
+      "es": "El té se había enfriado y había perdido el sabor."
+     }
+    }
+   ]
+  ]
+ },
+ "5": {
+  "title": {
+   "ja": "新しい建物",
+   "en": "The New Building",
+   "es": "El edificio nuevo"
+  },
+  "words": {
+   "挙げて": {
+    "of": "挙げる"
+   },
+   "歩いて": {
+    "of": "歩く"
+   },
+   "立って": {
+    "of": "立つ"
+   },
+   "待って": {
+    "of": "待つ"
+   },
+   "怒りました": {
+    "of": "怒る"
+   },
+   "生活して": {
+    "of": "生活"
+   },
+   "開いて": {
+    "of": "開く"
+   },
+   "ミナ": {
+    "r": "みな",
+    "en": "Mina (a girl)",
+    "es": "Mina (una niña)"
+   },
+   "三人": {
+    "r": "さんにん",
+    "en": "the three of them",
+    "es": "los tres"
+   },
+   "記録": {
+    "r": "きろく",
+    "en": "records",
+    "es": "archivos"
+   },
+   "係": {
+    "r": "かかり",
+    "en": "the clerk",
+    "es": "el encargado"
+   },
+   "高木": {
+    "r": "たかぎ",
+    "en": "Takagi (a family name)",
+    "es": "Takagi (un apellido)"
+   },
+   "答え": {
+    "r": "こたえ",
+    "en": "the answer",
+    "es": "la respuesta"
+   },
+   "土地": {
+    "r": "とち",
+    "en": "land",
+    "es": "el terreno"
+   },
+   "買った": {
+    "r": "かった",
+    "en": "bought",
+    "es": "compró"
+   },
+   "建物": {
+    "r": "たてもの",
+    "en": "building",
+    "es": "edificio"
+   },
+   "下": {
+    "r": "した",
+    "en": "below, under",
+    "es": "debajo"
+   },
+   "何も": {
+    "r": "なにも",
+    "en": "nothing at all",
+    "es": "nada"
+   },
+   "それから": {
+    "r": "それから",
+    "en": "and then",
+    "es": "y entonces"
+   },
+   "初めて": {
+    "r": "はじめて",
+    "en": "for the first time",
+    "es": "por primera vez"
+   },
+   "大事": {
+    "r": "だいじ",
+    "en": "important",
+    "es": "importante"
+   },
+   "小さく": {
+    "r": "ちいさく",
+    "en": "small, smaller",
+    "es": "más pequeño"
+   },
+   "ドア": {
+    "r": "どあ",
+    "en": "the door",
+    "es": "la puerta"
+   },
+   "座って": {
+    "r": "すわって",
+    "en": "sat down",
+    "es": "se sentó"
+   },
+   "前": {
+    "r": "まえ",
+    "en": "in front of",
+    "es": "delante de"
+   },
+   "置きました": {
+    "r": "おきました",
+    "en": "put, set down",
+    "es": "puso"
+   }
+  },
+  "pages": [
+   [
+    {
+     "ja": "ある日、三人は県の記録を見に行きました。",
+     "t": {
+      "en": "One day the three of them went to look at the prefecture's records.",
+      "es": "Un día los tres fueron a ver los archivos de la prefectura."
+     }
+    },
+    {
+     "ja": "ミナが手を挙げて、係の人に聞きました。",
+     "t": {
+      "en": "Mina raised her hand and asked the clerk.",
+      "es": "Mina levantó la mano y preguntó al encargado."
+     }
+    },
+    {
+     "ja": "「高木さんの家は、今どうなっていますか。」",
+     "t": {
+      "en": "“What has become of the Takagi house?”",
+      "es": "“¿Qué ha sido de la casa de los Takagi?”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "答えは簡単でした。",
+     "t": {
+      "en": "The answer was a simple one.",
+      "es": "La respuesta fue sencilla."
+     }
+    },
+    {
+     "ja": "大きな企業が、その土地を買ったのです。",
+     "t": {
+      "en": "A large company had bought the land.",
+      "es": "Una gran empresa había comprado el terreno."
+     }
+    },
+    {
+     "ja": "三人は歩いて、その場所まで行きました。",
+     "t": {
+      "en": "The three of them walked to the place.",
+      "es": "Los tres fueron caminando hasta el lugar."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "新しい建物が、空の下に立っていました。",
+     "t": {
+      "en": "A new building stood there under the sky.",
+      "es": "Un edificio nuevo se alzaba allí bajo el cielo."
+     }
+    },
+    {
+     "ja": "正夫さんは何も言わないで、待っていました。",
+     "t": {
+      "en": "Masao said nothing at all, and waited.",
+      "es": "Masao no dijo nada y esperó."
+     }
+    },
+    {
+     "ja": "それから、初めて怒りました。",
+     "t": {
+      "en": "And then, for the first time, he was angry.",
+      "es": "Y entonces, por primera vez, se enfadó."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「彼はここで生活していたんだ。」",
+     "t": {
+      "en": "“He lived his life here.”",
+      "es": "“Él hizo su vida aquí.”"
+     }
+    },
+    {
+     "ja": "「一番大事な考えは、待つ事だと言っていた。」",
+     "t": {
+      "en": "“The most important idea, he used to say, is waiting.”",
+      "es": "“Decía que lo más importante es esperar.”"
+     }
+    },
+    {
+     "ja": "ハルは、正夫さんの体が小さく見えると思いました。",
+     "t": {
+      "en": "Haru thought that Masao's body looked smaller.",
+      "es": "A Haru le pareció que el cuerpo de Masao se veía más pequeño."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "写真館のドアが開いて、三人は中に入りました。",
+     "t": {
+      "en": "The studio door opened, and the three of them went in.",
+      "es": "La puerta del estudio se abrió y los tres entraron."
+     }
+    },
+    {
+     "ja": "正夫さんは席に座って、元気がありませんでした。",
+     "t": {
+      "en": "Masao sat down in his seat with no strength in him.",
+      "es": "Masao se sentó en su silla sin ánimo."
+     }
+    },
+    {
+     "ja": "ハルは御飯を作って、彼の前に置きました。",
+     "t": {
+      "en": "Haru made rice and set it down in front of him.",
+      "es": "Haru hizo arroz y se lo puso delante."
+     }
+    }
+   ]
+  ]
+ },
+ "6": {
+  "title": {
+   "ja": "新聞の名前",
+   "en": "A Name in the Newspaper",
+   "es": "Un nombre en el periódico"
+  },
+  "words": {
+   "載って": {
+    "of": "載る"
+   },
+   "笑いました": {
+    "of": "笑う"
+   },
+   "帰らなかった": {
+    "of": "帰る"
+   },
+   "買いました": {
+    "of": "買う"
+   },
+   "書きました": {
+    "of": "書く"
+   },
+   "ミナ": {
+    "r": "みな",
+    "en": "Mina (a girl)",
+    "es": "Mina (una niña)"
+   },
+   "新聞": {
+    "r": "しんぶん",
+    "en": "newspaper",
+    "es": "periódico"
+   },
+   "高木": {
+    "r": "たかぎ",
+    "en": "Takagi (a family name)",
+    "es": "Takagi (un apellido)"
+   },
+   "という": {
+    "r": "という",
+    "en": "called, by the name of",
+    "es": "llamado"
+   },
+   "ために": {
+    "r": "ために",
+    "en": "in order to",
+    "es": "para"
+   },
+   "読んで": {
+    "r": "よんで",
+    "en": "read",
+    "es": "leyó"
+   },
+   "静かに": {
+    "r": "しずかに",
+    "en": "quietly",
+    "es": "en voz baja"
+   },
+   "良かった": {
+    "r": "よかった",
+    "en": "was good",
+    "es": "era bueno"
+   },
+   "いや": {
+    "r": "いや",
+    "en": "no",
+    "es": "no"
+   },
+   "選んだ": {
+    "r": "えらんだ",
+    "en": "chose",
+    "es": "eligió"
+   },
+   "帰り道": {
+    "r": "かえりみち",
+    "en": "the way home",
+    "es": "el camino de vuelta"
+   },
+   "紙": {
+    "r": "かみ",
+    "en": "paper",
+    "es": "papel"
+   },
+   "手紙": {
+    "r": "てがみ",
+    "en": "a letter",
+    "es": "una carta"
+   },
+   "昔": {
+    "r": "むかし",
+    "en": "long ago",
+    "es": "hace tiempo"
+   },
+   "時計": {
+    "r": "とけい",
+    "en": "watch, clock",
+    "es": "reloj"
+   }
+  },
+  "pages": [
+   [
+    {
+     "ja": "次の日、ミナが古い新聞を持ってきました。",
+     "t": {
+      "en": "The next day Mina brought an old newspaper.",
+      "es": "Al día siguiente Mina trajo un periódico viejo."
+     }
+    },
+    {
+     "ja": "「高木という名前が、ここに載っています。」",
+     "t": {
+      "en": "“The name Takagi appears here.”",
+      "es": "“Aquí aparece el nombre Takagi.”"
+     }
+    },
+    {
+     "ja": "「大学に入るために、町を出た男の話です。」",
+     "t": {
+      "en": "“It is about a man who left the town to go to university.”",
+      "es": "“Habla de un hombre que dejó el pueblo para ir a la universidad.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "正夫さんは新聞を読んで、静かに笑いました。",
+     "t": {
+      "en": "Masao read the newspaper and laughed quietly.",
+      "es": "Masao leyó el periódico y se rió en voz baja."
+     }
+    },
+    {
+     "ja": "「彼は頭が良かった。社会に出て、帰らなかった。」",
+     "t": {
+      "en": "“He had a good head. He went out into the world and never came back.”",
+      "es": "“Tenía buena cabeza. Salió al mundo y no volvió.”"
+     }
+    },
+    {
+     "ja": "「残念でしたか。」とハルが聞きました。",
+     "t": {
+      "en": "“Were you sorry?” asked Haru.",
+      "es": "“¿Te dio pena?”, preguntó Haru."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「いや、安心したよ。」",
+     "t": {
+      "en": "“No. I was relieved.”",
+      "es": "“No. Me quedé tranquilo.”"
+     }
+    },
+    {
+     "ja": "「この町には仕事が少ないからね。」",
+     "t": {
+      "en": "“There is little work in this town.”",
+      "es": "“En este pueblo hay poco trabajo.”"
+     }
+    },
+    {
+     "ja": "「一緒に行くのは無理だったんですか。」とミナが聞きました。",
+     "t": {
+      "en": "“Was going with him impossible?” asked Mina.",
+      "es": "“¿Era imposible irse con él?”, preguntó Mina."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「無理じゃない。私が写真館を選んだだけだ。」",
+     "t": {
+      "en": "“Not impossible. I simply chose the studio.”",
+      "es": "“Imposible no. Simplemente elegí el estudio.”"
+     }
+    },
+    {
+     "ja": "帰り道で、三人は花を買いました。",
+     "t": {
+      "en": "On the way home the three of them bought flowers.",
+      "es": "De vuelta, los tres compraron flores."
+     }
+    },
+    {
+     "ja": "ハルはその花を、写真館の内に置きました。",
+     "t": {
+      "en": "Haru put the flowers inside the studio.",
+      "es": "Haru puso las flores dentro del estudio."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "正夫さんは紙を出して、高木さんに手紙を書きました。",
+     "t": {
+      "en": "Masao took out paper and wrote a letter to Takagi.",
+      "es": "Masao sacó papel y le escribió una carta a Takagi."
+     }
+    },
+    {
+     "ja": "「昔、彼と一緒に酒を飲んだ。」",
+     "t": {
+      "en": "“Long ago I drank with him.”",
+      "es": "“Hace tiempo bebimos juntos.”"
+     }
+    },
+    {
+     "ja": "「その時、彼は金の時計をしていたよ。」",
+     "t": {
+      "en": "“He was wearing a gold watch that day.”",
+      "es": "“Aquel día llevaba un reloj de oro.”"
+     }
+    }
+   ]
+  ]
+ },
+ "7": {
+  "title": {
+   "ja": "三日の間",
+   "en": "Three Days",
+   "es": "Tres días"
+  },
+  "words": {
+   "住んで": {
+    "of": "住む"
+   },
+   "面白くない": {
+    "of": "面白い"
+   },
+   "残った": {
+    "of": "残る"
+   },
+   "楽しんで": {
+    "of": "楽しむ"
+   },
+   "動いて": {
+    "of": "動く"
+   },
+   "呼ぶ": {
+    "of": "呼ぶ"
+   },
+   "恥ずかしく": {
+    "of": "恥ずかしい"
+   },
+   "置きました": {
+    "of": "置く"
+   },
+   "小さく": {
+    "of": "小さい"
+   },
+   "三日": {
+    "r": "みっか",
+    "en": "three days",
+    "es": "tres días"
+   },
+   "鳴りません": {
+    "r": "なりません",
+    "en": "did not ring",
+    "es": "no sonó"
+   },
+   "窓": {
+    "r": "まど",
+    "en": "window",
+    "es": "ventana"
+   },
+   "どうして": {
+    "r": "どうして",
+    "en": "why",
+    "es": "por qué"
+   },
+   "減った": {
+    "r": "へった",
+    "en": "grew fewer",
+    "es": "disminuyó"
+   },
+   "五十年間": {
+    "r": "ごじゅうねんかん",
+    "en": "for fifty years",
+    "es": "durante cincuenta años"
+   },
+   "閉じました": {
+    "r": "とじました",
+    "en": "closed",
+    "es": "cerró"
+   },
+   "机": {
+    "r": "つくえ",
+    "en": "desk",
+    "es": "mesa"
+   }
+  },
+  "pages": [
+   [
+    {
+     "ja": "三日の間、電話は鳴りませんでした。",
+     "t": {
+      "en": "For three days the telephone did not ring.",
+      "es": "Durante tres días el teléfono no sonó."
+     }
+    },
+    {
+     "ja": "ハルは写真館の壁を見ていました。",
+     "t": {
+      "en": "Haru looked at the studio wall.",
+      "es": "Haru miraba la pared del estudio."
+     }
+    },
+    {
+     "ja": "小さい光が、窓から入ってきました。",
+     "t": {
+      "en": "A small light came in through the window.",
+      "es": "Una luz pequeña entró por la ventana."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「どうしてここに住んでいるんですか。」とハルが聞きました。",
+     "t": {
+      "en": "“Why do you live here?” asked Haru.",
+      "es": "“¿Por qué vives aquí?”, preguntó Haru."
+     }
+    },
+    {
+     "ja": "「理由は面白くないよ。」と正夫さんは言いました。",
+     "t": {
+      "en": "“The reason is not an interesting one,” said Masao.",
+      "es": "“La razón no es interesante”, dijo Masao."
+     }
+    },
+    {
+     "ja": "「町の経済が悪くなって、人間が減っただけだ。」",
+     "t": {
+      "en": "“The town's economy went bad and the people grew fewer, that is all.”",
+      "es": "“La economía del pueblo empeoró y la gente disminuyó, nada más.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「でも、残った人はここを楽しんでいる。」",
+     "t": {
+      "en": "“But those who stayed enjoy it here.”",
+      "es": "“Pero los que se quedaron disfrutan de esto.”"
+     }
+    },
+    {
+     "ja": "通りに出ると、野菜の店が一つだけ動いていました。",
+     "t": {
+      "en": "Out on the street, only one vegetable shop was still working.",
+      "es": "En la calle, solo una verdulería seguía en marcha."
+     }
+    },
+    {
+     "ja": "「あの店の女性は、私を名前で呼ぶ。」",
+     "t": {
+      "en": "“The woman in that shop calls me by my name.”",
+      "es": "“La mujer de esa tienda me llama por mi nombre.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「全く同じ声で、五十年間ね。」",
+     "t": {
+      "en": "“In exactly the same voice, for fifty years.”",
+      "es": "“Con la misma voz exacta, durante cincuenta años.”"
+     }
+    },
+    {
+     "ja": "ハルは少し恥ずかしくなって、口を閉じました。",
+     "t": {
+      "en": "Haru felt a little embarrassed and closed her mouth.",
+      "es": "Haru sintió algo de vergüenza y cerró la boca."
+     }
+    },
+    {
+     "ja": "正夫さんは野菜を買って、机の上に置きました。",
+     "t": {
+      "en": "Masao bought vegetables and put them on the desk.",
+      "es": "Masao compró verduras y las dejó sobre la mesa."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「面白い人間だと思いますか。」とハルが聞きました。",
+     "t": {
+      "en": "“Do you think you are an interesting person?” asked Haru.",
+      "es": "“¿Te consideras una persona interesante?”, preguntó Haru."
+     }
+    },
+    {
+     "ja": "正夫さんは光の中で、小さく笑いました。",
+     "t": {
+      "en": "In the light, Masao gave a small laugh.",
+      "es": "Masao, bajo la luz, se rió un poco."
+     }
+    },
+    {
+     "ja": "「残るのは写真だけだよ。」",
+     "t": {
+      "en": "“All that stays is the photographs.”",
+      "es": "“Lo único que queda son las fotos.”"
+     }
+    }
+   ]
+  ]
+ },
+ "8": {
+  "title": {
+   "ja": "孫",
+   "en": "The Grandson",
+   "es": "El nieto"
+  },
+  "words": {
+   "起きた": {
+    "of": "起きる"
+   },
+   "会えますか": {
+    "of": "会う"
+   },
+   "始まる": {
+    "of": "始まる"
+   },
+   "悩んで": {
+    "of": "悩む"
+   },
+   "会った": {
+    "of": "会う"
+   },
+   "進んで": {
+    "of": "進む"
+   },
+   "喜んで": {
+    "of": "喜ぶ"
+   },
+   "得た": {
+    "of": "得る"
+   },
+   "ミナ": {
+    "r": "みな",
+    "en": "Mina (a girl)",
+    "es": "Mina (una niña)"
+   },
+   "朝早く": {
+    "r": "あさはやく",
+    "en": "early in the morning",
+    "es": "temprano"
+   },
+   "番号": {
+    "r": "ばんごう",
+    "en": "number",
+    "es": "número"
+   },
+   "知らない": {
+    "r": "しらない",
+    "en": "unknown",
+    "es": "desconocido"
+   },
+   "もしもし": {
+    "r": "もしもし",
+    "en": "hello (on the telephone)",
+    "es": "diga (al teléfono)"
+   },
+   "孫": {
+    "r": "まご",
+    "en": "grandson",
+    "es": "nieto"
+   },
+   "速く": {
+    "r": "はやく",
+    "en": "fast",
+    "es": "deprisa"
+   },
+   "焼いて": {
+    "r": "やいて",
+    "en": "was frying",
+    "es": "freía"
+   },
+   "止まりました": {
+    "r": "とまりました",
+    "en": "stopped",
+    "es": "se detuvo"
+   },
+   "ドア": {
+    "r": "どあ",
+    "en": "the door",
+    "es": "la puerta"
+   },
+   "祖父": {
+    "r": "そふ",
+    "en": "grandfather",
+    "es": "abuelo"
+   },
+   "覚えて": {
+    "r": "おぼえて",
+    "en": "remember",
+    "es": "recuerdo"
+   }
+  },
+  "pages": [
+   [
+    {
+     "ja": "朝早く起きたミナの携帯が鳴りました。",
+     "t": {
+      "en": "Mina had woken early, and her mobile rang.",
+      "es": "Mina se había levantado temprano, y le sonó el móvil."
+     }
+    },
+    {
+     "ja": "知らない番号からでした。",
+     "t": {
+      "en": "It was from a number she did not know.",
+      "es": "Era de un número desconocido."
+     }
+    },
+    {
+     "ja": "「もしもし。」と若い男の声が言いました。",
+     "t": {
+      "en": "“Hello,” said a young man's voice.",
+      "es": "“Diga”, dijo la voz de un hombre joven."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「僕は高木の孫です。」",
+     "t": {
+      "en": "“I am Takagi's grandson.”",
+      "es": "“Soy el nieto de Takagi.”"
+     }
+    },
+    {
+     "ja": "「今、国に帰ってきています。会えますか。」",
+     "t": {
+      "en": "“I am back in the country now. Can we meet?”",
+      "es": "“Ahora estoy de vuelta en el país. ¿Podemos vernos?”"
+     }
+    },
+    {
+     "ja": "ハルの心が、速く動きました。",
+     "t": {
+      "en": "Haru's heart moved quickly.",
+      "es": "El corazón de Haru se aceleró."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "三人は写真館で待って、猫が席に上がりました。",
+     "t": {
+      "en": "The three of them waited in the studio, and the cat climbed onto a seat.",
+      "es": "Los tres esperaron en el estudio, y el gato se subió a una silla."
+     }
+    },
+    {
+     "ja": "正夫さんは玉子を焼いていて、手が止まりました。",
+     "t": {
+      "en": "Masao was frying eggs, and his hands stopped.",
+      "es": "Masao freía huevos, y sus manos se detuvieron."
+     }
+    },
+    {
+     "ja": "「これから何が始まるのか、状況が分かりません。」とミナが言いました。",
+     "t": {
+      "en": "“I don't know what is starting here, or how things stand,” said Mina.",
+      "es": "“No sé qué empieza aquí, ni cómo están las cosas”, dijo Mina."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「絶対に良い事だよ。」とハルは言いました。",
+     "t": {
+      "en": "“It is definitely a good thing,” said Haru.",
+      "es": "“Seguro que es algo bueno”, dijo Haru."
+     }
+    },
+    {
+     "ja": "正夫さんは悩んでいるように見えました。",
+     "t": {
+      "en": "Masao looked troubled.",
+      "es": "Masao parecía preocupado."
+     }
+    },
+    {
+     "ja": "「最後に会った日を、完全に覚えている。」",
+     "t": {
+      "en": "“I remember the day we last met perfectly.”",
+      "es": "“Recuerdo perfectamente el día en que nos vimos por última vez.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "ドアが開いて、足の音が進んできました。",
+     "t": {
+      "en": "The door opened, and footsteps came forward.",
+      "es": "La puerta se abrió y unos pasos avanzaron."
+     }
+    },
+    {
+     "ja": "「僕は教育の仕事をしていて、祖父から得た物があります。」",
+     "t": {
+      "en": "“I work in education, and there is something I got from my grandfather.”",
+      "es": "“Trabajo en educación, y hay algo que heredé de mi abuelo.”"
+     }
+    },
+    {
+     "ja": "正夫さんは喜んで、その手を取りました。",
+     "t": {
+      "en": "Masao was glad, and took his hand.",
+      "es": "Masao se alegró y le tomó la mano."
+     }
+    }
+   ]
+  ]
+ },
+ "9": {
+  "title": {
+   "ja": "町の塩",
+   "en": "Salt from the Town",
+   "es": "Sal del pueblo"
+  },
+  "words": {
+   "話しました": {
+    "of": "話す"
+   },
+   "走って": {
+    "of": "走る"
+   },
+   "与えて": {
+    "of": "与える"
+   },
+   "変える": {
+    "of": "変える"
+   },
+   "寝ました": {
+    "of": "寝る"
+   },
+   "若い男": {
+    "r": "わかいおとこ",
+    "en": "the young man",
+    "es": "el joven"
+   },
+   "机": {
+    "r": "つくえ",
+    "en": "desk",
+    "es": "mesa"
+   },
+   "祖父": {
+    "r": "そふ",
+    "en": "grandfather",
+    "es": "abuelo"
+   },
+   "戻る": {
+    "r": "もどる",
+    "en": "to come back",
+    "es": "volver"
+   },
+   "つもり": {
+    "r": "つもり",
+    "en": "intended to",
+    "es": "tenía intención de"
+   },
+   "だけ": {
+    "r": "だけ",
+    "en": "only",
+    "es": "solo"
+   },
+   "痛く": {
+    "r": "いたく",
+    "en": "to hurt",
+    "es": "doler"
+   },
+   "そう": {
+    "r": "そう",
+    "en": "they say",
+    "es": "según dicen"
+   },
+   "顔": {
+    "r": "かお",
+    "en": "face",
+    "es": "cara"
+   },
+   "何年も": {
+    "r": "なんねんも",
+    "en": "for years",
+    "es": "durante años"
+   },
+   "書かなかった": {
+    "r": "かかなかった",
+    "en": "never wrote",
+    "es": "que nunca escribió"
+   },
+   "手紙": {
+    "r": "てがみ",
+    "en": "letters",
+    "es": "cartas"
+   },
+   "覚えて": {
+    "r": "おぼえて",
+    "en": "remember",
+    "es": "recuerdan"
+   },
+   "その夜": {
+    "r": "そのよる",
+    "en": "that night",
+    "es": "esa noche"
+   },
+   "深く": {
+    "of": "深い"
+   }
+  },
+  "pages": [
+   [
+    {
+     "ja": "若い男は、古い箱を机の上に置きました。",
+     "t": {
+      "en": "The young man put an old box on the desk.",
+      "es": "El joven dejó una caja vieja sobre la mesa."
+     }
+    },
+    {
+     "ja": "「祖父は最初、この町に戻るつもりでした。」",
+     "t": {
+      "en": "“At first my grandfather meant to come back to this town.”",
+      "es": "“Al principio mi abuelo pensaba volver a este pueblo.”"
+     }
+    },
+    {
+     "ja": "「でも一度だけ来て、中に入らなかったんです。」",
+     "t": {
+      "en": "“But he came only once, and never went inside.”",
+      "es": "“Pero vino solo una vez, y no llegó a entrar.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「どうしてですか。」と正夫さんは話しました。",
+     "t": {
+      "en": "“Why?” said Masao.",
+      "es": "“¿Por qué?”, dijo Masao."
+     }
+    },
+    {
+     "ja": "正夫さんの胸が、深く痛くなりました。",
+     "t": {
+      "en": "Deep in his chest, it hurt.",
+      "es": "Le dolió hondo en el pecho."
+     }
+    },
+    {
+     "ja": "「山の側の道から、写真館を見ていたそうです。」",
+     "t": {
+      "en": "“They say he watched the studio from the road on the mountain side.”",
+      "es": "“Dicen que miraba el estudio desde el camino del lado de la montaña.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「子どもが店の前を走っていて、祖父は幸せそうに笑ったと。」",
+     "t": {
+      "en": "“Children were running in front of the shop, and he smiled as though he were happy.”",
+      "es": "“Unos niños corrían delante de la tienda, y él sonrió como si fuera feliz.”"
+     }
+    },
+    {
+     "ja": "「それで、悲しい顔で帰ったんです。」",
+     "t": {
+      "en": "“And then he went home with a sad face.”",
+      "es": "“Y luego se marchó con cara triste.”"
+     }
+    },
+    {
+     "ja": "「その状態で、何年も生きていました。」",
+     "t": {
+      "en": "“He lived like that for years.”",
+      "es": "“Vivió así durante años.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "箱の中には、書かなかった手紙と、この町の塩が入っていました。",
+     "t": {
+      "en": "Inside the box were letters he never wrote, and salt from this town.",
+      "es": "Dentro de la caja había cartas que nunca escribió, y sal de este pueblo."
+     }
+    },
+    {
+     "ja": "「祖父の店は、子どもに写真を無料で与えていました。」",
+     "t": {
+      "en": "“My grandfather's shop gave photographs to children for nothing.”",
+      "es": "“La tienda de mi abuelo daba fotos gratis a los niños.”"
+     }
+    },
+    {
+     "ja": "「祖父の存在を、町は覚えていますか。」と若い男が聞きました。",
+     "t": {
+      "en": "“Does the town remember that my grandfather existed?” the young man asked.",
+      "es": "“¿El pueblo recuerda que mi abuelo existió?”, preguntó el joven."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「町を変える事はできない。」",
+     "t": {
+      "en": "“We cannot change the town.”",
+      "es": "“No podemos cambiar el pueblo.”"
+     }
+    },
+    {
+     "ja": "「でも、覚えている事が一番重要だ。」",
+     "t": {
+      "en": "“But remembering is the most important thing of all.”",
+      "es": "“Pero recordar es lo más importante.”"
+     }
+    },
+    {
+     "ja": "その夜、正夫さんは電話の側で寝ました。",
+     "t": {
+      "en": "That night, Masao slept beside the telephone.",
+      "es": "Esa noche, Masao durmió junto al teléfono."
+     }
+    }
+   ]
+  ]
  }
 }
