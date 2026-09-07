@@ -980,7 +980,6 @@ html[data-ok-ready] #ok-boot{display:none}
                 <sc-if value="{{ storyLastPage }}" hint-placeholder-val="{{ false }}">
                   <div class="ok-story-end">
                     <span class="ok-story-end-t">{{ t_story_end }}</span>
-                    <span class="ok-muted">{{ t_story_end_sub }}</span>
                   </div>
                 </sc-if>
               </div>
@@ -2381,8 +2380,7 @@ class Component extends DCLogic {
 
     const esc = (x) => String(x).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const tr = (v) => (v && (v[CURRENT_LANG] || v.EN)) || "";
-    const end = '<div class="ok-story-end"><span class="ok-story-end-t">' + esc(T("story_end")) +
-      '</span><span class="ok-muted">' + esc(T("story_end_sub")) + "</span></div>";
+    const end = '<div class="ok-story-end"><span class="ok-story-end-t">' + esc(T("story_end")) + "</span></div>";
     const html = (page, last) => page.map((l) =>
       '<div class="ok-story-line"><span class="ok-story-ja">' + esc(l.p.map((x) => x[0]).join("")) +
       '</span><span class="ok-story-tr">' + esc(tr(l.t)) + "</span></div>").join("") + (last ? end : "");
