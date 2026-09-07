@@ -433,20 +433,27 @@ a:hover{color:var(--text-accent-hover)}
 .ok-focus-tr{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-mute);transition:opacity 160ms ease;text-wrap:pretty}
 /* The same ring the cards carry, named -- a caption to the button that
    changes it, not a panel wedged into the middle of the reading. */
-.ok-focus-str{flex:0 0 auto;margin-top:auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem;line-height:1}
-.ok-focus-ring{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;flex:0 0 auto;border:1.5px solid var(--ok-line);border-radius:50%;padding:1px}
-.ok-focus-ring svg{width:100%;height:100%;display:block;overflow:visible}
+/* The word's own controls, and under them the caption that names what the
+   dial on the mark button is showing. One dial, not two: the button is the
+   dial, so the caption is words alone. */
+.ok-focus-foot{flex:0 0 auto;margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:.5rem;width:100%}
+.ok-focus-str{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:.2rem;line-height:1.25;text-align:center}
 .ok-focus-str-lvl{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);white-space:nowrap}
 .ok-focus-str-sub{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);white-space:nowrap}
 .ok-focus-dots{display:inline-flex;align-items:center;gap:4px;flex:0 0 auto}
 /* the level and its dots travel together on a phone; on a desk the wrapper
    dissolves into the row */
-.ok-focus-str-top{display:contents}
+.ok-focus-str-top{display:flex;align-items:center;justify-content:center;gap:.5rem}
 .ok-focus-dot{width:7px;height:7px;border-radius:50%}
-.ok-focus-actions{display:flex;gap:.6rem;padding-top:.15rem}
+.ok-focus-actions{display:flex;align-items:center;justify-content:center;gap:.7rem}
+/* An arrow either side of the word: on a phone that is where a thumb goes
+   looking for the next one, and the pair sits in the row rather than in a
+   corner of the bar. On a desktop they stay at the edges of the sheet. */
+.ok-focus-wordrow{flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:.4rem;width:100%}
 .ok-focus-arrow{position:absolute;top:50%;transform:translateY(-50%);width:2.6rem;height:2.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-focus-arrow:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
 .ok-focus-arrow-l{left:.6rem}.ok-focus-arrow-r{right:.6rem}
+.ok-focus-arrow svg{width:1.35rem;height:1.35rem}
 .ok-toast{position:fixed;left:50%;bottom:calc(1.5rem + var(--ok-kb,0px));transform:translateX(-50%);z-index:120;padding:.7rem 1.15rem;border-radius:10px;background:#1b1f24;color:#fff;font-family:var(--font-2);font-size:1rem;box-shadow:0 10px 30px rgba(0,0,0,.25);white-space:nowrap;animation:ok-toast-in 200ms ease}
 @keyframes ok-toast-in{from{opacity:0;transform:translate(-50%,.5rem)}to{opacity:1;transform:translate(-50%,0)}}
 @keyframes ok-fade{from{opacity:0}to{opacity:1}}
@@ -593,7 +600,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-cardbtns{position:absolute;right:.85rem;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
 /* Both controls are the same button: one size, one border, one background.
    Only what sits inside them differs. */
-.ok-tick,.ok-play{position:static;width:2.35rem;height:2.35rem;border-radius:50%;border:1.5px solid var(--ok-line);background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#c9c9c2;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
+.ok-tick,.ok-play{position:static;width:2.35rem;height:2.35rem;border-radius:50%;border:1.5px solid #c6c6bd;background:var(--ok-card);display:flex;align-items:center;justify-content:center;color:#7f858c;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease,transform 120ms ease}
 .ok-tick:hover,.ok-play:hover{border-color:var(--ok-acc);color:var(--ok-acc);transform:scale(1.06)}
 @keyframes ok-speak{0%,100%{opacity:1}50%{opacity:.45}}
 /* One control, two meanings: the quarters fill as practice finds the word
@@ -699,10 +706,7 @@ a:hover{color:var(--text-accent-hover)}
   .ok-story-play{min-width:0;flex:1 1 auto;max-width:16rem}
 
   /* the word, opened: a page with a close, a title, and an action bar */
-  .ok-focus{width:100%;height:var(--ok-vh,100svh);max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:center;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(5.5rem + env(safe-area-inset-bottom))}
-  /* the caption travels with the content it describes rather than being
-     pushed to the floor, now that the block is centred */
-  .ok-focus-str{margin-top:1.1rem}
+  .ok-focus{width:100%;height:var(--ok-vh,100svh);max-width:none;border-radius:0;box-shadow:none;animation:none;justify-content:center;padding:calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(7rem + env(safe-area-inset-bottom))}
   /* Centring only holds still if the block is the same height every time.
      Every gloss and every example sentence in the corpus fits one line at
      this width; six translations out of 520 take two, so that line pair is
@@ -711,10 +715,11 @@ a:hover{color:var(--text-accent-hover)}
   .ok-focus-out{animation:none!important}
   .ok-x{top:calc(.5rem + env(safe-area-inset-top));left:.6rem;right:auto;width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border-radius:50%}
   .ok-focus-n{position:absolute;top:calc(1.35rem + env(safe-area-inset-top));left:3.5rem;right:3.5rem;text-align:center}
-  .ok-focus-actions{position:fixed;left:0;right:0;bottom:var(--ok-kb,0px);margin:0;gap:.5rem;justify-content:center;padding:.7rem 4.2rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(244,244,241,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
-  .ok-focus-arrow{position:fixed;top:auto;transform:none;z-index:2;width:2.9rem;height:2.9rem;bottom:calc(.65rem + env(safe-area-inset-bottom) + var(--ok-kb,0px))}
-  .ok-focus-arrow-l{left:.4rem}
-  .ok-focus-arrow-r{right:.4rem}
+  /* the foot: the two controls, and the caption centred underneath them */
+  .ok-focus-foot{position:fixed;left:0;right:0;bottom:var(--ok-kb,0px);margin:0;gap:.4rem;padding:.6rem 1rem calc(.6rem + env(safe-area-inset-bottom));background:rgba(244,244,241,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--ok-line)}
+  .ok-focus-actions{gap:.9rem}
+  .ok-focus-arrow{position:static;transform:none;flex:0 0 auto;width:2.9rem;height:2.9rem;color:var(--ok-body)}
+  .ok-focus-arrow svg{width:1.6rem;height:1.6rem}
 
   /* settings: the popover becomes the page */
   .ok-pop{position:fixed;inset:0;padding:0;z-index:96;background:var(--ok-bg);animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
@@ -760,13 +765,11 @@ a:hover{color:var(--text-accent-hover)}
   .ok-quiz-type .ok-dots{flex:0 0 auto}
   .ok-quiz-type .ok-qtype{flex:0 0 auto}
 
-  /* the word, opened: its caption becomes two lines beside the ring rather
-     than one line that would run off a phone */
-  .ok-focus-str{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:.7rem;row-gap:.3rem;align-items:center;justify-content:start;width:100%;line-height:1.2;text-align:left}
-  .ok-focus-ring{grid-row:1/3;width:1.6rem;height:1.6rem}
-  .ok-focus-str-top{display:flex;align-items:center;gap:.6rem;grid-column:2;grid-row:1;min-width:0}
+  /* the word, opened: the caption is the last line on the screen, centred
+     under the controls, and it wraps rather than running off the side */
+  .ok-focus-str{width:100%;max-width:22rem}
   .ok-focus-str-lvl{white-space:normal}
-  .ok-focus-str-sub{grid-column:2;grid-row:2;white-space:normal}
+  .ok-focus-str-sub{white-space:normal}
 
   /* write: the word pills are one strip you scroll sideways, so the thread
      keeps the page; the language toggle is a thumb's size */
@@ -799,7 +802,6 @@ a:hover{color:var(--text-accent-hover)}
   .ok-focus{height:auto;max-height:calc(100vh - 1.5rem);gap:.6rem;padding:2rem 3.5rem 1.25rem}
   .ok-focus-wordbox{height:5rem}
   .ok-focus-word{font-size:3rem!important}
-  .ok-focus-str{margin-top:.5rem}
   .ok-quiz,.ok-fc{min-height:0}
 }
 @media (min-width:641px) and (max-width:900px){
@@ -811,7 +813,7 @@ a:hover{color:var(--text-accent-hover)}
 @media (hover:none){
   .ok-card:hover,.ok-tile:hover,.ok-pmode:hover,.ok-hero:hover{transform:none;box-shadow:var(--ok-shadow)}
   .ok-qtile[data-live]:hover{transform:none;border-color:var(--ok-line)}
-  .ok-tick:hover,.ok-play:hover{transform:none;border-color:var(--ok-line);color:#c9c9c2}
+  .ok-tick:hover,.ok-play:hover{transform:none;border-color:#c6c6bd;color:#7f858c}
   .ok-btn:hover{border-color:var(--ok-line);background:var(--ok-card)}
   .ok-btn-primary:hover{background:var(--ok-acc);border-color:var(--ok-acc)}
   .ok-round-btn:hover,.ok-mini:hover,.ok-focus-arrow:hover,.ok-back:hover{background:transparent;color:var(--ok-mute)}
@@ -1185,7 +1187,7 @@ html[data-ok-ready] #ok-boot{display:none}
       <div sc-camel-on-click="{{ stop }}" class="ok-focus {{ focusOut }}" style="--fx:{{ focusFx }};--fy:{{ focusFy }}">
         <span sc-camel-on-click="{{ closeFocus }}" class="ok-x">×</span>
         <span class="ok-focus-n">{{ focusCounter }}</span>
-        <div class="ok-focus-wordbox"><span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span></div>
+        <div class="ok-focus-wordrow"><span sc-camel-on-click="{{ focusPrev }}" class="ok-focus-arrow ok-focus-arrow-l" title="{{ t_prev_word }}" style="visibility:{{ focusPrevVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span><div class="ok-focus-wordbox"><span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span></div><span sc-camel-on-click="{{ focusNext }}" class="ok-focus-arrow ok-focus-arrow-r" title="{{ t_next_word }}" style="visibility:{{ focusNextVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span></div>
         <div class="ok-focus-ans" style="opacity:{{ focusAns }}">
           <sc-if value="{{ focusShowReading }}" hint-placeholder-val="{{ false }}"><span class="ok-focus-reading">{{ focusReading }}</span></sc-if>
           <span class="ok-focus-gloss">{{ focusGloss }}</span>
@@ -1194,28 +1196,27 @@ html[data-ok-ready] #ok-boot{display:none}
           <span class="ok-focus-ex"><sc-for list="{{ focusExParts }}" as="xp" hint-placeholder-count="3"><sc-if value="{{ xp.hit }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok-acc)">{{ xp.text }}</span></sc-if><sc-if value="{{ xp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ xp.text }}</span></sc-if></sc-for></span>
           <span class="ok-focus-tr" style="opacity:{{ focusAns }}">{{ focusExEn }}</span>
         </sc-if>
-        <div class="ok-focus-str">
-          <span class="ok-focus-ring">
-            <svg sc-camel-view-box="0 0 24 24">
-              <sc-if value="{{ focusPieOn }}" hint-placeholder-val="{{ false }}"><path d="{{ focusPieD }}" fill="var(--ok-acc)" class="ok-pie-w"></path></sc-if>
-              <sc-if value="{{ focusPieFull }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M8.5 12.2 L10.9 14.6 L15.5 9.5" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
-            </svg>
-          </span>
-          <span class="ok-focus-str-top">
-            <span class="ok-focus-str-lvl">{{ focusLvlName }}</span>
-            <sc-if value="{{ focusDotsOn }}" hint-placeholder-val="{{ false }}">
-              <span class="ok-focus-dots" title="{{ t_str_recent }}"><sc-for list="{{ focusDots }}" as="fd" hint-placeholder-count="6"><span class="ok-focus-dot" style="background:{{ fd.bg }}" title="{{ fd.title }}"></span></sc-for></span>
-            </sc-if>
-          </span>
-          <span class="ok-focus-str-sub">{{ focusStrSub }}</span>
+        <div class="ok-focus-foot">
+          <div class="ok-focus-actions">
+            <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ focusPlay }}" class="ok-play" title="{{ t_listen }}" style="{{ focusPlayStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
+            <sc-if value="{{ focusHidden }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ revealFocus }}" class="ok-btn">{{ t_show_answer }}</span></sc-if>
+            <span sc-camel-on-click="{{ focusMaster }}" class="ok-tick" title="{{ focusMarkTitle }}">
+              <svg sc-camel-view-box="0 0 24 24">
+                <sc-if value="{{ focusPieOn }}" hint-placeholder-val="{{ false }}"><path d="{{ focusPieD }}" fill="var(--ok-acc)" class="ok-pie-w"></path></sc-if>
+                <sc-if value="{{ focusPieFull }}" hint-placeholder-val="{{ false }}"><path class="ok-pie-tick" d="M8.5 12.2 L10.9 14.6 L15.5 9.5" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></sc-if>
+              </svg>
+            </span>
+          </div>
+          <div class="ok-focus-str">
+            <span class="ok-focus-str-top">
+              <span class="ok-focus-str-lvl">{{ focusLvlName }}</span>
+              <sc-if value="{{ focusDotsOn }}" hint-placeholder-val="{{ false }}">
+                <span class="ok-focus-dots" title="{{ t_str_recent }}"><sc-for list="{{ focusDots }}" as="fd" hint-placeholder-count="6"><span class="ok-focus-dot" style="background:{{ fd.bg }}" title="{{ fd.title }}"></span></sc-for></span>
+              </sc-if>
+            </span>
+            <span class="ok-focus-str-sub">{{ focusStrSub }}</span>
+          </div>
         </div>
-        <div class="ok-focus-actions">
-          <sc-if value="{{ canSpeak }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ focusPlay }}" class="ok-btn" title="{{ t_listen }}" style="{{ focusPlayStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 H7.5 L12 6 V18 L7.5 14.5 H4 Z"></path><path d="M15.5 9 A4.2 4.2 0 0 1 15.5 15"></path><path d="M18.2 6.2 A8 8 0 0 1 18.2 17.8"></path></svg></span></sc-if>
-          <sc-if value="{{ focusHidden }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ revealFocus }}" class="ok-btn">{{ t_show_answer }}</span></sc-if>
-          <span sc-camel-on-click="{{ focusMaster }}" class="ok-btn" style="{{ focusPillStyle }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg><span>{{ focusPillLabel }}</span></span>
-        </div>
-        <span sc-camel-on-click="{{ focusPrev }}" class="ok-focus-arrow ok-focus-arrow-l" style="visibility:{{ focusPrevVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span>
-        <span sc-camel-on-click="{{ focusNext }}" class="ok-focus-arrow ok-focus-arrow-r" style="visibility:{{ focusNextVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
       </div>
     </div>
   </sc-if>
@@ -1929,6 +1930,15 @@ const okTileSize = (text, kana, mode) => {
   if (!okPhone()) return mode === 3 ? "2.5rem" : "3rem";
   const n = [...String(text || "")].length;
   return n <= 3 ? "2.5rem" : n === 4 ? "2rem" : n === 5 ? "1.6rem" : n === 6 ? "1.4rem" : "1.25rem";
+};
+// The opened word carries an arrow either side of it, and on a phone that
+// pair takes about 100px of the 350 a 390px screen leaves inside the page --
+// so the phone sizes come down far enough for the longest word in the corpus
+// (six characters) to sit between them rather than under them.
+const okFocusWordSize = (text) => {
+  const n = [...String(text || "")].length;
+  if (!okPhone()) return n <= 2 ? "5rem" : n <= 4 ? "4rem" : "3rem";
+  return n <= 2 ? "4.25rem" : n <= 4 ? "3.4rem" : n <= 6 ? "2.55rem" : "2.1rem";
 };
 // The flashcard face, likewise: five characters at 5rem would leave the card.
 const okFrontSize = (text, kanji) => {
@@ -4450,7 +4460,7 @@ class Component extends DCLogic {
           focusCounter: f ? setName(WSET) + " · " + (st.focus + 1) + " / " + WORDS.length : "",
           focusRuby: f ? this.wordRuby(f.w[0], f.w[1]) : OK_EMPTY,
           focusRubyOpacity: fHidden || !st.allFuri ? 0 : 1,
-          focusWordSize: f ? (f.w[0].length <= 2 ? "5rem" : f.w[0].length <= 4 ? "4rem" : "3rem") : "4rem",
+          focusWordSize: f ? okFocusWordSize(f.w[0]) : "4rem",
           focusAns: fHidden ? 0 : 1,
           focusReading: f ? f.w[1] : "",
           // The reading line only earns its place when the furigana is off.
@@ -4477,7 +4487,10 @@ class Component extends DCLogic {
               focusPieFull: lvl >= 4,
               focusPieD: okPiePath(lvl),
               focusLvlName: marked ? T("marked_learned") : T("str_" + lvl),
-              focusStrSub: !n ? T("str_never_sub")
+              // "It will come up in Practice" is only true of a word Practice
+              // would actually deal, and practiceWords() drops the ones marked
+              // by hand while any others in the set still need the work.
+              focusStrSub: !n ? T(marked ? "str_marked_sub" : "str_never_sub")
                 : (days === 0 ? T("str_seen_today_long") : days === 1 ? T("str_seen_yesterday") : T("str_seen_days_long", { n: days }))
                   + " · " + T("str_answers_long", { n: n }),
               focusDots: dots,
@@ -4490,11 +4503,10 @@ class Component extends DCLogic {
           focusHidden: fHidden,
           revealFocus: () => this.setState({ focusShown: true }),
           focusPlay: () => { if (f) this.speakWord("F" + f.w[3], f.w[0], fx || "", f.w[3]); },
-          focusPlayStyle: f && st.speaking === "F" + f.w[3] ? "border-color:var(--ok-acc);color:var(--ok-acc);animation:ok-speak 1.1s ease-in-out infinite" : "",
+          focusPlayStyle: f && st.speaking === "F" + f.w[3] ? "color:var(--ok-acc);background:var(--ok-acc-s);animation:ok-speak 1.1s ease-in-out infinite" : "",
           // A machine with no speech engine still has the recordings.
           canSpeak: okCanSpeak() || (VOICES.words || []).length > 0,
-          focusPillStyle: okPill(fDone),
-          focusPillLabel: fDone ? T("learned") : T("got_it"),
+          focusMarkTitle: fDone ? T("marked_learned") + " · " + T("click_to_undo") : T("click_to_mark"),
           focusMaster: () => { if (f) this.toggleMasteredWord(f.w[3]); },
           focusPrev: () => this.focusStep(-1),
           focusNext: () => this.focusStep(1),
