@@ -416,6 +416,13 @@ a:hover{color:var(--text-accent-hover)}
 .ok-link:hover{text-decoration:underline}
 .ok-input{width:100%;height:2.4rem;padding:0 .75rem;border-radius:8px;border:1px solid #d5d5cf;background:#fff;font-family:var(--font-2);font-size:1rem;color:var(--ok-ink);outline:none}
 .ok-input:focus{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
+/* One opt-in, drawn rather than native so it matches the popover and reads
+   the same on both platforms. The caption is the promise: once a month. */
+.ok-check{display:flex;align-items:flex-start;gap:.55rem;cursor:pointer;user-select:none}
+.ok-check-box{flex:0 0 1.15rem;width:1.15rem;height:1.15rem;margin-top:.1rem;border-radius:5px;border:1px solid #d5d5cf;background:#fff;display:flex;align-items:center;justify-content:center;color:#fff;transition:background 140ms ease,border-color 140ms ease}
+.ok-check-txt{display:flex;flex-direction:column;gap:.1rem;min-width:0}
+.ok-check-t{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);line-height:1.3}
+.ok-check-n{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute);line-height:1.3}
 .ok-chips{display:flex;flex-wrap:wrap;gap:.4rem}
 .ok-chip{padding:.3rem .75rem;border-radius:999px;border:1px solid var(--ok-line);font-family:var(--font-2);font-size:.9375rem;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease}
 .ok-veil{position:fixed;inset:0;z-index:95;background:rgba(20,24,30,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;animation:ok-fade 160ms ease}
@@ -481,6 +488,15 @@ a:hover{color:var(--text-accent-hover)}
    that is left here is the entry that opens it, quieter than the modes a
    learner picks between. */
 .ok-pmode-quiet .ok-pmode-ico{background:rgba(107,114,128,.1);color:var(--ok-mute)}
+/* A row for something not written yet: it stands in the list so the set does
+   not look short of one, and says when rather than nothing. */
+.ok-pmode-soon{cursor:default;background:transparent;box-shadow:none;border-style:dashed}
+.ok-pmode-soon:hover{box-shadow:none;transform:none}
+.ok-pmode-soon .ok-pmode-ico{background:rgba(107,114,128,.08);color:var(--ok-mute)}
+.ok-pmode-soon .ok-pmode-t{color:var(--ok-mute)}
+.ok-pmode-tr{display:flex;align-items:center;gap:.55rem;min-width:0}
+.ok-pmode-badge{font-family:var(--font-2);font-size:.6875rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ok-mute);border:1px solid var(--ok-line);border-radius:999px;padding:.16rem .5rem;white-space:nowrap}
+.ok-pmode-soon .ok-link{align-self:auto}
 /* The story: one page of it at a time, every line with its own translation
    underneath so a reader can look down for a sentence and back up again
    without losing the page. */
@@ -910,6 +926,12 @@ html[data-ok-ready] #ok-boot{display:none}
                   <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
                 </div>
               </sc-if>
+              <sc-if value="{{ storySoon }}" hint-placeholder-val="{{ false }}">
+                <div class="ok-pmode ok-pmode-soon">
+                  <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5 C10 4.8 7.5 4.4 4.5 4.8 V18 C7.5 17.6 10 18 12 19.6 C14 18 16.5 17.6 19.5 18 V4.8 C16.5 4.4 14 4.8 12 6.5 Z"></path><path d="M12 6.5 V19.6"></path></svg></span>
+                  <div class="ok-pmode-txt"><span class="ok-pmode-tr"><span class="ok-pmode-t">{{ t_story }}</span><span class="ok-pmode-badge">{{ t_coming_soon }}</span></span><span sc-camel-on-click="{{ signUpUpdates }}" class="ok-link">{{ t_sign_up_updates }}</span></div>
+                </div>
+              </sc-if>
               <div sc-camel-on-click="{{ gCards }}" class="ok-pmode">
                 <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="3.5" width="13" height="14" rx="2"></rect><path d="M13.5 20.5 H5.5 A1.5 1.5 0 0 1 4 19 V9"></path></svg></span>
                 <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_flashcards }}</span><span class="ok-muted">{{ t_flashcards_desc }}</span></div>
@@ -1216,12 +1238,14 @@ html[data-ok-ready] #ok-boot{display:none}
           <sc-if value="{{ acctIn }}" hint-placeholder-val="{{ false }}">
             <span class="ok-pop-title" title="{{ userEmail }}">{{ userEmail }}</span>
             <span class="ok-muted">{{ syncText }}</span>
+            <span sc-camel-on-click="{{ toggleUpdates }}" class="ok-check" title="{{ t_updates_note }}"><span class="ok-check-box" style="{{ updatesBox }}"><sc-if value="{{ updatesOn }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></sc-if></span><span class="ok-check-txt"><span class="ok-check-t">{{ t_updates_opt }}</span><span class="ok-check-n">{{ t_updates_note }}</span></span></span>
             <span sc-camel-on-click="{{ signOutNow }}" class="ok-link">{{ t_sign_out }}</span>
           </sc-if>
           <sc-if value="{{ acctOut }}" hint-placeholder-val="{{ true }}">
             <span class="ok-pop-title">{{ t_keep_progress }}</span>
             <span class="ok-muted">{{ t_keep_progress_body }}</span>
             <input type="email" class="ok-input" placeholder="{{ t_email_placeholder }}" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onAcctEmailKey }}"/>
+            <span sc-camel-on-click="{{ toggleUpdates }}" class="ok-check" title="{{ t_updates_note }}"><span class="ok-check-box" style="{{ updatesBox }}"><sc-if value="{{ updatesOn }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></sc-if></span><span class="ok-check-txt"><span class="ok-check-t">{{ t_updates_opt }}</span><span class="ok-check-n">{{ t_updates_note }}</span></span></span>
             <span sc-camel-on-click="{{ sendLinkNow }}" class="ok-btn ok-btn-primary" style="align-self:flex-start">{{ t_send_link }}</span>
           </sc-if>
           <sc-if value="{{ acctSyncOff }}" hint-placeholder-val="{{ false }}">
@@ -1946,6 +1970,12 @@ const okDeck = (d) => {
 };
 const okLang = (c) => (c && LANGS.some(l => l[0] === c && !l[3]) ? c : null);
 const okIsEmail = (s) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(s || "").trim());
+// Whether to be mailed when there is something new. Ticked before the sign-in
+// link is sent, which means before there is an account to store it against, so
+// the intent waits here and is applied the moment the session resolves.
+const OK_WANT_UPD = "openkanji.updates";
+const okWantUpdates = () => lsGet(OK_WANT_UPD) === "1";
+const okSetWantUpdates = (on) => lsSet(OK_WANT_UPD, on ? "1" : null);
 // The AI behind Write and the IME. Inside Claude Design the host provides
 // window.claude; on the site the Worker does, holding the key as a secret,
 // choosing the model, and answering only signed-in callers. Same request
@@ -2272,7 +2302,7 @@ const okMerge = (a, b) => {
 class Component extends DCLogic {
   state = {
     screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
-    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, zoom: "map", focus: null, focusShown: false, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
+    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, updates: false, updatesWant: okWantUpdates(), zoom: "map", focus: null, focusShown: false, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
   get furiDefault() { return this.props.startFurigana ?? true; }
@@ -2708,11 +2738,26 @@ class Component extends DCLogic {
       const u = await r.json();
       // A null email is the ordinary signed-out answer, not a failure.
       if (!u || !u.email) { this.setState({ userEmail: null }); return; }
-      this.setState({ userEmail: u.email, authMsg: "", sync: "synced" });
+      this.setState({ userEmail: u.email, authMsg: "", sync: "synced", updates: !!u.updates });
+      // A tick made before the link was clicked is applied once, here, and
+      // then forgotten: from now on the account is the only copy of it.
+      if (okWantUpdates()) { okSetWantUpdates(false); this.setState({ updatesWant: false }); if (!u.updates) this.setUpdates(true); }
       // Signed in means the account's copy is the one to show: load it every
       // time, quietly unless this is the arrival from a sign-in link.
       this.pullProgress(!fromLink);
     } catch (e) {}
+  }
+
+  // The mail preference, both ways: signed out it is remembered on the device
+  // until there is an account, signed in it goes straight to the account.
+  async setUpdates(on) {
+    if (!okSyncReady() || !this.state.userEmail) return;
+    const was = !!this.state.updates;
+    this.setState({ updates: !!on });
+    try {
+      const r = await this.api("/updates", { method: "PUT", body: JSON.stringify({ on: !!on }) });
+      if (!r.ok) { this.setState({ updates: was }); this.flashMsg(T("could_not_save")); }
+    } catch (e) { this.setState({ updates: was }); this.flashMsg(T("could_not_save")); }
   }
 
   flashMsg(msg) {
@@ -4703,6 +4748,16 @@ class Component extends DCLogic {
           userEmail: st.userEmail || "",
           signOutNow: () => { this._loaded = false; this.signOut(); this.setState({ acctOpen: false, sync: "local" }); },
           sendLinkNow: () => this.sendMagicLink(this.state.emailDraft),
+          // Signed in the box is the account's setting; signed out it is the
+          // intent, kept on the device until an account exists to hold it.
+          updatesOn: signedIn ? !!st.updates : !!st.updatesWant,
+          updatesBox: (signedIn ? !!st.updates : !!st.updatesWant) ? "background:var(--ok-acc);border-color:var(--ok-acc)" : "",
+          toggleUpdates: () => {
+            if (this.state.userEmail) { this.setUpdates(!this.state.updates); return; }
+            const want = !this.state.updatesWant;
+            okSetWantUpdates(want);
+            this.setState({ updatesWant: want });
+          },
           onAcctEmailKey: (e) => { if (e && e.key === "Enter") this.sendMagicLink(this.state.emailDraft); },
           langChips: LANGS.map(l => [l[0], l[1], l[3]]).filter(l => !l[2]).map(l => ({
             name: l[1],
@@ -4972,6 +5027,15 @@ class Component extends DCLogic {
         const tr = (v) => (v && (v[CURRENT_LANG] || v.EN)) || "";
         return {
           storyHas: !!story,
+          // A set past the chapters written so far still shows the row, so the
+          // book looks unfinished rather than absent, and offers the only
+          // thing there is to offer: word when the next ones land.
+          storySoon: !story,
+          signUpUpdates: () => {
+            this.setState({ gameOpen: false, gameClosing: false, dlgSeamless: false, acctOpen: true });
+            this.openPage("acct", () => this.setState({ acctOpen: false }));
+            this.focusAcctEmail(0);
+          },
           storyOn: !!st.storyOn && !!story,
           storyTitleJa: story ? story.ja : "",
           storyTitle: story ? tr(story.t) : "",

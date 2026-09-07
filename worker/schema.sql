@@ -8,7 +8,12 @@
 create table if not exists users (
   id         integer primary key autoincrement,
   email      text    not null unique,
-  created_at integer not null
+  created_at integer not null,
+  -- Whether this reader wants to hear about what is new: one thing, set from
+  -- the account panel and nowhere else. Added after the fact, so the Worker
+  -- also adds it at runtime on a database that predates this line (see
+  -- ensureUpdates in worker/src/index.js).
+  updates    integer not null default 0
 );
 
 create table if not exists progress (

@@ -100,13 +100,6 @@ Use the same style block verbatim every time, and change only the subject:
 >
 > Subject: <one sentence, the photograph this chapter is about>
 
-Subjects for the two that exist:
-
-- **Chapter 1** — a full moon low over a river, a wooden bench on the bank, one
-  small figure seen from behind at a distance.
-- **Chapter 2** — a hundred white boxes on a wooden shelf in a dim photograph
-  studio, one desk lamp, dust hanging in the light.
-
 For every chapter after the first, attach the previous cover and add: *match the
 palette, brushwork and grain of the attached image exactly; same world, a
 different scene.* That, and never naming a character's face, is most of what
@@ -121,7 +114,8 @@ the ragged edge, then take the middle of what is left at 16:10 and write it out
 at 1200x750 under 200KB. `crop.mjs` in the test scratchpad does this; it needs a
 browser to decode the JPEG, which is why it does not live in tools/.
 
-What the two that exist were drawn from:
+The subjects so far. Each is one photograph, and the studio itself only
+when the chapter is about the studio:
 
 - **Chapter 1** — a full moon low over a river, a long wooden bench on the near
   bank seen from behind, two figures sitting apart on it, one small and one
@@ -129,3 +123,22 @@ What the two that exist were drawn from:
 - **Chapter 2** — a hundred white boxes stacked on a wooden workbench in a dim
   photograph studio, one angled desk lamp lighting them, dust hanging in the
   beam, a tripod in the dark at the edge.
+- **Chapter 3** — a wide unpaved town street fifty years ago, shopfronts down
+  one side, one tall tree on the right, a single small car parked at the kerb,
+  no one close enough to have a face.
+- **Chapter 4** — a black rotary telephone on a wooden side table in a dim hall,
+  the receiver in its cradle, a long cord hanging, late evening light from one
+  window.
+- **Chapter 5** — an open civic record book on a desk under a bare bulb, columns
+  of handwritten names running down the page, a magnifying glass and a cold cup
+  of tea beside it.
+- **Chapter 6** — a new concrete and glass building alone on a cleared lot at
+  the edge of the old town, a low wire fence, flat pale sky, no one about.
+- **Chapter 7** — a folded yellowed newspaper page on a workbench, a gold
+  wristwatch and a bunch of cut flowers laid beside it, one desk lamp.
+- **Chapter 8** — an empty studio wall in a shaft of window light, dust turning
+  in it, a crate of vegetables on the desk below.
+- **Chapter 9** — the studio doorway seen from inside, standing open onto a
+  bright street, a cat asleep on a chair in the dark foreground.
+- **Chapter 10** — an open wooden box on a desk holding a bundle of unopened
+  letters and a small heap of sea salt, the telephone behind it in the dark.

@@ -564,7 +564,17 @@ function build() {
   }
   console.log("  sentences: " + Object.keys(exJa).length + " of " + Object.keys(exT).length + " translated words");
   const storyLines = Object.values(stories).reduce((n, s) => n + s.pages.reduce((m, p) => m + p.length, 0), 0);
-  console.log("  stories: " + Object.keys(stories).length + " (" + storyLines + " lines)");
+  // A chapter with no recordings reads in the browser's own voice, which is
+  // not what the page promises, so say how many lines are still unrecorded
+  // rather than leaving it to be noticed.
+  const voiced = new Set(readVoices().stories || []);
+  const unvoiced = [];
+  for (const [set, story] of Object.entries(stories)) {
+    let n = 0;
+    for (const page of story.pages) for (const _ of page) if (!voiced.has("story" + set + "-" + ++n)) unvoiced.push(set);
+  }
+  console.log("  stories: " + Object.keys(stories).length + " (" + storyLines + " lines" +
+    (unvoiced.length ? ", " + unvoiced.length + " not recorded yet: run the voices workflow" : "") + ")");
   console.log(
     "  data: " + data.length + " kanji across " + new Set(data.map((k) => k.deck)).size +
     " decks | languages: " + available.join(", ") +

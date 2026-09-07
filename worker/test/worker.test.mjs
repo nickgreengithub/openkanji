@@ -271,6 +271,35 @@ await test("me returns the address", async () => {
   assert.equal((await r.json()).email, "learner@example.com");
 });
 
+await test("the updates flag starts off and round-trips", async () => {
+  const env = makeEnv();
+  const cookie = await signedIn(env);
+  assert.equal((await (await call(env, "GET", "/api/me", { cookie })).json()).updates, false);
+  assert.equal((await call(env, "PUT", "/api/updates", { cookie, body: { on: true } })).status, 200);
+  assert.equal((await (await call(env, "GET", "/api/me", { cookie })).json()).updates, true);
+  assert.equal((await call(env, "PUT", "/api/updates", { cookie, body: { on: false } })).status, 200);
+  assert.equal((await (await call(env, "GET", "/api/me", { cookie })).json()).updates, false);
+});
+
+await test("updates needs a session", async () => {
+  const env = makeEnv();
+  assert.equal((await call(env, "PUT", "/api/updates", { body: { on: true } })).status, 401);
+});
+
+await test("a database made before the updates column gets it on first use", async () => {
+  const env = makeEnv();
+  env._db.exec("drop table users");
+  env._db.exec("create table users (id integer primary key autoincrement, email text not null unique, created_at integer not null)");
+  const cols0 = env._db.prepare("select name from pragma_table_info('users')").all().map(r => r.name);
+  assert.ok(!cols0.includes("updates"), "starts without the column");
+
+  const cookie = await signedIn(env);
+  assert.equal((await call(env, "PUT", "/api/updates", { cookie, body: { on: true } })).status, 200);
+  const cols1 = env._db.prepare("select name from pragma_table_info('users')").all().map(r => r.name);
+  assert.ok(cols1.includes("updates"), "and has it afterwards");
+  assert.equal((await (await call(env, "GET", "/api/me", { cookie })).json()).updates, true);
+});
+
 await test("logout clears the cookie", async () => {
   const env = makeEnv();
   const r = await call(env, "POST", "/api/logout");

@@ -214,6 +214,20 @@ function mergeStrength(mine, theirs) {
 // gets it here, once per binding. Same shape as the AI meter's table: no
 // migration to run before a deploy.
 const strengthReady = new WeakSet();
+// The updates flag was added after the fact too, so the Worker adds the column
+// on a database that predates it. Same shape as ensureStrength: try once per
+// database handle, and let "already there" be the ordinary case.
+const updatesReady = new WeakSet();
+async function ensureUpdates(db) {
+  if (updatesReady.has(db)) return;
+  try {
+    await db.prepare("alter table users add column updates integer not null default 0").run();
+  } catch (e) {
+    // already there
+  }
+  updatesReady.add(db);
+}
+
 async function ensureStrength(db) {
   if (strengthReady.has(db)) return;
   try {
@@ -483,12 +497,25 @@ export default {
     // being signed out is a 200 with a null email rather than an error.
     if (method === "GET" && path === "/api/me") {
       if (!user) return json({ email: null }, 200, userId ? { "set-cookie": cookieHeader("", 0) } : {});
-      return json({ email: user.email });
+      await ensureUpdates(env.DB);
+      const row = await env.DB.prepare("select updates from users where id = ?").bind(user.id).first();
+      return json({ email: user.email, updates: !!(row && row.updates) });
     }
 
     // Everything below needs a live account.
     if (!user) return json({ error: "signed_out" }, 401, userId ? { "set-cookie": cookieHeader("", 0) } : {});
     if (method === "POST" && path === "/api/ask") return handleAsk(request, env, user);
+
+    // Whether to hear about what is new here. One thing, on or off, and the
+    // account panel is the only place that sets it -- there is no list to be
+    // added to by anyone but the reader.
+    if (method === "PUT" && path === "/api/updates") {
+      const body = await readJson(request);
+      if (!body || typeof body.on !== "boolean") return json({ error: "bad_request" }, 400);
+      await ensureUpdates(env.DB);
+      await env.DB.prepare("update users set updates = ? where id = ?").bind(body.on ? 1 : 0, user.id).run();
+      return json({ ok: true, updates: body.on });
+    }
     if (method === "GET" && path === "/api/progress") return handleGetProgress(env, user.id);
     if (method === "PUT" && path === "/api/progress") return handlePutProgress(request, env, user.id);
     if (method === "DELETE" && path === "/api/account") {

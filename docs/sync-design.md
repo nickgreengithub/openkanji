@@ -45,9 +45,10 @@ but costs a CORS preflight on every call and a `SameSite=None` cookie.
 |---|---|
 | `POST /api/login` | `{email, lang}` → sends a sign-in link. Uniform reply: never reveals whether an address has an account |
 | `GET /api/callback?token=` | verifies, sets the cookie, redirects to `/#signed-in` (or `/#sign-in-failed`) |
-| `GET /api/me` | `{email}` — **`{email: null}` with a 200 when signed out**, because the app asks on every page load and an error there is console noise |
+| `GET /api/me` | `{email, updates}` — **`{email: null}` with a 200 when signed out**, because the app asks on every page load and an error there is console noise |
 | `GET /api/progress` | `{mastered, strength, deck, lang}` |
 | `PUT /api/progress` | `{mastered, strength, deck, lang}` — unions `mastered`, merges `strength` per word |
+| `PUT /api/updates` | `{on}` — whether to be mailed about the app. Ticked before sign-in, so the page holds the intent in `localStorage` and sends it once the session resolves |
 | `POST /api/logout` | clears the cookie |
 | `DELETE /api/account` | erases the account, its progress and its sign-in rows |
 
@@ -57,6 +58,7 @@ but costs a CORS preflight on every call and a `SameSite=None` cookie.
 create table users (
   id integer primary key autoincrement,
   email text not null unique,
+  updates integer not null default 0,    -- 1 = wants product mail, at most monthly
   created_at integer not null
 );
 create table progress (
