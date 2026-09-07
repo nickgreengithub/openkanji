@@ -343,12 +343,14 @@ function buildStories(raw, words, complete) {
 
     // How much of the ladder behind it a story puts back in front of the
     // reader. A serial that never revisits is a hundred separate exercises.
+    // Counted against the text rather than the glosses: a word from an
+    // earlier set needs no gloss -- that is the point of it -- so counting
+    // only what is tappable would report nothing and mean nothing.
+    const text = s.pages.map((pg) => pg.map((l) => l.ja).join("")).join("");
     const revised = new Set();
-    for (const span of met) {
-      const note = (s.words || {})[span];
-      const spelling = note && note.of ? note.of : span;
-      const seen = ladder.findIndex((id) => words[id] && words[id].w === spelling);
-      if (seen >= 0 && seen < first) revised.add(spelling);
+    for (let n = 0; n < first; n++) {
+      const w = words[ladder[n]];
+      if (w && w.w.length > 1 && text.includes(w.w)) revised.add(w.w);
     }
     revision.push({ set: set, revised: revised.size, rare: rare });
     const missed = [...targets.keys()].filter((w) => !carried.has(w));
@@ -359,7 +361,8 @@ function buildStories(raw, words, complete) {
   }
   if (revision.length) {
     const total = revision.reduce((n, r) => n + r.revised, 0);
-    console.log("  stories revise " + Math.round(total / revision.length) + " earlier ladder words each" +
+    console.log("  stories put back " + Math.round(total / revision.length) + " earlier ladder words each" +
+      " (by spelling, so a conjugated verb does not count)" +
       (revision.length <= 8 ? " (" + revision.map((r) => "set " + (Number(r.set) + 1) + ": " + r.revised).join(", ") + ")" : ""));
     const rare = revision.filter((r) => r.rare.length);
     for (const r of rare) {

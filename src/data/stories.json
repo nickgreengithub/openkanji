@@ -389,5 +389,301 @@
     }
    ]
   ]
+ },
+ "1": {
+  "title": {
+   "ja": "百の箱",
+   "en": "The Hundred Boxes",
+   "es": "Las cien cajas"
+  },
+  "words": {
+   "来ました": {
+    "of": "来る"
+   },
+   "聞きました": {
+    "of": "聞く"
+   },
+   "思いました": {
+    "of": "思う"
+   },
+   "死んだ": {
+    "of": "死ぬ"
+   },
+   "困りました": {
+    "of": "困る"
+   },
+   "次の日": {
+    "r": "つぎのひ",
+    "en": "the next day",
+    "es": "al día siguiente"
+   },
+   "ハル": {
+    "r": "はる",
+    "en": "Haru (a girl)",
+    "es": "Haru (una niña)"
+   },
+   "また": {
+    "r": "また",
+    "en": "again",
+    "es": "otra vez"
+   },
+   "写真館": {
+    "r": "しゃしんかん",
+    "en": "photograph studio",
+    "es": "estudio de fotografía"
+   },
+   "正夫": {
+    "r": "まさお",
+    "en": "Masao (an old man)",
+    "es": "Masao (un anciano)"
+   },
+   "台所": {
+    "r": "だいどころ",
+    "en": "kitchen",
+    "es": "cocina"
+   },
+   "ごはん": {
+    "r": "ごはん",
+    "en": "a meal, rice",
+    "es": "comida, arroz"
+   },
+   "洗いなさい": {
+    "r": "あらいなさい",
+    "en": "wash (gently told)",
+    "es": "lávate"
+   },
+   "笑いました": {
+    "r": "わらいました",
+    "en": "laughed",
+    "es": "se rió"
+   },
+   "今日": {
+    "r": "きょう",
+    "en": "today",
+    "es": "hoy"
+   },
+   "どんな": {
+    "r": "どんな",
+    "en": "what kind of",
+    "es": "qué clase de"
+   },
+   "古い": {
+    "r": "ふるい",
+    "en": "old",
+    "es": "viejo"
+   },
+   "棚": {
+    "r": "たな",
+    "en": "shelf",
+    "es": "estante"
+   },
+   "白い": {
+    "r": "しろい",
+    "en": "white",
+    "es": "blanco"
+   },
+   "百": {
+    "r": "ひゃく",
+    "en": "a hundred",
+    "es": "cien"
+   },
+   "まだ": {
+    "r": "まだ",
+    "en": "not yet, still",
+    "es": "todavía"
+   },
+   "出していない": {
+    "r": "だしていない",
+    "en": "has not printed yet",
+    "es": "aún no ha revelado"
+   },
+   "一枚": {
+    "r": "いちまい",
+    "en": "one (flat thing)",
+    "es": "una (hoja)"
+   },
+   "紙": {
+    "r": "かみ",
+    "en": "paper",
+    "es": "papel"
+   },
+   "一年": {
+    "r": "いちねん",
+    "en": "a year",
+    "es": "un año"
+   },
+   "十枚": {
+    "r": "じゅうまい",
+    "en": "ten (flat things)",
+    "es": "diez (hojas)"
+   },
+   "だけ": {
+    "r": "だけ",
+    "en": "only",
+    "es": "solo"
+   },
+   "友だち": {
+    "r": "ともだち",
+    "en": "friend",
+    "es": "amigo"
+   },
+   "もう": {
+    "r": "もう",
+    "en": "already, by now",
+    "es": "ya"
+   },
+   "いつも": {
+    "r": "いつも",
+    "en": "always",
+    "es": "siempre"
+   },
+   "待ちます": {
+    "r": "まちます",
+    "en": "waits",
+    "es": "espera"
+   },
+   "分からない": {
+    "r": "わからない",
+    "en": "I don't know",
+    "es": "no lo sé"
+   },
+   "部屋": {
+    "r": "へや",
+    "en": "room",
+    "es": "habitación"
+   },
+   "残って": {
+    "r": "のこって",
+    "en": "stayed, was left",
+    "es": "quedó"
+   },
+   "鳴りました": {
+    "r": "なりました",
+    "en": "rang",
+    "es": "sonó"
+   },
+   "箱": {
+    "r": "はこ",
+    "en": "box",
+    "es": "caja"
+   }
+  },
+  "pages": [
+   [
+    {
+     "ja": "次の日、ハルはまた写真館に来ました。",
+     "t": {
+      "en": "The next day Haru came back to the photograph studio.",
+      "es": "Al día siguiente, Haru volvió al estudio de fotografía."
+     }
+    },
+    {
+     "ja": "正夫さんは台所で料理をしていました。",
+     "t": {
+      "en": "Masao was cooking in the kitchen.",
+      "es": "Masao estaba cocinando en la cocina."
+     }
+    },
+    {
+     "ja": "「ごはんの時は、手を洗いなさい。」",
+     "t": {
+      "en": "“When it is time to eat, wash your hands.”",
+      "es": "“Cuando toca comer, lávate las manos.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "ハルは自分の手を見て、少し笑いました。",
+     "t": {
+      "en": "Haru looked at her own hands and laughed a little.",
+      "es": "Haru se miró las manos y se rió un poco."
+     }
+    },
+    {
+     "ja": "「今日はどんな仕事ですか。」とハルは聞きました。",
+     "t": {
+      "en": "“What sort of work is it today?” she asked.",
+      "es": "“¿Qué clase de trabajo toca hoy?”, preguntó."
+     }
+    },
+    {
+     "ja": "「古い写真を使う仕事だよ。」",
+     "t": {
+      "en": "“The kind that uses old photographs.”",
+      "es": "“Del que usa fotografías antiguas.”"
+     }
+    }
+   ],
+   [
+    {
+     "ja": "棚の上に、白い箱が百ありました。",
+     "t": {
+      "en": "On the shelf above there were a hundred white boxes.",
+      "es": "En el estante de arriba había cien cajas blancas."
+     }
+    },
+    {
+     "ja": "「まだ出していない写真が、その中にあります。」",
+     "t": {
+      "en": "“Inside them are photographs I have never printed.”",
+      "es": "“Dentro hay fotografías que nunca he revelado.”"
+     }
+    },
+    {
+     "ja": "ハルは、その一枚が欲しいと思いました。",
+     "t": {
+      "en": "Haru found that she wanted one of them.",
+      "es": "Haru sintió que quería una de ellas."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「紙が高いから、一年に十枚だけだよ。」",
+     "t": {
+      "en": "“Paper is expensive, so it is ten a year and no more.”",
+      "es": "“El papel es caro, así que solo diez al año.”"
+     }
+    },
+    {
+     "ja": "「あの友だちは、もう死んだのですか。」とハルは聞きました。",
+     "t": {
+      "en": "“That friend of yours — is he dead by now?” Haru asked.",
+      "es": "“Ese amigo tuyo, ¿ya ha muerto?”, preguntó Haru."
+     }
+    },
+    {
+     "ja": "正夫さんは、言葉が必要な時、いつも少し待ちます。",
+     "t": {
+      "en": "When Masao needs words, he always waits a little.",
+      "es": "Cuando Masao necesita palabras, siempre espera un poco."
+     }
+    }
+   ],
+   [
+    {
+     "ja": "「分からない。それが問題なんだ。」",
+     "t": {
+      "en": "“I do not know. That is the problem.”",
+      "es": "“No lo sé. Ese es el problema.”"
+     }
+    },
+    {
+     "ja": "その時、古い電話が鳴りました。",
+     "t": {
+      "en": "Just then the old telephone rang.",
+      "es": "En ese momento sonó el teléfono viejo."
+     }
+    },
+    {
+     "ja": "音だけが部屋に残って、ハルは少し困りました。",
+     "t": {
+      "en": "Only the sound stayed in the room, and Haru did not know what to make of it.",
+      "es": "Solo quedó el sonido en la habitación, y Haru no supo qué pensar."
+     }
+    }
+   ]
+  ]
  }
 }
