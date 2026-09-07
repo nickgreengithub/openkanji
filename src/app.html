@@ -759,11 +759,16 @@ a:hover{color:var(--text-accent-hover)}
   .ok-quiz{width:100%}
   /* Typing keeps the word it is asking about above the keyboard: the sheet
      is already only as tall as the visible area, so the field sits at its
-     foot and the prompt takes the space that is left. */
-  .ok-quiz-type{margin:0;width:100%;padding-bottom:calc(1rem + env(safe-area-inset-bottom))}
-  .ok-quiz-type .ok-qprompt{margin-top:auto;margin-bottom:auto;padding:1rem 1.25rem}
+     foot and the prompt takes the space that is left. The field is a bar
+     across that foot rather than a box floating above it -- the same place,
+     and the same shape, as the composer's, so both rounds are answered by a
+     thumb in one position. The line that gives the answer away moves above
+     the bar, since nothing may sit under it. */
+  .ok-quiz-type{margin:0;width:100%;padding:1.25rem 0 0;gap:.75rem}
+  .ok-quiz-type .ok-qprompt{margin:auto 1.25rem;padding:1rem 1.25rem}
   .ok-quiz-type .ok-dots{flex:0 0 auto}
-  .ok-quiz-type .ok-qtype{flex:0 0 auto}
+  .ok-quiz-type .ok-qtype-ans{order:1;margin:0 1.25rem}
+  .ok-quiz-type .ok-qtype{order:2;flex:0 0 auto;margin:0;padding:.7rem 1rem calc(.8rem + env(safe-area-inset-bottom));border-top:1px solid var(--ok-line);background:var(--ok-bg)}
 
   /* the word, opened: the caption is the last line on the screen, centred
      under the controls, and it wraps rather than running off the side */
@@ -3948,9 +3953,25 @@ class Component extends DCLogic {
   }
 
   // a word from the learner's own list leads; otherwise hiragana, then dictionary hits, then katakana
+  // The words the round is about, by spelling. The list a learner has chosen
+  // is keyed by word id, so a candidate string never matched it -- which is
+  // how 円 came to sit third behind the kana in a set that teaches 円. Walking
+  // the corpus per keystroke would be silly, so the answer is kept until the
+  // list itself changes.
+  selSpellings() {
+    const sel = this.state.chatSel || {};
+    const key = Object.keys(sel).sort().join(",");
+    if (this._selSpellKey === key) return this._selSpell;
+    const out = {};
+    DATA.forEach(dk => dk.g.forEach(g => g.w.forEach(w => { if (sel[w[3]]) out[w[0]] = 1; })));
+    this._selSpellKey = key;
+    this._selSpell = out;
+    return out;
+  }
+
   candList(seg, hits) {
     const kata = this.toKatakana(seg);
-    const sel = this.state.chatSel || {};
+    const sel = this.selSpellings();
     const out = [];
     (hits || []).forEach(x => { if (sel[x] && out.indexOf(x) < 0) out.push(x); });
     if (out.indexOf(seg) < 0) out.push(seg);

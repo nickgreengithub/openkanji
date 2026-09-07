@@ -500,5 +500,12 @@ if (process.argv.includes("--check")) {
   }
   const cname = path.join(ROOT, "CNAME");
   if (fs.existsSync(cname)) fs.copyFileSync(cname, path.join(dist, "CNAME"));
+
+  // The icons and the manifest, which are what make the page installable --
+  // and an installed page is the only one iOS will run without an address bar
+  // and a toolbar taking a fifth of the screen (tools/icon.js).
+  for (const [name, data] of Object.entries(require("./icon.js").files())) {
+    fs.writeFileSync(path.join(dist, name), data);
+  }
   console.log("built index.html + dist/index.html (" + out.length + " bytes)");
 }
