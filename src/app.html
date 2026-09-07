@@ -503,6 +503,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-story-cover{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:1rem;border-radius:16px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow);text-align:center;will-change:transform,opacity;backface-visibility:hidden}
 .ok-story-plate{position:relative;flex:0 1 auto;width:min(100%,26rem);aspect-ratio:16/10;min-height:0;border-radius:12px;overflow:hidden;background:linear-gradient(170deg,#0e2b38 0%,#12414f 45%,#0891b2 130%);background-size:cover;background-position:center}
 .ok-story-moon{position:absolute;top:16%;left:50%;transform:translateX(-50%);width:22%;aspect-ratio:1;border-radius:50%;background:#f4f4f1;opacity:.92;box-shadow:0 0 40px rgba(244,244,241,.35)}
+.ok-story-photo{position:absolute;inset:0;background-size:cover;background-position:center}
 .ok-story-water{position:absolute;left:0;right:0;bottom:0;height:38%;background:linear-gradient(180deg,rgba(244,244,241,.16),rgba(244,244,241,.03) 40%,transparent);border-top:1px solid rgba(244,244,241,.25)}
 .ok-story-ch{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ok-acc)}
 .ok-story-cover-t{font-size:1.75rem;line-height:1.2;color:var(--ok-ink)}
@@ -984,8 +985,9 @@ html[data-ok-ready] #ok-boot{display:none}
               </div>
               <sc-if value="{{ storyCoverOn }}" hint-placeholder-val="{{ false }}">
                 <div class="ok-story-cover" style="animation:{{ storyAnim }}">
-                  <div class="ok-story-plate" style="{{ storyPlate }}">
-                    <sc-if value="{{ storyPlateDrawn }}" hint-placeholder-val="{{ true }}"><span class="ok-story-moon"></span><span class="ok-story-water"></span></sc-if>
+                  <div class="ok-story-plate">
+                    <span class="ok-story-moon"></span><span class="ok-story-water"></span>
+                    <sc-if value="{{ storyHasArt }}" hint-placeholder-val="{{ false }}"><span class="ok-story-photo" style="{{ storyPlate }}"></span></sc-if>
                   </div>
                   <span class="ok-story-ch">{{ storyChapterJa }} · {{ storyChapter }}</span>
                   <span class="ok-story-cover-t ok-ja">{{ storyTitleJa }}</span>
@@ -4970,10 +4972,13 @@ class Component extends DCLogic {
           // A chapter with a picture shows it; one without is drawn from the
           // same two shapes the story keeps coming back to -- a moon, and the
           // water under it -- so a half-illustrated book still looks made.
+          // The drawing is always there; the photograph sits over it. A cover
+          // that has not arrived, or does not load, falls back to the drawing
+          // rather than to an empty box.
+          storyHasArt: !!COVERS[String(st.storySet)],
           storyPlate: COVERS[String(st.storySet)]
             ? "background-image:url(covers/" + COVERS[String(st.storySet)] + ")"
             : "",
-          storyPlateDrawn: !COVERS[String(st.storySet)],
           // A page turn moves a shorter distance over a little longer, and
           // eases out rather than stopping: at 28px in 240ms the text arrived
           // with a jolt that reads as the box resizing even when it has not.
