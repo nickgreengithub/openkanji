@@ -373,6 +373,19 @@ function buildStories(raw, words, complete) {
   return out;
 }
 
+// The chapters that have a picture, and what it is called. A chapter without
+// one is drawn instead, so this list is the only difference between the two.
+function readCovers() {
+  const dir = path.join(SRC, "covers");
+  if (!fs.existsSync(dir)) return {};
+  const out = {};
+  for (const f of fs.readdirSync(dir)) {
+    const m = /^(\d+)\.(jpg|jpeg|png|webp)$/i.exec(f);
+    if (m) out[String(parseInt(m[1], 10))] = f;
+  }
+  return out;
+}
+
 function loadKanjiAndLangs() {
   const langs = readJson("data/langs.json");
   const { kanji, words, ui, stories, complete, partial, coverage, fields, deckOrder } = loadData();
@@ -461,6 +474,7 @@ function build() {
     // list rather than probing for files, so a word without a clip goes
     // straight to the browser's voice instead of waiting on a 404.
     __VOICES__: JSON.stringify(readVoices()),
+    __COVERS__: JSON.stringify(readCovers()),
     // [name, ui.json tip key, kanji count] in rail order, so adding a deck or
     // reordering the rail is a decks.json edit and nothing else.
     __DECKS__: JSON.stringify(deckOrder),
@@ -546,6 +560,21 @@ if (process.argv.includes("--check")) {
     }
     if (n) console.log("copied " + n + " voice files into dist/audio");
   }
+  // Chapter covers, one to a set, fetched when a chapter is opened rather
+  // than carried by the page: a hundred of them would be twelve megabytes
+  // nobody has read yet.
+  const coverSrc = path.join(SRC, "covers");
+  const coverOut = path.join(dist, "covers");
+  fs.rmSync(coverOut, { recursive: true, force: true });
+  if (fs.existsSync(coverSrc)) {
+    const art = fs.readdirSync(coverSrc).filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f));
+    if (art.length) {
+      fs.mkdirSync(coverOut, { recursive: true });
+      for (const f of art) fs.copyFileSync(path.join(coverSrc, f), path.join(coverOut, f));
+      console.log("copied " + art.length + " chapter covers into dist/covers");
+    }
+  }
+
   const cname = path.join(ROOT, "CNAME");
   if (fs.existsSync(cname)) fs.copyFileSync(cname, path.join(dist, "CNAME"));
 

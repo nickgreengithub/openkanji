@@ -495,6 +495,18 @@ a:hover{color:var(--text-accent-hover)}
    The lines sit at the top of the box rather than spreading through it, so a
    short page and a long one begin in the same place as they turn. */
 .ok-story-page{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column;justify-content:flex-start;gap:calc(.55rem * var(--ok-st,1));padding:1rem;border-radius:16px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow);will-change:transform,opacity;backface-visibility:hidden}
+/* The cover: a picture, the chapter's number, and the title in both
+   languages. It occupies the same box the text pages do, so turning onto it
+   does not move the walls of the dialog. A chapter with no picture yet is
+   drawn from the two shapes the serial keeps returning to -- the moon, and
+   the water under it -- which reads as a cover rather than as a gap. */
+.ok-story-cover{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:1rem;border-radius:16px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow);text-align:center;will-change:transform,opacity;backface-visibility:hidden}
+.ok-story-plate{position:relative;flex:0 1 auto;width:min(100%,26rem);aspect-ratio:16/10;min-height:0;border-radius:12px;overflow:hidden;background:linear-gradient(170deg,#0e2b38 0%,#12414f 45%,#0891b2 130%);background-size:cover;background-position:center}
+.ok-story-moon{position:absolute;top:16%;left:50%;transform:translateX(-50%);width:22%;aspect-ratio:1;border-radius:50%;background:#f4f4f1;opacity:.92;box-shadow:0 0 40px rgba(244,244,241,.35)}
+.ok-story-water{position:absolute;left:0;right:0;bottom:0;height:38%;background:linear-gradient(180deg,rgba(244,244,241,.16),rgba(244,244,241,.03) 40%,transparent);border-top:1px solid rgba(244,244,241,.25)}
+.ok-story-ch{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ok-acc)}
+.ok-story-cover-t{font-size:1.75rem;line-height:1.2;color:var(--ok-ink)}
+.ok-story-cover-s{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-mute)}
 .ok-story-line{display:flex;flex-direction:column;gap:.15rem;padding:calc(.5rem * var(--ok-st,1)) .6rem;border-radius:10px;transition:background 240ms ease}
 .ok-story-ja{font-size:calc(1.3125rem * var(--ok-st,1));line-height:1.75;color:var(--ok-ink);cursor:pointer;text-wrap:pretty}
 /* A word worth tapping says so quietly: the set's own words in the accent
@@ -716,6 +728,9 @@ a:hover{color:var(--text-accent-hover)}
      under it stay put, and the whole thing sits above the home bar. */
   .ok-story{padding:.9rem 1rem calc(.9rem + env(safe-area-inset-bottom));gap:.7rem}
   .ok-story-page{padding:.85rem .8rem}
+  .ok-story-cover{padding:.85rem .8rem;gap:.4rem}
+  .ok-story-cover-t{font-size:1.5rem}
+  .ok-story-cover-s{font-size:1rem}
   .ok-story-ja{font-size:calc(1.25rem * var(--ok-st,1));line-height:1.8}
   .ok-story-tr{font-size:calc(1rem * var(--ok-st,1))}
   .ok-story-play{min-width:0;flex:1 1 auto;max-width:16rem}
@@ -963,10 +978,21 @@ html[data-ok-ready] #ok-boot{display:none}
 
           <sc-if value="{{ storyOn }}" hint-placeholder-val="{{ false }}">
             <div class="ok-view ok-story" style="--ok-st:{{ storyFit }}">
-              <div class="ok-story-head">
+              <div class="ok-story-head" style="visibility:{{ storyHeadOn }}">
                 <span class="ok-story-title ok-ja">{{ storyTitleJa }}</span>
                 <span class="ok-muted ok-story-sub">{{ storyTitle }}</span>
               </div>
+              <sc-if value="{{ storyCoverOn }}" hint-placeholder-val="{{ false }}">
+                <div class="ok-story-cover" style="animation:{{ storyAnim }}">
+                  <div class="ok-story-plate" style="{{ storyPlate }}">
+                    <sc-if value="{{ storyPlateDrawn }}" hint-placeholder-val="{{ true }}"><span class="ok-story-moon"></span><span class="ok-story-water"></span></sc-if>
+                  </div>
+                  <span class="ok-story-ch">{{ storyChapterJa }} · {{ storyChapter }}</span>
+                  <span class="ok-story-cover-t ok-ja">{{ storyTitleJa }}</span>
+                  <span class="ok-story-cover-s">{{ storyTitle }}</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ storyTextOn }}" hint-placeholder-val="{{ true }}">
               <div class="ok-story-page ok-scroll" style="animation:{{ storyAnim }}">
                 <sc-for list="{{ storyLines }}" as="sl" hint-placeholder-count="5">
                   <div class="ok-story-line" style="background:{{ sl.bg }}">
@@ -983,15 +1009,16 @@ html[data-ok-ready] #ok-boot{display:none}
                   </div>
                 </sc-if>
               </div>
+              </sc-if>
               <div class="ok-story-foot">
                 <span sc-camel-on-click="{{ storyPrev }}" class="ok-round-btn" style="opacity:{{ storyPrevOn }};cursor:{{ storyPrevCur }}" title="{{ t_story_prev }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span>
-                <span sc-camel-on-click="{{ storyRead }}" class="ok-btn ok-story-play" title="{{ t_story_read }}">
+                <span sc-camel-on-click="{{ storyMain }}" class="ok-btn ok-story-play" title="{{ storyMainLabel }}">
                   <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="currentColor"><sc-if value="{{ storyPlaying }}" hint-placeholder-val="{{ false }}"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></sc-if><sc-if value="{{ storyIdle }}" hint-placeholder-val="{{ true }}"><path d="M8 5 L19 12 L8 19 Z"></path></sc-if></svg>
-                  <span>{{ t_story_read }}</span>
+                  <span>{{ storyMainLabel }}</span>
                 </span>
                 <span sc-camel-on-click="{{ storyNext }}" class="ok-round-btn" style="opacity:{{ storyNextOn }};cursor:{{ storyNextCur }}" title="{{ t_story_next }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
               </div>
-              <span class="ok-muted ok-story-hint">{{ t_story_hint }}</span>
+              <span class="ok-muted ok-story-hint" style="visibility:{{ storyHeadOn }}">{{ t_story_hint }}</span>
             </div>
           </sc-if>
 
@@ -1349,12 +1376,20 @@ const DATA = __KANJI_DATA__;
 // and starts at once; the browser's own voice is the fallback for anything
 // not yet recorded (see tools/voices.js).
 const VOICES = __VOICES__;
+const COVERS = __COVERS__;
 // A story per set, where one has been written: the set's twenty words carried
 // by one small tale, so they are met as language rather than as a list. Each
 // line arrives already split into spans, with a table of what the tappable
 // ones mean (tools/build.js buildStories). Sets without a story have no key.
 const STORIES = __STORIES__;
 const storyOf = (set) => STORIES[String(set)] || null;
+// 第二話. A hundred chapters need no more numerals than this.
+const okKanjiNum = (n) => {
+  const d = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
+  if (n >= 100) return "百";
+  const t = Math.floor(n / 10), o = n % 10;
+  return (t ? (t > 1 ? d[t] : "") + "十" : "") + d[o];
+};
 // Non-default languages, keyed by code: { "ES": { "楽": {meaning, sentence, words} } }.
 // Empty until a src/data/lang/<dir>/ folder exists.
 const I18N = __KANJI_I18N__;
@@ -2368,7 +2403,11 @@ class Component extends DCLogic {
   fitStory(force) {
     const st = this.state;
     if (!st.storyOn) return;
-    const box = document.querySelector(".ok-story-page");
+    // The cover fills the same slot as a page of text and has the same
+    // padding, so it can be measured against just as well -- and measuring
+    // there means the first page of words is the right size on the frame it
+    // appears, rather than settling to it while the reader watches.
+    const box = document.querySelector(".ok-story-page") || document.querySelector(".ok-story-cover");
     const story = storyOf(st.storySet);
     if (!box || !story) return;
     const w = box.clientWidth, avail = box.clientHeight;
@@ -2851,11 +2890,14 @@ class Component extends DCLogic {
 
   // ---- The story -------------------------------------------------------
   // The lines of the page being read, or an empty list if there is no story.
+  // The lines on the page in hand. Page zero is the cover and has none, so
+  // reading it aloud reads nothing rather than reading page one by accident.
   storyPageLines() {
     const st = this.state;
     const s = storyOf(st.storySet);
     if (!s) return [];
-    return s.pages[Math.min(Math.max(0, st.storyPage || 0), s.pages.length - 1)] || [];
+    const page = Math.min(Math.max(0, st.storyPage || 0), s.pages.length);
+    return page === 0 ? [] : (s.pages[page - 1] || []);
   }
 
   // Read one line: the recording where there is one, the browser's voice
@@ -2911,7 +2953,7 @@ class Component extends DCLogic {
     const s = storyOf(this.state.storySet);
     if (!s) return;
     const next = (this.state.storyPage || 0) + d;
-    if (next < 0 || next >= s.pages.length) return;
+    if (next < 0 || next > s.pages.length) return; // the cover is a page too
     this.stopStory();
     this.setState({ storyPage: next, storyBack: d < 0, stTip: null });
   }
@@ -4704,7 +4746,7 @@ class Component extends DCLogic {
           pSheetKind: st.storyOn ? "ok-sheet-story" : "",
           pEyebrow: st.storyOn ? T("story") : st.cardsOn ? T("flashcards") : st.gMode === "type" ? T("typing") : st.gMode ? T("quiz") : T("practice"),
           pTitle: setName(st.gBatch != null ? st.gBatch : WSET),
-          pCount: st.storyOn ? (st.storyPage + 1) + " / " + ((storyOf(st.storySet) || { pages: [] }).pages.length || 1)
+          pCount: st.storyOn ? (st.storyPage + 1) + " / " + (((storyOf(st.storySet) || { pages: [] }).pages.length || 0) + 1)
             : st.cardsOn ? (st.cIdx < (st.cQueue || []).length ? Math.min(st.cIdx + 1, (st.cQueue || []).length) + " / " + (st.cQueue || []).length : "")
             : st.gMode ? (st.gFinished ? "" : (gIdxEff + 1) + " / " + (st.gRounds || []).length)
             : T("to_practise", { n: this.practiceWords().length }),
@@ -4907,15 +4949,31 @@ class Component extends DCLogic {
         const set = st.storyOn ? st.storySet : (st.gBatch != null ? st.gBatch : WSET);
         const story = storyOf(set);
         const pages = story ? story.pages : [];
-        const page = Math.min(Math.max(0, st.storyPage || 0), Math.max(0, pages.length - 1));
-        const lines = pages[page] || [];
+        // Page one is the cover, the way a book's is: the text pages are the
+        // ones after it, so the number in the header counts them all.
+        const page = Math.min(Math.max(0, st.storyPage || 0), pages.length);
+        const cover = page === 0;
+        const lines = cover ? [] : (pages[page - 1] || []);
         const tr = (v) => (v && (v[CURRENT_LANG] || v.EN)) || "";
         return {
           storyHas: !!story,
           storyOn: !!st.storyOn && !!story,
           storyTitleJa: story ? story.ja : "",
           storyTitle: story ? tr(story.t) : "",
-          storyLastPage: !!st.storyOn && page === pages.length - 1,
+          storyLastPage: !!st.storyOn && page === pages.length,
+          storyCoverOn: cover,
+          storyTextOn: !cover,
+          // the head repeats what the cover says in full, so it waits its turn
+          storyHeadOn: cover ? "hidden" : "visible",
+          storyChapter: T("chapter_n", { n: st.storySet + 1 }),
+          storyChapterJa: "第" + okKanjiNum(st.storySet + 1) + "話",
+          // A chapter with a picture shows it; one without is drawn from the
+          // same two shapes the story keeps coming back to -- a moon, and the
+          // water under it -- so a half-illustrated book still looks made.
+          storyPlate: COVERS[String(st.storySet)]
+            ? "background-image:url(covers/" + COVERS[String(st.storySet)] + ")"
+            : "",
+          storyPlateDrawn: !COVERS[String(st.storySet)],
           // A page turn moves a shorter distance over a little longer, and
           // eases out rather than stopping: at 28px in 240ms the text arrived
           // with a jolt that reads as the box resizing even when it has not.
@@ -4942,10 +5000,14 @@ class Component extends DCLogic {
           })),
           storyPrevOn: page > 0 ? "1" : ".25",
           storyPrevCur: page > 0 ? "pointer" : "default",
-          storyNextOn: page < pages.length - 1 ? "1" : ".25",
-          storyNextCur: page < pages.length - 1 ? "pointer" : "default",
+          storyNextOn: page < pages.length ? "1" : ".25",
+          storyNextCur: page < pages.length ? "pointer" : "default",
           storyPrev: () => this.storyTurn(-1),
           storyNext: () => this.storyTurn(1),
+          // on the cover there is nothing to read aloud yet, so the button
+          // that reads a page opens the book instead
+          storyMain: () => (cover ? this.storyTurn(1) : this.storyReadPage()),
+          storyMainLabel: cover ? T("story_begin") : T("story_read"),
           storyRead: () => this.storyReadPage(),
           storyPlaying: !!st.storyPlay,
           storyIdle: !st.storyPlay,

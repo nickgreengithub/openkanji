@@ -70,3 +70,44 @@ into the arc:
    stops at set 40 should not be left holding half a thing.
 6. **The recordings follow the text.** Editing a line changes its fingerprint
    and the next voices run replaces the clip (`src/audio/said.json`).
+
+## Covers
+
+Every chapter opens on a cover: the picture, 第N話 and CHAPTER N, and the title
+in both languages. It is page one of six, it turns like any other page, and the
+box does not change size for it.
+
+The picture is a file in `src/covers/`, named for the set counting from zero --
+`0.jpg` is chapter one. A chapter with no file gets a drawn plate instead (a
+moon over water, in the app's own colours), so a half-illustrated book still
+looks made rather than broken. 1200x750, under 200KB; they are fetched when a
+chapter is opened, never with the page.
+
+### Drawing them
+
+The covers are meant to be the photograph the chapter is about, which is also
+what keeps a hundred of them consistent: a place or an object, rarely a face.
+Faces drift between generations; a shelf of boxes does not.
+
+Use the same style block verbatim every time, and change only the subject:
+
+> Hand-painted digital illustration of a Japanese seaside town, quiet and
+> melancholy, in the manner of a modern picture book with woodblock influence.
+> Flat shapes, visible paper grain, soft haze at the horizon, one clear light
+> source. Limited palette: deep teal (#0e2b38 through #12414f to #0891b2), warm
+> off-white (#f4f4f1), soft ink black. Generous empty space in the upper third.
+> No text, no lettering, no logos, no close-up faces. 16:10.
+>
+> Subject: <one sentence, the photograph this chapter is about>
+
+Subjects for the two that exist:
+
+- **Chapter 1** — a full moon low over a river, a wooden bench on the bank, one
+  small figure seen from behind at a distance.
+- **Chapter 2** — a hundred white boxes on a wooden shelf in a dim photograph
+  studio, one desk lamp, dust hanging in the light.
+
+For every chapter after the first, attach the previous cover and add: *match the
+palette, brushwork and grain of the attached image exactly; same world, a
+different scene.* That, and never naming a character's face, is most of what
+consistency across a hundred pictures takes.

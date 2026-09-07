@@ -862,5 +862,13 @@
   "story_end": {
     "en": "The end",
     "es": "Fin"
+  },
+  "chapter_n": {
+    "en": "Chapter {n}",
+    "es": "Capítulo {n}"
+  },
+  "story_begin": {
+    "en": "Begin",
+    "es": "Empezar"
   }
 }
