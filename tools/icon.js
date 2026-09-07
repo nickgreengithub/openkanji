@@ -17,16 +17,50 @@ const zlib = require("zlib");
 const TEAL = [8, 145, 178];
 const WHITE = [255, 255, 255];
 
-// 日 -- the frame and its rail, in units of the icon's width, as [x, y, w, h].
-const S = 0.078;                  // stroke
-const A = 0.21, B = 0.79;         // the frame's edges
-const BARS = [
-  [A, A, B - A, S],                       // top
-  [A, B - S, B - A, S],                   // bottom
-  [A, A, S, B - A],                       // left
-  [B - S, A, S, B - A],                   // right
-  [A, (A + B) / 2 - S / 2, B - A, S],     // the rail across the middle
+// 开 -- the mark the page wears in its top left corner, drawn rather than set
+// in a font: an icon has to be right at sixteen pixels, where a typeface's
+// tapered strokes turn to grey mush, and a build that reaches for a font is a
+// build that needs one installed.
+//
+// Four strokes, in units of the icon's width, each a quadrilateral so the
+// third can lean the way it does when it is written: two horizontals, a leg
+// that slants out to the left, and a leg that drops straight.
+const S = 0.088;                  // stroke
+const SHAPES = [
+  // the upper horizontal, shorter than the one under it
+  [[0.240, 0.265], [0.760, 0.265], [0.760, 0.265 + S], [0.240, 0.265 + S]],
+  // the lower horizontal, the widest thing in the mark
+  [[0.100, 0.500], [0.900, 0.500], [0.900, 0.500 + S], [0.100, 0.500 + S]],
+  // the left leg, which starts above the lower horizontal and leans out
+  // through it -- the crossing is what makes this 开 and not 示
+  [[0.385, 0.385], [0.385 + S, 0.385], [0.240 + S, 0.860], [0.240, 0.860]],
+  // and the right one, straight down through the same bar
+  [[0.660, 0.385], [0.660 + S, 0.385], [0.660 + S, 0.860], [0.660, 0.860]],
 ];
+
+// Point in a convex quad: on the same side of all four edges. Sampled four by
+// four to a pixel, because a mark this small lives or dies on its edges.
+const inside = (q, x, y) => {
+  let neg = false, pos = false;
+  for (let i = 0; i < 4; i++) {
+    const [ax, ay] = q[i], [bx, by] = q[(i + 1) % 4];
+    const d = (bx - ax) * (y - ay) - (by - ay) * (x - ax);
+    if (d < 0) neg = true; else if (d > 0) pos = true;
+    if (neg && pos) return false;
+  }
+  return true;
+};
+
+const cover = (x, y, size) => {
+  let n = 0;
+  for (let sy = 0; sy < 4; sy++) {
+    for (let sx = 0; sx < 4; sx++) {
+      const px = (x + (sx + 0.5) / 4) / size, py = (y + (sy + 0.5) / 4) / size;
+      if (SHAPES.some((q) => inside(q, px, py))) n++;
+    }
+  }
+  return n / 16;
+};
 
 const png = (size) => {
   const row = size * 3 + 1;
@@ -34,11 +68,9 @@ const png = (size) => {
   for (let y = 0; y < size; y++) {
     raw[y * row] = 0; // filter: none
     for (let x = 0; x < size; x++) {
-      const on = BARS.some(([bx, by, bw, bh]) =>
-        x >= bx * size && x < (bx + bw) * size && y >= by * size && y < (by + bh) * size);
-      const c = on ? WHITE : TEAL;
+      const a = cover(x, y, size);
       const at = y * row + 1 + x * 3;
-      raw[at] = c[0]; raw[at + 1] = c[1]; raw[at + 2] = c[2];
+      for (let c = 0; c < 3; c++) raw[at + c] = Math.round(TEAL[c] + (WHITE[c] - TEAL[c]) * a);
     }
   }
   const chunk = (type, data) => {
@@ -78,9 +110,30 @@ function crc32(buf) {
 }
 
 const svg = () => {
-  const bars = BARS.map(([x, y, w, h]) =>
-    '<rect x="' + (x * 512) + '" y="' + (y * 512) + '" width="' + (w * 512) + '" height="' + (h * 512) + '" fill="#fff"/>').join("");
-  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" fill="#0891b2"/>' + bars + "</svg>\n";
+  const strokes = SHAPES.map((q) =>
+    '<polygon points="' + q.map(([x, y]) => (x * 512).toFixed(1) + "," + (y * 512).toFixed(1)).join(" ") + '" fill="#fff"/>').join("");
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" fill="#0891b2"/>' + strokes + "</svg>\n";
+};
+
+// The tab icon for everything that will not take the SVG -- Safari before 17,
+// and every browser's own guess at /favicon.ico when nothing is declared.
+// Three sizes in one file, each a PNG, which every browser since Vista reads.
+const ico = (sizes) => {
+  const imgs = sizes.map((n) => png(n));
+  const head = Buffer.alloc(6);
+  head.writeUInt16LE(0, 0); head.writeUInt16LE(1, 2); head.writeUInt16LE(sizes.length, 4);
+  let offset = 6 + 16 * sizes.length;
+  const dir = sizes.map((n, i) => {
+    const e = Buffer.alloc(16);
+    e[0] = n >= 256 ? 0 : n; e[1] = n >= 256 ? 0 : n;
+    e[2] = 0; e[3] = 0;
+    e.writeUInt16LE(1, 4); e.writeUInt16LE(32, 6);
+    e.writeUInt32LE(imgs[i].length, 8);
+    e.writeUInt32LE(offset, 12);
+    offset += imgs[i].length;
+    return e;
+  });
+  return Buffer.concat([head, ...dir, ...imgs]);
 };
 
 const manifest = () => JSON.stringify({
@@ -109,6 +162,7 @@ module.exports = {
     "icon.svg": Buffer.from(svg()),
     "icon-192.png": png(192),
     "icon-512.png": png(512),
+    "favicon.ico": ico([16, 32, 48]),
     // iOS does not read the manifest for the home-screen icon.
     "apple-touch-icon.png": png(180),
   }),
