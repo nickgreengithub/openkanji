@@ -437,6 +437,17 @@ function readCovers() {
   return out;
 }
 
+// Which sets have a Teacher's Kit to open.
+function readKits() {
+  const dir = path.join(SRC, "kits");
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .map((f) => /^set-(\d+)\.pdf$/i.exec(f))
+    .filter(Boolean)
+    .map((m) => parseInt(m[1], 10) - 1)
+    .sort((a, b) => a - b);
+}
+
 function loadKanjiAndLangs() {
   const langs = readJson("data/langs.json");
   const { kanji, words, ui, stories, teach, complete, partial, coverage, fields, deckOrder } = loadData();
@@ -526,6 +537,7 @@ function build() {
     // straight to the browser's voice instead of waiting on a 404.
     __VOICES__: JSON.stringify(readVoices()),
     __COVERS__: JSON.stringify(readCovers()),
+    __KITS__: JSON.stringify(readKits()),
     // [name, ui.json tip key, kanji count] in rail order, so adding a deck or
     // reordering the rail is a decks.json edit and nothing else.
     __DECKS__: JSON.stringify(deckOrder),
@@ -614,6 +626,34 @@ if (process.argv.includes("--check")) {
     }
     if (n) console.log("copied " + n + " voice files into dist/audio");
   }
+  // The Teacher's Kits, rendered by tools/kit.mjs and committed, because
+  // making a PDF needs a browser and a Japanese font and neither belongs in a
+  // deploy. What does belong here is noticing when one has been left behind by
+  // an edit to the words or the prompts it was made from.
+  const kitSrc = path.join(SRC, "kits");
+  const kitOut = path.join(dist, "kits");
+  fs.rmSync(kitOut, { recursive: true, force: true });
+  if (fs.existsSync(kitSrc)) {
+    const pdfs = fs.readdirSync(kitSrc).filter((f) => /\.pdf$/i.test(f));
+    if (pdfs.length) {
+      fs.mkdirSync(kitOut, { recursive: true });
+      for (const f of pdfs) fs.copyFileSync(path.join(kitSrc, f), path.join(kitOut, f));
+      console.log("copied " + pdfs.length + " teacher's kits into dist/kits");
+    }
+    const { kitStamp } = require("./kit-stamp.cjs");
+    const made = fs.existsSync(path.join(kitSrc, "made-from.json"))
+      ? JSON.parse(fs.readFileSync(path.join(kitSrc, "made-from.json"), "utf8")) : {};
+    const stale = [];
+    for (const set of Object.keys(readJson("data/teach.json"))) {
+      const file = "set-" + (Number(set) + 1) + ".pdf";
+      const now = kitStamp(Number(set), { words: readJson("data/words.json"), ladder: readJson("data/ladder.json"),
+        teach: readJson("data/teach.json"), stories: readJson("data/stories.json") });
+      if (!pdfs.includes(file)) stale.push(file + " (never made)");
+      else if (made[file] !== now) stale.push(file + " (made from something else)");
+    }
+    if (stale.length) console.log("  kits out of date: " + stale.join(", ") + " -- run tools/kit.mjs");
+  }
+
   // Chapter covers, one to a set, fetched when a chapter is opened rather
   // than carried by the page: a hundred of them would be twelve megabytes
   // nobody has read yet.

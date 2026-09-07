@@ -872,35 +872,11 @@
     "es": "Empezar"
   },
   "teach": {
-    "en": "Teach",
-    "es": "Enseñar"
+    "en": "Teacher's Kit",
+    "es": "Kit del profesor"
   },
   "teach_desc": {
-    "en": "A sheet for a teacher: prompts, not answers",
-    "es": "Una hoja para el profesor: preguntas, no respuestas"
-  },
-  "teach_words": {
-    "en": "The twenty",
-    "es": "Las veinte"
-  },
-  "teach_prompts": {
-    "en": "Ask them",
-    "es": "Pregúntales"
-  },
-  "teach_chapter": {
-    "en": "The chapter",
-    "es": "El capítulo"
-  },
-  "teach_print": {
-    "en": "Print",
-    "es": "Imprimir"
-  },
-  "teach_ask": {
-    "en": "ask",
-    "es": "pregunta"
-  },
-  "teach_do": {
-    "en": "do",
-    "es": "haz"
+    "en": "One page for a lesson, as a PDF",
+    "es": "Una página para la clase, en PDF"
   }
 }

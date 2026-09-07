@@ -477,40 +477,10 @@ a:hover{color:var(--text-accent-hover)}
 .ok-pmode-txt{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.15rem}
 .ok-pmode-t{font-size:1.0625rem}
 .ok-pmode-chev{color:var(--ok-mute)}
-/* The teacher's sheet. A working document, not a page of a book: it may
-   scroll, but nothing in it moves or resizes while it is being read off a
-   second screen. It prints to a couple of sheets of paper, which is the only
-   PDF anyone needs. */
+/* The Teacher's Kit is a PDF rather than a screen (tools/kit.mjs), so all
+   that is left here is the entry that opens it, quieter than the modes a
+   learner picks between. */
 .ok-pmode-quiet .ok-pmode-ico{background:rgba(107,114,128,.1);color:var(--ok-mute)}
-.ok-teach{width:100%;max-width:44rem;margin:0 auto;padding:1.25rem 1.25rem 2rem;display:flex;flex-direction:column;gap:.5rem}
-.ok-teach-head{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.ok-teach-set{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-ink)}
-.ok-teach-note{font-family:var(--font-2);font-size:1rem;line-height:1.5;color:var(--ok-mute);text-wrap:pretty}
-.ok-teach-h{font-family:var(--font-2);font-size:.875rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-acc);margin-top:.9rem}
-.ok-teach-list{display:flex;flex-direction:column;gap:.5rem;padding:0;margin:0;list-style:none;counter-reset:q}
-.ok-teach-q{display:flex;gap:.7rem;align-items:baseline;counter-increment:q}
-.ok-teach-q::before{content:counter(q);flex:0 0 1.2rem;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute);text-align:right}
-.ok-teach-kind{flex:0 0 2.6rem;font-family:var(--font-2);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ok-mute);padding-top:.2rem}
-.ok-teach-body{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.1rem}
-.ok-teach-ja{font-size:1.1875rem;line-height:1.5;color:var(--ok-ink)}
-.ok-teach-en{font-family:var(--font-2);font-size:1rem;line-height:1.45;color:var(--ok-mute);text-wrap:pretty}
-.ok-teach-words{display:grid;grid-template-columns:1fr 1fr;gap:.45rem 1.4rem}
-.ok-teach-w{display:flex;flex-direction:column;gap:.05rem;min-width:0}
-.ok-teach-w-t{font-family:var(--font-2);font-size:.9375rem;color:var(--ok-body)}
-.ok-teach-w-t b{font-family:var(--font-1);font-weight:400;font-size:1.125rem;color:var(--ok-ink)}
-.ok-teach-w-t i{font-style:normal;color:var(--ok-acc);margin:0 .4rem}
-.ok-teach-w-ex{font-family:var(--font-2);font-size:.8125rem;line-height:1.35;color:var(--ok-mute)}
-@media print{
-  .ok-top,.ok-bottombar,.ok-page,.ok-veil::before,.ok-sheet-top,.ok-teach-print{display:none!important}
-  .ok-veil{position:static!important;height:auto!important;background:#fff!important;padding:0!important}
-  .ok-sheet{width:100%!important;height:auto!important;max-height:none!important;box-shadow:none!important;border-radius:0!important;background:#fff!important}
-  .ok-sheet-body{overflow:visible!important}
-  .ok-teach{max-width:none;padding:0;color:#000}
-  .ok-teach-h{color:#000;border-bottom:1px solid #999;padding-bottom:.15rem}
-  .ok-teach-en,.ok-teach-note,.ok-teach-w-ex,.ok-teach-kind{color:#333}
-  .ok-teach-w-t i{color:#555}
-  .ok-teach-q,.ok-teach-w{break-inside:avoid}
-}
 /* The story: one page of it at a time, every line with its own translation
    underneath so a reader can look down for a sentence and back up again
    without losing the page. */
@@ -762,7 +732,6 @@ a:hover{color:var(--text-accent-hover)}
   /* The story fills the phone page: the page of text scrolls, the controls
      under it stay put, and the whole thing sits above the home bar. */
   .ok-story{padding:.9rem 1rem calc(.9rem + env(safe-area-inset-bottom));gap:.7rem}
-  .ok-teach-words{grid-template-columns:1fr}
   .ok-story-page{padding:.85rem .8rem}
   .ok-story-cover{padding:.85rem .8rem;gap:.4rem}
   .ok-story-cover-t{font-size:1.5rem}
@@ -962,49 +931,11 @@ html[data-ok-ready] #ok-boot{display:none}
                 <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
               </div>
               <sc-if value="{{ teachHas }}" hint-placeholder-val="{{ false }}">
-                <div sc-camel-on-click="{{ gTeach }}" class="ok-pmode ok-pmode-quiet">
+                <div sc-camel-on-click="{{ openKit }}" class="ok-pmode ok-pmode-quiet">
                   <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5 L12 3.5 L21 6.5 L12 9.5 Z"></path><path d="M6.5 8.2 V14 C8.6 15.6 15.4 15.6 17.5 14 V8.2"></path><path d="M21 6.5 V12"></path></svg></span>
                   <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_teach }}</span><span class="ok-muted">{{ t_teach_desc }}</span></div>
-                  <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
+                  <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4 H20 V10"></path><path d="M20 4 L11 13"></path><path d="M18 14.5 V19 A1.5 1.5 0 0 1 16.5 20.5 H5 A1.5 1.5 0 0 1 3.5 19 V7.5 A1.5 1.5 0 0 1 5 6 H9.5"></path></svg></span>
                 </div>
-              </sc-if>
-            </div>
-          </sc-if>
-
-          <!-- The teacher's sheet: what the set holds, and what to ask about
-               it. Everything but the prompts is drawn from what the learner
-               already sees, so it can never fall out of step with the set. -->
-          <sc-if value="{{ teachOn }}" hint-placeholder-val="{{ false }}">
-            <div class="ok-view ok-teach">
-              <div class="ok-teach-head">
-                <span class="ok-teach-set">{{ teachSet }}</span>
-                <span sc-camel-on-click="{{ teachPrint }}" class="ok-btn ok-teach-print">{{ t_teach_print }}</span>
-              </div>
-              <sc-if value="{{ teachHasNote }}" hint-placeholder-val="{{ false }}"><p class="ok-teach-note">{{ teachNote }}</p></sc-if>
-
-              <h4 class="ok-teach-h">{{ t_teach_prompts }}</h4>
-              <ol class="ok-teach-list">
-                <sc-for list="{{ teachPrompts }}" as="q" hint-placeholder-count="10">
-                  <li class="ok-teach-q">
-                    <span class="ok-teach-kind">{{ q.kind }}</span>
-                    <span class="ok-teach-body"><sc-if value="{{ q.hasJa }}" hint-placeholder-val="{{ false }}"><span class="ok-teach-ja ok-ja">{{ q.ja }}</span></sc-if><span class="ok-teach-en">{{ q.t }}</span></span>
-                  </li>
-                </sc-for>
-              </ol>
-
-              <h4 class="ok-teach-h">{{ t_teach_words }}</h4>
-              <div class="ok-teach-words">
-                <sc-for list="{{ teachWords }}" as="tw" hint-placeholder-count="20">
-                  <div class="ok-teach-w">
-                    <span class="ok-teach-w-t"><b class="ok-ja">{{ tw.w }}</b><i>{{ tw.r }}</i>{{ tw.g }}</span>
-                    <sc-if value="{{ tw.hasEx }}" hint-placeholder-val="{{ true }}"><span class="ok-teach-w-ex"><span class="ok-ja">{{ tw.ex }}</span> — {{ tw.exT }}</span></sc-if>
-                  </div>
-                </sc-for>
-              </div>
-
-              <sc-if value="{{ teachStory }}" hint-placeholder-val="{{ false }}">
-                <h4 class="ok-teach-h">{{ t_teach_chapter }}</h4>
-                <p class="ok-teach-note">{{ teachStoryLine }}</p>
               </sc-if>
             </div>
           </sc-if>
@@ -1460,6 +1391,7 @@ const DATA = __KANJI_DATA__;
 const VOICES = __VOICES__;
 const COVERS = __COVERS__;
 const TEACH = __TEACH__;
+const KITS = __KITS__;
 // A story per set, where one has been written: the set's twenty words carried
 // by one small tale, so they are met as language rather than as a list. Each
 // line arrives already split into spans, with a table of what the tappable
@@ -4815,10 +4747,9 @@ class Component extends DCLogic {
           // what the words are worth: coverage now, and with this deck done
           // the practice sheet
           pOn: !!st.gameOpen || !!st.cardsOn || !!st.storyOn,
-          pAtMenu: !st.cardsOn && !st.storyOn && !st.gMode && !st.teachOn,
-          pNotAtMenu: !!st.cardsOn || !!st.storyOn || !!st.gMode || !!st.teachOn,
+          pAtMenu: !st.cardsOn && !st.storyOn && !st.gMode,
+          pNotAtMenu: !!st.cardsOn || !!st.storyOn || !!st.gMode,
           pBack: () => {
-            if (this.state.teachOn) { this.setState({ teachOn: false }); return; }
             if (this.state.storyOn) { this.closeStory(true); return; }
             if (this.state.cardsOn) { this.setState({ dlgSeamless: true, cardsOn: false, cardsClosing: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); return; }
             if (this._gAdvT) clearTimeout(this._gAdvT);
@@ -4828,10 +4759,9 @@ class Component extends DCLogic {
           },
           pClose: () => this.closePractice(),
           pSheetKind: st.storyOn ? "ok-sheet-story" : "",
-          pEyebrow: st.teachOn ? T("teach") : st.storyOn ? T("story") : st.cardsOn ? T("flashcards") : st.gMode === "type" ? T("typing") : st.gMode ? T("quiz") : T("practice"),
+          pEyebrow: st.storyOn ? T("story") : st.cardsOn ? T("flashcards") : st.gMode === "type" ? T("typing") : st.gMode ? T("quiz") : T("practice"),
           pTitle: setName(st.gBatch != null ? st.gBatch : WSET),
-          pCount: st.teachOn ? ""
-            : st.storyOn ? (st.storyPage + 1) + " / " + (((storyOf(st.storySet) || { pages: [] }).pages.length || 0) + 1)
+          pCount: st.storyOn ? (st.storyPage + 1) + " / " + (((storyOf(st.storySet) || { pages: [] }).pages.length || 0) + 1)
             : st.cardsOn ? (st.cIdx < (st.cQueue || []).length ? Math.min(st.cIdx + 1, (st.cQueue || []).length) + " / " + (st.cQueue || []).length : "")
             : st.gMode ? (st.gFinished ? "" : (gIdxEff + 1) + " / " + (st.gRounds || []).length)
             : T("to_practise", { n: this.practiceWords().length }),
@@ -4999,12 +4929,12 @@ class Component extends DCLogic {
       chatTipBody: Object.keys(st.chatSel).length === 0
         ? T("intro_click_rows")
         : T("words_queued_write", { n: Object.keys(st.chatSel).length }),
-      openGame: () => { this._gAnswer = null; this._gIdx = undefined; this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gBatch: null, gKanji: null, gFinished: false, gPicked: -1, teachOn: false }); },
+      openGame: () => { this._gAnswer = null; this._gIdx = undefined; this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gBatch: null, gKanji: null, gFinished: false, gPicked: -1 }); },
       closeGame: () => { if (this._gAdvT) clearTimeout(this._gAdvT); this.setState({ gameClosing: true }); setTimeout(() => this.setState({ gameOpen: false, gameClosing: false }), 180); },
       gameVeilAnim: st.dlgSeamless ? "none" : (st.gameClosing ? "ok-veil-out 180ms ease forwards" : "ok-veil-in 180ms ease"),
       gamePanelAnim: st.dlgSeamless ? "none" : (st.gameClosing ? "ok-panel-out 180ms ease forwards" : "ok-panel-in 220ms cubic-bezier(.2,.7,.3,1)"),
       gameOn: !!st.gameOpen,
-      gMenuOn: !!st.gameOpen && !st.gMode && !st.teachOn,
+      gMenuOn: !!st.gameOpen && !st.gMode,
       gPlayOn: !!st.gameOpen && !!st.gMode && !st.gFinished,
       gDoneOn: !!st.gameOpen && !!st.gMode && !!st.gFinished,
       gStart1: () => { this.setState({ gFirstOk: {} }); this.startGame(1); },
@@ -5101,39 +5031,16 @@ class Component extends DCLogic {
           storyIdle: !st.storyPlay,
         };
       })(),
-      // The teacher's sheet. Only the prompts are written; the words, their
-      // sentences and the chapter are the same data the learner is looking at,
-      // so the sheet cannot drift from the set it describes.
+      // The Teacher's Kit is a PDF: one page of A4 rendered by tools/kit.mjs
+      // and served as a file, so what a teacher gets is a document to keep,
+      // mail or print, and the browser's own viewer decides which.
       ...(() => {
         const set = st.gBatch != null ? st.gBatch : WSET;
-        const sheet = TEACH[String(set)] || null;
-        const tr = (v) => (v && (v[CURRENT_LANG] || v.EN)) || "";
-        const story = storyOf(set);
-        const on = !!st.teachOn && !!sheet;
         return {
-          teachHas: !!sheet,
-          teachOn: !!st.gameOpen && on,
-          teachSet: T("set") + " " + (set + 1) + " · " + T("words_range", { a: set * WORDN + 1, b: set * WORDN + WORDN }),
-          teachHasNote: !!(sheet && sheet.note),
-          teachNote: sheet && sheet.note ? tr(sheet.note) : "",
-          teachPrompts: sheet ? sheet.prompts.map((q) => ({
-            kind: q.k === "ask" ? T("teach_ask") : T("teach_do"),
-            hasJa: !!q.ja, ja: q.ja || "", t: tr(q.t),
-          })) : OK_EMPTY,
-          teachWords: on ? wordsOf(set).map((e) => {
-            // the sentence as plain text, the way the focus view takes it --
-            // EXTRA holds it split into furigana pieces, which is no use in a
-            // list a teacher is reading down
-            const x = (EX_JA[e.w[3]] || [])[0];
-            return {
-              w: e.w[0], r: e.w[1], g: e.w[2],
-              hasEx: !!x, ex: x || "", exT: x ? exTr(e.w[3], 0, "") : "",
-            };
-          }) : OK_EMPTY,
-          teachStory: !!story,
-          teachStoryLine: story ? story.ja + " — " + tr(story.t) : "",
-          teachPrint: () => { try { window.print(); } catch (e) {} },
-          gTeach: () => this.setState({ teachOn: true }),
+          teachHas: KITS.indexOf(set) >= 0,
+          openKit: () => {
+            try { window.open("kits/set-" + (set + 1) + ".pdf", "_blank", "noopener"); } catch (e) {}
+          },
         };
       })(),
       gStory: () => {
@@ -5193,7 +5100,6 @@ class Component extends DCLogic {
       gHeadBack: () => {
         if (this._gAdvT) clearTimeout(this._gAdvT);
         this._gAnswer = null; this._gIdx = undefined;
-        if (this.state.teachOn) { this.setState({ teachOn: false }); return; }
         if (!this.state.gMode) { this.setState({ gameClosing: true, dlgSeamless: false }); setTimeout(() => this.setState({ gameOpen: false, gameClosing: false }), 180); return; }
         this.setState({ gMode: null, gFinished: false, gPicked: -1 });
       },
