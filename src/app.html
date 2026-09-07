@@ -692,7 +692,7 @@ a:hover{color:var(--text-accent-hover)}
   /* pages that were dialogs */
   .ok-veil{position:fixed;inset:0;z-index:95;display:block;padding:0;background:var(--ok-bg);backdrop-filter:none;-webkit-backdrop-filter:none;animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
   .ok-veil-out{animation:ok-push-out 200ms cubic-bezier(.4,0,1,1) forwards!important}
-  .ok-veil{height:var(--ok-vh,100svh)}
+  .ok-veil{top:var(--ok-vv-top,0px);height:var(--ok-vh,100svh)}
   .ok-sheet,.ok-sheet-fixed{width:100%;height:100%;max-height:none;border-radius:0;box-shadow:none;animation:none}
   .ok-sheet-out{animation:none!important}
   .ok-sheet-top{padding-left:max(.6rem,env(safe-area-inset-left));padding-right:max(.9rem,env(safe-area-inset-right));padding-top:env(safe-area-inset-top)}
@@ -722,7 +722,7 @@ a:hover{color:var(--text-accent-hover)}
   .ok-focus-arrow svg{width:1.6rem;height:1.6rem}
 
   /* settings: the popover becomes the page */
-  .ok-pop{position:fixed;inset:0;padding:0;z-index:96;background:var(--ok-bg);animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
+  .ok-pop{position:fixed;inset:0;top:var(--ok-vv-top,0px);height:var(--ok-vh,100svh);padding:0;z-index:96;background:var(--ok-bg);animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
   .ok-pop-in{width:100%;height:100%;border:0;border-radius:0;box-shadow:none;overflow-y:auto;gap:.9rem;padding:calc(4.2rem + env(safe-area-inset-top)) 1.25rem calc(1.5rem + env(safe-area-inset-bottom))}
   .ok-pop-x{display:flex;position:absolute;top:calc(.5rem + env(safe-area-inset-top));left:.6rem;width:2.75rem;height:2.75rem;align-items:center;justify-content:center;border-radius:50%;font-size:1.7rem;line-height:1;color:var(--ok-mute);cursor:pointer;user-select:none}
   .ok-pop-head{display:block;position:absolute;top:calc(1.35rem + env(safe-area-inset-top));left:3.5rem;right:3.5rem;text-align:center;font-family:var(--font-2);font-size:.9375rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ok-mute)}
@@ -1917,6 +1917,14 @@ const okTrackViewport = () => {
     // to the bottom of the screen rather than to a box we have resized.
     const kb = Math.round(window.innerHeight - vv.height - vv.offsetTop);
     root.style.setProperty("--ok-kb", (kb > 0 && kb < window.innerHeight ? kb : 0) + "px");
+    // iOS does not only shrink the viewport for the keyboard, it scrolls it:
+    // the visible band starts partway down the window, and a fixed overlay
+    // pinned to top:0 is drawn above the screen -- which is how the typing
+    // round came to show its text field at the top of the phone with the
+    // word it was asking about somewhere off it. offsetTop is where that
+    // band begins, and everything pinned to the top of the screen follows it.
+    const top = Math.round(vv.offsetTop);
+    root.style.setProperty("--ok-vv-top", (top > 0 && top < window.innerHeight ? top : 0) + "px");
   };
   set();
   vv.addEventListener("resize", set);

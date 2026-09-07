@@ -612,8 +612,8 @@
     "es": "Palabra siguiente"
   },
   "str_marked_sub": {
-    "en": "Practice will skip it until the rest are learned",
-    "es": "La práctica la omitirá hasta aprender las demás"
+    "en": "This word won't appear in Practice",
+    "es": "Esta palabra no aparecerá en la práctica"
   },
   "str_seen_today_long": {
     "en": "Practised today",
