@@ -81,7 +81,9 @@ The picture is a file in `src/covers/`, named for the set counting from zero --
 `0.jpg` is chapter one. A chapter with no file gets a drawn plate instead (a
 moon over water, in the app's own colours), so a half-illustrated book still
 looks made rather than broken. 1200x750, under 200KB; they are fetched when a
-chapter is opened, never with the page.
+chapter is opened, never with the page. Only files named for a set are
+published: the three-megabyte original a cover is cropped from can sit in the
+folder without being shipped.
 
 ### Drawing them
 
@@ -114,8 +116,8 @@ the ragged edge, then take the middle of what is left at 16:10 and write it out
 at 1200x750 under 200KB. `crop.mjs` in the test scratchpad does this; it needs a
 browser to decode the JPEG, which is why it does not live in tools/.
 
-The subjects so far. Each is one photograph, and the studio itself only
-when the chapter is about the studio:
+The subjects, chapters one to ten -- all drawn. Each is one photograph, and
+the studio itself only when the chapter is about the studio:
 
 - **Chapter 1** — a full moon low over a river, a long wooden bench on the near
   bank seen from behind, two figures sitting apart on it, one small and one

@@ -671,7 +671,13 @@ if (process.argv.includes("--check")) {
   const coverOut = path.join(dist, "covers");
   fs.rmSync(coverOut, { recursive: true, force: true });
   if (fs.existsSync(coverSrc)) {
-    const art = fs.readdirSync(coverSrc).filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f));
+    // Only the ones a chapter can ask for. The originals a picture is cropped
+    // from are the same file type and ten times the size, so copying every
+    // image in the folder publishes them by accident.
+    const all = fs.readdirSync(coverSrc).filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f));
+    const art = all.filter((f) => /^\d+\.(jpg|jpeg|png|webp)$/i.test(f));
+    const ignored = all.filter((f) => !art.includes(f));
+    if (ignored.length) console.log("  covers: ignoring " + ignored.length + " file(s) not named for a set: " + ignored.join(", "));
     if (art.length) {
       fs.mkdirSync(coverOut, { recursive: true });
       for (const f of art) fs.copyFileSync(path.join(coverSrc, f), path.join(coverOut, f));
