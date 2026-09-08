@@ -596,7 +596,13 @@ What each one is worth is pasted at the prompt.
 The mail that tells a reporter their report was answered needs nothing else:
 the Worker asks GitHub every five minutes, using the same token, and mails
 whoever asked to hear back. The schedule is in `wrangler.jsonc` and ships with
-a deploy.
+a deploy -- and it has a twin, because Cloudflare's cron for this Worker
+once stopped firing (2026-09-08) and stayed stopped through re-registration
+and redeploys, silencing every scheduled mail with nothing to show for it.
+`.github/workflows/tick.yml` calls the same work over HTTP (`POST /api/tick`,
+authenticated by the `CRON_KEY` secret, set both on the Worker and as a
+repository Actions secret) every five minutes. Both may fire; the tick is
+idempotent, so whichever arrives first does the work.
 
 A webhook is faster, and still works if you want one -- **Settings → Webhooks →
 Add webhook**, payload URL `https://openkanji.org/api/gh-hook`, content type

@@ -78,8 +78,8 @@ const ghStub = (env, status = 201) => {
   return env;
 };
 
-const call = (env, method, path, { body, cookie, ip } = {}) => {
-  const headers = { "content-type": "application/json" };
+const call = (env, method, path, { body, cookie, ip, headers: extra } = {}) => {
+  const headers = { "content-type": "application/json", ...(extra || {}) };
   if (cookie) headers.cookie = cookie;
   headers["cf-connecting-ip"] = ip || "203.0.113.7";
   const init = { method, headers };
@@ -890,6 +890,21 @@ await test("an error is mailed however late the tick runs, and only once", async
   assert.equal(env._sent.length, 2, "a new error is news again");
   assert.match(env._sent[1].subject, /upstream_busy: 1/);
   assert.ok(!/empty_response/.test(env._sent[1].subject), "and only the new one");
+});
+
+await test("the HTTP tick needs the key, and does the same work as the schedule", async () => {
+  const env = makeEnv();
+  env.OWNER_EMAIL = "owner@example.com";
+  errorAt(env, 60);
+  assert.equal((await call(env, "POST", "/api/tick", {})).status, 503, "no key configured yet");
+  env.CRON_KEY = "k-123";
+  assert.equal((await call(env, "POST", "/api/tick", { headers: { "x-cron-key": "wrong" } })).status, 403);
+  assert.equal(env._sent.length, 0, "a refused tick did nothing");
+  const r = await call(env, "POST", "/api/tick", { headers: { "x-cron-key": "k-123" } });
+  assert.equal(r.status, 200);
+  assert.equal(env._sent.length, 1, "the tick mailed the digest");
+  await worker.scheduled({}, env, null);
+  assert.equal(env._sent.length, 1, "the schedule after it found nothing left to do");
 });
 
 await test("a digest the mailer refuses is retried next tick, not lost", async () => {

@@ -1,0 +1,29 @@
+# The Worker's heartbeat, from outside Cloudflare.
+#
+# The Worker's own cron trigger stopped firing on 2026-09-08 and stayed
+# stopped through re-registration and redeploys -- and a scheduler that dies
+# silently takes the issue-reply mails and the AI-error digest with it. This
+# schedule calls the same tick over HTTP, so the work no longer depends on
+# any one scheduler: both may fire, the tick is idempotent, and whichever
+# arrives first does the work.
+#
+# GitHub runs scheduled workflows with best-effort timing (a few minutes of
+# drift is normal) and pauses them after ~60 days without repo activity --
+# both fine for a digest. CRON_KEY is a repository secret matching the
+# Worker secret of the same name.
+name: Tick
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call the Worker's tick
+        run: |
+          code=$(curl -s -o /tmp/tick.json -w "%{http_code}" -X POST \
+            -H "x-cron-key: ${{ secrets.CRON_KEY }}" https://openkanji.org/api/tick)
+          cat /tmp/tick.json
+          test "$code" = "200"

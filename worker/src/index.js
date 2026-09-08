@@ -849,16 +849,38 @@ async function checkAiErrors(env) {
   return { errors: total, emailed: true };
 }
 
+// Everything the schedule does, callable from either trigger. Both halves
+// are idempotent -- alreadyTold dedupes the issue mails, the ai_notice
+// high-water mark dedupes the digest -- so two schedulers overlapping can
+// only waste a query, never double a mail.
+async function runTick(env) {
+  const [gh, ai] = await Promise.all([
+    pollGitHub(env).catch((e) => ({ failed: String(e && e.message) })),
+    checkAiErrors(env).catch((e) => ({ failed: String(e && e.message) })),
+  ]);
+  return { github: gh, ai };
+}
+
+// The same tick over HTTP, for a scheduler that is not Cloudflare's own.
+// Cloudflare's cron for this Worker stopped firing on 2026-09-08 and stayed
+// stopped through re-registration and redeploys, which silenced both the
+// issue mails and the AI-error digest with nothing to show for it. A GitHub
+// Actions schedule now calls this as well; whichever fires first does the
+// work and the other finds nothing left to do.
+async function handleTick(request, env, url) {
+  if (!env.CRON_KEY) return json({ error: "not_configured" }, 503);
+  const given = request.headers.get("x-cron-key") || url.searchParams.get("key") || "";
+  if (given !== env.CRON_KEY) return json({ error: "forbidden" }, 403);
+  return json(await runTick(env));
+}
+
 // ---------- router ----------
 
 export default {
   // Cloudflare calls this on the schedule in wrangler.jsonc. It is the whole
   // notification path: no webhook to configure, no secret to keep in step.
   async scheduled(event, env, ctx) {
-    const done = Promise.all([
-      pollGitHub(env).catch((e) => ({ failed: String(e && e.message) })),
-      checkAiErrors(env).catch((e) => ({ failed: String(e && e.message) })),
-    ]);
+    const done = runTick(env);
     if (ctx && ctx.waitUntil) ctx.waitUntil(done);
     else await done;
   },
@@ -898,6 +920,7 @@ export default {
     // Neither is the app asking: one is signed by a shared secret, the other
     // by ours, so neither needs a session.
     if (method === "POST" && path === "/api/gh-hook") return handleGitHubHook(request, env);
+    if (method === "POST" && path === "/api/tick") return handleTick(request, env, url);
     if (method === "GET" && path === "/api/issue-stop") return handleIssueStop(request, env, url);
 
     // Everything below needs a live account.
