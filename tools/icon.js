@@ -38,12 +38,21 @@ const SHAPES = [
   [[0.660, 0.385], [0.660 + S, 0.385], [0.660 + S, 0.860], [0.660, 0.860]],
 ];
 
-// A plate needs air around the mark; a mark on nothing does not, and looks
-// weak with it. Same drawing, scaled about its own middle.
+// A plate needs air around the mark; a mark on nothing needs less, but not
+// none -- reaching the edge of the canvas, the widest stroke runs into the tab
+// beside it and reads as cut off. So the bare mark is fitted rather than
+// scaled by eye: as large as it goes inside a margin, and centred in the box
+// on both axes, which the plate drawing is not (it hangs low, under the room
+// the plate leaves for it).
 const BOX = SHAPES.flat().reduce((b, [x, y]) => [Math.min(b[0], x), Math.min(b[1], y), Math.max(b[2], x), Math.max(b[3], y)], [1, 1, 0, 0]);
-const MID = [(BOX[0] + BOX[2]) / 2, (BOX[1] + BOX[3]) / 2];
-const grown = (k) => SHAPES.map((q) => q.map(([x, y]) => [MID[0] + (x - MID[0]) * k, MID[1] + (y - MID[1]) * k]));
-const BARE = grown(1.18);
+const MARGIN = 0.08;
+const fitted = (m) => {
+  const w = BOX[2] - BOX[0], h = BOX[3] - BOX[1];
+  const k = (1 - 2 * m) / Math.max(w, h);
+  const dx = 0.5 - (BOX[0] + w / 2) * k, dy = 0.5 - (BOX[1] + h / 2) * k;
+  return SHAPES.map((q) => q.map(([x, y]) => [x * k + dx, y * k + dy]));
+};
+const BARE = fitted(MARGIN);
 
 // Point in a convex quad: on the same side of all four edges. Sampled four by
 // four to a pixel, because a mark this small lives or dies on its edges.
