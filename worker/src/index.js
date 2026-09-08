@@ -100,7 +100,9 @@ async function handleIssue(request, env, user) {
       // GitHub refuses a request that will not say who is making it
       "user-agent": "openkanji-worker",
     },
-    body: JSON.stringify({ title, body: text + "\n\n---\n" + footer, labels: ["in-app"] }),
+    // Two kinds come through this form, and which one is the reporter's word
+    // for it, not ours to guess from the text.
+    body: JSON.stringify({ title, body: text + "\n\n---\n" + footer, labels: ["in-app", body.kind === "idea" ? "suggestion" : "bug"] }),
   }).catch(() => null);
   if (!res) return json({ error: "upstream_failed" }, 502);
   if (res.status === 401 || res.status === 403 || res.status === 404) return json({ error: "not_configured" }, 503);

@@ -990,5 +990,29 @@
   "issue_signin_why": {
     "en": "So there is somewhere to send the answer. It takes one email and no password.",
     "es": "Para poder enviarte la respuesta. Basta un correo, sin contraseña."
+  },
+  "feedback": {
+    "en": "Feedback",
+    "es": "Comentarios"
+  },
+  "idea_title": {
+    "en": "Make a suggestion",
+    "es": "Hacer una sugerencia"
+  },
+  "idea_subject": {
+    "en": "Your idea, in a line",
+    "es": "Tu idea, en una línea"
+  },
+  "idea_body": {
+    "en": "What would you like to see, and what would it be good for?",
+    "es": "Qué te gustaría ver, y para qué serviría"
+  },
+  "idea_note": {
+    "en": "This opens a public suggestion on GitHub. Your app version and browser go with it; your email does not.",
+    "es": "Esto abre una sugerencia pública en GitHub. Se envían la versión y el navegador; tu correo no."
+  },
+  "idea_thanks": {
+    "en": "Thank you — it is on the list.",
+    "es": "Gracias: ya está en la lista."
   }
 }

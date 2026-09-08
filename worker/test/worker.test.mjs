@@ -330,6 +330,15 @@ await test("a signed-in reader reports a problem", async () => {
   assert.match(env._gh[0].body.body, /^The clip cuts off on set three\./);
 });
 
+await test("a problem and a suggestion are told apart by their labels", async () => {
+  const env = ghStub(makeEnv());
+  const cookie = await signedIn(env);
+  await call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "a report long enough" } });
+  assert.deepEqual(env._gh[0].body.labels, ["in-app", "bug"], "a problem by default");
+  await call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "an idea long enough", kind: "idea" } });
+  assert.deepEqual(env._gh[1].body.labels, ["in-app", "suggestion"]);
+});
+
 await test("reporting needs an account, because an answer needs somewhere to go", async () => {
   const env = ghStub(makeEnv());
   const r = await call(env, "POST", "/api/issue", { body: { title: "t", text: "a report long enough" } });

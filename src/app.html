@@ -422,9 +422,31 @@ a:hover{color:var(--text-accent-hover)}
 .ok-avatar:hover{box-shadow:var(--ok-shadow-h)}
 .ok-dot{position:absolute;right:-2px;bottom:-2px;width:.7rem;height:.7rem;border-radius:50%;border:2px solid var(--ok-bg);transition:background 200ms ease}
 .ok-pop{position:absolute;top:100%;right:0;padding-top:.5rem;cursor:default}
-.ok-pop-in{width:19.5rem;display:flex;flex-direction:column;gap:.6rem;padding:1.05rem 1.15rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:0 18px 48px rgba(20,24,30,.18)}
+.ok-pop-in{width:20.5rem;display:flex;flex-direction:column;gap:.6rem;padding:1.05rem 1.15rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:0 18px 48px rgba(20,24,30,.18)}
 .ok-pop-title{font-size:1.0625rem;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ok-pop-sep{height:1px;background:var(--ok-line);margin:.3rem 0}
+/* The settings panel, in blocks rather than a list of loose lines: who you
+   are, what you have set, what you can say, and who made it. A section is a
+   small label and the thing under it; anything you can act on is a row or a
+   chip, and nothing is a bare sentence pretending to be a button. */
+.ok-pop-sec{display:flex;flex-direction:column;gap:.45rem}
+.ok-pop-sec .ok-h2{font-size:.8125rem;letter-spacing:.12em}
+.ok-pop-panel{display:flex;flex-direction:column;gap:.6rem;padding:.85rem .9rem;border-radius:12px;border:1px solid var(--ok-line);background:rgba(20,24,30,.02)}
+/* who you are: the avatar again, the address, and the state of the sync */
+.ok-id{display:flex;align-items:center;gap:.7rem}
+.ok-id-av{flex:0 0 auto;width:2.35rem;height:2.35rem;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--ok-acc);color:#fff;font-family:var(--font-2);font-size:1rem}
+.ok-id-txt{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.05rem}
+.ok-id-em{font-size:1rem;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ok-id-sub{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute)}
+.ok-id-out{flex:0 0 auto;align-self:center;font-size:.875rem;white-space:nowrap}
+/* a stack of things to do, each one obviously one thing */
+.ok-rows{display:flex;flex-direction:column;border:1px solid var(--ok-line);border-radius:12px;overflow:hidden}
+.ok-row{display:flex;align-items:center;gap:.7rem;padding:.7rem .8rem;background:var(--ok-card);cursor:pointer;user-select:none;transition:background 140ms ease}
+.ok-row + .ok-row{border-top:1px solid var(--ok-line)}
+.ok-row:hover{background:var(--ok-acc-s)}
+.ok-row-ico{flex:0 0 auto;width:1.85rem;height:1.85rem;border-radius:9px;display:flex;align-items:center;justify-content:center;background:var(--ok-acc-s);color:var(--ok-acc)}
+.ok-row-t{flex:1 1 auto;min-width:0;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink)}
+.ok-row-ch{flex:0 0 auto;color:var(--ok-mute);display:flex}
 .ok-link{font-family:var(--font-2);font-size:1rem;color:var(--ok-acc);cursor:pointer;align-self:flex-start;user-select:none}
 .ok-link:hover{text-decoration:underline}
 /* The foot of the settings panel: what this is, where its code lives, and who
@@ -439,6 +461,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-pop-out,.ok-pop-me{display:inline-flex;align-items:center;gap:.35rem}
 .ok-pop-out svg,.ok-pop-me svg{flex:0 0 auto}
 .ok-pop-by{font-family:var(--font-2);font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ok-mute);display:flex;align-items:center;gap:.35rem}
+.ok-pop-ver{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute)}
 /* the author's name reads as the link it is: the mark, and the accent */
 .ok-pop-me{color:var(--ok-acc);text-decoration:none}
 .ok-pop-me:hover{text-decoration:underline}
@@ -1282,32 +1305,51 @@ html[data-ok-ready] #ok-boot{display:none}
           <span sc-camel-on-click="{{ closeAcct }}" class="ok-pop-x" title="{{ t_close }}">×</span>
           <span class="ok-pop-head">{{ t_settings }}</span>
           <sc-if value="{{ acctIn }}" hint-placeholder-val="{{ false }}">
-            <span class="ok-pop-title" title="{{ userEmail }}">{{ userEmail }}</span>
-            <span class="ok-muted">{{ syncText }}</span>
-            <span sc-camel-on-click="{{ toggleUpdates }}" class="ok-check" title="{{ t_updates_note }}"><span class="ok-check-box" style="{{ updatesBox }}"><sc-if value="{{ updatesOn }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></sc-if></span><span class="ok-check-txt"><span class="ok-check-t">{{ t_updates_opt }}</span><span class="ok-check-n">{{ t_updates_note }}</span></span></span>
-            <span sc-camel-on-click="{{ signOutNow }}" class="ok-link">{{ t_sign_out }}</span>
+            <div class="ok-pop-panel">
+              <div class="ok-id">
+                <span class="ok-id-av">{{ avatarInitial }}</span>
+                <span class="ok-id-txt"><span class="ok-id-em" title="{{ userEmail }}">{{ userEmail }}</span><span class="ok-id-sub">{{ syncText }}</span></span>
+                <span sc-camel-on-click="{{ signOutNow }}" class="ok-link ok-id-out">{{ t_sign_out }}</span>
+              </div>
+              <span sc-camel-on-click="{{ toggleUpdates }}" class="ok-check" title="{{ t_updates_note }}"><span class="ok-check-box" style="{{ updatesBox }}"><sc-if value="{{ updatesOn }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></sc-if></span><span class="ok-check-txt"><span class="ok-check-t">{{ t_updates_opt }}</span><span class="ok-check-n">{{ t_updates_note }}</span></span></span>
+            </div>
           </sc-if>
           <sc-if value="{{ acctOut }}" hint-placeholder-val="{{ true }}">
-            <span class="ok-pop-title">{{ t_keep_progress }}</span>
-            <span class="ok-muted">{{ t_keep_progress_body }}</span>
-            <input type="email" class="ok-input" placeholder="{{ t_email_placeholder }}" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onAcctEmailKey }}"/>
-            <span sc-camel-on-click="{{ toggleUpdates }}" class="ok-check" title="{{ t_updates_note }}"><span class="ok-check-box" style="{{ updatesBox }}"><sc-if value="{{ updatesOn }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></sc-if></span><span class="ok-check-txt"><span class="ok-check-t">{{ t_updates_opt }}</span><span class="ok-check-n">{{ t_updates_note }}</span></span></span>
-            <span sc-camel-on-click="{{ sendLinkNow }}" class="ok-btn ok-btn-primary" style="align-self:flex-start">{{ t_send_link }}</span>
+            <div class="ok-pop-panel">
+              <span class="ok-pop-title">{{ t_keep_progress }}</span>
+              <span class="ok-muted">{{ t_keep_progress_body }}</span>
+              <input type="email" class="ok-input" placeholder="{{ t_email_placeholder }}" value="{{ emailDraft }}" sc-camel-on-change="{{ onEmail }}" sc-camel-on-key-down="{{ onAcctEmailKey }}"/>
+              <span sc-camel-on-click="{{ toggleUpdates }}" class="ok-check" title="{{ t_updates_note }}"><span class="ok-check-box" style="{{ updatesBox }}"><sc-if value="{{ updatesOn }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></sc-if></span><span class="ok-check-txt"><span class="ok-check-t">{{ t_updates_opt }}</span><span class="ok-check-n">{{ t_updates_note }}</span></span></span>
+              <span sc-camel-on-click="{{ sendLinkNow }}" class="ok-btn ok-btn-primary" style="align-self:flex-start">{{ t_send_link }}</span>
+            </div>
           </sc-if>
           <sc-if value="{{ acctSyncOff }}" hint-placeholder-val="{{ false }}">
             <span class="ok-muted">{{ t_sync_unavailable }}</span>
           </sc-if>
-          <div class="ok-pop-sep"></div>
-          <span class="ok-h2">{{ t_language }}</span>
-          <div class="ok-chips"><sc-for list="{{ langChips }}" as="lg" hint-placeholder-count="6"><span sc-camel-on-click="{{ lg.pick }}" class="ok-chip" style="{{ lg.chip }}">{{ lg.name }}</span></sc-for></div>
-          <span class="ok-h2">{{ t_furigana }}</span>
-          <div class="ok-chips">
-            <span sc-camel-on-click="{{ furiOn }}" class="ok-chip" style="{{ furiOnStyle }}">{{ t_on }}</span>
-            <span sc-camel-on-click="{{ furiOff }}" class="ok-chip" style="{{ furiOffStyle }}">{{ t_off }}</span>
+
+          <div class="ok-pop-sec">
+            <span class="ok-h2">{{ t_language }}</span>
+            <div class="ok-chips"><sc-for list="{{ langChips }}" as="lg" hint-placeholder-count="6"><span sc-camel-on-click="{{ lg.pick }}" class="ok-chip" style="{{ lg.chip }}">{{ lg.name }}</span></sc-for></div>
           </div>
+          <div class="ok-pop-sec">
+            <span class="ok-h2">{{ t_furigana }}</span>
+            <div class="ok-chips">
+              <span sc-camel-on-click="{{ furiOn }}" class="ok-chip" style="{{ furiOnStyle }}">{{ t_on }}</span>
+              <span sc-camel-on-click="{{ furiOff }}" class="ok-chip" style="{{ furiOffStyle }}">{{ t_off }}</span>
+            </div>
+          </div>
+          <div class="ok-pop-sec">
+            <span class="ok-h2">{{ t_feedback }}</span>
+            <div class="ok-rows">
+              <div sc-camel-on-click="{{ openBug }}" class="ok-row"><span class="ok-row-ico"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"></circle><path d="M12 7.4 V13"></path><path d="M12 16.3 h.01"></path></svg></span><span class="ok-row-t">{{ t_issue_title }}</span><span class="ok-row-ch"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span></div>
+              <div sc-camel-on-click="{{ openIdea }}" class="ok-row"><span class="ok-row-ico"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 A6 6 0 0 0 8.6 14 c.7.5 1.1 1.3 1.1 2.2 h4.6 c0-.9.4-1.7 1.1-2.2 A6 6 0 0 0 12 3 Z"></path><path d="M9.9 19 h4.2 M10.7 21.4 h2.6"></path></svg></span><span class="ok-row-t">{{ t_idea_title }}</span><span class="ok-row-ch"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span></div>
+            </div>
+          </div>
+
           <div class="ok-pop-sep"></div>
           <div class="ok-pop-foot">
-            <div class="ok-pop-links"><a class="ok-link ok-pop-out" href="https://github.com/nickgreengithub/openkanji" target="_blank" rel="noopener noreferrer"><svg width="15" height="15" sc-camel-view-box="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg><span>{{ t_source }}</span></a><span sc-camel-on-click="{{ openIssue }}" class="ok-link">{{ t_issues }}</span></div>
+            <span class="ok-pop-ver">{{ versionLabel }}</span>
+            <div class="ok-pop-links"><a class="ok-link ok-pop-out" href="https://github.com/nickgreengithub/openkanji" target="_blank" rel="noopener noreferrer"><svg width="15" height="15" sc-camel-view-box="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg><span>{{ t_source }}</span></a></div>
             <span class="ok-pop-by">{{ t_by }} <a class="ok-pop-me" href="https://www.linkedin.com/in/analystnickgreen/" target="_blank" rel="noopener noreferrer" title="{{ t_on_linkedin }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"></path></svg><span>Nicholas Green</span></a></span>
           </div>
         </div>
@@ -1320,13 +1362,13 @@ html[data-ok-ready] #ok-boot{display:none}
     <div sc-camel-on-click="{{ closeIssue }}" class="ok-veil">
       <div sc-camel-on-click="{{ stop }}" class="ok-issue">
         <span sc-camel-on-click="{{ closeIssue }}" class="ok-x">×</span>
-        <span class="ok-issue-h">{{ t_issue_title }}</span>
+        <span class="ok-issue-h">{{ issueHead }}</span>
         <sc-if value="{{ issueForm }}" hint-placeholder-val="{{ true }}">
           <div class="ok-issue-body">
-            <input type="text" class="ok-input" maxlength="120" placeholder="{{ t_issue_subject }}" value="{{ issueSubject }}" sc-camel-on-change="{{ onIssueSubject }}"/>
-            <textarea class="ok-issue-text" maxlength="4000" placeholder="{{ t_issue_body }}" value="{{ issueText }}" sc-camel-on-change="{{ onIssueText }}"></textarea>
+            <input type="text" class="ok-input" maxlength="120" placeholder="{{ issueSubjectHint }}" value="{{ issueSubject }}" sc-camel-on-change="{{ onIssueSubject }}"/>
+            <textarea class="ok-issue-text" maxlength="4000" placeholder="{{ issueBodyHint }}" value="{{ issueText }}" sc-camel-on-change="{{ onIssueText }}"></textarea>
             <span sc-camel-on-click="{{ toggleIssueNotify }}" class="ok-check"><span class="ok-check-box" style="{{ issueNotifyBox }}"><sc-if value="{{ issueNotify }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></sc-if></span><span class="ok-check-txt"><span class="ok-check-t">{{ t_issue_notify }}</span><span class="ok-check-n">{{ issueNotifyWhere }}</span></span></span>
-            <span class="ok-issue-note">{{ t_issue_note }}</span>
+            <span class="ok-issue-note">{{ issueNoteText }}</span>
           </div>
           <div class="ok-issue-foot">
             <span class="ok-issue-msg">{{ issueMsg }}</span>
@@ -1347,7 +1389,7 @@ html[data-ok-ready] #ok-boot{display:none}
         <sc-if value="{{ issueSent }}" hint-placeholder-val="{{ false }}">
           <div class="ok-issue-done">
             <span class="ok-issue-done-n">{{ issueNumber }}</span>
-            <span>{{ t_issue_thanks }}</span>
+            <span>{{ issueThanks }}</span>
             <a class="ok-link" href="{{ issueUrl }}" target="_blank" rel="noopener noreferrer">{{ t_issue_see }}</a>
           </div>
           <div class="ok-issue-foot">
@@ -2402,7 +2444,7 @@ const okMerge = (a, b) => {
 class Component extends DCLogic {
   state = {
     screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
-    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, updates: false, updatesWant: okWantUpdates(), issueOn: false, issueSubject: "", issueText: "", issueBusy: false, issueDone: null, issueMsg: "", zoom: "map", focus: null, focusShown: false, focusAuto: false, autoSpeed: 1, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
+    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, updates: false, updatesWant: okWantUpdates(), issueOn: false, issueKind: "bug", issueSubject: "", issueText: "", issueBusy: false, issueDone: null, issueMsg: "", zoom: "map", focus: null, focusShown: false, focusAuto: false, autoSpeed: 1, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
   get furiDefault() { return this.props.startFurigana ?? true; }
@@ -2876,7 +2918,7 @@ class Component extends DCLogic {
     try {
       const r = await this.api("/issue", {
         method: "POST",
-        body: JSON.stringify({ title, text, notify: this.state.issueNotify !== false, version: VERSION, agent: navigator.userAgent }),
+        body: JSON.stringify({ title, text, kind: st.issueKind === "idea" ? "idea" : "bug", notify: this.state.issueNotify !== false, version: VERSION, agent: navigator.userAgent }),
       });
       const out = await r.json().catch(() => null);
       if (r.ok && out && out.number) {
@@ -2890,6 +2932,20 @@ class Component extends DCLogic {
     } catch (e) {
       this.setState({ issueBusy: false, issueMsg: T("issue_failed") });
     }
+  }
+
+  // The panel and the dialog are one screen on a phone, so the dialog takes the
+  // panel's place rather than standing on top of it: the history entry the
+  // panel pushed is renamed instead of unwound, and one back gesture leaves
+  // both. Closing the panel properly here would call history.back(), which
+  // lands after this and would close the dialog the same breath as it opened.
+  openIssue(kind) {
+    const pages = this._pages || [];
+    const top = pages[pages.length - 1];
+    const shut = () => this.setState({ issueOn: false, issueDone: null, issueMsg: "" });
+    if (top && top.name === "acct") { top.name = "issue"; top.close = shut; }
+    else this.openPage("issue", shut);
+    this.setState({ acctOpen: false, issueOn: true, issueKind: kind, issueDone: null, issueMsg: "" });
   }
 
   closeIssueView() {
@@ -4995,20 +5051,16 @@ class Component extends DCLogic {
             ? "opacity:.45;pointer-events:none" : "",
           onIssueSubject: (e) => this.setState({ issueSubject: e && e.target ? e.target.value : "", issueMsg: "" }),
           onIssueText: (e) => this.setState({ issueText: e && e.target ? e.target.value : "", issueMsg: "" }),
-          openIssue: () => {
-            // The panel and the dialog are one screen on a phone, so the dialog
-            // takes the panel's place rather than standing on top of it: the
-            // history entry the panel pushed is renamed instead of unwound,
-            // and one back gesture leaves both. Closing the panel properly
-            // here would call history.back(), which lands after this and would
-            // close the dialog the same breath as it opened.
-            const pages = this._pages || [];
-            const top = pages[pages.length - 1];
-            const shut = () => this.setState({ issueOn: false, issueDone: null, issueMsg: "" });
-            if (top && top.name === "acct") { top.name = "issue"; top.close = shut; }
-            else this.openPage("issue", shut);
-            this.setState({ acctOpen: false, issueOn: true, issueDone: null, issueMsg: "" });
-          },
+          // One dialog, two kinds: a problem and a suggestion differ in what
+          // they are called, what the boxes ask for, and the label the issue
+          // is filed under -- not in anything else.
+          issueHead: T(st.issueKind === "idea" ? "idea_title" : "issue_title"),
+          issueSubjectHint: T(st.issueKind === "idea" ? "idea_subject" : "issue_subject"),
+          issueBodyHint: T(st.issueKind === "idea" ? "idea_body" : "issue_body"),
+          issueNoteText: T(st.issueKind === "idea" ? "idea_note" : "issue_note"),
+          issueThanks: T(st.issueKind === "idea" ? "idea_thanks" : "issue_thanks"),
+          openBug: () => this.openIssue("bug"),
+          openIdea: () => this.openIssue("idea"),
           closeIssue: () => this.closeIssueView(),
           sendIssue: () => this.sendIssue(),
           syncDot: dot,
