@@ -970,5 +970,25 @@
   "on_linkedin": {
     "en": "Nicholas Green on LinkedIn",
     "es": "Nicholas Green en LinkedIn"
+  },
+  "sign_in": {
+    "en": "Sign in",
+    "es": "Acceder"
+  },
+  "issue_notify": {
+    "en": "Email me when there is an answer",
+    "es": "Avísame por correo cuando haya respuesta"
+  },
+  "issue_notify_to": {
+    "en": "to {e}",
+    "es": "a {e}"
+  },
+  "issue_signin": {
+    "en": "Sign in to report a problem",
+    "es": "Accede para informar de un problema"
+  },
+  "issue_signin_why": {
+    "en": "So there is somewhere to send the answer. It takes one email and no password.",
+    "es": "Para poder enviarte la respuesta. Basta un correo, sin contraseña."
   }
 }

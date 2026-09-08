@@ -456,6 +456,9 @@ a:hover{color:var(--text-accent-hover)}
 /* the answer, in the same box the form was in */
 .ok-issue-done{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center}
 .ok-issue-done-n{font-size:1.5rem;color:var(--ok-acc)}
+/* the link is the step after reading, so it sits below the line and in the
+   middle of it -- .ok-link starts out left-aligned, for a column of them */
+.ok-issue-done .ok-link{align-self:center;margin-top:.9rem}
 .ok-input{width:100%;height:2.4rem;padding:0 .75rem;border-radius:8px;border:1px solid #d5d5cf;background:#fff;font-family:var(--font-2);font-size:1rem;color:var(--ok-ink);outline:none}
 .ok-input:focus{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
 /* One opt-in, drawn rather than native so it matches the popover and reads
@@ -1322,12 +1325,23 @@ html[data-ok-ready] #ok-boot{display:none}
           <div class="ok-issue-body">
             <input type="text" class="ok-input" maxlength="120" placeholder="{{ t_issue_subject }}" value="{{ issueSubject }}" sc-camel-on-change="{{ onIssueSubject }}"/>
             <textarea class="ok-issue-text" maxlength="4000" placeholder="{{ t_issue_body }}" value="{{ issueText }}" sc-camel-on-change="{{ onIssueText }}"></textarea>
+            <span sc-camel-on-click="{{ toggleIssueNotify }}" class="ok-check"><span class="ok-check-box" style="{{ issueNotifyBox }}"><sc-if value="{{ issueNotify }}" hint-placeholder-val="{{ true }}"><svg width="12" height="12" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></sc-if></span><span class="ok-check-txt"><span class="ok-check-t">{{ t_issue_notify }}</span><span class="ok-check-n">{{ issueNotifyWhere }}</span></span></span>
             <span class="ok-issue-note">{{ t_issue_note }}</span>
           </div>
           <div class="ok-issue-foot">
             <span class="ok-issue-msg">{{ issueMsg }}</span>
             <span sc-camel-on-click="{{ closeIssue }}" class="ok-btn">{{ t_cancel }}</span>
             <span sc-camel-on-click="{{ sendIssue }}" class="ok-btn ok-btn-primary" style="{{ issueSendStyle }}">{{ issueSendLabel }}</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ issueNeedsAccount }}" hint-placeholder-val="{{ false }}">
+          <div class="ok-issue-done">
+            <span>{{ t_issue_signin }}</span>
+            <span class="ok-issue-note">{{ t_issue_signin_why }}</span>
+          </div>
+          <div class="ok-issue-foot">
+            <span sc-camel-on-click="{{ closeIssue }}" class="ok-btn">{{ t_cancel }}</span>
+            <span sc-camel-on-click="{{ signInToReport }}" class="ok-btn ok-btn-primary">{{ t_sign_in }}</span>
           </div>
         </sc-if>
         <sc-if value="{{ issueSent }}" hint-placeholder-val="{{ false }}">
@@ -2862,7 +2876,7 @@ class Component extends DCLogic {
     try {
       const r = await this.api("/issue", {
         method: "POST",
-        body: JSON.stringify({ title, text, version: VERSION, agent: navigator.userAgent }),
+        body: JSON.stringify({ title, text, notify: this.state.issueNotify !== false, version: VERSION, agent: navigator.userAgent }),
       });
       const out = await r.json().catch(() => null);
       if (r.ok && out && out.number) {
@@ -4950,8 +4964,27 @@ class Component extends DCLogic {
           // The panel closes as the dialog opens, because the dialog is the
           // whole screen on a phone and two of them would fight.
           issueOn: !!st.issueOn,
-          issueForm: !st.issueDone,
+          // Signed in to report, because the answer has to reach somebody. The
+          // dialog says so rather than the form failing at the last step.
+          issueNeedsAccount: !st.issueDone && !signedIn,
+          issueForm: !st.issueDone && signedIn,
           issueSent: !!st.issueDone,
+          // Hearing back is the default; the address is the one already on the
+          // account, and it is shown so nobody has to wonder which.
+          issueNotify: st.issueNotify !== false,
+          issueNotifyBox: st.issueNotify !== false ? "background:var(--ok-acc);border-color:var(--ok-acc)" : "",
+          issueNotifyWhere: T("issue_notify_to", { e: st.userEmail || "" }),
+          toggleIssueNotify: () => this.setState({ issueNotify: this.state.issueNotify === false }),
+          signInToReport: () => {
+            // back the way it came: the dialog took the panel's history entry,
+            // so it hands it back rather than pushing another
+            const pages = this._pages || [];
+            const top = pages[pages.length - 1];
+            if (top && top.name === "issue") { top.name = "acct"; top.close = () => this.setState({ acctOpen: false }); }
+            else this.openPage("acct", () => this.setState({ acctOpen: false }));
+            this.setState({ issueOn: false, acctOpen: true });
+            this.focusAcctEmail(0);
+          },
           issueNumber: st.issueDone ? "#" + st.issueDone.number : "",
           issueUrl: st.issueDone ? st.issueDone.url : "",
           issueSubject: st.issueSubject || "",

@@ -49,7 +49,9 @@ but costs a CORS preflight on every call and a `SameSite=None` cookie.
 | `GET /api/progress` | `{mastered, strength, deck, lang}` |
 | `PUT /api/progress` | `{mastered, strength, deck, lang}` — unions `mastered`, merges `strength` per word |
 | `PUT /api/updates` | `{on}` — whether to be mailed about the app. Ticked before sign-in, so the page holds the intent in `localStorage` and sends it once the session resolves |
-| `POST /api/issue` | `{title, text, version, agent}` — opens a GitHub issue under the project's own token. **No account needed**: a reader who has found something wrong should not have to own one. Metered by IP, capped in length, and the version and browser go in a footer the reporter cannot write |
+| `POST /api/issue` | `{title, text, notify, version, agent}` — opens a GitHub issue under the project's own token. **Signed in**, because an answer needs somewhere to go. Metered per account, capped in length, and the version and browser go in a footer the reporter cannot write |
+| `POST /api/gh-hook` | GitHub's webhook. Verifies `X-Hub-Signature-256` against `GH_WEBHOOK_SECRET` in constant time, then mails the reporter when their issue is replied to or closed |
+| `GET /api/issue-stop?t=` | the unsubscribe link from that mail. Signed with `SESSION_SECRET`, so it needs no session — a person reading mail is not necessarily signed in there |
 | `POST /api/logout` | clears the cookie |
 | `DELETE /api/account` | erases the account, its progress and its sign-in rows |
 
@@ -68,6 +70,13 @@ create table progress (
   strength text not null default '{}',   -- JSON { "w0226": [str, n, day, hist] }
   deck text, lang text,
   updated_at integer not null
+);
+-- Who asked to hear back about which issue. The only place an address sits
+-- against an issue number; GitHub is never told it.
+create table issue_watch (
+  number integer primary key,            -- the GitHub issue
+  email text not null, lang text,
+  created_at integer not null
 );
 create table login_tokens (
   hash text primary key,                 -- SHA-256 of the token, never the token

@@ -563,7 +563,16 @@ openssl rand -base64 32 | npx wrangler secret put SESSION_SECRET --name openkanj
 # Issues: read and write and nothing else. Without it the form says it is not
 # set up rather than failing oddly.
 npx wrangler secret put GITHUB_TOKEN --name openkanji
+# and the shared secret GitHub signs its webhook with, so the Worker can tell
+# a real "someone replied to your report" from anyone else's POST
+openssl rand -hex 32 | npx wrangler secret put GH_WEBHOOK_SECRET --name openkanji
 ```
+
+The webhook itself is set once, in the repository: **Settings → Webhooks → Add
+webhook**, payload URL `https://openkanji.org/api/gh-hook`, content type
+`application/json`, the same secret, and "Let me select individual events" →
+**Issues** and **Issue comments**. Without it the report form still works and
+still asks whether to write back; nobody is ever written to.
 
 Worker tests:
 

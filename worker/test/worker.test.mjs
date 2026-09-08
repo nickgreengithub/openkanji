@@ -317,31 +317,60 @@ await test("a database made before the updates column gets it on first use", asy
 
 // --- reporting a problem ---
 
-await test("anyone can report a problem, signed in or not", async () => {
+await test("a signed-in reader reports a problem", async () => {
   const env = ghStub(makeEnv());
-  const r = await call(env, "POST", "/api/issue", { body: { title: "Audio stops", text: "The clip cuts off on set three." } });
+  const cookie = await signedIn(env, "reader@example.com");
+  const r = await call(env, "POST", "/api/issue", { cookie, body: { title: "Audio stops", text: "The clip cuts off on set three." } });
   assert.equal(r.status, 200);
   const out = await r.json();
   assert.equal(out.number, 42);
   assert.match(out.url, /\/issues\/42$/);
-  assert.equal(env._gh.length, 1);
   assert.equal(env._gh[0].url, "https://api.github.com/repos/nickgreengithub/openkanji/issues");
   assert.equal(env._gh[0].body.title, "Audio stops");
   assert.match(env._gh[0].body.body, /^The clip cuts off on set three\./);
 });
 
+await test("reporting needs an account, because an answer needs somewhere to go", async () => {
+  const env = ghStub(makeEnv());
+  const r = await call(env, "POST", "/api/issue", { body: { title: "t", text: "a report long enough" } });
+  assert.equal(r.status, 401);
+  assert.equal(env._gh.length, 0);
+});
+
 await test("the token never leaves the Worker, and GitHub is told who is calling", async () => {
   const env = ghStub(makeEnv());
-  const r = await call(env, "POST", "/api/issue", { body: { title: "t", text: "something long enough" } });
+  const cookie = await signedIn(env);
+  const r = await call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "something long enough" } });
   const seen = JSON.stringify(await r.json());
   assert.ok(!seen.includes("ghp-test"), "the reply carries no token");
   assert.equal(env._gh[0].headers.authorization, "Bearer ghp-test");
   assert.ok(env._gh[0].headers["user-agent"], "a user-agent, which GitHub insists on");
 });
 
+await test("the reporter's address is kept here, and never sent to GitHub", async () => {
+  const env = ghStub(makeEnv());
+  const cookie = await signedIn(env, "reader@example.com");
+  await call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "a report long enough" } });
+  assert.ok(!JSON.stringify(env._gh[0].body).includes("reader@example.com"), "the issue does not carry it");
+  const row = env._db.prepare("select email from issue_watch where number = 42").get();
+  assert.equal(row.email, "reader@example.com", "but we know where to write");
+});
+
+await test("hearing back is the default, and saying no keeps no row", async () => {
+  const env = ghStub(makeEnv());
+  const cookie = await signedIn(env);
+  const on = await (await call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "a report long enough" } })).json();
+  assert.equal(on.notify, true);
+  env._db.exec("delete from issue_watch");
+  const off = await (await call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "a report long enough", notify: false } })).json();
+  assert.equal(off.notify, false);
+  assert.equal(env._db.prepare("select count(*) as n from issue_watch").get().n, 0);
+});
+
 await test("what the page says about itself is a footer, and cannot be more", async () => {
   const env = ghStub(makeEnv());
-  await call(env, "POST", "/api/issue", { body: {
+  const cookie = await signedIn(env);
+  await call(env, "POST", "/api/issue", { cookie, body: {
     title: "Bad", text: "a real report here",
     version: "0.1\n\n# not a heading", agent: "Mozilla/5.0 <script>x</script>",
   } });
@@ -354,35 +383,121 @@ await test("what the page says about itself is a footer, and cannot be more", as
 
 await test("an empty or enormous report is refused", async () => {
   const env = ghStub(makeEnv());
-  assert.equal((await call(env, "POST", "/api/issue", { body: { title: "", text: "long enough to pass" } })).status, 400);
-  assert.equal((await call(env, "POST", "/api/issue", { body: { title: "t", text: "short" } })).status, 400);
-  assert.equal((await call(env, "POST", "/api/issue", { body: { title: "t", text: "x".repeat(4001) } })).status, 413);
-  assert.equal((await call(env, "POST", "/api/issue", { body: { title: "t".repeat(121), text: "long enough to pass" } })).status, 413);
+  const cookie = await signedIn(env);
+  assert.equal((await call(env, "POST", "/api/issue", { cookie, body: { title: "", text: "long enough to pass" } })).status, 400);
+  assert.equal((await call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "short" } })).status, 400);
+  assert.equal((await call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "x".repeat(4001) } })).status, 413);
+  assert.equal((await call(env, "POST", "/api/issue", { cookie, body: { title: "t".repeat(121), text: "long enough to pass" } })).status, 413);
   assert.equal(env._gh.length, 0, "none of them reached GitHub");
 });
 
-await test("a single address cannot fill the tracker", async () => {
+await test("one account cannot fill the tracker", async () => {
   const env = ghStub(makeEnv());
-  const one = () => call(env, "POST", "/api/issue", { body: { title: "t", text: "a report long enough" }, ip: "198.51.100.4" });
+  const cookie = await signedIn(env);
+  const one = () => call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "a report long enough" } });
   for (let i = 0; i < 3; i++) assert.equal((await one()).status, 200);
   assert.equal((await one()).status, 429);
   assert.equal(env._gh.length, 3);
-  // and a different reader is unaffected
-  const other = await call(env, "POST", "/api/issue", { body: { title: "t", text: "a report long enough" }, ip: "198.51.100.9" });
-  assert.equal(other.status, 200);
 });
 
 await test("with no token configured the form says so rather than failing oddly", async () => {
   const env = makeEnv();
-  const r = await call(env, "POST", "/api/issue", { body: { title: "t", text: "a report long enough" } });
+  const cookie = await signedIn(env);
+  const r = await call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "a report long enough" } });
   assert.equal(r.status, 503);
   assert.equal((await r.json()).error, "not_configured");
 });
 
 await test("a token GitHub refuses reads as not configured too", async () => {
   const env = ghStub(makeEnv(), 401);
-  const r = await call(env, "POST", "/api/issue", { body: { title: "t", text: "a report long enough" } });
+  const cookie = await signedIn(env);
+  const r = await call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "a report long enough" } });
   assert.equal(r.status, 503);
+});
+
+// --- hearing back ---
+
+const HOOK_SECRET = "hook-secret-abcdefghijklmnop";
+const hookCall = async (env, event, payload) => {
+  const raw = JSON.stringify(payload);
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(HOOK_SECRET), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const sig = [...new Uint8Array(await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(raw)))].map((b) => b.toString(16).padStart(2, "0")).join("");
+  return worker.fetch(new Request(SITE + "/api/gh-hook", {
+    method: "POST",
+    headers: { "content-type": "application/json", "x-github-event": event, "x-hub-signature-256": "sha256=" + sig },
+    body: raw,
+  }), env);
+};
+const reported = async (env, email = "reader@example.com") => {
+  const cookie = await signedIn(env, email);
+  await call(env, "POST", "/api/issue", { cookie, body: { title: "Audio stops", text: "The clip cuts off." } });
+  env._sent.length = 0;
+  return cookie;
+};
+
+await test("a reply on the issue reaches the reader who asked for it", async () => {
+  const env = ghStub(makeEnv());
+  env.GH_WEBHOOK_SECRET = HOOK_SECRET;
+  await reported(env);
+  const r = await hookCall(env, "issue_comment", {
+    action: "created",
+    issue: { number: 42, title: "Audio stops", html_url: "https://github.com/x/y/issues/42" },
+    comment: { body: "Fixed in the next deploy." },
+  });
+  assert.equal(r.status, 200);
+  assert.equal(env._sent.length, 1);
+  assert.equal(env._sent[0].to, "reader@example.com");
+  assert.match(env._sent[0].subject, /#42/);
+  assert.match(env._sent[0].text, /Fixed in the next deploy/);
+});
+
+await test("closing it is news too, and nothing else is", async () => {
+  const env = ghStub(makeEnv());
+  env.GH_WEBHOOK_SECRET = HOOK_SECRET;
+  await reported(env);
+  await hookCall(env, "issues", { action: "labeled", issue: { number: 42, title: "t", html_url: "u" } });
+  assert.equal(env._sent.length, 0, "a label is not news");
+  await hookCall(env, "issues", { action: "closed", issue: { number: 42, title: "t", html_url: "u" } });
+  assert.equal(env._sent.length, 1);
+  assert.match(env._sent[0].subject, /closed/i);
+});
+
+await test("an issue nobody asked about sends nothing", async () => {
+  const env = ghStub(makeEnv());
+  env.GH_WEBHOOK_SECRET = HOOK_SECRET;
+  await reported(env);
+  await hookCall(env, "issue_comment", { action: "created", issue: { number: 999, title: "t", html_url: "u" }, comment: { body: "hi" } });
+  assert.equal(env._sent.length, 0);
+});
+
+await test("a hook that is not signed by GitHub is refused unread", async () => {
+  const env = ghStub(makeEnv());
+  env.GH_WEBHOOK_SECRET = HOOK_SECRET;
+  await reported(env);
+  const r = await worker.fetch(new Request(SITE + "/api/gh-hook", {
+    method: "POST",
+    headers: { "content-type": "application/json", "x-github-event": "issue_comment", "x-hub-signature-256": "sha256=" + "0".repeat(64) },
+    body: JSON.stringify({ action: "created", issue: { number: 42, title: "t", html_url: "u" }, comment: { body: "hi" } }),
+  }), env);
+  assert.equal(r.status, 401);
+  assert.equal(env._sent.length, 0);
+});
+
+await test("the link in the mail stops them, and only for that report", async () => {
+  const env = ghStub(makeEnv());
+  env.GH_WEBHOOK_SECRET = HOOK_SECRET;
+  await reported(env);
+  await hookCall(env, "issue_comment", { action: "created", issue: { number: 42, title: "t", html_url: "u" }, comment: { body: "hi" } });
+  const stop = env._sent[0].text.match(/https?:\S*issue-stop\?t=[^\s]+/)[0];
+  const bad = await worker.fetch(new Request(stop.replace(/t=./, "t=9")), env);
+  assert.equal(bad.status, 200, "a forged link answers, but");
+  assert.equal(env._db.prepare("select count(*) as n from issue_watch").get().n, 1, "changes nothing");
+  const good = await worker.fetch(new Request(stop), env);
+  assert.equal(good.status, 200);
+  assert.equal(env._db.prepare("select count(*) as n from issue_watch").get().n, 0);
+  env._sent.length = 0;
+  await hookCall(env, "issue_comment", { action: "created", issue: { number: 42, title: "t", html_url: "u" }, comment: { body: "more" } });
+  assert.equal(env._sent.length, 0, "and no more mail");
 });
 
 await test("logout clears the cookie", async () => {

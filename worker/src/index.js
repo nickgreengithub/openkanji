@@ -14,7 +14,9 @@
 //   GET    /api/progress                    -> { mastered, deck, lang }
 //   PUT    /api/progress   { mastered, deck, lang }
 //   POST   /api/logout                      -> clears the cookie
-//   POST   /api/issue     { title, text }   -> opens a GitHub issue (no account needed)
+//   POST   /api/issue     { title, text, notify } -> opens a GitHub issue
+//   POST   /api/gh-hook                     -> GitHub's webhook; mails the reporter
+//   GET    /api/issue-stop?t=...            -> stops those mails
 //   DELETE /api/account                     -> erases the account and its progress
 
 const TOKEN_TTL = 15 * 60;             // magic link: 15 minutes
@@ -30,11 +32,11 @@ const RATE_IP = 20;
 const now = () => Math.floor(Date.now() / 1000);
 
 // ---------- issues: the report form, posted to GitHub ----------
-// A reader who has found something wrong should not have to own a GitHub
-// account to say so, so this takes a title and a description from anyone and
-// opens the issue under the project's own token -- which the page never sees.
-// Open to the signed-out, therefore metered hard by IP, capped in length, and
-// given a floor: an empty report helps nobody and costs a public issue.
+// A reader who has found something wrong writes it here and the Worker opens
+// the issue under the project's own token -- which the page never sees. Signed
+// in only, for one reason: an answer needs somewhere to go, and the account is
+// where the address already is. Metered per account, capped in length, and
+// given a floor, because an empty report costs a public issue.
 const ISSUE_MAX_TITLE = 120;
 const ISSUE_MAX_TEXT = 4000;
 const ISSUE_MIN_TEXT = 10;
@@ -42,23 +44,33 @@ const ISSUE_PER_HOUR = 3;
 const ISSUE_REPO_OK = /^[\w.-]{1,64}\/[\w.-]{1,64}$/;
 
 const issueUsageReady = new WeakSet();
-async function issueAllowed(db, ip) {
+async function issueAllowed(db, who) {
   if (!issueUsageReady.has(db)) {
-    await db.prepare("create table if not exists issue_usage (ip text not null, hour integer not null, n integer not null default 0, primary key (ip, hour))").run();
+    await db.prepare("create table if not exists issue_usage (who text not null, hour integer not null, n integer not null default 0, primary key (who, hour))").run();
     issueUsageReady.add(db);
   }
   const hour = Math.floor(now() / 3600);
   const row = await db.prepare(
-    "insert into issue_usage (ip, hour, n) values (?1, ?2, 1) on conflict(ip, hour) do update set n = n + 1 returning n"
-  ).bind(ip || "unknown", hour).first();
+    "insert into issue_usage (who, hour, n) values (?1, ?2, 1) on conflict(who, hour) do update set n = n + 1 returning n"
+  ).bind(String(who), hour).first();
   return !row || row.n <= ISSUE_PER_HOUR;
+}
+
+// Who asked to hear back about which issue. One row per report, dropped when
+// they say stop -- there is nothing else in it, and it is the only place the
+// address is kept against an issue number. GitHub is never told the address.
+const issueWatchReady = new WeakSet();
+async function ensureIssueWatch(db) {
+  if (issueWatchReady.has(db)) return;
+  await db.prepare("create table if not exists issue_watch (number integer primary key, email text not null, lang text, created_at integer not null)").run();
+  issueWatchReady.add(db);
 }
 
 // One line, no markup, no newlines: what the page says about itself goes in a
 // footer, and a footer is not a place a reporter gets to write.
 const oneLine = (v, max) => String(v == null ? "" : v).replace(/[\r\n]+/g, " ").replace(/[`<>]/g, "").trim().slice(0, max);
 
-async function handleIssue(request, env) {
+async function handleIssue(request, env, user) {
   const repo = ISSUE_REPO_OK.test(env.ISSUE_REPO || "") ? env.ISSUE_REPO : null;
   if (!env.GITHUB_TOKEN || !repo) return json({ error: "not_configured" }, 503);
   const body = await readJson(request);
@@ -67,13 +79,12 @@ async function handleIssue(request, env) {
   const text = body.text.trim();
   if (!title || text.length < ISSUE_MIN_TEXT) return json({ error: "too_short" }, 400);
   if (title.length > ISSUE_MAX_TITLE || text.length > ISSUE_MAX_TEXT) return json({ error: "too_long" }, 413);
-
-  const ip = request.headers.get("cf-connecting-ip") || null;
-  if (!(await issueAllowed(env.DB, ip))) return json({ error: "rate_limited" }, 429);
+  if (!(await issueAllowed(env.DB, user.id))) return json({ error: "rate_limited" }, 429);
 
   // The reporter's words first and whole; then a rule, then what the page
   // knows about itself. Both of the footer's facts come from the page, so
-  // neither is presented as anything more than that.
+  // neither is presented as anything more than that -- and the reporter's
+  // address is not among them. It stays here.
   const footer = "Reported from the app · v" + oneLine(body.version, 16) + " · " + oneLine(body.agent, 180);
   const res = await (env.GITHUB_FETCH || fetch)("https://api.github.com/repos/" + repo + "/issues", {
     method: "POST",
@@ -91,7 +102,121 @@ async function handleIssue(request, env) {
   if (!res.ok) return json({ error: "upstream_failed" }, 502);
   const out = await res.json().catch(() => null);
   if (!out || !out.number) return json({ error: "upstream_failed" }, 502);
-  return json({ ok: true, number: out.number, url: out.html_url });
+
+  // Hearing back is the default and is one row; saying no keeps none.
+  if (body.notify !== false) {
+    await ensureIssueWatch(env.DB);
+    const lang = (await env.DB.prepare("select lang from progress where user_id = ?").bind(user.id).first() || {}).lang;
+    await env.DB.prepare("insert or replace into issue_watch (number, email, lang, created_at) values (?, ?, ?, ?)")
+      .bind(out.number, user.email, lang || null, now()).run();
+  }
+  return json({ ok: true, number: out.number, url: out.html_url, notify: body.notify !== false });
+}
+
+// GitHub's own webhook, telling us an issue moved. Signed with a shared
+// secret, so a POST from anyone else is refused before it is read as anything.
+async function handleGitHubHook(request, env) {
+  if (!env.GH_WEBHOOK_SECRET) return json({ error: "not_configured" }, 503);
+  const raw = await request.text();
+  if (raw.length > MAX_BODY) return json({ error: "too_large" }, 413);
+  const given = request.headers.get("x-hub-signature-256") || "";
+  const want = "sha256=" + [...new Uint8Array(await crypto.subtle.sign("HMAC", await hmacKey(env.GH_WEBHOOK_SECRET), new TextEncoder().encode(raw)))]
+    .map((b) => b.toString(16).padStart(2, "0")).join("");
+  // constant time: a comparison that stops early leaks the signature a byte
+  // at a time to anyone willing to ask often enough
+  if (given.length !== want.length) return json({ error: "bad_signature" }, 401);
+  let diff = 0;
+  for (let i = 0; i < want.length; i++) diff |= given.charCodeAt(i) ^ want.charCodeAt(i);
+  if (diff) return json({ error: "bad_signature" }, 401);
+
+  const event = request.headers.get("x-github-event") || "";
+  let hook = null;
+  try { hook = JSON.parse(raw); } catch (e) { return json({ error: "bad_body" }, 400); }
+  const number = hook && hook.issue && hook.issue.number;
+  if (!number) return json({ ok: true, skipped: "not an issue" });
+
+  // A comment on it, or it being closed. Everything else is not news.
+  const kind = event === "issue_comment" && hook.action === "created" ? "reply"
+    : event === "issues" && hook.action === "closed" ? "closed" : null;
+  if (!kind) return json({ ok: true, skipped: "nothing to say" });
+
+  await ensureIssueWatch(env.DB);
+  const watch = await env.DB.prepare("select email, lang from issue_watch where number = ?").bind(number).first();
+  if (!watch) return json({ ok: true, skipped: "nobody is waiting" });
+
+  await sendIssueMail(env, watch.email, watch.lang, kind, {
+    number,
+    title: String((hook.issue && hook.issue.title) || ""),
+    url: String((hook.issue && hook.issue.html_url) || ""),
+    said: kind === "reply" ? String((hook.comment && hook.comment.body) || "") : "",
+  });
+  return json({ ok: true, told: true });
+}
+
+// The link that ends it. Signed, so it cannot be guessed for someone else's
+// issue, and it needs no session -- a person following a link out of an email
+// is not necessarily signed in on the device they read it on.
+async function issueStopToken(secret, number, email) {
+  const sig = await crypto.subtle.sign("HMAC", await hmacKey(secret), new TextEncoder().encode("stop:" + number + ":" + email));
+  return number + "." + b64url(sig);
+}
+
+async function handleIssueStop(request, env, url) {
+  const t = url.searchParams.get("t") || "";
+  const [num] = t.split(".");
+  const number = parseInt(num, 10);
+  const page = (msg) => new Response("<!doctype html><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\">" +
+    "<body style=\"font:16px/1.5 system-ui;margin:0;display:flex;align-items:center;justify-content:center;height:100svh;background:#f4f4f1;color:#15181c\">" +
+    "<p style=\"max-width:28rem;padding:1.5rem;text-align:center\">" + msg + "</p>",
+    { status: 200, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } });
+  if (!number) return page("That link is not one of ours.");
+  await ensureIssueWatch(env.DB);
+  const watch = await env.DB.prepare("select email from issue_watch where number = ?").bind(number).first();
+  // Already gone is the same answer as just now gone: following the link twice
+  // should not tell anyone whether there was ever a row.
+  if (!watch) return page("You will hear nothing more about that report.");
+  if (t !== await issueStopToken(env.SESSION_SECRET, number, watch.email)) return page("That link is not one of ours.");
+  await env.DB.prepare("delete from issue_watch where number = ?").bind(number).run();
+  return page("You will hear nothing more about that report.");
+}
+
+const ISSUE_MAIL = {
+  en: {
+    reply: { subject: "Re: your OpenKanji report #{n}", lead: "There is a reply to what you reported." },
+    closed: { subject: "Your OpenKanji report #{n} is closed", lead: "What you reported has been closed." },
+    see: "Read it on GitHub",
+    why: "You asked to hear back when you sent this report.",
+    stop: "Stop emails about this report",
+  },
+  es: {
+    reply: { subject: "Re: tu informe de OpenKanji #{n}", lead: "Hay una respuesta a lo que informaste." },
+    closed: { subject: "Tu informe de OpenKanji #{n} está cerrado", lead: "Lo que informaste se ha cerrado." },
+    see: "Léelo en GitHub",
+    why: "Pediste que te avisáramos al enviar este informe.",
+    stop: "Dejar de recibir avisos de este informe",
+  },
+};
+
+async function sendIssueMail(env, email, lang, kind, issue) {
+  const t = ISSUE_MAIL[(lang || "EN").toLowerCase()] || ISSUE_MAIL.en;
+  const esc = (x) => String(x).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const stop = (env.SITE_URL || "") + "/api/issue-stop?t=" + encodeURIComponent(await issueStopToken(env.SESSION_SECRET, issue.number, email));
+  const said = issue.said.length > 600 ? issue.said.slice(0, 600) + "…" : issue.said;
+  const html = '<div style="font:16px/1.6 -apple-system,Segoe UI,Roboto,sans-serif;color:#15181c;max-width:34rem">' +
+    "<p>" + esc(t[kind].lead) + "</p>" +
+    '<p style="color:#6b7280">#' + issue.number + " · " + esc(issue.title) + "</p>" +
+    (said ? '<blockquote style="margin:1rem 0;padding:.2rem 0 .2rem 1rem;border-left:3px solid #0891b2;color:#374151;white-space:pre-wrap">' + esc(said) + "</blockquote>" : "") +
+    '<p><a href="' + esc(issue.url) + '" style="color:#0891b2">' + esc(t.see) + "</a></p>" +
+    '<hr style="border:0;border-top:1px solid #e5e5e0;margin:1.5rem 0">' +
+    '<p style="font-size:13px;color:#6b7280">' + esc(t.why) + ' <a href="' + esc(stop) + '" style="color:#6b7280">' + esc(t.stop) + "</a></p></div>";
+  await deliver(env, {
+    to: email,
+    from: env.MAIL_FROM,
+    subject: t[kind].subject.replace("{n}", issue.number),
+    html,
+    text: t[kind].lead + "\n\n#" + issue.number + " · " + issue.title + (said ? "\n\n" + said : "") +
+      "\n\n" + issue.url + "\n\n" + t.why + " " + stop,
+  });
 }
 
 // ---------- AI: the writing coach and the IME, proxied ----------
@@ -568,13 +693,18 @@ export default {
       return json({ email: user.email, updates: !!(row && row.updates) });
     }
 
-    // Anyone may report a problem, signed in or not: a reader who has found
-    // something wrong should not have to own an account to say so.
-    if (method === "POST" && path === "/api/issue") return handleIssue(request, env);
+    // GitHub telling us an issue moved, and the link that stops those emails.
+    // Neither is the app asking: one is signed by a shared secret, the other
+    // by ours, so neither needs a session.
+    if (method === "POST" && path === "/api/gh-hook") return handleGitHubHook(request, env);
+    if (method === "GET" && path === "/api/issue-stop") return handleIssueStop(request, env, url);
 
     // Everything below needs a live account.
     if (!user) return json({ error: "signed_out" }, 401, userId ? { "set-cookie": cookieHeader("", 0) } : {});
     if (method === "POST" && path === "/api/ask") return handleAsk(request, env, user);
+    // Signed in to report: an answer needs somewhere to go, and the account is
+    // where the address already is.
+    if (method === "POST" && path === "/api/issue") return handleIssue(request, env, user);
 
     // Whether to hear about what is new here. One thing, on or off, and the
     // account panel is the only place that sets it -- there is no list to be
