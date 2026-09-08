@@ -374,7 +374,11 @@ async function handleAsk(request, env, user) {
       // every caller on the page asks for JSON and nothing else, so make that
       // a server-enforced guarantee rather than trusting the prompt alone --
       // DeepSeek otherwise sometimes wraps the object in prose or a fence.
-      body: JSON.stringify({ model, messages, max_tokens: 4096, stream: false, response_format: { type: "json_object" } }),
+      // reasoning_content shares max_tokens with the actual answer on this
+      // model, and a grading note needs no deep chain-of-thought -- left at
+      // the default, thinking occasionally ate the whole budget and the
+      // answer came back empty. "low" leaves the budget for the answer.
+      body: JSON.stringify({ model, messages, max_tokens: 4096, stream: false, response_format: { type: "json_object" }, reasoning_effort: "low" }),
     });
   } catch {
     return json({ error: "upstream_failed" }, 502);
@@ -388,7 +392,10 @@ async function handleAsk(request, env, user) {
   const choice = out && Array.isArray(out.choices) ? out.choices[0] : null;
   if (choice && choice.finish_reason === "content_filter") return json({ error: "refused" }, 422);
   const text = choice && choice.message && choice.message.content;
-  if (typeof text !== "string") return json({ error: "upstream_failed" }, 502);
+  // an empty string is still a string: every caller here parses it as JSON,
+  // so nothing usable came back either way and the client should hear that
+  // as a failure, not get "" handed to JSON.parse.
+  if (typeof text !== "string" || !text) return json({ error: "upstream_failed" }, 502);
   return json({ text, model: (out && out.model) || model });
 }
 const json = (data, status = 200, headers = {}) =>
