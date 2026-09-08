@@ -18,6 +18,11 @@
   // cannot reach. Five minutes is soon enough for "someone answered you".
   "triggers": { "crons": ["*/5 * * * *"] },
 
+  // Persisted invocation logs in the dashboard (free tier). Every fetch and
+  // every cron tick leaves a record there, which is how a cron that quietly
+  // stops firing -- it happened -- gets noticed without a terminal tail.
+  "observability": { "logs": { "enabled": true, "invocation_logs": true } },
+
   "d1_databases": [
     {
       "binding": "DB",
