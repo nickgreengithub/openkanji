@@ -26,16 +26,23 @@ const WHITE = [255, 255, 255];
 // third can lean the way it does when it is written: two horizontals, a leg
 // that slants out to the left, and a leg that drops straight.
 const S = 0.088;                  // stroke
+// 开 is drawn to fill a square, because a square is the space it is given. The
+// first cut was a letterbox -- much wider than tall -- so fitting it meant
+// filling the width and leaving air above and below, and a stroke that runs
+// the width of a tab icon reads as one that has been cut off however much
+// alpha is left in the last column. The legs are longer and start higher; the
+// bars are shorter. Same character, and it now sits in the box rather than
+// across it.
 const SHAPES = [
   // the upper horizontal, shorter than the one under it
-  [[0.240, 0.265], [0.760, 0.265], [0.760, 0.265 + S], [0.240, 0.265 + S]],
+  [[0.255, 0.130], [0.745, 0.130], [0.745, 0.130 + S], [0.255, 0.130 + S]],
   // the lower horizontal, the widest thing in the mark
-  [[0.100, 0.500], [0.900, 0.500], [0.900, 0.500 + S], [0.100, 0.500 + S]],
-  // the left leg, which starts above the lower horizontal and leans out
-  // through it -- the crossing is what makes this 开 and not 示
-  [[0.385, 0.385], [0.385 + S, 0.385], [0.240 + S, 0.860], [0.240, 0.860]],
+  [[0.115, 0.440], [0.885, 0.440], [0.885, 0.440 + S], [0.115, 0.440 + S]],
+  // the left leg: it starts above the lower horizontal and leans out through
+  // it -- the crossing is what makes this 开 and not 示
+  [[0.380, 0.310], [0.380 + S, 0.310], [0.235 + S, 0.885], [0.235, 0.885]],
   // and the right one, straight down through the same bar
-  [[0.660, 0.385], [0.660 + S, 0.385], [0.660 + S, 0.860], [0.660, 0.860]],
+  [[0.645, 0.310], [0.645 + S, 0.310], [0.645 + S, 0.885], [0.645, 0.885]],
 ];
 
 // A plate needs air around the mark; a mark on nothing needs less, but not
