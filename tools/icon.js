@@ -34,15 +34,17 @@ const S = 0.088;                  // stroke
 // bars are shorter. Same character, and it now sits in the box rather than
 // across it.
 const SHAPES = [
-  // the upper horizontal, shorter than the one under it
-  [[0.255, 0.130], [0.745, 0.130], [0.745, 0.130 + S], [0.255, 0.130 + S]],
+  // the upper horizontal: shorter than the one under it, but it overhangs
+  // both legs -- the right leg especially, or the right side reads as cut
+  [[0.200, 0.120], [0.820, 0.120], [0.820, 0.120 + S], [0.200, 0.120 + S]],
   // the lower horizontal, the widest thing in the mark
-  [[0.115, 0.440], [0.885, 0.440], [0.885, 0.440 + S], [0.115, 0.440 + S]],
-  // the left leg: it starts above the lower horizontal and leans out through
-  // it -- the crossing is what makes this 开 and not 示
-  [[0.380, 0.310], [0.380 + S, 0.310], [0.235 + S, 0.885], [0.235, 0.885]],
-  // and the right one, straight down through the same bar
-  [[0.645, 0.310], [0.645 + S, 0.310], [0.645 + S, 0.885], [0.645, 0.885]],
+  [[0.090, 0.445], [0.910, 0.445], [0.910, 0.445 + S], [0.090, 0.445 + S]],
+  // the legs reach up to just under the top bar, not halfway to it, and
+  // cross the lower one on the way down -- the crossing is what makes this
+  // 开 and not 示. The left one leans out as it falls.
+  [[0.365, 0.245], [0.365 + S, 0.245], [0.215 + S, 0.885], [0.215, 0.885]],
+  // and the right one drops straight
+  [[0.640, 0.245], [0.640 + S, 0.245], [0.640 + S, 0.885], [0.640, 0.885]],
 ];
 
 // A plate needs air around the mark; a mark on nothing needs less, but not
@@ -53,7 +55,7 @@ const SHAPES = [
 // on both axes, which the plate drawing is not (it hangs low, under the room
 // the plate leaves for it).
 const BOX = SHAPES.flat().reduce((b, [x, y]) => [Math.min(b[0], x), Math.min(b[1], y), Math.max(b[2], x), Math.max(b[3], y)], [1, 1, 0, 0]);
-const MARGIN = 0.20;
+const MARGIN = 0.12;
 const fitted = (m) => {
   const w = BOX[2] - BOX[0], h = BOX[3] - BOX[1];
   const k = (1 - 2 * m) / Math.max(w, h);
