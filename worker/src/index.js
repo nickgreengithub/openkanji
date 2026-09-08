@@ -381,37 +381,50 @@ async function handleAsk(request, env, user) {
   if (!(await aiAllowed(env.DB, user.id, perHour))) return json({ error: "rate_limited" }, 429);
   const model = AI_MODEL_OK.test(env.AI_MODEL || "") ? env.AI_MODEL : AI_MODEL_DEFAULT;
   const send = env.AI_FETCH || fetch;
-  let res;
-  try {
-    res = await send(AI_URL, {
-      method: "POST",
-      headers: { "content-type": "application/json", authorization: `Bearer ${env.DEEPSEEK_API_KEY}` },
-      // every caller on the page asks for JSON and nothing else, so make that
-      // a server-enforced guarantee rather than trusting the prompt alone --
-      // DeepSeek otherwise sometimes wraps the object in prose or a fence.
-      // reasoning_content shares max_tokens with the actual answer on this
-      // model, and a grading note needs no deep chain-of-thought -- left at
-      // the default, thinking occasionally ate the whole budget and the
-      // answer came back empty. "low" leaves the budget for the answer.
-      body: JSON.stringify({ model, messages, max_tokens: 4096, stream: false, response_format: { type: "json_object" }, reasoning_effort: "low" }),
-    });
-  } catch {
-    await logAiError(env.DB, "upstream_failed");
-    return json({ error: "upstream_failed" }, 502);
+  // every caller on the page asks for JSON and nothing else, so make that
+  // a server-enforced guarantee rather than trusting the prompt alone --
+  // DeepSeek otherwise sometimes wraps the object in prose or a fence.
+  // On the v4 models thinking is on by default (at "high" effort) and its
+  // reasoning_content shares max_tokens with the actual answer, so at the
+  // default the reasoning sometimes ate the whole budget and the answer
+  // came back empty. A grading note needs no chain-of-thought, so thinking
+  // is switched off outright -- and it must be this nested object: the
+  // chat-completions body has no top-level reasoning_effort field (that
+  // spelling is the OpenAI SDK's, folded into `thinking` there too), so a
+  // bare reasoning_effort was silently ignored and changed nothing.
+  const payload = JSON.stringify({ model, messages, max_tokens: 4096, stream: false, response_format: { type: "json_object" }, thinking: { type: "disabled" } });
+  // One retry, for the empty answer only: HTTP-level failures keep their own
+  // mapping below, but a 200 whose content is blank is DeepSeek shrugging,
+  // and asking again is cheap next to failing the learner's whole request.
+  let out = null, text = null;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    let res;
+    try {
+      res = await send(AI_URL, {
+        method: "POST",
+        headers: { "content-type": "application/json", authorization: `Bearer ${env.DEEPSEEK_API_KEY}` },
+        body: payload,
+      });
+    } catch {
+      await logAiError(env.DB, "upstream_failed");
+      return json({ error: "upstream_failed" }, 502);
+    }
+    // 401/403 is a bad key and 402 an empty balance: both are ours to fix, and
+    // both leave the learner with the same dead feature, so they read alike.
+    if (res.status === 401 || res.status === 402 || res.status === 403) { await logAiError(env.DB, "not_configured"); return json({ error: "not_configured" }, 503); }
+    if (res.status === 429 || res.status >= 500) { await logAiError(env.DB, "upstream_busy"); return json({ error: "upstream_busy" }, 503); }
+    if (!res.ok) { await logAiError(env.DB, "upstream_failed"); return json({ error: "upstream_failed" }, 502); }
+    out = await res.json().catch(() => null);
+    const choice = out && Array.isArray(out.choices) ? out.choices[0] : null;
+    if (choice && choice.finish_reason === "content_filter") { await logAiError(env.DB, "refused"); return json({ error: "refused" }, 422); }
+    const t = choice && choice.message && choice.message.content;
+    // an empty or whitespace-only string is still a string: every caller here
+    // parses the reply as JSON, so nothing usable came back either way and the
+    // client should hear that as a failure, not get "" handed to JSON.parse.
+    if (typeof t === "string" && t.trim()) { text = t; break; }
+    console.warn("deepseek returned empty content (attempt " + (attempt + 1) + ")");
   }
-  // 401/403 is a bad key and 402 an empty balance: both are ours to fix, and
-  // both leave the learner with the same dead feature, so they read alike.
-  if (res.status === 401 || res.status === 402 || res.status === 403) { await logAiError(env.DB, "not_configured"); return json({ error: "not_configured" }, 503); }
-  if (res.status === 429 || res.status >= 500) { await logAiError(env.DB, "upstream_busy"); return json({ error: "upstream_busy" }, 503); }
-  if (!res.ok) { await logAiError(env.DB, "upstream_failed"); return json({ error: "upstream_failed" }, 502); }
-  const out = await res.json().catch(() => null);
-  const choice = out && Array.isArray(out.choices) ? out.choices[0] : null;
-  if (choice && choice.finish_reason === "content_filter") { await logAiError(env.DB, "refused"); return json({ error: "refused" }, 422); }
-  const text = choice && choice.message && choice.message.content;
-  // an empty string is still a string: every caller here parses it as JSON,
-  // so nothing usable came back either way and the client should hear that
-  // as a failure, not get "" handed to JSON.parse.
-  if (typeof text !== "string" || !text) { await logAiError(env.DB, "empty_response"); return json({ error: "upstream_failed" }, 502); }
+  if (text === null) { await logAiError(env.DB, "empty_response"); return json({ error: "upstream_failed" }, 502); }
   return json({ text, model: (out && out.model) || model });
 }
 const json = (data, status = 200, headers = {}) =>
@@ -787,31 +800,52 @@ async function handlePutProgress(request, env, userId) {
   return json({ ok: true, count: Object.keys(merged).length });
 }
 
-// Every five minutes, on the same schedule as the GitHub poll: a count of
-// what logAiError recorded since the last tick. Nobody has to be told by a
+// On the same schedule as the GitHub poll: a digest of what logAiError has
+// recorded and nobody has been told about yet. Nobody has to be told by a
 // learner, watch a live log, or read Cloudflare's own dashboard (which
 // tracks status codes, not why one happened) to find out DeepSeek is down --
-// an email arrives instead. Rows are pruned after a day either way, so a
-// missing OWNER_EMAIL loses the alert but never lets the table grow forever.
+// an email arrives instead.
+//
+// "Not told about yet" is a high-water mark on the row id, not a time
+// window. It used to be "rows newer than 300 seconds", which quietly assumed
+// every cron tick lands on time: a tick that fires a few minutes late looks
+// back 300s from *when it ran*, and any row older than that -- recorded
+// after the previous tick but more than 300s before this one -- fell
+// between the windows and was never mailed. The mark cannot miss: every row
+// is either above it (and goes into the next digest) or below it (and was
+// in an earlier one). It advances only after Resend accepts the mail, so a
+// failed send is retried next tick rather than lost -- and the failure
+// itself is logged, where the old .catch(() => {}) swallowed it whole.
+// Rows are pruned after a day either way, so a missing OWNER_EMAIL loses
+// the alert but never lets the table grow forever.
 async function checkAiErrors(env) {
   if (!env.DB) return { skipped: "no_db" };
   await env.DB.prepare("create table if not exists ai_errors (id integer primary key autoincrement, kind text not null, created_at integer not null)").run();
-  const since = now() - 300;
-  const rows = await env.DB.prepare("select kind, count(*) as n from ai_errors where created_at > ?1 group by kind order by n desc").bind(since).all();
+  await env.DB.prepare("create table if not exists ai_notice (k integer primary key check (k = 1), last_id integer not null)").run();
+  const mark = await env.DB.prepare("select last_id from ai_notice where k = 1").first();
+  const lastId = (mark && mark.last_id) || 0;
+  const rows = await env.DB.prepare("select max(id) as top, kind, count(*) as n from ai_errors where id > ?1 group by kind order by n desc").bind(lastId).all();
   const list = (rows && rows.results) || [];
   await env.DB.prepare("delete from ai_errors where created_at <= ?1").bind(now() - 86400).run();
   if (!list.length) return { errors: 0 };
   if (!env.OWNER_EMAIL) return { errors: list.length, unsent: "no_owner_email" };
+  const top = list.reduce((a, r) => Math.max(a, r.top || 0), lastId);
   const total = list.reduce((a, r) => a + r.n, 0);
   const summary = list.map((r) => r.kind + ": " + r.n).join(", ");
   const lines = list.map((r) => r.kind + ": " + r.n).join("<br>");
-  await deliver(env, {
-    to: env.OWNER_EMAIL,
-    from: env.MAIL_FROM,
-    subject: "OpenKanji Error Alert: " + summary,
-    html: "<div style=\"font:16px/1.6 -apple-system,Segoe UI,Roboto,sans-serif;color:#15181c\"><p>Write and the IME candidates call DeepSeek through /api/ask. In the last five minutes:</p><p>" + lines + "</p></div>",
-    text: lines,
-  }).catch(() => {});
+  try {
+    await deliver(env, {
+      to: env.OWNER_EMAIL,
+      from: env.MAIL_FROM,
+      subject: "OpenKanji Error Alert: " + summary,
+      html: "<div style=\"font:16px/1.6 -apple-system,Segoe UI,Roboto,sans-serif;color:#15181c\"><p>Write and the IME candidates call DeepSeek through /api/ask. Since the last alert:</p><p>" + lines + "</p></div>",
+      text: lines,
+    });
+  } catch (e) {
+    console.error("ai error digest not sent: " + String(e && e.message));
+    return { errors: total, unsent: "send_failed" };
+  }
+  await env.DB.prepare("insert into ai_notice (k, last_id) values (1, ?1) on conflict(k) do update set last_id = ?1").bind(top).run();
   return { errors: total, emailed: true };
 }
 

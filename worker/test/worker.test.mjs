@@ -817,6 +817,93 @@ await test("ask proxies to DeepSeek and returns the text", async () => {
     { role: "system", content: "You are an IME." },
     { role: "user", content: "Reading: あじ" },
   ]);
+  assert.deepEqual(env._ai[0].body.response_format, { type: "json_object" });
+  // Thinking is off, in the shape the API actually reads: a nested object.
+  // The body has no top-level reasoning_effort field, so sending one changed
+  // nothing -- which is how the empty answers survived the first fix.
+  assert.deepEqual(env._ai[0].body.thinking, { type: "disabled" });
+  assert.equal(env._ai[0].body.reasoning_effort, undefined);
+});
+
+// DeepSeek answering 200 with nothing in it: content "" or whitespace.
+const flakyAi = (env, replies) => {
+  env.AI_FETCH = async (url, init) => {
+    env._ai.push({ url: String(url), body: JSON.parse(init.body) });
+    const text = replies.shift();
+    return new Response(JSON.stringify({
+      id: "chat_test", object: "chat.completion", model: "deepseek-v4-flash",
+      choices: [{ index: 0, message: { role: "assistant", content: text }, finish_reason: text.trim() ? "stop" : "length" }],
+    }), { status: 200, headers: { "content-type": "application/json" } });
+  };
+};
+const aiErrorRows = (env) =>
+  env._db.prepare("select name from sqlite_master where name = 'ai_errors'").all().length
+    ? env._db.prepare("select kind from ai_errors").all().map((r) => ({ ...r }))
+    : [];
+
+await test("an empty answer is asked again, and the second one serves", async () => {
+  const env = makeEnv();
+  flakyAi(env, ["   \n", '{"c":["味"]}']);
+  const cookie = await signedIn(env);
+  const r = await call(env, "POST", "/api/ask", { cookie, body: { system: "s", messages: [{ role: "user", content: "a" }] } });
+  assert.equal(r.status, 200);
+  assert.equal((await r.json()).text, '{"c":["味"]}');
+  assert.equal(env._ai.length, 2, "asked twice, same payload");
+  assert.deepEqual(env._ai[0].body, env._ai[1].body);
+  assert.deepEqual(aiErrorRows(env), [], "a rescued request is not an error");
+});
+
+await test("two empty answers read as an upstream failure, and are logged once", async () => {
+  const env = makeEnv();
+  flakyAi(env, ["", "  "]);
+  const cookie = await signedIn(env);
+  const r = await call(env, "POST", "/api/ask", { cookie, body: { system: "s", messages: [{ role: "user", content: "a" }] } });
+  assert.equal(r.status, 502);
+  assert.equal((await r.json()).error, "upstream_failed");
+  assert.equal(env._ai.length, 2, "one retry, no more");
+  assert.deepEqual(aiErrorRows(env), [{ kind: "empty_response" }]);
+});
+
+// --- the error digest cron ---
+
+const errorAt = (env, secondsAgo, kind = "empty_response") => {
+  env._db.exec("create table if not exists ai_errors (id integer primary key autoincrement, kind text not null, created_at integer not null)");
+  env._db.prepare("insert into ai_errors (kind, created_at) values (?, ?)").run(kind, Math.floor(Date.now() / 1000) - secondsAgo);
+};
+
+await test("an error is mailed however late the tick runs, and only once", async () => {
+  const env = makeEnv();
+  env.OWNER_EMAIL = "owner@example.com";
+  // Recorded twenty minutes ago: the old 300-second window would look right
+  // past it if the tick that should have caught it came late. The high-water
+  // mark cannot: unmailed is unmailed, whenever the tick runs.
+  errorAt(env, 1200);
+  errorAt(env, 1140);
+  await worker.scheduled({}, env, null);
+  assert.equal(env._sent.length, 1);
+  assert.equal(env._sent[0].to, "owner@example.com");
+  assert.match(env._sent[0].subject, /empty_response: 2/);
+  await worker.scheduled({}, env, null);
+  assert.equal(env._sent.length, 1, "already told: the next tick says nothing");
+  errorAt(env, 5, "upstream_busy");
+  await worker.scheduled({}, env, null);
+  assert.equal(env._sent.length, 2, "a new error is news again");
+  assert.match(env._sent[1].subject, /upstream_busy: 1/);
+  assert.ok(!/empty_response/.test(env._sent[1].subject), "and only the new one");
+});
+
+await test("a digest the mailer refuses is retried next tick, not lost", async () => {
+  const env = makeEnv();
+  env.OWNER_EMAIL = "owner@example.com";
+  let down = 1;
+  const sent = env._sent;
+  env.EMAIL = { send: async (m) => { if (down-- > 0) throw new Error("mailer down"); sent.push(m); } };
+  errorAt(env, 60);
+  await worker.scheduled({}, env, null);
+  assert.equal(env._sent.length, 0, "the first try failed");
+  await worker.scheduled({}, env, null);
+  assert.equal(env._sent.length, 1, "the next tick still knows about it");
+  assert.match(env._sent[0].subject, /empty_response: 1/);
 });
 
 await test("ask validates the body and refuses oversize prompts", async () => {
