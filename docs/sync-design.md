@@ -50,7 +50,8 @@ but costs a CORS preflight on every call and a `SameSite=None` cookie.
 | `PUT /api/progress` | `{mastered, strength, deck, lang}` — unions `mastered`, merges `strength` per word |
 | `PUT /api/updates` | `{on}` — whether to be mailed about the app. Ticked before sign-in, so the page holds the intent in `localStorage` and sends it once the session resolves |
 | `POST /api/issue` | `{title, text, notify, version, agent}` — opens a GitHub issue under the project's own token. **Signed in**, because an answer needs somewhere to go. Metered per account, capped in length, and the version and browser go in a footer the reporter cannot write |
-| `POST /api/gh-hook` | GitHub's webhook. Verifies `X-Hub-Signature-256` against `GH_WEBHOOK_SECRET` in constant time, then mails the reporter when their issue is replied to or closed |
+| *(a cron, every 5 min)* | asks GitHub for comments and closes on watched issues and mails them. This is the notification path; it needs no configuration beyond the token |
+| `POST /api/gh-hook` | GitHub's webhook, optional and faster. Verifies `X-Hub-Signature-256` against `GH_WEBHOOK_SECRET` in constant time, then mails the reporter when their issue is replied to or closed |
 | `GET /api/issue-stop?t=` | the unsubscribe link from that mail. Signed with `SESSION_SECRET`, so it needs no session — a person reading mail is not necessarily signed in there |
 | `POST /api/logout` | clears the cookie |
 | `DELETE /api/account` | erases the account, its progress and its sign-in rows |

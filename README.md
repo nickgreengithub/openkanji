@@ -568,24 +568,16 @@ npx wrangler secret put GITHUB_TOKEN --name openkanji
 The names in capitals are the names the Worker reads -- type them exactly.
 What each one is worth is pasted at the prompt.
 
-One more, for the mail that tells a reporter their report was answered. Its
-value has to go in two places, so generate it, look at it, and paste it twice
-rather than piping it into anything:
+The mail that tells a reporter their report was answered needs nothing else:
+the Worker asks GitHub every five minutes, using the same token, and mails
+whoever asked to hear back. The schedule is in `wrangler.jsonc` and ships with
+a deploy.
 
-```sh
-openssl rand -hex 32                              # copy what this prints
-npx wrangler secret put GH_WEBHOOK_SECRET         # paste it at the prompt
-```
-
-Then paste the same string into the repository, where the webhook is set once:
-**Settings → Webhooks → Add webhook**, payload URL
-`https://openkanji.org/api/gh-hook`, content type `application/json`, that
-string in **Secret**, and "Let me select individual events" → **Issues** and
-**Issue comments**. GitHub signs every delivery with it and the Worker checks
-the signature, so the two have to match exactly.
-
-Without the webhook the report form still works and still asks whether to
-write back; nobody is ever written to.
+A webhook is faster, and still works if you want one -- **Settings → Webhooks →
+Add webhook**, payload URL `https://openkanji.org/api/gh-hook`, content type
+`application/json`, a secret you also put in `GH_WEBHOOK_SECRET`, and "Let me
+select individual events" → **Issues** and **Issue comments**. Nothing is
+mailed twice if both are running.
 
 Worker tests:
 

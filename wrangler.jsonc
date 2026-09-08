@@ -13,6 +13,11 @@
     "binding": "ASSETS"
   },
 
+  // The report notifier asks GitHub what has happened rather than waiting to be
+  // told: a webhook is faster but has to be configured in a place the code
+  // cannot reach. Five minutes is soon enough for "someone answered you".
+  "triggers": { "crons": ["*/5 * * * *"] },
+
   "d1_databases": [
     {
       "binding": "DB",

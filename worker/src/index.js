@@ -120,6 +120,88 @@ async function handleIssue(request, env, user) {
   return json({ ok: true, number: out.number, url: out.html_url, notify: body.notify !== false });
 }
 
+// Asking GitHub what has happened, rather than waiting to be told. A webhook
+// is faster, but it is also a thing to configure in a place the code cannot
+// reach -- a box to tick, a secret to paste in two places, and a delivery page
+// to read when it goes wrong. This needs nothing but the token that already
+// opens the issues. It runs on a schedule; the webhook below still works if it
+// is ever set up, and the two cannot double up because both go through
+// alreadyTold.
+const POLL_WINDOW = 3 * 24 * 3600;   // never look further back than this
+
+// What has already been said, so a comment is mailed once whichever way it
+// arrives, and a restart does not mail a week of history.
+const toldReady = new WeakSet();
+async function ensureTold(db) {
+  if (toldReady.has(db)) return;
+  await db.prepare("create table if not exists issue_told (id text primary key, at integer not null)").run();
+  toldReady.add(db);
+}
+async function alreadyTold(db, id) {
+  await ensureTold(db);
+  const row = await db.prepare("insert or ignore into issue_told (id, at) values (?, ?) returning id").bind(String(id), now()).first();
+  return !row;   // nothing returned means the row was already there
+}
+
+async function gh(env, path) {
+  const res = await (env.GITHUB_FETCH || fetch)("https://api.github.com" + path, {
+    headers: {
+      authorization: "Bearer " + env.GITHUB_TOKEN,
+      accept: "application/vnd.github+json",
+      "user-agent": "openkanji-worker",
+    },
+  }).catch(() => null);
+  if (!res || !res.ok) return null;
+  return res.json().catch(() => null);
+}
+
+// One pass: every comment and every close since the last one, against the
+// issues somebody asked to hear about. Nothing is mailed twice, whichever way
+// it arrived, because both paths pass through alreadyTold first.
+async function pollGitHub(env) {
+  const repo = ISSUE_REPO_OK.test(env.ISSUE_REPO || "") ? env.ISSUE_REPO : null;
+  if (!env.GITHUB_TOKEN || !repo) return { skipped: "not_configured" };
+  await ensureIssueWatch(env.DB);
+  const watch = await env.DB.prepare("select number, email, lang from issue_watch limit 500").all();
+  const rows = (watch && watch.results) || [];
+  if (!rows.length) return { watching: 0, told: 0 };
+  const by = {};
+  for (const r of rows) by[r.number] = r;
+
+  const since = new Date((now() - POLL_WINDOW) * 1000).toISOString().replace(/\.\d+Z$/, "Z");
+  const titles = {};
+  const titleOf = async (n) => {
+    if (titles[n] === undefined) {
+      const issue = await gh(env, "/repos/" + repo + "/issues/" + n);
+      titles[n] = (issue && issue.title) || "";
+    }
+    return titles[n];
+  };
+  let told = 0;
+
+  // Comments across the repository, and only the ones on a watched issue.
+  const comments = await gh(env, "/repos/" + repo + "/issues/comments?sort=updated&direction=desc&per_page=100&since=" + since) || [];
+  for (const c of comments) {
+    const n = Number(String((c && c.issue_url) || "").split("/").pop());
+    const w = by[n];
+    if (!w || !c.id) continue;
+    if (await alreadyTold(env.DB, "c" + c.id)) continue;
+    await sendIssueMail(env, w.email, w.lang, "reply", { number: n, title: await titleOf(n), url: c.html_url || "", said: c.body || "" });
+    told++;
+  }
+
+  // And the ones that have been closed since.
+  const closed = await gh(env, "/repos/" + repo + "/issues?state=closed&sort=updated&direction=desc&per_page=100&since=" + since) || [];
+  for (const i of closed) {
+    const w = i && by[i.number];
+    if (!w || !i.closed_at) continue;
+    if (await alreadyTold(env.DB, "x" + i.number)) continue;
+    await sendIssueMail(env, w.email, w.lang, "closed", { number: i.number, title: i.title || "", url: i.html_url || "", said: "" });
+    told++;
+  }
+  return { watching: rows.length, told };
+}
+
 // GitHub's own webhook, telling us an issue moved. Signed with a shared
 // secret, so a POST from anyone else is refused before it is read as anything.
 async function handleGitHubHook(request, env) {
@@ -156,6 +238,8 @@ async function handleGitHubHook(request, env) {
   const waiting = await env.DB.prepare("select count(*) as n from issue_watch").first();
   if (!watch) return json({ ok: true, skipped: "nobody is waiting", saw, watching: (waiting && waiting.n) || 0 });
 
+  const once = kind === "reply" ? "c" + ((hook.comment && hook.comment.id) || number) : "x" + number;
+  if (await alreadyTold(env.DB, once)) return json({ ok: true, skipped: "already told", saw });
   await sendIssueMail(env, watch.email, watch.lang, kind, {
     number,
     title: String((hook.issue && hook.issue.title) || ""),
@@ -680,6 +764,14 @@ async function handlePutProgress(request, env, userId) {
 // ---------- router ----------
 
 export default {
+  // Cloudflare calls this on the schedule in wrangler.jsonc. It is the whole
+  // notification path: no webhook to configure, no secret to keep in step.
+  async scheduled(event, env, ctx) {
+    const done = pollGitHub(env).catch((e) => ({ failed: String(e && e.message) }));
+    if (ctx && ctx.waitUntil) ctx.waitUntil(done);
+    else await done;
+  },
+
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";

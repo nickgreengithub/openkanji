@@ -24,6 +24,7 @@ function d1(db) {
           return rows.length ? { ...rows[0] } : null;
         },
         run() { return { success: true, ...db.prepare(sql).run(...args) }; },
+        all() { return { success: true, results: db.prepare(sql).all(...args).map((r) => ({ ...r })) }; },
       };
       return stmt;
     },
@@ -530,6 +531,98 @@ await test("the link in the mail stops them, and only for that report", async ()
   env._sent.length = 0;
   await hookCall(env, "issue_comment", { action: "created", issue: { number: 42, title: "t", html_url: "u" }, comment: { body: "more" } });
   assert.equal(env._sent.length, 0, "and no more mail");
+});
+
+// --- and without a webhook at all: the Worker asks ---
+
+// GitHub's API, played by a stub: the comments endpoint, the closed issues,
+// and an issue by number for its title.
+const pollStub = (env, { comments = [], closed = [] } = {}) => {
+  env.GITHUB_TOKEN = "ghp-test";
+  env.ISSUE_REPO = "nickgreengithub/openkanji";
+  env._asked = [];
+  env.GITHUB_FETCH = async (url, init) => {
+    const u = String(url);
+    env._asked.push(u);
+    if (init && init.method === "POST") {
+      return new Response(JSON.stringify({ number: 42, html_url: "https://github.com/x/y/issues/42" }), { status: 201 });
+    }
+    const body = /\/issues\/comments/.test(u) ? comments
+      : /state=closed/.test(u) ? closed
+      : { title: "Audio stops", number: 42 };
+    return new Response(JSON.stringify(body), { status: 200, headers: { "content-type": "application/json" } });
+  };
+  return env;
+};
+const watched = async (env, email = "reader@example.com") => {
+  const cookie = await signedIn(env, email);
+  await call(env, "POST", "/api/issue", { cookie, body: { title: "Audio stops", text: "The clip cuts off." } });
+  env._sent.length = 0;
+};
+
+await test("the schedule finds a reply nobody told us about", async () => {
+  const env = pollStub(makeEnv(), {
+    comments: [{ id: 900, issue_url: "https://api.github.com/repos/x/y/issues/42", html_url: "https://github.com/x/y/issues/42#c900", body: "Fixed in the next deploy." }],
+  });
+  await watched(env);
+  await worker.scheduled({}, env, null);
+  assert.equal(env._sent.length, 1);
+  assert.equal(env._sent[0].to, "reader@example.com");
+  assert.match(env._sent[0].text, /Fixed in the next deploy/);
+  assert.match(env._sent[0].subject, /#42/);
+});
+
+await test("and says it once, however many times it runs", async () => {
+  const env = pollStub(makeEnv(), {
+    comments: [{ id: 900, issue_url: "https://api.github.com/repos/x/y/issues/42", html_url: "u", body: "hello" }],
+  });
+  await watched(env);
+  await worker.scheduled({}, env, null);
+  await worker.scheduled({}, env, null);
+  await worker.scheduled({}, env, null);
+  assert.equal(env._sent.length, 1);
+});
+
+await test("a close is found the same way", async () => {
+  const env = pollStub(makeEnv(), {
+    closed: [{ number: 42, title: "Audio stops", html_url: "u", closed_at: "2026-09-08T00:00:00Z" }],
+  });
+  await watched(env);
+  await worker.scheduled({}, env, null);
+  assert.equal(env._sent.length, 1);
+  assert.match(env._sent[0].subject, /closed/i);
+});
+
+await test("comments on issues nobody is waiting for are left alone", async () => {
+  const env = pollStub(makeEnv(), {
+    comments: [{ id: 901, issue_url: "https://api.github.com/repos/x/y/issues/999", html_url: "u", body: "not yours" }],
+  });
+  await watched(env);
+  await worker.scheduled({}, env, null);
+  assert.equal(env._sent.length, 0);
+});
+
+await test("with nobody waiting it does not even ask GitHub", async () => {
+  const env = pollStub(makeEnv());
+  await worker.scheduled({}, env, null);
+  assert.equal((env._asked || []).length, 0);
+  assert.equal(env._sent.length, 0);
+});
+
+await test("the webhook and the schedule cannot both mail the same comment", async () => {
+  const env = pollStub(makeEnv(), {
+    comments: [{ id: 900, issue_url: "https://api.github.com/repos/x/y/issues/42", html_url: "u", body: "twice?" }],
+  });
+  env.GH_WEBHOOK_SECRET = HOOK_SECRET;
+  await watched(env);
+  await hookCall(env, "issue_comment", {
+    action: "created",
+    issue: { number: 42, title: "t", html_url: "u" },
+    comment: { id: 900, body: "twice?" },
+  });
+  assert.equal(env._sent.length, 1, "the webhook got there first");
+  await worker.scheduled({}, env, null);
+  assert.equal(env._sent.length, 1, "and the schedule left it alone");
 });
 
 await test("logout clears the cookie", async () => {
