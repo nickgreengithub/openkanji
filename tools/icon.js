@@ -38,6 +38,13 @@ const SHAPES = [
   [[0.660, 0.385], [0.660 + S, 0.385], [0.660 + S, 0.860], [0.660, 0.860]],
 ];
 
+// A plate needs air around the mark; a mark on nothing does not, and looks
+// weak with it. Same drawing, scaled about its own middle.
+const BOX = SHAPES.flat().reduce((b, [x, y]) => [Math.min(b[0], x), Math.min(b[1], y), Math.max(b[2], x), Math.max(b[3], y)], [1, 1, 0, 0]);
+const MID = [(BOX[0] + BOX[2]) / 2, (BOX[1] + BOX[3]) / 2];
+const grown = (k) => SHAPES.map((q) => q.map(([x, y]) => [MID[0] + (x - MID[0]) * k, MID[1] + (y - MID[1]) * k]));
+const BARE = grown(1.18);
+
 // Point in a convex quad: on the same side of all four edges. Sampled four by
 // four to a pixel, because a mark this small lives or dies on its edges.
 const inside = (q, x, y) => {
@@ -51,26 +58,33 @@ const inside = (q, x, y) => {
   return true;
 };
 
-const cover = (x, y, size) => {
+const cover = (x, y, size, shapes) => {
   let n = 0;
   for (let sy = 0; sy < 4; sy++) {
     for (let sx = 0; sx < 4; sx++) {
       const px = (x + (sx + 0.5) / 4) / size, py = (y + (sy + 0.5) / 4) / size;
-      if (SHAPES.some((q) => inside(q, px, py))) n++;
+      if (shapes.some((q) => inside(q, px, py))) n++;
     }
   }
   return n / 16;
 };
 
-const png = (size) => {
-  const row = size * 3 + 1;
+// Two kinds of icon come out of the same drawing. One is a plate: a teal
+// square with the mark cut out of it in white, which is what a home screen and
+// an app launcher want -- they composite a transparent icon onto black. The
+// other is the mark alone on nothing, which is what a tab wants, so the browser
+// can put it on whatever colour its own furniture is.
+const png = (size, ink, plate) => {
+  const ch = plate ? 3 : 4;
+  const row = size * ch + 1;
   const raw = Buffer.alloc(row * size);
   for (let y = 0; y < size; y++) {
     raw[y * row] = 0; // filter: none
     for (let x = 0; x < size; x++) {
-      const a = cover(x, y, size);
-      const at = y * row + 1 + x * 3;
-      for (let c = 0; c < 3; c++) raw[at + c] = Math.round(TEAL[c] + (WHITE[c] - TEAL[c]) * a);
+      const a = cover(x, y, size, plate ? SHAPES : BARE);
+      const at = y * row + 1 + x * ch;
+      if (plate) for (let c = 0; c < 3; c++) raw[at + c] = Math.round(plate[c] + (ink[c] - plate[c]) * a);
+      else { for (let c = 0; c < 3; c++) raw[at + c] = ink[c]; raw[at + 3] = Math.round(a * 255); }
     }
   }
   const chunk = (type, data) => {
@@ -85,7 +99,7 @@ const png = (size) => {
   ihdr.writeUInt32BE(size, 0);
   ihdr.writeUInt32BE(size, 4);
   ihdr[8] = 8;  // 8 bits per channel
-  ihdr[9] = 2;  // truecolour
+  ihdr[9] = plate ? 2 : 6;  // truecolour, with alpha when there is no plate
   return Buffer.concat([
     Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
     chunk("IHDR", ihdr),
@@ -109,17 +123,23 @@ function crc32(buf) {
   return c ^ -1;
 }
 
+// The mark alone, no plate, and it answers to the browser's theme: ink on a
+// light tab strip, white on a dark one. Chrome and Firefox both read a media
+// query inside a favicon; anything that does not gets the fill it was given,
+// which is the light one, and that is the commoner tab strip.
 const svg = () => {
-  const strokes = SHAPES.map((q) =>
-    '<polygon points="' + q.map(([x, y]) => (x * 512).toFixed(1) + "," + (y * 512).toFixed(1)).join(" ") + '" fill="#fff"/>').join("");
-  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" fill="#0891b2"/>' + strokes + "</svg>\n";
+  const strokes = BARE.map((q) =>
+    '<polygon points="' + q.map(([x, y]) => (x * 512).toFixed(1) + "," + (y * 512).toFixed(1)).join(" ") + '"/>').join("");
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">' +
+    "<style>polygon{fill:#15181c}@media(prefers-color-scheme:dark){polygon{fill:#fff}}</style>" +
+    strokes + "</svg>\n";
 };
 
 // The tab icon for everything that will not take the SVG -- Safari before 17,
 // and every browser's own guess at /favicon.ico when nothing is declared.
 // Three sizes in one file, each a PNG, which every browser since Vista reads.
-const ico = (sizes) => {
-  const imgs = sizes.map((n) => png(n));
+const ico = (sizes, ink, plate) => {
+  const imgs = sizes.map((n) => png(n, ink, plate));
   const head = Buffer.alloc(6);
   head.writeUInt16LE(0, 0); head.writeUInt16LE(1, 2); head.writeUInt16LE(sizes.length, 4);
   let offset = 6 + 16 * sizes.length;
@@ -152,7 +172,8 @@ const manifest = () => JSON.stringify({
     { src: "/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
     { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
     { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
-    { src: "/icon.svg", sizes: "any", type: "image/svg+xml" },
+    // Not the SVG: that one is the bare mark for a tab, and an installed app
+    // would composite its transparency onto black.
   ],
 }, null, 2) + "\n";
 
@@ -160,11 +181,15 @@ module.exports = {
   files: () => ({
     "manifest.webmanifest": Buffer.from(manifest()),
     "icon.svg": Buffer.from(svg()),
-    "icon-192.png": png(192),
-    "icon-512.png": png(512),
-    "favicon.ico": ico([16, 32, 48]),
+    "icon-192.png": png(192, WHITE, TEAL),
+    "icon-512.png": png(512, WHITE, TEAL),
+    // The ico is the fallback for anything that will not take the SVG, and an
+    // ico cannot answer to a theme. So it is the mark on nothing in the app's
+    // own teal, which is legible on a light tab strip and on a dark one --
+    // where black would disappear and white would too.
+    "favicon.ico": ico([16, 32, 48], TEAL, null),
     // iOS does not read the manifest for the home-screen icon.
-    "apple-touch-icon.png": png(180),
+    "apple-touch-icon.png": png(180, WHITE, TEAL),
   }),
 };
 
