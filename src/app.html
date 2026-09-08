@@ -502,7 +502,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-check-n{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute);line-height:1.3}
 .ok-chips{display:flex;flex-wrap:wrap;gap:.4rem}
 .ok-chip{padding:.3rem .75rem;border-radius:999px;border:1px solid var(--ok-line);font-family:var(--font-2);font-size:.9375rem;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease}
-.ok-veil{position:fixed;inset:0;z-index:95;background:rgba(20,24,30,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;animation:ok-fade 280ms ease}
+.ok-veil{position:fixed;inset:0;z-index:95;background:rgba(20,24,30,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;animation:ok-fade 420ms ease}
 .ok-focus{position:relative;width:min(40rem,100%);height:min(32rem,86vh);justify-content:flex-start;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:2.5rem 3.75rem 2rem;overflow-y:auto;border-radius:20px;background:var(--ok-card);box-shadow:0 30px 80px rgba(20,24,30,.35);text-align:center;animation:ok-rise 200ms cubic-bezier(.2,.7,.3,1)}
 .ok-x{position:absolute;top:.55rem;right:.95rem;font-size:1.7rem;line-height:1;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-x:hover{color:var(--ok-ink)}
@@ -549,7 +549,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-toast{position:fixed;left:50%;bottom:calc(1.5rem + var(--ok-kb,0px));transform:translateX(-50%);z-index:120;padding:.7rem 1.15rem;border-radius:10px;background:#1b1f24;color:#fff;font-family:var(--font-2);font-size:1rem;box-shadow:0 10px 30px rgba(0,0,0,.25);white-space:nowrap;animation:ok-toast-in 200ms ease}
 @keyframes ok-toast-in{from{opacity:0;transform:translate(-50%,.5rem)}to{opacity:1;transform:translate(-50%,0)}}
 @keyframes ok-fade{from{opacity:0}to{opacity:1}}
-@keyframes ok-rise{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes ok-rise{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:none}}
 .ok-bottombar{display:none}
 
 /* Practice: a sheet over the set, same surfaces, one accent. */
@@ -666,7 +666,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-fc-gloss{font-family:var(--font-2);font-size:1.25rem;color:var(--ok-body);text-wrap:pretty}
 @media (min-width:641px){
   .ok-veil-p{align-items:center;padding:1.5rem}
-  .ok-sheet{width:min(44rem,100%);height:auto;max-height:min(42rem,100%);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(20,24,30,.35);animation:ok-rise 340ms cubic-bezier(.2,.7,.25,1)}
+  .ok-sheet{width:min(44rem,100%);height:auto;max-height:min(42rem,100%);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(20,24,30,.35);animation:ok-rise 500ms cubic-bezier(.16,.8,.22,1)}
   .ok-sheet-fixed{width:min(50rem,100%);height:min(40rem,100%)}
   /* A page of the story is five or six lines with a translation under each,
      which wants more room than a quiz round -- and a page that has to be
@@ -771,13 +771,13 @@ a:hover{color:var(--text-accent-hover)}
 @keyframes ok-swipe-in-ra{from{opacity:0;transform:translateX(-48px)}to{opacity:1;transform:none}}
 @keyframes ok-swipe-in-rb{from{opacity:0;transform:translateX(-48px)}to{opacity:1;transform:none}}
 /* Sheet views and their exits */
-.ok-view{animation:ok-view-in 280ms ease}
-.ok-veil-out{animation:ok-fade-out 280ms ease forwards!important}
-.ok-sheet-out{animation:ok-sheet-down 300ms cubic-bezier(.4,0,1,1) forwards!important}
+.ok-view{animation:ok-view-in 400ms cubic-bezier(.2,.7,.25,1)}
+.ok-veil-out{animation:ok-fade-out 400ms ease forwards!important}
+.ok-sheet-out{animation:ok-sheet-down 400ms cubic-bezier(.4,0,.7,1) forwards!important}
 .ok-focus-out{animation:ok-focus-out 160ms ease forwards!important}
 @keyframes ok-fade-out{from{opacity:1}to{opacity:0}}
-@keyframes ok-view-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@keyframes ok-sheet-down{from{transform:none;opacity:1}to{transform:translateY(24px);opacity:0}}
+@keyframes ok-view-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes ok-sheet-down{from{transform:none;opacity:1}to{transform:translateY(28px);opacity:0}}
 @keyframes ok-focus-out{from{opacity:1;transform:none}to{opacity:0;transform:scale(.96)}}
 /* Write: the sheet again -- word pills, a thread, a composer */
 .ok-w-pills{display:flex;flex-wrap:wrap;gap:.4rem;padding:.9rem 1.25rem 0}
@@ -3104,7 +3104,7 @@ class Component extends DCLogic {
   closePracticeNow() {
     this.stopStory();
     this.setState({ gameClosing: true, cardsClosing: true });
-    setTimeout(() => this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, storyOn: false, stTip: null, gMode: null, gFinished: false, dlgSeamless: false }), 300);
+    setTimeout(() => this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, storyOn: false, stTip: null, gMode: null, gFinished: false, dlgSeamless: false }), 420);
   }
   // A pushed page gets a history entry, so the phone's Back button (and the
   // browser's) closes it rather than leaving the app. Where pushState is not
@@ -3756,7 +3756,7 @@ class Component extends DCLogic {
   closeWrite() {
     if (this.state.writeClosing) return;
     this.setState({ writeClosing: true });
-    setTimeout(() => this.setState({ write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], replies: [], cand: null, candIdx: 0, draft: "", sent: "", result: null }), 300);
+    setTimeout(() => this.setState({ write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], replies: [], cand: null, candIdx: 0, draft: "", sent: "", result: null }), 420);
   }
 
   // every route into the chat goes through here so the intro always types
@@ -5369,7 +5369,7 @@ class Component extends DCLogic {
         this._cardStreak = {}; this._cardSeen = {};
         this.setState({ cardsOn: true, cardsClosing: false, cQueue: q, cIdx: 0, cShown: false, cDone: 0, cMastered: [], cFlip: false });
       },
-      closeCards: () => { this.setState({ cardsClosing: true }); setTimeout(() => this.setState({ cardsOn: false, cardsClosing: false }), 300); },
+      closeCards: () => { this.setState({ cardsClosing: true }); setTimeout(() => this.setState({ cardsOn: false, cardsClosing: false }), 420); },
       cardsOn: !!st.cardsOn,
       cardVeilAnim: st.dlgSeamless ? "none" : (st.cardsClosing ? "ok-veil-out 180ms ease forwards" : "ok-veil-in 180ms ease"),
       cardPanelAnim: st.dlgSeamless ? "none" : (st.cardsClosing ? "ok-panel-out 180ms ease forwards" : "ok-panel-in 220ms cubic-bezier(.2,.7,.3,1)"),
@@ -5412,7 +5412,7 @@ class Component extends DCLogic {
         ? T("intro_click_rows")
         : T("words_queued_write", { n: Object.keys(st.chatSel).length }),
       openGame: () => { this._gAnswer = null; this._gIdx = undefined; this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gBatch: null, gKanji: null, gFinished: false, gPicked: -1 }); },
-      closeGame: () => { if (this._gAdvT) clearTimeout(this._gAdvT); this.setState({ gameClosing: true }); setTimeout(() => this.setState({ gameOpen: false, gameClosing: false }), 300); },
+      closeGame: () => { if (this._gAdvT) clearTimeout(this._gAdvT); this.setState({ gameClosing: true }); setTimeout(() => this.setState({ gameOpen: false, gameClosing: false }), 420); },
       gameVeilAnim: st.dlgSeamless ? "none" : (st.gameClosing ? "ok-veil-out 180ms ease forwards" : "ok-veil-in 180ms ease"),
       gamePanelAnim: st.dlgSeamless ? "none" : (st.gameClosing ? "ok-panel-out 180ms ease forwards" : "ok-panel-in 220ms cubic-bezier(.2,.7,.3,1)"),
       gameOn: !!st.gameOpen,
@@ -5596,7 +5596,7 @@ class Component extends DCLogic {
       gHeadBack: () => {
         if (this._gAdvT) clearTimeout(this._gAdvT);
         this._gAnswer = null; this._gIdx = undefined;
-        if (!this.state.gMode) { this.setState({ gameClosing: true, dlgSeamless: false }); setTimeout(() => this.setState({ gameOpen: false, gameClosing: false }), 300); return; }
+        if (!this.state.gMode) { this.setState({ gameClosing: true, dlgSeamless: false }); setTimeout(() => this.setState({ gameOpen: false, gameClosing: false }), 420); return; }
         this.setState({ gMode: null, gFinished: false, gPicked: -1 });
       },
       gNotMenuOn: !!st.gameOpen && !!st.gMode,
