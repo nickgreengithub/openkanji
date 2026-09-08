@@ -718,9 +718,9 @@ a:hover{color:var(--text-accent-hover)}
 @keyframes ok-sheet-up{from{transform:translateY(100%)}to{transform:none}}
 
 /* Map: rings, one honest axis */
-.ok-rings{display:grid;grid-template-columns:minmax(0,24rem);gap:.75rem}
-.ok-ring{display:flex;align-items:center;gap:1.6rem;padding:1.4rem 1.5rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
-.ok-ring svg{flex:0 0 auto;width:104px;height:104px;transform:rotate(-90deg)}
+.ok-rings{display:grid;grid-template-columns:1fr;gap:.75rem}
+.ok-ring{display:flex;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
+.ok-ring svg{flex:0 0 auto;width:88px;height:88px;transform:rotate(-90deg)}
 .ok-ring-c{stroke:var(--ok-acc);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
 .ok-ring-ceil{stroke:var(--ok-acc-t);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
 .ok-ring-txt{display:flex;flex-direction:column;gap:.15rem;min-width:0}
@@ -1222,7 +1222,6 @@ html[data-ok-ready] #ok-boot{display:none}
       </header>
       <section class="ok-wrap">
         <div class="ok-overall">
-          <div class="ok-row"><span class="ok-h2 ok-ja">{{ ja_your_progress }} <span class="ok-h2-own">{{ t_your_progress }}</span></span></div>
           <div class="ok-rings">
             <sc-for list="{{ rings }}" as="rg" hint-placeholder-count="4">
               <div class="ok-ring" title="{{ rg.title }}">
@@ -1232,8 +1231,7 @@ html[data-ok-ready] #ok-boot{display:none}
                   <circle class="ok-ring-c" cx="30" cy="30" r="25" fill="none" stroke-width="7" stroke-linecap="round" stroke-dasharray="{{ rg.nowDash }}"></circle>
                 </svg>
                 <div class="ok-ring-txt">
-                  <span class="ok-ring-lab ok-ja">{{ rg.label }}</span>
-                  <span class="ok-ring-own">{{ rg.labelOwn }}</span>
+                  <span class="ok-h2 ok-ja">{{ ja_your_progress }} <span class="ok-h2-own">{{ t_your_progress }}</span></span>
                   <span class="ok-ring-big">{{ rg.big }}</span>
                   <span class="ok-ring-sub">{{ rg.sub }}</span>
                 </div>
