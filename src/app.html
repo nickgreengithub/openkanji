@@ -4,6 +4,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>OpenKanji — JLPT kanji and vocabulary</title>
 <meta name="description" content="Study JLPT kanji and vocabulary by reading group, with example sentences and progress tracking.">
+<!-- The ?v= on the icons is not a cache-buster for the page: a browser keeps
+     favicons in a store of its own that a reload does not touch, so a mark
+     that was wrong once stays wrong for days. The URL is the cache key, so
+     changing it is the only reliable way to hand out a new one. Bump it when
+     the icon changes. -->
 <!-- The head that survives: booting swaps this document in for the shell's,
      so anything declared only there -- the icons, the manifest, the standalone
      hints -- is thrown away the moment the app starts. It lives here instead,
@@ -14,9 +19,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="OpenKanji">
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/icon.svg?v=2" type="image/svg+xml">
 <script src="16cd733a-bdca-4fef-89fe-ef51a54bd1f9"></script>
 </head>
 <body>
