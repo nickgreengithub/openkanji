@@ -675,6 +675,13 @@ a:hover{color:var(--text-accent-hover)}
      one height for every page of it, and a page that needs less simply has
      air at the foot. Pages are short enough that none of them needs more. */
   .ok-sheet-story{width:min(46rem,100%);height:min(40rem,100%);max-height:min(40rem,100%)}
+  /* The same rule the story states above, applied to the rest of practice:
+     one size for the menu and every exercise in it, so moving between them
+     never resizes the dialog at all -- and the menu earns the width as a
+     two-column grid of its six doors. */
+  .ok-sheet-practice{width:min(50rem,100%);height:min(40rem,100%);max-height:min(40rem,100%)}
+  .ok-pmenu{display:grid;grid-template-columns:1fr 1fr;align-content:center;gap:.8rem;max-width:46rem;margin:auto}
+  .ok-pmenu-hint{grid-column:1/-1}
   .ok-quiz{min-height:30rem}
   .ok-fc{min-height:28rem}
   .ok-story{min-height:32rem}
@@ -1000,8 +1007,8 @@ html[data-ok-ready] #ok-boot{display:none}
 
   <!-- ===== Practice: a sheet over the set. Flashcards, Quiz, Write. ===== -->
   <sc-if value="{{ pOn }}" hint-placeholder-val="{{ false }}">
-    <div sc-camel-on-click="{{ pClose }}" class="ok-veil ok-veil-p {{ pVeilOut }}">
-      <div sc-camel-on-click="{{ stop }}" class="ok-sheet {{ pSheetKind }} {{ pSheetOut }}">
+    <div sc-camel-on-click="{{ pClose }}" class="ok-veil ok-veil-p {{ pVeilOut }}" style="animation:{{ pVeilAnim }}">
+      <div sc-camel-on-click="{{ stop }}" class="ok-sheet {{ pSheetKind }} {{ pSheetOut }}" style="animation:{{ pSheetAnim }}">
         <div class="ok-sheet-top">
           <span sc-camel-on-click="{{ pBack }}" class="ok-round-btn" title="{{ t_back }}">
             <sc-if value="{{ pAtMenu }}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6 L18 18"></path><path d="M18 6 L6 18"></path></svg></sc-if>
@@ -1467,8 +1474,8 @@ html[data-ok-ready] #ok-boot{display:none}
   <sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}"><div class="ok-toast">{{ authMsg }}</div></sc-if>
 
       <sc-if value="{{ writeOn }}" hint-placeholder-val="{{ false }}">
-      <div sc-camel-on-click="{{ closeWrite }}" class="ok-veil ok-veil-p {{ wVeilOut }}">
-      <div sc-camel-on-click="{{ stop }}" class="ok-sheet ok-sheet-fixed {{ wSheetOut }}">
+      <div sc-camel-on-click="{{ closeWrite }}" class="ok-veil ok-veil-p {{ wVeilOut }}" style="animation:{{ veilAnim }}">
+      <div sc-camel-on-click="{{ stop }}" class="ok-sheet ok-sheet-fixed {{ wSheetOut }}" style="animation:{{ panelAnim }}">
         <div class="ok-sheet-top">
           <span sc-camel-on-click="{{ wBack }}" class="ok-round-btn" title="{{ t_back }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span>
           <div class="ok-sheet-title"><span class="ok-eyebrow">{{ t_write_title }}</span><span class="ok-sheet-h">{{ pTitle }}</span></div>
@@ -3956,7 +3963,7 @@ class Component extends DCLogic {
       words,
       "",
       "Please act as my Japanese conversation partner to help these words stick:",
-      "- Have a natural, friendly conversation with me in simple Japanese (around JLPT N4), built around these words.",
+      "- Have a natural, friendly conversation with me in very simple Japanese (around JLPT N5 — I am just starting out), built around these words.",
       "- Use voice if you can; otherwise text is fine.",
       "- One short exchange at a time — ask me things that invite me to use the words myself.",
       "- When I make a mistake, correct it briefly and kindly in English, then continue in Japanese.",
@@ -5218,7 +5225,12 @@ class Component extends DCLogic {
             this.setState({ gMode: null, gFinished: false, gPicked: -1 });
           },
           pClose: () => this.closePractice(),
-          pSheetKind: st.storyOn ? "ok-sheet-story" : "",
+          pSheetKind: st.storyOn ? "ok-sheet-story" : "ok-sheet-practice",
+          // Swapping to or from the Write sheet replaces one dialog with
+          // another in the same frame; replaying the mount animations there
+          // reads as a flash, so both suppress them for that hand-off.
+          pVeilAnim: st.dlgSeamless ? "none" : "",
+          pSheetAnim: st.dlgSeamless ? "none" : "",
           pEyebrow: st.storyOn ? T("story") : st.cardsOn ? T("flashcards") : st.gMode === "type" ? T("typing") : st.gMode ? T("quiz") : T("practice"),
           pTitle: setName(st.gBatch != null ? st.gBatch : WSET),
           pCount: st.storyOn ? (st.storyPage + 1) + " / " + (((storyOf(st.storySet) || { pages: [] }).pages.length || 0) + 1)
@@ -5405,11 +5417,11 @@ class Component extends DCLogic {
         const ks = this.practiceWords().map(e => e.w[3]);
         if (!ks.length) return;
         const sel = {}; ks.forEach(x => { sel[x] = true; });
-        this.setState({ gMorph: true });
-        setTimeout(() => {
-          this.setState({ gMorph: false, dlgSeamless: true, gameOpen: false, gameClosing: false, writeFromStudy: true, chatSel: sel });
-          this.openChat();
-        }, 300);
+        // One frame, one swap: a delay here used to wait on a morph that no
+        // longer exists, and an empty 300ms before the hand-off read as a
+        // stall and a flash.
+        this.setState({ dlgSeamless: true, gameOpen: false, gameClosing: false, writeFromStudy: true, chatSel: sel });
+        this.openChat();
       },
       gCards: () => {
         const q = this.cardsFromKeys(this.shuffleA(this.practiceWords().map(e => e.w[3])));
@@ -5580,12 +5592,6 @@ class Component extends DCLogic {
       gNotMenuOn: !!st.gameOpen && !!st.gMode,
       gHeadTitle: T("study_words"),
       gScopeUnit: "単語",
-      gPanelW: st.gMorph ? "min(58rem,100%)" : "min(46rem,100%)",
-      gPanelH: st.gMorph ? "min(42rem,100%)" : "min(36rem,100%)",
-      gMorphFade: st.gMorph ? 0 : 1,
-      wPanelW: st.wMorph ? "min(46rem,100%)" : "min(58rem,100%)",
-      wPanelH: st.wMorph ? "min(36rem,100%)" : "min(42rem,100%)",
-      wMorphFade: st.wMorph ? 0 : 1,
       gScopeWords: this.gameKeys().filter(x => !st.mastered[x]).length,
       cardsBackToMenu: () => { this.setState({ dlgSeamless: true, cardsOn: false, cardsClosing: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); },
       gBackToMenu: () => { if (this._gAdvT) clearTimeout(this._gAdvT); this._gAnswer = null; this._gIdx = undefined; this.setState({ gMode: null, gFinished: false, gPicked: -1 }); },
@@ -5911,8 +5917,11 @@ class Component extends DCLogic {
       cannotSend: !String(st.draft || "").trim() || st.loading,
       chatRef: this.chatRefCb(),
       writeBg: st.write ? "var(--text-accent-hover)" : "var(--accent)",
-      veilAnim: st.dlgSeamless ? "none" : (st.writeClosing ? "ok-veil-out 180ms ease forwards" : "ok-veil-in 180ms ease"),
-      panelAnim: st.dlgSeamless ? "none" : (st.writeClosing ? "ok-panel-out 180ms ease forwards" : "ok-panel-in 220ms cubic-bezier(.2,.7,.3,1)"),
+      // "none" only for the hand-off from the practice sheet, where a mount
+      // animation reads as a flash; empty otherwise, so the stylesheet's own
+      // open/close animations stay in charge on both layouts.
+      veilAnim: st.dlgSeamless ? "none" : "",
+      panelAnim: st.dlgSeamless ? "none" : "",
       toggleWrite: () => {
         if (this.state.write) { this.closeWrite(); return; }
         this.openChat();
@@ -5920,8 +5929,7 @@ class Component extends DCLogic {
       closeWrite: () => this.closeWrite(),
       writeFromStudy: !!st.writeFromStudy,
       writeBackToMenu: () => {
-        this.setState({ wMorph: true });
-        setTimeout(() => this.setState({ wMorph: false, dlgSeamless: true, write: false, writeClosing: false, writeFromStudy: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }), 300);
+        this.setState({ dlgSeamless: true, write: false, writeClosing: false, writeFromStudy: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false });
       },
       task: {
         prompt: k.sentence,
