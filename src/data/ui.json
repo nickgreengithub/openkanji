@@ -914,5 +914,57 @@
   "by": {
     "en": "by",
     "es": "por"
+  },
+  "cancel": {
+    "en": "Cancel",
+    "es": "Cancelar"
+  },
+  "issue_title": {
+    "en": "Report a problem",
+    "es": "Informar de un problema"
+  },
+  "issue_subject": {
+    "en": "What is wrong, in a line",
+    "es": "Qué falla, en una línea"
+  },
+  "issue_body": {
+    "en": "What happened, and what you expected instead",
+    "es": "Qué ha pasado y qué esperabas"
+  },
+  "issue_note": {
+    "en": "This opens a public issue on GitHub. Your app version and browser go with it; your email does not.",
+    "es": "Esto abre una incidencia pública en GitHub. Se envían la versión y el navegador; tu correo no."
+  },
+  "issue_send": {
+    "en": "Send",
+    "es": "Enviar"
+  },
+  "issue_sending": {
+    "en": "Sending…",
+    "es": "Enviando…"
+  },
+  "issue_thanks": {
+    "en": "Thank you — it is on the tracker.",
+    "es": "Gracias: ya está en el registro."
+  },
+  "issue_see": {
+    "en": "See it on GitHub",
+    "es": "Verla en GitHub"
+  },
+  "issue_short": {
+    "en": "A line of what is wrong, and a little more below.",
+    "es": "Una línea de qué falla, y algo más abajo."
+  },
+  "issue_failed": {
+    "en": "Could not send it. Please try GitHub itself.",
+    "es": "No se pudo enviar. Prueba en GitHub."
+  },
+  "issue_off": {
+    "en": "Not set up yet — please use GitHub itself.",
+    "es": "Aún no está listo: usa GitHub."
+  },
+  "issue_many": {
+    "en": "That is a few reports in an hour. Try again later.",
+    "es": "Son varios informes en una hora. Inténtalo más tarde."
   }
 }

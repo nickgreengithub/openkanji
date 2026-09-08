@@ -49,6 +49,7 @@ but costs a CORS preflight on every call and a `SameSite=None` cookie.
 | `GET /api/progress` | `{mastered, strength, deck, lang}` |
 | `PUT /api/progress` | `{mastered, strength, deck, lang}` — unions `mastered`, merges `strength` per word |
 | `PUT /api/updates` | `{on}` — whether to be mailed about the app. Ticked before sign-in, so the page holds the intent in `localStorage` and sends it once the session resolves |
+| `POST /api/issue` | `{title, text, version, agent}` — opens a GitHub issue under the project's own token. **No account needed**: a reader who has found something wrong should not have to own one. Metered by IP, capped in length, and the version and browser go in a footer the reporter cannot write |
 | `POST /api/logout` | clears the cookie |
 | `DELETE /api/account` | erases the account, its progress and its sign-in rows |
 

@@ -62,6 +62,21 @@ const aiStub = (env, text = '{"c":["味"]}') => {
   };
 };
 
+// The report form: a token that never leaves the Worker, and a fetch that
+// plays GitHub's issues endpoint, so the call is exercised without the network.
+const ghStub = (env, status = 201) => {
+  env.GITHUB_TOKEN = "ghp-test";
+  env.ISSUE_REPO = "nickgreengithub/openkanji";
+  env._gh = [];
+  env.GITHUB_FETCH = async (url, init) => {
+    env._gh.push({ url: String(url), headers: init.headers, body: JSON.parse(init.body) });
+    if (status !== 201) return new Response("no", { status });
+    return new Response(JSON.stringify({ number: 42, html_url: "https://github.com/nickgreengithub/openkanji/issues/42" }),
+      { status: 201, headers: { "content-type": "application/json" } });
+  };
+  return env;
+};
+
 const call = (env, method, path, { body, cookie, ip } = {}) => {
   const headers = { "content-type": "application/json" };
   if (cookie) headers.cookie = cookie;
@@ -298,6 +313,76 @@ await test("a database made before the updates column gets it on first use", asy
   const cols1 = env._db.prepare("select name from pragma_table_info('users')").all().map(r => r.name);
   assert.ok(cols1.includes("updates"), "and has it afterwards");
   assert.equal((await (await call(env, "GET", "/api/me", { cookie })).json()).updates, true);
+});
+
+// --- reporting a problem ---
+
+await test("anyone can report a problem, signed in or not", async () => {
+  const env = ghStub(makeEnv());
+  const r = await call(env, "POST", "/api/issue", { body: { title: "Audio stops", text: "The clip cuts off on set three." } });
+  assert.equal(r.status, 200);
+  const out = await r.json();
+  assert.equal(out.number, 42);
+  assert.match(out.url, /\/issues\/42$/);
+  assert.equal(env._gh.length, 1);
+  assert.equal(env._gh[0].url, "https://api.github.com/repos/nickgreengithub/openkanji/issues");
+  assert.equal(env._gh[0].body.title, "Audio stops");
+  assert.match(env._gh[0].body.body, /^The clip cuts off on set three\./);
+});
+
+await test("the token never leaves the Worker, and GitHub is told who is calling", async () => {
+  const env = ghStub(makeEnv());
+  const r = await call(env, "POST", "/api/issue", { body: { title: "t", text: "something long enough" } });
+  const seen = JSON.stringify(await r.json());
+  assert.ok(!seen.includes("ghp-test"), "the reply carries no token");
+  assert.equal(env._gh[0].headers.authorization, "Bearer ghp-test");
+  assert.ok(env._gh[0].headers["user-agent"], "a user-agent, which GitHub insists on");
+});
+
+await test("what the page says about itself is a footer, and cannot be more", async () => {
+  const env = ghStub(makeEnv());
+  await call(env, "POST", "/api/issue", { body: {
+    title: "Bad", text: "a real report here",
+    version: "0.1\n\n# not a heading", agent: "Mozilla/5.0 <script>x</script>",
+  } });
+  const body = env._gh[0].body.body;
+  const foot = body.slice(body.indexOf("---"));
+  assert.ok(!foot.includes("\n# "), "no newline smuggled into the footer");
+  assert.ok(!foot.includes("<script>"), "and no markup");
+  assert.match(foot, /Reported from the app/);
+});
+
+await test("an empty or enormous report is refused", async () => {
+  const env = ghStub(makeEnv());
+  assert.equal((await call(env, "POST", "/api/issue", { body: { title: "", text: "long enough to pass" } })).status, 400);
+  assert.equal((await call(env, "POST", "/api/issue", { body: { title: "t", text: "short" } })).status, 400);
+  assert.equal((await call(env, "POST", "/api/issue", { body: { title: "t", text: "x".repeat(4001) } })).status, 413);
+  assert.equal((await call(env, "POST", "/api/issue", { body: { title: "t".repeat(121), text: "long enough to pass" } })).status, 413);
+  assert.equal(env._gh.length, 0, "none of them reached GitHub");
+});
+
+await test("a single address cannot fill the tracker", async () => {
+  const env = ghStub(makeEnv());
+  const one = () => call(env, "POST", "/api/issue", { body: { title: "t", text: "a report long enough" }, ip: "198.51.100.4" });
+  for (let i = 0; i < 3; i++) assert.equal((await one()).status, 200);
+  assert.equal((await one()).status, 429);
+  assert.equal(env._gh.length, 3);
+  // and a different reader is unaffected
+  const other = await call(env, "POST", "/api/issue", { body: { title: "t", text: "a report long enough" }, ip: "198.51.100.9" });
+  assert.equal(other.status, 200);
+});
+
+await test("with no token configured the form says so rather than failing oddly", async () => {
+  const env = makeEnv();
+  const r = await call(env, "POST", "/api/issue", { body: { title: "t", text: "a report long enough" } });
+  assert.equal(r.status, 503);
+  assert.equal((await r.json()).error, "not_configured");
+});
+
+await test("a token GitHub refuses reads as not configured too", async () => {
+  const env = ghStub(makeEnv(), 401);
+  const r = await call(env, "POST", "/api/issue", { body: { title: "t", text: "a report long enough" } });
+  assert.equal(r.status, 503);
 });
 
 await test("logout clears the cookie", async () => {

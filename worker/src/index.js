@@ -14,6 +14,7 @@
 //   GET    /api/progress                    -> { mastered, deck, lang }
 //   PUT    /api/progress   { mastered, deck, lang }
 //   POST   /api/logout                      -> clears the cookie
+//   POST   /api/issue     { title, text }   -> opens a GitHub issue (no account needed)
 //   DELETE /api/account                     -> erases the account and its progress
 
 const TOKEN_TTL = 15 * 60;             // magic link: 15 minutes
@@ -27,6 +28,71 @@ const RATE_EMAIL = 5;
 const RATE_IP = 20;
 
 const now = () => Math.floor(Date.now() / 1000);
+
+// ---------- issues: the report form, posted to GitHub ----------
+// A reader who has found something wrong should not have to own a GitHub
+// account to say so, so this takes a title and a description from anyone and
+// opens the issue under the project's own token -- which the page never sees.
+// Open to the signed-out, therefore metered hard by IP, capped in length, and
+// given a floor: an empty report helps nobody and costs a public issue.
+const ISSUE_MAX_TITLE = 120;
+const ISSUE_MAX_TEXT = 4000;
+const ISSUE_MIN_TEXT = 10;
+const ISSUE_PER_HOUR = 3;
+const ISSUE_REPO_OK = /^[\w.-]{1,64}\/[\w.-]{1,64}$/;
+
+const issueUsageReady = new WeakSet();
+async function issueAllowed(db, ip) {
+  if (!issueUsageReady.has(db)) {
+    await db.prepare("create table if not exists issue_usage (ip text not null, hour integer not null, n integer not null default 0, primary key (ip, hour))").run();
+    issueUsageReady.add(db);
+  }
+  const hour = Math.floor(now() / 3600);
+  const row = await db.prepare(
+    "insert into issue_usage (ip, hour, n) values (?1, ?2, 1) on conflict(ip, hour) do update set n = n + 1 returning n"
+  ).bind(ip || "unknown", hour).first();
+  return !row || row.n <= ISSUE_PER_HOUR;
+}
+
+// One line, no markup, no newlines: what the page says about itself goes in a
+// footer, and a footer is not a place a reporter gets to write.
+const oneLine = (v, max) => String(v == null ? "" : v).replace(/[\r\n]+/g, " ").replace(/[`<>]/g, "").trim().slice(0, max);
+
+async function handleIssue(request, env) {
+  const repo = ISSUE_REPO_OK.test(env.ISSUE_REPO || "") ? env.ISSUE_REPO : null;
+  if (!env.GITHUB_TOKEN || !repo) return json({ error: "not_configured" }, 503);
+  const body = await readJson(request);
+  if (!body || typeof body.title !== "string" || typeof body.text !== "string") return json({ error: "bad_request" }, 400);
+  const title = body.title.replace(/[\r\n]+/g, " ").trim();
+  const text = body.text.trim();
+  if (!title || text.length < ISSUE_MIN_TEXT) return json({ error: "too_short" }, 400);
+  if (title.length > ISSUE_MAX_TITLE || text.length > ISSUE_MAX_TEXT) return json({ error: "too_long" }, 413);
+
+  const ip = request.headers.get("cf-connecting-ip") || null;
+  if (!(await issueAllowed(env.DB, ip))) return json({ error: "rate_limited" }, 429);
+
+  // The reporter's words first and whole; then a rule, then what the page
+  // knows about itself. Both of the footer's facts come from the page, so
+  // neither is presented as anything more than that.
+  const footer = "Reported from the app · v" + oneLine(body.version, 16) + " · " + oneLine(body.agent, 180);
+  const res = await (env.GITHUB_FETCH || fetch)("https://api.github.com/repos/" + repo + "/issues", {
+    method: "POST",
+    headers: {
+      authorization: "Bearer " + env.GITHUB_TOKEN,
+      accept: "application/vnd.github+json",
+      "content-type": "application/json",
+      // GitHub refuses a request that will not say who is making it
+      "user-agent": "openkanji-worker",
+    },
+    body: JSON.stringify({ title, body: text + "\n\n---\n" + footer, labels: ["in-app"] }),
+  }).catch(() => null);
+  if (!res) return json({ error: "upstream_failed" }, 502);
+  if (res.status === 401 || res.status === 403 || res.status === 404) return json({ error: "not_configured" }, 503);
+  if (!res.ok) return json({ error: "upstream_failed" }, 502);
+  const out = await res.json().catch(() => null);
+  if (!out || !out.number) return json({ error: "upstream_failed" }, 502);
+  return json({ ok: true, number: out.number, url: out.html_url });
+}
 
 // ---------- AI: the writing coach and the IME, proxied ----------
 // Inside Claude Design the page had window.claude; on the site it has this.
@@ -501,6 +567,10 @@ export default {
       const row = await env.DB.prepare("select updates from users where id = ?").bind(user.id).first();
       return json({ email: user.email, updates: !!(row && row.updates) });
     }
+
+    // Anyone may report a problem, signed in or not: a reader who has found
+    // something wrong should not have to own an account to say so.
+    if (method === "POST" && path === "/api/issue") return handleIssue(request, env);
 
     // Everything below needs a live account.
     if (!user) return json({ error: "signed_out" }, 401, userId ? { "set-cookie": cookieHeader("", 0) } : {});

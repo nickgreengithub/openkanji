@@ -559,6 +559,10 @@ Secrets live on the Worker, never in the repo:
 ```sh
 npx wrangler secret put RESEND_API_KEY --name openkanji
 openssl rand -base64 32 | npx wrangler secret put SESSION_SECRET --name openkanji
+# the in-app report form: a fine-grained token, this repository only, with
+# Issues: read and write and nothing else. Without it the form says it is not
+# set up rather than failing oddly.
+npx wrangler secret put GITHUB_TOKEN --name openkanji
 ```
 
 Worker tests:

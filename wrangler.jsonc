@@ -21,11 +21,14 @@
     }
   ],
 
-  // Secrets (RESEND_API_KEY, SESSION_SECRET, DEEPSEEK_API_KEY) are set with
-  // `wrangler secret put` and never live in this file.
+  // Secrets (RESEND_API_KEY, SESSION_SECRET, DEEPSEEK_API_KEY, GITHUB_TOKEN)
+  // are set with `wrangler secret put` and never live in this file.
   "vars": {
     "MAIL_FROM": "OpenKanji <nick@openkanji.org>",
     "SITE_URL": "https://openkanji.org",
+    // Where the in-app report form opens its issues. Without GITHUB_TOKEN set
+    // as a secret the form says so and offers GitHub itself instead.
+    "ISSUE_REPO": "nickgreengithub/openkanji",
     // The model behind Write and the IME, and each account's calls per hour.
     "AI_MODEL": "deepseek-v4-flash",
     "AI_PER_HOUR": "150"

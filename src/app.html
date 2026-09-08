@@ -435,6 +435,20 @@ a:hover{color:var(--text-accent-hover)}
 .ok-pop-by{font-family:var(--font-2);font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ok-mute)}
 .ok-pop-me{color:var(--ok-ink);text-decoration:none}
 .ok-pop-me:hover{color:var(--ok-acc);text-decoration:underline}
+/* Reporting a problem without leaving to go and own a GitHub account. One
+   fixed box: the form, the sending and the answer all live in it, so nothing
+   grows or shrinks under the reader's hand. */
+.ok-issue{position:relative;width:min(34rem,100%);height:min(29rem,86vh);display:flex;flex-direction:column;gap:.75rem;padding:1.6rem 1.75rem 1.5rem;border-radius:20px;background:var(--ok-card);box-shadow:0 30px 80px rgba(20,24,30,.35);animation:ok-rise 200ms cubic-bezier(.2,.7,.3,1)}
+.ok-issue-h{font-size:1.25rem}
+.ok-issue-body{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:.6rem}
+.ok-issue-text{flex:1 1 auto;min-height:0;width:100%;padding:.6rem .75rem;border-radius:8px;border:1px solid #d5d5cf;background:#fff;font-family:var(--font-2);font-size:1rem;line-height:1.45;color:var(--ok-ink);outline:none;resize:none}
+.ok-issue-text:focus{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
+.ok-issue-note{font-family:var(--font-2);font-size:.8125rem;line-height:1.35;color:var(--ok-mute)}
+.ok-issue-foot{flex:0 0 auto;display:flex;align-items:center;justify-content:flex-end;gap:.7rem}
+.ok-issue-msg{flex:1 1 auto;min-width:0;font-family:var(--font-2);font-size:.875rem;color:var(--ok-mute)}
+/* the answer, in the same box the form was in */
+.ok-issue-done{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center}
+.ok-issue-done-n{font-size:1.5rem;color:var(--ok-acc)}
 .ok-input{width:100%;height:2.4rem;padding:0 .75rem;border-radius:8px;border:1px solid #d5d5cf;background:#fff;font-family:var(--font-2);font-size:1rem;color:var(--ok-ink);outline:none}
 .ok-input:focus{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
 /* One opt-in, drawn rather than native so it matches the popover and reads
@@ -805,6 +819,9 @@ a:hover{color:var(--text-accent-hover)}
   /* settings: the popover becomes the page */
   .ok-pop{position:fixed;inset:0;top:var(--ok-vv-top,0px);height:var(--ok-vh,100svh);padding:0;z-index:96;background:var(--ok-bg);animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
   .ok-pop-in{width:100%;height:100%;border:0;border-radius:0;box-shadow:none;overflow-y:auto;gap:.9rem;padding:calc(4.2rem + env(safe-area-inset-top)) 1.25rem calc(1.5rem + env(safe-area-inset-bottom))}
+  /* the close button crosses to the left on a phone, as it does everywhere
+     else, so the heading starts underneath it rather than beside it */
+  .ok-issue{width:100%;height:var(--ok-vh,100svh);max-height:none;border-radius:0;padding:calc(3.5rem + env(safe-area-inset-top)) 1.25rem calc(1rem + env(safe-area-inset-bottom))}
   .ok-pop-x{display:flex;position:absolute;top:calc(.5rem + env(safe-area-inset-top));left:.6rem;width:2.75rem;height:2.75rem;align-items:center;justify-content:center;border-radius:50%;font-size:1.7rem;line-height:1;color:var(--ok-mute);cursor:pointer;user-select:none}
   .ok-pop-head{display:block;position:absolute;top:calc(1.35rem + env(safe-area-inset-top));left:3.5rem;right:3.5rem;text-align:center;font-family:var(--font-2);font-size:.9375rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ok-mute)}
   .ok-input,.ok-chip,.ok-link,.ok-btn{min-height:2.75rem}
@@ -1280,13 +1297,45 @@ html[data-ok-ready] #ok-boot{display:none}
           </div>
           <div class="ok-pop-sep"></div>
           <div class="ok-pop-foot">
-            <div class="ok-pop-links"><a class="ok-link" href="https://github.com/nickgreengithub/openkanji" target="_blank" rel="noopener noreferrer">{{ t_source }}</a><a class="ok-link" href="https://github.com/nickgreengithub/openkanji/issues" target="_blank" rel="noopener noreferrer">{{ t_issues }}</a></div>
+            <div class="ok-pop-links"><a class="ok-link" href="https://github.com/nickgreengithub/openkanji" target="_blank" rel="noopener noreferrer">{{ t_source }}</a><span sc-camel-on-click="{{ openIssue }}" class="ok-link">{{ t_issues }}</span></div>
             <span class="ok-pop-by">{{ t_by }} <a class="ok-pop-me" href="https://www.linkedin.com/in/analystnickgreen/" target="_blank" rel="noopener noreferrer">Nicholas Green</a></span>
           </div>
         </div>
       </div>
     </sc-if>
   </div>
+
+  <!-- ===== Report a problem: written here, opened on GitHub ===== -->
+  <sc-if value="{{ issueOn }}" hint-placeholder-val="{{ false }}">
+    <div sc-camel-on-click="{{ closeIssue }}" class="ok-veil">
+      <div sc-camel-on-click="{{ stop }}" class="ok-issue">
+        <span sc-camel-on-click="{{ closeIssue }}" class="ok-x">×</span>
+        <span class="ok-issue-h">{{ t_issue_title }}</span>
+        <sc-if value="{{ issueForm }}" hint-placeholder-val="{{ true }}">
+          <div class="ok-issue-body">
+            <input type="text" class="ok-input" maxlength="120" placeholder="{{ t_issue_subject }}" value="{{ issueSubject }}" sc-camel-on-change="{{ onIssueSubject }}"/>
+            <textarea class="ok-issue-text" maxlength="4000" placeholder="{{ t_issue_body }}" sc-camel-on-change="{{ onIssueText }}">{{ issueText }}</textarea>
+            <span class="ok-issue-note">{{ t_issue_note }}</span>
+          </div>
+          <div class="ok-issue-foot">
+            <span class="ok-issue-msg">{{ issueMsg }}</span>
+            <span sc-camel-on-click="{{ closeIssue }}" class="ok-btn">{{ t_cancel }}</span>
+            <span sc-camel-on-click="{{ sendIssue }}" class="ok-btn ok-btn-primary" style="{{ issueSendStyle }}">{{ issueSendLabel }}</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ issueSent }}" hint-placeholder-val="{{ false }}">
+          <div class="ok-issue-done">
+            <span class="ok-issue-done-n">{{ issueNumber }}</span>
+            <span>{{ t_issue_thanks }}</span>
+            <a class="ok-link" href="{{ issueUrl }}" target="_blank" rel="noopener noreferrer">{{ t_issue_see }}</a>
+          </div>
+          <div class="ok-issue-foot">
+            <span sc-camel-on-click="{{ closeIssue }}" class="ok-btn ok-btn-primary">{{ t_close }}</span>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
 
   <!-- ===== Focus: one word, large; in Recall it is a flashcard ===== -->
   <sc-if value="{{ focusOn }}" hint-placeholder-val="{{ false }}">
@@ -2332,7 +2381,7 @@ const okMerge = (a, b) => {
 class Component extends DCLogic {
   state = {
     screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
-    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, updates: false, updatesWant: okWantUpdates(), zoom: "map", focus: null, focusShown: false, focusAuto: false, autoSpeed: 1, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
+    draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, updates: false, updatesWant: okWantUpdates(), issueOn: false, issueSubject: "", issueText: "", issueBusy: false, issueDone: null, issueMsg: "", zoom: "map", focus: null, focusShown: false, focusAuto: false, autoSpeed: 1, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
   get furiDefault() { return this.props.startFurigana ?? true; }
@@ -2570,6 +2619,7 @@ class Component extends DCLogic {
     if (this._onKey) return;
     this._onKey = (e) => {
       if (e.key === "Escape") {
+        if (this.state.issueOn) { this.closeIssueView(); return; }
         if (this.state.focus != null) { this.closeFocusView(); return; }
         if (this.state.acctOpen) { this.closeAcctView(); return; }
         if (this.state.about) { this.setState({ about: false }); return; }
@@ -2789,6 +2839,42 @@ class Component extends DCLogic {
       const r = await this.api("/updates", { method: "PUT", body: JSON.stringify({ on: !!on }) });
       if (!r.ok) { this.setState({ updates: was }); this.flashMsg(T("could_not_save")); }
     } catch (e) { this.setState({ updates: was }); this.flashMsg(T("could_not_save")); }
+  }
+
+  // A problem, reported from inside the app. The Worker holds the token and
+  // opens the issue; the page only ever sends words. What it adds to them is
+  // named in the dialog: the version and the browser, and nothing else.
+  async sendIssue() {
+    const st = this.state;
+    if (st.issueBusy) return;
+    const title = String(st.issueSubject || "").trim();
+    const text = String(st.issueText || "").trim();
+    if (!title || text.length < 10) { this.setState({ issueMsg: T("issue_short") }); return; }
+    if (!okSyncReady()) { this.setState({ issueMsg: T("issue_off") }); return; }
+    this.setState({ issueBusy: true, issueMsg: "" });
+    try {
+      const r = await this.api("/issue", {
+        method: "POST",
+        body: JSON.stringify({ title, text, version: VERSION, agent: navigator.userAgent }),
+      });
+      const out = await r.json().catch(() => null);
+      if (r.ok && out && out.number) {
+        this.setState({ issueBusy: false, issueDone: out, issueSubject: "", issueText: "" });
+        return;
+      }
+      const why = (out && out.error) || "";
+      this.setState({ issueBusy: false, issueMsg: T(
+        why === "not_configured" ? "issue_off" : why === "rate_limited" ? "issue_many"
+        : why === "too_short" ? "issue_short" : "issue_failed") });
+    } catch (e) {
+      this.setState({ issueBusy: false, issueMsg: T("issue_failed") });
+    }
+  }
+
+  closeIssueView() {
+    if (!this.state.issueOn) return;
+    if (this.leavePage("issue")) return;
+    this.setState({ issueOn: false, issueDone: null, issueMsg: "" });
   }
 
   flashMsg(msg) {
@@ -4853,6 +4939,38 @@ class Component extends DCLogic {
           // What it is, in the header and again at the foot of the settings
           // panel. The number comes from package.json at build time.
           versionLabel: T("version_n", { n: VERSION }),
+          // Reporting a problem: written here, opened on GitHub by the Worker.
+          // The panel closes as the dialog opens, because the dialog is the
+          // whole screen on a phone and two of them would fight.
+          issueOn: !!st.issueOn,
+          issueForm: !st.issueDone,
+          issueSent: !!st.issueDone,
+          issueNumber: st.issueDone ? "#" + st.issueDone.number : "",
+          issueUrl: st.issueDone ? st.issueDone.url : "",
+          issueSubject: st.issueSubject || "",
+          issueText: st.issueText || "",
+          issueMsg: st.issueMsg || "",
+          issueSendLabel: st.issueBusy ? T("issue_sending") : T("issue_send"),
+          issueSendStyle: st.issueBusy || !String(st.issueSubject || "").trim() || String(st.issueText || "").trim().length < 10
+            ? "opacity:.45;pointer-events:none" : "",
+          onIssueSubject: (e) => this.setState({ issueSubject: e && e.target ? e.target.value : "", issueMsg: "" }),
+          onIssueText: (e) => this.setState({ issueText: e && e.target ? e.target.value : "", issueMsg: "" }),
+          openIssue: () => {
+            // The panel and the dialog are one screen on a phone, so the dialog
+            // takes the panel's place rather than standing on top of it: the
+            // history entry the panel pushed is renamed instead of unwound,
+            // and one back gesture leaves both. Closing the panel properly
+            // here would call history.back(), which lands after this and would
+            // close the dialog the same breath as it opened.
+            const pages = this._pages || [];
+            const top = pages[pages.length - 1];
+            const shut = () => this.setState({ issueOn: false, issueDone: null, issueMsg: "" });
+            if (top && top.name === "acct") { top.name = "issue"; top.close = shut; }
+            else this.openPage("issue", shut);
+            this.setState({ acctOpen: false, issueOn: true, issueDone: null, issueMsg: "" });
+          },
+          closeIssue: () => this.closeIssueView(),
+          sendIssue: () => this.sendIssue(),
           syncDot: dot,
           syncText: syncText,
           userEmail: st.userEmail || "",
