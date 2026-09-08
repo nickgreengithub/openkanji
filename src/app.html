@@ -773,7 +773,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-w-eg{display:flex;gap:.5rem;color:var(--ok-body)}
 .ok-w-eg i{font-style:normal;color:var(--ok-acc)}
 .ok-w-verdict{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.1em;text-transform:uppercase}
-.ok-w-think{display:inline-flex;gap:.3rem;padding:.15rem 0}
+.ok-w-think{align-self:flex-start;display:inline-flex;gap:.3rem;padding:.6rem .2rem}
 .ok-w-think span{width:.5rem;height:.5rem;border-radius:50%;background:var(--ok-mute);animation:ok-w-think-bounce 1.1s infinite ease-in-out}
 .ok-w-think span:nth-child(2){animation-delay:.15s}
 .ok-w-think span:nth-child(3){animation-delay:.3s}
@@ -1485,7 +1485,7 @@ html[data-ok-ready] #ok-boot{display:none}
             </sc-for>
           </div>
           <sc-if value="{{ hasSent }}" hint-placeholder-val="{{ false }}"><div class="ok-w-msg ok-w-out">{{ sent }}</div></sc-if>
-          <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><div class="ok-w-msg ok-w-in ok-w-think"><span></span><span></span><span></span></div></sc-if>
+          <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><div class="ok-w-think"><span></span><span></span><span></span></div></sc-if>
           <sc-if value="{{ hasResult }}" hint-placeholder-val="{{ false }}">
             <div class="ok-w-msg ok-w-in" style="display:flex;flex-direction:column;gap:.45rem">
               <sc-if value="{{ r.hasVerdict }}" hint-placeholder-val="{{ false }}"><span class="ok-w-verdict" style="color:{{ r.verdictColor }}">{{ r.verdictLine }}</span></sc-if>
@@ -3481,7 +3481,12 @@ class Component extends DCLogic {
 
     const k = setOf(this.state.batch, this.state.deck)[this.state.sel];
     const answer = this.state.draft.trim();
-    if (!answer || this.state.loading) return;
+    // state.loading is set via setState, which the framework may batch, so a
+    // second Enter/click landing in the same tick could still read it as
+    // false; this._asking is a plain instance flag, set the instant we know
+    // we're sending, so a same-tick duplicate is always caught.
+    if (!answer || this.state.loading || this._asking) return;
+    this._asking = true;
     this._typeLen = 0;
     // AI_MAX_MSGS on the Worker caps the whole array at 8, so only the most
     // recent exchanges ride along — old enough turns just age out.
@@ -3526,13 +3531,16 @@ class Component extends DCLogic {
       this.startTyping();
     } catch (e) {
       this.setState(s => ({ loading: false, result: { natural: false, correction: null, note: "", better: "", error: true }, replies: (s.replies || []).concat([""]) }));
+    } finally {
+      this._asking = false;
     }
   }
 
   async askQuestion() {
     const k = setOf(this.state.batch, this.state.deck)[this.state.sel];
     const q = this.state.draft.trim();
-    if (!q || this.state.loading) return;
+    if (!q || this.state.loading || this._asking) return;
+    this._asking = true;
     this._typeLen = 0;
     this.setState({ loading: true, result: null, sent: q, draft: "", compStart: 0 });
     try {
@@ -3556,6 +3564,8 @@ class Component extends DCLogic {
       this.startTyping();
     } catch (e) {
       this.setState({ loading: false, result: { understood: true, note: T("couldnt_answer"), better: "", ask: true } });
+    } finally {
+      this._asking = false;
     }
   }
 
