@@ -140,16 +140,21 @@ async function handleGitHubHook(request, env) {
   let hook = null;
   try { hook = JSON.parse(raw); } catch (e) { return json({ error: "bad_body" }, 400); }
   const number = hook && hook.issue && hook.issue.number;
-  if (!number) return json({ ok: true, skipped: "not an issue" });
+  // Every skip says what arrived and what was made of it. A webhook is
+  // diagnosed through this one line or not at all: the logs are somewhere
+  // else, and the person reading it is looking at GitHub's delivery page.
+  const saw = event + "." + ((hook && hook.action) || "?") + (number ? " #" + number : "");
+  if (!number) return json({ ok: true, skipped: "not an issue", saw });
 
   // A comment on it, or it being closed. Everything else is not news.
   const kind = event === "issue_comment" && hook.action === "created" ? "reply"
     : event === "issues" && hook.action === "closed" ? "closed" : null;
-  if (!kind) return json({ ok: true, skipped: "nothing to say" });
+  if (!kind) return json({ ok: true, skipped: "nothing to say", saw, wants: "issue_comment.created or issues.closed" });
 
   await ensureIssueWatch(env.DB);
   const watch = await env.DB.prepare("select email, lang from issue_watch where number = ?").bind(number).first();
-  if (!watch) return json({ ok: true, skipped: "nobody is waiting" });
+  const waiting = await env.DB.prepare("select count(*) as n from issue_watch").first();
+  if (!watch) return json({ ok: true, skipped: "nobody is waiting", saw, watching: (waiting && waiting.n) || 0 });
 
   await sendIssueMail(env, watch.email, watch.lang, kind, {
     number,
@@ -157,7 +162,7 @@ async function handleGitHubHook(request, env) {
     url: String((hook.issue && hook.issue.html_url) || ""),
     said: kind === "reply" ? String((hook.comment && hook.comment.body) || "") : "",
   });
-  return json({ ok: true, told: true });
+  return json({ ok: true, told: true, saw, to: watch.email.replace(/^(.).*@/, "$1***@") });
 }
 
 // The link that ends it. Signed, so it cannot be guessed for someone else's

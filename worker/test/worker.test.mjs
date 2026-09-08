@@ -467,6 +467,9 @@ await test("a reply on the issue reaches the reader who asked for it", async () 
     comment: { body: "Fixed in the next deploy." },
   });
   assert.equal(r.status, 200);
+  const told = await r.json();
+  assert.equal(told.told, true);
+  assert.equal(told.to, "r***@example.com", "who it went to, without printing an address into a public log");
   assert.equal(env._sent.length, 1);
   assert.equal(env._sent[0].to, "reader@example.com");
   assert.match(env._sent[0].subject, /#42/);
@@ -481,8 +484,11 @@ await test("closing it is news too, and nothing else is", async () => {
   const env = ghStub(makeEnv());
   env.GH_WEBHOOK_SECRET = HOOK_SECRET;
   await reported(env);
-  await hookCall(env, "issues", { action: "labeled", issue: { number: 42, title: "t", html_url: "u" } });
+  const skip = await (await hookCall(env, "issues", { action: "labeled", issue: { number: 42, title: "t", html_url: "u" } })).json();
   assert.equal(env._sent.length, 0, "a label is not news");
+  // the delivery page is where this gets diagnosed, so the line says enough
+  assert.equal(skip.saw, "issues.labeled #42");
+  assert.match(skip.wants, /issue_comment\.created/);
   await hookCall(env, "issues", { action: "closed", issue: { number: 42, title: "t", html_url: "u" } });
   assert.equal(env._sent.length, 1);
   assert.match(env._sent[0].subject, /closed/i);
