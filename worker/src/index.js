@@ -371,7 +371,10 @@ async function handleAsk(request, env, user) {
     res = await send(AI_URL, {
       method: "POST",
       headers: { "content-type": "application/json", authorization: `Bearer ${env.DEEPSEEK_API_KEY}` },
-      body: JSON.stringify({ model, messages, max_tokens: 4096, stream: false }),
+      // every caller on the page asks for JSON and nothing else, so make that
+      // a server-enforced guarantee rather than trusting the prompt alone --
+      // DeepSeek otherwise sometimes wraps the object in prose or a fence.
+      body: JSON.stringify({ model, messages, max_tokens: 4096, stream: false, response_format: { type: "json_object" } }),
     });
   } catch {
     return json({ error: "upstream_failed" }, 502);
