@@ -1321,7 +1321,7 @@ html[data-ok-ready] #ok-boot{display:none}
         <sc-if value="{{ issueForm }}" hint-placeholder-val="{{ true }}">
           <div class="ok-issue-body">
             <input type="text" class="ok-input" maxlength="120" placeholder="{{ t_issue_subject }}" value="{{ issueSubject }}" sc-camel-on-change="{{ onIssueSubject }}"/>
-            <textarea class="ok-issue-text" maxlength="4000" placeholder="{{ t_issue_body }}" sc-camel-on-change="{{ onIssueText }}">{{ issueText }}</textarea>
+            <textarea class="ok-issue-text" maxlength="4000" placeholder="{{ t_issue_body }}" value="{{ issueText }}" sc-camel-on-change="{{ onIssueText }}"></textarea>
             <span class="ok-issue-note">{{ t_issue_note }}</span>
           </div>
           <div class="ok-issue-foot">
