@@ -400,6 +400,19 @@ await test("one account cannot fill the tracker", async () => {
   assert.equal(env._gh.length, 3);
 });
 
+await test("a database carrying the old by-address meter still takes reports", async () => {
+  // The live shape before the meter moved from addresses to accounts. "create
+  // table if not exists" leaves it alone, so an insert naming the new column
+  // would fail against it -- which is exactly what shipped, and what put
+  // "Could not send it" in front of a reader.
+  const env = ghStub(makeEnv());
+  env._db.exec("create table issue_usage (ip text not null, hour integer not null, n integer not null default 0, primary key (ip, hour))");
+  const cookie = await signedIn(env);
+  const r = await call(env, "POST", "/api/issue", { cookie, body: { title: "t", text: "a report long enough" } });
+  assert.equal(r.status, 200, "the report still lands");
+  assert.equal(env._db.prepare("select count(*) as n from issue_meter").get().n, 1);
+});
+
 await test("with no token configured the form says so rather than failing oddly", async () => {
   const env = makeEnv();
   const cookie = await signedIn(env);

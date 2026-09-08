@@ -46,12 +46,17 @@ const ISSUE_REPO_OK = /^[\w.-]{1,64}\/[\w.-]{1,64}$/;
 const issueUsageReady = new WeakSet();
 async function issueAllowed(db, who) {
   if (!issueUsageReady.has(db)) {
-    await db.prepare("create table if not exists issue_usage (who text not null, hour integer not null, n integer not null default 0, primary key (who, hour))").run();
+    // A new name, not a new shape for the old one: "create table if not
+    // exists" does nothing to a table that is already there, so renaming the
+    // column inside it left every insert naming a column the live database
+    // had never heard of. The meter used to be by address; it is by account
+    // now, which is a different table.
+    await db.prepare("create table if not exists issue_meter (who text not null, hour integer not null, n integer not null default 0, primary key (who, hour))").run();
     issueUsageReady.add(db);
   }
   const hour = Math.floor(now() / 3600);
   const row = await db.prepare(
-    "insert into issue_usage (who, hour, n) values (?1, ?2, 1) on conflict(who, hour) do update set n = n + 1 returning n"
+    "insert into issue_meter (who, hour, n) values (?1, ?2, 1) on conflict(who, hour) do update set n = n + 1 returning n"
   ).bind(String(who), hour).first();
   return !row || row.n <= ISSUE_PER_HOUR;
 }
