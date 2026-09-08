@@ -39,13 +39,14 @@ const SHAPES = [
 ];
 
 // A plate needs air around the mark; a mark on nothing needs less, but not
-// none -- reaching the edge of the canvas, the widest stroke runs into the tab
-// beside it and reads as cut off. So the bare mark is fitted rather than
+// none. Reaching the edge of the canvas -- or coming within a pixel of it at
+// sixteen -- the widest stroke runs into the tab beside it and reads as cut
+// off, whatever the alpha channel says. Two clear pixels a side at sixteen. So the bare mark is fitted rather than
 // scaled by eye: as large as it goes inside a margin, and centred in the box
 // on both axes, which the plate drawing is not (it hangs low, under the room
 // the plate leaves for it).
 const BOX = SHAPES.flat().reduce((b, [x, y]) => [Math.min(b[0], x), Math.min(b[1], y), Math.max(b[2], x), Math.max(b[3], y)], [1, 1, 0, 0]);
-const MARGIN = 0.08;
+const MARGIN = 0.14;
 const fitted = (m) => {
   const w = BOX[2] - BOX[0], h = BOX[3] - BOX[1];
   const k = (1 - 2 * m) / Math.max(w, h);
