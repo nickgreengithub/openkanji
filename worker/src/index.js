@@ -351,8 +351,23 @@ async function aiAllowed(db, userId, perHour) {
   ).bind(userId, hour).first();
   return !row || row.n <= perHour;
 }
+// A failure here is invisible otherwise: it is a 200 from this Worker's own
+// point of view (it answered the request, just with bad news), so nothing
+// in Cloudflare's own request metrics flags it. Logging every kind lets the
+// cron digest below tell a learner's one-off mistake from DeepSeek being
+// down for everyone.
+const aiErrorsReady = new WeakSet();
+async function logAiError(db, kind) {
+  try {
+    if (!aiErrorsReady.has(db)) {
+      await db.prepare("create table if not exists ai_errors (id integer primary key autoincrement, kind text not null, created_at integer not null)").run();
+      aiErrorsReady.add(db);
+    }
+    await db.prepare("insert into ai_errors (kind, created_at) values (?1, ?2)").bind(kind, now()).run();
+  } catch (e) {}
+}
 async function handleAsk(request, env, user) {
-  if (!env.DEEPSEEK_API_KEY) return json({ error: "not_configured" }, 503);
+  if (!env.DEEPSEEK_API_KEY) { await logAiError(env.DB, "not_configured"); return json({ error: "not_configured" }, 503); }
   const body = await readJson(request);
   if (!body || typeof body.system !== "string" || !Array.isArray(body.messages) || !body.messages.length) return json({ error: "bad_body" }, 400);
   if (body.system.length > AI_MAX_SYSTEM || body.messages.length > AI_MAX_MSGS) return json({ error: "too_long" }, 413);
@@ -381,21 +396,22 @@ async function handleAsk(request, env, user) {
       body: JSON.stringify({ model, messages, max_tokens: 4096, stream: false, response_format: { type: "json_object" }, reasoning_effort: "low" }),
     });
   } catch {
+    await logAiError(env.DB, "upstream_failed");
     return json({ error: "upstream_failed" }, 502);
   }
   // 401/403 is a bad key and 402 an empty balance: both are ours to fix, and
   // both leave the learner with the same dead feature, so they read alike.
-  if (res.status === 401 || res.status === 402 || res.status === 403) return json({ error: "not_configured" }, 503);
-  if (res.status === 429 || res.status >= 500) return json({ error: "upstream_busy" }, 503);
-  if (!res.ok) return json({ error: "upstream_failed" }, 502);
+  if (res.status === 401 || res.status === 402 || res.status === 403) { await logAiError(env.DB, "not_configured"); return json({ error: "not_configured" }, 503); }
+  if (res.status === 429 || res.status >= 500) { await logAiError(env.DB, "upstream_busy"); return json({ error: "upstream_busy" }, 503); }
+  if (!res.ok) { await logAiError(env.DB, "upstream_failed"); return json({ error: "upstream_failed" }, 502); }
   const out = await res.json().catch(() => null);
   const choice = out && Array.isArray(out.choices) ? out.choices[0] : null;
-  if (choice && choice.finish_reason === "content_filter") return json({ error: "refused" }, 422);
+  if (choice && choice.finish_reason === "content_filter") { await logAiError(env.DB, "refused"); return json({ error: "refused" }, 422); }
   const text = choice && choice.message && choice.message.content;
   // an empty string is still a string: every caller here parses it as JSON,
   // so nothing usable came back either way and the client should hear that
   // as a failure, not get "" handed to JSON.parse.
-  if (typeof text !== "string" || !text) return json({ error: "upstream_failed" }, 502);
+  if (typeof text !== "string" || !text) { await logAiError(env.DB, "empty_response"); return json({ error: "upstream_failed" }, 502); }
   return json({ text, model: (out && out.model) || model });
 }
 const json = (data, status = 200, headers = {}) =>
@@ -771,13 +787,43 @@ async function handlePutProgress(request, env, userId) {
   return json({ ok: true, count: Object.keys(merged).length });
 }
 
+// Every five minutes, on the same schedule as the GitHub poll: a count of
+// what logAiError recorded since the last tick. Nobody has to be told by a
+// learner, watch a live log, or read Cloudflare's own dashboard (which
+// tracks status codes, not why one happened) to find out DeepSeek is down --
+// an email arrives instead. Rows are pruned after a day either way, so a
+// missing OWNER_EMAIL loses the alert but never lets the table grow forever.
+async function checkAiErrors(env) {
+  if (!env.DB) return { skipped: "no_db" };
+  await env.DB.prepare("create table if not exists ai_errors (id integer primary key autoincrement, kind text not null, created_at integer not null)").run();
+  const since = now() - 300;
+  const rows = await env.DB.prepare("select kind, count(*) as n from ai_errors where created_at > ?1 group by kind order by n desc").bind(since).all();
+  const list = (rows && rows.results) || [];
+  await env.DB.prepare("delete from ai_errors where created_at <= ?1").bind(now() - 86400).run();
+  if (!list.length) return { errors: 0 };
+  if (!env.OWNER_EMAIL) return { errors: list.length, unsent: "no_owner_email" };
+  const total = list.reduce((a, r) => a + r.n, 0);
+  const lines = list.map((r) => r.kind + ": " + r.n).join("<br>");
+  await deliver(env, {
+    to: env.OWNER_EMAIL,
+    from: env.MAIL_FROM,
+    subject: "OpenKanji: " + total + " AI " + (total === 1 ? "error" : "errors") + " in the last 5 minutes",
+    html: "<div style=\"font:16px/1.6 -apple-system,Segoe UI,Roboto,sans-serif;color:#15181c\"><p>Write and the IME candidates call DeepSeek through /api/ask. In the last five minutes:</p><p>" + lines + "</p></div>",
+    text: lines,
+  }).catch(() => {});
+  return { errors: total, emailed: true };
+}
+
 // ---------- router ----------
 
 export default {
   // Cloudflare calls this on the schedule in wrangler.jsonc. It is the whole
   // notification path: no webhook to configure, no secret to keep in step.
   async scheduled(event, env, ctx) {
-    const done = pollGitHub(env).catch((e) => ({ failed: String(e && e.message) }));
+    const done = Promise.all([
+      pollGitHub(env).catch((e) => ({ failed: String(e && e.message) })),
+      checkAiErrors(env).catch((e) => ({ failed: String(e && e.message) })),
+    ]);
     if (ctx && ctx.waitUntil) ctx.waitUntil(done);
     else await done;
   },

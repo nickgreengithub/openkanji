@@ -26,8 +26,10 @@
     }
   ],
 
-  // Secrets (RESEND_API_KEY, SESSION_SECRET, DEEPSEEK_API_KEY, GITHUB_TOKEN)
-  // are set with `wrangler secret put` and never live in this file.
+  // Secrets (RESEND_API_KEY, SESSION_SECRET, DEEPSEEK_API_KEY, GITHUB_TOKEN,
+  // OWNER_EMAIL) are set with `wrangler secret put` and never live in this
+  // file. OWNER_EMAIL is who the AI-error digest cron mails; without it the
+  // digest still runs (and still prunes ai_errors) but has nowhere to send.
   "vars": {
     // Nothing reads mail at openkanji.org, so the address says so rather than
     // inviting a reply that bounces. Every mail that wants an answer points at

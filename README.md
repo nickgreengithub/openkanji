@@ -364,7 +364,25 @@ wrangler secret put DEEPSEEK_API_KEY   # a pay-as-you-go key from platform.deeps
 `AI_MODEL` in `wrangler.jsonc` picks the model (`deepseek-v4-flash` by
 default); any name DeepSeek serves works, since it is an operator setting and
 not user input. The per-account meter lives in an `ai_usage` table the Worker
-creates on first use, so no migration is needed.
+creates on first use, so no migration is needed. `reasoning_effort` is pinned
+to `"low"`: this model shares `max_tokens` between its hidden reasoning and
+the actual answer, and at the default effort a grading note occasionally cost
+the whole budget, coming back as an empty (but 200 OK) response.
+
+A DeepSeek outage or an exhausted key is invisible from the outside: the
+Worker still answers 200 or a handled error code, so nothing in Cloudflare's
+own request metrics flags it, and a learner rarely bothers to report a dead
+feature. Every failure branch in `handleAsk` logs a row to `ai_errors`
+instead, and the five-minute cron (the same one that polls GitHub for issue
+replies) mails a digest to `OWNER_EMAIL` when that table has anything newer
+than five minutes old, then prunes rows older than a day either way:
+
+```
+wrangler secret put OWNER_EMAIL   # where the AI-error digest goes
+```
+
+Without it the digest still runs and still prunes, it just has nowhere to
+send.
 
 ## Kanji data
 
@@ -554,7 +572,10 @@ npm run build && npx wrangler deploy
 `npx wrangler deploy` is the Workers command -- `wrangler pages deploy` is for
 Pages projects and will fail here.
 
-Secrets live on the Worker, never in the repo:
+Secrets live on the Worker, never in the repo. Every one of these is load-bearing
+for a specific feature -- Write is silently dead without `DEEPSEEK_API_KEY`,
+the AI-error digest has nowhere to go without `OWNER_EMAIL` -- so missing one
+does not fail the deploy, it just fails quietly later:
 
 ```sh
 npx wrangler secret put RESEND_API_KEY --name openkanji
@@ -563,6 +584,10 @@ openssl rand -base64 32 | npx wrangler secret put SESSION_SECRET --name openkanj
 # Issues: read and write and nothing else. Without it the form says it is not
 # set up rather than failing oddly.
 npx wrangler secret put GITHUB_TOKEN --name openkanji
+# Write and the IME candidates -- see "Write, and the key behind it" above.
+npx wrangler secret put DEEPSEEK_API_KEY --name openkanji
+# Where the AI-error digest cron mails -- see the same section.
+npx wrangler secret put OWNER_EMAIL --name openkanji
 ```
 
 The names in capitals are the names the Worker reads -- type them exactly.
