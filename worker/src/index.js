@@ -191,14 +191,19 @@ const ISSUE_MAIL = {
   en: {
     reply: { subject: "Re: your OpenKanji report #{n}", lead: "There is a reply to what you reported." },
     closed: { subject: "Your OpenKanji report #{n} is closed", lead: "What you reported has been closed." },
-    see: "Read it on GitHub",
+    see: "Reply on GitHub",
+    // Nobody reads mail sent back to this address, and a reply written here in
+    // the belief it is private would be neither read nor private -- the thread
+    // it belongs to is public. Say both, above the link.
+    noreply: "Replies to this address are not read. Answer on the thread, which anyone can see.",
     why: "You asked to hear back when you sent this report.",
     stop: "Stop emails about this report",
   },
   es: {
     reply: { subject: "Re: tu informe de OpenKanji #{n}", lead: "Hay una respuesta a lo que informaste." },
     closed: { subject: "Tu informe de OpenKanji #{n} está cerrado", lead: "Lo que informaste se ha cerrado." },
-    see: "Léelo en GitHub",
+    see: "Responder en GitHub",
+    noreply: "No se leen las respuestas a esta dirección. Responde en el hilo, que es público.",
     why: "Pediste que te avisáramos al enviar este informe.",
     stop: "Dejar de recibir avisos de este informe",
   },
@@ -213,7 +218,8 @@ async function sendIssueMail(env, email, lang, kind, issue) {
     "<p>" + esc(t[kind].lead) + "</p>" +
     '<p style="color:#6b7280">#' + issue.number + " · " + esc(issue.title) + "</p>" +
     (said ? '<blockquote style="margin:1rem 0;padding:.2rem 0 .2rem 1rem;border-left:3px solid #0891b2;color:#374151;white-space:pre-wrap">' + esc(said) + "</blockquote>" : "") +
-    '<p><a href="' + esc(issue.url) + '" style="color:#0891b2">' + esc(t.see) + "</a></p>" +
+    '<p style="font-size:13px;color:#6b7280">' + esc(t.noreply) + "</p>" +
+    '<p><a href="' + esc(issue.url) + '" style="display:inline-block;padding:.6rem 1rem;border-radius:999px;background:#0891b2;color:#fff;text-decoration:none">' + esc(t.see) + "</a></p>" +
     '<hr style="border:0;border-top:1px solid #e5e5e0;margin:1.5rem 0">' +
     '<p style="font-size:13px;color:#6b7280">' + esc(t.why) + ' <a href="' + esc(stop) + '" style="color:#6b7280">' + esc(t.stop) + "</a></p></div>";
   await deliver(env, {
@@ -222,7 +228,7 @@ async function sendIssueMail(env, email, lang, kind, issue) {
     subject: t[kind].subject.replace("{n}", issue.number),
     html,
     text: t[kind].lead + "\n\n#" + issue.number + " · " + issue.title + (said ? "\n\n" + said : "") +
-      "\n\n" + issue.url + "\n\n" + t.why + " " + stop,
+      "\n\n" + t.noreply + "\n" + issue.url + "\n\n" + t.why + " " + stop,
   });
 }
 

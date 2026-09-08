@@ -471,6 +471,10 @@ await test("a reply on the issue reaches the reader who asked for it", async () 
   assert.equal(env._sent[0].to, "reader@example.com");
   assert.match(env._sent[0].subject, /#42/);
   assert.match(env._sent[0].text, /Fixed in the next deploy/);
+  // A reply written to this address would be neither read nor private
+  assert.match(env._sent[0].text, /Replies to this address are not read/);
+  assert.match(env._sent[0].text, /anyone can see/);
+  assert.match(env._sent[0].html, /Reply on GitHub/);
 });
 
 await test("closing it is news too, and nothing else is", async () => {

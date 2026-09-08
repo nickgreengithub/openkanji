@@ -24,7 +24,10 @@
   // Secrets (RESEND_API_KEY, SESSION_SECRET, DEEPSEEK_API_KEY, GITHUB_TOKEN)
   // are set with `wrangler secret put` and never live in this file.
   "vars": {
-    "MAIL_FROM": "OpenKanji <nick@openkanji.org>",
+    // Nothing reads mail at openkanji.org, so the address says so rather than
+    // inviting a reply that bounces. Every mail that wants an answer points at
+    // the place the answer belongs.
+    "MAIL_FROM": "OpenKanji <noreply@openkanji.org>",
     "SITE_URL": "https://openkanji.org",
     // Where the in-app report form opens its issues. Without GITHUB_TOKEN set
     // as a secret the form says so and offers GitHub itself instead.
