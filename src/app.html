@@ -3965,18 +3965,23 @@ class Component extends DCLogic {
   // host itself, voice.
   copyAgentPrompt(set) {
     const words = wordsOf(set).map(e => e.w[0] + " (" + e.w[1] + ") — " + e.w[2]).join("\n");
+    // The prompt itself stays in English -- every agent reads it -- but the
+    // learner's own language rides along, so the agent greets, corrects and
+    // wraps up in the language the learner actually thinks in. The glosses
+    // above are already in it.
+    const base = langName();
     const prompt = [
       "I am learning Japanese vocabulary with OpenKanji.org and have just studied these " + wordsOf(set).length + " words (" + T("set") + " " + (set + 1) + "):",
       "",
       words,
       "",
-      "Please act as my Japanese conversation partner to help these words stick:",
+      "My native language is " + base + ". Please act as my Japanese conversation partner to help these words stick:",
       "- Have a natural, friendly conversation with me in very simple Japanese (around JLPT N5 — I am just starting out), built around these words.",
       "- Use voice if you can; otherwise text is fine.",
       "- One short exchange at a time — ask me things that invite me to use the words myself.",
-      "- When I make a mistake, correct it briefly and kindly in English, then continue in Japanese.",
+      "- When I make a mistake, correct it briefly and kindly in " + base + ", then continue in Japanese.",
       "- Work most of the words in naturally over the session; do not quiz me down the list.",
-      "- After about 10 minutes, wrap up, tell me which words I used well and which need work, and remind me to continue with my next set on OpenKanji.org.",
+      "- After about 10 minutes, wrap up in " + base + ", tell me which words I used well and which need work, and remind me to continue with my next set on OpenKanji.org.",
     ].join("\n");
     const done = () => this.flashMsg(T("ai_chat_copied"));
     if (navigator.clipboard && navigator.clipboard.writeText) {
