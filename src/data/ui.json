@@ -1014,5 +1014,21 @@
   "idea_thanks": {
     "en": "Thank you — it is on the list.",
     "es": "Gracias: ya está en la lista."
+  },
+  "practice_path": {
+    "en": "Top to bottom is a good path",
+    "es": "De arriba abajo es un buen camino"
+  },
+  "ai_chat_title": {
+    "en": "Chat with your AI agent",
+    "es": "Habla con tu agente de IA"
+  },
+  "ai_chat_desc": {
+    "en": "Click to copy a prompt with the 20 words",
+    "es": "Copia un prompt con las 20 palabras"
+  },
+  "ai_chat_copied": {
+    "en": "Prompt copied — paste it to your AI agent",
+    "es": "Prompt copiado — pégalo en tu agente de IA"
   }
 }

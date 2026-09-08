@@ -563,6 +563,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-sheet-count{font-variant-numeric:tabular-nums;white-space:nowrap}
 .ok-sheet-body{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column}
 .ok-pmenu{width:100%;max-width:34rem;margin:0 auto;padding:1.5rem 1.25rem 2rem;display:flex;flex-direction:column;gap:.75rem}
+.ok-pmenu-hint{font-size:.875rem;text-align:center;margin-bottom:-.15rem}
 .ok-pmode{display:flex;align-items:center;gap:1rem;padding:1.05rem 1.15rem;border-radius:14px;border:1px solid var(--ok-line);background:var(--ok-card);box-shadow:var(--ok-shadow);cursor:pointer;user-select:none;transition:box-shadow 160ms ease,transform 160ms ease}
 .ok-pmode:hover{box-shadow:var(--ok-shadow-h);transform:translateY(-1px)}
 .ok-pmode-ico{flex:0 0 2.6rem;width:2.6rem;height:2.6rem;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--ok-acc-s);color:var(--ok-acc)}
@@ -1014,19 +1015,7 @@ html[data-ok-ready] #ok-boot{display:none}
 
           <sc-if value="{{ gMenuOn }}" hint-placeholder-val="{{ true }}">
             <div class="ok-view ok-pmenu">
-              <sc-if value="{{ storyHas }}" hint-placeholder-val="{{ true }}">
-                <div sc-camel-on-click="{{ gStory }}" class="ok-pmode">
-                  <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5 C10 4.8 7.5 4.4 4.5 4.8 V18 C7.5 17.6 10 18 12 19.6 C14 18 16.5 17.6 19.5 18 V4.8 C16.5 4.4 14 4.8 12 6.5 Z"></path><path d="M12 6.5 V19.6"></path></svg></span>
-                  <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_story }}</span><span class="ok-muted">{{ t_story_desc }}</span></div>
-                  <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
-                </div>
-              </sc-if>
-              <sc-if value="{{ storySoon }}" hint-placeholder-val="{{ false }}">
-                <div class="ok-pmode ok-pmode-soon">
-                  <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5 C10 4.8 7.5 4.4 4.5 4.8 V18 C7.5 17.6 10 18 12 19.6 C14 18 16.5 17.6 19.5 18 V4.8 C16.5 4.4 14 4.8 12 6.5 Z"></path><path d="M12 6.5 V19.6"></path></svg></span>
-                  <div class="ok-pmode-txt"><span class="ok-pmode-tr"><span class="ok-pmode-t">{{ t_story }}</span><span class="ok-pmode-badge">{{ t_coming_soon }}</span></span><span sc-camel-on-click="{{ signUpUpdates }}" class="ok-link">{{ t_sign_up_updates }}</span></div>
-                </div>
-              </sc-if>
+              <span class="ok-muted ok-pmenu-hint">{{ t_practice_path }}</span>
               <div sc-camel-on-click="{{ gCards }}" class="ok-pmode">
                 <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="3.5" width="13" height="14" rx="2"></rect><path d="M13.5 20.5 H5.5 A1.5 1.5 0 0 1 4 19 V9"></path></svg></span>
                 <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_flashcards }}</span><span class="ok-muted">{{ t_flashcards_desc }}</span></div>
@@ -1047,6 +1036,26 @@ html[data-ok-ready] #ok-boot{display:none}
                 <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_write_title }}</span><span class="ok-muted">{{ t_write_desc }}</span></div>
                 <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
               </div>
+              <sc-if value="{{ storyHas }}" hint-placeholder-val="{{ true }}">
+                <div sc-camel-on-click="{{ gStory }}" class="ok-pmode">
+                  <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5 C10 4.8 7.5 4.4 4.5 4.8 V18 C7.5 17.6 10 18 12 19.6 C14 18 16.5 17.6 19.5 18 V4.8 C16.5 4.4 14 4.8 12 6.5 Z"></path><path d="M12 6.5 V19.6"></path></svg></span>
+                  <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_story }}</span><span class="ok-muted">{{ t_story_desc }}</span></div>
+                  <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ storySoon }}" hint-placeholder-val="{{ false }}">
+                <div class="ok-pmode ok-pmode-soon">
+                  <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5 C10 4.8 7.5 4.4 4.5 4.8 V18 C7.5 17.6 10 18 12 19.6 C14 18 16.5 17.6 19.5 18 V4.8 C16.5 4.4 14 4.8 12 6.5 Z"></path><path d="M12 6.5 V19.6"></path></svg></span>
+                  <div class="ok-pmode-txt"><span class="ok-pmode-tr"><span class="ok-pmode-t">{{ t_story }}</span><span class="ok-pmode-badge">{{ t_coming_soon }}</span></span><span sc-camel-on-click="{{ signUpUpdates }}" class="ok-link">{{ t_sign_up_updates }}</span></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ aiChatOn }}" hint-placeholder-val="{{ false }}">
+                <div sc-camel-on-click="{{ aiChatCopy }}" class="ok-pmode">
+                  <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5 A8.5 7 0 0 1 12 18.5 C10.7 18.5 9.5 18.3 8.4 17.9 L4 19 L5.3 15.5 A7 7 0 0 1 3 11.5 A8.5 7 0 0 1 12 4.5 A8.5 7 0 0 1 21 11.5 Z"></path></svg></span>
+                  <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_ai_chat_title }}</span><span class="ok-muted">{{ t_ai_chat_desc }}</span></div>
+                  <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15 H4 A1.5 1.5 0 0 1 2.5 13.5 V4 A1.5 1.5 0 0 1 4 2.5 H13.5 A1.5 1.5 0 0 1 15 4 V5"></path></svg></span>
+                </div>
+              </sc-if>
             </div>
           </sc-if>
 
@@ -3934,6 +3943,48 @@ class Component extends DCLogic {
     return st.gBatch != null ? wordsOf(st.gBatch) : deckWords();
   }
 
+  // The "chat with your AI agent" card: not a mode of its own but a prompt,
+  // copied for whichever agent the learner already talks to. The words ride
+  // along with reading and meaning, and the instructions make the agent a
+  // conversation partner scoped to them -- the one exercise this app cannot
+  // host itself, voice.
+  copyAgentPrompt(set) {
+    const words = wordsOf(set).map(e => e.w[0] + " (" + e.w[1] + ") — " + e.w[2]).join("\n");
+    const prompt = [
+      "I am learning Japanese vocabulary with OpenKanji.org and have just studied these " + wordsOf(set).length + " words (" + T("set") + " " + (set + 1) + "):",
+      "",
+      words,
+      "",
+      "Please act as my Japanese conversation partner to help these words stick:",
+      "- Have a natural, friendly conversation with me in simple Japanese (around JLPT N4), built around these words.",
+      "- Use voice if you can; otherwise text is fine.",
+      "- One short exchange at a time — ask me things that invite me to use the words myself.",
+      "- When I make a mistake, correct it briefly and kindly in English, then continue in Japanese.",
+      "- Work most of the words in naturally over the session; do not quiz me down the list.",
+      "- After about 10 minutes, wrap up, tell me which words I used well and which need work, and remind me to continue with my next set on OpenKanji.org.",
+    ].join("\n");
+    const done = () => this.flashMsg(T("ai_chat_copied"));
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(prompt).then(done, () => this.copyAgentFallback(prompt, done));
+    } else {
+      this.copyAgentFallback(prompt, done);
+    }
+  }
+
+  copyAgentFallback(text, done) {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      done();
+    } catch (e) {}
+  }
+
   gameKeys() { return this.gameWords().map(e => e.w[3]); }
 
   // What a practice round is over: the words of the set not yet learned, or
@@ -5385,6 +5436,11 @@ class Component extends DCLogic {
           // book looks unfinished rather than absent, and offers the only
           // thing there is to offer: word when the next ones land.
           storySoon: !story,
+          // The door out: spoken practice belongs to the learner's own AI
+          // agent, so this copies a prompt rather than opening anything.
+          // First two sets only, while the idea proves itself.
+          aiChatOn: set < 2,
+          aiChatCopy: () => this.copyAgentPrompt(set),
           signUpUpdates: () => {
             this.setState({ gameOpen: false, gameClosing: false, dlgSeamless: false, acctOpen: true });
             this.openPage("acct", () => this.setState({ acctOpen: false }));
