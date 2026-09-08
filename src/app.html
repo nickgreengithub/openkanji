@@ -427,6 +427,14 @@ a:hover{color:var(--text-accent-hover)}
 .ok-pop-sep{height:1px;background:var(--ok-line);margin:.3rem 0}
 .ok-link{font-family:var(--font-2);font-size:1rem;color:var(--ok-acc);cursor:pointer;align-self:flex-start;user-select:none}
 .ok-link:hover{text-decoration:underline}
+/* The foot of the settings panel: what this is, where its code lives, and who
+   wrote it. Quiet -- it is the last thing in the panel, not the first. */
+.ok-pop-foot{display:flex;flex-direction:column;gap:.35rem}
+.ok-pop-links{display:flex;align-items:center;gap:.9rem}
+.ok-pop-links .ok-link{font-size:.9375rem;align-self:auto}
+.ok-pop-by{font-family:var(--font-2);font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ok-mute)}
+.ok-pop-me{color:var(--ok-ink);text-decoration:none}
+.ok-pop-me:hover{color:var(--ok-acc);text-decoration:underline}
 .ok-input{width:100%;height:2.4rem;padding:0 .75rem;border-radius:8px;border:1px solid #d5d5cf;background:#fff;font-family:var(--font-2);font-size:1rem;color:var(--ok-ink);outline:none}
 .ok-input:focus{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
 /* One opt-in, drawn rather than native so it matches the popover and reads
@@ -1118,7 +1126,7 @@ html[data-ok-ready] #ok-boot{display:none}
       <header class="ok-top">
         <div class="ok-top-l">
           <span class="ok-mark" title="OpenKanji.org">开</span>
-          <span class="ok-deck">{{ t_the_ladder }}</span>
+          <span class="ok-deck">{{ versionLabel }}</span>
         </div>
         <span sc-camel-on-click="{{ continueSet }}" class="ok-btn ok-btn-primary ok-continue">{{ heroBtn }}</span>
       </header>
@@ -1269,6 +1277,11 @@ html[data-ok-ready] #ok-boot{display:none}
           <div class="ok-chips">
             <span sc-camel-on-click="{{ furiOn }}" class="ok-chip" style="{{ furiOnStyle }}">{{ t_on }}</span>
             <span sc-camel-on-click="{{ furiOff }}" class="ok-chip" style="{{ furiOffStyle }}">{{ t_off }}</span>
+          </div>
+          <div class="ok-pop-sep"></div>
+          <div class="ok-pop-foot">
+            <div class="ok-pop-links"><a class="ok-link" href="https://github.com/nickgreengithub/openkanji" target="_blank" rel="noopener noreferrer">{{ t_source }}</a><a class="ok-link" href="https://github.com/nickgreengithub/openkanji/issues" target="_blank" rel="noopener noreferrer">{{ t_issues }}</a></div>
+            <span class="ok-pop-by">{{ t_by }} <a class="ok-pop-me" href="https://www.linkedin.com/in/analystnickgreen/" target="_blank" rel="noopener noreferrer">Nicholas Green</a></span>
           </div>
         </div>
       </div>
@@ -1431,6 +1444,7 @@ const COVERS = __COVERS__;
 // line arrives already split into spans, with a table of what the tappable
 // ones mean (tools/build.js buildStories). Sets without a story have no key.
 const STORIES = __STORIES__;
+const VERSION = __VERSION__;
 const storyOf = (set) => STORIES[String(set)] || null;
 // 第二話. A hundred chapters need no more numerals than this.
 const okKanjiNum = (n) => {
@@ -4836,6 +4850,9 @@ class Component extends DCLogic {
           avatarBg: signedIn ? "var(--ok-acc)" : "var(--ok-card)",
           avatarFg: signedIn ? "#ffffff" : "var(--ok-mute)",
           acctTitle: signedIn ? st.userEmail + " · " + syncText : syncText,
+          // What it is, in the header and again at the foot of the settings
+          // panel. The number comes from package.json at build time.
+          versionLabel: T("version_n", { n: VERSION }),
           syncDot: dot,
           syncText: syncText,
           userEmail: st.userEmail || "",

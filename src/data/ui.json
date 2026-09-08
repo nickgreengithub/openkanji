@@ -703,10 +703,6 @@
     "en": "{t} earned — {n} words",
     "es": "{t} conseguido — {n} palabras"
   },
-  "the_ladder": {
-    "en": "2,000 words",
-    "es": "2000 palabras"
-  },
   "typing": {
     "en": "Typing",
     "es": "Escritura"
@@ -902,5 +898,21 @@
   "auto_speed": {
     "en": "How fast the cards turn",
     "es": "Velocidad de las tarjetas"
+  },
+  "version_n": {
+    "en": "Version {n}",
+    "es": "Versión {n}"
+  },
+  "source": {
+    "en": "Source on GitHub",
+    "es": "Código en GitHub"
+  },
+  "issues": {
+    "en": "Report an issue",
+    "es": "Informar de un problema"
+  },
+  "by": {
+    "en": "by",
+    "es": "por"
   }
 }

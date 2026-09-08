@@ -483,6 +483,9 @@ function build() {
     // A story per set, already split into the spans the reader can tap
     // (tools/build.js buildStories). Sets without one simply have no key.
     __STORIES__: JSON.stringify(stories),
+    // What the header says it is. package.json is the one place it is written,
+    // and the patch number is not the reader's business.
+    __VERSION__: JSON.stringify(require("../package.json").version.split(".").slice(0, 2).join(".")),
     // Complete non-default languages ride along so the picker can switch
     // without a refetch. Incomplete ones are omitted entirely.
     __KANJI_I18N__: JSON.stringify(i18n),

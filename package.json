@@ -1,5 +1,6 @@
 {
   "name": "openkanji",
+  "version": "0.1.0",
   "private": true,
   "description": "OpenKanji - JLPT kanji and vocabulary study",
   "scripts": {
