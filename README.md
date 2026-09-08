@@ -559,20 +559,33 @@ Secrets live on the Worker, never in the repo:
 ```sh
 npx wrangler secret put RESEND_API_KEY --name openkanji
 openssl rand -base64 32 | npx wrangler secret put SESSION_SECRET --name openkanji
-# the in-app report form: a fine-grained token, this repository only, with
+# The in-app report form. A fine-grained token, this repository only, with
 # Issues: read and write and nothing else. Without it the form says it is not
 # set up rather than failing oddly.
 npx wrangler secret put GITHUB_TOKEN --name openkanji
-# and the shared secret GitHub signs its webhook with, so the Worker can tell
-# a real "someone replied to your report" from anyone else's POST
-openssl rand -hex 32 | npx wrangler secret put GH_WEBHOOK_SECRET --name openkanji
 ```
 
-The webhook itself is set once, in the repository: **Settings → Webhooks → Add
-webhook**, payload URL `https://openkanji.org/api/gh-hook`, content type
-`application/json`, the same secret, and "Let me select individual events" →
-**Issues** and **Issue comments**. Without it the report form still works and
-still asks whether to write back; nobody is ever written to.
+The names in capitals are the names the Worker reads -- type them exactly.
+What each one is worth is pasted at the prompt.
+
+One more, for the mail that tells a reporter their report was answered. Its
+value has to go in two places, so generate it, look at it, and paste it twice
+rather than piping it into anything:
+
+```sh
+openssl rand -hex 32                              # copy what this prints
+npx wrangler secret put GH_WEBHOOK_SECRET         # paste it at the prompt
+```
+
+Then paste the same string into the repository, where the webhook is set once:
+**Settings → Webhooks → Add webhook**, payload URL
+`https://openkanji.org/api/gh-hook`, content type `application/json`, that
+string in **Secret**, and "Let me select individual events" → **Issues** and
+**Issue comments**. GitHub signs every delivery with it and the Worker checks
+the signature, so the two have to match exactly.
+
+Without the webhook the report form still works and still asks whether to
+write back; nobody is ever written to.
 
 Worker tests:
 
