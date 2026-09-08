@@ -53,7 +53,7 @@ const SHAPES = [
 // on both axes, which the plate drawing is not (it hangs low, under the room
 // the plate leaves for it).
 const BOX = SHAPES.flat().reduce((b, [x, y]) => [Math.min(b[0], x), Math.min(b[1], y), Math.max(b[2], x), Math.max(b[3], y)], [1, 1, 0, 0]);
-const MARGIN = 0.14;
+const MARGIN = 0.20;
 const fitted = (m) => {
   const w = BOX[2] - BOX[0], h = BOX[3] - BOX[1];
   const k = (1 - 2 * m) / Math.max(w, h);

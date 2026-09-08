@@ -9,6 +9,10 @@
      that was wrong once stays wrong for days. The URL is the cache key, so
      changing it is the only reliable way to hand out a new one. Bump it when
      the icon changes. -->
+<!-- The SVG comes first and says sizes="any". Without that Chrome takes the
+     ico -- it saw the sizes on one and none on the other and chose the one
+     that named them -- and an ico cannot follow the theme: a teal mark on a
+     dark strip is the tell. -->
 <!-- The head that survives: booting swaps this document in for the shell's,
      so anything declared only there -- the icons, the manifest, the standalone
      hints -- is thrown away the moment the app starts. It lives here instead,
@@ -19,9 +23,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="OpenKanji">
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
-<link rel="icon" href="/favicon.ico?v=4" sizes="16x16 32x32 48x48">
-<link rel="icon" href="/icon.svg?v=4" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5">
+<link rel="icon" href="/icon.svg?v=5" type="image/svg+xml" sizes="any">
+<link rel="icon" href="/favicon.ico?v=5" sizes="16x16 32x32 48x48">
 <script src="16cd733a-bdca-4fef-89fe-ef51a54bd1f9"></script>
 </head>
 <body>
