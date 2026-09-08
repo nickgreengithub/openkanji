@@ -422,18 +422,18 @@ a:hover{color:var(--text-accent-hover)}
 .ok-avatar:hover{box-shadow:var(--ok-shadow-h)}
 .ok-dot{position:absolute;right:-2px;bottom:-2px;width:.7rem;height:.7rem;border-radius:50%;border:2px solid var(--ok-bg);transition:background 200ms ease}
 .ok-pop{position:absolute;top:100%;right:0;padding-top:.5rem;cursor:default}
-.ok-pop-in{width:20.5rem;display:flex;flex-direction:column;gap:.6rem;padding:1.05rem 1.15rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:0 18px 48px rgba(20,24,30,.18)}
+.ok-pop-in{width:20.5rem;display:flex;flex-direction:column;gap:1.15rem;padding:1.15rem 1.15rem 1.25rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:0 18px 48px rgba(20,24,30,.18)}
 .ok-pop-title{font-size:1.0625rem;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ok-pop-sep{height:1px;background:var(--ok-line);margin:.3rem 0}
+.ok-pop-sep{height:1px;background:var(--ok-line);margin:.15rem 0}
 /* The settings panel, in blocks rather than a list of loose lines: who you
    are, what you have set, what you can say, and who made it. A section is a
    small label and the thing under it; anything you can act on is a row or a
    chip, and nothing is a bare sentence pretending to be a button. */
-.ok-pop-sec{display:flex;flex-direction:column;gap:.45rem}
+.ok-pop-sec{display:flex;flex-direction:column;gap:.6rem}
 .ok-pop-sec .ok-h2{font-size:.8125rem;letter-spacing:.12em}
-.ok-pop-panel{display:flex;flex-direction:column;gap:.6rem;padding:.85rem .9rem;border-radius:12px;border:1px solid var(--ok-line);background:rgba(20,24,30,.02)}
+.ok-pop-panel{display:flex;flex-direction:column;gap:.85rem;padding:.95rem 1rem;border-radius:12px;border:1px solid var(--ok-line);background:rgba(20,24,30,.02)}
 /* who you are: the avatar again, the address, and the state of the sync */
-.ok-id{display:flex;align-items:center;gap:.7rem}
+.ok-id{display:flex;align-items:center;gap:.75rem;padding-bottom:.85rem;border-bottom:1px solid var(--ok-line)}
 .ok-id-av{flex:0 0 auto;width:2.35rem;height:2.35rem;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--ok-acc);color:#fff;font-family:var(--font-2);font-size:1rem}
 .ok-id-txt{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.05rem}
 .ok-id-em{font-size:1rem;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -441,7 +441,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-id-out{flex:0 0 auto;align-self:center;font-size:.875rem;white-space:nowrap}
 /* a stack of things to do, each one obviously one thing */
 .ok-rows{display:flex;flex-direction:column;border:1px solid var(--ok-line);border-radius:12px;overflow:hidden}
-.ok-row{display:flex;align-items:center;gap:.7rem;padding:.7rem .8rem;background:var(--ok-card);cursor:pointer;user-select:none;transition:background 140ms ease}
+.ok-row{display:flex;align-items:center;gap:.75rem;padding:.85rem .85rem;background:var(--ok-card);cursor:pointer;user-select:none;transition:background 140ms ease}
 .ok-row + .ok-row{border-top:1px solid var(--ok-line)}
 .ok-row:hover{background:var(--ok-acc-s)}
 .ok-row-ico{flex:0 0 auto;width:1.85rem;height:1.85rem;border-radius:9px;display:flex;align-items:center;justify-content:center;background:var(--ok-acc-s);color:var(--ok-acc)}
@@ -451,7 +451,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-link:hover{text-decoration:underline}
 /* The foot of the settings panel: what this is, where its code lives, and who
    wrote it. Quiet -- it is the last thing in the panel, not the first. */
-.ok-pop-foot{display:flex;flex-direction:column;gap:.35rem}
+.ok-pop-foot{display:flex;flex-direction:column;gap:.7rem}
 .ok-pop-links{display:flex;align-items:center;gap:.9rem}
 .ok-pop-links .ok-link{font-size:.9375rem;align-self:auto}
 /* The two that leave the app wear the mark of where they go -- GitHub's, and
@@ -851,7 +851,7 @@ a:hover{color:var(--text-accent-hover)}
 
   /* settings: the popover becomes the page */
   .ok-pop{position:fixed;inset:0;top:var(--ok-vv-top,0px);height:var(--ok-vh,100svh);padding:0;z-index:96;background:var(--ok-bg);animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
-  .ok-pop-in{width:100%;height:100%;border:0;border-radius:0;box-shadow:none;overflow-y:auto;gap:.9rem;padding:calc(4.2rem + env(safe-area-inset-top)) 1.25rem calc(1.5rem + env(safe-area-inset-bottom))}
+  .ok-pop-in{width:100%;height:100%;border:0;border-radius:0;box-shadow:none;overflow-y:auto;gap:1.15rem;padding:calc(4.2rem + env(safe-area-inset-top)) 1.25rem calc(1.5rem + env(safe-area-inset-bottom))}
   /* the close button crosses to the left on a phone, as it does everywhere
      else, so the heading starts underneath it rather than beside it */
   .ok-issue{width:100%;height:var(--ok-vh,100svh);max-height:none;border-radius:0;padding:calc(3.5rem + env(safe-area-inset-top)) 1.25rem calc(1rem + env(safe-area-inset-bottom))}
