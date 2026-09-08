@@ -803,11 +803,12 @@ async function checkAiErrors(env) {
   if (!list.length) return { errors: 0 };
   if (!env.OWNER_EMAIL) return { errors: list.length, unsent: "no_owner_email" };
   const total = list.reduce((a, r) => a + r.n, 0);
+  const summary = list.map((r) => r.kind + ": " + r.n).join(", ");
   const lines = list.map((r) => r.kind + ": " + r.n).join("<br>");
   await deliver(env, {
     to: env.OWNER_EMAIL,
     from: env.MAIL_FROM,
-    subject: "OpenKanji: " + total + " AI " + (total === 1 ? "error" : "errors") + " in the last 5 minutes",
+    subject: "OpenKanji Error Alert: " + summary,
     html: "<div style=\"font:16px/1.6 -apple-system,Segoe UI,Roboto,sans-serif;color:#15181c\"><p>Write and the IME candidates call DeepSeek through /api/ask. In the last five minutes:</p><p>" + lines + "</p></div>",
     text: lines,
   }).catch(() => {});
