@@ -502,7 +502,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-check-n{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute);line-height:1.3}
 .ok-chips{display:flex;flex-wrap:wrap;gap:.4rem}
 .ok-chip{padding:.3rem .75rem;border-radius:999px;border:1px solid var(--ok-line);font-family:var(--font-2);font-size:.9375rem;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease,color 140ms ease}
-.ok-veil{position:fixed;inset:0;z-index:95;background:rgba(20,24,30,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;animation:ok-fade 160ms ease}
+.ok-veil{position:fixed;inset:0;z-index:95;background:rgba(20,24,30,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;animation:ok-fade 280ms ease}
 .ok-focus{position:relative;width:min(40rem,100%);height:min(32rem,86vh);justify-content:flex-start;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:2.5rem 3.75rem 2rem;overflow-y:auto;border-radius:20px;background:var(--ok-card);box-shadow:0 30px 80px rgba(20,24,30,.35);text-align:center;animation:ok-rise 200ms cubic-bezier(.2,.7,.3,1)}
 .ok-x{position:absolute;top:.55rem;right:.95rem;font-size:1.7rem;line-height:1;color:var(--ok-mute);cursor:pointer;user-select:none}
 .ok-x:hover{color:var(--ok-ink)}
@@ -666,23 +666,32 @@ a:hover{color:var(--text-accent-hover)}
 .ok-fc-gloss{font-family:var(--font-2);font-size:1.25rem;color:var(--ok-body);text-wrap:pretty}
 @media (min-width:641px){
   .ok-veil-p{align-items:center;padding:1.5rem}
-  .ok-sheet{width:min(44rem,100%);height:auto;max-height:min(42rem,100%);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(20,24,30,.35);animation:ok-rise 220ms cubic-bezier(.2,.7,.3,1)}
-  .ok-sheet-fixed{height:min(42rem,100%)}
+  .ok-sheet{width:min(44rem,100%);height:auto;max-height:min(42rem,100%);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(20,24,30,.35);animation:ok-rise 340ms cubic-bezier(.2,.7,.25,1)}
+  .ok-sheet-fixed{width:min(50rem,100%);height:min(40rem,100%)}
   /* A page of the story is five or six lines with a translation under each,
      which wants more room than a quiz round -- and a page that has to be
      scrolled to be finished is a page that looks broken. */
   /* A dialog does not resize as you move about inside it: the story's box is
      one height for every page of it, and a page that needs less simply has
      air at the foot. Pages are short enough that none of them needs more. */
-  .ok-sheet-story{width:min(46rem,100%);height:min(40rem,100%);max-height:min(40rem,100%)}
+  .ok-sheet-story{width:min(50rem,100%);height:min(40rem,100%);max-height:min(40rem,100%)}
   /* The same rule the story states above, applied to the rest of practice:
      one size for the menu and every exercise in it, so moving between them
      never resizes the dialog at all -- and the menu earns the width as a
      two-column grid of its six doors. */
   .ok-sheet-practice{width:min(50rem,100%);height:min(40rem,100%);max-height:min(40rem,100%)}
-  .ok-pmenu{display:grid;grid-template-columns:1fr 1fr;align-content:center;gap:.8rem;max-width:46rem;margin:auto}
-  .ok-pmenu-hint{grid-column:1/-1}
-  .ok-quiz{min-height:30rem}
+  /* Six doors as six tiles: the row layout matched text height to a small
+     icon; a 2x3 grid earns the dialog's height instead, so each tile grows
+     tall -- icon up top, words at the foot, the chevron out of the text's
+     way in the corner. */
+  .ok-pmenu{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto repeat(3,1fr);gap:1rem;width:100%;max-width:44rem;margin:0 auto;padding:1.1rem 1.5rem 1.6rem}
+  .ok-pmenu-hint{grid-column:1/-1;align-self:center}
+  .ok-pmenu .ok-pmode{position:relative;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:.8rem;padding:1.15rem 1.25rem}
+  .ok-pmenu .ok-pmode-ico{flex:0 0 auto;width:3rem;height:3rem;border-radius:14px}
+  .ok-pmenu .ok-pmode-ico svg{width:26px;height:26px}
+  .ok-pmenu .ok-pmode-chev{position:absolute;top:1.1rem;right:1.1rem}
+  .ok-pmenu .ok-pmode-txt{gap:.25rem}
+  .ok-quiz{min-height:30rem;margin:auto}
   .ok-fc{min-height:28rem}
   .ok-story{min-height:32rem}
 }
@@ -762,11 +771,12 @@ a:hover{color:var(--text-accent-hover)}
 @keyframes ok-swipe-in-ra{from{opacity:0;transform:translateX(-48px)}to{opacity:1;transform:none}}
 @keyframes ok-swipe-in-rb{from{opacity:0;transform:translateX(-48px)}to{opacity:1;transform:none}}
 /* Sheet views and their exits */
-.ok-view{animation:ok-fade 180ms ease}
-.ok-veil-out{animation:ok-fade-out 180ms ease forwards!important}
-.ok-sheet-out{animation:ok-sheet-down 200ms cubic-bezier(.4,0,1,1) forwards!important}
+.ok-view{animation:ok-view-in 280ms ease}
+.ok-veil-out{animation:ok-fade-out 280ms ease forwards!important}
+.ok-sheet-out{animation:ok-sheet-down 300ms cubic-bezier(.4,0,1,1) forwards!important}
 .ok-focus-out{animation:ok-focus-out 160ms ease forwards!important}
 @keyframes ok-fade-out{from{opacity:1}to{opacity:0}}
+@keyframes ok-view-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @keyframes ok-sheet-down{from{transform:none;opacity:1}to{transform:translateY(24px);opacity:0}}
 @keyframes ok-focus-out{from{opacity:1;transform:none}to{opacity:0;transform:scale(.96)}}
 /* Write: the sheet again -- word pills, a thread, a composer */
@@ -3094,7 +3104,7 @@ class Component extends DCLogic {
   closePracticeNow() {
     this.stopStory();
     this.setState({ gameClosing: true, cardsClosing: true });
-    setTimeout(() => this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, storyOn: false, stTip: null, gMode: null, gFinished: false, dlgSeamless: false }), 200);
+    setTimeout(() => this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, storyOn: false, stTip: null, gMode: null, gFinished: false, dlgSeamless: false }), 300);
   }
   // A pushed page gets a history entry, so the phone's Back button (and the
   // browser's) closes it rather than leaving the app. Where pushState is not
@@ -3746,7 +3756,7 @@ class Component extends DCLogic {
   closeWrite() {
     if (this.state.writeClosing) return;
     this.setState({ writeClosing: true });
-    setTimeout(() => this.setState({ write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], replies: [], cand: null, candIdx: 0, draft: "", sent: "", result: null }), 180);
+    setTimeout(() => this.setState({ write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], replies: [], cand: null, candIdx: 0, draft: "", sent: "", result: null }), 300);
   }
 
   // every route into the chat goes through here so the intro always types
@@ -5359,7 +5369,7 @@ class Component extends DCLogic {
         this._cardStreak = {}; this._cardSeen = {};
         this.setState({ cardsOn: true, cardsClosing: false, cQueue: q, cIdx: 0, cShown: false, cDone: 0, cMastered: [], cFlip: false });
       },
-      closeCards: () => { this.setState({ cardsClosing: true }); setTimeout(() => this.setState({ cardsOn: false, cardsClosing: false }), 180); },
+      closeCards: () => { this.setState({ cardsClosing: true }); setTimeout(() => this.setState({ cardsOn: false, cardsClosing: false }), 300); },
       cardsOn: !!st.cardsOn,
       cardVeilAnim: st.dlgSeamless ? "none" : (st.cardsClosing ? "ok-veil-out 180ms ease forwards" : "ok-veil-in 180ms ease"),
       cardPanelAnim: st.dlgSeamless ? "none" : (st.cardsClosing ? "ok-panel-out 180ms ease forwards" : "ok-panel-in 220ms cubic-bezier(.2,.7,.3,1)"),
@@ -5402,7 +5412,7 @@ class Component extends DCLogic {
         ? T("intro_click_rows")
         : T("words_queued_write", { n: Object.keys(st.chatSel).length }),
       openGame: () => { this._gAnswer = null; this._gIdx = undefined; this.setState({ gameOpen: true, gameClosing: false, dlgSeamless: false, gMode: null, gBatch: null, gKanji: null, gFinished: false, gPicked: -1 }); },
-      closeGame: () => { if (this._gAdvT) clearTimeout(this._gAdvT); this.setState({ gameClosing: true }); setTimeout(() => this.setState({ gameOpen: false, gameClosing: false }), 180); },
+      closeGame: () => { if (this._gAdvT) clearTimeout(this._gAdvT); this.setState({ gameClosing: true }); setTimeout(() => this.setState({ gameOpen: false, gameClosing: false }), 300); },
       gameVeilAnim: st.dlgSeamless ? "none" : (st.gameClosing ? "ok-veil-out 180ms ease forwards" : "ok-veil-in 180ms ease"),
       gamePanelAnim: st.dlgSeamless ? "none" : (st.gameClosing ? "ok-panel-out 180ms ease forwards" : "ok-panel-in 220ms cubic-bezier(.2,.7,.3,1)"),
       gameOn: !!st.gameOpen,
@@ -5586,7 +5596,7 @@ class Component extends DCLogic {
       gHeadBack: () => {
         if (this._gAdvT) clearTimeout(this._gAdvT);
         this._gAnswer = null; this._gIdx = undefined;
-        if (!this.state.gMode) { this.setState({ gameClosing: true, dlgSeamless: false }); setTimeout(() => this.setState({ gameOpen: false, gameClosing: false }), 180); return; }
+        if (!this.state.gMode) { this.setState({ gameClosing: true, dlgSeamless: false }); setTimeout(() => this.setState({ gameOpen: false, gameClosing: false }), 300); return; }
         this.setState({ gMode: null, gFinished: false, gPicked: -1 });
       },
       gNotMenuOn: !!st.gameOpen && !!st.gMode,
