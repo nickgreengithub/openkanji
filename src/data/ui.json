@@ -966,5 +966,9 @@
   "issue_many": {
     "en": "That is a few reports in an hour. Try again later.",
     "es": "Son varios informes en una hora. Inténtalo más tarde."
+  },
+  "on_linkedin": {
+    "en": "Nicholas Green on LinkedIn",
+    "es": "Nicholas Green en LinkedIn"
   }
 }

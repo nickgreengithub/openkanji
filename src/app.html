@@ -432,9 +432,16 @@ a:hover{color:var(--text-accent-hover)}
 .ok-pop-foot{display:flex;flex-direction:column;gap:.35rem}
 .ok-pop-links{display:flex;align-items:center;gap:.9rem}
 .ok-pop-links .ok-link{font-size:.9375rem;align-self:auto}
-.ok-pop-by{font-family:var(--font-2);font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ok-mute)}
-.ok-pop-me{color:var(--ok-ink);text-decoration:none}
-.ok-pop-me:hover{color:var(--ok-acc);text-decoration:underline}
+/* The two that leave the app wear the mark of where they go -- GitHub's, and
+   LinkedIn's -- and the one that does not (reporting a problem, which is a
+   dialog now) wears none. The icon is the difference between a link out and a
+   link that stays. */
+.ok-pop-out,.ok-pop-me{display:inline-flex;align-items:center;gap:.35rem}
+.ok-pop-out svg,.ok-pop-me svg{flex:0 0 auto}
+.ok-pop-by{font-family:var(--font-2);font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ok-mute);display:flex;align-items:center;gap:.35rem}
+/* the author's name reads as the link it is: the mark, and the accent */
+.ok-pop-me{color:var(--ok-acc);text-decoration:none}
+.ok-pop-me:hover{text-decoration:underline}
 /* Reporting a problem without leaving to go and own a GitHub account. One
    fixed box: the form, the sending and the answer all live in it, so nothing
    grows or shrinks under the reader's hand. */
@@ -1297,8 +1304,8 @@ html[data-ok-ready] #ok-boot{display:none}
           </div>
           <div class="ok-pop-sep"></div>
           <div class="ok-pop-foot">
-            <div class="ok-pop-links"><a class="ok-link" href="https://github.com/nickgreengithub/openkanji" target="_blank" rel="noopener noreferrer">{{ t_source }}</a><span sc-camel-on-click="{{ openIssue }}" class="ok-link">{{ t_issues }}</span></div>
-            <span class="ok-pop-by">{{ t_by }} <a class="ok-pop-me" href="https://www.linkedin.com/in/analystnickgreen/" target="_blank" rel="noopener noreferrer">Nicholas Green</a></span>
+            <div class="ok-pop-links"><a class="ok-link ok-pop-out" href="https://github.com/nickgreengithub/openkanji" target="_blank" rel="noopener noreferrer"><svg width="15" height="15" sc-camel-view-box="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg><span>{{ t_source }}</span></a><span sc-camel-on-click="{{ openIssue }}" class="ok-link">{{ t_issues }}</span></div>
+            <span class="ok-pop-by">{{ t_by }} <a class="ok-pop-me" href="https://www.linkedin.com/in/analystnickgreen/" target="_blank" rel="noopener noreferrer" title="{{ t_on_linkedin }}"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"></path></svg><span>Nicholas Green</span></a></span>
           </div>
         </div>
       </div>
