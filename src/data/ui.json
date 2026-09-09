@@ -1034,5 +1034,13 @@
   "exclude_learned": {
     "en": "Exclude learned words",
     "es": "Excluir palabras aprendidas"
+  },
+  "ai_page_hint": {
+    "en": "Edit if you like, then copy it to your AI agent",
+    "es": "Edítalo si quieres, luego cópialo a tu agente de IA"
+  },
+  "ai_copy": {
+    "en": "Copy prompt",
+    "es": "Copiar prompt"
   }
 }

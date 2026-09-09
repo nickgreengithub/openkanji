@@ -567,6 +567,11 @@ a:hover{color:var(--text-accent-hover)}
 .ok-pmenu-hint{font-size:.875rem;text-align:center;margin-bottom:-.15rem}
 .ok-pmenu-foot{flex:0 0 auto;display:flex;align-items:center;gap:.5rem;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-body);cursor:pointer;user-select:none;white-space:nowrap}
 .ok-pmenu-foot .ok-w-chk{width:1.05rem;height:1.05rem;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #b9b9b1;color:#fff;font-size:0;transition:background 140ms ease,border-color 140ms ease}
+.ok-ai{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:.85rem;width:100%;max-width:44rem;margin:0 auto;padding:1.1rem 1.5rem 1.4rem}
+.ok-ai-hint{flex:0 0 auto;font-size:.875rem;text-align:center}
+.ok-ai-text{flex:1 1 auto;min-height:0;width:100%;padding:.85rem 1rem;border-radius:12px;border:1px solid #d5d5cf;background:#fff;font-family:var(--font-2);font-size:.9375rem;line-height:1.5;color:var(--ok-ink);outline:none;resize:none;white-space:pre-wrap}
+.ok-ai-text:focus{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
+.ok-ai-copy{flex:0 0 auto;align-self:center;display:inline-flex;align-items:center;gap:.5rem}
 .ok-pmode{display:flex;align-items:center;gap:1rem;padding:1.05rem 1.15rem;border-radius:14px;border:1px solid var(--ok-line);background:var(--ok-card);box-shadow:var(--ok-shadow);cursor:pointer;user-select:none;transition:box-shadow 160ms ease,transform 160ms ease}
 .ok-pmode:hover{box-shadow:var(--ok-shadow-h);transform:translateY(-1px)}
 .ok-pmode-ico{flex:0 0 2.6rem;width:2.6rem;height:2.6rem;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--ok-acc-s);color:var(--ok-acc)}
@@ -1080,12 +1085,20 @@ html[data-ok-ready] #ok-boot{display:none}
                 </div>
               </sc-if>
               <sc-if value="{{ aiChatOn }}" hint-placeholder-val="{{ false }}">
-                <div sc-camel-on-click="{{ aiChatCopy }}" class="ok-pmode">
+                <div sc-camel-on-click="{{ aiChatOpen }}" class="ok-pmode">
                   <span class="ok-pmode-ico"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5 A8.5 7 0 0 1 12 18.5 C10.7 18.5 9.5 18.3 8.4 17.9 L4 19 L5.3 15.5 A7 7 0 0 1 3 11.5 A8.5 7 0 0 1 12 4.5 A8.5 7 0 0 1 21 11.5 Z"></path></svg></span>
                   <div class="ok-pmode-txt"><span class="ok-pmode-t">{{ t_ai_chat_title }}</span><span class="ok-muted">{{ t_ai_chat_desc }}</span></div>
-                  <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15 H4 A1.5 1.5 0 0 1 2.5 13.5 V4 A1.5 1.5 0 0 1 4 2.5 H13.5 A1.5 1.5 0 0 1 15 4 V5"></path></svg></span>
+                  <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span>
                 </div>
               </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ aiOn }}" hint-placeholder-val="{{ false }}">
+            <div class="ok-view ok-ai">
+              <span class="ok-muted ok-ai-hint">{{ t_ai_page_hint }}</span>
+              <textarea class="ok-ai-text ok-scroll" spellcheck="false" value="{{ aiDraft }}" sc-camel-on-change="{{ onAiDraft }}"></textarea>
+              <span sc-camel-on-click="{{ aiCopy }}" class="ok-btn ok-btn-primary ok-ai-copy"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15 H4 A1.5 1.5 0 0 1 2.5 13.5 V4 A1.5 1.5 0 0 1 4 2.5 H13.5 A1.5 1.5 0 0 1 15 4 V5"></path></svg>{{ t_ai_copy }}</span>
             </div>
           </sc-if>
 
@@ -2762,13 +2775,16 @@ class Component extends DCLogic {
         if (this.state.about) { this.setState({ about: false }); return; }
         if (this.state.write) { this.closeWrite(); return; }
         if (this.state.dlg) { this.setState({ dlg: false }); return; }
+        // Esc inside an activity steps back to the six-item menu, not out of
+        // the dialog; only Esc at the menu itself closes.
         if (this.state.gameOpen) {
           if (this._gAdvT) clearTimeout(this._gAdvT);
+          if (this.state.aiOn) { this.setState({ aiOn: false }); return; }
           if (this.state.gMode) { this._gAnswer = null; this._gIdx = undefined; this.setState({ gMode: null, gFinished: false, gPicked: -1 }); return; }
           this.closePractice();
           return;
         }
-        if (this.state.cardsOn) { this.closePractice(); return; }
+        if (this.state.cardsOn) { this.setState({ dlgSeamless: true, cardsOn: false, cardsClosing: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); return; }
         if (this.state.storyOn) { if (this.state.stTip) { this.setState({ stTip: null }); return; } this.closeStory(true); return; }
         if (this.state.studyMenu) { this.setState({ studyMenu: false }); return; }
         if (this.state.langMenu) { this.setState({ langMenu: false }); return; }
@@ -3138,7 +3154,7 @@ class Component extends DCLogic {
   closePracticeNow() {
     this.stopStory();
     this.setState({ gameClosing: true, cardsClosing: true });
-    setTimeout(() => this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, storyOn: false, stTip: null, gMode: null, gFinished: false, dlgSeamless: false }), 420);
+    setTimeout(() => this.setState({ gameOpen: false, gameClosing: false, cardsOn: false, cardsClosing: false, storyOn: false, stTip: null, gMode: null, gFinished: false, aiOn: false, dlgSeamless: false }), 420);
   }
   // A pushed page gets a history entry, so the phone's Back button (and the
   // browser's) closes it rather than leaving the app. Where pushState is not
@@ -3995,11 +4011,12 @@ class Component extends DCLogic {
   }
 
   // The "chat with your AI agent" card: not a mode of its own but a prompt,
-  // copied for whichever agent the learner already talks to. The words ride
-  // along with reading and meaning, and the instructions make the agent a
+  // for whichever agent the learner already talks to. The words ride along
+  // with reading and meaning, and the instructions make the agent a
   // conversation partner scoped to them -- the one exercise this app cannot
-  // host itself, voice.
-  copyAgentPrompt(set) {
+  // host itself, voice. The page hands it over editable, so a learner can
+  // tune the tone or the length before they copy it out.
+  buildAgentPrompt(set) {
     // The same scope every other exercise practises: the menu's "exclude
     // learned words" box applies here too.
     const scope = this.practiceWords();
@@ -4009,7 +4026,7 @@ class Component extends DCLogic {
     // wraps up in the language the learner actually thinks in. The glosses
     // above are already in it.
     const base = langName();
-    const prompt = [
+    return [
       "I am learning Japanese vocabulary with OpenKanji.org and have just studied these " + scope.length + " words (" + T("set") + " " + (set + 1) + "):",
       "",
       words,
@@ -4022,15 +4039,18 @@ class Component extends DCLogic {
       "- Work most of the words in naturally over the session; do not quiz me down the list.",
       "- After about 10 minutes, wrap up in " + base + ", tell me which words I used well and which need work, and remind me to continue with my next set on OpenKanji.org.",
     ].join("\n");
-    const done = () => this.flashMsg(T("ai_chat_copied"));
+  }
+
+  copyText(text, msgKey) {
+    const done = () => this.flashMsg(T(msgKey || "ai_chat_copied"));
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(prompt).then(done, () => this.copyAgentFallback(prompt, done));
+      navigator.clipboard.writeText(text).then(done, () => this.copyTextFallback(text, done));
     } else {
-      this.copyAgentFallback(prompt, done);
+      this.copyTextFallback(text, done);
     }
   }
 
-  copyAgentFallback(text, done) {
+  copyTextFallback(text, done) {
     try {
       const ta = document.createElement("textarea");
       ta.value = text;
@@ -5278,9 +5298,10 @@ class Component extends DCLogic {
           // what the words are worth: coverage now, and with this deck done
           // the practice sheet
           pOn: !!st.gameOpen || !!st.cardsOn || !!st.storyOn,
-          pAtMenu: !st.cardsOn && !st.storyOn && !st.gMode,
-          pNotAtMenu: !!st.cardsOn || !!st.storyOn || !!st.gMode,
+          pAtMenu: !st.cardsOn && !st.storyOn && !st.gMode && !st.aiOn,
+          pNotAtMenu: !!st.cardsOn || !!st.storyOn || !!st.gMode || !!st.aiOn,
           pBack: () => {
+            if (this.state.aiOn) { this.setState({ aiOn: false }); return; }
             if (this.state.storyOn) { this.closeStory(true); return; }
             if (this.state.cardsOn) { this.setState({ dlgSeamless: true, cardsOn: false, cardsClosing: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); return; }
             if (this._gAdvT) clearTimeout(this._gAdvT);
@@ -5295,7 +5316,7 @@ class Component extends DCLogic {
           // reads as a flash, so both suppress them for that hand-off.
           pVeilAnim: st.dlgSeamless ? "none" : "",
           pSheetAnim: st.dlgSeamless ? "none" : "",
-          pEyebrow: st.storyOn ? T("story") : st.cardsOn ? T("flashcards") : st.gMode === "type" ? T("typing") : st.gMode ? T("quiz") : T("practice"),
+          pEyebrow: st.aiOn ? T("ai_chat_title") : st.storyOn ? T("story") : st.cardsOn ? T("flashcards") : st.gMode === "type" ? T("typing") : st.gMode ? T("quiz") : T("practice"),
           pTitle: setName(st.gBatch != null ? st.gBatch : WSET),
           pCount: st.storyOn ? (st.storyPage + 1) + " / " + (((storyOf(st.storySet) || { pages: [] }).pages.length || 0) + 1)
             : st.cardsOn ? (st.cIdx < (st.cQueue || []).length ? Math.min(st.cIdx + 1, (st.cQueue || []).length) + " / " + (st.cQueue || []).length : "")
@@ -5470,7 +5491,7 @@ class Component extends DCLogic {
       gameVeilAnim: st.dlgSeamless ? "none" : (st.gameClosing ? "ok-veil-out 180ms ease forwards" : "ok-veil-in 180ms ease"),
       gamePanelAnim: st.dlgSeamless ? "none" : (st.gameClosing ? "ok-panel-out 180ms ease forwards" : "ok-panel-in 220ms cubic-bezier(.2,.7,.3,1)"),
       gameOn: !!st.gameOpen,
-      gMenuOn: !!st.gameOpen && !st.gMode,
+      gMenuOn: !!st.gameOpen && !st.gMode && !st.aiOn,
       gPlayOn: !!st.gameOpen && !!st.gMode && !st.gFinished,
       gDoneOn: !!st.gameOpen && !!st.gMode && !!st.gFinished,
       gStart1: () => { this.setState({ gFirstOk: {} }); this.startGame(1); },
@@ -5516,7 +5537,11 @@ class Component extends DCLogic {
           // agent, so this copies a prompt rather than opening anything.
           // First two sets only, while the idea proves itself.
           aiChatOn: set < 2,
-          aiChatCopy: () => this.copyAgentPrompt(set),
+          aiChatOpen: () => this.setState({ aiOn: true, aiDraft: this.buildAgentPrompt(set) }),
+          aiOn: !!st.aiOn,
+          aiDraft: st.aiDraft || "",
+          onAiDraft: (e) => this.setState({ aiDraft: e && e.target ? e.target.value : "" }),
+          aiCopy: () => { const el = document.querySelector(".ok-ai-text"); this.copyText((el ? el.value : this.state.aiDraft) || "", "ai_chat_copied"); },
           // ticked (the default) keeps learned words out of every exercise;
           // unticking folds them back in, for a full-set refresher
           practChk: !st.practAll ? "background:var(--ok-acc);border-color:var(--ok-acc)" : "",
