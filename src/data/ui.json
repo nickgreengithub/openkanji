@@ -1024,8 +1024,8 @@
     "es": "Habla con tu agente de IA"
   },
   "ai_chat_desc": {
-    "en": "Click to copy a prompt with the 20 words",
-    "es": "Copia un prompt con las 20 palabras"
+    "en": "Copy prompt for your AI provider",
+    "es": "Copia un prompt para tu proveedor de IA"
   },
   "ai_chat_copied": {
     "en": "Prompt copied — paste it to your AI agent",
