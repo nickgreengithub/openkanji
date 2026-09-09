@@ -564,7 +564,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-sheet-body{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column}
 .ok-pmenu{width:100%;max-width:34rem;margin:0 auto;padding:1.5rem 1.25rem 2rem;display:flex;flex-direction:column;gap:.75rem}
 .ok-pmenu-hint{font-size:.875rem;text-align:center;margin-bottom:-.15rem}
-.ok-pmenu-foot{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-body);cursor:pointer;user-select:none}
+.ok-pmenu-foot{flex:0 0 auto;display:flex;align-items:center;gap:.5rem;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-body);cursor:pointer;user-select:none;white-space:nowrap}
 .ok-pmenu-foot .ok-w-chk{width:1.05rem;height:1.05rem;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #b9b9b1;color:#fff;font-size:0;transition:background 140ms ease,border-color 140ms ease}
 .ok-pmode{display:flex;align-items:center;gap:1rem;padding:1.05rem 1.15rem;border-radius:14px;border:1px solid var(--ok-line);background:var(--ok-card);box-shadow:var(--ok-shadow);cursor:pointer;user-select:none;transition:box-shadow 160ms ease,transform 160ms ease}
 .ok-pmode:hover{box-shadow:var(--ok-shadow-h);transform:translateY(-1px)}
@@ -686,7 +686,7 @@ a:hover{color:var(--text-accent-hover)}
      icon; a 2x3 grid earns the dialog's height instead, so each tile grows
      tall -- icon up top, words at the foot, the chevron out of the text's
      way in the corner. */
-  .ok-pmenu{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto repeat(3,1fr) auto;gap:1rem;width:100%;max-width:44rem;margin:0 auto;padding:1.1rem 1.5rem 1.2rem}
+  .ok-pmenu{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto repeat(3,1fr);gap:1rem;width:100%;max-width:44rem;margin:0 auto;padding:1.1rem 1.5rem 1.6rem}
   .ok-pmenu-hint{grid-column:1/-1;align-self:center}
   .ok-pmenu .ok-pmode{position:relative;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:.8rem;padding:1.15rem 1.25rem}
   .ok-pmenu .ok-pmode-ico{flex:0 0 auto;width:3rem;height:3rem;border-radius:14px}
@@ -1028,6 +1028,12 @@ html[data-ok-ready] #ok-boot{display:none}
           </span>
           <div class="ok-sheet-title"><span class="ok-eyebrow">{{ pEyebrow }}</span><span class="ok-sheet-h">{{ pTitle }}</span></div>
           <sc-if value="{{ storyHasNext }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ storyNextChapter }}" class="ok-round-btn" title="{{ storyNextChTitle }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5 L13 12 L6 19"></path><path d="M17 5 V19"></path></svg></span></sc-if>
+          <sc-if value="{{ gMenuOn }}" hint-placeholder-val="{{ true }}">
+            <div sc-camel-on-click="{{ togglePractAll }}" class="ok-pmenu-foot">
+              <span class="ok-w-chk" style="{{ practChk }}"><svg width="10" height="10" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span>
+              <span>{{ t_exclude_learned }}</span>
+            </div>
+          </sc-if>
           <span class="ok-muted ok-sheet-count">{{ pCount }}</span>
         </div>
         <div class="ok-sheet-body ok-scroll">
@@ -1075,10 +1081,6 @@ html[data-ok-ready] #ok-boot{display:none}
                   <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15 H4 A1.5 1.5 0 0 1 2.5 13.5 V4 A1.5 1.5 0 0 1 4 2.5 H13.5 A1.5 1.5 0 0 1 15 4 V5"></path></svg></span>
                 </div>
               </sc-if>
-              <div sc-camel-on-click="{{ togglePractAll }}" class="ok-pmenu-foot">
-                <span class="ok-w-chk" style="{{ practChk }}"><svg width="10" height="10" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span>
-                <span>{{ t_exclude_learned }}</span>
-              </div>
             </div>
           </sc-if>
 
@@ -5267,7 +5269,7 @@ class Component extends DCLogic {
           pCount: st.storyOn ? (st.storyPage + 1) + " / " + (((storyOf(st.storySet) || { pages: [] }).pages.length || 0) + 1)
             : st.cardsOn ? (st.cIdx < (st.cQueue || []).length ? Math.min(st.cIdx + 1, (st.cQueue || []).length) + " / " + (st.cQueue || []).length : "")
             : st.gMode ? (st.gFinished ? "" : (gIdxEff + 1) + " / " + (st.gRounds || []).length)
-            : T("to_practise", { n: this.practiceWords().length }),
+            : "",
           quizStart: () => { this.setState({ gFirstOk: {} }); this.startGame("quiz"); },
           typeStart: () => { this.setState({ gFirstOk: {} }); this.startGame("type"); },
           againNow: () => { this.setState({ gFirstOk: {} }); this.startGame(st.gMode || "quiz"); },
