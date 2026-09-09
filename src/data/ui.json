@@ -1042,5 +1042,17 @@
   "ai_copy": {
     "en": "Copy prompt",
     "es": "Copiar prompt"
+  },
+  "ai_suggest": {
+    "en": "Have a better prompt? Help us",
+    "es": "¿Tienes un mejor prompt? Ayúdanos"
+  },
+  "agent_suggest_subject": {
+    "en": "Better AI Prompt",
+    "es": "Mejor prompt de IA"
+  },
+  "agent_suggest_body": {
+    "en": "Please mention which specific model you're using, and how you found it improved your lesson. Thank you.",
+    "es": "Indica qué modelo concreto usas y cómo mejoró tu lección. Gracias."
   }
 }

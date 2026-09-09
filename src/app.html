@@ -571,7 +571,9 @@ a:hover{color:var(--text-accent-hover)}
 .ok-ai-hint{flex:0 0 auto;font-size:.875rem;text-align:center}
 .ok-ai-text{flex:1 1 auto;min-height:0;width:100%;padding:.85rem 1rem;border-radius:12px;border:1px solid #d5d5cf;background:#fff;font-family:var(--font-2);font-size:.9375rem;line-height:1.5;color:var(--ok-ink);outline:none;resize:none;white-space:pre-wrap}
 .ok-ai-text:focus{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
-.ok-ai-copy{flex:0 0 auto;align-self:center;display:inline-flex;align-items:center;gap:.5rem}
+.ok-ai-foot{flex:0 0 auto;position:relative;display:flex;align-items:center;justify-content:center;min-height:2.6rem}
+.ok-ai-copy{display:inline-flex;align-items:center;gap:.5rem}
+.ok-ai-suggest{position:absolute;left:0;font-family:var(--font-2);font-size:.875rem}
 .ok-pmode{display:flex;align-items:center;gap:1rem;padding:1.05rem 1.15rem;border-radius:14px;border:1px solid var(--ok-line);background:var(--ok-card);box-shadow:var(--ok-shadow);cursor:pointer;user-select:none;transition:box-shadow 160ms ease,transform 160ms ease}
 .ok-pmode:hover{box-shadow:var(--ok-shadow-h);transform:translateY(-1px)}
 .ok-pmode-ico{flex:0 0 2.6rem;width:2.6rem;height:2.6rem;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--ok-acc-s);color:var(--ok-acc)}
@@ -1098,7 +1100,10 @@ html[data-ok-ready] #ok-boot{display:none}
             <div class="ok-view ok-ai">
               <span class="ok-muted ok-ai-hint">{{ t_ai_page_hint }}</span>
               <textarea class="ok-ai-text ok-scroll" spellcheck="false" value="{{ aiDraft }}" sc-camel-on-change="{{ onAiDraft }}"></textarea>
-              <span sc-camel-on-click="{{ aiCopy }}" class="ok-btn ok-btn-primary ok-ai-copy"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15 H4 A1.5 1.5 0 0 1 2.5 13.5 V4 A1.5 1.5 0 0 1 4 2.5 H13.5 A1.5 1.5 0 0 1 15 4 V5"></path></svg>{{ t_ai_copy }}</span>
+              <div class="ok-ai-foot">
+                <sc-if value="{{ aiSuggestOn }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ aiSuggest }}" class="ok-link ok-ai-suggest">{{ t_ai_suggest }}</span></sc-if>
+                <span sc-camel-on-click="{{ aiCopy }}" class="ok-btn ok-btn-primary ok-ai-copy"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15 H4 A1.5 1.5 0 0 1 2.5 13.5 V4 A1.5 1.5 0 0 1 4 2.5 H13.5 A1.5 1.5 0 0 1 15 4 V5"></path></svg>{{ t_ai_copy }}</span>
+              </div>
             </div>
           </sc-if>
 
@@ -3035,7 +3040,25 @@ class Component extends DCLogic {
     const shut = () => this.setState({ issueOn: false, issueDone: null, issueMsg: "" });
     if (top && top.name === "acct") { top.name = "issue"; top.close = shut; }
     else this.openPage("issue", shut);
-    this.setState({ acctOpen: false, issueOn: true, issueKind: kind, issueDone: null, issueMsg: "" });
+    this.setState({ acctOpen: false, issueOn: true, issueKind: kind, issueSubject: "", issueText: "", issuePlaceholder: null, issueDone: null, issueMsg: "" });
+  }
+
+  // The "have a better prompt?" nudge on the AI page. It is the suggestion
+  // form with the subject and the body's placeholder filled in, so a learner
+  // lands on a half-written report about the one thing we asked. The AI page
+  // sits under the practice sheet, whose history entry is renamed rather than
+  // unwound, the same trick openIssue uses from the account panel.
+  openAgentSuggestion() {
+    const pages = this._pages || [];
+    const top = pages[pages.length - 1];
+    const shut = () => this.setState({ issueOn: false, issueDone: null, issueMsg: "" });
+    if (top && top.name === "practice") { top.name = "issue"; top.close = shut; }
+    else this.openPage("issue", shut);
+    this.setState({
+      gameOpen: false, cardsOn: false, storyOn: false, gMode: null, gFinished: false, aiOn: false, dlgSeamless: false,
+      issueOn: true, issueKind: "idea", issueSubject: T("agent_suggest_subject"), issueText: "",
+      issuePlaceholder: T("agent_suggest_body"), issueDone: null, issueMsg: "",
+    });
   }
 
   closeIssueView() {
@@ -5241,7 +5264,7 @@ class Component extends DCLogic {
           // is filed under -- not in anything else.
           issueHead: T(st.issueKind === "idea" ? "idea_title" : "issue_title"),
           issueSubjectHint: T(st.issueKind === "idea" ? "idea_subject" : "issue_subject"),
-          issueBodyHint: T(st.issueKind === "idea" ? "idea_body" : "issue_body"),
+          issueBodyHint: st.issuePlaceholder || T(st.issueKind === "idea" ? "idea_body" : "issue_body"),
           issueNoteText: T(st.issueKind === "idea" ? "idea_note" : "issue_note"),
           issueThanks: T(st.issueKind === "idea" ? "idea_thanks" : "issue_thanks"),
           openBug: () => this.openIssue("bug"),
@@ -5551,6 +5574,12 @@ class Component extends DCLogic {
           aiDraft: st.aiDraft || "",
           onAiDraft: (e) => this.setState({ aiDraft: e && e.target ? e.target.value : "" }),
           aiCopy: () => { const el = document.querySelector(".ok-ai-text"); this.copyText((el ? el.value : this.state.aiDraft) || "", "ai_chat_copied"); },
+          // The report form is signed-in only -- an answer needs an address --
+          // so the "help us" nudge only shows to someone who could actually
+          // send one. It hands the suggestion form a title and a placeholder
+          // already pointed at what we want to hear about.
+          aiSuggestOn: okSyncReady() && !!st.userEmail,
+          aiSuggest: () => this.openAgentSuggestion(),
           // ticked (the default) keeps learned words out of every exercise;
           // unticking folds them back in, for a full-set refresher
           practChk: !st.practAll ? "background:var(--ok-acc);border-color:var(--ok-acc)" : "",
