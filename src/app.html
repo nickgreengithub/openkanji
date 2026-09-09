@@ -681,6 +681,16 @@ a:hover{color:var(--text-accent-hover)}
 .ok-fc-gloss{font-family:var(--font-2);font-size:1.25rem;color:var(--ok-body);text-wrap:pretty}
 @media (min-width:641px){
   .ok-veil-p{align-items:center;padding:1.5rem}
+  /* With the width for it, the latest mistake sits in its own cell to the
+     right of the progress ring -- two equal columns, and only when there is
+     a mistake to show; otherwise the progress keeps the row to itself. */
+  .ok-overall-top.ok-has-miss{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;align-items:stretch}
+  .ok-overall-top.ok-has-miss .ok-rings{grid-template-columns:1fr}
+  .ok-overall-top.ok-has-miss .ok-miss-card{display:flex;flex-direction:column;gap:.5rem;padding:1.25rem 1.5rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
+  .ok-miss-body{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-width:0}
+  .ok-miss-w{font-size:1.875rem;line-height:1.15;color:var(--ok-ink);display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+  .ok-miss-r{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-acc)}
+  .ok-miss-g{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-body)}
   /* Esc and a click outside both close the word dialog, so the corner x
      says nothing a desktop user needs. On a phone there is no Esc and no
      outside to click -- the x stays. */
@@ -738,6 +748,9 @@ a:hover{color:var(--text-accent-hover)}
 
 /* Map: rings, one honest axis */
 .ok-rings{display:grid;grid-template-columns:1fr;gap:.75rem}
+/* The latest-mistake card is a desktop luxury -- it wants width beside the
+   progress, so on a phone it stays out of the way entirely. */
+.ok-miss-card{display:none}
 .ok-ring{display:flex;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
 .ok-ring svg{flex:0 0 auto;width:88px;height:88px;transform:rotate(-90deg)}
 .ok-ring-c{stroke:var(--ok-acc);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
@@ -1269,7 +1282,7 @@ html[data-ok-ready] #ok-boot{display:none}
         <span sc-camel-on-click="{{ continueSet }}" class="ok-btn ok-btn-primary ok-continue">{{ heroBtn }}</span>
       </header>
       <section class="ok-wrap">
-        <div class="ok-overall">
+        <div class="ok-overall ok-overall-top {{ lastMissClass }}">
           <div class="ok-rings">
             <sc-for list="{{ rings }}" as="rg" hint-placeholder-count="4">
               <div class="ok-ring" title="{{ rg.title }}">
@@ -1286,6 +1299,15 @@ html[data-ok-ready] #ok-boot{display:none}
               </div>
             </sc-for>
           </div>
+          <sc-if value="{{ lastMissOn }}" hint-placeholder-val="{{ false }}">
+            <div class="ok-miss-card">
+              <span class="ok-h2">{{ t_latest_mistake }}</span>
+              <div class="ok-miss-body">
+                <span class="ok-miss-w">{{ lastMissWord }}<span class="ok-miss-r">{{ lastMissReading }}</span></span>
+                <span class="ok-miss-g">{{ lastMissGloss }}</span>
+              </div>
+            </div>
+          </sc-if>
         </div>
         <sc-for list="{{ tiers }}" as="tr" hint-placeholder-count="5">
           <div class="ok-overall">
@@ -1633,6 +1655,13 @@ html[data-ok-ready] #ok-boot{display:none}
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;startFurigana&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;showTileMeanings&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Study&quot;},&quot;userEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Account&quot;}}">
 // Injected by tools/build.js from src/data/*.json -- edit those, not this.
 const DATA = __KANJI_DATA__;
+// A word by its id, for the few places that hold only the key -- the latest
+// mistake, say -- and need the surface, reading and gloss to show it.
+const OK_WORD_BY_KEY = (() => {
+  const m = {};
+  DATA.forEach(k => k.g.forEach(g => g.w.forEach(w => { if (!m[w[3]]) m[w[3]] = { w: w[0], r: w[1], g: w[2] }; })));
+  return m;
+})();
 // Words we have a recording for. A recording is the same on every machine
 // and starts at once; the browser's own voice is the fallback for anything
 // not yet recorded (see tools/voices.js).
@@ -2480,6 +2509,10 @@ const okAiReady = () => (typeof window !== "undefined" && !!(window.claude && wi
 //   day   the day it was last graded, in days since the epoch
 //   hist  the last six results as bits, bit 0 newest, 1 = right
 const OK_STR_KEY = "openkanji.strength";
+// The last word missed in practice that has not since been answered right --
+// the one the home screen surfaces so it does not slip away. A single slot,
+// kept on this machine only; it is a nudge, not progress worth syncing.
+const OK_MISS_KEY = "openkanji.lastmiss";
 const STR_HIST = 6;
 // Producing a reading from nothing is much stronger evidence than picking one
 // tile of four, where a blind guess is right a quarter of the time.
@@ -2551,7 +2584,7 @@ const okMerge = (a, b) => {
 
 class Component extends DCLogic {
   state = {
-    screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], replies: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true,
+    screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], replies: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true, lastMiss: null,
     draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, updates: false, updatesWant: okWantUpdates(), issueOn: false, issueKind: "bug", issueSubject: "", issueText: "", issueBusy: false, issueDone: null, issueMsg: "", zoom: "map", focus: null, focusShown: false, focusAuto: false, autoSpeed: 1, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
@@ -2592,8 +2625,9 @@ class Component extends DCLogic {
     const wset0 = Math.max(0, parseInt(lsGet(OK_SET_KEY) || "0", 10) || 0);
     const furi0 = lsGet(OK_FURI_KEY);
     const auto0 = parseInt(lsGet(OK_AUTO_KEY) || "1", 10);
+    const miss0 = (() => { try { return localStorage.getItem(OK_MISS_KEY) || null; } catch (e) { return null; } })();
     this.setState({ seen: s || {}, mastered: m || {}, strength: str, deck: deck0, uiLang: lang0 || undefined, allFuri: furi0 == null ? this.furiDefault : furi0 === "1", wset: wset0,
-      autoSpeed: auto0 >= 0 && auto0 < AUTO_GAP.length ? auto0 : 1 });
+      lastMiss: miss0, autoSpeed: auto0 >= 0 && auto0 < AUTO_GAP.length ? auto0 : 1 });
     // A sync still in its debounce window when the tab goes must not be lost.
     this._onHide = () => { if (this._syncT) { clearTimeout(this._syncT); this._syncT = null; this.pushProgress(this.state); } };
     window.addEventListener("pagehide", this._onHide);
@@ -3575,7 +3609,15 @@ class Component extends DCLogic {
     const cur = this.state.strength || {};
     const next = Object.assign({}, cur, { [key]: strGrade(cur[key], ok, mode) });
     this.persistStrength(next);
-    this.setState({ strength: next });
+    // The latest unresolved miss: a wrong answer becomes it; getting that
+    // same word right later clears it. Other words' rights leave it be.
+    let miss = this.state.lastMiss;
+    if (!ok) miss = key;
+    else if (miss === key) miss = null;
+    if (miss !== this.state.lastMiss) {
+      try { if (miss) localStorage.setItem(OK_MISS_KEY, miss); else localStorage.removeItem(OK_MISS_KEY); } catch (e) {}
+    }
+    this.setState({ strength: next, lastMiss: miss });
     this.scheduleSync();
   }
 
@@ -5352,6 +5394,13 @@ class Component extends DCLogic {
           wBack: () => { if (this.state.writeFromStudy) this.setState({ dlgSeamless: true, write: false, writeClosing: false, writeFromStudy: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); else this.closeWrite(); },
           t_settings: T("settings"), t_close: T("close"),
           ja_your_progress: TJ("your_progress"), ja_all_sets: TJ("all_sets"),
+          // The latest unresolved miss, resolved to a word to show. Hidden
+          // when there is none, and (by CSS) on screens without the width.
+          lastMissOn: !!(st.lastMiss && OK_WORD_BY_KEY[st.lastMiss]),
+          lastMissClass: st.lastMiss && OK_WORD_BY_KEY[st.lastMiss] ? "ok-has-miss" : "",
+          lastMissWord: st.lastMiss && OK_WORD_BY_KEY[st.lastMiss] ? OK_WORD_BY_KEY[st.lastMiss].w : "",
+          lastMissReading: st.lastMiss && OK_WORD_BY_KEY[st.lastMiss] ? OK_WORD_BY_KEY[st.lastMiss].r : "",
+          lastMissGloss: st.lastMiss && OK_WORD_BY_KEY[st.lastMiss] ? OK_WORD_BY_KEY[st.lastMiss].g : "",
           jaSeg: st.lang === "ja" ? segOn : segOff,
           enSeg: st.lang !== "ja" ? segOn : segOff,
           // completion: the set's own next step takes the primary slot

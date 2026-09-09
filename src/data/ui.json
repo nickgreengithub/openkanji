@@ -1054,5 +1054,9 @@
   "agent_suggest_body": {
     "en": "Please mention which specific model you're using, and how you found it improved your lesson. Thank you.",
     "es": "Indica qué modelo concreto usas y cómo mejoró tu lección. Gracias."
+  },
+  "latest_mistake": {
+    "en": "Latest mistake",
+    "es": "Último error"
   }
 }
