@@ -2189,6 +2189,27 @@ async function okComplete(req) {
 // Speech: the browser's own Japanese voice, the word then the sentence. Free
 // and instant; the voice varies by platform, which is the trade for that.
 const okPhone = () => typeof window !== "undefined" && !!window.matchMedia && window.matchMedia("(max-width:640px)").matches;
+// Provenance. The code is GPL and copying it is allowed -- this is not a
+// lock, and removing it is legal. But a copy that says nothing lets a
+// stranger pass the work off as their own to people who cannot read code,
+// and most of those copies are made by people who cannot either. A page
+// served from somewhere that is not home says where home is.
+const okProv = () => {
+  try {
+    if (typeof window === "undefined" || (window.claude && window.claude.complete)) return;
+    const h = String(location.hostname || "").toLowerCase();
+    const home = ["openkanji", "org"].join(".");
+    if (!h || h === home || h === "www." + home || h === "localhost" || h === "127.0.0.1" || h.endsWith(".workers.dev")) return;
+    setTimeout(() => {
+      const d = document.createElement("div");
+      d.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:2147483647;padding:.55rem 1rem;background:#15181c;color:#fff;font:14px/1.5 -apple-system,sans-serif;text-align:center";
+      d.innerHTML = 'This is an unofficial copy. The real OpenKanji lives at <a href="https://' + home + '" style="color:#7dd3e8">' + home + "</a>.";
+      document.body.appendChild(d);
+      new MutationObserver(() => { if (!document.body.contains(d)) document.body.appendChild(d); }).observe(document.body, { childList: true });
+    }, 2500);
+  } catch (e) {}
+};
+okProv();
 // What the phone can actually show. 100dvh is the viewport the browser would
 // like to have, not the one left over once its own chrome is on screen, and
 // it does not shrink at all for the keyboard on iOS -- so the top of the page
