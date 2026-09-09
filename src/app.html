@@ -1245,6 +1245,10 @@ html[data-ok-ready] #ok-boot{display:none}
 
   <!-- what a word of the story means, for the tap that asked -->
   <sc-if value="{{ stTipOpen }}" hint-placeholder-val="{{ false }}">
+    <!-- While a tip is open the next click anywhere lands here first: it
+         closes the tip and goes no further, so the click that dismisses does
+         not also pick another word or turn a page. -->
+    <div sc-camel-on-click="{{ stTipClose }}" style="position:fixed;inset:0;z-index:95"></div>
     <div sc-camel-on-click="{{ stTipClose }}" style="{{ stTipStyle }}">
       <span class="ok-sttip-w">{{ stTipWord }}<span class="ok-sttip-r">{{ stTipReading }}</span></span>
       <span class="ok-sttip-g">{{ stTipGloss }}</span>
