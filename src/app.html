@@ -3693,7 +3693,7 @@ class Component extends DCLogic {
           "understood (boolean); accurate (\"good\"|\"ok\"|\"bad\"); natural (\"good\"|\"ok\"|\"bad\");",
           "correction (string|null) — the learner's sentence minimally corrected, or null if nothing needs changing;",
           "note (string) — one or two short English sentences: what worked, then the single most useful fix, naming the grammar point or word;",
-          "better (string) — one more natural Japanese sentence, mostly from the learner's WORDS LIST. The FURIGANA RULE applies here in full: any kanji word in this sentence that is NOT in the WORDS LIST must be followed immediately by its reading in corner brackets, e.g. 三回目「さんかいめ」; words that ARE in the list stay bare."
+          "better (string) — one more natural Japanese sentence, mostly from the learner's WORDS LIST. This is NEW writing, not a quote, so the QUOTING RULE does NOT apply to it: EVERY kanji word here that is not in the WORDS LIST must be followed immediately by its reading in corner brackets — whether you introduced the word or the learner used it — e.g. その写真を三回目「さんかいめ」見ました「みました」. Only the WORDS LIST words stay bare."
         ].join(" "),
         messages: priorTurns.slice(-7).concat([{ role: "user", content: [
           "WORDS LIST (these words are already known — write them with NO reading): " + this.chatWordsBrief(),
