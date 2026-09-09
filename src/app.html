@@ -509,12 +509,13 @@ a:hover{color:var(--text-accent-hover)}
 /* Auto-play sits in the corner the close button is not in: top left on a
    desk, top right on a phone, where the close button crosses over. Absolute,
    so the dialog is the same box whether it is running or not. */
-.ok-focus-auto{position:absolute;top:.6rem;left:.95rem;display:flex;align-items:center;gap:.25rem;z-index:2}
+.ok-focus-head{flex:0 0 auto;position:relative;width:100%;min-height:2.3rem;margin-top:-1.5rem;display:flex;align-items:center}
+.ok-focus-auto{display:flex;align-items:center;gap:.25rem}
 .ok-focus-autob{width:2.3rem;height:2.3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ok-mute);cursor:pointer;user-select:none;transition:background 140ms ease,color 140ms ease}
 .ok-focus-autob:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
 .ok-focus-speed{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute);border:1px solid var(--ok-line);border-radius:999px;padding:.1rem .45rem;cursor:pointer;user-select:none;line-height:1.4}
 .ok-focus-speed:hover{color:var(--ok-ink)}
-.ok-focus-n{font-family:var(--font-2);font-size:.9375rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-mute)}
+.ok-focus-n{position:absolute;left:50%;transform:translateX(-50%);font-family:var(--font-2);font-size:.9375rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-mute);font-variant-numeric:tabular-nums;white-space:nowrap}
 .ok-focus-wordbox{flex:0 0 auto;height:7rem;display:flex;align-items:center;justify-content:center}
 .ok-focus-word{line-height:1.15;white-space:nowrap}
 .ok-focus-word rt{font-family:var(--font-2);font-size:.42em;color:var(--ok-acc);transition:opacity 160ms ease}
@@ -668,6 +669,10 @@ a:hover{color:var(--text-accent-hover)}
 .ok-fc-gloss{font-family:var(--font-2);font-size:1.25rem;color:var(--ok-body);text-wrap:pretty}
 @media (min-width:641px){
   .ok-veil-p{align-items:center;padding:1.5rem}
+  /* Esc and a click outside both close the word dialog, so the corner x
+     says nothing a desktop user needs. On a phone there is no Esc and no
+     outside to click -- the x stays. */
+  .ok-focus .ok-x{display:none}
   .ok-sheet{width:min(44rem,100%);height:auto;max-height:min(42rem,100%);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(20,24,30,.35);animation:ok-rise 500ms cubic-bezier(.16,.8,.22,1)}
   .ok-sheet-fixed{width:min(50rem,100%);height:min(40rem,100%)}
   /* A page of the story is five or six lines with a translation under each,
@@ -1451,8 +1456,10 @@ html[data-ok-ready] #ok-boot{display:none}
     <div sc-camel-on-click="{{ closeFocus }}" class="ok-veil {{ focusVeilOut }}">
       <div sc-camel-on-click="{{ stop }}" class="ok-focus {{ focusOut }}" style="--fx:{{ focusFx }};--fy:{{ focusFy }}">
         <span sc-camel-on-click="{{ closeFocus }}" class="ok-x">×</span>
-        <div class="ok-focus-auto"><span sc-camel-on-click="{{ toggleAuto }}" class="ok-focus-autob" title="{{ autoTitle }}" style="{{ autoStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="currentColor"><sc-if value="{{ autoOn }}" hint-placeholder-val="{{ false }}"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></sc-if><sc-if value="{{ autoOff }}" hint-placeholder-val="{{ true }}"><path d="M8 5 L19 12 L8 19 Z"></path></sc-if></svg></span><span sc-camel-on-click="{{ cycleAutoSpeed }}" class="ok-focus-speed" title="{{ autoSpeedTitle }}">{{ autoSpeedLabel }}</span></div>
-        <span class="ok-focus-n">{{ focusCounter }}</span>
+        <div class="ok-focus-head">
+          <div class="ok-focus-auto"><span sc-camel-on-click="{{ toggleAuto }}" class="ok-focus-autob" title="{{ autoTitle }}" style="{{ autoStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="currentColor"><sc-if value="{{ autoOn }}" hint-placeholder-val="{{ false }}"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></sc-if><sc-if value="{{ autoOff }}" hint-placeholder-val="{{ true }}"><path d="M8 5 L19 12 L8 19 Z"></path></sc-if></svg></span><span sc-camel-on-click="{{ cycleAutoSpeed }}" class="ok-focus-speed" title="{{ autoSpeedTitle }}">{{ autoSpeedLabel }}</span></div>
+          <span class="ok-focus-n">{{ focusCounter }}</span>
+        </div>
         <div class="ok-focus-wordrow"><span sc-camel-on-click="{{ focusPrev }}" class="ok-focus-arrow ok-focus-arrow-l" title="{{ t_prev_word }}" style="visibility:{{ focusPrevVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span><div class="ok-focus-wordbox"><span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span></div><span sc-camel-on-click="{{ focusNext }}" class="ok-focus-arrow ok-focus-arrow-r" title="{{ t_next_word }}" style="visibility:{{ focusNextVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span></div>
         <div class="ok-focus-ans" style="opacity:{{ focusAns }}">
           <sc-if value="{{ focusShowReading }}" hint-placeholder-val="{{ false }}"><span class="ok-focus-reading">{{ focusReading }}</span></sc-if>
@@ -5048,7 +5055,10 @@ class Component extends DCLogic {
           // focus
           focusOn: !!f,
           closeFocus: () => this.closeFocusView(),
-          focusCounter: f ? setName(WSET) + " · " + (st.focus + 1) + " / " + WORDS.length : "",
+          // the index is padded with figure spaces to the total's width, so
+          // "6 / 20" and "16 / 20" are the same width and the line never
+          // shifts as the learner steps through
+          focusCounter: f ? setName(WSET) + " · " + String(st.focus + 1).padStart(String(WORDS.length).length, " ") + " / " + WORDS.length : "",
           focusRuby: f ? this.wordRuby(f.w[0], f.w[1]) : OK_EMPTY,
           focusRubyOpacity: fHidden || !st.allFuri ? 0 : 1,
           focusWordSize: f ? okFocusWordSize(f.w[0]) : "4rem",
