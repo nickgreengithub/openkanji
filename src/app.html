@@ -1546,13 +1546,7 @@ html[data-ok-ready] #ok-boot{display:none}
             </span>
           </div>
           <div class="ok-focus-str">
-            <span class="ok-focus-str-top">
-              <span class="ok-focus-str-lvl">{{ focusLvlName }}</span>
-              <sc-if value="{{ focusDotsOn }}" hint-placeholder-val="{{ false }}">
-                <span class="ok-focus-dots" title="{{ t_str_recent }}"><sc-for list="{{ focusDots }}" as="fd" hint-placeholder-count="6"><span class="ok-focus-dot" style="background:{{ fd.bg }}" title="{{ fd.title }}"></span></sc-for></span>
-              </sc-if>
-            </span>
-            <span class="ok-focus-str-sub">{{ focusStrSub }}</span>
+            <span class="ok-focus-str-sub">{{ focusStrLine }}</span>
           </div>
         </div>
       </div>
@@ -5256,27 +5250,21 @@ class Component extends DCLogic {
             const marked = !!(key && st.mastered[key]);
             const lvl = marked ? 4 : strLevel(rec);
             const n = rec ? rec[1] : 0;
-            const days = n ? Math.max(0, okDay() - rec[2]) : null;
-            // the last six answers, oldest first, so they read left to right
+            // The recent record, from the same six answers the pie is built on:
+            // how many of them were right, and whether the last one was. A word
+            // all-right or all-wrong needs no "last answer" -- it says itself.
             const shown = Math.min(n, STR_HIST);
-            const dots = [];
-            for (let i = shown - 1; i >= 0; i--) {
-              const right = ((rec[3] >> i) & 1) === 1;
-              dots.push({ bg: right ? "var(--ok-acc)" : "#e11d48", title: right ? T("str_right") : T("str_wrong") });
-            }
+            let correct = 0;
+            for (let i = 0; i < shown; i++) correct += (rec[3] >> i) & 1;
+            const lastRight = shown > 0 && ((rec[3] & 1) === 1);
+            const line = !n ? T("str_never")
+              : (correct === shown || correct === 0) ? T("str_correct_answers", { c: correct, n: shown })
+                : T(lastRight ? "str_last_right" : "str_last_wrong", { c: correct, n: shown });
             return {
               focusPieOn: lvl > 0,
               focusPieFull: lvl >= 4,
               focusPieD: okPiePath(lvl),
-              focusLvlName: marked ? T("marked_learned") : T("str_" + lvl),
-              // "It will come up in Practice" is only true of a word Practice
-              // would actually deal, and practiceWords() drops the ones marked
-              // by hand while any others in the set still need the work.
-              focusStrSub: !n ? T(marked ? "str_marked_sub" : "str_never_sub")
-                : (days === 0 ? T("str_seen_today_long") : days === 1 ? T("str_seen_yesterday") : T("str_seen_days_long", { n: days }))
-                  + " · " + T("str_answers_long", { n: n }),
-              focusDots: dots,
-              focusDotsOn: dots.length > 0
+              focusStrLine: line
             };
           })(),
           focusHasEx: !!fx,

@@ -1058,5 +1058,21 @@
   "latest_mistake": {
     "en": "Latest mistake",
     "es": "Último error"
+  },
+  "str_never": {
+    "en": "Has not been practised yet",
+    "es": "Aún no se ha practicado"
+  },
+  "str_correct_answers": {
+    "en": "{c}/{n} correct answers",
+    "es": "{c}/{n} respuestas correctas"
+  },
+  "str_last_right": {
+    "en": "{c}/{n} correct · Last answer correct",
+    "es": "{c}/{n} correctas · Última correcta"
+  },
+  "str_last_wrong": {
+    "en": "{c}/{n} correct · Last answer incorrect",
+    "es": "{c}/{n} correctas · Última incorrecta"
   }
 }
