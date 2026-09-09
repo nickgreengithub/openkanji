@@ -564,6 +564,8 @@ a:hover{color:var(--text-accent-hover)}
 .ok-sheet-body{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column}
 .ok-pmenu{width:100%;max-width:34rem;margin:0 auto;padding:1.5rem 1.25rem 2rem;display:flex;flex-direction:column;gap:.75rem}
 .ok-pmenu-hint{font-size:.875rem;text-align:center;margin-bottom:-.15rem}
+.ok-pmenu-foot{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-body);cursor:pointer;user-select:none}
+.ok-pmenu-foot .ok-w-chk{width:1.05rem;height:1.05rem;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #b9b9b1;color:#fff;font-size:0;transition:background 140ms ease,border-color 140ms ease}
 .ok-pmode{display:flex;align-items:center;gap:1rem;padding:1.05rem 1.15rem;border-radius:14px;border:1px solid var(--ok-line);background:var(--ok-card);box-shadow:var(--ok-shadow);cursor:pointer;user-select:none;transition:box-shadow 160ms ease,transform 160ms ease}
 .ok-pmode:hover{box-shadow:var(--ok-shadow-h);transform:translateY(-1px)}
 .ok-pmode-ico{flex:0 0 2.6rem;width:2.6rem;height:2.6rem;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--ok-acc-s);color:var(--ok-acc)}
@@ -684,7 +686,7 @@ a:hover{color:var(--text-accent-hover)}
      icon; a 2x3 grid earns the dialog's height instead, so each tile grows
      tall -- icon up top, words at the foot, the chevron out of the text's
      way in the corner. */
-  .ok-pmenu{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto repeat(3,1fr);gap:1rem;width:100%;max-width:44rem;margin:0 auto;padding:1.1rem 1.5rem 1.6rem}
+  .ok-pmenu{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto repeat(3,1fr) auto;gap:1rem;width:100%;max-width:44rem;margin:0 auto;padding:1.1rem 1.5rem 1.2rem}
   .ok-pmenu-hint{grid-column:1/-1;align-self:center}
   .ok-pmenu .ok-pmode{position:relative;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:.8rem;padding:1.15rem 1.25rem}
   .ok-pmenu .ok-pmode-ico{flex:0 0 auto;width:3rem;height:3rem;border-radius:14px}
@@ -1073,6 +1075,10 @@ html[data-ok-ready] #ok-boot{display:none}
                   <span class="ok-pmode-chev"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15 H4 A1.5 1.5 0 0 1 2.5 13.5 V4 A1.5 1.5 0 0 1 4 2.5 H13.5 A1.5 1.5 0 0 1 15 4 V5"></path></svg></span>
                 </div>
               </sc-if>
+              <div sc-camel-on-click="{{ togglePractAll }}" class="ok-pmenu-foot">
+                <span class="ok-w-chk" style="{{ practChk }}"><svg width="10" height="10" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span>
+                <span>{{ t_exclude_learned }}</span>
+              </div>
             </div>
           </sc-if>
 
@@ -3964,14 +3970,17 @@ class Component extends DCLogic {
   // conversation partner scoped to them -- the one exercise this app cannot
   // host itself, voice.
   copyAgentPrompt(set) {
-    const words = wordsOf(set).map(e => e.w[0] + " (" + e.w[1] + ") — " + e.w[2]).join("\n");
+    // The same scope every other exercise practises: the menu's "exclude
+    // learned words" box applies here too.
+    const scope = this.practiceWords();
+    const words = scope.map(e => e.w[0] + " (" + e.w[1] + ") — " + e.w[2]).join("\n");
     // The prompt itself stays in English -- every agent reads it -- but the
     // learner's own language rides along, so the agent greets, corrects and
     // wraps up in the language the learner actually thinks in. The glosses
     // above are already in it.
     const base = langName();
     const prompt = [
-      "I am learning Japanese vocabulary with OpenKanji.org and have just studied these " + wordsOf(set).length + " words (" + T("set") + " " + (set + 1) + "):",
+      "I am learning Japanese vocabulary with OpenKanji.org and have just studied these " + scope.length + " words (" + T("set") + " " + (set + 1) + "):",
       "",
       words,
       "",
@@ -4009,9 +4018,12 @@ class Component extends DCLogic {
 
   // What a practice round is over: the words of the set not yet learned, or
   // the whole set once they all are -- a finished set is still worth a run.
+  // The menu's "exclude learned words" box, on by default, is what the
+  // filter answers to; unticked, everything is in scope again.
   practiceWords() {
-    const m = this.state.mastered || {};
     const all = this.gameWords();
+    if (this.state.practAll) return all;
+    const m = this.state.mastered || {};
     const left = all.filter(e => !m[e.w[3]]);
     return left.length ? left : all;
   }
@@ -4363,8 +4375,11 @@ class Component extends DCLogic {
     } else if (wordMode) {
       const pool = [];
       this.practiceWords().forEach(e => pool.push({ kk: e.k, w: e.w }));
+      // the ladder's easy half scales with the pool: a full set of twenty
+      // climbs from ten easy rounds to ten hard, not five easy to fifteen
+      const easyHalf = Math.ceil(pool.length / 2);
       this.weightedOrder(pool, (p) => p.w[3]).forEach(p => {
-        const m = mode === "quiz" ? (rounds.length < 5 ? 1 : 2) : mode;
+        const m = mode === "quiz" ? (rounds.length < easyHalf ? 1 : 2) : mode;
         const q = this.buildWordQ(m, p.kk, p.w);
         if (!q) return;
         q.word = p.w[0]; q.gloss = p.w[2]; q.key = p.w[3];
@@ -4382,7 +4397,10 @@ class Component extends DCLogic {
       rounds.push(q);
     });
     this._gAnswer = null; this._gIdx = 0; this._gResults = {};
-    this.setState({ gMode: mode, gRounds: rounds.slice(0, 10), gIdx: 0, gPicked: -1, gScore: 0, gWrong: [], gWrongW: [], gFinished: false, gTypeDraft: "", gTypeDone: false });
+    // Quiz and Typing run the whole scope -- a set is twenty words and the
+    // round should meet them all. Only the legacy kanji modes keep the cap.
+    const capped = (mode === "type" || wordMode) ? rounds : rounds.slice(0, 10);
+    this.setState({ gMode: mode, gRounds: capped, gIdx: 0, gPicked: -1, gScore: 0, gWrong: [], gWrongW: [], gFinished: false, gTypeDraft: "", gTypeDone: false });
     this.forceUpdate();
     if (mode === "type") this.focusTyped(0);
   }
@@ -5466,6 +5484,10 @@ class Component extends DCLogic {
           // First two sets only, while the idea proves itself.
           aiChatOn: set < 2,
           aiChatCopy: () => this.copyAgentPrompt(set),
+          // ticked (the default) keeps learned words out of every exercise;
+          // unticking folds them back in, for a full-set refresher
+          practChk: !st.practAll ? "background:var(--ok-acc);border-color:var(--ok-acc)" : "",
+          togglePractAll: () => this.setState(s => ({ practAll: !s.practAll })),
           signUpUpdates: () => {
             this.setState({ gameOpen: false, gameClosing: false, dlgSeamless: false, acctOpen: true });
             this.openPage("acct", () => this.setState({ acctOpen: false }));

@@ -1030,5 +1030,9 @@
   "ai_chat_copied": {
     "en": "Prompt copied — paste it to your AI agent",
     "es": "Prompt copiado — pégalo en tu agente de IA"
+  },
+  "exclude_learned": {
+    "en": "Exclude learned words",
+    "es": "Excluir palabras aprendidas"
   }
 }
