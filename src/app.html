@@ -751,6 +751,8 @@ a:hover{color:var(--text-accent-hover)}
 .ok-miss-body{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-width:0}
 .ok-miss-w{font-size:1.875rem;line-height:1.15;color:var(--ok-ink);display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
 .ok-miss-r{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-acc)}
+.ok-miss-card-live{cursor:pointer;transition:box-shadow 160ms ease,transform 160ms ease}
+.ok-miss-card-live:hover{box-shadow:var(--ok-shadow-h);transform:translateY(-1px)}
 .ok-ring{display:flex;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem;border-radius:14px;background:var(--ok-card);border:1px solid var(--ok-line);box-shadow:var(--ok-shadow)}
 .ok-ring svg{flex:0 0 auto;width:88px;height:88px;transform:rotate(-90deg)}
 .ok-ring-c{stroke:var(--ok-acc);transition:stroke-dasharray 500ms cubic-bezier(.3,.7,.3,1)}
@@ -1307,7 +1309,7 @@ html[data-ok-ready] #ok-boot{display:none}
             </sc-for>
           </div>
           <sc-if value="{{ lastMissOn }}" hint-placeholder-val="{{ false }}">
-            <div class="ok-miss-card">
+            <div sc-camel-on-click="{{ missClick }}" class="ok-miss-card ok-miss-card-live">
               <span class="ok-h2 ok-ja">{{ ja_latest_mistake }} <span class="ok-h2-own">{{ t_latest_mistake }}</span></span>
               <div class="ok-miss-body">
                 <span class="ok-miss-w">{{ lastMissWord }}<span class="ok-miss-r">{{ lastMissReading }}</span></span>
@@ -3207,6 +3209,17 @@ class Component extends DCLogic {
     const swipe = dir ? { dir: dir > 0 ? "l" : "r", n: ((this.state.swipe || {}).n || 0) + 1, phase: "in" } : null;
     this.setState({ wset: b, zoom: "set", focus: null, focusShown: false, hoverWord: null, acctOpen: false, swipe: swipe });
     requestAnimationFrame(() => { const el = document.querySelector(".ok-set-body"); if (el) el.scrollTop = 0; });
+  }
+  // The latest-mistake card, followed: open the set the word lives in and its
+  // focus card, the same one a tap on the word in that set would raise.
+  openMistake() {
+    const key = this.state.lastMiss;
+    if (!key) return;
+    const idx = deckWords().findIndex(e => e.w[3] === key);
+    if (idx < 0) return;
+    this.gotoSet(Math.floor(idx / WORDN));
+    this.setState({ focus: idx % WORDN, focusShown: false, focusFrom: [0, 0] });
+    this.openPage("focus", () => this.closeFocusNow());
   }
   closeFocusView() {
     if (this.state.focus == null || this.state.focusClosing) return;
@@ -5420,6 +5433,7 @@ class Component extends DCLogic {
           // when there is none, and (by CSS) on screens without the width.
           lastMissOn: !!(st.lastMiss && OK_WORD_BY_KEY[st.lastMiss]),
           lastMissClass: st.lastMiss && OK_WORD_BY_KEY[st.lastMiss] ? "ok-has-miss" : "",
+          missClick: () => this.openMistake(),
           lastMissWord: st.lastMiss && OK_WORD_BY_KEY[st.lastMiss] ? OK_WORD_BY_KEY[st.lastMiss].w : "",
           lastMissReading: st.lastMiss && OK_WORD_BY_KEY[st.lastMiss] ? OK_WORD_BY_KEY[st.lastMiss].r : "",
           lastMissGloss: st.lastMiss && OK_WORD_BY_KEY[st.lastMiss] ? OK_WORD_BY_KEY[st.lastMiss].g : "",
