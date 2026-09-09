@@ -690,7 +690,6 @@ a:hover{color:var(--text-accent-hover)}
   .ok-miss-body{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-width:0}
   .ok-miss-w{font-size:1.875rem;line-height:1.15;color:var(--ok-ink);display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
   .ok-miss-r{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-acc)}
-  .ok-miss-g{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-body)}
   /* Esc and a click outside both close the word dialog, so the corner x
      says nothing a desktop user needs. On a phone there is no Esc and no
      outside to click -- the x stays. */
@@ -1301,10 +1300,10 @@ html[data-ok-ready] #ok-boot{display:none}
           </div>
           <sc-if value="{{ lastMissOn }}" hint-placeholder-val="{{ false }}">
             <div class="ok-miss-card">
-              <span class="ok-h2">{{ t_latest_mistake }}</span>
+              <span class="ok-h2 ok-ja">{{ ja_latest_mistake }} <span class="ok-h2-own">{{ t_latest_mistake }}</span></span>
               <div class="ok-miss-body">
                 <span class="ok-miss-w">{{ lastMissWord }}<span class="ok-miss-r">{{ lastMissReading }}</span></span>
-                <span class="ok-miss-g">{{ lastMissGloss }}</span>
+                <span class="ok-ring-sub">{{ lastMissGloss }}</span>
               </div>
             </div>
           </sc-if>
@@ -1735,7 +1734,7 @@ const okPiePath = (lvl) => {
 // them every session is free reading practice, and the tooltip is the
 // safety net for anyone who does not know them yet.
 const JA_LABEL = {
-  your_progress: "学習状況", all_sets: "セット一覧", deck: "学習ずみ"
+  your_progress: "学習状況", all_sets: "セット一覧", deck: "学習ずみ", latest_mistake: "直近のミス"
 };
 const TJ = (key) => JA_LABEL[key] || T(key);
 // nth translation of word `id` in the current language, falling back to the
@@ -5110,7 +5109,11 @@ class Component extends DCLogic {
         const cells = Array.from({ length: nSets }, (_, b) => {
           const keys = wordsOf(b).map(e => e.w[3]);
           const done = keys.filter(x => st.mastered[x]).length;
-          return { b, done, n: keys.length, full: keys.length > 0 && done === keys.length };
+          // The tile fill is the strength earned, not just the words finished:
+          // every word carries four pie slices (its 0-4 level), so a set of
+          // twenty holds eighty, and the bar is how many of those are filled.
+          const slices = keys.reduce((a, k) => a + (st.mastered[k] ? 4 : strLevel((st.strength || {})[k])), 0);
+          return { b, done, n: keys.length, slices, full: keys.length > 0 && done === keys.length };
         });
         const cur = cells[WSET] || { b: WSET, done: 0, n: 0, full: false };
         const totalDone = cells.reduce((s, c) => s + c.done, 0);
@@ -5127,6 +5130,9 @@ class Component extends DCLogic {
         const setName = (b) => T("set") + " " + (b + 1);
         const range = (c) => T("words_range", { a: c.b * WORDN + 1, b: c.b * WORDN + c.n });
         const pct = (c) => (c.n ? Math.round(c.done / c.n * 100) : 0);
+        // The tile bar runs on slices out of the set's eighty, so partial
+        // strength shows rather than only the words fully finished.
+        const fillPct = (c) => (c.n ? Math.round(c.slices / (c.n * 4) * 100) : 0);
         const signedIn = okSyncReady() && !!st.userEmail;
         const sync = st.sync || "local";
         const syncText = !okSyncReady() ? T("sync_unavailable") : !signedIn ? T("on_this_device")
@@ -5172,7 +5178,7 @@ class Component extends DCLogic {
                 return {
                   n: c.b + 1,
                   frac: live ? setName(c.b) + " · " + T("learned_of", { d: c.done, n: c.n }) : setName(c.b) + " · " + T("coming_soon"),
-                  pct: pct(c) + "%",
+                  pct: fillPct(c) + "%",
                   fillOpacity: c.full ? 0 : 1,
                   bg: c.full ? "var(--ok-acc)" : "var(--ok-card)",
                   fg: c.full ? "#ffffff" : c.done ? "var(--ok-acc)" : "var(--ok-ink)",
@@ -5379,8 +5385,11 @@ class Component extends DCLogic {
             const C = 2 * Math.PI * 25;
             const dash = (pctv) => (C * Math.max(0, Math.min(100, pctv)) / 100).toFixed(1) + " " + C.toFixed(1);
             const deckP = totalN ? totalDone / totalN * 100 : 0;
+            // A decimal, because 21 of 2000 rounds to a flat 1% that never
+            // seems to move; 0 and 100 stay whole, having nothing to refine.
+            const pctBig = deckP <= 0 ? "0%" : deckP >= 100 ? "100%" : deckP.toFixed(1) + "%";
             return [{
-              label: TJ("deck"), labelOwn: T("deck"), big: Math.round(deckP) + "%", sub: T("words_learned", { d: totalDone, n: totalN }),
+              label: TJ("deck"), labelOwn: T("deck"), big: pctBig, sub: T("words_learned", { d: totalDone, n: totalN }),
               nowDash: dash(deckP), ceilDash: dash(100),
               title: T("deck") + " — " + T("sets_learned", { d: totalDone, n: totalN })
             }];
@@ -5393,7 +5402,7 @@ class Component extends DCLogic {
           wSheetOut: st.writeClosing ? "ok-sheet-out" : "",
           wBack: () => { if (this.state.writeFromStudy) this.setState({ dlgSeamless: true, write: false, writeClosing: false, writeFromStudy: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); else this.closeWrite(); },
           t_settings: T("settings"), t_close: T("close"),
-          ja_your_progress: TJ("your_progress"), ja_all_sets: TJ("all_sets"),
+          ja_your_progress: TJ("your_progress"), ja_all_sets: TJ("all_sets"), ja_latest_mistake: TJ("latest_mistake"),
           // The latest unresolved miss, resolved to a word to show. Hidden
           // when there is none, and (by CSS) on screens without the width.
           lastMissOn: !!(st.lastMiss && OK_WORD_BY_KEY[st.lastMiss]),
