@@ -413,6 +413,8 @@ a:hover{color:var(--text-accent-hover)}
 .ok-set-title{font-size:1.25rem;white-space:nowrap}
 .ok-set-sub{font-size:.9375rem;white-space:nowrap}
 .ok-seg{display:inline-flex;padding:.2rem;border-radius:999px;background:#e7e7e2}
+.ok-seg-toggle{cursor:pointer;user-select:none}
+.ok-seg-toggle .ok-seg-b{pointer-events:none}
 .ok-seg-b{padding:.3rem .85rem;border-radius:999px;font-family:var(--font-2);font-size:.9375rem;letter-spacing:.02em;cursor:pointer;user-select:none;transition:background 140ms ease,color 140ms ease,box-shadow 140ms ease}
 .ok-set-body{flex:1 1 auto;min-height:0;overflow-y:auto}
 .ok-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(16.5rem,1fr));gap:1rem;padding:1.25rem 1.25rem 0;max-width:92rem;margin:0 auto}
@@ -654,18 +656,19 @@ a:hover{color:var(--text-accent-hover)}
 .ok-qtype{display:flex;gap:.6rem;align-items:stretch}
 .ok-qtype-in{flex:1 1 auto;min-width:0;font-family:var(--font-1);font-size:1.5rem;padding:.7rem .9rem;border-radius:12px;border:1.5px solid var(--ok-line);background:var(--ok-card);color:var(--ok-ink);outline:none;transition:border-color 160ms ease,color 160ms ease}
 .ok-qtype-in::placeholder{font-family:var(--font-2);font-size:1rem;color:var(--ok-mute);opacity:.7}
-.ok-qtype-ans{display:block;text-align:center;min-height:1.4em;margin-top:.6rem;font-size:1.125rem;color:var(--ok-mute);transition:opacity 200ms ease}
+.ok-qtype-ans{display:block;text-align:center;min-height:1.5em;margin-top:.6rem;font-size:1.375rem;font-family:var(--font-2);color:var(--ok-mute);transition:opacity 200ms ease,color 200ms ease}
 .ok-qtile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;min-height:6.5rem;padding:1rem;border-radius:14px;border:1.5px solid var(--ok-line);background:var(--ok-card);box-shadow:var(--ok-shadow);user-select:none;transition:background 200ms ease,border-color 200ms ease,color 200ms ease,opacity 200ms ease,transform 120ms ease}
 .ok-qtile[data-live]:hover{border-color:var(--ok-acc);transform:translateY(-1px)}
 .ok-qtile-big{line-height:1.15;text-align:center;white-space:nowrap}
 .ok-qtile-sub{font-family:var(--font-2);font-size:1rem;text-align:center}
 .ok-qreveal{text-align:center;min-height:1.4em;transition:opacity 200ms ease}
-.ok-pdone{width:100%;max-width:34rem;margin:0 auto;padding:2rem 1.25rem;display:flex;flex-direction:column;align-items:center;gap:.9rem;text-align:center}
+.ok-pdone{flex:1 1 auto;min-height:0;width:100%;max-width:34rem;margin:0 auto;padding:1.5rem 1.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;text-align:center}
 .ok-pdone-score{font-size:2rem;line-height:1.15}
-.ok-pmissed{width:100%;display:flex;flex-direction:column;gap:.5rem}
-.ok-pmiss{display:flex;align-items:center;gap:.9rem;padding:.7rem .9rem;border-radius:12px;background:var(--ok-card);border:1px solid var(--ok-line);text-align:left}
+.ok-pmissed{width:100%;max-height:16rem;overflow-y:auto;display:flex;flex-direction:column;gap:.5rem}
+.ok-pmiss{display:flex;align-items:baseline;gap:.75rem;padding:.7rem .9rem;border-radius:12px;background:var(--ok-card);border:1px solid var(--ok-line);text-align:left}
 .ok-pmiss-w{font-size:1.5rem;line-height:1.1;flex:0 0 auto}
-.ok-pmiss .ok-muted{flex:1 1 auto;min-width:0}
+.ok-pmiss-r{font-family:var(--font-2);font-size:1.0625rem;color:var(--ok-acc);flex:0 0 auto;white-space:nowrap}
+.ok-pmiss .ok-muted{flex:1 1 auto;min-width:0;text-align:right}
 .ok-pmiss .ok-pill{margin-top:0;flex:0 0 auto}
 .ok-pactions{display:flex;gap:.6rem;margin-top:.5rem}
 .ok-fc{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:1.5rem 1.25rem;cursor:pointer;user-select:none}
@@ -1115,10 +1118,10 @@ html[data-ok-ready] #ok-boot{display:none}
               </div>
               <sc-if value="{{ gTypeOn }}" hint-placeholder-val="{{ false }}">
                 <div class="ok-qtype">
-                  <input class="ok-qtype-in" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="{{ t_type_placeholder }}" value="{{ gTypeDraft }}" style="border-color:{{ gTypeBorder }};color:{{ gTypeFg }}" sc-camel-on-change="{{ onTypeIn }}" sc-camel-on-key-down="{{ onTypeKey }}"/>
+                  <input class="ok-qtype-in" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="{{ t_type_placeholder }}" value="{{ gTypeDraft }}" style="border-color:{{ gTypeBorder }};color:{{ gTypeFg }};background:{{ gTypeBg }}" sc-camel-on-change="{{ onTypeIn }}" sc-camel-on-key-down="{{ onTypeKey }}"/>
                   <span sc-camel-on-click="{{ typeCheck }}" class="ok-btn ok-btn-primary">{{ t_type_check }}</span>
                 </div>
-                <span class="ok-qtype-ans" style="opacity:{{ gTypeAnsOpacity }}">{{ gTypeAnswer }}</span>
+                <span class="ok-qtype-ans" style="opacity:{{ gTypeAnsOpacity }};color:{{ gTypeAnsColor }}">{{ gTypeAnswer }}</span>
               </sc-if>
               <div class="ok-qtiles">
                 <sc-for list="{{ gTiles }}" as="gt" hint-placeholder-count="4">
@@ -1143,6 +1146,7 @@ html[data-ok-ready] #ok-boot{display:none}
                   <sc-for list="{{ pMissed }}" as="pm" hint-placeholder-count="3">
                     <div class="ok-pmiss">
                       <span class="ok-pmiss-w">{{ pm.w }}</span>
+                      <span class="ok-pmiss-r">{{ pm.r }}</span>
                       <span class="ok-muted">{{ pm.g }}</span>
                     </div>
                   </sc-for>
@@ -1214,7 +1218,14 @@ html[data-ok-ready] #ok-boot{display:none}
               <span class="ok-muted">{{ cardSummary }}</span>
               <sc-if value="{{ cardMasteredOn }}" hint-placeholder-val="{{ false }}">
                 <span class="ok-h2" style="margin-top:.5rem">{{ t_learned }}</span>
-                <span class="ok-muted"><sc-for list="{{ cardMastered }}" as="cm" hint-placeholder-count="2">{{ cm.w }}　</sc-for></span>
+                <div class="ok-pmissed">
+                  <sc-for list="{{ cardMastered }}" as="cm" hint-placeholder-count="2">
+                    <div class="ok-pmiss">
+                      <span class="ok-pmiss-w">{{ cm.w }}</span>
+                      <span class="ok-pmiss-r">{{ cm.r }}</span>
+                    </div>
+                  </sc-for>
+                </div>
               </sc-if>
               <div class="ok-pactions">
                 <span sc-camel-on-click="{{ cardRestart }}" class="ok-btn">{{ t_again }}</span>
@@ -1311,9 +1322,9 @@ html[data-ok-ready] #ok-boot{display:none}
           <span class="ok-muted ok-set-sub">{{ setSub }}</span>
         </div>
         <div class="ok-top-r">
-          <div class="ok-seg">
-            <span sc-camel-on-click="{{ modeLearn }}" class="ok-seg-b" style="{{ learnStyle }}">{{ t_learn }}</span>
-            <span sc-camel-on-click="{{ modeRecall }}" class="ok-seg-b" style="{{ recallStyle }}">{{ t_recall }}</span>
+          <div sc-camel-on-click="{{ toggleMode }}" class="ok-seg ok-seg-toggle">
+            <span class="ok-seg-b" style="{{ learnStyle }}">{{ t_learn }}</span>
+            <span class="ok-seg-b" style="{{ recallStyle }}">{{ t_recall }}</span>
           </div>
           <span sc-camel-on-click="{{ studyNow }}" class="ok-btn ok-practice" style="{{ practiceStyle }}">{{ t_practice }}</span>
           <sc-if value="{{ setFullNext }}" hint-placeholder-val="{{ false }}"><span sc-camel-on-click="{{ nextSet }}" class="ok-btn ok-btn-primary ok-practice">{{ t_next_set }}</span></sc-if>
@@ -1352,9 +1363,9 @@ html[data-ok-ready] #ok-boot{display:none}
         </div>
       </div>
       <nav class="ok-bottombar">
-        <div class="ok-seg ok-bb-seg">
-          <span sc-camel-on-click="{{ modeLearn }}" class="ok-seg-b" style="{{ learnStyle }}">{{ t_learn }}</span>
-          <span sc-camel-on-click="{{ modeRecall }}" class="ok-seg-b" style="{{ recallStyle }}">{{ t_recall }}</span>
+        <div sc-camel-on-click="{{ toggleMode }}" class="ok-seg ok-bb-seg ok-seg-toggle">
+          <span class="ok-seg-b" style="{{ learnStyle }}">{{ t_learn }}</span>
+          <span class="ok-seg-b" style="{{ recallStyle }}">{{ t_recall }}</span>
         </div>
         <span sc-camel-on-click="{{ studyNow }}" class="ok-btn ok-btn-primary ok-bb-cta">{{ t_practice }}</span>
       </nav>
@@ -4013,10 +4024,10 @@ class Component extends DCLogic {
       this._cardSeen[c.key] = times;
       let mastered = (st.cMastered || []).slice();
       const first = times === 1;
-      if (times >= 2 && !c.kanji && !st.mastered[c.key] && mastered.indexOf(c.w) < 0) {
+      if (times >= 2 && !c.kanji && !st.mastered[c.key] && !mastered.some(x => x.w === c.w)) {
         const m = Object.assign({}, st.mastered, { [c.key]: true });
         this.persistMastered(m);
-        mastered.push(c.w);
+        mastered.push({ w: c.w, r: c.r });
         this.setState({ mastered: m });
         this.scheduleSync();
       }
@@ -4388,11 +4399,13 @@ class Component extends DCLogic {
       gScore: (prev.gScore || 0) + (ok ? 1 : 0),
       gFirstOk: Object.assign({}, prev.gFirstOk, ok ? { [idx]: true } : {}),
       gWrong: ok ? prev.gWrong : (prev.gWrong || []).concat([q.kanji]),
-      gWrongW: ok ? prev.gWrongW : (prev.gWrongW || []).concat([{ w: q.word || q.prompt, g: q.gloss || "", key: q.key || null }])
+      gWrongW: ok ? prev.gWrongW : (prev.gWrongW || []).concat([{ w: q.word || q.prompt, r: q.answer || "", g: q.gloss || "", key: q.key || null }])
     }));
     this.forceUpdate();
     if (this._gAdvT) clearTimeout(this._gAdvT);
-    this._gAdvT = setTimeout(() => this.gAdvance(), ok ? 750 : 2400);
+    // Long enough for the verdict to register before the next prompt: a right
+    // answer used to flick past in 750ms, too fast to read as anything.
+    this._gAdvT = setTimeout(() => this.gAdvance(), ok ? 1100 : 2400);
   }
 
   // the input mounts with each round, so chase it briefly as elsewhere
@@ -5372,14 +5385,18 @@ class Component extends DCLogic {
             if (!st.gTypeDone) return "";
             const q = (st.gRounds || [])[st.gIdx || 0];
             if (!q) return "";
-            // right or wrong, the reading and the meaning both land: reading a
-            // word aloud is not the same as knowing what it says.
-            return T("type_answer", { a: q.answer }) + " \u2014 " + (q.gloss || "");
+            // The verdict leads, unmissably: a tick and "Correct", or a cross
+            // and the answer. Right or wrong the reading and meaning both land
+            // -- reading a word aloud is not the same as knowing what it says.
+            const tail = q.answer + (q.gloss ? " \u2014 " + q.gloss : "");
+            return (st.gPicked === 1 ? "\u2713  " : "\u2717  ") + tail;
           })(),
+          gTypeAnsColor: st.gTypeDone ? (st.gPicked === 1 ? "var(--status-ok)" : "#e11d48") : "var(--ok-mute)",
+          gTypeBg: st.gTypeDone ? (st.gPicked === 1 ? "rgba(16,185,129,.12)" : "rgba(225,29,72,.1)") : "var(--ok-card)",
           pScore: T("correct_of", { s: st.gScore || 0, n: (st.gRounds || []).length }),
           pFirstTry: T("first_try", { n: Object.keys(st.gFirstOk || {}).length }),
           pMissed: (st.gWrongW || []).filter((v, i, a) => a.findIndex(x => x.w === v.w) === i).map(m => ({
-            w: m.w, g: m.g, hasKey: !!m.key,
+            w: m.w, r: m.r || "", g: m.g, hasKey: !!m.key,
             pill: okPill(!!(m.key && st.mastered[m.key])),
             label: m.key && st.mastered[m.key] ? T("learned") : T("got_it"),
             master: () => { if (m.key) this.toggleMasteredWord(m.key); }
@@ -5507,7 +5524,7 @@ class Component extends DCLogic {
         return T("cards_reviewed", { n: n });
       })(),
       cardMasteredOn: (st.cMastered || []).length > 0,
-      cardMastered: (st.cMastered || []).map(w => ({ w: w })),
+      cardMastered: (st.cMastered || []).map(x => ({ w: x.w, r: x.r || "" })),
       tipGameOpen: st.tip === "game",
       tipChatOpen: st.tip === "chat",
       tipChatEnter: () => { if (this._tipT) clearTimeout(this._tipT); this.setState({ tip: "chat" }); },
