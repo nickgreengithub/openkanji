@@ -510,10 +510,10 @@ a:hover{color:var(--text-accent-hover)}
    desk, top right on a phone, where the close button crosses over. Absolute,
    so the dialog is the same box whether it is running or not. */
 .ok-focus-head{flex:0 0 auto;position:relative;width:100%;min-height:2.3rem;margin-top:-1.5rem;display:flex;align-items:center}
-.ok-focus-auto{display:flex;align-items:center;gap:.25rem}
+.ok-focus-auto{display:flex;align-items:center;gap:.25rem;margin-left:auto}
 .ok-focus-autob{width:2.3rem;height:2.3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ok-mute);cursor:pointer;user-select:none;transition:background 140ms ease,color 140ms ease}
 .ok-focus-autob:hover{background:rgba(0,0,0,.05);color:var(--ok-ink)}
-.ok-focus-speed{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute);border:1px solid var(--ok-line);border-radius:999px;padding:.1rem .45rem;cursor:pointer;user-select:none;line-height:1.4}
+.ok-focus-speed{font-family:var(--font-2);font-size:.8125rem;color:var(--ok-mute);padding:.1rem .3rem;cursor:pointer;user-select:none;line-height:1.4}
 .ok-focus-speed:hover{color:var(--ok-ink)}
 .ok-focus-n{position:absolute;left:50%;transform:translateX(-50%);font-family:var(--font-2);font-size:.9375rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-mute);font-variant-numeric:tabular-nums;white-space:nowrap}
 .ok-focus-wordbox{flex:0 0 auto;height:7rem;display:flex;align-items:center;justify-content:center}
@@ -1457,7 +1457,7 @@ html[data-ok-ready] #ok-boot{display:none}
       <div sc-camel-on-click="{{ stop }}" class="ok-focus {{ focusOut }}" style="--fx:{{ focusFx }};--fy:{{ focusFy }}">
         <span sc-camel-on-click="{{ closeFocus }}" class="ok-x">×</span>
         <div class="ok-focus-head">
-          <div class="ok-focus-auto"><span sc-camel-on-click="{{ toggleAuto }}" class="ok-focus-autob" title="{{ autoTitle }}" style="{{ autoStyle }}"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="currentColor"><sc-if value="{{ autoOn }}" hint-placeholder-val="{{ false }}"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></sc-if><sc-if value="{{ autoOff }}" hint-placeholder-val="{{ true }}"><path d="M8 5 L19 12 L8 19 Z"></path></sc-if></svg></span><span sc-camel-on-click="{{ cycleAutoSpeed }}" class="ok-focus-speed" title="{{ autoSpeedTitle }}">{{ autoSpeedLabel }}</span></div>
+          <div class="ok-focus-auto"><span sc-camel-on-click="{{ toggleAuto }}" class="ok-focus-autob" title="{{ autoTitle }}" style="{{ autoStyle }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="currentColor"><sc-if value="{{ autoOn }}" hint-placeholder-val="{{ false }}"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></sc-if><sc-if value="{{ autoOff }}" hint-placeholder-val="{{ true }}"><path d="M8 5 L19 12 L8 19 Z"></path></sc-if></svg></span><span sc-camel-on-click="{{ cycleAutoSpeed }}" class="ok-focus-speed" title="{{ autoSpeedTitle }}">{{ autoSpeedLabel }}</span></div>
           <span class="ok-focus-n">{{ focusCounter }}</span>
         </div>
         <div class="ok-focus-wordrow"><span sc-camel-on-click="{{ focusPrev }}" class="ok-focus-arrow ok-focus-arrow-l" title="{{ t_prev_word }}" style="visibility:{{ focusPrevVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span><div class="ok-focus-wordbox"><span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span></div><span sc-camel-on-click="{{ focusNext }}" class="ok-focus-arrow ok-focus-arrow-r" title="{{ t_next_word }}" style="visibility:{{ focusNextVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span></div>
