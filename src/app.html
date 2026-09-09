@@ -4026,13 +4026,21 @@ class Component extends DCLogic {
     // wraps up in the language the learner actually thinks in. The glosses
     // above are already in it.
     const base = langName();
+    // The level block leads, because it is the part a learner should read and
+    // change: it is written in plain lines they can edit on the page, and the
+    // instructions below defer to it rather than hard-coding a level.
     return [
+      "My current Japanese level is:",
+      "Beginner-Intermediate",
+      "Comfortable with hiragana/katakana, less so with Kanji",
+      "Use furigana to explain Kanji for any written conversation",
+      "",
       "I am learning Japanese vocabulary with OpenKanji.org and have just studied these " + scope.length + " words (" + T("set") + " " + (set + 1) + "):",
       "",
       words,
       "",
       "My native language is " + base + ". Please act as my Japanese conversation partner to help these words stick:",
-      "- Have a natural, friendly conversation with me in very simple Japanese (around JLPT N5 — I am just starting out), built around these words.",
+      "- Have a natural, friendly conversation with me in simple Japanese suited to my level above, built around these words.",
       "- Use voice if you can; otherwise text is fine.",
       "- One short exchange at a time — ask me things that invite me to use the words myself.",
       "- When I make a mistake, correct it briefly and kindly in " + base + ", then continue in Japanese.",
