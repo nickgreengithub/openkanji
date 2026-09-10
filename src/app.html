@@ -1157,7 +1157,7 @@ html[data-ok-ready] #ok-boot{display:none}
               <sc-if value="{{ gTypeOn }}" hint-placeholder-val="{{ false }}">
                 <div class="ok-qtype">
                   <input class="ok-qtype-in" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="{{ t_type_placeholder }}" value="{{ gTypeDraft }}" style="border-color:{{ gTypeBorder }};color:{{ gTypeFg }};background:{{ gTypeBg }}" sc-camel-on-change="{{ onTypeIn }}" sc-camel-on-key-down="{{ onTypeKey }}"/>
-                  <span sc-camel-on-click="{{ typeCheck }}" class="ok-btn ok-btn-primary">{{ t_type_check }}</span>
+                  <span sc-camel-on-mouse-down="{{ typeKeepFocus }}" sc-camel-on-click="{{ typeCheck }}" class="ok-btn ok-btn-primary">{{ t_type_check }}</span>
                 </div>
                 <span class="ok-qtype-ans" style="opacity:{{ gTypeAnsOpacity }};color:{{ gTypeAnsColor }}">{{ gTypeAnswer }}</span>
               </sc-if>
@@ -4488,11 +4488,29 @@ class Component extends DCLogic {
     this._gAdvT = setTimeout(() => this.gAdvance(), ok ? 1100 : 2400);
   }
 
-  // the input mounts with each round, so chase it briefly as elsewhere
+  // Keep the field focused for the whole typing round, so on a phone the
+  // keyboard rises once on entry and simply stays -- it never drops between
+  // words and flashes back up. The framework patches the input in place rather
+  // than remounting it, so a single blur guard on the node holds for the round.
   focusTyped(tries) {
     if (!this.state.gameOpen || this.state.gMode !== "type" || tries > 24) return;
     const el = document.querySelector(".ok-qtype-in");
-    if (el) { el.focus(); return; }
+    if (el) {
+      if (okPhone() && !el._kbGuard) {
+        el._kbGuard = true;
+        el.addEventListener("blur", () => {
+          // A stray tap or the verdict pause can steal focus; take it straight
+          // back -- unless the round is over or the sheet is on its way out, so
+          // closing and finishing still let the keyboard go.
+          setTimeout(() => {
+            const s = this.state;
+            if (s.gameOpen && s.gMode === "type" && !s.gFinished && document.body.contains(el)) el.focus();
+          }, 0);
+        });
+      }
+      el.focus();
+      return;
+    }
     setTimeout(() => this.focusTyped(tries + 1), 40);
   }
 
@@ -5486,6 +5504,10 @@ class Component extends DCLogic {
           // composer uses, so a plain keyboard is enough
           onTypeIn: (e) => { if (this.state.gTypeDone) return; this.setState({ gTypeDraft: this.toKana(e && e.target ? e.target.value : "") }); },
           onTypeKey: (e) => { if (e && e.key === "Enter") { e.preventDefault(); this.gameTypeSubmit(); } },
+          // Tapping Check must not pull focus off the field -- on a phone that
+          // drops the keyboard and it has to climb back up every round. Cancel
+          // the mousedown's default and the field keeps focus, keyboard and all.
+          typeKeepFocus: (e) => { if (e && e.preventDefault) e.preventDefault(); },
           typeCheck: () => this.gameTypeSubmit(),
           gTypeOn: !!st.gameOpen && st.gMode === "type" && !st.gFinished,
           gQuizTypeClass: st.gMode === "type" ? "ok-quiz-type" : "",
