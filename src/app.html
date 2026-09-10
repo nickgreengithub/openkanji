@@ -435,6 +435,13 @@ a:hover{color:var(--text-accent-hover)}
    is narrowed, because a list that is hiding something has to say so. It lives
    in the bottom bar, which is itself phone-only -- the desktop header already
    carries the count. */
+/* A phone opens its keyboard only for a focus that happens inside the tap that
+   asked for it, and the typing round's field does not exist at that moment --
+   the round is still being built. This one does: it takes the focus during the
+   tap and hands it to the field as soon as that mounts. Invisible, but not
+   hidden: display:none and visibility:hidden cannot be focused, and a keyboard
+   will not open for something that cannot. */
+.ok-kbprime{position:absolute;left:0;bottom:0;width:1px;height:1px;padding:0;border:0;opacity:0;background:transparent;font-size:16px;pointer-events:none}
 .ok-bb-pill{flex:0 0 auto;display:inline-flex;align-items:center;gap:.35rem;height:2.75rem;padding:0 .7rem;border-radius:999px;border:1px solid var(--ok-line);background:var(--ok-card);font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);white-space:nowrap;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease}
 .ok-bb-tick{flex:0 0 auto;width:1.15rem;height:1.15rem;border-radius:50%;background:var(--ok-acc);color:#fff;display:flex;align-items:center;justify-content:center}
 .ok-bb-pill-n{font-variant-numeric:tabular-nums}
@@ -999,7 +1006,11 @@ a:hover{color:var(--text-accent-hover)}
      and the same shape, as the composer's, so both rounds are answered by a
      thumb in one position. The line that gives the answer away moves above
      the bar, since nothing may sit under it. */
-  .ok-quiz-type{margin:0;width:100%;padding:1.25rem 0 0;gap:.75rem}
+  /* With the keyboard up the sheet is barely three hundred pixels tall, and
+     the round was three of them too long for it -- enough for the input bar to
+     hang below the sheet's own edge. The air above the dots is the part nobody
+     is reading. */
+  .ok-quiz-type{margin:0;width:100%;padding:.7rem 0 0;gap:.75rem}
   .ok-quiz-type .ok-qprompt{margin:auto 1.25rem;padding:1rem 1.25rem}
   .ok-quiz-type .ok-dots{flex:0 0 auto}
   .ok-quiz-type .ok-qtype-ans{order:1;margin:0 1.25rem}
@@ -1100,6 +1111,7 @@ html[data-ok-ready] #ok-boot{display:none}
   <sc-if value="{{ pOn }}" hint-placeholder-val="{{ false }}">
     <div sc-camel-on-click="{{ pClose }}" class="ok-veil ok-veil-p {{ pVeilOut }}" style="animation:{{ pVeilAnim }}">
       <div sc-camel-on-click="{{ stop }}" class="ok-sheet {{ pSheetKind }} {{ pSheetOut }}" style="animation:{{ pSheetAnim }}">
+        <input class="ok-kbprime" tabindex="-1" aria-hidden="true"/>
         <div class="ok-sheet-top">
           <span sc-camel-on-click="{{ pBack }}" class="ok-round-btn" title="{{ t_back }}">
             <sc-if value="{{ pAtMenu }}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6 L18 18"></path><path d="M18 6 L6 18"></path></svg></sc-if>
@@ -4530,6 +4542,15 @@ class Component extends DCLogic {
   // keyboard rises once on entry and simply stays -- it never drops between
   // words and flashes back up. The framework patches the input in place rather
   // than remounting it, so a single blur guard on the node holds for the round.
+  // Only for the typing round: nothing else in the app wants a keyboard it did
+  // not ask for. Called straight from the tap, before the round is built.
+  primeKeyboard() {
+    if (!okPhone()) return;
+    const el = document.querySelector(".ok-kbprime");
+    if (!el) return;
+    try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
+  }
+
   focusTyped(tries) {
     if (!this.state.gameOpen || this.state.gMode !== "type" || tries > 24) return;
     const el = document.querySelector(".ok-qtype-in");
@@ -5546,8 +5567,12 @@ class Component extends DCLogic {
             : st.gMode ? (st.gFinished ? "" : (gIdxEff + 1) + " / " + (st.gRounds || []).length)
             : "",
           quizStart: () => { this.setState({ gFirstOk: {} }); this.startGame("quiz"); },
-          typeStart: () => { this.setState({ gFirstOk: {} }); this.startGame("type"); },
-          againNow: () => { this.setState({ gFirstOk: {} }); this.startGame(st.gMode || "quiz"); },
+          typeStart: () => { this.primeKeyboard(); this.setState({ gFirstOk: {} }); this.startGame("type"); },
+          againNow: () => {
+            if ((st.gMode || "quiz") === "type") this.primeKeyboard();
+            this.setState({ gFirstOk: {} });
+            this.startGame(st.gMode || "quiz");
+          },
           // the field takes romaji and shows kana, the same light IME the
           // composer uses, so a plain keyboard is enough
           onTypeIn: (e) => { if (this.state.gTypeDone) return; this.setState({ gTypeDraft: this.toKana(e && e.target ? e.target.value : "") }); },
