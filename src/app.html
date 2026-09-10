@@ -911,6 +911,9 @@ a:hover{color:var(--text-accent-hover)}
   .ok-focus-head{position:static;margin-top:0;min-height:0}
   .ok-x{top:calc(1rem + env(safe-area-inset-top));left:.75rem;right:auto;width:3rem;height:3rem;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:2rem}
   .ok-focus-n{position:absolute;top:calc(1.7rem + env(safe-area-inset-top));left:4rem;right:4rem;text-align:center;font-size:1.0625rem}
+  /* No room for the set name between the close and the auto-play controls, so
+     the phone shows only "1 / 20" -- centred in the bar, clear of the X. */
+  .ok-focus-n-set{display:none}
   .ok-focus-auto{position:absolute;top:calc(1rem + env(safe-area-inset-top));left:auto;right:.75rem;gap:.4rem}
   .ok-focus-autob{width:3rem;height:3rem}
   .ok-focus-auto .ok-focus-autob svg{width:20px;height:20px}
@@ -1525,7 +1528,7 @@ html[data-ok-ready] #ok-boot{display:none}
         <span sc-camel-on-click="{{ closeFocus }}" class="ok-x">×</span>
         <div class="ok-focus-head">
           <div class="ok-focus-auto"><span sc-camel-on-click="{{ toggleAuto }}" class="ok-focus-autob" title="{{ autoTitle }}" style="{{ autoStyle }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="currentColor"><sc-if value="{{ autoOn }}" hint-placeholder-val="{{ false }}"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></sc-if><sc-if value="{{ autoOff }}" hint-placeholder-val="{{ true }}"><path d="M8 5 L19 12 L8 19 Z"></path></sc-if></svg></span><span sc-camel-on-click="{{ cycleAutoSpeed }}" class="ok-focus-speed" title="{{ autoSpeedTitle }}">{{ autoSpeedLabel }}</span></div>
-          <span class="ok-focus-n">{{ focusCounter }}</span>
+          <span class="ok-focus-n"><span class="ok-focus-n-set">{{ focusCounterSet }}</span>{{ focusCounterNum }}</span>
         </div>
         <div class="ok-focus-wordrow"><span sc-camel-on-click="{{ focusPrev }}" class="ok-focus-arrow ok-focus-arrow-l" title="{{ t_prev_word }}" style="visibility:{{ focusPrevVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span><div class="ok-focus-wordbox"><span class="ok-focus-word" style="font-size:{{ focusWordSize }}"><sc-for list="{{ focusRuby }}" as="rb" hint-placeholder-count="2"><ruby style="ruby-align:center">{{ rb.t }}<rt style="opacity:{{ focusRubyOpacity }}">{{ rb.r }}</rt></ruby></sc-for></span></div><span sc-camel-on-click="{{ focusNext }}" class="ok-focus-arrow ok-focus-arrow-r" title="{{ t_next_word }}" style="visibility:{{ focusNextVis }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"></path></svg></span></div>
         <div class="ok-focus-ans" style="opacity:{{ focusAns }}">
@@ -5235,7 +5238,11 @@ class Component extends DCLogic {
           // the index is padded with figure spaces to the total's width, so
           // "6 / 20" and "16 / 20" are the same width and the line never
           // shifts as the learner steps through
-          focusCounter: f ? setName(WSET) + " · " + String(st.focus + 1).padStart(String(WORDS.length).length, " ") + " / " + WORDS.length : "",
+          // The set prefix rides in its own span so a phone can drop it -- there
+          // "1 / 20" alone fits, and clears the close button. The index is
+          // padded to the total's width so the line never shifts.
+          focusCounterSet: f ? setName(WSET) + " · " : "",
+          focusCounterNum: f ? String(st.focus + 1).padStart(String(WORDS.length).length, " ") + " / " + WORDS.length : "",
           focusRuby: f ? this.wordRuby(f.w[0], f.w[1]) : OK_EMPTY,
           focusRubyOpacity: fHidden || !st.allFuri ? 0 : 1,
           focusWordSize: f ? okFocusWordSize(f.w[0]) : "4rem",
