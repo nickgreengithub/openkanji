@@ -930,6 +930,11 @@ a:hover{color:var(--text-accent-hover)}
   /* settings: the popover becomes the page */
   .ok-pop{position:fixed;inset:0;top:var(--ok-vv-top,0px);height:var(--ok-vh,100svh);padding:0;z-index:96;background:var(--ok-bg);animation:ok-push-in 260ms cubic-bezier(.2,.7,.3,1)}
   .ok-pop-in{width:100%;height:100%;border:0;border-radius:0;box-shadow:none;overflow-y:auto;gap:1.15rem;padding:calc(4.2rem + env(safe-area-inset-top)) 1.25rem calc(1.5rem + env(safe-area-inset-bottom))}
+  /* On the full-height sheet the source/LinkedIn footer belongs at the foot of
+     the page, not trailing whatever section happens to end last. The auto top
+     margin on its divider drops both to the bottom when the content is short,
+     and they simply flow after it when the sheet has to scroll. */
+  .ok-pop-in .ok-pop-sep{margin-top:auto}
   /* the close button crosses to the left on a phone, as it does everywhere
      else, so the heading starts underneath it rather than beside it */
   .ok-issue{width:100%;height:var(--ok-vh,100svh);max-height:none;border-radius:0;padding:calc(3.5rem + env(safe-area-inset-top)) 1.25rem calc(1rem + env(safe-area-inset-bottom))}
