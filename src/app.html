@@ -428,6 +428,15 @@ a:hover{color:var(--text-accent-hover)}
 .ok-pill{margin-top:.55rem;align-self:flex-start;display:inline-flex;align-items:center;gap:.35rem;height:1.95rem;padding:0 .8rem 0 .6rem;border-radius:999px;border:1px solid var(--ok-line);font-family:var(--font-2);font-size:.9375rem;letter-spacing:.03em;user-select:none;cursor:pointer;transition:background 140ms ease,border-color 140ms ease,color 140ms ease}
 .ok-pill:hover{border-color:var(--ok-acc);color:var(--ok-acc)}
 .ok-setnav{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:92rem;margin:0 auto;padding:1.75rem 1.25rem 3rem}
+.ok-setnav-mid{display:flex;align-items:center;gap:.6rem}
+/* The learned-count pill: a phone-only companion to the "n / 100" counter,
+   built to the exact shape and height of the Set buttons flanking the row. A
+   full set fills it with the accent to read as done. Hidden on desktop, where
+   the header sub-line already carries the count. */
+.ok-setnav-pill{display:none;align-items:center;gap:.3rem;height:2.4rem;padding:0 .7rem;border-radius:999px;border:1px solid var(--ok-line);background:var(--ok-card);font-family:var(--font-2);font-size:1rem;color:var(--ok-mute);white-space:nowrap}
+.ok-setnav-pill-ic{flex:0 0 auto;color:var(--ok-acc)}
+.ok-setnav-pill-full{background:var(--ok-acc);border-color:var(--ok-acc);color:#fff}
+.ok-setnav-pill-full .ok-setnav-pill-ic{color:#fff}
 .ok-acct{position:fixed;top:.6rem;right:1rem;z-index:70}
 .ok-avatar{position:relative;width:2.3rem;height:2.3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-2);font-size:1rem;cursor:pointer;border:1px solid var(--ok-line);user-select:none;transition:box-shadow 140ms ease}
 .ok-avatar:hover{box-shadow:var(--ok-shadow-h)}
@@ -945,6 +954,8 @@ a:hover{color:var(--text-accent-hover)}
   .ok-pop-x{display:flex;position:absolute;top:calc(.5rem + env(safe-area-inset-top));left:.6rem;width:2.75rem;height:2.75rem;align-items:center;justify-content:center;border-radius:50%;font-size:1.7rem;line-height:1;color:var(--ok-mute);cursor:pointer;user-select:none}
   .ok-pop-head{display:block;position:absolute;top:calc(1.35rem + env(safe-area-inset-top));left:3.5rem;right:3.5rem;text-align:center;font-family:var(--font-2);font-size:.9375rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ok-mute)}
   .ok-input,.ok-chip,.ok-link,.ok-btn{min-height:2.75rem}
+  /* On the phone the pill appears, matched to the Set buttons' height. */
+  .ok-setnav-pill{display:inline-flex;height:2.75rem}
   .ok-chip{display:inline-flex;align-items:center}
 
   /* thumbs, not cursors */
@@ -1409,7 +1420,10 @@ html[data-ok-ready] #ok-boot{display:none}
         </div>
         <div class="ok-setnav">
           <span sc-camel-on-click="{{ prevSet }}" class="ok-btn" style="visibility:{{ prevVis }}"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12 H5"></path><path d="M11 6 L5 12 L11 18"></path></svg><span>{{ prevLabel }}</span></span>
-          <span class="ok-muted">{{ setCounter }}</span>
+          <div class="ok-setnav-mid">
+            <span class="{{ setPillClass }}"><svg class="ok-setnav-pill-ic" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg><span>{{ setLearnedCount }} / {{ setLearnedTotal }}</span></span>
+            <span class="ok-muted">{{ setCounter }}</span>
+          </div>
           <span sc-camel-on-click="{{ nextSet }}" class="ok-btn" style="visibility:{{ nextVis }}"><span>{{ nextLabel }}</span><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg></span>
         </div>
       </div>
@@ -5247,6 +5261,11 @@ class Component extends DCLogic {
           setTitle: setName(WSET),
           setSub: (cur.full ? T("set_complete") : T("learned_of", { d: cur.done, n: cur.n })) + " · " + range(cur),
           setCounter: (WSET + 1) + " / " + nSets,
+          // The bottom nav is the only place the phone shows how far this set
+          // is done -- the compact header has no room for the sub-line.
+          setLearnedCount: cur.done,
+          setLearnedTotal: cur.n,
+          setPillClass: cur.full ? "ok-setnav-pill ok-setnav-pill-full" : "ok-setnav-pill",
           modeLearn: () => this.setState({ conceal: false }),
           modeRecall: () => this.setState({ conceal: true }),
           toggleMode: () => this.setState(s => ({ conceal: !s.conceal })),
