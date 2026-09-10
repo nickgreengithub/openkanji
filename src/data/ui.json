@@ -1074,5 +1074,21 @@
   "str_last_wrong": {
     "en": "{c}/{n} correct · Last answer incorrect",
     "es": "{c}/{n} correctas · Última incorrecta"
+  },
+  "show_unlearned": {
+    "en": "Show only what is left",
+    "es": "Mostrar solo lo que falta"
+  },
+  "showing_unlearned": {
+    "en": "Showing only what is left",
+    "es": "Mostrando solo lo que falta"
+  },
+  "all_learned_here": {
+    "en": "Every word in this set is learned.",
+    "es": "Todas las palabras de este grupo están aprendidas."
+  },
+  "show_all": {
+    "en": "Show all twenty",
+    "es": "Mostrar las veinte"
   }
 }
