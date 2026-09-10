@@ -444,8 +444,7 @@ a:hover{color:var(--text-accent-hover)}
 .ok-kbprime{position:absolute;left:0;bottom:0;width:1px;height:1px;padding:0;border:0;opacity:0;background:transparent;font-size:16px;pointer-events:none}
 .ok-bb-pill{flex:0 0 auto;display:inline-flex;align-items:center;gap:.35rem;height:2.75rem;padding:0 .7rem;border-radius:999px;border:1px solid var(--ok-line);background:var(--ok-card);font-family:var(--font-2);font-size:.9375rem;color:var(--ok-ink);white-space:nowrap;cursor:pointer;user-select:none;transition:background 140ms ease,border-color 140ms ease}
 .ok-bb-tick{flex:0 0 auto;width:1.15rem;height:1.15rem;border-radius:50%;background:var(--ok-acc);color:#fff;display:flex;align-items:center;justify-content:center}
-.ok-bb-pill-n{font-variant-numeric:tabular-nums}
-.ok-bb-funnel{flex:0 0 auto;color:var(--ok-acc)}
+.ok-bb-pill-n{font-variant-numeric:tabular-nums;font-size:1.0625rem}
 /* narrowed: the pill itself is the state, so it is coloured like one */
 .ok-bb-pill-on{background:var(--ok-acc-s);border-color:var(--ok-acc);color:var(--ok-acc)}
 /* nothing left to show once the last one is marked, so say that rather than
@@ -1048,6 +1047,13 @@ a:hover{color:var(--text-accent-hover)}
     .ok-bb-pill{padding:0 .5rem;gap:.3rem}
     .ok-bb-cta{padding:0 .7rem}
   }
+  /* The agent prompt is meant to be read and edited on the phone, so the
+     caption and the prompt itself take the room the suggestion link gives
+     up. The panel keeps its size -- a longer prompt scrolls inside it. */
+  .ok-ai{padding:1rem 1rem 1.2rem;gap:.7rem}
+  .ok-ai-hint{font-size:1rem;line-height:1.45}
+  .ok-ai-text{font-size:1.0625rem;line-height:1.55;padding:.8rem .85rem}
+  .ok-ai-suggest{display:none}
   .ok-page-map .ok-wrap,.ok-set-body{padding-bottom:5.5rem}
   .ok-set-body .ok-setnav{padding-bottom:1rem}
 
@@ -1458,7 +1464,7 @@ html[data-ok-ready] #ok-boot{display:none}
         </div>
       </div>
       <nav class="ok-bottombar">
-        <span sc-camel-on-click="{{ toggleOnlyNew }}" class="{{ bbPillClass }}" title="{{ onlyNewTitle }}"><span class="ok-bb-tick"><svg width="10" height="10" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></span><span class="ok-bb-pill-n">{{ setLearnedCount }}/{{ setLearnedTotal }}</span><sc-if value="{{ onlyNew }}" hint-placeholder-val="{{ false }}"><svg class="ok-bb-funnel" width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.5 H20.5 L14 13 V19.5 L10 17.5 V13 Z"></path></svg></sc-if></span>
+        <span sc-camel-on-click="{{ toggleOnlyNew }}" class="{{ bbPillClass }}" title="{{ onlyNewTitle }}"><span class="ok-bb-tick"><sc-if value="{{ allWords }}" hint-placeholder-val="{{ true }}"><svg width="10" height="10" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17.5 L19 7"></path></svg></sc-if><sc-if value="{{ onlyNew }}" hint-placeholder-val="{{ false }}"><svg class="ok-bb-funnel" width="11" height="11" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.5 H20.5 L14 13 V19.5 L10 17.5 V13 Z"></path></svg></sc-if></span><span class="ok-bb-pill-n">{{ setLearnedCount }}/{{ setLearnedTotal }}</span></span>
         <div sc-camel-on-click="{{ toggleMode }}" class="ok-seg ok-bb-seg ok-seg-toggle">
           <span class="ok-seg-b" style="{{ learnStyle }}">{{ t_learn }}</span>
           <span class="ok-seg-b" style="{{ recallStyle }}">{{ t_recall }}</span>
@@ -2604,6 +2610,10 @@ const strLevel = (rec) => {
   const v = strShown(rec);
   return v < 40 ? 1 : v < 70 ? 2 : v < 90 ? 3 : 4;
 };
+// A word reads as learned when it is marked by hand or when practice has
+// driven its strength to full -- both draw the same filled tick, so the
+// footer count and the unlearned filter have to treat them the same way.
+const okLearned = (st, key) => !!st.mastered[key] || strLevel((st.strength || {})[key]) >= 4;
 const strGrade = (rec, ok, mode) => {
   const w = STR_MODE_W[mode] || 1;
   const cur = strShown(rec); // what it is worth now, then the answer moves it
@@ -5309,12 +5319,13 @@ class Component extends DCLogic {
           // The footer is the only place the phone shows how far this set is
           // done -- the compact header has no room for the sub-line -- and the
           // same control narrows the list to what is left.
-          setLearnedCount: cur.done,
-          setLearnedTotal: cur.n,
+          setLearnedCount: WORDS.filter(e => okLearned(st, e.w[3])).length,
+          setLearnedTotal: WORDS.length,
           onlyNew: !!st.onlyNew,
+          allWords: !st.onlyNew,
           bbPillClass: st.onlyNew ? "ok-bb-pill ok-bb-pill-on" : "ok-bb-pill",
           onlyNewTitle: T(st.onlyNew ? "showing_unlearned" : "show_unlearned"),
-          onlyNewEmpty: !!st.onlyNew && cur.done >= cur.n && cur.n > 0,
+          onlyNewEmpty: !!st.onlyNew && WORDS.length > 0 && WORDS.every(e => okLearned(st, e.w[3])),
           toggleOnlyNew: () => this.setState(x => ({ onlyNew: !x.onlyNew })),
           modeLearn: () => this.setState({ conceal: false }),
           modeRecall: () => this.setState({ conceal: true }),
@@ -6208,7 +6219,7 @@ class Component extends DCLogic {
       // Narrowed to what is not learned yet when the footer pill is pressed.
       // The number on each card is its place in the set, so it is taken before
       // the filter rather than after -- word 7 stays word 7.
-      listWords: WORDS.map((e, i) => [e, i]).filter(([e]) => !st.onlyNew || !st.mastered[e.w[3]]).map(([e, i]) => {
+      listWords: WORDS.map((e, i) => [e, i]).filter(([e]) => !st.onlyNew || !okLearned(st, e.w[3])).map(([e, i]) => {
         const w = e.w;
         const key = w[3];
         const id = "L" + key;
