@@ -1128,7 +1128,7 @@ html[data-ok-ready] #ok-boot{display:none}
           <sc-if value="{{ gMenuOn }}" hint-placeholder-val="{{ true }}">
             <div sc-camel-on-click="{{ togglePractAll }}" class="ok-pmenu-foot">
               <span class="ok-w-chk" style="{{ practChk }}"><svg width="10" height="10" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L10 18 L19 6"></path></svg></span>
-              <span>{{ t_exclude_learned }}</span>
+              <span>{{ practLabel }}</span>
             </div>
           </sc-if>
           <span class="ok-muted ok-sheet-count">{{ pCount }}</span>
@@ -4258,8 +4258,7 @@ class Component extends DCLogic {
   practiceWords() {
     const all = this.gameWords();
     if (this.state.practAll) return all;
-    const m = this.state.mastered || {};
-    const left = all.filter(e => !m[e.w[3]]);
+    const left = all.filter(e => !okLearned(this.state, e.w[3]));
     return left.length ? left : all;
   }
 
@@ -5574,7 +5573,24 @@ class Component extends DCLogic {
           pVeilAnim: st.dlgSeamless ? "none" : "",
           pSheetAnim: st.dlgSeamless ? "none" : "",
           pEyebrow: st.aiOn ? T("ai_chat_title") : st.storyOn ? T("story") : st.cardsOn ? T("flashcards") : st.gMode === "type" ? T("typing") : st.gMode ? T("quiz") : T("practice"),
-          pTitle: setName(st.gBatch != null ? st.gBatch : WSET),
+          // The menu header says what a round would actually be over -- the set
+          // narrowed to what is left, or the whole set once the box is
+          // unticked -- so the number and the box below it agree.
+          ...(() => {
+            const atMenu = !!st.gameOpen && !st.gMode && !st.aiOn;
+            const gw = this.gameWords();
+            const nLearned = gw.filter(e => okLearned(st, e.w[3])).length;
+            const nScope = this.practiceWords().length;
+            return {
+              pTitle: setName(st.gBatch != null ? st.gBatch : WSET)
+                + (atMenu ? " · " + T(nScope === 1 ? "n_word_1" : "n_words", { n: nScope }) : ""),
+              // Named, so the box says how much of the set it is holding back
+              // rather than leaving it to be counted. It says the same whether
+              // it is ticked or not: it is what ticking does.
+              practLabel: !nLearned ? T("exclude_learned")
+                : T(nLearned === 1 ? "exclude_1_learned" : "exclude_n_learned", { n: nLearned })
+            };
+          })(),
           pCount: st.storyOn ? (st.storyPage + 1) + " / " + (((storyOf(st.storySet) || { pages: [] }).pages.length || 0) + 1)
             : st.cardsOn ? (st.cIdx < (st.cQueue || []).length ? Math.min(st.cIdx + 1, (st.cQueue || []).length) + " / " + (st.cQueue || []).length : "")
             : st.gMode ? (st.gFinished ? "" : (gIdxEff + 1) + " / " + (st.gRounds || []).length)
@@ -5959,8 +5975,6 @@ class Component extends DCLogic {
       },
       gNotMenuOn: !!st.gameOpen && !!st.gMode,
       gHeadTitle: T("study_words"),
-      gScopeUnit: "単語",
-      gScopeWords: this.gameKeys().filter(x => !st.mastered[x]).length,
       cardsBackToMenu: () => { this.setState({ dlgSeamless: true, cardsOn: false, cardsClosing: false, gameOpen: true, gameClosing: false, gMode: null, gFinished: false }); },
       gBackToMenu: () => { if (this._gAdvT) clearTimeout(this._gAdvT); this._gAnswer = null; this._gIdx = undefined; this.setState({ gMode: null, gFinished: false, gPicked: -1 }); },
       gProgress: st.gMode && !st.gFinished ? (gIdxEff + 1) + " / " + (st.gRounds || []).length : "",

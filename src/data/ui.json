@@ -1035,6 +1035,22 @@
     "en": "Exclude learned words",
     "es": "Excluir palabras aprendidas"
   },
+  "exclude_n_learned": {
+    "en": "Exclude {n} learned words",
+    "es": "Excluir {n} palabras aprendidas"
+  },
+  "exclude_1_learned": {
+    "en": "Exclude 1 learned word",
+    "es": "Excluir 1 palabra aprendida"
+  },
+  "n_words": {
+    "en": "{n} words",
+    "es": "{n} palabras"
+  },
+  "n_word_1": {
+    "en": "1 word",
+    "es": "1 palabra"
+  },
   "ai_page_hint": {
     "en": "Edit if you like, then copy it to your AI agent",
     "es": "Edítalo si quieres, luego cópialo a tu agente de IA"
