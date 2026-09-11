@@ -2611,8 +2611,10 @@ const strLevel = (rec) => {
   return v < 40 ? 1 : v < 70 ? 2 : v < 90 ? 3 : 4;
 };
 // A word reads as learned when it is marked by hand or when practice has
-// driven its strength to full -- both draw the same filled tick, so the
-// footer count and the unlearned filter have to treat them the same way.
+// driven its strength to full -- both draw the same filled tick. This is the
+// one definition behind every count of them: the map, the set, the footer,
+// the filter and the card's own colour, so none can disagree with the dials
+// the learner can see.
 const okLearned = (st, key) => !!st.mastered[key] || strLevel((st.strength || {})[key]) >= 4;
 const strGrade = (rec, ok, mode) => {
   const w = STR_MODE_W[mode] || 1;
@@ -5200,7 +5202,7 @@ class Component extends DCLogic {
       // its own in the footer corner. 2*pi*18, the circle's own radius.
       donutDash: (() => {
         const C = 113.097;
-        const done = WORDKEYS.filter(kx => st.mastered[kx]).length;
+        const done = WORDKEYS.filter(kx => okLearned(st, kx)).length;
         const f = WORDKEYS.length ? done / WORDKEYS.length : 0;
         return (C * f).toFixed(1) + " " + C.toFixed(1);
       })(),
@@ -5214,8 +5216,8 @@ class Component extends DCLogic {
       eyeFg: st.conceal ? "#ffffff" : "var(--text-accent)",
       // One study control, for the set you are on, rather than the same icon
       // repeated down the sidebar.
-      studyOpacity: WORDS.every(e => st.mastered[e.w[3]]) ? .35 : 1,
-      studyPointer: WORDS.every(e => st.mastered[e.w[3]]) ? "none" : "auto",
+      studyOpacity: WORDS.every(e => okLearned(st, e.w[3])) ? .35 : 1,
+      studyPointer: WORDS.every(e => okLearned(st, e.w[3])) ? "none" : "auto",
       studyTitle: T("study") + " " + (WSET * WORDN + 1) + "-" + (WSET * WORDN + WORDS.length),
       studyBg: "transparent",
       studyFg: "var(--text-accent)",
@@ -5229,11 +5231,11 @@ class Component extends DCLogic {
         const nSets = wordBatchCount();
         const cells = Array.from({ length: nSets }, (_, b) => {
           const keys = wordsOf(b).map(e => e.w[3]);
-          const done = keys.filter(x => st.mastered[x]).length;
+          const done = keys.filter(x => okLearned(st, x)).length;
           // The tile fill is the strength earned, not just the words finished:
           // every word carries four pie slices (its 0-4 level), so a set of
           // twenty holds eighty, and the bar is how many of those are filled.
-          const slices = keys.reduce((a, k) => a + (st.mastered[k] ? 4 : strLevel((st.strength || {})[k])), 0);
+          const slices = keys.reduce((a, k) => a + (okLearned(st, k) ? 4 : strLevel((st.strength || {})[k])), 0);
           return { b, done, n: keys.length, slices, full: keys.length > 0 && done === keys.length };
         });
         const cur = cells[WSET] || { b: WSET, done: 0, n: 0, full: false };
@@ -5263,7 +5265,7 @@ class Component extends DCLogic {
         const f = st.focus != null ? WORDS[st.focus] : null;
         const fx = f ? (EX_JA[f.w[3]] || [])[0] : null;
         const fHidden = !!(f && recall && !st.focusShown);
-        const fDone = !!(f && st.mastered[f.w[3]]);
+        const fDone = !!(f && okLearned(st, f.w[3]));
         const segOn = "background:#ffffff;color:var(--ok-ink);box-shadow:0 1px 2px rgba(20,24,30,.10)";
         const segOff = "background:transparent;color:var(--ok-mute)";
         return {
@@ -5615,15 +5617,15 @@ class Component extends DCLogic {
           pFirstTry: T("first_try", { n: Object.keys(st.gFirstOk || {}).length }),
           pMissed: (st.gWrongW || []).filter((v, i, a) => a.findIndex(x => x.w === v.w) === i).map(m => ({
             w: m.w, r: m.r || "", g: m.g, hasKey: !!m.key,
-            pill: okPill(!!(m.key && st.mastered[m.key])),
-            label: m.key && st.mastered[m.key] ? T("learned") : T("got_it"),
+            pill: okPill(!!(m.key && okLearned(st, m.key))),
+            label: m.key && okLearned(st, m.key) ? T("learned") : T("got_it"),
             master: () => { if (m.key) this.toggleMasteredWord(m.key); }
           })),
           fcHint: st.cShown ? T("tap_next") : T("tap_reveal")
         };
       })(),
-      setPct: (WORDKEYS.length ? Math.round(WORDKEYS.filter(kx => st.mastered[kx]).length / WORDKEYS.length * 100) : 0) + "%",
-      setDone: WORDKEYS.filter(kx => st.mastered[kx]).length,
+      setPct: (WORDKEYS.length ? Math.round(WORDKEYS.filter(kx => okLearned(st, kx)).length / WORDKEYS.length * 100) : 0) + "%",
+      setDone: WORDKEYS.filter(kx => okLearned(st, kx)).length,
       setTotal: WORDKEYS.length,
       masteryFg: st.masteryFlash ? "var(--text-accent)" : "var(--text-muted)",
       masteryFlash: st.masteryFlash, masteryCalm: !st.masteryFlash,
@@ -6224,7 +6226,7 @@ class Component extends DCLogic {
         const key = w[3];
         const id = "L" + key;
         const x = (EX_JA[key] || [])[0];
-        const done = !!st.mastered[key];
+        const done = okLearned(st, key);
         const hot = st.hoverWord === id;
         // Recall hides the answers -- meaning, translation, furigana -- and
         // pointing at a card shows that card's.
