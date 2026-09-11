@@ -2211,8 +2211,8 @@
     "w": "半",
     "reading": "はん",
     "gloss": {
-      "en": "half",
-      "es": "mitad"
+      "en": "half (as in 二時半, half past two)",
+      "es": "medio (como en 二時半, las dos y media)"
     },
     "sentences": [
       {
@@ -16890,8 +16890,8 @@
     "w": "対",
     "reading": "たい",
     "gloss": {
-      "en": "pair, couple",
-      "es": "par, pareja"
+      "en": "versus, to (as in 3 to 1)",
+      "es": "contra, a (como 3 a 1)"
     },
     "sentences": [
       {
@@ -18190,8 +18190,8 @@
     "w": "全",
     "reading": "ぜん",
     "gloss": {
-      "en": "all, whole",
-      "es": "todo, entero"
+      "en": "all, whole (prefix, as in 全社員)",
+      "es": "todo, entero (prefijo, como en 全社員)"
     },
     "sentences": [
       {
@@ -24176,11 +24176,11 @@
   },
   "w0969": {
     "id": "w0969",
-    "w": "昨",
-    "reading": "さく",
+    "w": "昨年",
+    "reading": "さくねん",
     "gloss": {
-      "en": "last, yesterday",
-      "es": "anterior, ayer"
+      "en": "last year (formal)",
+      "es": "el año pasado (formal)"
     },
     "sentences": [
       {
@@ -26256,11 +26256,11 @@
   },
   "w1054": {
     "id": "w1054",
-    "w": "位",
-    "reading": "くらい",
+    "w": "五位",
+    "reading": "ごい",
     "gloss": {
-      "en": "grade, rank",
-      "es": "grado, rango"
+      "en": "fifth place",
+      "es": "quinto puesto"
     },
     "cov": [
       0,
@@ -32515,11 +32515,11 @@
   },
   "w1309": {
     "id": "w1309",
-    "w": "末",
-    "reading": "まつ",
+    "w": "学期末",
+    "reading": "がっきまつ",
     "gloss": {
-      "en": "the end of",
-      "es": "el final"
+      "en": "end of term",
+      "es": "fin de trimestre"
     },
     "cov": [
       125,
@@ -56607,8 +56607,8 @@
     "w": "編",
     "reading": "へん",
     "gloss": {
-      "en": "compilation, editing",
-      "es": "compilación, edición"
+      "en": "part, volume (of a book)",
+      "es": "parte, tomo (de un libro)"
     },
     "cov": [
       167,
@@ -57789,8 +57789,8 @@
     "w": "諸",
     "reading": "しょ",
     "gloss": {
-      "en": "various, many",
-      "es": "varios, muchos"
+      "en": "various- (prefix, as in 諸国)",
+      "es": "diversos- (prefijo, como en 諸国)"
     },
     "cov": [
       56,
@@ -63431,11 +63431,11 @@
   },
   "w2741": {
     "id": "w2741",
-    "w": "枚",
-    "reading": "まい",
+    "w": "三枚",
+    "reading": "さんまい",
     "gloss": {
-      "en": "counter for flat objects",
-      "es": "contador de objetos planos"
+      "en": "three sheets (counter for flat things)",
+      "es": "tres hojas (contador de cosas planas)"
     },
     "cov": [
       0,
@@ -64027,11 +64027,11 @@
   },
   "w2775": {
     "id": "w2775",
-    "w": "巻",
-    "reading": "まき",
+    "w": "三巻",
+    "reading": "さんかん",
     "gloss": {
-      "en": "roll",
-      "es": "rollo"
+      "en": "three volumes",
+      "es": "tres tomos"
     },
     "cov": [
       0,
@@ -64863,11 +64863,11 @@
   },
   "w2819": {
     "id": "w2819",
-    "w": "章",
-    "reading": "しょう",
+    "w": "第一章",
+    "reading": "だいいっしょう",
     "gloss": {
-      "en": "chapter, section",
-      "es": "capítulo"
+      "en": "chapter one",
+      "es": "capítulo uno"
     },
     "cov": [
       104,
@@ -65339,11 +65339,11 @@
   },
   "w2846": {
     "id": "w2846",
-    "w": "秒",
-    "reading": "びょう",
+    "w": "十秒",
+    "reading": "じゅうびょう",
     "gloss": {
-      "en": "second",
-      "es": "segundo"
+      "en": "ten seconds",
+      "es": "diez segundos"
     },
     "cov": [
       260,
@@ -68098,8 +68098,8 @@
     "w": "殿",
     "reading": "どの",
     "gloss": {
-      "en": "mister, sir",
-      "es": "señor"
+      "en": "Mr./Ms. (very formal, after a name)",
+      "es": "Sr./Sra. (muy formal, tras el nombre)"
     },
     "cov": [
       0,
@@ -74185,8 +74185,8 @@
     "w": "氏",
     "reading": "し",
     "gloss": {
-      "en": "family name, lineage",
-      "es": "apellido, linaje"
+      "en": "Mr./Ms. (after a family name)",
+      "es": "Sr./Sra. (tras el apellido)"
     },
     "sentences": [
       {
@@ -74403,11 +74403,11 @@
   },
   "w3389": {
     "id": "w3389",
-    "w": "第",
-    "reading": "だい",
+    "w": "第一",
+    "reading": "だいいち",
     "gloss": {
-      "en": "ordinal prefix",
-      "es": "prefijo ordinal"
+      "en": "first, number one",
+      "es": "primero, número uno"
     },
     "sentences": [
       {
@@ -78895,11 +78895,11 @@
   },
   "w3612": {
     "id": "w3612",
-    "w": "系",
-    "reading": "けい",
+    "w": "理科系",
+    "reading": "りかけい",
     "gloss": {
-      "en": "system, lineage",
-      "es": "sistema, linaje"
+      "en": "science stream (of study)",
+      "es": "rama de ciencias"
     },
     "cov": [
       1085,
@@ -84866,11 +84866,11 @@
   },
   "w3957": {
     "id": "w3957",
-    "w": "街",
-    "reading": "がい",
+    "w": "商店街",
+    "reading": "しょうてんがい",
     "gloss": {
-      "en": "street, quarter",
-      "es": "calle, barrio"
+      "en": "shopping street",
+      "es": "calle comercial"
     },
     "cov": [
       0,

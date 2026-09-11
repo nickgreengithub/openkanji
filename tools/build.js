@@ -231,6 +231,52 @@ function flatten(kanji, words, lang) {
 
 // A set is twenty words of the ladder, the same slice the app practises.
 const SET_WORDS = 20;
+
+// A card is a word a learner can say. 第 on its own is not one -- it is the
+// front half of 第一 -- and a card that teaches a piece teaches a piece of
+// nothing. The tell is in the word's own example: if it never once stands
+// clear of the kanji beside it there, it is being taught as a fragment.
+//
+// The list below is the exceptions, checked by hand: the suffixes and
+// prefixes the ladder does mean to teach as pieces, and a few whose single
+// example simply happens to seat them against another word's kanji. Anything
+// NEW that trips the test is an error, to be looked at rather than listed.
+const BOUND_OK = {
+  w1954: "雪 -- 夜雪が, a night and snow, not one word",
+  w1947: "歯 -- 晩歯を, same",
+  w0934: "組 -- a word on its own; its example counts it, 二組",
+  w0753: "約 -- a word on its own; its example prefixes it, 約十分",
+  w3380: "氏 -- after a family name, and nothing else",
+  w3011: "殿 -- after a name, more formal again",
+  w2429: "諸 -- a prefix, glossed as one",
+  w0094: "半 -- a suffix, glossed as one",
+  w0725: "全 -- a prefix, glossed as one",
+  w0672: "対 -- between two numbers, glossed as that",
+  w2362: "編 -- a counter, glossed as one",
+};
+
+function checkWholeWords(words, ladder) {
+  const kanji = (c) => c >= "\u4e00" && c <= "\u9faf";
+  const bad = [];
+  ladder.forEach((id, i) => {
+    const w = words[id];
+    if (!w || w.w.length !== 1 || !kanji(w.w) || BOUND_OK[id]) return;
+    let seen = 0, alone = 0;
+    for (const s of w.sentences || []) {
+      for (let at = s.ja.indexOf(w.w); at >= 0; at = s.ja.indexOf(w.w, at + 1)) {
+        seen++;
+        const before = at > 0 ? s.ja[at - 1] : "";
+        const after = at + 1 < s.ja.length ? s.ja[at + 1] : "";
+        if (!kanji(before) && !kanji(after)) alone++;
+      }
+    }
+    if (seen && !alone) bad.push("#" + (i + 1) + " " + w.w + " (" + id + ", " + w.reading + ") -- " +
+      (w.sentences[0] || {}).ja);
+  });
+  if (bad.length) throw new Error("ladder words that never stand alone in their own example -- teach the " +
+    "shortest real word that holds them, or add them to BOUND_OK with a reason:\n  " + bad.join("\n  "));
+}
+
 // Only Japanese belongs in the Japanese, and "looks Japanese" is not the same
 // as "is Japanese" -- a hangul character sat unnoticed in an example sentence
 // until this list was written out (see tools/sentences.js).
@@ -245,6 +291,7 @@ const JA_ONLY = /[぀-ゟ゠-ヿ㐀-䶿一-鿿々、。・ー！？（）「」]
 // is an error, as is a gloss written for a word the story never uses.
 function buildStories(raw, words, complete) {
   const ladder = readJson("data/ladder.json");
+  checkWholeWords(words, ladder);
   const out = {};
   const revision = [];
   // the commonest spelling of each word, and the rarest thing the ladder

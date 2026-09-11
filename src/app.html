@@ -2588,6 +2588,11 @@ const STR_MODE_W = { 1: 1, 2: 1.2, type: 2 };
 const STR_GAIN = 0.22;
 const STR_LOSS = 0.45;
 const okDay = () => Math.floor(Date.now() / 86400000);
+// A gloss read as the senses it offers: "cooking, a dish" is two of them,
+// and a parenthetical is an aside rather than a sense of its own.
+const okSenses = (g) => String(g || "").toLowerCase().replace(/\(.*?\)/g, " ")
+  .split(/[,;\/]/).map(x => x.replace(/^\s*(a|an|the|to)\s+/, "").trim()).filter(Boolean);
+
 // A mode worth W counts as the same answer given W times, which saturates
 // instead of running past certainty: at W=2 a miss costs 70% of what is
 // there, not 90%, and never all of it.
@@ -4380,7 +4385,13 @@ class Component extends DCLogic {
   // games 1/2 on the words page test whole words, not single kanji
   buildWordQ(mode, kk, w) {
     const distract = [];
-    const push = ww => { if (distract.length < 3 && ww[0] !== w[0] && !distract.find(d => d.big === ww[0])) distract.push({ big: ww[0], sub: ww[1], ok: false }); };
+    // The question is the English meaning, so a tile that means the same
+    // thing is a second right answer -- 人 and 者 are both "person", 車 and
+    // 自動車 both "car". Two glosses clash when they share any sense, which
+    // catches "person" against "person, people" as well as the exact match.
+    const mine = okSenses(w[2]);
+    const clashes = ww => okSenses(ww[2]).some(x => mine.indexOf(x) >= 0);
+    const push = ww => { if (distract.length < 3 && ww[0] !== w[0] && !clashes(ww) && !distract.find(d => d.big === ww[0])) distract.push({ big: ww[0], sub: ww[1], ok: false }); };
     if (mode === 2) {
       kk.g.forEach(g => g.w.forEach(push));
       (CONFUSE[kk.c] || []).forEach(c => { const hit = DATA.find(x => x.c === c); if (hit) hit.g.forEach(g => g.w.forEach(push)); });
