@@ -2537,30 +2537,40 @@ const okHasClip = (id, kind) => {
   if (!_okVoiceSet[which]) _okVoiceSet[which] = new Set((VOICES && VOICES[_okVoiceList[which]]) || []);
   return _okVoiceSet[which].has(id);
 };
+// One player for the whole app, not one per clip. A phone will only let a
+// sound play by itself through an element the reader has already started by
+// hand: a fresh Audio() begun from a timer is refused, which is every card
+// after the first once auto-play is running. Reusing the element their press
+// unlocked keeps the rest of the set audible.
+let _okClip = null;
+// What to call to drop the clip in flight. Stopping is not failing, so the
+// promise is abandoned rather than resolved false -- a word stopped by hand
+// must not fall through to the browser's voice a moment later.
+let _okClipDrop = null;
 // -> true once the clip has played to its end, false if it could not
 const okPlayClip = (id, kind) => new Promise((resolve) => {
   if (!okHasClip(id, kind)) return resolve(false);
   try {
-    const el = new Audio("audio/" + id + (kind === "s" ? ".s" : "") + ".mp3");
-    el.preload = "auto";
-    let settled = false;
-    const done = (ok) => { if (!settled) { settled = true; resolve(ok); } };
+    if (!_okClip) { _okClip = new Audio(); _okClip.preload = "auto"; }
+    const el = _okClip;
+    let settled = false, timer = null;
+    const quiet = () => { settled = true; if (timer) clearTimeout(timer); el.onended = el.onerror = null; _okClipDrop = null; };
+    const done = (ok) => { if (settled) return; quiet(); resolve(ok); };
+    _okClipDrop = () => { if (!settled) quiet(); };
+    el.onended = el.onerror = null;
+    el.src = "audio/" + id + (kind === "s" ? ".s" : "") + ".mp3";
     el.onended = () => done(true);
     el.onerror = () => done(false);
-    _okClips.push(el);
-    if (_okClips.length > 4) _okClips.shift();
     const p = el.play();
     if (p && p.catch) p.catch(() => done(false));
     // a clip that never reports its end must not hold the button lit
-    setTimeout(() => done(!!el.currentTime), 20000);
+    timer = setTimeout(() => done(!!el.currentTime), 20000);
   } catch (e) { resolve(false); }
 });
-// Playing elements are held so the browser cannot collect one mid-sentence.
-const _okClips = [];
 // Stop whatever is playing, however it is being played.
 const okStopClips = () => {
-  for (const el of _okClips) { try { el.pause(); el.onended = el.onerror = null; } catch (e) {} }
-  _okClips.length = 0;
+  if (_okClipDrop) _okClipDrop();
+  if (_okClip) { try { _okClip.pause(); } catch (e) {} }
 };
 const okAiReady = () => (typeof window !== "undefined" && !!(window.claude && window.claude.complete)) || okSyncReady();
 // mastered is a { "word|reading": true } map. Union merge: local OR server wins.
@@ -3510,14 +3520,16 @@ class Component extends DCLogic {
   }
 
   // Say a word, then its sentence; the button stays lit until the voice stops.
+  // -> a promise for whether anything was actually heard, so a caller that
+  // is running on by itself can stop rather than report card after card.
   speakWord(key, word, sentence, id) {
     const recorded = okHasClip(id, "w");
-    if (!recorded && !okCanSpeak()) return;
+    if (!recorded && !okCanSpeak()) return Promise.resolve(false);
     if (this.state.speaking === key) {
       okStopClips();
       try { window.speechSynthesis.cancel(); } catch (e) {}
       this.setState({ speaking: null });
-      return;
+      return Promise.resolve(true);
     }
     this.setState({ speaking: key });
     // A recording, where we have one: it sounds the same for everybody and
@@ -3528,20 +3540,21 @@ class Component extends DCLogic {
         .then((ok) => (ok && sentence && okHasClip(id, "s") ? okPlayClip(id, "s") : ok))
         .then((ok) => {
           if (this.state.speaking === key) this.setState({ speaking: null });
+          if (ok) return true;
           // A clip that will not play falls back rather than failing.
-          if (!ok && okCanSpeak()) this.speakAloud(key, word, sentence);
+          return okCanSpeak() ? this.speakAloud(key, word, sentence) : false;
         });
     }
-    this.speakAloud(key, word, sentence);
+    return this.speakAloud(key, word, sentence);
   }
 
   // The browser's own voice, for anything not recorded yet.
   speakAloud(key, word, sentence) {
-    if (!okCanSpeak()) return;
+    if (!okCanSpeak()) return Promise.resolve(false);
     this.setState({ speaking: key });
-    okSpeak([{ text: word, rate: 0.82 }, sentence ? { text: sentence, rate: 0.95 } : null]).then((heard) => {
+    return okSpeak([{ text: word, rate: 0.82 }, sentence ? { text: sentence, rate: 0.95 } : null]).then((heard) => {
       if (this.state.speaking === key) this.setState({ speaking: null });
-      if (heard) return;
+      if (heard) return true;
       // A button that does nothing and says nothing is impossible to report
       // and impossible to fix. Every failure names itself.
       const v = okVoice();
@@ -3556,6 +3569,7 @@ class Component extends DCLogic {
       this.flashMsg(!v ? (all ? T("no_voice") : T("no_voices_at_all"))
         : v.localService === false ? T("net_voice", { name: v.name })
         : T("no_audio", { why: okSpeakWhy || "silent" }));
+      return false;
     });
   }
   // ---- Auto-play ------------------------------------------------------
@@ -3584,7 +3598,10 @@ class Component extends DCLogic {
     if (!w) { this.stopAuto(true); return; }
     const key = "F" + w.w[3];
     if (speak && this.state.speaking !== key) {
-      this.speakWord(key, w.w[0], (EX_JA[w.w[3]] || [])[0] || "", w.w[3]);
+      // Nothing heard means nothing will be heard on the next card either, so
+      // the run stops there. Saying so once beats saying so twenty times.
+      const said = this.speakWord(key, w.w[0], (EX_JA[w.w[3]] || [])[0] || "", w.w[3]);
+      if (said && said.then) said.then((heard) => { if (!heard && this.state.focusAuto) this.stopAuto(true); });
     }
     // A voice that is still going holds the card; only when the room is quiet
     // does the gap the reader chose start counting.
