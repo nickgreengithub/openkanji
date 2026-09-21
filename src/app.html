@@ -3218,9 +3218,18 @@ class Component extends DCLogic {
     this.setState({ authBusy: true });
     try {
       // The mail is written in whichever language the learner is reading.
+      // What the device has learned so far rides with the request. A link
+      // tapped in a mail app opens in that app's own browser, which holds none
+      // of it; carrying it on the token is what stops a first sign-in from
+      // starting the account empty.
       const r = await this.api("/login", {
         method: "POST",
-        body: JSON.stringify({ email: String(email).trim(), lang: (this.state.uiLang || "EN").toLowerCase() })
+        body: JSON.stringify({
+          email: String(email).trim(),
+          lang: (this.state.uiLang || "EN").toLowerCase(),
+          mastered: this.state.mastered || {},
+          strength: this.state.strength || {}
+        })
       });
       this.flashMsg(r.ok ? T("check_your_email") : T(r.status === 429 ? "too_many_requests" : "could_not_send_link"));
     } catch (e) { this.flashMsg(T("could_not_send_link")); }

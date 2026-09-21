@@ -207,6 +207,71 @@ await test("callback signs in, sets an HttpOnly cookie and redirects", async () 
   assert.equal(env._db.prepare("select count(*) as n from users").get().n, 1);
 });
 
+// --- what the sign-in carries -------------------------------------------
+// A reader ticks words, then asks for a link. The link is very often opened
+// in the mail app's own browser, which holds none of those ticks, so the
+// request carries them and the claim folds them in.
+const progressOf = (env, email) => {
+  const row = env._db.prepare(
+    "select mastered, strength from progress p join users u on u.id = p.user_id where u.email = ?"
+  ).get(email);
+  return row ? { mastered: JSON.parse(row.mastered || "{}"), strength: JSON.parse(row.strength || "{}") } : null;
+};
+
+await test("signing up keeps what the device had already learned", async () => {
+  const env = makeEnv();
+  await call(env, "POST", "/api/login", {
+    body: { email: "new@example.com", mastered: { w0001: true, w0002: true }, strength: { w0001: [90, 3, 20000, 7] } },
+  });
+  await call(env, "GET", "/api/callback?token=" + encodeURIComponent(tokenFrom(env)));
+  const p = progressOf(env, "new@example.com");
+  assert.deepEqual(Object.keys(p.mastered).sort(), ["w0001", "w0002"]);
+  assert.deepEqual(p.strength.w0001, [90, 3, 20000, 7]);
+});
+
+await test("and it joins what the account holds rather than replacing it", async () => {
+  const env = makeEnv();
+  const cookie = await signedIn(env, "both@example.com");
+  await call(env, "PUT", "/api/progress", { cookie, body: { mastered: { w0001: true }, strength: { w0001: [50, 1, 19000, 1] } } });
+  // a second device, with ticks of its own, signs in to the same account
+  await call(env, "POST", "/api/login", {
+    body: { email: "both@example.com", mastered: { w0009: true }, strength: { w0001: [95, 4, 20500, 15] } },
+  });
+  await call(env, "GET", "/api/callback?token=" + encodeURIComponent(tokenFrom(env)));
+  const p = progressOf(env, "both@example.com");
+  assert.deepEqual(Object.keys(p.mastered).sort(), ["w0001", "w0009"]);
+  // strength goes by recency, the same rule a save from that device follows
+  assert.deepEqual(p.strength.w0001, [95, 4, 20500, 15]);
+});
+
+await test("nothing carried is the ordinary case, and costs nothing", async () => {
+  const env = makeEnv();
+  await call(env, "POST", "/api/login", { body: { email: "bare@example.com" } });
+  const res = await call(env, "GET", "/api/callback?token=" + encodeURIComponent(tokenFrom(env)));
+  assert.equal(res.headers.get("location"), SITE + "/#signed-in");
+  assert.deepEqual(progressOf(env, "bare@example.com").mastered, {});
+});
+
+await test("a malformed carry never costs the reader the sign-in", async () => {
+  const env = makeEnv();
+  await call(env, "POST", "/api/login", {
+    body: { email: "junk@example.com", mastered: { "'; drop table users; --": true }, strength: "no" },
+  });
+  const res = await call(env, "GET", "/api/callback?token=" + encodeURIComponent(tokenFrom(env)));
+  assert.equal(res.headers.get("location"), SITE + "/#signed-in");
+  assert.deepEqual(progressOf(env, "junk@example.com").mastered, {});
+  assert.equal(env._db.prepare("select count(*) as n from users").get().n, 1);
+});
+
+await test("more words than a reader could have is not carried", async () => {
+  const env = makeEnv();
+  const huge = {};
+  for (let i = 0; i < 3100; i++) huge["w" + i] = true;
+  await call(env, "POST", "/api/login", { body: { email: "huge@example.com", mastered: huge } });
+  await call(env, "GET", "/api/callback?token=" + encodeURIComponent(tokenFrom(env)));
+  assert.deepEqual(progressOf(env, "huge@example.com").mastered, {});
+});
+
 await test("a link works only once", async () => {
   const env = makeEnv();
   await call(env, "POST", "/api/login", { body: { email: "nick@example.com" } });

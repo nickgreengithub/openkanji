@@ -24,6 +24,9 @@ const SESSION_TTL = 180 * 24 * 60 * 60; // session cookie: 180 days
 const COOKIE = "ok_session";
 const MAX_BODY = 512 * 1024;
 const MAX_WORDS = 20000;
+// The ladder is two thousand words. A sign-in carrying more than half as many
+// again is not a reader's device, so it is not carried at all.
+const CARRY_MAX = 3000;
 // Per hour, counted from login_tokens. Generous for a person, useless as a
 // spam relay.
 const RATE_EMAIL = 5;
@@ -560,6 +563,20 @@ async function ensureUpdates(db) {
   updatesReady.add(db);
 }
 
+// What the device knew when it asked for the link, kept against the token
+// until the link is claimed. Added the same way as the others, so a database
+// made before it needs no migration run against it.
+const carryReady = new WeakSet();
+async function ensureCarry(db) {
+  if (carryReady.has(db)) return;
+  try {
+    await db.prepare("alter table login_tokens add column carry text").run();
+  } catch (e) {
+    // already there, which is the normal case
+  }
+  carryReady.add(db);
+}
+
 async function ensureStrength(db) {
   if (strengthReady.has(db)) return;
   try {
@@ -707,8 +724,25 @@ async function handleLogin(request, env) {
   if (await rateLimited(env.DB, email, ip)) return json({ error: "rate_limited" }, 429);
 
   const token = randomToken();
-  await env.DB.prepare("insert into login_tokens (hash, email, ip, created_at, expires_at) values (?, ?, ?, ?, ?)")
-    .bind(await sha256(token), email, ip, now(), now() + TOKEN_TTL)
+  // A reader who ticks words and then signs up has those ticks in the browser
+  // they ticked them in -- which is not necessarily the one that opens the
+  // link. Whatever they had when they asked travels with the token, and is
+  // merged into the account when it is claimed. Anything malformed is simply
+  // not carried: it must never cost them the sign-in itself.
+  const carry = (() => {
+    const m = cleanMastered(body.mastered);
+    const st = cleanStrength(body.strength);
+    if (!m && !st) return null;
+    const n = Object.keys(m || {}).length, sn = Object.keys(st || {}).length;
+    if (!n && !sn) return null;
+    // Nobody has to be signed in to put this row there, so it is held to the
+    // size of a real reader's progress rather than to what a save allows.
+    if (n > CARRY_MAX || sn > CARRY_MAX) return null;
+    return JSON.stringify({ mastered: m || {}, strength: st || {} });
+  })();
+  await ensureCarry(env.DB);
+  await env.DB.prepare("insert into login_tokens (hash, email, ip, created_at, expires_at, carry) values (?, ?, ?, ?, ?, ?)")
+    .bind(await sha256(token), email, ip, now(), now() + TOKEN_TTL, carry)
     .run();
 
   const link = env.SITE_URL.replace(/\/$/, "") + "/api/callback?token=" + encodeURIComponent(token);
@@ -728,8 +762,9 @@ async function handleCallback(request, env, url) {
 
   // Claiming the token and marking it used are one statement, so two clicks on
   // the same link cannot both succeed.
+  await ensureCarry(env.DB);
   const row = await env.DB.prepare(
-    "update login_tokens set used_at = ?1 where hash = ?2 and used_at is null and expires_at > ?1 returning email"
+    "update login_tokens set used_at = ?1 where hash = ?2 and used_at is null and expires_at > ?1 returning email, carry"
   ).bind(now(), await sha256(token)).first();
   if (!row) return fail;
 
@@ -738,6 +773,9 @@ async function handleCallback(request, env, url) {
     user = await env.DB.prepare("insert into users (email, created_at) values (?, ?) returning id").bind(row.email, now()).first();
     await env.DB.prepare("insert or ignore into progress (user_id, mastered, updated_at) values (?, '{}', ?)").bind(user.id, now()).run();
   }
+  // Only ever adds: the ticks the device had join whatever the account holds,
+  // and strength goes by recency, exactly as a save from that device would.
+  if (row.carry) await applyCarry(env, user.id, row.carry);
 
   return new Response(null, {
     status: 302,
@@ -760,6 +798,28 @@ async function handleGetProgress(env, userId) {
     strength = row && row.strength ? JSON.parse(row.strength) : {};
   } catch (e) {}
   return json({ mastered, strength, deck: (row && row.deck) || null, lang: (row && row.lang) || null });
+}
+
+// Folds what a sign-in request carried into the account it just opened.
+// Never fatal: a sign-in that cannot merge is still a sign-in.
+async function applyCarry(env, userId, carry) {
+  try {
+    const held = JSON.parse(carry) || {};
+    const m = cleanMastered(held.mastered) || {};
+    const st = cleanStrength(held.strength) || {};
+    if (!Object.keys(m).length && !Object.keys(st).length) return;
+    await ensureStrength(env.DB);
+    const row = await env.DB.prepare("select mastered, strength from progress where user_id = ?").bind(userId).first();
+    let mastered = m, strength = st;
+    if (row) {
+      try { mastered = Object.assign({}, JSON.parse(row.mastered) || {}, m); } catch (e) {}
+      try { strength = mergeStrength(JSON.parse(row.strength || "{}") || {}, st); } catch (e) {}
+    }
+    await env.DB.prepare(
+      "insert into progress (user_id, mastered, strength, updated_at) values (?1, ?2, ?3, ?4)" +
+      " on conflict(user_id) do update set mastered = ?2, strength = ?3, updated_at = ?4"
+    ).bind(userId, JSON.stringify(mastered), JSON.stringify(strength), now()).run();
+  } catch (e) {}
 }
 
 async function handlePutProgress(request, env, userId) {
