@@ -860,7 +860,9 @@ a:hover{color:var(--text-accent-hover)}
 .ok-w-bar{flex:0 0 auto;display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem 1rem;border-top:1px solid var(--ok-line);background:var(--ok-bg)}
 .ok-w-said{display:flex;flex-direction:column;gap:.45rem}
 /* The language of the box it stands next to, and the way to change it. */
-.ok-w-lang{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;height:3rem;padding:0 .7rem;border-radius:14px;border:1px solid var(--ok-line);background:var(--ok-card);font-family:var(--font-2);font-size:.9375rem;color:var(--ok-body);white-space:nowrap;cursor:pointer;user-select:none;transition:border-color 140ms ease,color 140ms ease}
+/* One width for both labels: 日本語 sets it, EN sits centred in it, so
+   pressing the button never shifts the box beside it. */
+.ok-w-lang{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:4.6rem;height:3rem;padding:0 .4rem;border-radius:14px;border:1px solid var(--ok-line);background:var(--ok-card);font-family:var(--font-2);font-size:.9375rem;color:var(--ok-body);white-space:nowrap;cursor:pointer;user-select:none;transition:border-color 140ms ease,color 140ms ease}
 .ok-w-lang:hover{border-color:var(--ok-acc);color:var(--ok-acc)}
 .ok-w-input{flex:1 1 auto;min-width:0;display:flex;align-items:stretch;height:3rem;border-radius:14px;border:1px solid #d5d5cf;background:#fff;overflow:hidden}
 .ok-w-input:focus-within{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
