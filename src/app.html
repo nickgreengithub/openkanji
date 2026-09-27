@@ -3784,20 +3784,35 @@ class Component extends DCLogic {
   // that says what it is. Newest turns are fitted first, so what falls off
   // the end when the budget runs out is always the oldest.
   chatSoFar(budget) {
+    // The opening message is the first thing in the conversation: the model
+    // wrote those example sentences and the learner is still looking at them,
+    // so a later "why that one?" is about something on their screen. It is
+    // kept whatever else has to be dropped, and it says outright that the
+    // examples are suggestions -- a model shown a suggestion will otherwise
+    // treat it as the assignment and mark the learner against it.
+    const egs = (this.state.introEgs || []).filter(Boolean);
+    const opener = egs.length
+      ? "Ken-Sensei (the opening message, still on their screen): " + T("make_any_sentence") +
+        " Two suggestions, NOT requirements: " + egs.map((e) => "\"" + e + "\"").join(" / ") +
+        " -- they may take one up, take part of one, or ignore both and write about something else entirely."
+      : "";
     const lines = (this.state.chat || []).map((m) => m.mine
       ? "Learner: " + String(m.text || "")
       : "Ken-Sensei: " + [m.note, m.better].filter(Boolean).join(" \u2014 ")).filter((l) => l.length > 10);
     const kept = [];
-    let left = budget;
+    let left = budget - (opener ? opener.length + 1 : 0);
     for (let i = lines.length - 1; i >= 0; i--) {
       if (lines[i].length + 1 > left) break;
       left -= lines[i].length + 1;
       kept.unshift(lines[i]);
     }
+    if (opener) kept.unshift(opener);
     if (!kept.length) return "";
     return " Here's the conversation so far, oldest first. It is this session with this same learner:" +
-      " read it for continuity -- what they have already been told, what they keep getting wrong, what they were" +
-      " just asked -- and then answer only their newest turn.\n" + kept.join("\n");
+      " read it for continuity -- what they were shown to start with, what they have already been told, what they" +
+      " keep getting wrong, what they were just asked -- and then answer only their newest turn." +
+      " Nothing in it obliges them: the example sentences were suggestions, and writing about anything else is not" +
+      " a mistake.\n" + kept.join("\n");
   }
 
   // Every call leaves the system prompt room for the conversation, and the
@@ -3846,7 +3861,6 @@ class Component extends DCLogic {
         ].join(" ") + soFar,
         messages: [{ role: "user", content: [
           "WORDS LIST (these words are already known — write them with NO reading): " + this.chatWordsBrief(),
-          "English examples they were shown (inspiration only): " + ((this.state.introEgs || []).join(" / ") || "none"),
           "Learner's Japanese: \"" + answer + "\"."
         ].join("\n") }]
       });
@@ -3875,7 +3889,8 @@ class Component extends DCLogic {
       const raw = await okComplete({
         system: [
           "You are Ken-Sensei, a patient Japanese teacher helping a JLPT N4 learner.",
-          "This is a CONTINUING conversation: the transcript at the end of these instructions is what has been said so far, questions and compositions alike. A question like 'why?' or 'and the other one?' refers to it, so read it before answering.",
+          "This is a CONTINUING conversation: the transcript at the end of these instructions is what has been said so far — the opening message with its example sentences, then every composition, note and question. A question like 'why?', 'what does that mean?' or 'and the other one?' refers to something in it, very often to one of those examples, so read it before answering.",
+          "The example sentences in the opening message are suggestions, never requirements: the learner is free to ignore them. Explain one gladly if they ask; never tell them they must use one.",
           "The learner is asking a question in " + langName() + " about Japanese — grammar, usage, nuance, or one of the words in their WORDS LIST.",
           "Answer in plain " + langName() + ", two or three short sentences, concrete and example-led. No preamble, no lists.",
           "FURIGANA RULE — this is the opposite of what you may expect, follow it exactly. The learner already knows the words in their WORDS LIST, so those words take NO reading: write them bare. Every OTHER word containing kanji — any word not in the WORDS LIST, including verbs, adjectives and nouns you introduce yourself — MUST be followed immediately by its reading in hiragana inside Japanese corner brackets, e.g. 飾る「かざる」. Never use round brackets for readings. Reserve 「」 for readings ONLY — never to quote a phrase; quote Japanese phrases with straight single quotes instead. The unit is the WHOLE WORD including its okurigana: write 考える「かんがえる」 not 考「かんが」える, and 見えています「みえています」 not 見「み」えています.",
