@@ -1043,6 +1043,14 @@
     "en": "Exclude 1 learned word",
     "es": "Excluir 1 palabra aprendida"
   },
+  "write_in_ja": {
+    "en": "Writing in Japanese — tap to ask a question instead",
+    "es": "Escribiendo en japonés — toca para preguntar en tu idioma"
+  },
+  "ask_in_own": {
+    "en": "Asking a question — tap to write Japanese instead",
+    "es": "Preguntando — toca para escribir en japonés"
+  },
   "n_words": {
     "en": "{n} words",
     "es": "{n} palabras"

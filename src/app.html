@@ -858,6 +858,10 @@ a:hover{color:var(--text-accent-hover)}
 .ok-w-cand:hover{border-color:var(--ok-acc)}
 .ok-w-cand i{font-style:normal;font-family:var(--font-2);font-size:.9375rem;color:var(--ok-mute)}
 .ok-w-bar{flex:0 0 auto;display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem 1rem;border-top:1px solid var(--ok-line);background:var(--ok-bg)}
+.ok-w-said{display:flex;flex-direction:column;gap:.45rem}
+/* The language of the box it stands next to, and the way to change it. */
+.ok-w-lang{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;height:3rem;padding:0 .7rem;border-radius:14px;border:1px solid var(--ok-line);background:var(--ok-card);font-family:var(--font-2);font-size:.9375rem;color:var(--ok-body);white-space:nowrap;cursor:pointer;user-select:none;transition:border-color 140ms ease,color 140ms ease}
+.ok-w-lang:hover{border-color:var(--ok-acc);color:var(--ok-acc)}
 .ok-w-input{flex:1 1 auto;min-width:0;display:flex;align-items:stretch;height:3rem;border-radius:14px;border:1px solid #d5d5cf;background:#fff;overflow:hidden}
 .ok-w-input:focus-within{border-color:var(--ok-acc);box-shadow:0 0 0 3px var(--ok-acc-s)}
 .ok-w-send{flex:0 0 auto;width:3rem;height:3rem;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 140ms ease,color 140ms ease}
@@ -1626,10 +1630,6 @@ html[data-ok-ready] #ok-boot{display:none}
         <div class="ok-sheet-top">
           <span sc-camel-on-click="{{ wBack }}" class="ok-round-btn" title="{{ t_back }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"></path></svg></span>
           <div class="ok-sheet-title"><span class="ok-eyebrow">{{ t_write_title }}</span><span class="ok-sheet-h">{{ pTitle }}</span></div>
-          <div class="ok-seg">
-            <span sc-camel-on-click="{{ setLangJa }}" class="ok-seg-b" style="{{ jaSeg }}">日本語</span>
-            <span sc-camel-on-click="{{ setLangEn }}" class="ok-seg-b" style="{{ enSeg }}">{{ langCode }}</span>
-          </div>
         </div>
         <div class="ok-view ok-w-pills">
           <sc-for list="{{ usedWords }}" as="u" hint-placeholder-count="5">
@@ -1647,15 +1647,8 @@ html[data-ok-ready] #ok-boot{display:none}
               <span class="ok-w-eg"><i>·</i><span>{{ eg.t }}</span></span>
             </sc-for>
           </div>
-          <sc-if value="{{ hasSent }}" hint-placeholder-val="{{ false }}"><div class="ok-w-msg ok-w-out">{{ sent }}</div></sc-if>
+          <sc-for list="{{ chatTurns }}" as="m" hint-placeholder-count="2"><sc-if value="{{ m.mine }}" hint-placeholder-val="{{ false }}"><div class="ok-w-msg ok-w-out">{{ m.text }}</div></sc-if><sc-if value="{{ m.theirs }}" hint-placeholder-val="{{ true }}"><div class="ok-w-msg ok-w-in ok-w-said"><sc-if value="{{ m.hasVerdict }}" hint-placeholder-val="{{ false }}"><span class="ok-w-verdict" style="color:{{ m.verdictColor }}">{{ m.verdictLine }}</span></sc-if><span>{{ m.note }}</span><sc-if value="{{ m.hasBetter }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok-acc)">{{ m.better }}</span></sc-if></div></sc-if></sc-for>
           <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><div class="ok-w-think"><span></span><span></span><span></span></div></sc-if>
-          <sc-if value="{{ hasResult }}" hint-placeholder-val="{{ false }}">
-            <div class="ok-w-msg ok-w-in" style="display:flex;flex-direction:column;gap:.45rem">
-              <sc-if value="{{ r.hasVerdict }}" hint-placeholder-val="{{ false }}"><span class="ok-w-verdict" style="color:{{ r.verdictColor }}">{{ r.verdictLine }}</span></sc-if>
-              <span>{{ r.noteTyped }}</span>
-              <span style="color:var(--ok-acc)">{{ r.betterTyped }}</span>
-            </div>
-          </sc-if>
         </div>
         <div class="ok-w-cands">
           <sc-if value="{{ candOpen }}" hint-placeholder-val="{{ false }}">
@@ -1665,6 +1658,7 @@ html[data-ok-ready] #ok-boot{display:none}
           </sc-if>
         </div>
         <div class="ok-w-bar">
+          <span sc-camel-on-click="{{ toggleWriteLang }}" class="ok-w-lang" title="{{ writeLangTitle }}">{{ writeLangLabel }}</span>
           <div class="ok-w-input" style="--text-base:1.125rem;--border-default:transparent;--pad-editor:0 .9rem;--leading-relaxed:2.9rem">
             <x-import component-from-global-scope="PasteToFileDesignSystem_0eb22b.PasteArea" placeholder="{{ inputHint }}" value="{{ draft }}" sc-camel-on-change="{{ onDraft }}" sc-camel-on-key-down="{{ onDraftKey }}" rows="{{ oneRow }}" style="width:100%;height:100%;resize:none;overflow:hidden;white-space:nowrap" hint-size="100%,100%"></x-import>
           </div>
@@ -2673,7 +2667,7 @@ const okMerge = (a, b) => {
 
 class Component extends DCLogic {
   state = {
-    screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, onlyNew: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], replies: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true, lastMiss: null,
+    screen: "detail", batch: 0, wset: 0, batchOpen: false, decks: false, deck: null, section: 0, conceal: false, onlyNew: false, chatSel: {}, compStart: 0, viewBatch: 0, about: false, write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, chat: [], cand: null, candIdx: 0, sent: "", saved: false, sel: 0, seen: {}, revealed: {}, allFuri: true, lastMiss: null,
     draft: "", loading: false, result: null, hover: null,  expand: null, expandClosing: null, exHover: null, exRect: null, cbHover: null, cbRect: null, wHover: null, wRect: null, jumped: null, listRowH: 0, kHover: null, kRect: null, scrollTo: null, kpop: false, dlg: false, rowH: 0, ruleH: 1, rows: 12, snapY: 0, glyphW: 0, padTop: 32, partsTop: 0, flash: null, hint: null, masteryFlash: false, page: {}, mastered: {}, strength: {}, userEmail: null, emailDraft: "", authMsg: "", authBusy: false, updates: false, updatesWant: okWantUpdates(), issueOn: false, issueKind: "bug", issueSubject: "", issueText: "", issueBusy: false, issueDone: null, issueMsg: "", zoom: "map", focus: null, focusShown: false, focusAuto: false, autoSpeed: 1, acctOpen: false, sync: "local", speaking: null, meanings: null, quiz: [], quizOpen: false, partsPage: 0
   };
 
@@ -3759,6 +3753,58 @@ class Component extends DCLogic {
       .map((x) => x.item);
   }
 
+  // The one line at the head of a reply, chosen by the weakest axis that
+  // matters. A question gets none: there is nothing there to be right about.
+  writeVerdict(r) {
+    if (!r || r.ask) return { line: "", color: "var(--status-ok)" };
+    if (r.error) return { line: T("check_failed"), color: "var(--status-error)" };
+    const rank = { good: 2, ok: 1, bad: 0 };
+    const acc = rank[r.accurate] === undefined ? 2 : rank[r.accurate];
+    const nat = rank[r.natural] === undefined ? 2 : rank[r.natural];
+    if (r.understood === false) return { line: T("verdict_1"), color: "var(--status-error)" };
+    if (acc === 0) return { line: T("verdict_2"), color: "var(--status-error)" };
+    if (acc === 1 && nat <= 1) return { line: T("verdict_3"), color: "var(--status-warn)" };
+    if (acc === 1) return { line: T("verdict_4"), color: "var(--status-warn)" };
+    if (nat === 0) return { line: T("verdict_5"), color: "var(--status-warn)" };
+    if (nat === 1) return { line: T("verdict_6"), color: "var(--status-warn)" };
+    return { line: T("verdict_7"), color: "var(--status-ok)" };
+  }
+
+  // A reply as the thread keeps it: judged once, when it arrives, so scrolling
+  // back does not re-read state that has moved on since.
+  chatReply(r) {
+    const v = this.writeVerdict(r);
+    return { mine: false, note: String(r.note || ""), better: String(r.better || ""), verdictLine: v.line, verdictColor: v.color };
+  }
+
+  // The model is given no memory of its own: every turn is a fresh call. So
+  // the session is handed to it whole, in the system prompt, under a heading
+  // that says what it is. Newest turns are fitted first, so what falls off
+  // the end when the budget runs out is always the oldest.
+  chatSoFar(budget) {
+    const lines = (this.state.chat || []).map((m) => m.mine
+      ? "Learner: " + String(m.text || "")
+      : "Ken-Sensei: " + [m.note, m.better].filter(Boolean).join(" \u2014 ")).filter((l) => l.length > 10);
+    const kept = [];
+    let left = budget;
+    for (let i = lines.length - 1; i >= 0; i--) {
+      if (lines[i].length + 1 > left) break;
+      left -= lines[i].length + 1;
+      kept.unshift(lines[i]);
+    }
+    if (!kept.length) return "";
+    return " Here's the conversation so far, oldest first. It is this session with this same learner:" +
+      " read it for continuity -- what they have already been told, what they keep getting wrong, what they were" +
+      " just asked -- and then answer only their newest turn.\n" + kept.join("\n");
+  }
+
+  // Every call leaves the system prompt room for the conversation, and the
+  // Worker refuses one over its own limit, so the transcript is fitted to
+  // whatever the instructions did not use.
+  withChat(base) {
+    return base + this.chatSoFar(Math.max(0, 11000 - base.length));
+  }
+
   async ask() {
     if (this.state.lang === "en") return this.askQuestion();
 
@@ -3771,22 +3817,16 @@ class Component extends DCLogic {
     if (!answer || this.state.loading || this._asking) return;
     this._asking = true;
     this._typeLen = 0;
-    // AI_MAX_MSGS on the Worker caps the whole array at 8, so only the most
-    // recent exchanges ride along — old enough turns just age out.
-    const priorTurns = [];
-    (this.state.history || []).forEach((h, i) => {
-      priorTurns.push({ role: "user", content: h });
-      const reply = (this.state.replies || [])[i];
-      if (reply) priorTurns.push({ role: "assistant", content: reply });
-    });
-    this.setState(s => ({ loading: true, result: null, sent: answer, draft: "", compStart: 0, history: (s.history || []).concat([answer]) }));
+    const soFar = this.chatSoFar(3600);
+    this.setState(s => ({ loading: true, result: null, sent: answer, draft: "", compStart: 0,
+      chat: (s.chat || []).concat([{ mine: true, text: answer }]) }));
     try {
       const raw = await okComplete({
         system: [
           "You are Ken-Sensei, a patient Japanese teacher marking a JLPT N4 composition drill.",
           "TASK: the learner picked a WORDS LIST — the N4 words they want to practise, possibly drawn from several different kanji — and was shown one or two English example sentences as inspiration. They then wrote a Japanese sentence of their own.",
           "The examples are inspiration ONLY. The learner is free to write about anything else, to use only some of the words, or to use words outside the list. Never mark them down for departing from an example or for leaving words unused.",
-          "This is a MULTI-TURN conversation: earlier user turns are the learner's previous sentences in this session, and earlier assistant turns are your own prior notes. Use that history for continuity, but grade only the learner's newest sentence.",
+          "This is a MULTI-TURN conversation: the transcript at the end of these instructions is what has been said so far. Use it for continuity -- do not repeat a correction they have already had -- but grade only the learner's newest sentence.",
           "GRADE ON THREE INDEPENDENT AXES:",
           "understood — would an ordinary Japanese speaker understand what the learner meant? true or false. Be generous: broken grammar that still communicates counts as true.",
           "accurate — particles, conjugation and word choice: 'good' (correct), 'ok' (minor slips that do not obscure meaning), 'bad' (errors that break the sentence).",
@@ -3801,19 +3841,20 @@ class Component extends DCLogic {
           "correction (string|null) — the learner's sentence minimally corrected, or null if nothing needs changing;",
           "note (string) — one or two short English sentences: what worked, then the single most useful fix, naming the grammar point or word;",
           "better (string) — one more natural Japanese sentence, mostly from the learner's WORDS LIST. This is NEW writing, not a quote, so the QUOTING RULE does NOT apply to it: EVERY kanji word here that is not in the WORDS LIST must be followed immediately by its reading in corner brackets — whether you introduced the word or the learner used it — e.g. その写真を三回目「さんかいめ」見ました「みました」. Only the WORDS LIST words stay bare."
-        ].join(" "),
-        messages: priorTurns.slice(-7).concat([{ role: "user", content: [
+        ].join(" ") + soFar,
+        messages: [{ role: "user", content: [
           "WORDS LIST (these words are already known — write them with NO reading): " + this.chatWordsBrief(),
           "English examples they were shown (inspiration only): " + ((this.state.introEgs || []).join(" / ") || "none"),
           "Learner's Japanese: \"" + answer + "\"."
-        ].join("\n") }])
+        ].join("\n") }]
       });
       const json = JSON.parse(String(raw).replace(/^[^{]*/, "").replace(/[^}]*$/, ""));
       this._typeLen = String(json.note || "—").length + String(json.better || "—").length;
-      this.setState(s => ({ loading: false, result: json, replies: (s.replies || []).concat([json.note || ""]) }));
+      this.setState(s => ({ loading: false, result: json, chat: (s.chat || []).concat([this.chatReply(json)]) }));
       this.startTyping();
     } catch (e) {
-      this.setState(s => ({ loading: false, result: { natural: false, correction: null, note: "", better: "", error: true }, replies: (s.replies || []).concat([""]) }));
+      const bad = { natural: false, correction: null, note: T("check_failed"), better: "", error: true };
+      this.setState(s => ({ loading: false, result: bad, chat: (s.chat || []).concat([this.chatReply(bad)]) }));
     } finally {
       this._asking = false;
     }
@@ -3825,16 +3866,19 @@ class Component extends DCLogic {
     if (!q || this.state.loading || this._asking) return;
     this._asking = true;
     this._typeLen = 0;
-    this.setState({ loading: true, result: null, sent: q, draft: "", compStart: 0 });
+    const soFar = this.chatSoFar(3600);
+    this.setState(s => ({ loading: true, result: null, sent: q, draft: "", compStart: 0,
+      chat: (s.chat || []).concat([{ mine: true, text: q }]) }));
     try {
       const raw = await okComplete({
         system: [
           "You are Ken-Sensei, a patient Japanese teacher helping a JLPT N4 learner.",
+          "This is a CONTINUING conversation: the transcript at the end of these instructions is what has been said so far, questions and compositions alike. A question like 'why?' or 'and the other one?' refers to it, so read it before answering.",
           "The learner is asking a question in " + langName() + " about Japanese — grammar, usage, nuance, or one of the words in their WORDS LIST.",
           "Answer in plain " + langName() + ", two or three short sentences, concrete and example-led. No preamble, no lists.",
           "FURIGANA RULE — this is the opposite of what you may expect, follow it exactly. The learner already knows the words in their WORDS LIST, so those words take NO reading: write them bare. Every OTHER word containing kanji — any word not in the WORDS LIST, including verbs, adjectives and nouns you introduce yourself — MUST be followed immediately by its reading in hiragana inside Japanese corner brackets, e.g. 飾る「かざる」. Never use round brackets for readings. Reserve 「」 for readings ONLY — never to quote a phrase; quote Japanese phrases with straight single quotes instead. The unit is the WHOLE WORD including its okurigana: write 考える「かんがえる」 not 考「かんが」える, and 見えています「みえています」 not 見「み」えています.",
           "OUTPUT: respond ONLY with JSON, no markdown fences. Keys: note (string, your answer); better (string, one short Japanese example sentence using a word from their WORDS LIST, or \"\" if an example would not help)."
-        ].join(" "),
+        ].join(" ") + soFar,
         messages: [{ role: "user", content: [
           "WORDS LIST (these words are already known — write them with NO reading): " + this.chatWordsBrief(),
           "Learner's question: \"" + q + "\""
@@ -3843,10 +3887,11 @@ class Component extends DCLogic {
       const json = JSON.parse(String(raw).replace(/^[^{]*/, "").replace(/[^}]*$/, ""));
       const answer = { understood: true, accurate: undefined, natural: undefined, note: json.note, better: json.better || "", ask: true };
       this._typeLen = String(answer.note || "").length + String(answer.better || "").length;
-      this.setState({ loading: false, result: answer });
+      this.setState(s => ({ loading: false, result: answer, chat: (s.chat || []).concat([this.chatReply(answer)]) }));
       this.startTyping();
     } catch (e) {
-      this.setState({ loading: false, result: { understood: true, note: T("couldnt_answer"), better: "", ask: true } });
+      const bad = { understood: true, note: T("couldnt_answer"), better: "", ask: true };
+      this.setState(s => ({ loading: false, result: bad, chat: (s.chat || []).concat([this.chatReply(bad)]) }));
     } finally {
       this._asking = false;
     }
@@ -4013,12 +4058,12 @@ class Component extends DCLogic {
   closeWrite() {
     if (this.state.writeClosing) return;
     this.setState({ writeClosing: true });
-    setTimeout(() => this.setState({ write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, history: [], replies: [], cand: null, candIdx: 0, draft: "", sent: "", result: null }), 420);
+    setTimeout(() => this.setState({ write: false, writeClosing: false, view: "list", lang: "ja", typed: 0, intro: 0, chat: [], cand: null, candIdx: 0, draft: "", sent: "", result: null }), 420);
   }
 
   // every route into the chat goes through here so the intro always types
   openChat() {
-    this.setState({ write: true, writeClosing: false, draft: "", sent: "", result: null, history: [], replies: [], kHover: null, introEgs: null });
+    this.setState({ write: true, writeClosing: false, draft: "", sent: "", result: null, chat: [], kHover: null, introEgs: null });
     this.makeIntroExamples();
   }
 
@@ -6159,7 +6204,7 @@ class Component extends DCLogic {
       chatClick: Object.keys(st.chatSel).length === 0 ? (e) => e.stopPropagation() : () => { if (this.state.write) { this.closeWrite(); return; } this.openChat(st.batch, st.sel); },
       chatFlashGlow: st.chatFlash ? "0 0 0 2px rgba(8,145,178,.35), 0 0 16px rgba(8,145,178,.55)" : "none",
       usedWords: (() => {
-        let typed = String(st.draft || "") + " " + (st.history || []).join(" ");
+        let typed = String(st.draft || "") + " " + (st.chat || []).filter(m => m.mine).map(m => m.text).join(" ");
         const list = [];
         DATA.forEach(dk => dk.g.forEach(g => g.w.forEach(w => { if (st.chatSel[w[3]] && !list.some(x => x[0] === w[0])) list.push(w); })));
         const isKanji = (ch) => !!ch && /[一-龯]/.test(ch);
@@ -6334,7 +6379,26 @@ class Component extends DCLogic {
         };
       }),
       writeOn: st.write, tableOn: true,
-      sent: st.sent || "", hasSent: !!st.sent, loading: st.loading,
+      loading: st.loading,
+      // The whole session, in order. Only the newest reply is still arriving,
+      // so only it is cut to what has been typed out; everything above it is
+      // read at rest.
+      chatTurns: (() => {
+        const list = st.chat || [];
+        const last = list.length - 1;
+        return list.map((m, i) => {
+          if (m.mine) return { mine: true, theirs: false, text: m.text || "", hasVerdict: false, verdictLine: "", verdictColor: "", note: "", better: "", hasBetter: false };
+          const note = m.note || "\u2014", better = m.better || "";
+          const n = i === last ? st.typed : note.length + better.length;
+          return {
+            mine: false, theirs: true, text: "",
+            hasVerdict: !!m.verdictLine, verdictLine: m.verdictLine || "", verdictColor: m.verdictColor || "",
+            note: n > 0 ? note.slice(0, n) : "",
+            better: n - note.length > 0 ? better.slice(0, n - note.length) : "",
+            hasBetter: !!better
+          };
+        });
+      })(),
       canSend: !!String(st.draft || "").trim() && !st.loading,
       cannotSend: !String(st.draft || "").trim() || st.loading,
       chatRef: this.chatRefCb(),
@@ -6448,6 +6512,12 @@ class Component extends DCLogic {
       inputHint: st.lang === "en" ? T("ask_sensei") : "日本語で書いてください...",
       setLangJa: () => this.setState({ lang: "ja", cand: null, candIdx: 0, compStart: 0 }),
       setLangEn: () => this.setState({ lang: "en", cand: null, candIdx: 0, compStart: 0 }),
+      // Which language the box below is in -- so it sits beside the box, not
+      // up in the header away from what it decides. One button, showing where
+      // it stands: pressing it is the other one.
+      writeLangLabel: st.lang === "ja" ? "\u65e5\u672c\u8a9e" : (st.uiLang || "EN"),
+      writeLangTitle: T(st.lang === "ja" ? "write_in_ja" : "ask_in_own"),
+      toggleWriteLang: () => this.setState(x => ({ lang: x.lang === "ja" ? "en" : "ja", cand: null, candIdx: 0, compStart: 0 })),
       jaBg: st.lang === "en" ? "transparent" : "var(--accent)",
       jaFg: st.lang === "en" ? "var(--text-accent)" : "#ffffff",
       enBg: st.lang === "en" ? "var(--accent)" : "transparent",
@@ -6468,41 +6538,8 @@ class Component extends DCLogic {
       charCount: st.draft.length + T("chars"),
       hasResult: !!st.result,
       r: (() => {
-        const lv = (v) => v === "good" ? { pct: "100%", color: "var(--status-ok)", word: T("word_good") }
-          : v === "ok" ? { pct: "60%", color: "var(--status-warn)", word: T("word_almost") }
-          : { pct: "25%", color: "var(--status-error)", word: T("needs_work") };
-        // one line, chosen by the weakest axis that matters
-        const rank = { good: 2, ok: 1, bad: 0 };
-        const acc = rank[r.accurate] === undefined ? 2 : rank[r.accurate];
-        const nat = rank[r.natural] === undefined ? 2 : rank[r.natural];
-        let verdictLine = "", verdictColor = "var(--status-ok)";
-        if (st.result && !r.ask) {
-          if (r.error) {
-            verdictLine = T("check_failed");
-            verdictColor = "var(--status-error)";
-          } else if (r.understood === false) {
-            verdictLine = T("verdict_1");
-            verdictColor = "var(--status-error)";
-          } else if (acc === 0) {
-            verdictLine = T("verdict_2");
-            verdictColor = "var(--status-error)";
-          } else if (acc === 1 && nat <= 1) {
-            verdictLine = T("verdict_3");
-            verdictColor = "var(--status-warn)";
-          } else if (acc === 1) {
-            verdictLine = T("verdict_4");
-            verdictColor = "var(--status-warn)";
-          } else if (nat === 0) {
-            verdictLine = T("verdict_5");
-            verdictColor = "var(--status-warn)";
-          } else if (nat === 1) {
-            verdictLine = T("verdict_6");
-            verdictColor = "var(--status-warn)";
-          } else {
-            verdictLine = T("verdict_7");
-            verdictColor = "var(--status-ok)";
-          }
-        }
+        const v = st.result ? this.writeVerdict(r) : { line: "", color: "var(--status-ok)" };
+        const verdictLine = v.line, verdictColor = v.color;
         const verdict = "";
         const note = r.note || "—";
         const better = r.better || "—";
