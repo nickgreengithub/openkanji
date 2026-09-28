@@ -37,7 +37,7 @@ if (process.argv.includes("--json")) {
     [String(set - 1)]: {
       title: { ja: "", en: "", es: "" },
       words: Object.fromEntries(mine.filter((w) => /[ぁ-ん]$/.test(w.w)).map((w) => [w.w, { of: w.w }])),
-      pages: [[line, line, line], [line, line, line], [line, line, line], [line, line, line], [line, line, line]],
+      pages: Array.from({ length: 7 }, () => [line, line, line]),
     },
   }, null, 1));
   process.exit(0);
@@ -62,7 +62,12 @@ console.log("Anything else has to be glossed. Aim to stay above freq " + floor.t
 
 const has = stories[String(set - 1)];
 console.log("\nWritten already: " + (has ? "yes -- " + has.title.ja + " (" + has.title.en + ")" : "no"));
-console.log("\nThe shape: five pages, three lines a page, one line to a sentence.");
+console.log("\nThe shape: three lines a page, one line to a sentence, as many pages as the story needs");
+console.log("(the first ten run seven to nine). Most readers arrive mid-serial, so page one says who and");
+console.log("where -- Masao, the studio, the friend he waits for, whoever else is in it -- and carries at");
+console.log("least one of the twenty. The chapter ends on something that closes, not on a cliffhanger.");
+console.log("A set word written inside a longer word (事 in 仕事, 木 in 高木) lights up there as itself:");
+console.log("gloss the longer word, or reword.");
 console.log("The build refuses a chapter that drops one of the twenty, glosses a word it never uses,");
 console.log("or puts anything but Japanese in the Japanese. Conjugate freely -- 使って points at 使う");
 console.log('with { "使って": { "of": "使う" } } and still counts.');

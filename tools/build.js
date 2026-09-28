@@ -11,6 +11,7 @@
 const fs = require("fs");
 const path = require("path");
 const zlib = require("zlib");
+const crypto = require("crypto");
 
 const ROOT = path.join(__dirname, "..");
 const SRC = path.join(ROOT, "src");
@@ -494,6 +495,41 @@ function readVoices() {
   }
 }
 
+// A recording is only worth playing if it still says what the page says.
+// Editing a word, a sentence or a story line leaves the old clip on disk until
+// the next voices run -- and the page, told only that a clip exists, would
+// read the new line aloud as the line it used to be. So the page is told
+// about a clip only while its fingerprint (src/audio/said.json, written by
+// tools/voices.js with this same stamp) matches the text. Anything changed
+// is read by the browser's voice until it is recorded again.
+function freshVoices(stories) {
+  const v = readVoices();
+  let said;
+  try { said = JSON.parse(fs.readFileSync(path.join(SRC, "audio", "said.json"), "utf8")); } catch (e) { return v; }
+  const stamp = (t) => crypto.createHash("sha1").update(t).digest("hex").slice(0, 10);
+  // no fingerprint is a clip made before fingerprints were: voices.js keeps
+  // those, and so does this
+  const fresh = (file, text) => text != null && (said[file] === undefined || said[file] === stamp(text));
+  const words = readJson("data/words.json");
+  const lines = {};
+  for (const [set, s] of Object.entries(stories || {})) {
+    for (const page of s.pages) for (const l of page) lines[l.id] = l.p.map((x) => x[0]).join("");
+  }
+  const out = {
+    words: v.words.filter((id) => words[id] && fresh(id + ".mp3", words[id].reading || words[id].w)),
+    sentences: v.sentences.filter((id) => {
+      const s0 = words[id] && words[id].sentences && words[id].sentences[0];
+      return fresh(id + ".s.mp3", s0 ? s0.ja : null);
+    }),
+    stories: v.stories.filter((id) => fresh(id + ".mp3", lines[id])),
+  };
+  const held = (v.words.length - out.words.length) + (v.sentences.length - out.sentences.length) + (v.stories.length - out.stories.length);
+  if (held) console.log("  " + held + " recordings no longer match their text and are held back until the next voices run" +
+    " (" + (v.words.length - out.words.length) + " words, " + (v.sentences.length - out.sentences.length) + " sentences, " +
+    (v.stories.length - out.stories.length) + " story lines)");
+  return out;
+}
+
 function build() {
   const meta = JSON.parse(fs.readFileSync(path.join(SRC, "assets/manifest.json"), "utf8"));
 
@@ -522,7 +558,7 @@ function build() {
     // Which words have a recording (tools/voices.js). The page checks this
     // list rather than probing for files, so a word without a clip goes
     // straight to the browser's voice instead of waiting on a 404.
-    __VOICES__: JSON.stringify(readVoices()),
+    __VOICES__: JSON.stringify(freshVoices(stories)),
     __COVERS__: JSON.stringify(readCovers()),
     // [name, ui.json tip key, kanji count] in rail order, so adding a deck or
     // reordering the rail is a decks.json edit and nothing else.

@@ -1,8 +1,9 @@
 # 月の写真館 — the serial
 
 One hundred chapters, one to a set of twenty words. Every chapter carries all
-twenty; the words the reader has not met are glossed on a tap. A chapter is
-five pages, three lines a page, one sentence to a line.
+twenty; the words the reader has not met are glossed on a tap. Three lines a
+page, one sentence to a line, as many pages as the story needs -- the first ten
+run seven to nine.
 
 Write it with `node tools/story-brief.js <set>` in front of you: it prints the
 twenty, what the reader has already met, and the rules the build enforces.
@@ -17,8 +18,12 @@ The studio is quietly failing and the town is quietly emptying. Underneath every
 chapter runs the promise of the first one: an old man who has waited at the
 river for a friend who never came back.
 
-Each chapter is one photograph, so it stands on its own. The promise, the studio
-and the three of them run underneath, so they add up.
+Each chapter stands on its own. The promise, the studio and the three of them
+run underneath, so they add up -- but most readers open a chapter because it is
+the set they are on, not because they read the one before. So every chapter
+says again, on its first page, who and where: Masao, the studio by the river,
+the friend he has waited fifty years for, and whoever else is in it. Two or
+three plain lines, never a recap of the plot.
 
 ## The three
 
@@ -54,6 +59,45 @@ into the arc:
 | 上中級 | 61-80 | the old negatives: a war, an illness, a loss | the grim words, gently |
 | 上級 | 81-100 | the town votes on its future; the promise resolves | institutions, abstractions |
 
+## Chapters one to ten, as written
+
+Each one asks a small question and answers it; underneath, the silent telephone
+runs from chapter 2 to its answer in chapter 10.
+
+1. **月の約束** -- Haru, twelve, asks the old photographer why he sits by the
+   river every full moon. A promise: he and his friend Takagi were to meet there
+   ten years after Takagi left. That was fifty years ago. She says she will come
+   next month too.
+2. **百の箱** -- A hundred boxes of film Masao never printed. Does he know if
+   Takagi is alive? No -- that is the problem. The telephone rings at seven,
+   and no one speaks.
+3. **五十年前の道** -- The box Haru chose is printed: the main street, fifty
+   years ago. In it, a young man with his eyes closed. Takagi, on the morning
+   he left. Masao gives her the print.
+4. **同じ時間の電話** -- Haru brings Mina, who thinks the studio is frightening.
+   Seven is the hour of the promise. Mina answers the silent call herself, and
+   by the end she is smiling.
+5. **山田及び高木** -- Mina's research: the studio was founded by Yamada and
+   Takagi. Masao is Yamada. That night he asks the silence, for the first time,
+   whether it is Takagi.
+6. **新しい建物** -- The house Takagi grew up in is gone under a company's new
+   building. Masao is angry for the first time; Haru makes him rice.
+7. **新聞の名前** -- An old newspaper: Takagi came top in the exam for a Tokyo
+   university. The gold watch he gave Masao the night before he left. Masao
+   writes to him, care of the university.
+8. **三日の間** -- For three days the telephone does not ring. Why Masao stayed
+   in a shrinking town. On the third night it rings again.
+9. **孫** -- Takagi's grandson calls. Takagi is alive, in hospital, unable to
+   speak; every night at seven he has the studio called just to hear Masao's
+   voice. The three silent days, he was too ill.
+10. **町の塩** -- A box of letters Takagi never sent, and salt the two of them
+    made from the sea. He came back once, and could not come in. That night
+    Masao answers the telephone and talks for fifty years' worth. On the next
+    full moon he will go and see him.
+
+The promise is answered in direction, not in the meeting itself: that is
+still the serial's to keep.
+
 ## House rules
 
 1. **A story first.** The twenty words are the constraint, not the subject. A
@@ -67,14 +111,22 @@ into the arc:
    the ladder teaches -- one or two is a story, a dozen is a different story.
 4. **One sentence to a line**, because a line is what gets read aloud and lit.
 5. **No cliffhangers that need the next chapter to make sense.** A reader who
-   stops at set 40 should not be left holding half a thing.
-6. **The recordings follow the text.** Editing a line changes its fingerprint
-   and the next voices run replaces the clip (`src/audio/said.json`).
+   stops at set 40 should not be left holding half a thing. Each chapter asks
+   one small question and answers it before it ends.
+6. **Page one says who and where, and carries a word of the set.** It is the
+   page every reader sees, including the ones who skipped the last nine.
+7. **A set word inside a longer word lights up as itself.** 事 in 仕事, 木 in
+   高木: the page matches the longest span it knows, and a set word is always
+   known. Gloss the longer word, or reword.
+8. **The recordings follow the text.** Editing a line changes its fingerprint
+   and the next voices run replaces the clip (`src/audio/said.json`). Until
+   then the build holds the old clip back, so the page reads the new line in
+   the browser's voice rather than aloud as the line it used to be.
 
 ## Covers
 
 Every chapter opens on a cover: the picture, 第N話 and CHAPTER N, and the title
-in both languages. It is page one of six, it turns like any other page, and the
+in both languages. It is the first page, it turns like any other page, and the
 box does not change size for it.
 
 The picture is a file in `src/covers/`, named for the set counting from zero --
